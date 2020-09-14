@@ -1,0 +1,29 @@
+{
+	"fileName": "id_1491823781561_91_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "nw.epm.refapps.st.prod.manage.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "fixedLayout",
+		"oldValue": false,
+		"newValue": true
+	},
+	"selector": {
+		"id": "nw.epm.refapps.st.prod.manage::sap.suite.ui.generic.template.ObjectPage.view.Details::SEPMRA_C_PD_Product--ProductReviewFacetID::responsiveTable",
+		"type": "sap.m.Table",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/nw.epm.refapps.st.prod.manage/changes/",
+	"creation": "2017-04-10T11:29:44.929Z",
+	"originalLanguage": "DE",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": ""
+	}
+}

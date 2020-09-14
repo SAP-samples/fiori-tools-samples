@@ -1,0 +1,30 @@
+{
+  "name": "products-review",
+  "description": "Fiori elements v2 LROP app based on product service",
+  "private": true,
+  "version": "0.0.1",
+  "devDependencies": {
+    "@openui5/themelib_sap_fiori_3": "1.65.1",
+    "@sap/ux-ui5-fe-mockserver-middleware": "1.0.14",
+    "@sap/ux-ui5-tooling": "1.0.12",
+    "@ui5/cli": "2.0.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "1.2.9"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-fe-mockserver-middleware",
+      "@sap/ux-ui5-tooling",
+      "@ui5/logger"
+    ]
+  },
+  "scripts": {
+    "start": "ui5 serve",
+    "preview": "ui5 serve -o index.html",
+    "build": "ui5 build"
+  },
+  "dependencies": {
+    "@ui5/logger": "^2.0.0"
+  }
+}

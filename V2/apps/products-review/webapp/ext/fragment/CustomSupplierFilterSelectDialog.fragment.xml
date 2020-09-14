@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<TableSelectDialog title="{i18n|sap.suite.ui.generic.template.ListReport|SEPMRA_C_PD_Product>xtit.SelectSupplier}" multiSelect="true"
+		rememberSelections="false" cancel="onHandleCustomSupplierTableSelectDialogCancel" confirm="onHandleCustomSupplierTableSelectDialogClose"
+		search="onHandleCustomSupplierDialogSearch" id="selectedSuppliers"
+		items="{ path : '/SEPMRA_C_PD_Supplier', sorter : { path : 'CompanyName', descending : false, group: false } }"
+		noDataText="{i18n|sap.suite.ui.generic.template.ListReport|SEPMRA_C_PD_Product>ymsg.NoSupplierFound}">
+		<ColumnListItem id="name">
+			<cells>
+				<ObjectIdentifier text="{CompanyName}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="supplier"></Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

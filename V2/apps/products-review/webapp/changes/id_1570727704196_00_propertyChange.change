@@ -1,0 +1,17 @@
+{
+    "fileName": "id_1570727704196_00_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "reference": "nw.epm.refapps.st.prod.manage.Component",
+    "content": {
+        "property": "useExportToExcel",
+        "newValue": false
+    },
+    "layer": "VENDOR",
+    "namespace": "apps/nw.epm.refapps.st.prod.manage/changes",
+    "creation": "2019-10-10T17:15:04.196Z",
+    "selector": {
+        "id": "nw.epm.refapps.st.prod.manage::sap.suite.ui.generic.template.ListReport.view.ListReport::SEPMRA_C_PD_Product--listReport",
+        "type": "sap.ui.comp.smarttable.SmartTable"
+    }
+}

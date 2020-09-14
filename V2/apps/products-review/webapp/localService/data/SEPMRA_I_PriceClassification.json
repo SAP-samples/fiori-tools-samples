@@ -1,0 +1,18 @@
+[
+	{
+		"PriceClassification": "1",
+		"PriceClassification_Text": "Price: < 100"
+	},
+	{
+		"PriceClassification": "2",
+		"PriceClassification_Text": "Price: between 100 and 500"
+	},
+	{
+		"PriceClassification": "3",
+		"PriceClassification_Text": "Price: between 500 and 1000"
+	},
+	{
+		"PriceClassification": "4",
+		"PriceClassification_Text": "Price: over 1000"
+	}
+]
