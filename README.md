@@ -27,4 +27,4 @@ There are no known issues relating to the resources included in this repository.
 - Option 2 : Use this option ONLY when you encounter any issues using the sample project with [SAP Developer tutorials](https://developers.sap.com/group.fiori-tools-lrop.html), please report it [here](https://github.com/SAPDocuments/Tutorials/issues/new).
 
 ### License
-Copyright (c) 2009-2020 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](https://github.com/SAP-samples/fiori-tools-samples/blob/main/LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2009-2020 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
