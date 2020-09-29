@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/fiori-tools-samples)](https://api.reuse.software/info/github.com/SAP-samples/fiori-tools-samples)
+
 # Samples for SAP Fiori tools
 
 ### Description
