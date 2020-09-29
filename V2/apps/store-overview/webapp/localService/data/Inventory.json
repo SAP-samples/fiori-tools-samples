@@ -1,0 +1,122 @@
+[
+    {
+        "ID": "0",
+        "Month": 10,
+        "MonthName": "October",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 24
+    },
+    {
+        "ID": "1",
+        "Month": 10,
+        "MonthName": "October",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 10
+    },
+    {
+        "ID": "2",
+        "Month": 10,
+        "MonthName": "October",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 40
+    },
+    {
+        "ID": "3",
+        "Month": 9,
+        "MonthName": "September",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 18
+    },
+    {
+        "ID": "4",
+        "Month": 9,
+        "MonthName": "September",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 25
+    },
+    {
+        "ID": "5",
+        "Month": 9,
+        "MonthName": "September",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 80
+    },
+    {
+        "ID": "6",
+        "Month": 8,
+        "MonthName": "August",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 41
+    },
+    {
+        "ID": "7",
+        "Month": 8,
+        "MonthName": "August",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 30
+    },
+    {
+        "ID": "8",
+        "Month": 8,
+        "MonthName": "August",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 10
+    },
+    {
+        "ID": "9",
+        "Month": 7,
+        "MonthName": "July",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 5
+    },
+    {
+        "ID": "10",
+        "Month": 7,
+        "MonthName": "July",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 25
+    },
+    {
+        "ID": "11",
+        "Month": 7,
+        "MonthName": "July",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 20
+    },
+    {
+        "ID": "12",
+        "Month": 11,
+        "MonthName": "November",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 8
+    },
+    {
+        "ID": "13",
+        "Month": 11,
+        "MonthName": "November",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 9
+    },
+    {
+        "ID": "14",
+        "Month": 11,
+        "MonthName": "November",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 20
+    }
+]

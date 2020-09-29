@@ -1,0 +1,182 @@
+{
+    "_version": "1.7.0",
+    "start_url": "start.html",
+    "sap.app": {
+        "id": "teched.demo.ovp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "Store Overview",
+        "description": "OVP Demo",
+        "ach": "xx",
+        "resources": "resources.json",
+        "dataSources": {
+            "main": {
+                "uri": "/sap/opu/odata/sap/GWSAMPLE_BASIC/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [
+                        "GWSAMPLE_BASIC_ANNO_MDL"
+                    ],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "GWSAMPLE_BASIC_ANNO_MDL": {
+                "type": "ODataAnnotation",
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='GWSAMPLE_BASIC_ANNO_MDL',Version='0001')/$value/",
+                "settings": {
+                    "localUri": "localService/annotations.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "OVP.smartovptemplate",
+            "version": "1.41.1"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.65.6",
+            "libs": {
+                "sap.ovp": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "@i18n": {
+                "preload": true,
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "main": {
+                "dataSource": "main",
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            }
+        },
+        "extends": {
+            "extensions": {}
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.ovp": {
+        "globalFilterModel": "main",
+        "globalFilterEntityType": "GlobalFilters",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+			"card00": {
+				"model": "main",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+                    "title": "{{card00_title}}",
+                    "subTitle": "{{card00_subTitle}}",
+					"entitySet": "CustomerServiceSet",
+					"listType": "condensed",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+				}
+			},
+			"card01": {
+				"model": "main",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card01_title}}",
+					"subTitle": "{{card01_subTitle}}",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#RunnersByType",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#RunnersByType",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#TotalRunners",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+					"entitySet": "Runners"
+				}
+			},
+            "card06": {
+                "model": "main",
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "{{card02_title}}",
+                    "listFlavor": "standard",
+                    "staticContent": [
+                        {
+                            "title": "Reorder",
+                            "imageUri": "sap-icon://cart-full",
+                            "targetUri": "https://abc.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "Customer Feedback",
+                            "imageUri": "sap-icon://feedback",
+                            "targetUri": "https://abc.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "Store Analytics",
+                            "imageUri": "sap-icon://business-objects-experience",
+                            "targetUri": "https://abc.com",
+                            "openInNewWindow": true
+                        },
+                        {
+                            "title": "Delivery Overview",
+                            "imageUri": "sap-icon://shipping-status",
+                            "targetUri": "https://abc.com",
+                            "openInNewWindow": true
+					}]
+                }
+            },
+            "card03": {
+                "model": "main",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{card03_title}}",
+                    "subTitle": "{{card03_subTitle}}",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ShoesByRunners",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#ShoesByRunners",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "entitySet": "ShoeSales"
+                }
+            },
+			"card04": {
+				"model": "main",
+				"template": "sap.teched.teched-ovp.ext.timeline",
+				"settings": {
+					"title": "{{card04_title}}"
+				}
+			},
+            "card05": {
+                "model": "main",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{card05_title}}",
+                    "subTitle": "{{card05_subTitle}}",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#InventoryByMonth",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#InventoryByMonth",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "entitySet": "Inventory"
+                }
+            }
+        }
+    }
+}

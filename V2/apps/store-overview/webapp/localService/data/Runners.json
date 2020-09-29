@@ -1,0 +1,38 @@
+[
+    {
+        "ID": "0",
+        "Type": "Fitness Explorer",
+        "Count": 1241,
+        "TotalCount": 3046
+    },
+    {
+        "ID": "1",
+        "Type": "Frequent Short-Distance",
+        "Count": 577,
+        "TotalCount": 3046
+    },
+    {
+        "ID": "2",
+        "Type": "Fast & Furious",
+        "Count": 291,
+        "TotalCount": 3046
+    },
+    {
+        "ID": "3",
+        "Type": "Beginning Runner",
+        "Count": 455,
+        "TotalCount": 3046
+    },
+    {
+        "ID": "4",
+        "Type": "Run Lover",
+        "Count": 394,
+        "TotalCount": 3046
+    },
+    {
+        "ID": "5",
+        "Type": "Run Sensei",
+        "Count": 88,
+        "TotalCount": 3046
+    }
+]

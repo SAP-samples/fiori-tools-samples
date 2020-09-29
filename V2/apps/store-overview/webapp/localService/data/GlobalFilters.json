@@ -1,0 +1,191 @@
+[{
+	"DeliveryDate": "/Date(1130475697000)/",
+	"OrderedAmount": 9.85,
+	"OverdueTime": 9,
+	"SupplierName": "SupplierName 1",
+	"CityName": "CityName 1",
+	"Land1": "Land1 1",
+	"CurrencyCode": "P_DisplayCurrency 1",
+	"NetAmount": 416.31,
+	"MaterialName": "MaterialName 1",
+	"MaterialGroup": "MaterialGroup 1",
+	"PurchasingCategory": "PurchasingCategory 1",
+	"PurchasingGroup": "PurchasingGroup 1",
+	"PurchasingOrganization": "PurchasingOrganization 1",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%201')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "USA"
+}, {
+	"DeliveryDate": "/Date(1542862897000)/",
+	"OrderedAmount": 6671.92,
+	"OverdueTime": 416,
+	"SupplierName": "SupplierName 2",
+	"CityName": "CityName 2",
+	"Land1": "Land1 2",
+	"CurrencyCode": "P_DisplayCurrency 2",
+	"NetAmount": 2613.6,
+	"MaterialName": "MaterialName 2",
+	"MaterialGroup": "MaterialGroup 2",
+	"PurchasingCategory": "PurchasingCategory 2",
+	"PurchasingGroup": "PurchasingGroup 2",
+	"PurchasingOrganization": "PurchasingOrganization 2",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%202')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "USA"
+}, {
+	"DeliveryDate": "/Date(1376542897000)/",
+	"OrderedAmount": 7960.43,
+	"OverdueTime": 6671,
+	"SupplierName": "SupplierName 3",
+	"CityName": "CityName 3",
+	"Land1": "Land1 3",
+	"CurrencyCode": "P_DisplayCurrency 3",
+	"NetAmount": 2584.86,
+	"MaterialName": "MaterialName 3",
+	"MaterialGroup": "MaterialGroup 3",
+	"PurchasingCategory": "PurchasingCategory 3",
+	"PurchasingGroup": "PurchasingGroup 3",
+	"PurchasingOrganization": "PurchasingOrganization 3",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%203')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "USA"
+}, {
+	"DeliveryDate": "/Date(1177909297000)/",
+	"OrderedAmount": 5101.49,
+	"OverdueTime": 2613,
+	"SupplierName": "SupplierName 4",
+	"CityName": "CityName 4",
+	"Land1": "Land1 4",
+	"CurrencyCode": "P_DisplayCurrency 4",
+	"NetAmount": 7638.68,
+	"MaterialName": "MaterialName 4",
+	"MaterialGroup": "MaterialGroup 4",
+	"PurchasingCategory": "PurchasingCategory 4",
+	"PurchasingGroup": "PurchasingGroup 4",
+	"PurchasingOrganization": "PurchasingOrganization 4",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%204')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "USA"
+}, {
+	"DeliveryDate": "/Date(1158814897000)/",
+	"OrderedAmount": 100.85,
+	"OverdueTime": 7960,
+	"SupplierName": "SupplierName 5",
+	"CityName": "CityName 5",
+	"Land1": "Land1 5",
+	"CurrencyCode": "P_DisplayCurrency 5",
+	"NetAmount": 8688.55,
+	"MaterialName": "MaterialName 5",
+	"MaterialGroup": "MaterialGroup 5",
+	"PurchasingCategory": "PurchasingCategory 5",
+	"PurchasingGroup": "PurchasingGroup 5",
+	"PurchasingOrganization": "PurchasingOrganization 5",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%205')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "USA"
+}, {
+	"DeliveryDate": "/Date(1406610097000)/",
+	"OrderedAmount": 9523.1,
+	"OverdueTime": 2584,
+	"SupplierName": "SupplierName 6",
+	"CityName": "CityName 6",
+	"Land1": "Land1 6",
+	"CurrencyCode": "P_DisplayCurrency 6",
+	"NetAmount": 8078.05,
+	"MaterialName": "MaterialName 6",
+	"MaterialGroup": "MaterialGroup 6",
+	"PurchasingCategory": "PurchasingCategory 6",
+	"PurchasingGroup": "PurchasingGroup 6",
+	"PurchasingOrganization": "PurchasingOrganization 6",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%206')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "DE"
+}, {
+	"DeliveryDate": "/Date(1442984497000)/",
+	"OrderedAmount": 3324.62,
+	"OverdueTime": 5101,
+	"SupplierName": "SupplierName 7",
+	"CityName": "CityName 7",
+	"Land1": "Land1 7",
+	"CurrencyCode": "P_DisplayCurrency 7",
+	"NetAmount": 591.67,
+	"MaterialName": "MaterialName 7",
+	"MaterialGroup": "MaterialGroup 7",
+	"PurchasingCategory": "PurchasingCategory 7",
+	"PurchasingGroup": "PurchasingGroup 7",
+	"PurchasingOrganization": "PurchasingOrganization 7",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%207')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "DE"
+}, {
+	"DeliveryDate": "/Date(1561698097000)/",
+	"OrderedAmount": 4853.71,
+	"OverdueTime": 7638,
+	"SupplierName": "SupplierName 8",
+	"CityName": "CityName 8",
+	"Land1": "Land1 8",
+	"CurrencyCode": "P_DisplayCurrency 8",
+	"NetAmount": 4053.58,
+	"MaterialName": "MaterialName 8",
+	"MaterialGroup": "MaterialGroup 8",
+	"PurchasingCategory": "PurchasingCategory 8",
+	"PurchasingGroup": "PurchasingGroup 8",
+	"PurchasingOrganization": "PurchasingOrganization 8",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%208')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "DE"
+}, {
+	"DeliveryDate": "/Date(977202097000)/",
+	"OrderedAmount": 7495.46,
+	"OverdueTime": 100,
+	"SupplierName": "SupplierName 9",
+	"CityName": "CityName 9",
+	"Land1": "Land1 9",
+	"CurrencyCode": "P_DisplayCurrency 9",
+	"NetAmount": 7826.71,
+	"MaterialName": "MaterialName 9",
+	"MaterialGroup": "MaterialGroup 9",
+	"PurchasingCategory": "PurchasingCategory 9",
+	"PurchasingGroup": "PurchasingGroup 9",
+	"PurchasingOrganization": "PurchasingOrganization 9",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%209')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "DE"
+}, {
+	"DeliveryDate": "/Date(1275109297000)/",
+	"OrderedAmount": 3812,
+	"OverdueTime": 8688,
+	"SupplierName": "SupplierName 10",
+	"CityName": "CityName 10",
+	"Land1": "Land1 10",
+	"CurrencyCode": "P_DisplayCurrency 10",
+	"NetAmount": 6152.62,
+	"MaterialName": "MaterialName 10",
+	"MaterialGroup": "MaterialGroup 10",
+	"PurchasingCategory": "PurchasingCategory 10",
+	"PurchasingGroup": "PurchasingGroup 10",
+	"PurchasingOrganization": "PurchasingOrganization 10",
+	"__metadata": {
+		"uri": "GlobalFilters('P_DisplayCurrency%2010')",
+		"type": "GWSAMPLE_BASIC.GlobalFilters"
+	},
+	"CountryCode": "DE"
+}]

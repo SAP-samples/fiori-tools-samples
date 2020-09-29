@@ -1,0 +1,54 @@
+[
+    {
+        "__metadata": {
+            "id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('1')",
+            "uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('1')",
+            "type": "GWSAMPLE_BASIC.CustomerServiceSet",
+            "etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+        },
+        "CustomerServiceID": "1",
+        "Priority": "High",
+        "PriorityCriticality": 1,
+        "CustomerName": "Walter Ehrmantraut",
+        "Complain": "Shoe sole broken"
+    },
+    {
+        "__metadata": {
+            "id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('2')",
+            "uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('2')",
+            "type": "GWSAMPLE_BASIC.CustomerServiceSet",
+            "etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+        },
+        "CustomerServiceID": "2",
+        "Priority": "Medium",
+        "PriorityCriticality": 2,
+        "CustomerName": "Skyler Shrader",
+        "Complain": "New XT shoe delivery delayed"
+    },
+    {
+        "__metadata": {
+            "id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('3')",
+            "uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('3')",
+            "type": "GWSAMPLE_BASIC.CustomerServiceSet",
+            "etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+        },
+        "CustomerServiceID": "3",
+        "Priority": "Medium",
+        "PriorityCriticality": 2,
+        "CustomerName": "Saul White",
+        "Complain": "Shoelace issues"
+    },
+    {
+        "__metadata": {
+            "id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('4')",
+            "uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/CustomerServiceSet('4')",
+            "type": "GWSAMPLE_BASIC.CustomerServiceSet",
+            "etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+        },
+        "CustomerServiceID": "4",
+        "Priority": "Medium",
+        "PriorityCriticality": 2,
+        "CustomerName": "Mike Pinkman",
+        "Complain": "Shoe discoloring (grayish)"
+    }
+]

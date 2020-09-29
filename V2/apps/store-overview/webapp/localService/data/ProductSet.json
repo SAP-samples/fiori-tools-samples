@@ -1,0 +1,345 @@
+[{
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('AD-1000')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('AD-1000')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "AD-1000",
+	"TypeCode": "AD",
+	"Category": "Computer system accessories",
+	"Name": "Portable DVD player",
+	"NameLanguage": "E",
+	"Description": "Flyer for our product palette",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000015",
+	"SupplierName": "Robert Brown Entertainment",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "0.01",
+	"WeightUnit": "KG",
+	"CurrencyCode": "EUR",
+	"Price": 4888,
+	"Width": "0.46",
+	"Depth": "0.3",
+	"Height": "0.03",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://accelerated",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('AD-1000')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('AD-1000')/ToSupplier"
+		}
+	},
+	"Land1": "DE",
+	"CountryCode": "DE"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1000')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1000')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1000",
+	"TypeCode": "PR",
+	"Category": "Notebooks",
+	"Name": "Notebook Basic 15",
+	"NameLanguage": "E",
+	"Description": "Notebook Basic 15 with 2,80 GHz quad core, 15\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000000",
+	"SupplierName": "SAP",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "4.2",
+	"WeightUnit": "KG",
+	"CurrencyCode": "EUR",
+	"Price": 956,
+	"Width": "0.3",
+	"Depth": "0.18",
+	"Height": "0.03",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://accept",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1000')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1000')/ToSupplier"
+		}
+	},
+	"Land1": "DE",
+	"CountryCode": "DE"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1001')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1001')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1001",
+	"TypeCode": "PR",
+	"Category": "Notebooks",
+	"Name": "Widescreen Portable DVD Player",
+	"NameLanguage": "E",
+	"Description": "Notebook Basic 17 with 2,80 GHz quad core, 17\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000001",
+	"SupplierName": "Becker Berlin",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "4.5",
+	"WeightUnit": "KG",
+	"CurrencyCode": "EUR",
+	"Price": 1249,
+	"Width": "0.29",
+	"Depth": "0.17",
+	"Height": "0.03",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "In stock",
+	"ImageUrl": "sap-icon://accidental-leave",
+	"StatusCriticality": 2,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1001')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1001')/ToSupplier"
+		}
+	},
+	"Land1": "DE",
+	"CountryCode": "DE"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1002')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1002')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1002",
+	"TypeCode": "PR",
+	"Category": "Notebooks",
+	"Name": "Astro Laptop 1516",
+	"NameLanguage": "E",
+	"Description": "Notebook Basic 18 with 2,80 GHz quad core, 18\" LCD, 8 GB DDR3 RAM, 1000 GB Hard Disc, Windows 8 Pro",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000002",
+	"SupplierName": "DelBont Industries",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "4.2",
+	"WeightUnit": "KG",
+	"CurrencyCode": "USD",
+	"Price": "1570.0",
+	"Width": "0.28",
+	"Depth": "0.19",
+	"Height": "0.03",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://account",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1002')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1002')/ToSupplier"
+		}
+	},
+	"Land1": "USA",
+	"CountryCode": "USA"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1007')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1007')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1007",
+	"TypeCode": "PR",
+	"Category": "PDAs/Organizers",
+	"Name": "Camcorder View",
+	"NameLanguage": "E",
+	"Description": "Digital Organizer with State-of-the-Art Storage Encryption",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000004",
+	"SupplierName": "Panorama Studios",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "0.2",
+	"WeightUnit": "KG",
+	"CurrencyCode": "USD",
+	"Price": "299.0",
+	"Width": "0.32",
+	"Depth": "0.22",
+	"Height": "0.03",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://activate",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1007')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1007')/ToSupplier"
+		}
+	},
+	"Land1": "USA",
+	"CountryCode": "USA"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1011')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1011')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1011",
+	"TypeCode": "PR",
+	"Category": "Notebooks",
+	"Name": "Ergo Screen",
+	"NameLanguage": "E",
+	"Description": "Notebook Professional 17 with 2,80 GHz quad core, 17\" Multitouch LCD, 8 GB DDR3 RAM, 500 GB SSD - DVD-Writer (DVD-R/+R/-RW/-RAM),Windows 8 Pro",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000006",
+	"SupplierName": "Asia High tech",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "4.1",
+	"WeightUnit": "KG",
+	"CurrencyCode": "USD",
+	"Price": "2299.0",
+	"Width": "0.33",
+	"Depth": "0.23",
+	"Height": "0.02",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://add-photo",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1011')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1011')/ToSupplier"
+		}
+	},
+	"Land1": "USA",
+	"CountryCode": "USA"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1020')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1020')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1020",
+	"TypeCode": "PR",
+	"Category": "PDAs/Organizers",
+	"Name": "Gaming Monster Pro",
+	"NameLanguage": "E",
+	"Description": "Digital Organizer with State-of-the-Art Encryption for Storage and Network Communications",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000007",
+	"SupplierName": "Laurent",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "0.16",
+	"WeightUnit": "KG",
+	"CurrencyCode": "USD",
+	"Price": "459.0",
+	"Width": "0.1",
+	"Depth": "0.02",
+	"Height": "0.17",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "In stock",
+	"ImageUrl": "sap-icon://bell",
+	"StatusCriticality": 2,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1020')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1020')/ToSupplier"
+		}
+	},
+	"Land1": "USA",
+	"CountryCode": "USA"
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1021')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1021')",
+		"type": "GWSAMPLE_BASIC.Product",
+		"etag": "W/\"datetime'2014-10-29T11%3A58%3A19.0000000'\""
+	},
+	"ProductID": "HT-1021",
+	"TypeCode": "PR",
+	"Category": "PDAs/Organizers",
+	"Name": "Goldberry",
+	"NameLanguage": "E",
+	"Description": "Digital Organizer with State-of-the-Art Encryption for Storage and Secure Stellite Link",
+	"DescriptionLanguage": "E",
+	"SupplierID": "0100000008",
+	"SupplierName": "AVANTEL",
+	"TaxTarifCode": 1,
+	"MeasureUnit": "EA",
+	"WeightMeasure": "0.18",
+	"WeightUnit": "KG",
+	"CurrencyCode": "USD",
+	"Price": "149.0",
+	"Width": "0.11",
+	"Depth": "0.02",
+	"Height": "0.18",
+	"DimUnit": "M",
+	"CreatedAt": "/Date(1414583899000)/",
+	"ChangedAt": "/Date(1414583899000)/",
+	"Availability_Status": "Out of stock",
+	"ImageUrl": "sap-icon://blur",
+	"StatusCriticality": 1,
+	"ToSalesOrderLineItems": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1021')/ToSalesOrderLineItems"
+		}
+	},
+	"ToSupplier": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ProductSet('HT-1021')/ToSupplier"
+		}
+	},
+	"Land1": "USA",
+	"CountryCode": "USA"
+}]
