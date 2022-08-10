@@ -5,16 +5,16 @@
   "version": "0.0.1",
   "devDependencies": {
     "@openui5/themelib_sap_fiori_3": "1.65.1",
-    "@sap/ux-ui5-fe-mockserver-middleware": "1.0.14",
-    "@sap/ux-ui5-tooling": "1.0.12",
-    "@ui5/cli": "2.0.3"
+    "@sap-ux/ui5-middleware-fe-mockserver": "2.1.25",
+    "@sap/ux-ui5-tooling": "1.7.0",
+    "@ui5/cli": "2.14.10"
   },
   "optionalDependencies": {
-    "fsevents": "1.2.9"
+    "fsevents": "2.3.2"
   },
   "ui5": {
     "dependencies": [
-      "@sap/ux-ui5-fe-mockserver-middleware",
+      "@sap-ux/ui5-middleware-fe-mockserver",
       "@sap/ux-ui5-tooling",
       "@ui5/logger"
     ]
