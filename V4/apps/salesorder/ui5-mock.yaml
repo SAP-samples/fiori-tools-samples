@@ -15,9 +15,6 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
-        backend:
-          - path: /sap
-            url: https://sapes5.sapdevcenter.com
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -31,4 +28,4 @@ server:
           urlPath: /sap/opu/odata4/sap/ze2e001/default/sap/ze2e001_salesorder/0001
           metadataXmlPath: ./webapp/localService/metadata.xml
           mockdataRootPath: ./webapp/localService/data
-          generateMockData: true
+          generateMockData: false
