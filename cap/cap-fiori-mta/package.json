@@ -9,17 +9,17 @@
         "@sap/cds": "^5",
         "express": "^4",
         "hdb": "^0.18.3",
-        "@sap/xsenv": "^3.1.0",
-        "@sap/xssec": "^3.2.0",
-        "passport": "^0.4.1"
+        "@sap/xsenv": "^3.3.2",
+        "@sap/xssec": "^3.2.13",
+        "passport": "^0.6.0"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.96.0",
-        "rimraf": "3.0.2"
+        "@sap/ux-specification": "^1.102.3",
+        "rimraf": "^3.0.2"
     },
     "scripts": {
         "start": "cds run",
-        "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys",
+        "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
     },

@@ -12,6 +12,8 @@ modules:
   parameters:
     buildpack: nodejs_buildpack
     host: ${appname}
+    memory: 256M
+    disk-quota: 512M
   build-parameters:
     builder: npm-ci
     ignore: [".env", "node_modules/"]
@@ -37,6 +39,8 @@ modules:
       service-key:
         name: uaa_managedAppCAPProject-key
   parameters:
+    memory: 256M
+    disk-quota: 512M
     content:
       instance:
         destinations:
