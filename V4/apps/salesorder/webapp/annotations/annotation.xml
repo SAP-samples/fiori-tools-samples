@@ -1,0 +1,155 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata4/sap/ze2e001/default/sap/ze2e001_salesorder/0001/$metadata">
+        <edmx:Include Namespace="com.sap.gateway.default.ze2e001_salesorder.v0001" Alias="SAP__self"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP__self.SalesOrderType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Salesorder"/>
+                            <PropertyValue Property="Value" Path="Salesorder"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Createdbyuser"/>
+                            <PropertyValue Property="Value" Path="Createdbyuser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Creationdatetime"/>
+                            <PropertyValue Property="Value" Path="Creationdatetime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Lastchangedbyuser"/>
+                            <PropertyValue Property="Value" Path="Lastchangedbyuser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Lastchangeddatetime"/>
+                            <PropertyValue Property="Value" Path="Lastchangeddatetime"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneratedGroup1">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorder"/>
+                                    <PropertyValue Property="Value" Path="Salesorder"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Createdbyuser"/>
+                                    <PropertyValue Property="Value" Path="Createdbyuser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Creationdatetime"/>
+                                    <PropertyValue Property="Value" Path="Creationdatetime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Lastchangedbyuser"/>
+                                    <PropertyValue Property="Value" Path="Lastchangedbyuser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Lastchangeddatetime"/>
+                                    <PropertyValue Property="Value" Path="Lastchangeddatetime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Iscreatedbybusinesspartner"/>
+                                    <PropertyValue Property="Value" Path="Iscreatedbybusinesspartner"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Islastchangedbybusinesspartner"/>
+                                    <PropertyValue Property="Value" Path="Islastchangedbybusinesspartner"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Customer"/>
+                                    <PropertyValue Property="Value" Path="Customer"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Companyname"/>
+                                    <PropertyValue Property="Value" Path="Companyname"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Customercontact"/>
+                                    <PropertyValue Property="Value" Path="Customercontact"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Transactioncurrency"/>
+                                    <PropertyValue Property="Value" Path="Transactioncurrency"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Grossamountintransaccurrency"/>
+                                    <PropertyValue Property="Value" Path="Grossamountintransaccurrency"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Netamountintransactioncurrency"/>
+                                    <PropertyValue Property="Value" Path="Netamountintransactioncurrency"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Taxamountintransactioncurrency"/>
+                                    <PropertyValue Property="Value" Path="Taxamountintransactioncurrency"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderlifecyclestatus"/>
+                                    <PropertyValue Property="Value" Path="Salesorderlifecyclestatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderbillingstatus"/>
+                                    <PropertyValue Property="Value" Path="Salesorderbillingstatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderdeliverystatus"/>
+                                    <PropertyValue Property="Value" Path="Salesorderdeliverystatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderoverallstatus"/>
+                                    <PropertyValue Property="Value" Path="Salesorderoverallstatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Opportunity"/>
+                                    <PropertyValue Property="Value" Path="Opportunity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderpaymentmethod"/>
+                                    <PropertyValue Property="Value" Path="Salesorderpaymentmethod"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Salesorderpaymentterms"/>
+                                    <PropertyValue Property="Value" Path="Salesorderpaymentterms"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Billtoparty"/>
+                                    <PropertyValue Property="Value" Path="Billtoparty"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Billtopartyrole"/>
+                                    <PropertyValue Property="Value" Path="Billtopartyrole"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Shiptoparty"/>
+                                    <PropertyValue Property="Value" Path="Shiptoparty"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Shiptopartyrole"/>
+                                    <PropertyValue Property="Value" Path="Shiptopartyrole"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="GeneratedFacet1"/>
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneratedGroup1"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
