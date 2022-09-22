@@ -1,4 +1,4 @@
-# CAP managedAppCAPProject
+# CAP standaloneCAPProject
 _out
 *.db
 connection.properties
@@ -32,7 +32,7 @@ mta_archives/
 .idea
 
 # auto generated wildcard
-managedAppCAPProject/db/.env
+standaloneCAPProject/db/.env
 
 dist/
 resources/
