@@ -1,0 +1,112 @@
+_schema-version: "3.1"
+ID: standaloneCAPProject
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: standaloneCAPProject-srv
+  type: nodejs
+  path: gen/srv
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    memory: 256M
+    disk-quota: 1024M
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: standalonecapproject-approuter
+  type: approuter.nodejs
+  path: standalonecapproject-approuter
+  requires:
+  - name: standaloneCAPProject_html_repo_runtime
+  - name: uaa_standaloneCAPProject
+  - name: standaloneCAPProject-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: standaloneCAPProject_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: standaloneCAPProject_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - mystandalonecapproject.zip
+      name: mystandalonecapproject
+      target-path: resources/
+- name: mystandalonecapproject
+  type: html5
+  path: app/mystandalonecapproject
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: standaloneCAPProject_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_standaloneCAPProject
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: standaloneCAPProject-xsuaa-service
+    service-plan: application
+- name: standaloneCAPProject_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: standaloneCAPProject-destination-service
+  type: org.cloudfoundry.managed-service
+  requires:
+    - name: srv-api
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Name: cap-launchpad
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true  
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: standaloneCAPProject-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+   - builder: custom
+     commands:
+      - npm install --production
+      - npx -p @sap/cds-dk cds build --production
+      - cp -r db/data gen/srv/srv/data

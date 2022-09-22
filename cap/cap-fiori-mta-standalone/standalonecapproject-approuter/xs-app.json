@@ -1,0 +1,5 @@
+{
+  "authenticationMethod": "none",
+  "routes": [],
+  "welcomeFile": "/mystandalonecapproject"
+}
