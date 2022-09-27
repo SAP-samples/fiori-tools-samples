@@ -27,7 +27,7 @@ Option 1 - Using [Cloud MTA Build Tool](https://github.com/SAP/cloud-mta-build-t
 Option 2 - Using cli
 - Run the following command;
 ```shell
-npm run build && npm run deployed
+npm run build && npm run deploy
 ```
 - This will prompt you for your CF details if you are not already logged in
 - Your CAP Project will be successfully deployed to CF

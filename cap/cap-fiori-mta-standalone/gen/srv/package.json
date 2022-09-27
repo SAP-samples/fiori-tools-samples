@@ -1,0 +1,71 @@
+{
+    "name": "standaloneCAPProject",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "@sap/xsenv": "^3.1.0",
+        "@sap/xssec": "^3.2.0",
+        "express": "^4",
+        "passport": "^0.4.1",
+        "sqlite3": "^5.0.4"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.102.6",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds run",
+        "watch-mystandalonecapproject": "cds watch --open mystandalonecapproject/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy standaloneCAPProject --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "engines": {
+        "node": "^16.15"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "db": {
+            "kind": "sqlite",
+            "credentials": {
+              "database": ":memory:"
+            }
+         }
+        },
+        "features": {
+          "in_memory_db": true
+        }
+    },
+    "sapux": [
+        "app/mystandalonecapproject"
+    ]
+}
