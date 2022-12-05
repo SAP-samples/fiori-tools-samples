@@ -174,4 +174,13 @@ To the following;
 ```JSON
 "i18n": "i18n/i18n.properties",
 ```
-If the issue presists, then try bumping the `"minUI5Version": "1.108.2"` in your manifest.json to a later version, here is a list of supported [UI5 versions](https://sapui5.hana.ondemand.com/versionoverview.html).
+If the issue presists, then try bumping the `"minUI5Version": "1.108.2"` in your manifest.json to a later version, here is a list of supported [UI5 versions](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, where you want to only validate locally, then update `ui5.yaml` with a specific UI5 version, for example to specify `1.109.0`:
+
+```YAML
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.109.0
+```
