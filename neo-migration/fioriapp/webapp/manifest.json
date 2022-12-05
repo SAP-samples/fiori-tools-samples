@@ -4,13 +4,7 @@
         "id": "manageproductsneo2911c",
         "type": "application",
         "ach": "ach",
-        "i18n": {
-            "bundleUrl": "i18n/i18n.properties",
-            "supportedLocales": [
-                ""
-            ],
-            "fallbackLocale": ""
-        },
+        "i18n": "i18n/i18n.properties",
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
         "applicationVersion": {
