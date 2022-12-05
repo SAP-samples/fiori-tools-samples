@@ -1,0 +1,20 @@
+{
+    "xsappname": "migrationcf",
+    "tenant-mode": "dedicated",
+    "description": "Security profile of called application",
+    "scopes":[
+      {
+        "name": "$XSAPPNAME.role2",
+        "description": "Migrated role"
+      }
+    ],
+    "role-templates": [
+      {
+        "name": "role2",
+        "description": "Migrated Role Template",
+        "scope-references": [
+        "$XSAPPNAME.role2"
+        ]
+      }
+    ]
+}
