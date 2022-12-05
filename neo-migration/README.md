@@ -174,3 +174,4 @@ To the following;
 ```JSON
 "i18n": "i18n/i18n.properties",
 ```
+If the issue presists, then try bumping the `"minUI5Version": "1.108.2"` in your manifest.json to a later version, here is a list of supported [UI5 versions](https://sapui5.hana.ondemand.com/versionoverview.html).
