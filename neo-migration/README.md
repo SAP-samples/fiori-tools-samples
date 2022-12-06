@@ -139,6 +139,11 @@ In both cases, your application is deployed to Cloud Foundry using a managed app
 # Gotchas
 
 ## Issue 1
+SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application speicfic code, for example `neo-app.json`, `pom.xml`, `.che`.  
+
+If you are also missing a `manifest.json` inside of your `webapp` folder, there is a help guide from the UI5 team to support this https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html.
+
+## Issue 2
 When running `npm run start` or local preview, the app fails to load, throwing the following exception in the console.
 
 ```
@@ -163,7 +168,7 @@ Line 49: additionalInformation: "SAPUI5.Component=ns.manageproductsneo",
 Line 69: data-sap-ui-resourceroots='{"ns.manageproductsneo": "../"}'
 ```
 
-## Issue 2
+## Issue 3
 In this sample app, there was an issue with the manifest.json. When the application was started up using `npm run start`, it threw the following error;
 
 ```
@@ -195,6 +200,6 @@ If the issue presists, then try bumping the `"minUI5Version": "1.108.2"` in your
           version: 1.109.0
 ```
 
-## Issue 3
+## Issue 4
 Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
 The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropiate permissions then add their ID to the role collection. In some instances you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
