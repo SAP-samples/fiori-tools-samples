@@ -23,7 +23,7 @@ mkdir -p /home/user/projects/neo/
 
 Upload *.mtar | *.zip, mta.yaml following files to the migration folder
 
-Create base configs, required to migrate the security and destinations from your old Neo subaccount
+Create base configs, required to migrate the destinations from your old Neo subaccount
 ```
 cd /home/user/projects/neo/
 touch xs-security.json mtad.yaml config.json
@@ -37,11 +37,6 @@ ID: migrationcf
 description: Migrate services
 version: 1.0.0
 resources:
-- name: my_html5_uaa
-  type: com.sap.xs.uaa
-  parameters:
-    service-plan: application    
-    path: xs-security.json
 - name: my_destination_service
   type: org.cloudfoundry.managed-service
   parameters:
@@ -87,21 +82,36 @@ xs-security.json
     "description": "Security profile of called application",
     "scopes":[
       {
-        "name": "$XSAPPNAME.role2",
+        "name": "$XSAPPNAME.globalrole",
         "description": "Migrated role"
       }
     ],
     "role-templates": [
       {
-        "name": "role2",
+        "name": "globalrole",
         "description": "Migrated Role Template",
         "scope-references": [
-        "$XSAPPNAME.role2"
+        "$XSAPPNAME.globalrole"
+        ]
+      }
+    ],
+    "role-collections": [
+      {
+        "name": "GobalRole",
+        "description": "Global from migrated neo",
+        "role-template-references": [
+          "$XSAPPNAME.globalrole"
         ]
       }
     ]
 }
 ```
+
+Please note, this destinatin is creating destinations at `subaccount` level, all applications deployed to this subaccount will have access to these destinations. If however, you want to generate instance based destinations where the destinations are encapsulated as part of the deployed application then refer this [sample configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/).
+
+Security configuration is configred using a global role collection that be consumed by apps using the mta ID and the scoped name i.e. `migrationcf.globalrole`. In this instance, its only for demo purposes and the respective applications will manage their own security concerns, creating their own roles/templates in the `xs-security.json`. 
+
+For more information around Security Administration refer to https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html
 
 Ensure you are logged into CF target system where the new settings need to be applied;
 ```BASH
@@ -114,7 +124,7 @@ Deploy the new services to your new subaccount target system
 cf deploy
 ```
 
-Your subaccount is now configured with destinations and security settings, required for your new Fiori UI application.
+Your subaccount is now configured with destinations at subaccount level. 
 
 You have two options of migratating your Neo UI application as each produces a different folder stucture;
 - Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md)
@@ -184,3 +194,7 @@ If the issue presists, then try bumping the `"minUI5Version": "1.108.2"` in your
           url: https://ui5.sap.com
           version: 1.109.0
 ```
+
+## Issue 3
+Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
+The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropiate permissions then add their ID to the role collection. In some instances you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.

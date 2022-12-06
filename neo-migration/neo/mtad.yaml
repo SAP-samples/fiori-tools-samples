@@ -3,11 +3,6 @@ ID: migrationcf
 description: Migrate services
 version: 1.0.0
 resources:
-- name: my_html5_uaa
-  type: com.sap.xs.uaa
-  parameters:
-    service-plan: application    
-    path: xs-security.json
 - name: my_destination_service
   type: org.cloudfoundry.managed-service
   parameters:

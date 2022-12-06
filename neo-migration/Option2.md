@@ -40,11 +40,55 @@ Run `npm run start` to ensure you can preview the UI locally on BAS
 
 Run `npm run build` to build the MTA archive with all the Fiori UI applications
 
+__SECURITY ALERT__
+
+The generated `xs-security.json` does not contain any scopes or roles, append the following scopes as these will provide security collections that can be managed at subaccount level;
+
+```JSON
+  "scopes":[
+    {
+      "name": "$XSAPPNAME.migratedroleapp",
+      "description": "Migrated scope from managed app"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "migratedroleapp",
+      "description": "Migrated Role Template from managed app",
+      "scope-references": [
+      "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ViewerPUBLIC",
+      "description": "Viewer (public) from migrated app",
+      "role-template-references": [
+        "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ]
+  ```
+
+In order to apply these scopes to your applicaiton, update the `xs-app.json` routes that you require specific roles;
+```JSON
+    {
+      "source": "^/northwind/(.*)$",
+      "target": "$1",
+      "destination": "northwind",
+      "csrfProtection": false,
+      "scope": "$XSAPPNAME.migratedroleapp"
+    },
+```
+
 Run `npm run deploy` to deploy the MTA archive to CF
 
 Run `cf html5-list -u -di managedapp-destination-service -u --runtime launchpad` to retrieve the URL of the deployed app or else login to SAP BTP cockpit, subaccount, HTML5 Applications
 
-Your project is now migrated and deployed to CF. If you want to undeploy it, then run `npm run undeploy`.
+Your project is now migrated and deployed to CF. Ensure you user profile is mapped to the correct role collections in order to access the application otherwise you will get a HTTP 403 error when trying to access the scoped route.
+
+If you want to undeploy it, then run `npm run undeploy`.
 
 __To support additional UI's being appended to the root `mta.yaml` you follow the same steps, ensuring your migrated app is added a sub folder to the managedapp folder.___
 

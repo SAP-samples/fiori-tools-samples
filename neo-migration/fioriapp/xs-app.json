@@ -4,7 +4,9 @@
     {
       "source": "^/northwind/(.*)$",
       "target": "$1",
-      "destination": "northwind"
+      "destination": "northwind",
+      "csrfProtection": false,
+      "scope": "$XSAPPNAME.migratedroleapp"
     },
     {
       "source": "^/resources/(.*)$",

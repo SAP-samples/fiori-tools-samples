@@ -43,12 +43,56 @@ To start up Fiori UI application locally, run `npm run start` to ensure you can 
 
 To build the application for Cloud Foundry, run `npm run build:mta` to build the MTA archive
 
+__SECURITY ALERT__
+
+The generated `xs-security.json` does not contain any scopes or roles, append the following scopes as these will provide security collections that can be managed at subaccount level;
+
+```JSON
+  "scopes":[
+    {
+      "name": "$XSAPPNAME.migratedroleapp",
+      "description": "Migrated scope from managed app"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "migratedroleapp",
+      "description": "Migrated Role Template from managed app",
+      "scope-references": [
+      "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ViewerPUBLIC",
+      "description": "Viewer (public) from migrated app",
+      "role-template-references": [
+        "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ]
+  ```
+
+In order to apply these scopes to your applicaiton, update the `xs-app.json` routes that you require specific roles;
+```JSON
+    {
+      "source": "^/northwind/(.*)$",
+      "target": "$1",
+      "destination": "northwind",
+      "csrfProtection": false,
+      "scope": "$XSAPPNAME.migratedroleapp"
+    },
+```
+
 To deploy the generated MTA archive to Cloud Foundry, run `npm run deploy`
 
 Within the root of your project, open a terminal window and run `cf html5-list -u -di ns-manageproductsneo-destination-service -u --runtime launchpad` to retrieve the URL of the deployed app or else login to SAP BTP cockpit, subaccount, HTML5 Applications
 
 For additonal commands, please refer to the `package.json`.
 
-Your project is now migrated and deployed to CF. 
+Your project is now migrated and deployed to CF. Ensure you user profile is mapped to the correct role collections in order to access the deployed application otherwise you will get a HTTP 403 error when trying to access the scoped route.
+
+![Alt text](ViewerPublicRole.png?raw=true "Viewer role")
 
 If you want to undeploy it, then run `npm run undeploy`.

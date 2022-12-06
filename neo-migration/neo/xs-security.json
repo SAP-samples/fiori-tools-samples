@@ -4,16 +4,16 @@
     "description": "Security profile of called application",
     "scopes":[
       {
-        "name": "$XSAPPNAME.role2",
+        "name": "$XSAPPNAME.globalrole",
         "description": "Migrated role"
       }
     ],
     "role-templates": [
       {
-        "name": "role2",
+        "name": "globalrole",
         "description": "Migrated Role Template",
         "scope-references": [
-        "$XSAPPNAME.role2"
+        "$XSAPPNAME.globalrole"
         ]
       }
     ]
