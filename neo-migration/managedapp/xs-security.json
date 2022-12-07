@@ -1,0 +1,29 @@
+{
+  "xsappname": "managedapp",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes":[
+    {
+      "name": "$XSAPPNAME.migratedroleapp",
+      "description": "Migrated scope from managed app"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "migratedroleapp",
+      "description": "Migrated Role Template from managed app",
+      "scope-references": [
+      "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ViewerPUBLIC",
+      "description": "Viewer (public) from migrated app",
+      "role-template-references": [
+        "$XSAPPNAME.migratedroleapp"
+      ]
+    }
+  ]
+}

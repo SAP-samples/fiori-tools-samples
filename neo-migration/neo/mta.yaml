@@ -1,0 +1,42 @@
+ID: solution2911b
+version: 1.0.0
+_schema-version: '3.1'
+parameters:
+  hcp-deployer-version: 1.1.0
+modules:
+- name: manageproductsneo2911
+  type: com.sap.hcp.html5
+  path: html5-app-folder
+  build-parameters:
+    builder: zip, grunt, fetcher (choose one)
+    fetcher-opts:
+      repo-type: maven
+      repo-coordinates: group-id:artifact-id:version:type:classifier
+    grunt-opts:
+    - clean
+  parameters:
+    name: manageproductsneo2911
+    permissions:
+    - role: role2
+      name: AccessNorthwindBackend
+    version: 1.0.0
+  requires:
+  - name: role2
+  - name: northwind
+- name: role2
+  type: com.sap.hcp.html5.role
+  path: dummy
+  parameters:
+    name: role2
+- name: northwind
+  type: com.sap.hcp.destination
+  path: dummy
+  parameters:
+    additional-properties:
+      WebIDEEnabled: 'true'
+      WebIDEUsage: odata_gen
+    authentication: NoAuthentication
+    name: northwind
+    proxy-type: Internet
+    type: HTTP
+    url: https://services.odata.org
