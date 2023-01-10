@@ -21,7 +21,14 @@
 
 ## myfioriapp
 
-SAP Fiori elements application for managing products
+This is a sample SAP Fiori elements List Report Object Page Application created using SAP Fiori tools. 
+
+## Install
+1. Create a folder in the file system in your computer
+2. Open a terminal
+3. Clone this GitHub repository
+4. In the terminal, navigate to `fiori-tools-samples/V2/products-review` and execute `npm install` to install the necessary dependencies as mentioned in package.json
+5. Now execute `npm start` to run the application
 
 ### Starting the generated app
 
@@ -40,5 +47,6 @@ SAP Fiori elements application for managing products
 #### Pre-requisites:
 
 1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
+2. You have the user and password for the [SAP Gateway demo system ES5](https://developers.sap.com/tutorials/gateway-demo-signup.html).
 
 
