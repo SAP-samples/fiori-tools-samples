@@ -1,0 +1,31 @@
+{
+	"fileName": "id_1493382638641_97_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "nw.epm.refapps.st.prod.manage.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "width",
+		"oldValue": "",
+		"newValue": "50%"
+	},
+	"selector": {
+		"id": "nw.epm.refapps.st.prod.manage::sap.suite.ui.generic.template.ObjectPage.view.Details::SEPMRA_C_PD_Product--ProductReviewFacetID::Table-ReviewPostText",
+		"type": "sap.m.Column",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/nw.epm.refapps.st.prod.manage/changes/",
+	"creation": "2017-04-28T12:30:52.478Z",
+	"originalLanguage": "DE",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.44.12"
+	},
+	"dependentSelector": {}
+}

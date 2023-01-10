@@ -1,1 +1,0 @@
-//In this ext folder you can add custom cards, parameters, filters and actions

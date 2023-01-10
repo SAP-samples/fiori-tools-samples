@@ -1,0 +1,14 @@
+[
+	{
+		"StockAvailability": 1,
+		"StockAvailability_Text": "Out of stock"
+	},
+	{
+		"StockAvailability": 2,
+		"StockAvailability_Text": "Few left"
+	},
+	{
+		"StockAvailability": 3,
+		"StockAvailability_Text": "In stock"
+	}
+]

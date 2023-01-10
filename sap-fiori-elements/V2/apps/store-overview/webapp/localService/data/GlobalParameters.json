@@ -1,0 +1,111 @@
+[{
+	"P_DisplayCurrency": "EUR",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%201')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%201')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "INR",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%202')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%202')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "USD",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%203')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%203')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "GBP",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%204')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%204')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "JPY",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%205')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%205')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "AUD",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%206')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%206')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "CAD",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%207')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%207')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "CHF",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%208')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%208')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "CNY",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%209')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%209')/Results"
+		}
+	}
+}, {
+	"P_DisplayCurrency": "SEK",
+	"__metadata": {
+		"uri": "GlobalParameters('P_DisplayCurrency%2010')",
+		"type": "GWSAMPLE_BASIC.GlobalParameters"
+	},
+	"Results": {
+		"__deferred": {
+			"uri": "GlobalParameters('P_DisplayCurrency%2010')/Results"
+		}
+	}
+}]

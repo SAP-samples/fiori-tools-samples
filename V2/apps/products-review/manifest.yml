@@ -1,4 +1,0 @@
----
-applications:
-- name: v2-products-review
-  memory: 1024M

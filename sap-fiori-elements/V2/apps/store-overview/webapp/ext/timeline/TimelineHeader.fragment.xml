@@ -1,0 +1,8 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:ovp="sap.ovp.ui"
+        xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+    <!-- Here you can put your Card's Header Area -->
+    <Title text="Hallo"></Title>
+</core:FragmentDefinition>

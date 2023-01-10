@@ -1,0 +1,32 @@
+[
+	{
+		"UnitOfMeasure": "CM",
+		"UnitOfMeasure_Text": "cm",
+		"UnitOfMeasureISOCode": "CMT"
+	},
+	{
+		"UnitOfMeasure": "DM",
+		"UnitOfMeasure_Text": "dm",
+		"UnitOfMeasureISOCode": "DMT"
+	},
+	{
+		"UnitOfMeasure": "\"",
+		"UnitOfMeasure_Text": "\"",
+		"UnitOfMeasureISOCode": "INH"
+	},
+	{
+		"UnitOfMeasure": "KM",
+		"UnitOfMeasure_Text": "km",
+		"UnitOfMeasureISOCode": "KMT"
+	},
+	{
+		"UnitOfMeasure": "M",
+		"UnitOfMeasure_Text": "m",
+		"UnitOfMeasureISOCode": "MTR"
+	},
+	{
+		"UnitOfMeasure": "MM",
+		"UnitOfMeasure_Text": "mm",
+		"UnitOfMeasureISOCode": "MMT"
+	}
+]

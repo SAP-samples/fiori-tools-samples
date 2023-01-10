@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="../../../sap/sepmra_prod_man/$metadata">
+		<edmx:Include Namespace="SEPMRA_PROD_MAN" Alias="SAP"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="sepmra_prod_man_anno_mdl.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+
+		<Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_ProductType">
+
+		<Annotation Term="UI.SelectionFields" >
+                    <Collection>
+                        <PropertyPath>Price</PropertyPath>
+                        <PropertyPath>MainProductCategory</PropertyPath>
+                    </Collection>
+                </Annotation>
+                
+                <Annotation Term="UI.LineItem">
+                        <Collection>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ProductPictureURL"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ProductForEdit"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="MainProductCategory"/>
+                            </Record>
+                            
+                            <Record Type="UI.DataFieldForAnnotation">
+                                <PropertyValue Property="Target" AnnotationPath="to_Supplier/@Communication.Contact"/>
+                                <PropertyValue Property="Label" String="Supplier"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Criticality" Path="to_ProductStock/StockAvailability"/>
+                                <PropertyValue Property="Value" Path="to_ProductStock/StockAvailability"/>
+                            </Record>
+                            <Record Type="UI.DataFieldForAnnotation">
+                                <PropertyValue Property="Target" AnnotationPath="to_CollaborativeReviewPost/@UI.DataPoint#ReviewRatingValue"/>
+                                <PropertyValue Property="Label" String="Average Rating"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Price"/>	
+                            </Record>
+                        </Collection>
+                    </Annotation>
+
+					<Annotation Term="UI.HeaderInfo">
+                        <Record>
+                            <PropertyValue Property="TypeName" String="Product"/>
+                            <PropertyValue Property="TypeNamePlural" String="Products"/>
+                            <PropertyValue Property="ImageUrl" Path="ProductPictureURL"/>
+                            <PropertyValue Property="Title">
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="to_ProductTextInOriginalLang/Name"/>
+                                </Record>
+                            </PropertyValue>
+                            <PropertyValue Property="Description">
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ProductForEdit"/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="TechData">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Height"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Width"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Depth"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Weight"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+				<Annotation Term="UI.Identification">
+                        <Collection>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ProductForEdit"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Price"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ProductCategory"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Supplier"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                <Annotation Term="UI.HeaderFacets" >
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+			<Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_ContactPersonType">
+						<Annotation Term="Communication.Contact">
+					<Record>
+						<PropertyValue Property="fn" Path="FullName"/>
+						<PropertyValue Property="tel">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/>
+									<PropertyValue Property="uri" Path="FaxNumber"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/cell"/>
+									<PropertyValue Property="uri" Path="MobilePhoneNumber"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+									<PropertyValue Property="uri" Path="PhoneNumber"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="email">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/>
+									<PropertyValue Property="address" Path="EmailAddress"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+			<Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_SupplierType">
+				<Annotation Term="Communication.Contact">
+					<Record>
+						<PropertyValue Property="fn" Path="CompanyName"/>
+						<PropertyValue Property="tel">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/>
+									<PropertyValue Property="uri" Path="FaxNumber"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/>
+									<PropertyValue Property="uri" Path="PhoneNumber"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="email">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/>
+									<PropertyValue Property="address" Path="EmailAddress"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SEPMRA_PROD_MAN.SEPMRA_I_AddressType">
+				<Annotation Term="Communication.Contact">
+					<Record>
+						<PropertyValue Property="adr">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+									<PropertyValue Property="locality" Path="CityName"/>
+									<PropertyValue Property="street" Path="StreetName"/>
+									<PropertyValue Property="country" Path="Country"/>
+									<PropertyValue Property="code" Path="PostalCode"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Communication.Address">
+					<Record>
+						<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+						<PropertyValue Property="locality" Path="CityName"/>
+						<PropertyValue Property="street" Path="StreetName"/>
+						<PropertyValue Property="country" Path="Country"/>
+						<PropertyValue Property="code" Path="PostalCode"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+			
+			<Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_ReviewType">
+				<Annotation Term="UI.DataPoint" Qualifier="AverageRatingValue1">
+					<Record>
+						<PropertyValue Property="Value" Path="AverageRatingValue"/>
+						<PropertyValue Property="Title" String="Average Rating"/>
+						<PropertyValue Property="TargetValue" Decimal="5"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			  <Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_ReviewPostType">
+                <Annotation Term="UI.DataPoint" Qualifier="NumberOfAffirmativeAnswers">
+                    <Record>
+                        <PropertyValue Property="Value" Path="NumberOfAffirmativeAnswers"/>
+                        <PropertyValue Property="Title" String="Rated helpful by"/>
+                        <PropertyValue Property="TargetValue" Path="TotalNumberOfAnswers"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReviewRatingValue">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ReviewRatingValue"/>
+                        <PropertyValue Property="Title" String="Rating"/>
+                        <PropertyValue Property="TargetValue" Decimal="5"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ReviewRatingValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ContactPerson"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReviewDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReviewPostText"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#NumberOfAffirmativeAnswers"/>
+					    </Record>
+				    </Collection>
+			    </Annotation>
+            </Annotations>
+           
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

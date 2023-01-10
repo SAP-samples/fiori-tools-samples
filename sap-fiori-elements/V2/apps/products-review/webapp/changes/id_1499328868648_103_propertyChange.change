@@ -1,0 +1,29 @@
+{
+	"fileName": "id_1499328868648_103_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "nw.epm.refapps.st.prod.manage.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "visible",
+		"oldValue": true,
+		"newValue": false
+	},
+	"selector": {
+		"id": "nw.epm.refapps.st.prod.manage::sap.suite.ui.generic.template.ObjectPage.view.Details::SEPMRA_C_PD_Product--ProductSmartChartFacetID::Chart-btnZoomOut",
+		"type": "sap.m.OverflowToolbarButton",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/nw.epm.refapps.st.prod.manage/changes/",
+	"creation": "2017-07-06T08:14:36.883Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": ""
+	}
+}

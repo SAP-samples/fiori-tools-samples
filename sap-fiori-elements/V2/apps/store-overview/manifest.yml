@@ -1,0 +1,4 @@
+---
+applications:
+- name: v2-store-overview
+  memory: 1024M

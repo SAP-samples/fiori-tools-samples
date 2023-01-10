@@ -1,0 +1,415 @@
+[{
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000000')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000000')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Walldorf",
+		"PostalCode": "69190",
+		"Street": "Dietmar-Hopp-Allee",
+		"Building": "16",
+		"Country": "DE",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000000",
+	"FullName": "Alain Chevalier",
+	"Title": "Contract Manager",
+	"CompanyName": "SAP",
+	"WebAddress": "http://www.sap.com",
+	"EmailAddress": "alain.chevalier@sap.com",
+	"PhoneNumber": "+49 9000034869",
+	"FaxNumber": "+49 6101 34869",
+	"LegalForm": "AG",
+	"CurrencyCode": "EUR",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000000')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000000')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000000')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000001')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000001')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Berlin",
+		"PostalCode": "13467",
+		"Street": "Calvinstraße",
+		"Building": "36",
+		"Country": "DE",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000001",
+	"FullName": "Elena Petrova",
+	"Title": "Sales Manager",
+	"CompanyName": "Becker Berlin",
+	"WebAddress": "http://www.beckerberlin.de",
+	"EmailAddress": "elena.petrove@beckerberlin.com",
+	"PhoneNumber": "+49 89900 12345",
+	"FaxNumber": "+49 7090 12345",
+	"LegalForm": "GmbH",
+	"CurrencyCode": "USD",
+	"BusinessPartnerRole": "02",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000001')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000001')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000001')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000002')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000002')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Wilmington, Delaware",
+		"PostalCode": "19899",
+		"Street": "1 2345 King Street",
+		"Building": "1",
+		"Country": "US",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000002",
+	"FullName": "Julie Armstrong",
+	"Title": "Contract Manager",
+	"CompanyName": "DelBont Industries",
+	"WebAddress": "http://www.delbont.com",
+	"EmailAddress": "julie.armstrong@delbont.com",
+	"PhoneNumber": "+1 30233 52668",
+	"FaxNumber": "+1 8154 52668",
+	"LegalForm": "Ltd.",
+	"CurrencyCode": "USD",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000002')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000002')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000002')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000003')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000003')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Hannover",
+		"PostalCode": "30625",
+		"Street": "An der Breiten Wiese",
+		"Building": "422",
+		"Country": "DE",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000003",
+	"FullName": "Michael Adams",
+	"Title": "Sales Manager",
+	"CompanyName": "Talpa",
+	"WebAddress": "http://www.talpa-hannover.de",
+	"EmailAddress": "micheal.adams@talpa-hannover.de",
+	"PhoneNumber": "+49 51140 32667",
+	"FaxNumber": "+49 3142 32667",
+	"LegalForm": "GmbH",
+	"CurrencyCode": "EUR",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000003')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000003')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000003')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000004')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000004')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Hollywood, California",
+		"PostalCode": "91602",
+		"Street": "Morning Drive",
+		"Building": "178",
+		"Country": "US",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000004",
+	"FullName": "Sabine Mayer",
+	"Title": "Contract Manager",
+	"CompanyName": "Panorama Studios",
+	"WebAddress": "http://www.panorama-studios.biz",
+	"EmailAddress": "sabine.mayer@panorama-studios.biz",
+	"PhoneNumber": "+1 22446 68800",
+	"FaxNumber": "+1 9899 68800",
+	"LegalForm": "Inc.",
+	"CurrencyCode": "USD",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000004')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000004')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000004')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000005')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000005')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Münster",
+		"PostalCode": "48155",
+		"Street": "Albersloher Weg",
+		"Building": "24",
+		"Country": "DE",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000005",
+	"FullName": "Richard Wilson",
+	"Title": "Sales Manager",
+	"CompanyName": "TECUM",
+	"WebAddress": "http://www.tecum-ag.de",
+	"EmailAddress": "richard.wilson@tecum-ag.de",
+	"PhoneNumber": "+49 25114 15622",
+	"FaxNumber": "+49 6766 15622",
+	"LegalForm": "AG",
+	"CurrencyCode": "EUR",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000005')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000005')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000005')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000006')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000006')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Tokyo",
+		"PostalCode": "100-0004",
+		"Street": "1-7-2 Otemachi",
+		"Building": "1",
+		"Country": "JP",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000006",
+	"FullName": "John Li",
+	"Title": "Materials Manager",
+	"CompanyName": "Asia High tech",
+	"WebAddress": "http://www.asia-ht.com",
+	"EmailAddress": "john.li@asia-ht.com",
+	"PhoneNumber": "+81 90785 63412",
+	"FaxNumber": "+81 8234 63412",
+	"LegalForm": "Inc.",
+	"CurrencyCode": "JPY",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000006')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000006')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000006')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000007')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000007')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Paris",
+		"PostalCode": "75015",
+		"Street": "Rue de la Republique 863",
+		"Building": "1",
+		"Country": "FR",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000007",
+	"FullName": "Monique Legrand",
+	"Title": "Materials Manager",
+	"CompanyName": "Laurent",
+	"WebAddress": "http://www.laurent-paris.com",
+	"EmailAddress": "monique.legrand@laurent-paris.com",
+	"PhoneNumber": "+33 14974 44423",
+	"FaxNumber": "+33 3124 44423",
+	"LegalForm": "S.A.",
+	"CurrencyCode": "USD",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000007')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000007')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000007')/ToProducts"
+		}
+	}
+}, {
+	"__metadata": {
+		"id": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000008')",
+		"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000008')",
+		"type": "GWSAMPLE_BASIC.BusinessPartner",
+		"etag": "W/\"datetime'2014-10-30T09%3A23%3A51.0000000'\""
+	},
+	"Address": {
+		"__metadata": {
+			"type": "GWSAMPLE_BASIC.CT_Address"
+		},
+		"City": "Mexiko City",
+		"PostalCode": "17000",
+		"Street": "Bosque de Duraznos",
+		"Building": "24",
+		"Country": "MX",
+		"AddressType": "02"
+	},
+	"BusinessPartnerID": "0100000008",
+	"FullName": "Victor Sanchez",
+	"Title": "Contract Manager",
+	"CompanyName": "AVANTEL",
+	"WebAddress": "http://www.avantel.com",
+	"EmailAddress": "victor.sanchez@avantel.com",
+	"PhoneNumber": "+52 72577 16333",
+	"FaxNumber": "+52 7000 16333",
+	"LegalForm": "S.A.",
+	"CurrencyCode": "MXN",
+	"BusinessPartnerRole": "01",
+	"CreatedAt": "/Date(1414661031000)/",
+	"ChangedAt": "/Date(1414661031000)/",
+	"ToSalesOrders": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000008')/ToSalesOrders"
+		}
+	},
+	"ToContacts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000008')/ToContacts"
+		}
+	},
+	"ToProducts": {
+		"__deferred": {
+			"uri": "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/BusinessPartnerSet('0100000008')/ToProducts"
+		}
+	}
+}]

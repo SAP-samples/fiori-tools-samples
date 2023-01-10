@@ -1,0 +1,101 @@
+[{
+	"Land1": "DE",
+	"Landx": "Germany",
+	"Natio": "Germany",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%201')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "DE",
+	"CountryName": "Germany"
+}, {
+	"Land1": "USA",
+	"Landx": "United States of America",
+	"Natio": "United States of America",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%2010')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "USA",
+	"CountryName": "United States of America"
+}, {
+	"Land1": "AT",
+	"Landx": "Austria",
+	"Natio": "Austria",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%208')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "AU",
+	"CountryName": "Austria"
+}, {
+	"Land1": "IT",
+	"Landx": "Italy",
+	"Natio": "Italy",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%205')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "IT",
+	"CountryName": "Italy"
+}, {
+	"Land1": "CA",
+	"Landx": "Canada",
+	"Natio": "Canada",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%209')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "CA",
+	"CountryName": "Canada"
+}, {
+	"Land1": "IN",
+	"Landx": "India",
+	"Natio": "India",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%202')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "IN",
+	"CountryName": "India"
+}, {
+	"Land1": "CN",
+	"Landx": "China",
+	"Natio": "China",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%203')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "CH",
+	"CountryName": "China"
+}, {
+	"Land1": "AU",
+	"Landx": "Australia",
+	"Natio": "Australia",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%204')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "AU",
+	"CountryName": "Australia"
+}, {
+	"Land1": "CZ",
+	"Landx": "Czech Republic",
+	"Natio": "Czech Republic",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%206')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "CZ",
+	"CountryName": "Czech Republic"
+}, {
+	"Land1": "JP",
+	"Landx": "Japan",
+	"Natio": "Japan",
+	"__metadata": {
+		"uri": "VH_CountrySet('Land1%207')",
+		"type": "GWSAMPLE_BASIC.VH_Country"
+	},
+	"CountryCode": "JP",
+	"CountryName": "Japan"
+}]

@@ -1,0 +1,375 @@
+{
+	"d" : {
+		"results" : [
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1510CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1510CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Walldorf",
+						"PostalCode" : "69190",
+						"Street" : "Dietmar-Hopp-Allee",
+						"Building" : "16",
+						"Country" : "DE",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1510CD",
+					"BusinessPartnerID" : "0100000000",
+					"Title" : "",
+					"FirstName" : "Michael",
+					"MiddleName" : "",
+					"LastName" : "Adams",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "M",
+					"PhoneNumber" : "0622734567",
+					"FaxNumber" : "",
+					"EmailAddress" : "do.not.reply@sap.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1510CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1530CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1530CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Berlin",
+						"PostalCode" : "13467",
+						"Street" : "Calvinstraße",
+						"Building" : "36",
+						"Country" : "DE",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1530CD",
+					"BusinessPartnerID" : "0100000001",
+					"Title" : "",
+					"FirstName" : "Alain",
+					"MiddleName" : "",
+					"LastName" : "Chevalier",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "F",
+					"PhoneNumber" : "3088530",
+					"FaxNumber" : "",
+					"EmailAddress" : "dagmar.schulze@beckerberlin.de",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1530CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1550CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1550CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Wilmington, Delaware",
+						"PostalCode" : "19899",
+						"Street" : "1 2345 King Street",
+						"Building" : "1",
+						"Country" : "US",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1550CD",
+					"BusinessPartnerID" : "0100000002",
+					"Title" : "",
+					"FirstName" : "Elena",
+					"MiddleName" : "",
+					"LastName" : "Petrova",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "F",
+					"PhoneNumber" : "3023352668",
+					"FaxNumber" : "",
+					"EmailAddress" : "maria.brown@delbont.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1550CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1570CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1570CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Hannover",
+						"PostalCode" : "30625",
+						"Street" : "An der Breiten Wiese",
+						"Building" : "422",
+						"Country" : "DE",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1570CD",
+					"BusinessPartnerID" : "0100000003",
+					"Title" : "",
+					"FirstName" : "Saskia",
+					"MiddleName" : "Clara",
+					"LastName" : "Sommer",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "F",
+					"PhoneNumber" : "511403266",
+					"FaxNumber" : "",
+					"EmailAddress" : "saskia.sommer@talpa-hannover.de",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1570CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1590CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1590CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Hollywood, California",
+						"PostalCode" : "91602",
+						"Street" : "Morning Drive",
+						"Building" : "178",
+						"Country" : "US",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1590CD",
+					"BusinessPartnerID" : "0100000004",
+					"Title" : "",
+					"FirstName" : "Sabine",
+					"MiddleName" : "",
+					"LastName" : "Mayer",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "M",
+					"PhoneNumber" : "2244668800",
+					"FaxNumber" : "",
+					"EmailAddress" : "bob.buyer@panorama-studios.biz",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1590CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15B0CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15B0CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Münster",
+						"PostalCode" : "48155",
+						"Street" : "Albersloher Weg",
+						"Building" : "24",
+						"Country" : "DE",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E15B0CD",
+					"BusinessPartnerID" : "0100000005",
+					"Title" : "",
+					"FirstName" : "Monique",
+					"MiddleName" : "",
+					"LastName" : "Legrand",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "M",
+					"PhoneNumber" : "2511415",
+					"FaxNumber" : "",
+					"EmailAddress" : "bart.koenig@tecum-ag.de",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15B0CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15D0CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15D0CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Tokyo",
+						"PostalCode" : "100-0004",
+						"Street" : "1-7-2 Otemachi",
+						"Building" : "1",
+						"Country" : "JP",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E15D0CD",
+					"BusinessPartnerID" : "0100000006",
+					"Title" : "",
+					"FirstName" : "Richard",
+					"MiddleName" : "",
+					"LastName" : "Wilson",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "F",
+					"PhoneNumber" : "9078563412",
+					"FaxNumber" : "",
+					"EmailAddress" : "yoko.nakamura@asia-ht.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15D0CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15F0CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15F0CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Paris",
+						"PostalCode" : "75015",
+						"Street" : "Rue de la Republique 863",
+						"Building" : "1",
+						"Country" : "FR",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E15F0CD",
+					"BusinessPartnerID" : "0100000007",
+					"Title" : "",
+					"FirstName" : "John",
+					"MiddleName" : "",
+					"LastName" : "Li",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "F",
+					"PhoneNumber" : "149744423",
+					"FaxNumber" : "",
+					"EmailAddress" : "sophie.ribery@laurent-paris.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E15F0CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1610CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1610CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Mexiko City",
+						"PostalCode" : "17000",
+						"Street" : "Bosque de Duraznos",
+						"Building" : "24",
+						"Country" : "MX",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1610CD",
+					"BusinessPartnerID" : "0100000008",
+					"Title" : "",
+					"FirstName" : "Julie",
+					"MiddleName" : "",
+					"LastName" : "Armstrong",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "M",
+					"PhoneNumber" : "7257716",
+					"FaxNumber" : "",
+					"EmailAddress" : "victor.sanchez@avantel.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1610CD')/ToBusinessPartner"
+						}
+					}
+				},
+				{
+					"__metadata" : {
+						"id" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1630CD')",
+						"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1630CD')",
+						"type" : "GWSAMPLE_BASIC.Contact"
+					},
+					"Address" : {
+						"__metadata" : {
+							"type" : "GWSAMPLE_BASIC.CT_Address"
+						},
+						"City" : "Buenos Aires",
+						"PostalCode" : "1511",
+						"Street" : "Av. Libertador",
+						"Building" : "12221",
+						"Country" : "AR",
+						"AddressType" : "02"
+					},
+					"ContactGuid" : "0050568D-393C-1EE4-9882-CEC33E1630CD",
+					"BusinessPartnerID" : "0100000009",
+					"Title" : "",
+					"FirstName" : "Jorge",
+					"MiddleName" : "",
+					"LastName" : "Velez",
+					"Nickname" : "",
+					"Initials" : "",
+					"Sex" : "M",
+					"PhoneNumber" : "1133557799",
+					"FaxNumber" : "",
+					"EmailAddress" : "jorge.velez@telecomunicacionesstar.com",
+					"Language" : "E",
+					"DateOfBirth" : null,
+					"ToBusinessPartner" : {
+						"__deferred" : {
+							"uri" : "/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/ContactSet(guid'0050568D-393C-1EE4-9882-CEC33E1630CD')/ToBusinessPartner"
+						}
+					}
+				}]
+	}
+}

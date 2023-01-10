@@ -1,0 +1,29 @@
+{
+	"fileName": "id_1486645355695_99_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "nw.epm.refapps.st.prod.manage.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "showTablePersonalisation",
+		"oldValue": true,
+		"newValue": false
+	},
+	"selector": {
+		"id": "nw.epm.refapps.st.prod.manage::sap.suite.ui.generic.template.ObjectPage.view.Details::SEPMRA_C_PD_Product--ProductReviewFacetID::Table",
+		"type": "sap.ui.comp.smarttable.SmartTable",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/nw.epm.refapps.st.prod.manage/changes/",
+	"creation": "2017-02-09T13:03:10.270Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": ""
+	}
+}

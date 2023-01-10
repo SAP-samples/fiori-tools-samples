@@ -1,0 +1,128 @@
+[
+    {
+        "ID": "0",
+        "Type": "Fast &Furious",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 48
+    },
+    {
+        "ID": "1",
+        "Type": "Fast &Furious",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 20
+    },
+    {
+        "ID": "2",
+        "Type": "Fast &Furious",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 80
+    },
+    {
+        "ID": "3",
+        "Type": "Fitness Explorer",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 36
+    },
+    {
+        "ID": "4",
+        "Type": "Fitness Explorer",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 50
+    },
+    {
+        "ID": "5",
+        "Type": "Fitness Explorer",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 160
+    },
+    {
+        "ID": "6",
+        "Type": "Frequent Short-Distance",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 82
+    },
+    {
+        "ID": "7",
+        "Type": "Frequent Short-Distance",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 60
+    },
+    {
+        "ID": "8",
+        "Type": "Frequent Short-Distance",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 20
+    },
+    {
+        "ID": "9",
+        "Type": "Run Lover",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 10
+    },
+    {
+        "ID": "10",
+        "Type": "Run Lover",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 50
+    },
+    {
+        "ID": "11",
+        "Type": "Run Lover",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 40
+    },
+    {
+        "ID": "12",
+        "Type": "Beginning Runner",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 16
+    },
+    {
+        "ID": "13",
+        "Type": "Beginning Runner",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 18
+    },
+    {
+        "ID": "14",
+        "Type": "Beginning Runner",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 40
+    },
+    {
+        "ID": "15",
+        "Type": "Run Sensei",
+        "Shoe": 1,
+        "ShoeName": "Runner XT",
+        "Count": 16
+    },
+    {
+        "ID": "16",
+        "Type": "Run Sensei",
+        "Shoe": 2,
+        "ShoeName": "TrailRun",
+        "Count": 18
+    },
+    {
+        "ID": "16",
+        "Type": "Run Sensei",
+        "Shoe": 3,
+        "ShoeName": "FastPace Street",
+        "Count": 40
+    }
+]

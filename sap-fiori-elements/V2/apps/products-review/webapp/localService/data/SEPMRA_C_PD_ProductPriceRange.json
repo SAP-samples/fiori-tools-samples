@@ -1,0 +1,494 @@
+[
+	{
+		"Product": "HT-1000",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1001",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1002",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1003",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1007",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1010",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1011",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1020",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1021",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1022",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1023",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1030",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1031",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1032",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1035",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1036",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1037",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1040",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1041",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1042",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1050",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1051",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1052",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1055",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1056",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1060",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1061",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1062",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1063",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1064",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1065",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1066",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1067",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1068",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1069",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1070",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1071",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1072",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1073",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1080",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1081",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1082",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1083",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1085",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1090",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1091",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1092",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1100",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1101",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1102",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1103",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1104",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1105",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1106",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1107",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1110",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1111",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1112",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1113",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1114",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1115",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1116",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1117",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1118",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1120",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1137",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1138",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1210",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1500",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1501",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1502",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-6130",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-6131",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-6132",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-7030",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-7020",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-7010",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-7000",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1095",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1096",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1097",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-6123",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-6122",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-6121",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-6120",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-6111",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-6110",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-6102",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-6101",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-2002",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-6100",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-2027",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-2026",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-2025",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-2001",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-2000",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1603",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1602",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-1601",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1600",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1119",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-8000",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-8001",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-8002",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-8003",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "PF-1000",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-9999",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-9998",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-9997",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-9996",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-9995",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-9994",
+		"PriceClassification": "4"
+	},
+	{
+		"Product": "HT-9993",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-9992",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-9991",
+		"PriceClassification": "1"
+	},
+	{
+		"Product": "HT-1251",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1252",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1253",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1254",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1255",
+		"PriceClassification": "2"
+	},
+	{
+		"Product": "HT-1256",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1257",
+		"PriceClassification": "3"
+	},
+	{
+		"Product": "HT-1258",
+		"PriceClassification": "3"
+	}
+]
