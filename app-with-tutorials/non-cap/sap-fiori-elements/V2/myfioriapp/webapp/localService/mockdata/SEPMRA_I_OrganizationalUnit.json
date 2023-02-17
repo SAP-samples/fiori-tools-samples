@@ -1,0 +1,54 @@
+[
+	{
+		"OrganizationalUnit": "700000000",
+		"OrganizationalUnitName": "SALES-NA"
+	},
+	{
+		"OrganizationalUnit": "700000001",
+		"OrganizationalUnitName": "MARKETING"
+	},
+	{
+		"OrganizationalUnit": "700000002",
+		"OrganizationalUnitName": "IT-SECURITY"
+	},
+	{
+		"OrganizationalUnit": "700000003",
+		"OrganizationalUnitName": "SALESOP"
+	},
+	{
+		"OrganizationalUnit": "700000004",
+		"OrganizationalUnitName": "GLOBALIT"
+	},
+	{
+		"OrganizationalUnit": "700000005",
+		"OrganizationalUnitName": "FINADM"
+	},
+	{
+		"OrganizationalUnit": "700000006",
+		"OrganizationalUnitName": "HR"
+	},
+	{
+		"OrganizationalUnit": "700000007",
+		"OrganizationalUnitName": "SUPPORT"
+	},
+	{
+		"OrganizationalUnit": "700000008",
+		"OrganizationalUnitName": "SALES-EMEA"
+	},
+	{
+		"OrganizationalUnit": "700000009",
+		"OrganizationalUnitName": "HARDWPROD"
+	},
+	{
+		"OrganizationalUnit": "700000010",
+		"OrganizationalUnitName": "STRATDEV"
+	},
+	{
+		"OrganizationalUnit": "700000011",
+		"OrganizationalUnitName": "CEO"
+	},
+	{
+		"OrganizationalUnit": "700000012",
+		"OrganizationalUnitName": "PURCHASE"
+	}
+]

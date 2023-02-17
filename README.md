@@ -3,15 +3,15 @@
 # Samples for SAP Fiori tools
 
 ### Description
-This project contains sample SAP Fiori elements projects built using SAP Fiori tools. These sample projects will be primarily referenced from blogs and tutorials grouped in folders according to application scenario.
+This repo contains sample SAP Fiori elements projects built using SAP Fiori tools. These sample projects are primarily referenced from blogs and tutorials grouped in folders according to application scenario.
 
 ### Requirements
-1. Node.js based on your platform - [download Node.js](https://nodejs.org/en/download/).
+Refer to [documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html) for help on how to get started with SAP Fiori tools. 
 
 ### Download and Installation
 
 1. Clone the repository or download it to your file system.
-2. From the terminal, go to a sample app/project (as instructed in the referencing tutorials) e.g. `V2/apps/products-review`.
+2. From the terminal, go to a sample app/project (as instructed in the referencing tutorials) e.g. `V2/apps/myfioriapp`.
 3. Type `npm install` to install all the dependencies.
 4. Type `npm start` to host the sample SAP Fiori elements application locally. 
 - To view the application with mock data, click on the `URL`.
