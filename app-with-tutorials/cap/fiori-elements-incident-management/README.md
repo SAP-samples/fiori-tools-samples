@@ -11,7 +11,7 @@ This app is intended as a sample app that can be previewed using SAP Fiori tools
 ## Download and Installation
 
 1. After cloning the repository, open `fiori-elements-incidents-management` folder as the root of the workspace
-2. At the root of the workspace, type `npm install` at the terminal
+2. At the root of the workspace, type `npm install` in the terminal
 3. Click on "SAP Fiori" on the left activiity bar
 4. Right click on the project and select `Preview Application`
 
