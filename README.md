@@ -3,7 +3,7 @@
 # Samples for SAP Fiori tools
 
 ### Description
-This repo contains sample SAP Fiori elements projects built using SAP Fiori tools. These sample projects are primarily referenced from blogs and tutorials grouped in folders according to application scenario.
+This repo contains sample SAP Fiori elements projects built using SAP Fiori tools. These sample projects are primarily referenced in blogs and tutorials and are grouped in folders according to application scenario.
 
 ### Requirements
 Refer to [documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html) for help on how to get started with SAP Fiori tools. 
