@@ -1,0 +1,73 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+    xmlns="sap.suite.ui.commons"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"    
+	controllerName="sap.fe.demo.incidents.ext.controller.ProcessFlow">
+		<f:DynamicPage id="dynamicPageId" headerExpanded="true" toggleHeaderOnTitleClick="false">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle id="incidentProcessFlowDynamicPageTitle">
+					<f:heading>
+						<m:Title id="incidentProcessFlowHeading" text="{processStep}"/>
+					</f:heading>
+					<f:navigationActions>
+                            <m:OverflowToolbarButton
+                                id="incidentsProcessFlowHandleFullScreen"
+                                type="Transparent"
+                                icon="sap-icon://full-screen"
+								visible="{= ${fclhelper>/actionButtonsInfo/fullScreen} !== null }"
+                                press=".routingListener.handleFCLFullScreen($event)"
+                            />
+                            <m:OverflowToolbarButton
+                                id="incidentsProcessFlowHandleExitFullScreen"                            
+                                type="Transparent"
+                                icon="sap-icon://exit-full-screen"
+                                visible="{= ${fclhelper>/actionButtonsInfo/exitFullScreen} !== null }"
+                                press=".routingListener.handleFCLExitFullScreen($event)"
+                            />
+                            <m:OverflowToolbarButton
+                                id="incidentsProcessFlowHandleClose"
+                                type="Transparent"
+                                icon="sap-icon://decline"
+                                visible="{= ${fclhelper>/actionButtonsInfo/closeColumn} !== null }"
+                                press=".routingListener.handleFCLClose($event)"
+                            />
+						</f:navigationActions>                    
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:content>
+                <ProcessFlow
+                    id="processflow1"
+                    scrollable="false"
+                    foldedCorners="true"
+                    nodePress="onNodePress"
+                    nodes="{ProcessFlowModel>/nodes}"
+                    lanes="{ProcessFlowModel>/lanes}">
+                    <nodes>
+                        <ProcessFlowNode
+                            id="incidentProcessFlowNode"
+                            laneId="{ProcessFlowModel>lane}"
+                            nodeId="{ProcessFlowModel>id}"
+                            title="{ProcessFlowModel>title}"
+                            titleAbbreviation="{ProcessFlowModel>titleAbbreviation}"
+                            children="{ProcessFlowModel>children}"
+                            state="{ProcessFlowModel>state}"
+                            stateText="{ProcessFlowModel>stateText}"
+                            texts="{ProcessFlowModel>texts}"
+                            highlighted="{ProcessFlowModel>highlighted}"
+                            focused="{ProcessFlowModel>focused}" />
+                    </nodes>
+                    <lanes>
+                        <ProcessFlowLaneHeader
+                            id="incidentProcessFlowLaneHeader"
+                            laneId="{ProcessFlowModel>id}"
+                            iconSrc="{ProcessFlowModel>icon}"
+                            text="{ProcessFlowModel>label}"
+                            position="{ProcessFlowModel>position}" />
+                    </lanes>
+                </ProcessFlow>
+			</f:content>
+		</f:DynamicPage>
+</mvc:View>

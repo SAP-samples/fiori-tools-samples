@@ -1,0 +1,13 @@
+identifier;ID;title;category_code;priority_code;incidentStatus_code;description;assignedIndividual_id
+inc_0001;2feec9ec-c192-48c6-8971-e3c4838cb861;Password Problem;security;2_medium;new;Unable to access corporate strategy ppt;067460c5-196c-4783-9563-ede797399da8
+inc_0002;919f1a94-0281-4226-ad3a-9148af4cb5d2;Password Reset;security;2_medium;new;unable to reset password;efec3e9f-ceea-4d17-80a7-50073f71c322
+inc_0003;f1c73988-bc83-4b5b-8169-80a946852c9a;Phishing Mail;software;3_low;new;Clicked a link in a phishing mail, entered user and password;efec3e9f-ceea-4d17-80a7-50073f71c323
+inc_0004;4e507caf-c53d-445b-abf9-341839aec969;Latest Antivirus App;software;3_low;assigned;Unable to update to most current version;efec3e9f-ceea-4d17-80a7-50073f71c324
+inc_0005;82165023-8db0-4a82-89df-a6bd6665b11a;Phone will not start;hardware;2_medium;new;Unable to start mobile phone;efec3e9f-ceea-4d17-80a7-50073f71c325
+inc_0006;9e4f49cf-9ffb-499d-8813-1a2ed8b98605;Laptop Screen Cracked;hardware;1_high;assigned;Laptop Screen Broken;efec3e9f-ceea-4d17-80a7-50073f71c322
+inc_0007;6cf360ec-2dc5-40b9-b782-4b8a8b488dad;Mobile Phone not charging;hardware;3_low;new;Mobile phone not charging via USB;efec3e9f-ceea-4d17-80a7-50073f71c323
+inc_0008;7cf360ec-2dc5-40b9-b782-4b8a8b488dad;USB stick found;security;2_medium;new;Plugged it to my workstation to see what it contains, then my system dumped. Fear that was a bad idea;efec3e9f-ceea-4d17-80a7-50073f71c324
+inc_0009;8cf360ec-2dc5-40b9-b782-4b8a8b488dad;Laptop stolen;hardware;2_medium;assigned;My laptop was gone after lunch. Passwort note was sticking below;efec3e9f-ceea-4d17-80a7-50073f71c325
+inc_0010;9cf360ec-2dc5-40b9-b782-4b8a8b488dad;Virus Alert;software;1_high;in process;Virus alert after installing latest updates;067460c5-196c-4783-9563-ede797399da8
+inc_0011;1df360ec-2dc5-40b9-b782-4b8a8b488dad;Office phone gives echoes;telephony;1_high;on hold;Was my phone hacked? When having a call I hear echoes of my own voice and strange breathing sounds;efec3e9f-ceea-4d17-80a7-50073f71c323
+inc_0012;2df360ec-2dc5-40b9-b782-4b8a8b488dad;VPN access not working;software;2_medium;new;I am not able to access corporate network via VPN;067460c5-196c-4783-9563-ede797399da8

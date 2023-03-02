@@ -1,0 +1,803 @@
+[
+	{
+		"ContactPerson": "600000000",
+		"BusinessPartner": "100000000",
+		"FullName": "Karl Müller",
+		"EmailAddress": "do.not.reply@sap.com",
+		"FaxNumber": "0622734004",
+		"MobilePhoneNumber": "01783456789",
+		"PhoneNumber": "0622734567"
+	},
+	{
+		"ContactPerson": "600000002",
+		"BusinessPartner": "100000001",
+		"FullName": "Dagmar Schulze",
+		"EmailAddress": "dagmar.schulze@beckerberlin.de",
+		"FaxNumber": "3088004",
+		"MobilePhoneNumber": "01708530853",
+		"PhoneNumber": "3088530"
+	},
+	{
+		"ContactPerson": "600000003",
+		"BusinessPartner": "100000001",
+		"FullName": "Ursula Wexler",
+		"EmailAddress": "ursula.wexler@beckerberlin.de",
+		"FaxNumber": "3088004",
+		"MobilePhoneNumber": "017667507579",
+		"PhoneNumber": "3088529"
+	},
+	{
+		"ContactPerson": "600000004",
+		"BusinessPartner": "100000002",
+		"FullName": "Maria Brown",
+		"EmailAddress": "maria.brown@delbont.com",
+		"FaxNumber": "3023352004",
+		"MobilePhoneNumber": "2053352668",
+		"PhoneNumber": "3023352668"
+	},
+	{
+		"ContactPerson": "600000005",
+		"BusinessPartner": "100000002",
+		"FullName": "Sam Pelt",
+		"EmailAddress": "sam.pelt@delbont.com",
+		"FaxNumber": "3023352004",
+		"MobilePhoneNumber": "80289541668",
+		"PhoneNumber": "25621140333"
+	},
+	{
+		"ContactPerson": "600000006",
+		"BusinessPartner": "100000003",
+		"FullName": "Saskia Sommer",
+		"EmailAddress": "saskia.sommer@talpa-hannover.de",
+		"FaxNumber": "511403004",
+		"MobilePhoneNumber": "01701403266",
+		"PhoneNumber": "511403266"
+	},
+	{
+		"ContactPerson": "600000007",
+		"BusinessPartner": "100000003",
+		"FullName": "Julia Pfeffer",
+		"EmailAddress": "julia.pfeffer@talpa-hannover.de",
+		"FaxNumber": "511403004",
+		"MobilePhoneNumber": "015528393951",
+		"PhoneNumber": "03848362558616"
+	},
+	{
+		"ContactPerson": "600000008",
+		"BusinessPartner": "100000004",
+		"FullName": "Bob Buyer",
+		"EmailAddress": "bob.buyer@panorama-studios.biz",
+		"FaxNumber": "2244668004",
+		"MobilePhoneNumber": "20644668800",
+		"PhoneNumber": "2244668800"
+	},
+	{
+		"ContactPerson": "600000009",
+		"BusinessPartner": "100000004",
+		"FullName": "Timothy Oshaughnessy",
+		"EmailAddress": "timothy.oshaughnessy@panorama-studios.biz",
+		"FaxNumber": "2244668004",
+		"MobilePhoneNumber": "80289541668",
+		"PhoneNumber": "25621140333"
+	},
+	{
+		"ContactPerson": "600000010",
+		"BusinessPartner": "100000005",
+		"FullName": "Bart Koenig",
+		"EmailAddress": "bart.koenig@tecum-ag.de",
+		"FaxNumber": "2511004",
+		"MobilePhoneNumber": "01712511415",
+		"PhoneNumber": "2511415"
+	},
+	{
+		"ContactPerson": "600000011",
+		"BusinessPartner": "100000005",
+		"FullName": "Nicole Bohm",
+		"EmailAddress": "nicole.bohm@tecum-ag.de",
+		"FaxNumber": "2511004",
+		"MobilePhoneNumber": "016310536760",
+		"PhoneNumber": "0736689984351"
+	},
+	{
+		"ContactPerson": "600000012",
+		"BusinessPartner": "100000006",
+		"FullName": "Yoko Nakamura",
+		"EmailAddress": "yoko.nakamura@asia-ht.com",
+		"FaxNumber": "9078563004",
+		"MobilePhoneNumber": "09057600415",
+		"PhoneNumber": "9078563412"
+	},
+	{
+		"ContactPerson": "600000013",
+		"BusinessPartner": "100000006",
+		"FullName": "Hidehisa Koshiishi",
+		"EmailAddress": "hidehisa.koshiishi@asia-ht.com",
+		"FaxNumber": "9078563004",
+		"MobilePhoneNumber": "09057600414",
+		"PhoneNumber": "9078563413"
+	},
+	{
+		"ContactPerson": "600000014",
+		"BusinessPartner": "100000007",
+		"FullName": "Sophie Ribery",
+		"EmailAddress": "sophie.ribery@laurent-paris.com",
+		"FaxNumber": "149744004",
+		"MobilePhoneNumber": "06103426880",
+		"PhoneNumber": "149744423"
+	},
+	{
+		"ContactPerson": "600000015",
+		"BusinessPartner": "100000007",
+		"FullName": "Jean-Louis Pasqua",
+		"EmailAddress": "jean.louis.pasqua@laurent-paris.com",
+		"FaxNumber": "149744004",
+		"MobilePhoneNumber": "06103437990",
+		"PhoneNumber": "149744454"
+	},
+	{
+		"ContactPerson": "600000016",
+		"BusinessPartner": "100000008",
+		"FullName": "Victor Sanchez",
+		"EmailAddress": "victor.sanchez@avantel.com",
+		"FaxNumber": "7257004",
+		"MobilePhoneNumber": "05518508544",
+		"PhoneNumber": "7257716"
+	},
+	{
+		"ContactPerson": "600000017",
+		"BusinessPartner": "100000008",
+		"FullName": "Angélica Pretelini",
+		"EmailAddress": "angélica.pretelini@avantel.com",
+		"FaxNumber": "7257004",
+		"MobilePhoneNumber": "05518503444",
+		"PhoneNumber": "7257717"
+	},
+	{
+		"ContactPerson": "600000018",
+		"BusinessPartner": "100000009",
+		"FullName": "Jorge Velez",
+		"EmailAddress": "jorge.velez@telecomunicacionesstar.com",
+		"FaxNumber": "1133557004",
+		"MobilePhoneNumber": "01123224060",
+		"PhoneNumber": "1133557799"
+	},
+	{
+		"ContactPerson": "600000019",
+		"BusinessPartner": "100000009",
+		"FullName": "Renan Barros",
+		"EmailAddress": "renan.barros@telecomunicacionesstar.com",
+		"FaxNumber": "1133557004",
+		"MobilePhoneNumber": "167918745889",
+		"PhoneNumber": "1133557743"
+	},
+	{
+		"ContactPerson": "600000020",
+		"BusinessPartner": "100000010",
+		"FullName": "Franklin Jones",
+		"EmailAddress": "franklin.jones@pear-computing.com",
+		"FaxNumber": "6789012004",
+		"MobilePhoneNumber": "2076789012346",
+		"PhoneNumber": "6789012345"
+	},
+	{
+		"ContactPerson": "600000021",
+		"BusinessPartner": "100000010",
+		"FullName": "Esther Ramirez",
+		"EmailAddress": "esther.ramirez@pear-computing.com",
+		"FaxNumber": "6789012004",
+		"MobilePhoneNumber": "70270038165",
+		"PhoneNumber": "82857403965"
+	},
+	{
+		"ContactPerson": "600000022",
+		"BusinessPartner": "100000011",
+		"FullName": "Joseph Gschwandtner",
+		"EmailAddress": "joseph_gschwandtner@alp-systems.at",
+		"FaxNumber": "6623612004",
+		"MobilePhoneNumber": "06508289569",
+		"PhoneNumber": "6623612804"
+	},
+	{
+		"ContactPerson": "600000023",
+		"BusinessPartner": "100000011",
+		"FullName": "Karolin Schröder",
+		"EmailAddress": "karolin.schroeder@alp-systems.at",
+		"FaxNumber": "6623612004",
+		"MobilePhoneNumber": "06508289669",
+		"PhoneNumber": "6623612812"
+	},
+	{
+		"ContactPerson": "600000024",
+		"BusinessPartner": "100000012",
+		"FullName": "George Grant",
+		"EmailAddress": "george_d_grant@newlinedesign.co.uk",
+		"FaxNumber": "2589436004",
+		"MobilePhoneNumber": "07111748596",
+		"PhoneNumber": "2589436180"
+	},
+	{
+		"ContactPerson": "600000025",
+		"BusinessPartner": "100000012",
+		"FullName": "Brigida Wright",
+		"EmailAddress": "wright_brigida@newlinedesign.co.uk",
+		"FaxNumber": "2589436004",
+		"MobilePhoneNumber": "7808576317",
+		"PhoneNumber": "2089177317"
+	},
+	{
+		"ContactPerson": "600000026",
+		"BusinessPartner": "100000013",
+		"FullName": "Sarah Schwind",
+		"EmailAddress": "sarah.schwind@hepa-tec.de",
+		"FaxNumber": "4507867004",
+		"MobilePhoneNumber": "01707867136",
+		"PhoneNumber": "4507867136"
+	},
+	{
+		"ContactPerson": "600000027",
+		"BusinessPartner": "100000013",
+		"FullName": "Marko König",
+		"EmailAddress": "marko.koenig@hepa-tec.de",
+		"FaxNumber": "4507867004",
+		"MobilePhoneNumber": "017074291013",
+		"PhoneNumber": "0659410795031"
+	},
+	{
+		"ContactPerson": "600000028",
+		"BusinessPartner": "100000014",
+		"FullName": "Theodor Monathy",
+		"EmailAddress": "theodor.monathy@anavideon.com",
+		"FaxNumber": "5850428004",
+		"MobilePhoneNumber": "208585042836",
+		"PhoneNumber": "5850428367"
+	},
+	{
+		"ContactPerson": "600000029",
+		"BusinessPartner": "100000014",
+		"FullName": "Carlene McCutcheon",
+		"EmailAddress": "mc.cutcheon.Carlene@anavideon.com",
+		"FaxNumber": "5850428004",
+		"MobilePhoneNumber": "25339930893",
+		"PhoneNumber": "90769766025"
+	},
+	{
+		"ContactPerson": "600000030",
+		"BusinessPartner": "100000015",
+		"FullName": "Robert Brown",
+		"EmailAddress": "robert_brown@rb-entertainment.ca",
+		"FaxNumber": "7609448004",
+		"MobilePhoneNumber": "51494321664",
+		"PhoneNumber": "7609448173"
+	},
+	{
+		"ContactPerson": "600000031",
+		"BusinessPartner": "100000015",
+		"FullName": "Jesse Charley",
+		"EmailAddress": "charley.jesse@rb-entertainment.ca",
+		"FaxNumber": "7609448004",
+		"MobilePhoneNumber": "51494321614",
+		"PhoneNumber": "7609448673"
+	},
+	{
+		"ContactPerson": "600000032",
+		"BusinessPartner": "100000016",
+		"FullName": "Jorge Montalban",
+		"EmailAddress": "jorgemontalban@motc.mx",
+		"FaxNumber": "6879342004",
+		"MobilePhoneNumber": "18112779979",
+		"PhoneNumber": "6879342945"
+	},
+	{
+		"ContactPerson": "600000033",
+		"BusinessPartner": "100000016",
+		"FullName": "Danilo Ferreira",
+		"EmailAddress": "ferreira.danilo@motc.mx",
+		"FaxNumber": "6879342004",
+		"MobilePhoneNumber": "157987719323",
+		"PhoneNumber": "1977971188"
+	},
+	{
+		"ContactPerson": "600000034",
+		"BusinessPartner": "100000017",
+		"FullName": "Johanna Esther",
+		"EmailAddress": "johanna.esther@meliva.de",
+		"FaxNumber": "2208791004",
+		"MobilePhoneNumber": "01528791738",
+		"PhoneNumber": "2208791738"
+	},
+	{
+		"ContactPerson": "600000035",
+		"BusinessPartner": "100000017",
+		"FullName": "Kevin Schroeder",
+		"EmailAddress": "kevin.schroeder@meliva.de",
+		"FaxNumber": "2208791004",
+		"MobilePhoneNumber": "016077825436",
+		"PhoneNumber": "2208791951"
+	},
+	{
+		"ContactPerson": "600000036",
+		"BusinessPartner": "100000018",
+		"FullName": "Miguel Luengo",
+		"EmailAddress": "miguel.luengo@compostela.ar",
+		"FaxNumber": "4440238004",
+		"MobilePhoneNumber": "91138321089",
+		"PhoneNumber": "4440238917"
+	},
+	{
+		"ContactPerson": "600000037",
+		"BusinessPartner": "100000018",
+		"FullName": "Carla Cardoso",
+		"EmailAddress": "carla.cardoso@compostela.ar",
+		"FaxNumber": "4440238004",
+		"MobilePhoneNumber": "117930759244",
+		"PhoneNumber": "1651009847"
+	},
+	{
+		"ContactPerson": "600000038",
+		"BusinessPartner": "100000019",
+		"FullName": "Isabel Nemours",
+		"EmailAddress": "isabel.nemours@pateu.fr",
+		"FaxNumber": "6328490004",
+		"MobilePhoneNumber": "61126098641",
+		"PhoneNumber": "6328490087"
+	},
+	{
+		"ContactPerson": "600000039",
+		"BusinessPartner": "100000019",
+		"FullName": "Dominique Sorain",
+		"EmailAddress": "dominique.sorain@pateu.fr",
+		"FaxNumber": "6328490004",
+		"MobilePhoneNumber": "61126098633",
+		"PhoneNumber": "6328490082"
+	},
+	{
+		"ContactPerson": "600000040",
+		"BusinessPartner": "100000020",
+		"FullName": "Igor Tarassow",
+		"EmailAddress": "igor.tarassow@retc.ru",
+		"FaxNumber": "4050378004",
+		"MobilePhoneNumber": "96884125599",
+		"PhoneNumber": "4050378468"
+	},
+	{
+		"ContactPerson": "600000041",
+		"BusinessPartner": "100000020",
+		"FullName": "Swetlana Karaseva",
+		"EmailAddress": "swet.karaseva@retc.ru",
+		"FaxNumber": "4050378004",
+		"MobilePhoneNumber": "96884125512",
+		"PhoneNumber": "4050378412"
+	},
+	{
+		"ContactPerson": "600000042",
+		"BusinessPartner": "100000021",
+		"FullName": "Alexis Harper",
+		"EmailAddress": "alexis.harper@flor-hc.com",
+		"FaxNumber": "6065470004",
+		"MobilePhoneNumber": "21065470312",
+		"PhoneNumber": "6065470312"
+	},
+	{
+		"ContactPerson": "600000043",
+		"BusinessPartner": "100000021",
+		"FullName": "Carolyn Yale",
+		"EmailAddress": "yale.carolyn@flor-hc.com",
+		"FaxNumber": "6065470004",
+		"MobilePhoneNumber": "50791662061",
+		"PhoneNumber": "33432584290"
+	},
+	{
+		"ContactPerson": "600000044",
+		"BusinessPartner": "100000022",
+		"FullName": "Cristal Alfaro",
+		"EmailAddress": "c.alfaro@quimica-madrilenos.es",
+		"FaxNumber": "7980023004",
+		"MobilePhoneNumber": "629377875",
+		"PhoneNumber": "7980023486"
+	},
+	{
+		"ContactPerson": "600000045",
+		"BusinessPartner": "100000022",
+		"FullName": "Manuela Carmena",
+		"EmailAddress": "manuela_carmena@quimica-madrilenos.es",
+		"FaxNumber": "7980023004",
+		"MobilePhoneNumber": "629377532",
+		"PhoneNumber": "7980023532"
+	},
+	{
+		"ContactPerson": "600000046",
+		"BusinessPartner": "100000023",
+		"FullName": "Sven Janssen",
+		"EmailAddress": "sven.j@getraenke-janssen.de",
+		"FaxNumber": "3629731004",
+		"MobilePhoneNumber": "01529731486",
+		"PhoneNumber": "3629731486"
+	},
+	{
+		"ContactPerson": "600000047",
+		"BusinessPartner": "100000023",
+		"FullName": "Leah Aachen",
+		"EmailAddress": "leah.aachen@getraenke-janssen.de",
+		"FaxNumber": "3629731004",
+		"MobilePhoneNumber": "017433486816",
+		"PhoneNumber": "08942946478"
+	},
+	{
+		"ContactPerson": "600000048",
+		"BusinessPartner": "100000024",
+		"FullName": "Yoshiko Kakuji",
+		"EmailAddress": "yoshiko.kakuji@jateco.jp",
+		"FaxNumber": "3206580004",
+		"MobilePhoneNumber": "8010003581",
+		"PhoneNumber": "3206580974"
+	},
+	{
+		"ContactPerson": "600000049",
+		"BusinessPartner": "100000024",
+		"FullName": "Kazuo Koike",
+		"EmailAddress": "kazuo.koike@jateco.jp",
+		"FaxNumber": "3206580004",
+		"MobilePhoneNumber": "8010003523",
+		"PhoneNumber": "3206580531"
+	},
+	{
+		"ContactPerson": "600000050",
+		"BusinessPartner": "100000025",
+		"FullName": "Alessio Galasso",
+		"EmailAddress": "alessio.galasso@tcdr.it",
+		"FaxNumber": "4580963004",
+		"MobilePhoneNumber": "34588303001",
+		"PhoneNumber": "4580963184"
+	},
+	{
+		"ContactPerson": "600000051",
+		"BusinessPartner": "100000025",
+		"FullName": "Lorella Bottegoni",
+		"EmailAddress": "lorella.santucci@tcdr.it",
+		"FaxNumber": "4580963004",
+		"MobilePhoneNumber": "4467553249",
+		"PhoneNumber": "2351073332"
+	},
+	{
+		"ContactPerson": "600000052",
+		"BusinessPartner": "100000026",
+		"FullName": "Romain Le Mason",
+		"EmailAddress": "romain.le_mason@verdo.fr",
+		"FaxNumber": "1012697004",
+		"MobilePhoneNumber": "642865493",
+		"PhoneNumber": "1012697341"
+	},
+	{
+		"ContactPerson": "600000053",
+		"BusinessPartner": "100000026",
+		"FullName": "Sebastien Frati",
+		"EmailAddress": "sebastien.frati@verdo.fr",
+		"FaxNumber": "1012697004",
+		"MobilePhoneNumber": "624492267",
+		"PhoneNumber": "444228-6270"
+	},
+	{
+		"ContactPerson": "600000054",
+		"BusinessPartner": "100000027",
+		"FullName": "Martha Calcagno",
+		"EmailAddress": "martha.calcagno@dpg.ar",
+		"FaxNumber": "7345697004",
+		"MobilePhoneNumber": "91138321194",
+		"PhoneNumber": "7345697824"
+	},
+	{
+		"ContactPerson": "600000055",
+		"BusinessPartner": "100000027",
+		"FullName": "Nicolas Borio",
+		"EmailAddress": "nicolas.borio@dpg.ar",
+		"FaxNumber": "7345697004",
+		"MobilePhoneNumber": "91154191469",
+		"PhoneNumber": "1145593331"
+	},
+	{
+		"ContactPerson": "600000056",
+		"BusinessPartner": "100000028",
+		"FullName": "Beatriz da Silva",
+		"EmailAddress": "beatriz.da_silva@brazil-tec.br",
+		"FaxNumber": "469614004",
+		"MobilePhoneNumber": "117930811702",
+		"PhoneNumber": "469614115"
+	},
+	{
+		"ContactPerson": "600000057",
+		"BusinessPartner": "100000028",
+		"FullName": "Isabelle Alves",
+		"EmailAddress": "alves.isabelle@brazil-tec.br",
+		"FaxNumber": "469614004",
+		"MobilePhoneNumber": "277923902102",
+		"PhoneNumber": "1117093497"
+	},
+	{
+		"ContactPerson": "600000058",
+		"BusinessPartner": "100000029",
+		"FullName": "Anthony Leboeuf",
+		"EmailAddress": "anthony.lebouef@crtu.ca",
+		"FaxNumber": "6839542004",
+		"MobilePhoneNumber": "5145015122",
+		"PhoneNumber": "6839542781"
+	},
+	{
+		"ContactPerson": "600000059",
+		"BusinessPartner": "100000029",
+		"FullName": "Pascale Monty-Demers",
+		"EmailAddress": "pascale.monty-demers@crtu.ca",
+		"FaxNumber": "6839542004",
+		"MobilePhoneNumber": "15135157423",
+		"PhoneNumber": "15132282099"
+	},
+	{
+		"ContactPerson": "600000060",
+		"BusinessPartner": "100000030",
+		"FullName": "Lisa Felske",
+		"EmailAddress": "lisa.felske@jologa.ch",
+		"FaxNumber": "6714954004",
+		"MobilePhoneNumber": "792644206",
+		"PhoneNumber": "6714954542"
+	},
+	{
+		"ContactPerson": "600000061",
+		"BusinessPartner": "100000030",
+		"FullName": "Hansjoerg Wegmann",
+		"EmailAddress": "hansjoerg.wegmann@jologa.ch",
+		"FaxNumber": "6714954004",
+		"MobilePhoneNumber": "41793032712",
+		"PhoneNumber": "41688716735"
+	},
+	{
+		"ContactPerson": "600000062",
+		"BusinessPartner": "100000031",
+		"FullName": "Jonathan Mason",
+		"EmailAddress": "jonathan.d.mason@baleda.com",
+		"FaxNumber": "2483693004",
+		"MobilePhoneNumber": "2145976761",
+		"PhoneNumber": "2483693027"
+	},
+	{
+		"ContactPerson": "600000063",
+		"BusinessPartner": "100000031",
+		"FullName": "Bruce Ford",
+		"EmailAddress": "bruce.ford@baleda.com",
+		"FaxNumber": "2483693004",
+		"MobilePhoneNumber": "21592075530",
+		"PhoneNumber": "98910935630"
+	},
+	{
+		"ContactPerson": "600000064",
+		"BusinessPartner": "100000032",
+		"FullName": "Amélie Troyat",
+		"EmailAddress": "amelie.troyat@angere.fr",
+		"FaxNumber": "2094573004",
+		"MobilePhoneNumber": "613371485",
+		"PhoneNumber": "2094573421"
+	},
+	{
+		"ContactPerson": "600000065",
+		"BusinessPartner": "100000032",
+		"FullName": "Fouad Martin",
+		"EmailAddress": "fouad.martin@angere.fr",
+		"FaxNumber": "2094573004",
+		"MobilePhoneNumber": "33685126116",
+		"PhoneNumber": "33493286325"
+	},
+	{
+		"ContactPerson": "600000066",
+		"BusinessPartner": "100000033",
+		"FullName": "Pete Waltham",
+		"EmailAddress": "pete_waltham@pc-gym-tec.com",
+		"FaxNumber": "4136278004",
+		"MobilePhoneNumber": "3312141512",
+		"PhoneNumber": "4136278910"
+	},
+	{
+		"ContactPerson": "600000067",
+		"BusinessPartner": "100000033",
+		"FullName": "Sandra Creech",
+		"EmailAddress": "sandra.creech@pc-gym-tec.com",
+		"FaxNumber": "4136278004",
+		"MobilePhoneNumber": "61855546415",
+		"PhoneNumber": "38687695619"
+	},
+	{
+		"ContactPerson": "600000068",
+		"BusinessPartner": "100000034",
+		"FullName": "Ryu Toshiro",
+		"EmailAddress": "ryu.toshiro@jip.jp",
+		"FaxNumber": "3540671004",
+		"MobilePhoneNumber": "9055534479",
+		"PhoneNumber": "3540671320"
+	},
+	{
+		"ContactPerson": "600000069",
+		"BusinessPartner": "100000034",
+		"FullName": "Wenyun Hen",
+		"EmailAddress": "wenyun.hen@jip.jp",
+		"FaxNumber": "3540671004",
+		"MobilePhoneNumber": "818080676003",
+		"PhoneNumber": "3540671323"
+	},
+	{
+		"ContactPerson": "600000070",
+		"BusinessPartner": "100000035",
+		"FullName": "José Lopez",
+		"EmailAddress": "jose-lopez@en-ar.ar",
+		"FaxNumber": "7315064004",
+		"MobilePhoneNumber": "91138321172",
+		"PhoneNumber": "7315064077"
+	},
+	{
+		"ContactPerson": "600000071",
+		"BusinessPartner": "100000035",
+		"FullName": "Melisa Guetta",
+		"EmailAddress": "melisa.guetta@en-ar.ar",
+		"FaxNumber": "7315064004",
+		"MobilePhoneNumber": "91138441232",
+		"PhoneNumber": "1148923058"
+	},
+	{
+		"ContactPerson": "600000072",
+		"BusinessPartner": "100000036",
+		"FullName": "Dahoma Lawla",
+		"EmailAddress": "dahoma.lawla@agadc.co.za",
+		"FaxNumber": "4381762004",
+		"MobilePhoneNumber": "734472882",
+		"PhoneNumber": "4381762683"
+	},
+	{
+		"ContactPerson": "600000073",
+		"BusinessPartner": "100000036",
+		"FullName": "Nonkululeko Van Der Walt",
+		"EmailAddress": "nonkululeko.van.der.walt@agadc.co.za",
+		"FaxNumber": "4381762004",
+		"MobilePhoneNumber": "27824657926",
+		"PhoneNumber": "27114356142"
+	},
+	{
+		"ContactPerson": "600000074",
+		"BusinessPartner": "100000037",
+		"FullName": "Jefferson Parker",
+		"EmailAddress": "jefferson.parker@pico-bit.com",
+		"FaxNumber": "9703586004",
+		"MobilePhoneNumber": "21581526401",
+		"PhoneNumber": "9703586412"
+	},
+	{
+		"ContactPerson": "600000075",
+		"BusinessPartner": "100000037",
+		"FullName": "Steve Gallion",
+		"EmailAddress": "steve.gallion@pico-bit.com",
+		"FaxNumber": "9703586004",
+		"MobilePhoneNumber": "20575430672",
+		"PhoneNumber": "25243729678"
+	},
+	{
+		"ContactPerson": "600000076",
+		"BusinessPartner": "100000038",
+		"FullName": "Tamara Flaig",
+		"EmailAddress": "tamara.flaig@brl-ag.de",
+		"FaxNumber": "6843585004",
+		"MobilePhoneNumber": "015567833882",
+		"PhoneNumber": "6843585642"
+	},
+	{
+		"ContactPerson": "600000077",
+		"BusinessPartner": "100000038",
+		"FullName": "Lukas Fleischer",
+		"EmailAddress": "lukas.fleischer@brl-ag.de",
+		"FaxNumber": "6843585004",
+		"MobilePhoneNumber": "015034318581",
+		"PhoneNumber": "6843585665"
+	},
+	{
+		"ContactPerson": "600000078",
+		"BusinessPartner": "100000039",
+		"FullName": "Sunita Kapoor",
+		"EmailAddress": "sunita-kapoor@it-trade.in",
+		"FaxNumber": "4203876004",
+		"MobilePhoneNumber": "3125506947",
+		"PhoneNumber": "4203876954"
+	},
+	{
+		"ContactPerson": "600000079",
+		"BusinessPartner": "100000039",
+		"FullName": "Rayan Shah",
+		"EmailAddress": "rayan.shah@it-trade.in",
+		"FaxNumber": "4203876004",
+		"MobilePhoneNumber": "919868169167",
+		"PhoneNumber": "919026334553"
+	},
+	{
+		"ContactPerson": "600000080",
+		"BusinessPartner": "100000040",
+		"FullName": "Pawel Lewandowski",
+		"EmailAddress": "pawel-lewandoski@catf.pl",
+		"FaxNumber": "8367920004",
+		"MobilePhoneNumber": "505107953",
+		"PhoneNumber": "8367920106"
+	},
+	{
+		"ContactPerson": "600000081",
+		"BusinessPartner": "100000040",
+		"FullName": "Michal Jezienicki",
+		"EmailAddress": "michaljezienicki@catf.pl",
+		"FaxNumber": "8367920004",
+		"MobilePhoneNumber": "48506201882",
+		"PhoneNumber": "48226415728"
+	},
+	{
+		"ContactPerson": "600000082",
+		"BusinessPartner": "100000041",
+		"FullName": "Laura Campillo",
+		"EmailAddress": "laura.campillo@saitc.ar",
+		"FaxNumber": "1438907004",
+		"MobilePhoneNumber": "91138321138",
+		"PhoneNumber": "1438907230"
+	},
+	{
+		"ContactPerson": "600000083",
+		"BusinessPartner": "100000041",
+		"FullName": "Guillermo Ferrero",
+		"EmailAddress": "guillermo.ferrero@saitc.ar",
+		"FaxNumber": "1438907004",
+		"MobilePhoneNumber": "91154322000",
+		"PhoneNumber": "1148943120"
+	},
+	{
+		"ContactPerson": "600000084",
+		"BusinessPartner": "100000042",
+		"FullName": "Jian Si",
+		"EmailAddress": "jian.si@siwusha.cn",
+		"FaxNumber": "7412697004",
+		"MobilePhoneNumber": "6479751078",
+		"PhoneNumber": "7412697340"
+	},
+	{
+		"ContactPerson": "600000085",
+		"BusinessPartner": "100000042",
+		"FullName": "Will Shi",
+		"EmailAddress": "will.shi@siwusha.cn",
+		"FaxNumber": "7412697004",
+		"MobilePhoneNumber": "15150021398",
+		"PhoneNumber": "02161045755"
+	},
+	{
+		"ContactPerson": "600000086",
+		"BusinessPartner": "100000043",
+		"FullName": "Frederik Christensen",
+		"EmailAddress": "frederik.christensen@dftc.dk",
+		"FaxNumber": "3102050004",
+		"MobilePhoneNumber": "29233248",
+		"PhoneNumber": "3102050749"
+	},
+	{
+		"ContactPerson": "600000087",
+		"BusinessPartner": "100000043",
+		"FullName": "Charlotte Hojby",
+		"EmailAddress": "charlotte.hojby@dftc.dk",
+		"FaxNumber": "3102050004",
+		"MobilePhoneNumber": "529263510",
+		"PhoneNumber": "39123312"
+	},
+	{
+		"ContactPerson": "600000088",
+		"BusinessPartner": "100000044",
+		"FullName": "Mirjam Schmidt",
+		"EmailAddress": "mirjam.schmidt@sorali.de",
+		"FaxNumber": "3102050004",
+		"MobilePhoneNumber": "01602050749",
+		"PhoneNumber": "3102050749"
+	},
+	{
+		"ContactPerson": "600000089",
+		"BusinessPartner": "100000044",
+		"FullName": "Klaus Cole",
+		"EmailAddress": "klaus.cole@sorali.de",
+		"FaxNumber": "3102050004",
+		"MobilePhoneNumber": "016336334785",
+		"PhoneNumber": "0655315658392"
+	}
+]
