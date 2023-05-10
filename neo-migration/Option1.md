@@ -15,7 +15,7 @@ Unzip the contents of the Neo UI application into the Fiori UI application folde
 unzip /home/user/projects/neo/manageproductsneo.zip -d /home/user/projects/fioriapp/
 ```
 
-You now have a new folder with the contains for your export Neo UI application, ready for migration.
+You now have a new folder with the contents of your exported Neo UI application, which is now ready for migration.
 
 From View -> Command Palette, run `Fiori: Migrate Project for use in Fiori tools`
 - select project and ensure SAPUI5 preview version is latest or appropriate to your project
@@ -24,9 +24,9 @@ From View -> Command Palette, run `Fiori: Migrate Project for use in Fiori tools
 - An application information page will also load, showing details of your app and commands you can run against it
 
 From View -> Command Palette, run `Neo Migration: HTML 5 Application descriptor transformation`
-- Select your neo-app.json
-- new xs-app.json created in UI project with the routes populated from your old neo-app.json
-- If this is overwritten or deleted, please re-run this step again, it needs to be generated using the neo-app.json as the source
+- Select `neo-app.json`
+- A new `xs-app.json` is created with the routes populated from your old neo-app.json ready for Cloud Foundry deployment
+- If `xs-app.json` is overwritten or deleted, re-run this step again, it needs to be generated using the `neo-app.jso` as the source
 
 Change into the new UI application
 ```
