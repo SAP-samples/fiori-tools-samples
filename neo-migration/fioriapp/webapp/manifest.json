@@ -23,8 +23,8 @@
         },
         "sourceTemplate": {
             "id": "@sap/ux-app-migrator:freestyle",
-            "version": "1.8.4-pre-20221202015741-3071595e7.0",
-            "toolsId": "7f3e6ed5-9fa7-47e9-ac55-14c6306610a3"
+            "version": "1.9.7-pre-20230510040343-e3f82a5e9.0",
+            "toolsId": "c3d15a54-86d9-4ac3-85e3-03be3ad90f8a"
         }
     },
     "sap.ui": {

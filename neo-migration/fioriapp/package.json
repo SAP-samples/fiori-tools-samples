@@ -13,7 +13,6 @@
     "scripts": {
         "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
         "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandboxMockServer.html?sap-ui-xx-viewCache=false#app-tile\"",
-        "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
         "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
         "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
         "deploy": "fiori cfDeploy",
@@ -27,19 +26,11 @@
         "undeploy": "cf undeploy manageproductsneo2911c --delete-services --delete-service-keys --delete-service-brokers"
     },
     "devDependencies": {
-        "@ui5/cli": "^2.14.1",
+        "@ui5/cli": "^3.0.0",
         "@sap/ux-ui5-tooling": "1",
         "rimraf": "3.0.2",
         "@sap/ui5-builder-webide-extension": "^1.1.8",
         "ui5-task-zipper": "^0.5.0",
         "mbt": "^1.2.18"
-    },
-    "ui5": {
-        "dependencies": [
-            "@sap/ux-ui5-tooling",
-            "@sap/ui5-builder-webide-extension",
-            "ui5-task-zipper",
-            "mbt"
-        ]
     }
 }

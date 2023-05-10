@@ -126,8 +126,8 @@ cf deploy
 Your subaccount is now configured with destinations at subaccount level. 
 
 You have two options of migrating your Neo UI application as each produces a different folder structure;
-- Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md)
-- Option 2. [Migrate Neo application supporting multiple Fiori UI applications](Option2.md)
+- Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md), this has been updated with v3 of `@ui5/cli`
+- Option 2. [Migrate Neo application supporting multiple Fiori UI applications](Option2.md), this is referencing v2 of `@ui5/cli`
 
 In both cases, your application is deployed to Cloud Foundry using a managed approuter configuration.
 
