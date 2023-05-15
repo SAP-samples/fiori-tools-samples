@@ -247,6 +247,6 @@ Please see the sample extension package:  https://github.com/SAP-samples/fiori-t
 
 ## More info 
 
-For additional help pleae reach out using our Community Forum: https://answers.sap.com/tags/73555000100800002345 or via email SAPFioriElements@sap.com
+For additional help please reach out using our Community Forum: https://answers.sap.com/tags/73555000100800002345 or via email SAPFioriElements@sap.com
 
 
