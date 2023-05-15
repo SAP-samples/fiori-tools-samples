@@ -245,6 +245,8 @@ The in-memory file system can be accessed via the `this.fs` reference. An exampl
 
 Please see the sample extension package:  https://github.com/SAP-samples/fiori-tools-samples/sample-fiori-gen-ext for a full working sample.
 
-For additional help pleae reach out using our Community Forum: https://answers.sap.com/tags/73555000100800002345
+## More info 
+
+For additional help pleae reach out using our Community Forum: https://answers.sap.com/tags/73555000100800002345 or via email SAPFioriElements@sap.com
 
 
