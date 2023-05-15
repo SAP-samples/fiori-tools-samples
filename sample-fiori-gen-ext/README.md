@@ -5,7 +5,7 @@ This module is an example of how to extend `@sap/generator-fiori`, adding additi
 ## Building and installing the sample Fiori generator extension
 
 1. Clone this repo locally.
-2. Run `yarn install` in the root directory ( pre-requisite: `yarn` is installed globally )
+2. Run `yarn install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `yarn` is installed globally )
 3. Build the extension sample using `yarn build`
 3. Create the installable artefact by running `yarn pack`
 4. Install the tgz globally using `npm i -g sample-fiori-gen-ext-v0.1.0.tgz`
