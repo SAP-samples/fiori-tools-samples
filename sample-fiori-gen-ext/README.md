@@ -42,7 +42,7 @@ A sample extension generator can be found here: https://github.com/SAP-samples/f
 
 ## Structure of a Fiori generator extension generator
 
-Extension generators are essentially generators which utilize the `composeWith` functiionality provided by Yeoman (https://yeoman.io/authoring/composability.html) that additionally implement the `FioriGeneratorExtensionAPI` interface:
+Extension generators are essentially generators which utilize the `composeWith` functionality provided by Yeoman (https://yeoman.io/authoring/composability.html) that additionally implement the `FioriGeneratorExtensionAPI` interface:
 
 ```
 export interface FioriGeneratorExtensionAPI {
