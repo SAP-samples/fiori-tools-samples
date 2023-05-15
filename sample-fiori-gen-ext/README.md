@@ -117,7 +117,7 @@ In the above example the generated app name prompt input will additionally valid
 
 The default value in the above example will be set to "superapp1".
 
-~~exanmple-validator-ext.png (insert image)~~
+<img width="786" alt="image" src="https://github.com/IainSAP/fiori-tools-samples/assets/46536134/6f767e92-efbc-47ed-b2a1-9345307edb3c">
 
 
 Note that default values are only dynamically applied where prompts have been defined with the gui option `applyDefaultWhenDirty` or an answer has not been provided by the user. The setting `applyDefaultWhenDirty` is not assignable by a customized prompt extension and the behaviour should be tested to determine if it is applied when other prompt answers are updated.
@@ -204,7 +204,8 @@ class extends Generator implements FioriGeneratorExtensionAPI {
 }
 ```
 The above implementation will result in the UI:
-~~insert image: adding-questions-steps.jpeg~~
+
+<img width="1242" alt="image" src="https://github.com/IainSAP/fiori-tools-samples/assets/46536134/a2c5a0e6-c4f2-46af-8c7f-5a884f04e108">
 
 Adding steps conditionally, perhaps based on the value of a previous answer, can be achieved using the slightly more complex approach as described here: https://github.com/SAP/yeoman-ui/tree/master/packages/generator-foodq.
 
