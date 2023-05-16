@@ -6,7 +6,7 @@ This module is an example of how to extend `@sap/generator-fiori`, adding additi
 
 1. Clone this repo locally.
 2. Run `npm install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `npm` is installed globally )
-3. Build the extension sample using `npm build`
+3. Build the extension sample using `npm run build`
 3. Create the installable artefact by running `npm pack`
 4. Install the tgz globally using `npm i -g <path-to-generated-tgz>`
 
