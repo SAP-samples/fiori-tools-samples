@@ -5,10 +5,10 @@ This module is an example of how to extend `@sap/generator-fiori`, adding additi
 ## Building and installing the sample Fiori generator extension
 
 1. Clone this repo locally.
-2. Run `yarn install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `yarn` is installed globally )
-3. Build the extension sample using `yarn build`
-3. Create the installable artefact by running `yarn pack`
-4. Install the tgz globally using `npm i -g sample-fiori-gen-ext-v0.1.0.tgz`
+2. Run `npm install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `npm` is installed globally )
+3. Build the extension sample using `npm build`
+3. Create the installable artefact by running `npm pack`
+4. Install the tgz globally using `npm i -g <path-to-generated-tgz>`
 
 To see the sample extension in action run the Fiori generator using the Application Wizard vscode extension as usual in Business Application Studio or directly in VSCode. A CLI version is also supported. Once the sample extension has been installed globally the additional steps should be visible on the navigation panel in the Application Wizard when using the `SAP Fiori application` generator ( package: `@sap/generator-fiori` version: `1.9.7` and above).
 
