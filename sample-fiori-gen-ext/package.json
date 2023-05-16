@@ -2,32 +2,35 @@
   "name": "@sample/fiori-gen-ext",
   "version": "0.1.0",
   "description": "Sample Fiori generator extension sub-generator",
-  "main": "generators",
+  "keywords": [
+    "fiori-generator-extension"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/IainSAP/test-subgen.git"
   },
-  "author": "",
   "license": "none",
-  "keywords": [
-    "fiori-generator-extension"
-  ],
+  "author": "",
+  "main": "generators",
   "files": [
     "generators"
   ],
   "scripts": {
     "build": "tsc --build",
+    "bundle": "npm run clean && esbuild src/index.ts --outfile=generators/index.js --bundle --external:@sap/generator-fiori --external:shelljs --platform=node",
     "clean": "rimraf ./generators"
   },
   "dependencies": {
-    "@sap-devx/yeoman-ui-types": "1.10.0",
-    "yeoman-generator": "5.8.0"
+    "shelljs": "0.8.5"
   },
   "devDependencies": {
+    "@sap-devx/yeoman-ui-types": "1.10.0",
     "@sap/generator-fiori": "1.9.6",
     "@types/yeoman-generator": "5.2.7",
+    "esbuild": "0.17.19",
     "rimraf": "5.0.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "yeoman-generator": "5.8.0"
   },
   "engines": {
     "node": ">=16 <17 || >=18 <19 || >=20"

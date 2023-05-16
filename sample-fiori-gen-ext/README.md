@@ -6,9 +6,22 @@ This module is an example of how to extend `@sap/generator-fiori`, adding additi
 
 1. Clone this repo locally.
 2. Run `npm install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `npm` is installed globally )
-3. Build the extension sample using `npm run build`
-3. Create the installable artefact by running `npm pack`
-4. Install the tgz globally using `npm i -g <path-to-generated-tgz>`
+
+### For local testing
+1. Build the extension sample using `npm run build`
+2. Create the installable artefact by running `npm pack`
+3. Install the tgz globally using `npm i -g <path-to-generated-tgz>`
+
+### For bundling to deploy to Business Application Studio
+To ensure dev space startup time is not negatively impacted by running installs it is recommended that the extension is bundled first. An example of bundling using `esbuild` is included (note: `shelljs` is included as a dependency as a workaround for a known `esbuild` issue):
+1. Bundle the extension sample using `npm run bundle`
+2. The bundle should be checked in to the repo for deployment using the WEX tool (ADD LINK!!!)
+3. To test locally create the installable artefact by running `npm pack`
+4. To test locally Install the tgz globally using `npm i -g <path-to-generated-tgz>`
+
+Note: That if the extension generator is to be pushed to a repo then step 3 can ve replaced by executing the github action `Draft a new release` from the github web app. 
+Step 4 will be replaced by the WEX tool configuration to deploy to BAS dev spaces.
+
 
 To see the sample extension in action run the Fiori generator using the Application Wizard vscode extension as usual in Business Application Studio or directly in VSCode. A CLI version is also supported. Once the sample extension has been installed globally the additional steps should be visible on the navigation panel in the Application Wizard when using the `SAP Fiori application` generator ( package: `@sap/generator-fiori` version: `1.9.7` and above).
 
