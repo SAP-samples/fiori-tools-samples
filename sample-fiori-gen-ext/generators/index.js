@@ -118,4 +118,3 @@ class default_1 extends yeoman_generator_1.default {
     }
 }
 exports.default = default_1;
-//# sourceMappingURL=index.js.map

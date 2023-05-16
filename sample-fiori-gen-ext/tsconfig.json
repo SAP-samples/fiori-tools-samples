@@ -4,12 +4,8 @@
     "module": "CommonJS",
     "outDir": "generators",
     "rootDir": "src",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
     "strict": false,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "esModuleInterop": true
   },

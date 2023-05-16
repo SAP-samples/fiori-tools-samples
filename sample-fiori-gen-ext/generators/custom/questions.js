@@ -28,4 +28,3 @@ exports.default = {
         },
     },
 };
-//# sourceMappingURL=questions.js.map
