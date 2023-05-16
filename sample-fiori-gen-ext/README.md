@@ -43,7 +43,6 @@ e.g. package.json:
 {
     name: "@acme/acme_fiori_gen_ext",
     keywords: [
-        "yeoman-generator",
         "fiori-generator-extension"
     ]
 }
