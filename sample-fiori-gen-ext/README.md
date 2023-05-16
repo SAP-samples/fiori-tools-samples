@@ -17,9 +17,9 @@ To ensure dev space startup time is not negatively impacted by running installs 
 1. Bundle the extension sample using `npm run bundle`
 2. The bundle should be checked in to the repo for deployment using the WEX tool (ADD LINK!!!)
 3. To test locally create the installable artefact by running `npm pack`
-4. To test locally Install the tgz globally using `npm i -g <path-to-generated-tgz>`
+4. To test locally install the tgz globally using `npm i -g <path-to-generated-tgz>`
 
-Note: That if the extension generator is to be pushed to a repo then step 3 can ve replaced by executing the github action `Draft a new release` from the github web app. 
+Note: That if the extension generator is to be pushed to a repo then step 3 can be replaced by executing the github action `Draft a new release` from the github web app. 
 Step 4 will be replaced by the WEX tool configuration to deploy to BAS dev spaces.
 
 
