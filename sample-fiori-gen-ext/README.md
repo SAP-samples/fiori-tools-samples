@@ -52,7 +52,7 @@ A sample extension generator can be found here: https://github.com/SAP-samples/f
 
 
 
-## Structure of a Fiori generator extension generator
+## Implementing the `FioriGeneratorExtensionAPI` to extend Fiori generator
 
 Extension generators are essentially generators which utilize the `composeWith` functionality provided by Yeoman (https://yeoman.io/authoring/composability.html) that additionally implement the `FioriGeneratorExtensionAPI` interface:
 
@@ -136,7 +136,7 @@ Note that default values are only dynamically applied where prompts have been de
 
 Add more entries, one per question name, to the returned extension object as required.
 
-## Adding new stesps to the Fiori generator UI
+## Adding new steps to the Fiori generator UI
 
 To add new questions to the Fiori generator the name and description of the left-hand-side navigation items must be provided along with the question descriptions and a little code to run and process the questions. A full example of adding 2 new steps and running the questions can be found here: https://github.com/SAP-samples/fiori-tools-samples/sample-fiori-gen-ext
 
