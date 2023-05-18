@@ -13479,7 +13479,7 @@ var require_core = __commonJS({
       "node:string_decoder": [">= 14.18 && < 15", ">= 16"],
       sys: [">= 0.4 && < 0.7", ">= 0.8"],
       "node:sys": [">= 14.18 && < 15", ">= 16"],
-      "test/reporters": [">= 19.9", ">= 20"],
+      "test/reporters": ">= 19.9 && < 20.2",
       "node:test/reporters": [">= 19.9", ">= 20"],
       "node:test": [">= 16.17 && < 17", ">= 18"],
       timers: true,
