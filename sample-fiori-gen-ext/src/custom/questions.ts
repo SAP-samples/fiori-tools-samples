@@ -23,7 +23,7 @@ export default {
         }
         return true;
       },
-      default: (previousAnswers) => (previousAnswers.title === "App Title" ? "super.com" : "great.com"), //(String|Number|Boolean|Array|Function)
+      default: (previousAnswers) => (previousAnswers.title === "App Title" ? "super.com" : "great.com"),
     },
   } as FioriGeneratorPromptExtension,
 };
