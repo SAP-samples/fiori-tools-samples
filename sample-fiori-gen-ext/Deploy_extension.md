@@ -1,6 +1,6 @@
 # Deploying Fiori generator extensions to Business Application Studio
 
-To make Fiori generator extensions available to the Fiori generator they must be installed globally. To ensure the extension is always available for BAS (Business Application Studio) users an additional configuration can be used to make a specific extension available and auto-selected when creating new Dev Spaces. 
+To make Fiori generator extensions available to the Fiori generator they must be installed globally. To ensure the extension is always available for BAS (Business Application Studio) users an additional configuration can be used to install the extension automatically creating new dev spaces. 
 
 ## Using the WEX (Business Application Studio Extension Management) tool
 
