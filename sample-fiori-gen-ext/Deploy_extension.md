@@ -23,11 +23,13 @@ The provided sample Fiori generator extenion `@sample/fiori-gen-ext` can be depl
 2.  Once the extension had been tested and behaves as expected, publish the new package to `github.com` ensuring that the repo is not publicly accessible. Generate a new Github Personal Access Token with the minimum required access (Profile -> Settings -> Developer Settings -> Tokens(classic) ). The minimum required access is: `read:packages` and `repo`. Create a new release artefact by using the `Draft new release` option (https://github.com/\<User Name>/<Repository Name\>/releases/new)
 
 3. Prepare the Simple Extension config file which will be configured to access the artefact from Github: 
+
+File: `sample-extension.json`
 ```
 {
     "apiVersion": "1",
     "name": "testing-sample-gen-ext",
-    "namespace": "ext-sap-ux-test",
+    "namespace": "ext-<sub-account_name>",
     "autoSelectExtensions": [
     ],
     "about": {
@@ -46,6 +48,8 @@ The provided sample Fiori generator extenion `@sample/fiori-gen-ext` can be depl
         ]
 }
 ```
+Note: To auto-select the extension for all new dev spaces please use the property `autoSelectExtensions: ["ext-sap-ux-stage/testing-sample-gen-ext"]`
+
 
 4. Deploy the WEX (SAP Business Application Studio Extension Management tool) config file using the command: `wex deploy --verbose -f <wex_config_filename>.json`. 
 

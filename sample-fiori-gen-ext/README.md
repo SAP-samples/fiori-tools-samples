@@ -41,7 +41,7 @@ There are a few important settings required for the extension to be found.
 e.g. package.json: 
 ```
 {
-    name: "@acme/acme_fiori_gen_ext",
+    name: "@acme/acme-fiori-gen-ext",
     keywords: [
         "fiori-generator-extension"
     ]
