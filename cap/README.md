@@ -10,7 +10,7 @@ This repository provides sample CAP projects using different router configuratio
 
 1. [Managed Approuter](../cap/cap-fiori-mta/README.md) with SAP Hana Cloud service
 
-2. [Standalone Approuter](../cap/cap-fiori-mta-standalone/README.md) with an inmemory database
+2. [Standalone Approuter](../cap/cap-fiori-mta-standalone/README.md) with an in-memory database
 
 Both CAP project were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropiate approuter configuration as the HTML5 application runtime.
 
