@@ -1,33 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>
-		html, body, body > div, #container, #container-uiarea {
-			height: 100%;
-		}
-	</style>
-	<script
-			id="sap-ui-bootstrap"
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>manageproductsneo</title>
+		<script id="sap-ui-bootstrap"
 			src="resources/sap-ui-core.js"
 			data-sap-ui-theme="sap_fiori_3"
-			data-sap-ui-resourceroots='{
-            "manageproductsneo2911c": "."
-        }'
+			data-sap-ui-resourceroots='{"ns.manageproductsneo": "./"}'
 			data-sap-ui-compatVersion="edge"
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-async="true"
-			data-sap-ui-preload="async"
-			data-sap-ui-libs="sap.m">
-	</script>
-	<script id="locate-reuse-libs" src="./utils/locate-reuse-libs.js"
-			data-sap-ui-manifest-uri="./manifest.json"
-			data-sap-ui-componentName="manageproductsneo2911c">
-	</script>
-</head>
-<body class="sapUiBody sapUiSizeCompact" id="content">
-<div data-sap-ui-component data-name="manageproductsneo2911c" data-id="container" data-settings='{"id" : "manageproductsneo2911c"}' data-handle-validation="true"></div>
-</body>
+			data-sap-ui-frameOptions="trusted">
+		</script>
+	</head>
+	<body class="sapUiBody">
+		<div data-sap-ui-component data-name="ns.manageproductsneo" data-id="container" data-settings='{"id" : "manageproductsneo"}'></div>
+	</body>
 </html>
