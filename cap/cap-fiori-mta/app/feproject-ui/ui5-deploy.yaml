@@ -13,7 +13,7 @@ builder:
       - "/localService/**"
   customTasks:
   - name: webide-extension-task-updateManifestJson
-    beforeTask: generateManifestBundle
+    afterTask: replaceVersion
     configuration:
       appFolder: webapp
       destDir: dist

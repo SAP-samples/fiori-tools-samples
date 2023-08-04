@@ -13,7 +13,7 @@
         "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo"
     },
     "devDependencies": {
-        "@sap/ui5-builder-webide-extension": "^1.1.8",
+        "@sap/ui5-builder-webide-extension": "^1.1.9",
         "ui5-task-zipper": "^0.5.0",
         "mbt": "^1.2.18",
         "@ui5/cli": "^2.14.10"
