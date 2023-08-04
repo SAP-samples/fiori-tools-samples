@@ -7,6 +7,7 @@ The CAP project was generated using the steps outlined in this [blog post](https
 These are only required if deploying to Cloud Foundry (CF)
 - You’ll need an SAP Cloud Platform [account](https://account.hana.ondemand.com/)
 - You are subscribed to the [Launchpad Service](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html)
+- The API Endpoint i.e. `https://api.cf.us10-001.hana.ondemand.com` which can be found in your subaccount overview page as this needs to be appended to `oauth2-configuration` in your `xs-security.json` configuration
 
 ### Running on SAP Business Application Studio (SBAS)
 - Create a [dev workspace](https://help.sap.com/viewer/c2b99f19e9264c4d9ae9221b22f6f589/2021_3_QRC/en-US/f728966223894cc28be3ca2ee60ee784.html) using a `SAP Fiori` or `Full Stack Cloud Application`
@@ -19,12 +20,14 @@ These are only required if deploying to Cloud Foundry (CF)
 
 ## Build and Deploy to CF
 Option 1 - Using [Cloud MTA Build Tool](https://github.com/SAP/cloud-mta-build-tool)
-- If you've made any changes, right-click `mta.yaml` and select `Build MTA Project`
+- Ensure the `xs-security.json` is updated with the correct `oauth2-configuration` API region settings
+- Right-click `mta.yaml` and select `Build MTA Project`
 - Right-click `mta_archives -> standaloneCAPProject_1.0.0.mtar` and select `Deploy MTA Archive`
 - This will prompt you for your CF details if you are not already logged in
 - Your CAP Project will be successfully deployed to CF
 
 Option 2 - Using cli
+- Ensure the `xs-security.json` is updated with the correct `oauth2-configuration` API region settings
 - Run the following command;
 ```shell
 npm run build && npm run deploy

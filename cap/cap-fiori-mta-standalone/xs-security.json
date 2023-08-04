@@ -2,19 +2,12 @@
   "xsappname": "standalonecapproject",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
-  "scopes": [
-    {
-      "name": "uaa.user",
-      "description": "UAA"
+  "scopes": [],
+  "role-templates": [],
+  "oauth2-configuration": {
+        "redirect-uris": [
+            "https://*.us10-001.hana.ondemand.com/login/callback",
+            "https://*.cfapps.us10-001.hana.ondemand.com/**"
+        ]
     }
-  ],
-  "role-templates": [
-    {
-      "name": "Token_Exchange",
-      "description": "UAA",
-      "scope-references": [
-        "uaa.user"
-      ]
-    }
-  ]
 }
