@@ -26,9 +26,23 @@ The benefit? You can switch between local mock configuration and cloud service c
 - Build the CAP and Fiori UI applications `npm run build`
 - Deploy the CAP and Fiori UI applications `npm run deploy`
 
+__CAP project is configured with security roles, any changes made locally need to be reflected both locally and remotely__
+
+- Update the XSUAA security service `npm run cf:uaa:update`
+
+__Ensure the security roles defined in `xs-security.json` are assigned to your user__
+
+- [Set up the roles](https://cap.cloud.sap/docs/node.js/authentication#auth-in-cockpit) for your application 
+
+__Push some data to HANA__
+
+The CAP project was created with samples, edit the csv file in the `data` folder
+
+- Run `npm run deploy:hana`
+
 __At this point, you have deployed your application to CF, if you run the CAP project locally using `npm run start` it will spin up the project using an in-memory database instance. Deployment has to occur first for the remaining steps to work as this will leverage the deployed HANA and UAA service instances__
 
-- Bind to the XSUAA service `cds bind -2 managedAppCAPProject-xsuaa-service`
+- Bind to the XSUAA service `cds bind -2 managedAppCAPProject-xsuaa-service --kind xsuaa`
 - Bind to the HANA HDI service `cds bind -2 managedAppCAPProject-db`
 - Spin up your CAP project in hybrid mode `npm run watch:hyrbid`
 
