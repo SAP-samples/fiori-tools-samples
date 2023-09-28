@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/library"],function(r){"use strict";var e=r.ValueState;return{numberUnit:function(r){if(!r){return""}return parseFloat(r).toFixed(2)},quantityState:function(r){if(r===0){return e.Error}else if(r<=10){return e.Warning}else{return e.Success}}}});

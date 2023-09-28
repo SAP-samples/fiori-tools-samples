@@ -1,0 +1,39 @@
+{
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/northwind/(.*)$",
+      "target": "$1",
+      "destination": "northwind"
+    },
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/webapp/resources/(.*)$",
+      "target": "/resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/webapp/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "destination": "ui5",
+      "authenticationType": "none"
+    },
+    {
+      "source": "^/(.*)$",
+      "service": "html5-apps-repo-rt"
+    }
+  ],
+  "welcomeFile": "index.html"
+}

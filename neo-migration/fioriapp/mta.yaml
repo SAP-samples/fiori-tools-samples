@@ -1,0 +1,93 @@
+_schema-version: "3.2"
+ID: manageproductsneo2911c
+version: 0.0.1
+modules:
+- name: manageproductsneo2911c-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: manageproductsneo2911c-destination-service
+    parameters:
+      content-target: true
+  - name: manageproductsneo2911c-repo-host
+    parameters:
+      service-key:
+        name: manageproductsneo2911c-repo-host-key
+  - name: manageproductsneo2911c-uaa
+    parameters:
+      service-key:
+        name: manageproductsneo2911c-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: manageproductsneo2911c_html_repo_host
+          ServiceInstanceName: manageproductsneo2911c-html5-srv
+          ServiceKeyName: manageproductsneo2911c-repo-host-key
+          sap.cloud.service: manageproductsneo2911c
+        - Authentication: OAuth2UserTokenExchange
+          Name: manageproductsneo2911c_uaa
+          ServiceInstanceName: manageproductsneo2911c-xsuaa-srv
+          ServiceKeyName: manageproductsneo2911c-uaa-key
+          sap.cloud.service: manageproductsneo2911c
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: manageproductsneo2911c-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: manageproductsneo2911c-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - manageproductsneo2911c.zip
+      name: manageproductsneo2911c
+      target-path: resources/
+- name: manageproductsneo2911c
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: manageproductsneo2911c-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: manageproductsneo2911c-destination-service
+    service-plan: lite
+- name: manageproductsneo2911c-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: manageproductsneo2911c-xsuaa-srv
+    service-plan: application
+- name: manageproductsneo2911c-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: manageproductsneo2911c-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

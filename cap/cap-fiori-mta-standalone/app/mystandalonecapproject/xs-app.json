@@ -3,7 +3,7 @@
   "authenticationMethod": "route",
   "routes": [
     {
-        "authenticationType": "none",
+        "authenticationType": "xsuaa",
         "csrfProtection": false,
         "source": "^/catalog/",
         "destination": "cap-launchpad"

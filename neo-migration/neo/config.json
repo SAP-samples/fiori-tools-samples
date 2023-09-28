@@ -1,0 +1,20 @@
+{
+    "init_data": {
+      "subaccount": {
+        "existing_destinations_policy": "update",
+        "destinations": [
+        {
+          "Name": "northwind",
+          "WebIDEEnabled": "true",
+          "WebIDEUsage": "odata_gen",
+          "HTML5.DynamicDestination": "true",
+          "Authentication": "NoAuthentication",
+          "Description": "Destination to internet facing host",
+          "ProxyType": "Internet",
+          "Type": "HTTP",
+          "URL": "https://services.odata.org"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<core:FragmentDefinition 
+xmlns:core="sap.ui.core" 
+xmlns="sap.gantt.simple" 
+xmlns:ui="sap.ui.table"
+xmlns:m="sap.m"
+>
+	<GanttChartContainer id="container" enableTimeScrollSync="true" width="100%" height="16rem" core:require="{handler: 'sap/fe/demo/incidents/ext/fragment/CustomSectionGantt'}">
+		<toolbar>
+			<ContainerToolbar stepCountOfSlider="6" showSettingButton="false" >
+			</ContainerToolbar>
+		</toolbar>	
+	<GanttChartWithTable id="gantt" selectionPanelSize="25%">
+
+		<table>
+			<ui:Table
+				selectionMode="None"
+				minAutoRowCount="1"
+				visibleRowCount="5"
+				selectionBehavior="RowSelector"
+				rows="{
+					path: 'incidentProcessTimeline'
+				}">
+				<ui:columns>
+					<ui:Column>
+						<m:Text text="Process Step"/>
+						<ui:template>
+							<m:Label text="{text}"/>
+						</ui:template>
+					</ui:Column>
+				</ui:columns>
+				<ui:rowSettingsTemplate>
+					<GanttRowSettings rowId="{id}">
+						<shapes1>
+							<BaseConditionalShape activeShape="0">
+								<shapes>
+									<BaseChevron time="{path: 'startTime', formatter: 'handler.fnTimeConverter'}"
+												   endTime="{path: 'endTime', formatter: 'handler.fnTimeConverter'}"
+												   fill="@sapUiChartPaletteQualitativeHue6"/>
+								</shapes>
+							</BaseConditionalShape>
+						</shapes1>
+					</GanttRowSettings>
+				</ui:rowSettingsTemplate>
+			</ui:Table>
+		</table>
+	</GanttChartWithTable>
+	</GanttChartContainer>
+</core:FragmentDefinition>

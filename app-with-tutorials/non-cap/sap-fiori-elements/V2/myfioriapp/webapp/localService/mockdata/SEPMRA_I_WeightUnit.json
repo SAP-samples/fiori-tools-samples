@@ -1,0 +1,22 @@
+[
+	{
+		"UnitOfMeasure": "G",
+		"UnitOfMeasure_Text": "g",
+		"UnitOfMeasureISOCode": "GRM"
+	},
+	{
+		"UnitOfMeasure": "KG",
+		"UnitOfMeasure_Text": "kg",
+		"UnitOfMeasureISOCode": "KGM"
+	},
+	{
+		"UnitOfMeasure": "MG",
+		"UnitOfMeasure_Text": "mg",
+		"UnitOfMeasureISOCode": "MGM"
+	},
+	{
+		"UnitOfMeasure": "TO",
+		"UnitOfMeasure_Text": "t",
+		"UnitOfMeasureISOCode": "TNE"
+	}
+]

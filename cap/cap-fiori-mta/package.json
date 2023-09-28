@@ -6,16 +6,16 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
-        "@sap/cds": "^5",
+        "@sap/cds": "^6",
         "express": "^4",
-        "hdb": "^0.18.3",
-        "@sap/xsenv": "^3.3.2",
-        "@sap/xssec": "^3.2.13",
+        "hdb": "^0.19.5",
+        "@sap/xsenv": "^3.4.0",
+        "@sap/xssec": "^3.3.2",
         "passport": "^0.6.0"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.102.3",
-        "rimraf": "^3.0.2"
+        "@sap/ux-specification": "^1.108.10",
+        "rimraf": "^5.0.1"
     },
     "scripts": {
         "start": "cds run",
