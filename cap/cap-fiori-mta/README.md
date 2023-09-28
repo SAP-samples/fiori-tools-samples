@@ -1,5 +1,5 @@
 # Getting Started
-Build and deploy a CAP Project API with a Fiori Elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP)
+Build and deploy a CAP Project API with a Fiori Elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP).
 
 ## Prerequisites
 These are only required if deploying to Cloud Foundry (CF)

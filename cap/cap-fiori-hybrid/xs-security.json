@@ -1,0 +1,29 @@
+
+{
+  "xsappname": "managedappcapproject",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.capuser",
+      "description": "CAP Project Generated role scope"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "capuser",
+      "description": "CAP Project Generated role template",
+      "scope-references": ["$XSAPPNAME.capuser"],
+      "attribute-references": []
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+        "https://**.hana.ondemand.com/**",
+        "https://**.applicationstudio.cloud.sap/**",
+        "http://localhost:*/**"
+    ]
+  },
+  "attributes": [],
+  "authorities-inheritance": false
+}

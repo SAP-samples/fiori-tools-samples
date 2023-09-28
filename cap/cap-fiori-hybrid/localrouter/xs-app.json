@@ -1,0 +1,8 @@
+{
+    "routes": [
+      {
+        "source": "^/(.*)",
+        "destination": "cap-catalog-api"
+      }
+    ]
+  }

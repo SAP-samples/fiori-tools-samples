@@ -1,0 +1,144 @@
+_schema-version: "3.1"
+ID: managedAppCAPProject
+description: A simple CAP project.
+version: 1.0.0
+modules:
+  - name: managedAppCAPProject-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: managedAppCAPProject-db
+      - name: uaa_managedAppCAPProject
+    parameters:
+      buildpack: nodejs_buildpack
+      disk-quota: 512M
+      host: ${appname}
+      memory: 256M
+    build-parameters:
+      builder: npm-ci
+      ignore:
+        - .env
+        - node_modules/
+  - name: managedAppCAPProject-db-deployer
+    type: hdb
+    path: db
+    requires:
+      - name: managedAppCAPProject-db
+        properties:
+          TARGET_CONTAINER: ~{hdi-service-name}
+    parameters:
+      buildpack: nodejs_buildpack
+  - name: managedAppCAPProject-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: managedAppCAPProject-destination-service
+        parameters:
+          content-target: true
+      - name: managedAppCAPProject_html_repo_host
+        parameters:
+          service-key:
+            name: managedAppCAPProject_html_repo_host-key
+      - name: uaa_managedAppCAPProject
+        parameters:
+          service-key:
+            name: managedAppCAPProject-xsuaa-service-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: managedRouterCapProject_managedAppCAPProject_html_repo_host
+              ServiceInstanceName: managedAppCAPProject-html5-app-host-service
+              ServiceKeyName: managedAppCAPProject_html_repo_host-key
+              sap.cloud.service: managedRouterCapProject
+            - Authentication: OAuth2UserTokenExchange
+              Name: managedRouterCapProject_uaa_managedAppCAPProject
+              ServiceInstanceName: managedAppCAPProject-xsuaa-service
+              ServiceKeyName: managedAppCAPProject-xsuaa-service-key
+              sap.cloud.service: managedRouterCapProject
+          existing_destinations_policy: ignore
+      disk-quota: 512M
+      memory: 256M
+    build-parameters:
+      no-source: true
+  - name: managedAppCAPProject-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: managedAppCAPProject_html_repo_host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - captutorialfeprojectui.zip
+          name: captutorialfeprojectui
+          target-path: resources/
+  - name: captutorialfeprojectui
+    type: html5
+    path: app/feproject-ui
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+resources:
+  - name: managedAppCAPProject-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-keys:
+        - name: managedAppCAPProject-db-key
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}
+  - name: managedAppCAPProject-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
+              - Authentication: NoAuthentication
+                HTML5.DynamicDestination: true
+                HTML5.ForwardAuthToken: true
+                Name: cap-catalog-api
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://${appname}.${default-domain}
+            existing_destinations_policy: update
+        version: 1.0.0
+      service: destination
+      service-name: managedAppCAPProject-destination-service
+      service-plan: lite
+  - name: managedAppCAPProject_html_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: managedAppCAPProject-html5-app-host-service
+      service-plan: app-host
+  - name: uaa_managedAppCAPProject
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: managedAppCAPProject-xsuaa-service
+      service-plan: application
+parameters:
+  appname: mycapproject-jl-unique
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx -p @sap/cds-dk cds build --production
