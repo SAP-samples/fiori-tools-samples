@@ -44,14 +44,32 @@ __At this point, you have deployed your application to CF, if you run the CAP pr
 
 - Bind to the XSUAA service `cds bind -2 managedAppCAPProject-xsuaa-service --kind xsuaa`
 - Bind to the HANA HDI service `cds bind -2 managedAppCAPProject-db`
-- Spin up your CAP project in hybrid mode `npm run watch:hyrbid`
+- Spin up your CAP project in hybrid mode `npm run watch:hybrid` but don't click the `Open in a New Tab` prompt since this is not authenticating the user with XSUAA security
+- The console output will show HANA connectivity;
 
-__To imitate a `production-near` environment, you need to route the HTTP requests to your SAP BTP services. The `localrouter` will fetch a valid token from the XSUAA instance and attach it to every subsequent request.__
+```
+[cds] - connect using bindings from: { registry: '~/.cds-services.json' }
+[cds] - connect to db > hana {
+```
+
+__To imitate a `production-near` environment, you need to route the HTTP requests to your SAP BTP XSUAA and HANA services. The `localrouter` will fetch a valid token from the XSUAA instance and attach it to every subsequent request.__
 
 - Install the local approuter `npm run install:localrouter`
-- Spin up the local approuter `npm run start:router`
+- Spin up the local approuter `cds bind --exec -- npm start --prefix localrouter`
 - Open your CAP Project using the `localrouter:5001` endpoint, `View` -> `Ports: Preview` -> select port 5001
 - Open the new browser tab and select your Fiori UI application
+
+## Gotchas
+
+### Forbidden
+
+You have tried to load your Fiori UI application on port 5001 but get the following error message;
+```
+Application could not be started due to technical issues.
+Forbidden
+```
+
+Please ensure you have assigned your email address to the `capuser` role in your SAP BTP cockpit under security, follow [this guide](https://cap.cloud.sap/docs/node.js/authentication#auth-in-cockpit) for steps.
 
 ## Get Support
 

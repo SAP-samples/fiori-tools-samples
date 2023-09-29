@@ -19,7 +19,6 @@
     },
     "scripts": {
         "start": "cds run",
-        "start:router": "cds bind --exec -- npm start --prefix localrouter",
         "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1",

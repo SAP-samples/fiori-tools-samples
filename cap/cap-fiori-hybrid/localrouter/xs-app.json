@@ -1,8 +1,10 @@
 {
-    "routes": [
-      {
-        "source": "^/(.*)",
-        "destination": "cap-catalog-api"
-      }
-    ]
-  }
+  "routes": [
+    {
+      "source": "^/(.*)$",
+      "target": "$1",
+      "destination": "srv_api",
+      "csrfProtection": true
+    }
+  ]
+}
