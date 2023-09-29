@@ -1,7 +1,7 @@
 # Getting Started
 Build and deploy a CAP Project API with a Fiori Elements UI to Cloud Foundry (CF) using a managed approuter configuration hosted on SAP Business Technology Platform (BTP) using [SAP CAP hybrid profile](https://cap.cloud.sap/docs/advanced/hybrid-testing) for testing and development.
 
-The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime. 
+The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime.
 
 One of the main reasons for this repository is to showcase how a CAP project with a Fiori UI can be developed and tested using a `production-near` environment. The SAP CAP hybrid approach will allow the developer to;
 
@@ -9,6 +9,8 @@ One of the main reasons for this repository is to showcase how a CAP project wit
 * Leverage real user authentication
 
 The benefit? You can switch between local mock configuration and cloud service configuration by simply setting or omitting the hybrid profile parameter.
+
+[Review the local changes](changes.md) made to support a CDS hybrid testing and development environment.
 
 ## Prerequisites
 - You have created a [SAP Cloud Platform trial account](https://account.hana.ondemand.com/)

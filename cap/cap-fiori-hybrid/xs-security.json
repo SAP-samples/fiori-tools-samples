@@ -24,6 +24,5 @@
         "http://localhost:*/**"
     ]
   },
-  "attributes": [],
   "authorities-inheritance": false
 }

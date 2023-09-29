@@ -40,7 +40,7 @@ modules:
             name: managedAppCAPProject_html_repo_host-key
       - name: uaa_managedAppCAPProject
         parameters:
-          service-key:
+          service-key: # creates xsuaa service key for Managed approuter
             name: managedAppCAPProject-xsuaa-service-key
     parameters:
       content:
@@ -133,7 +133,7 @@ resources:
       service-name: managedAppCAPProject-xsuaa-service
       service-plan: application
 parameters:
-  appname: mycapproject-jl-unique
+  appname: mycapproject-unique
   deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:

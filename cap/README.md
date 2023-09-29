@@ -12,7 +12,7 @@ This repository provides sample CAP projects using different router configuratio
 
 2. [Standalone Approuter](../cap/cap-fiori-mta-standalone/README.md) with an in-memory database
 
-3. [Managed Approuter with Hybrid Profile](../cap/cap-fiori-hybrid/README.md) with SAP Hana Cloud service and XSUAA service
+3. [Managed Approuter with CDS Hybrid Profile](../cap/cap-fiori-hybrid/README.md) supporting HANA and XSUAA services hosted on SAP BTP
 
 All CAP projects were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropiate approuter configuration as the HTML5 application runtime.
 
