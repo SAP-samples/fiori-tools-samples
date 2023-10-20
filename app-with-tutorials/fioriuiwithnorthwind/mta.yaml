@@ -78,6 +78,7 @@ resources:
             URL: https://services.odata.org
             WebIDEUsage: odata_gen            
             HTML5.DynamicDestination: true
+            WebIDEEnabled: true
             Description: Instance Based Destination                
           existing_destinations_policy: update
       version: 1.0.0
