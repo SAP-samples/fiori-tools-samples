@@ -1,0 +1,44 @@
+{
+    "name": "fioriuiwithnorthwind",
+    "version": "0.0.1",
+    "private": true,
+    "description": "A Fiori application.",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "dependencies": {},
+    "devDependencies": {
+        "@ui5/cli": "^3.0.0",
+        "@sap/ux-ui5-tooling": "1",
+        "@sap/ux-specification": "UI5-1.119",
+        "@sap-ux/ui5-middleware-fe-mockserver": "2",
+        "@sap/ui5-builder-webide-extension": "^1.1.8",
+        "ui5-task-zipper": "^0.5.0",
+        "mbt": "^1.2.18"
+    },
+    "scripts": {
+        "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fioriuiwithnorthwind-tile\"",
+        "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fioriuiwithnorthwind-tile\"",
+        "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+        "deploy": "fiori cfDeploy",
+        "deploy-config": "fiori add deploy-config",
+        "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+        "start-mock": "fiori run --config ./ui5-mock.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fioriuiwithnorthwind-tile\"",
+        "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
+        "build:mta": "rimraf resources mta_archives && mbt build",
+        "undeploy": "cf undeploy fioriuiwithnorthwind --delete-services --delete-service-keys --delete-service-brokers"
+    },
+    "sapux": true,
+    "sapuxLayer": "CUSTOMER_BASE",
+    "ui5": {
+        "dependencies": [
+            "@sap/ui5-builder-webide-extension",
+            "ui5-task-zipper",
+            "mbt"
+        ]
+    }
+}
