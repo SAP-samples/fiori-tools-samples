@@ -1,5 +1,5 @@
 # Getting Started
-Build and deploy a CAP Project API with a Fiori Elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP)
+Build and deploy a CAP Project API with a Fiori Elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP).
 
 The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime. 
 
