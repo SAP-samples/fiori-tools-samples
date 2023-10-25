@@ -6,7 +6,7 @@
 		"node": ">= 16.0.0"
 	},
 	"dependencies": {
-		"@sap/approuter": "11.5.0"
+		"@sap/approuter": "^14"
 	},
 	"devDependencies": {
 		"@sap/html5-repo-mock": "2.1.5"
