@@ -1,0 +1,121 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/SEPMRA_PROD_MAN/$metadata">
+        <edmx:Include Namespace="SEPMRA_PROD_MAN" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP.SEPMRA_C_PD_ProductType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>to_PriceRange/PriceClassification</PropertyPath>
+                        <PropertyPath>MainProductCategory</PropertyPath>
+                        <PropertyPath>Supplier</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="TechnicalData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ProductBaseUnit" />
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Height" />
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Width" />
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Depth" />
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Weight" />
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DimensionUnit" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Label" String="Technical Data" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechnicalData" />
+                            <PropertyValue Property="Label" String="Technical Data" />
+                            <PropertyValue Property="ID" String="TechData" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="to_ProductSalesData/@UI.Chart" />
+                            <PropertyValue Property="Label" String="Monthly Revenue" />
+                            <PropertyValue Property="ID" String="MonthRev" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="to_ProductSalesData/@UI.LineItem" />
+                            <PropertyValue Property="Label" String="Sales Data" />
+                            <PropertyValue Property="ID" String="SalesData" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.SEPMRA_C_PD_ProductSalesDataType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID" />
+                            <PropertyValue Property="Label" String="Sales ID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DeliveryCalendarMonthT" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Sales Order" />
+                        <PropertyValue Property="TypeNamePlural" String="Sales Orders" />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Product" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DeliveryCalendarDate" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DeliveryCalendarMonth" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DeliveryCalendarMonthT" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup" />
+                            <PropertyValue Property="Label" String="Sales Information" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

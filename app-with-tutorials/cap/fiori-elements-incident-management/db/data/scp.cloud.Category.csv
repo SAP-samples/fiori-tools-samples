@@ -1,0 +1,7 @@
+code;name;descr
+security;Security;Reporting of security or login issues
+software;Software;Operating system and Standard Software issues
+hardware;Hardware;Hardware issues related to Desktop, Notebook, Beamer, Monitor, etc.
+telephony;Telephony;Mobile Phone, Softphone, Deskphone issues
+database;Database;In-Memory Database, RDBMS, OODBMS issues
+inquiry;Inquiry;Inquiries related to Facility Management, Hard-/Software Ordering, Travel Booking

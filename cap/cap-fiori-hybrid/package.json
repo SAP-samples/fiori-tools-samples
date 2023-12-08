@@ -1,0 +1,92 @@
+{
+    "name": "managedAppCAPProject",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "express": "^4",
+        "hdb": "^0.19.6",
+        "@sap/xsenv": "^4",
+        "@sap/xssec": "^3.3.4",
+        "passport": "^0.6.0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.10",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds run",
+        "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "deploy:hana": "cds deploy --to hana --auto-undeploy --profile hybrid",
+        "watch:dummy": "cds watch --profile dummy",
+        "watch:hana": "cds watch --profile hana",
+        "watch:dev": "cds watch",
+        "watch:hybrid": "cds watch --profile hybrid --port 4004",
+        "check-uaa-config": "cds env list requires.uaa --resolve-bindings --profile hybrid",
+        "check-db-config": "cds env list requires.db --resolve-bindings --profile hybrid",
+        "install:localrouter": "cd localrouter && npm install",
+        "install:app": "npm install",
+        "bind:hana": "cds bind -2 managedAppCAPProject-db --profile hybrid",
+        "bind:uaa": "cds bind -2 managedAppCAPProject-xsuaa-service --kind xsuaa",
+        "cf:uaa:update": "cf update-service managedAppCAPProject-xsuaa-service -c xs-security.json"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "build": {
+            "tasks": [
+                {
+                    "for": "hana",
+                    "dest": "../db"
+                },
+                {
+                    "for": "node-cf"
+                }
+            ]
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        },
+        "requires": {
+            "db": {
+                "kind": "hana"
+            },
+            "uaa": {
+                "kind": "xsuaa"
+            },
+            "[hybrid]": {
+                "auth": {
+                    "kind": "xsuaa"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,863 @@
+[
+	{
+		"Product": "HT-1000",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "37"
+	},
+	{
+		"Product": "HT-1001",
+		"Quantity": "91",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "25"
+	},
+	{
+		"Product": "HT-1002",
+		"Quantity": "98",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-1003",
+		"Quantity": "122",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "44"
+	},
+	{
+		"Product": "HT-1007",
+		"Quantity": "57",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "23"
+	},
+	{
+		"Product": "HT-1010",
+		"Quantity": "150",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "13"
+	},
+	{
+		"Product": "HT-1011",
+		"Quantity": "61",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "29"
+	},
+	{
+		"Product": "HT-1020",
+		"Quantity": "132",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "HT-1021",
+		"Quantity": "40",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "47"
+	},
+	{
+		"Product": "HT-1022",
+		"Quantity": "122",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "36"
+	},
+	{
+		"Product": "HT-1023",
+		"Quantity": "91",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-1030",
+		"Quantity": "107",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "18"
+	},
+	{
+		"Product": "HT-1031",
+		"Quantity": "112",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "44"
+	},
+	{
+		"Product": "HT-1032",
+		"Quantity": "96",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "35"
+	},
+	{
+		"Product": "HT-1035",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "40"
+	},
+	{
+		"Product": "HT-1036",
+		"Quantity": "43",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1037",
+		"Quantity": "96",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "29"
+	},
+	{
+		"Product": "HT-1040",
+		"Quantity": "42",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "14"
+	},
+	{
+		"Product": "HT-1041",
+		"Quantity": "92",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1042",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-1050",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-1051",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "36"
+	},
+	{
+		"Product": "HT-1052",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "39"
+	},
+	{
+		"Product": "HT-1055",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "47"
+	},
+	{
+		"Product": "HT-1056",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "30"
+	},
+	{
+		"Product": "HT-1060",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "26"
+	},
+	{
+		"Product": "HT-1061",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "40"
+	},
+	{
+		"Product": "HT-1062",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "29"
+	},
+	{
+		"Product": "HT-1063",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "42"
+	},
+	{
+		"Product": "HT-1064",
+		"Quantity": "0",
+		"QuantityUnit": "EA",
+		"StockAvailability": 1,
+		"MinimumStockQuantity": "36"
+	},
+	{
+		"Product": "HT-1065",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "23"
+	},
+	{
+		"Product": "HT-1066",
+		"Quantity": "75",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "41"
+	},
+	{
+		"Product": "HT-1067",
+		"Quantity": "99",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "30"
+	},
+	{
+		"Product": "HT-1068",
+		"Quantity": "54",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "15"
+	},
+	{
+		"Product": "HT-1069",
+		"Quantity": "2",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "35"
+	},
+	{
+		"Product": "HT-1070",
+		"Quantity": "3",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "42"
+	},
+	{
+		"Product": "HT-1071",
+		"Quantity": "5",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "43"
+	},
+	{
+		"Product": "HT-1072",
+		"Quantity": "1",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-1073",
+		"Quantity": "1",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "37"
+	},
+	{
+		"Product": "HT-1080",
+		"Quantity": "2",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "18"
+	},
+	{
+		"Product": "HT-1081",
+		"Quantity": "4",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "19"
+	},
+	{
+		"Product": "HT-1082",
+		"Quantity": "5",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "39"
+	},
+	{
+		"Product": "HT-1083",
+		"Quantity": "1",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-1085",
+		"Quantity": "1",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "21"
+	},
+	{
+		"Product": "HT-1090",
+		"Quantity": "2",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "HT-1091",
+		"Quantity": "2",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "44"
+	},
+	{
+		"Product": "HT-1092",
+		"Quantity": "2",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "37"
+	},
+	{
+		"Product": "HT-1100",
+		"Quantity": "3",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "13"
+	},
+	{
+		"Product": "HT-1101",
+		"Quantity": "8",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-1102",
+		"Quantity": "106",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "47"
+	},
+	{
+		"Product": "HT-1103",
+		"Quantity": "120",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "40"
+	},
+	{
+		"Product": "HT-1104",
+		"Quantity": "121",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "26"
+	},
+	{
+		"Product": "HT-1105",
+		"Quantity": "83",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "28"
+	},
+	{
+		"Product": "HT-1106",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "15"
+	},
+	{
+		"Product": "HT-1107",
+		"Quantity": "50",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "47"
+	},
+	{
+		"Product": "HT-1110",
+		"Quantity": "89",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-1111",
+		"Quantity": "61",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-1112",
+		"Quantity": "69",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "18"
+	},
+	{
+		"Product": "HT-1113",
+		"Quantity": "57",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1114",
+		"Quantity": "52",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "HT-1115",
+		"Quantity": "69",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "29"
+	},
+	{
+		"Product": "HT-1116",
+		"Quantity": "66",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-1117",
+		"Quantity": "120",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1118",
+		"Quantity": "41",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "16"
+	},
+	{
+		"Product": "HT-1120",
+		"Quantity": "128",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "49"
+	},
+	{
+		"Product": "HT-1137",
+		"Quantity": "59",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "HT-1138",
+		"Quantity": "99",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "42"
+	},
+	{
+		"Product": "HT-1210",
+		"Quantity": "98",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "46"
+	},
+	{
+		"Product": "HT-1500",
+		"Quantity": "76",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "27"
+	},
+	{
+		"Product": "HT-1501",
+		"Quantity": "150",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-1502",
+		"Quantity": "73",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "26"
+	},
+	{
+		"Product": "HT-6130",
+		"Quantity": "88",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "22"
+	},
+	{
+		"Product": "HT-6131",
+		"Quantity": "116",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "34"
+	},
+	{
+		"Product": "HT-6132",
+		"Quantity": "91",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "16"
+	},
+	{
+		"Product": "HT-7030",
+		"Quantity": "76",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "33"
+	},
+	{
+		"Product": "HT-7020",
+		"Quantity": "124",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-7010",
+		"Quantity": "54",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-7000",
+		"Quantity": "65",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "40"
+	},
+	{
+		"Product": "HT-1095",
+		"Quantity": "106",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "25"
+	},
+	{
+		"Product": "HT-1096",
+		"Quantity": "60",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "26"
+	},
+	{
+		"Product": "HT-1097",
+		"Quantity": "67",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "24"
+	},
+	{
+		"Product": "HT-6123",
+		"Quantity": "113",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-6122",
+		"Quantity": "64",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "35"
+	},
+	{
+		"Product": "HT-6121",
+		"Quantity": "80",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "12"
+	},
+	{
+		"Product": "HT-6120",
+		"Quantity": "123",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "15"
+	},
+	{
+		"Product": "HT-6111",
+		"Quantity": "121",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "30"
+	},
+	{
+		"Product": "HT-6110",
+		"Quantity": "142",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "HT-6102",
+		"Quantity": "80",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "28"
+	},
+	{
+		"Product": "HT-6101",
+		"Quantity": "42",
+		"QuantityUnit": "EA",
+		"StockAvailability": 2,
+		"MinimumStockQuantity": "48"
+	},
+	{
+		"Product": "HT-2002",
+		"Quantity": "99",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "40"
+	},
+	{
+		"Product": "HT-6100",
+		"Quantity": "148",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-2027",
+		"Quantity": "59",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "43"
+	},
+	{
+		"Product": "HT-2026",
+		"Quantity": "98",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "19"
+	},
+	{
+		"Product": "HT-2025",
+		"Quantity": "124",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "44"
+	},
+	{
+		"Product": "HT-2001",
+		"Quantity": "67",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-2000",
+		"Quantity": "71",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "41"
+	},
+	{
+		"Product": "HT-1603",
+		"Quantity": "68",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "37"
+	},
+	{
+		"Product": "HT-1602",
+		"Quantity": "68",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "14"
+	},
+	{
+		"Product": "HT-1601",
+		"Quantity": "93",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-1600",
+		"Quantity": "50",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1119",
+		"Quantity": "146",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "19"
+	},
+	{
+		"Product": "HT-8000",
+		"Quantity": "141",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "29"
+	},
+	{
+		"Product": "HT-8001",
+		"Quantity": "125",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "48"
+	},
+	{
+		"Product": "HT-8002",
+		"Quantity": "92",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "50"
+	},
+	{
+		"Product": "HT-8003",
+		"Quantity": "139",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "11"
+	},
+	{
+		"Product": "PF-1000",
+		"Quantity": "49",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "21"
+	},
+	{
+		"Product": "HT-9999",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "14"
+	},
+	{
+		"Product": "HT-9998",
+		"Quantity": "106",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "31"
+	},
+	{
+		"Product": "HT-9997",
+		"Quantity": "144",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-9996",
+		"Quantity": "83",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "16"
+	},
+	{
+		"Product": "HT-9995",
+		"Quantity": "98",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "21"
+	},
+	{
+		"Product": "HT-9994",
+		"Quantity": "82",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "15"
+	},
+	{
+		"Product": "HT-9993",
+		"Quantity": "129",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "14"
+	},
+	{
+		"Product": "HT-9992",
+		"Quantity": "109",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "18"
+	},
+	{
+		"Product": "HT-9991",
+		"Quantity": "149",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "24"
+	},
+	{
+		"Product": "HT-1251",
+		"Quantity": "44",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "38"
+	},
+	{
+		"Product": "HT-1252",
+		"Quantity": "55",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "27"
+	},
+	{
+		"Product": "HT-1253",
+		"Quantity": "118",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "35"
+	},
+	{
+		"Product": "HT-1254",
+		"Quantity": "119",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "41"
+	},
+	{
+		"Product": "HT-1255",
+		"Quantity": "92",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "44"
+	},
+	{
+		"Product": "HT-1256",
+		"Quantity": "74",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	},
+	{
+		"Product": "HT-1257",
+		"Quantity": "140",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "43"
+	},
+	{
+		"Product": "HT-1258",
+		"Quantity": "94",
+		"QuantityUnit": "EA",
+		"StockAvailability": 3,
+		"MinimumStockQuantity": "10"
+	}
+]

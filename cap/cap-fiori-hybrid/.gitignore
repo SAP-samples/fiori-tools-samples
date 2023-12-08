@@ -1,0 +1,40 @@
+# CAP managedAppCAPProject
+_out
+*.db
+connection.properties
+default-*.json
+.cdsrc-private.json
+gen/
+node_modules/
+target/
+.vscode
+
+# Web IDE, App Studio
+.che/
+.gen/
+.idea/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+Makefile*.mta
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+.vscode
+.idea
+
+# auto generated wildcard
+*/db/.env
+
+dist/
+resources/
+target/
