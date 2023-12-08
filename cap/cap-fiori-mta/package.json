@@ -8,9 +8,9 @@
     "dependencies": {
         "@sap/cds": "^5",
         "express": "^4",
-        "hdb": "^0.18.3",
         "@sap/xsenv": "^4.2.0",
         "@sap/xssec": "^3.6.0",
+        "hdb": "^0.19.5",
         "passport": "^0.6.0"
     },
     "devDependencies": {
