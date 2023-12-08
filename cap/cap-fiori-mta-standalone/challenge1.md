@@ -20,9 +20,9 @@ a. move `"sqlite3": "^5.0.4"` from `devDependencies` to `dependencies`
 
 b. add the following to `dependencies`
 ```JSON
-  "@sap/xsenv": "^3.1.0",
-  "@sap/xssec": "^3.2.0",
-  "passport": "^0.4.1"
+  "@sap/xsenv": "^4.2.0",
+  "@sap/xssec": "^3.6.0", 
+  "passport": "^0.6.0"
 ```
 
 c. Connecting CDS to the SQLite in-memory database, open `package.json` and include the following `cds` node;
