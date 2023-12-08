@@ -7,10 +7,10 @@
     "private": true,
     "dependencies": {
         "@sap/cds": "^6",
-        "@sap/xsenv": "^3.1.0",
-        "@sap/xssec": "^3.2.0",
+        "@sap/xsenv": "^4.2.0",
+        "@sap/xssec": "^3.6.0",
         "express": "^4",
-        "passport": "^0.4.1",
+        "passport": "^0.6.0",
         "sqlite3": "^5.0.4"
     },
     "devDependencies": {
