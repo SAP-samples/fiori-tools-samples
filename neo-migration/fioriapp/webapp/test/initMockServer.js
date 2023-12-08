@@ -1,0 +1,1 @@
+sap.ui.define(["mycompany/myapp/MyWorklistApp/localService/mockserver","sap/m/MessageBox"],function(e,i){"use strict";var o=[];o.push(e.init());Promise.all(o).catch(function(e){i.error(e.message)}).finally(function(){sap.ui.require(["sap/ui/core/ComponentSupport"])})});

@@ -1,0 +1,16 @@
+_schema-version: "3.1"
+ID: migrationcf
+description: Migrate services
+version: 1.0.0
+resources:
+- name: my_destination_service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service-plan: lite
+    service: destination
+    path: config.json
+- name: my_connectivity_service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service-plan: lite
+    service: connectivity

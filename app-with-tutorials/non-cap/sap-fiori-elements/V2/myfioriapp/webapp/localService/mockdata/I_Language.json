@@ -1,0 +1,207 @@
+[
+	{
+		"Language": "SR",
+		"Language_Text": "Serbian",
+		"LanguageISOCode": "SR"
+	},
+	{
+		"Language": "ZH",
+		"Language_Text": "Chinese",
+		"LanguageISOCode": "ZH"
+	},
+	{
+		"Language": "TH",
+		"Language_Text": "Thai",
+		"LanguageISOCode": "TH"
+	},
+	{
+		"Language": "KO",
+		"Language_Text": "Korean",
+		"LanguageISOCode": "KO"
+	},
+	{
+		"Language": "RO",
+		"Language_Text": "Romanian",
+		"LanguageISOCode": "RO"
+	},
+	{
+		"Language": "SL",
+		"Language_Text": "Slovenian",
+		"LanguageISOCode": "SL"
+	},
+	{
+		"Language": "HR",
+		"Language_Text": "Croatian",
+		"LanguageISOCode": "HR"
+	},
+	{
+		"Language": "MS",
+		"Language_Text": "Malay",
+		"LanguageISOCode": "MS"
+	},
+	{
+		"Language": "UK",
+		"Language_Text": "Ukrainian",
+		"LanguageISOCode": "UK"
+	},
+	{
+		"Language": "ET",
+		"Language_Text": "Estonian",
+		"LanguageISOCode": "ET"
+	},
+	{
+		"Language": "AR",
+		"Language_Text": "Arabic",
+		"LanguageISOCode": "AR"
+	},
+	{
+		"Language": "HE",
+		"Language_Text": "Hebrew",
+		"LanguageISOCode": "HE"
+	},
+	{
+		"Language": "CS",
+		"Language_Text": "Czech",
+		"LanguageISOCode": "CS"
+	},
+	{
+		"Language": "DE",
+		"Language_Text": "German",
+		"LanguageISOCode": "DE"
+	},
+	{
+		"Language": "EN",
+		"Language_Text": "English",
+		"LanguageISOCode": "EN"
+	},
+	{
+		"Language": "FR",
+		"Language_Text": "French",
+		"LanguageISOCode": "FR"
+	},
+	{
+		"Language": "EL",
+		"Language_Text": "Greek",
+		"LanguageISOCode": "EL"
+	},
+	{
+		"Language": "HU",
+		"Language_Text": "Hungarian",
+		"LanguageISOCode": "HU"
+	},
+	{
+		"Language": "IT",
+		"Language_Text": "Italian",
+		"LanguageISOCode": "IT"
+	},
+	{
+		"Language": "JA",
+		"Language_Text": "Japanese",
+		"LanguageISOCode": "JA"
+	},
+	{
+		"Language": "DA",
+		"Language_Text": "Danish",
+		"LanguageISOCode": "DA"
+	},
+	{
+		"Language": "PL",
+		"Language_Text": "Polish",
+		"LanguageISOCode": "PL"
+	},
+	{
+		"Language": "ZF",
+		"Language_Text": "Chinese trad.",
+		"LanguageISOCode": "ZF"
+	},
+	{
+		"Language": "NL",
+		"Language_Text": "Dutch",
+		"LanguageISOCode": "NL"
+	},
+	{
+		"Language": "NO",
+		"Language_Text": "Norwegian",
+		"LanguageISOCode": "NO"
+	},
+	{
+		"Language": "PT",
+		"Language_Text": "Portuguese",
+		"LanguageISOCode": "PT"
+	},
+	{
+		"Language": "SK",
+		"Language_Text": "Slovak",
+		"LanguageISOCode": "SK"
+	},
+	{
+		"Language": "RU",
+		"Language_Text": "Russian",
+		"LanguageISOCode": "RU"
+	},
+	{
+		"Language": "ES",
+		"Language_Text": "Spanish",
+		"LanguageISOCode": "ES"
+	},
+	{
+		"Language": "TR",
+		"Language_Text": "Turkish",
+		"LanguageISOCode": "TR"
+	},
+	{
+		"Language": "FI",
+		"Language_Text": "Finnish",
+		"LanguageISOCode": "FI"
+	},
+	{
+		"Language": "SV",
+		"Language_Text": "Swedish",
+		"LanguageISOCode": "SV"
+	},
+	{
+		"Language": "BG",
+		"Language_Text": "Bulgarian",
+		"LanguageISOCode": "BG"
+	},
+	{
+		"Language": "LT",
+		"Language_Text": "Lithuanian",
+		"LanguageISOCode": "LT"
+	},
+	{
+		"Language": "LV",
+		"Language_Text": "Latvian",
+		"LanguageISOCode": "LV"
+	},
+	{
+		"Language": "Z1",
+		"Language_Text": "Customer reserve",
+		"LanguageISOCode": "Z1"
+	},
+	{
+		"Language": "AF",
+		"Language_Text": "Afrikaans",
+		"LanguageISOCode": "AF"
+	},
+	{
+		"Language": "IS",
+		"Language_Text": "Icelandic",
+		"LanguageISOCode": "IS"
+	},
+	{
+		"Language": "CA",
+		"Language_Text": "Catalan",
+		"LanguageISOCode": "CA"
+	},
+	{
+		"Language": "SH",
+		"Language_Text": "Serbian (Latin)",
+		"LanguageISOCode": "SH"
+	},
+	{
+		"Language": "ID",
+		"Language_Text": "Indonesian",
+		"LanguageISOCode": "ID"
+	}
+]
