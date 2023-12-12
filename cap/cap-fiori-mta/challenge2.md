@@ -10,9 +10,9 @@
 ```
 - Add the following `dependencies` in the root `package.json`
 ```json
-        "@sap/xsenv": "^3.1.0",
-        "@sap/xssec": "^3.2.0",
-        "passport": "^0.4.1"
+        "@sap/xsenv": "^4.2.0",
+        "@sap/xssec": "^3.6.0",
+        "passport": "^0.6.0"
 ```
 - Enable authentication on the service catalog, add `@requires: 'authenticated-user'` to `srv->cat-service.cds`, as shown;
 ```cds
