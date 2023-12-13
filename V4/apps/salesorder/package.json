@@ -11,7 +11,7 @@
   "main": "webapp/index.html",
   "dependencies": {},
   "devDependencies": {
-    "@ui5/cli": "^2.14.10",
+    "@ui5/cli": "^3.3.4",
     "@sap/ux-ui5-tooling": "1",
     "@sap/ux-specification": "UI5-1.84",
     "eslint": "7.32.0",

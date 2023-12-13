@@ -11,7 +11,7 @@
     "main": "webapp/index.html",
     "dependencies": {},
     "devDependencies": {
-        "@ui5/cli": "^2.14.1",
+        "@ui5/cli": "^3.3.4",
         "@sap/ux-ui5-tooling": "1",
         "@sap-ux/ui5-middleware-fe-mockserver": "2",
         "@sap/ui5-builder-webide-extension": "^1.1.8",
