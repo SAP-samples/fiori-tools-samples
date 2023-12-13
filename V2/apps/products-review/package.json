@@ -7,7 +7,7 @@
     "@openui5/themelib_sap_fiori_3": "1.65.1",
     "@sap-ux/ui5-middleware-fe-mockserver": "2.1.25",
     "@sap/ux-ui5-tooling": "1.7.0",
-    "@ui5/cli": "2.14.10"
+    "@ui5/cli": "^3.3.4"
   },
   "optionalDependencies": {
     "fsevents": "2.3.2"
