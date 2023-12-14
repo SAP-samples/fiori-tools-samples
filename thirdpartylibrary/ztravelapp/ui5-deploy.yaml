@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+specVersion: "2.4"
+metadata:
+  name: ztest.docapp1.ztravel
+type: application
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8
+builder:
+  resources:
+    excludes:
+      - "/test/**"
+      - "/localService/**"
+  customTasks:
+    - name: webide-extension-task-updateManifestJson
+      afterTask: replaceVersion
+      configuration:
+        appFolder: webapp
+        destDir: dist
+    - name: ui5-task-zipper
+      afterTask: generateCachebusterInfo
+      configuration:
+        archiveName: ztestdocapp1ztravel
+        additionalFiles:
+          - xs-app.json
+    - name: ui5-tooling-modules-task
+      afterTask: replaceVersion
+      configuration:
+        addToNamespace: true

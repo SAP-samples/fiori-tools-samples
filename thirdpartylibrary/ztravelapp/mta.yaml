@@ -1,0 +1,93 @@
+_schema-version: "3.2"
+ID: reuselibtravelapp
+version: 0.0.1
+modules:
+- name: reuselibtravelapp-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: reuselibtravelapp-destination-service
+    parameters:
+      content-target: true
+  - name: reuselibtravelapp-repo-host
+    parameters:
+      service-key:
+        name: reuselibtravelapp-repo-host-key
+  - name: reuselibtravelapp-uaa
+    parameters:
+      service-key:
+        name: reuselibtravelapp-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: reuselibtravelapp_html_repo_host
+          ServiceInstanceName: reuselibtravelapp-html5-srv
+          ServiceKeyName: reuselibtravelapp-repo-host-key
+          sap.cloud.service: reuselibtravelapp
+        - Authentication: OAuth2UserTokenExchange
+          Name: reuselibtravelapp_uaa
+          ServiceInstanceName: reuselibtravelapp-xsuaa-srv
+          ServiceKeyName: reuselibtravelapp-uaa-key
+          sap.cloud.service: reuselibtravelapp
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: reuselibtravelapp-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: reuselibtravelapp-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - reuselibtravelapp.zip
+      name: reuselibtravelapp
+      target-path: resources/
+- name: reuselibtravelapp
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: reuselibtravelapp-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: reuselibtravelapp-destination-service
+    service-plan: lite
+- name: reuselibtravelapp-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: reuselibtravelapp-xsuaa-srv
+    service-plan: application
+- name: reuselibtravelapp-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: reuselibtravelapp-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
