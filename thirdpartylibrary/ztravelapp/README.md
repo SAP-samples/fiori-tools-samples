@@ -18,9 +18,14 @@ Please refer to the following link, [Developing Apps with SAP Fiori Tools](https
 
 # Tasks
 
-Append third part library to `package.json`;
+Append third party library to `package.json`;
 ```bash
 npm install xml-js --save-prod
+```
+
+Append UI5 tooling extension to include a custom middleware and a custom task which allows use of NPM package names in your code;
+```bash
+npm install ui5-tooling-modules --save-prod
 ```
 
 Open `View1.controller.js` and append the `xml-js` library;

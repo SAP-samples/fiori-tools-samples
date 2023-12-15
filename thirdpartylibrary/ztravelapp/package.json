@@ -10,15 +10,16 @@
     ],
     "main": "webapp/index.html",
     "dependencies": {
-        "ui5-tooling-modules": "3.2.4"
+        "ui5-tooling-modules": "3.2.4",
+        "xml-js": "^1.6.11"
     },
     "devDependencies": {
-        "@ui5/cli": "^3.0.0",
-        "@sap/ux-ui5-tooling": "1",
         "@sap-ux/ui5-middleware-fe-mockserver": "2",
         "@sap/ui5-builder-webide-extension": "^1.1.8",
-        "ui5-task-zipper": "^0.5.0",
-        "mbt": "^1.2.18"
+        "@sap/ux-ui5-tooling": "1",
+        "@ui5/cli": "^3.0.0",
+        "mbt": "^1.2.18",
+        "ui5-task-zipper": "^0.5.0"
     },
     "scripts": {
         "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#ztestdocapp1ztravel-display\"",
