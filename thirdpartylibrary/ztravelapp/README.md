@@ -28,6 +28,14 @@ Append UI5 tooling extension to include a custom middleware and a custom task wh
 npm install ui5-tooling-modules --save-prod
 ```
 
+Open `ui5.yaml` and append a new task, ensuring the alignment is maintained;
+```YAML
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression
+      configuration:
+        addToNamespace: true
+```
+
 Open `View1.controller.js` and append the `xml-js` library;
 ```JS
 sap.ui.define(
