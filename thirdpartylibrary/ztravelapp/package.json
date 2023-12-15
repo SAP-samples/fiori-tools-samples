@@ -10,7 +10,7 @@
     ],
     "main": "webapp/index.html",
     "dependencies": {
-        "ui5-tooling-modules": "^3.2.4"
+        "ui5-tooling-modules": "3.2.4"
     },
     "devDependencies": {
         "@ui5/cli": "^3.0.0",
