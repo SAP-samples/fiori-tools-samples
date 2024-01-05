@@ -1,4 +1,4 @@
-# Adding External Library to your Fiori UI application
+# Adding External Library to your SAP Fiori UI application
 
 # Prerequisites
 
