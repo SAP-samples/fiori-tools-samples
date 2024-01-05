@@ -1,4 +1,4 @@
-# Adding External Library to your Fiori UI application
+# Adding External Library to your SAP Fiori UI application
 
 In this sample project, `xml-js` is going to be added as an external library.
 
@@ -12,7 +12,7 @@ In this sample project, `xml-js` is going to be added as an external library.
 
 From your SAP BTP cockpit, select Instances and Subscriptions, select SAP Business Application Studio which will open a new tab into your dev space manager. Generate a SAP Fiori dev space.
 
-# Generate a Fiori UI Freestyle Application
+# Generate a freestyle SAPUI5 application
 
 Please refer to the following link, [Developing Apps with SAP Fiori Tools](https://sapui5.hana.ondemand.com/sdk/#/topic/a460a7348a6c431a8bd967ab9fb8d918) for more information.
 

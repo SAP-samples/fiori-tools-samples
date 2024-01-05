@@ -7,4 +7,4 @@
 - Sub-account destination `northwind` is available, please see attached `northind` configuration
 
 # Sample Project
-A [Fiori tools Freestyle UI application](./ztravelapp/README.md) with an external library `xml-js` enabled.
+The [freestyle SAPUI5 application](./ztravelapp/README.md) demonstrates how to add an external third party library `xml-js` to the project.
