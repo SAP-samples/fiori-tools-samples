@@ -1,0 +1,6 @@
+#
+URL=https\://services.odata.org
+Name=northwind
+ProxyType=Internet
+Type=HTTP
+Authentication=NoAuthentication
