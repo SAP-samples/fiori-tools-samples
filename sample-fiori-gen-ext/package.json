@@ -1,6 +1,6 @@
 {
   "name": "@sample/fiori-gen-ext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sample Fiori generator extension sub-generator",
   "keywords": [
     "fiori-generator-extension"
@@ -17,23 +17,24 @@
   ],
   "scripts": {
     "build": "tsc --build",
-    "bundle": "npm run clean && esbuild src/index.ts --outfile=generators/index.js --bundle --external:@sap/generator-fiori --external:shelljs --platform=node",
+    "bundle": "npm run clean && esbuild src/index.ts --outfile=generators/index.js --bundle --external:@sap/generator-fiori --external:node-gyp/bin/node-gyp.js --external:shelljs --platform=node",
     "clean": "rimraf ./generators"
   },
   "dependencies": {
+    "node-gyp": "10.0.1",
     "shelljs": "0.8.5"
   },
   "devDependencies": {
-    "@sap-devx/yeoman-ui-types": "1.10.0",
-    "@sap/generator-fiori": "^1.9.7 ^1.9.8-pre-20230518080208-af3d7e010.0",
-    "@types/yeoman-generator": "5.2.7",
+    "@sap-devx/yeoman-ui-types": "1.14.0",
+    "@sap/generator-fiori": "^1.12.1",
+    "@types/yeoman-generator": "5.2.14",
     "esbuild": "0.17.19",
     "rimraf": "5.0.0",
     "typescript": "4.9.4",
-    "yeoman-generator": "5.8.0"
+    "yeoman-generator": "5.10.0"
   },
   "peerDependencies": {
-    "@sap/generator-fiori": "^1.9.7 ^1.9.8-pre-20230518080208-af3d7e010.0"
+    "@sap/generator-fiori": "^1.12.1"
   },
   "engines": {
     "node": ">=16 <17 || >=18 <19 || >=20"
