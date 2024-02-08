@@ -13,7 +13,7 @@ These are only required if deploying to Cloud Foundry (CF)
 - Create a [dev workspace](https://help.sap.com/viewer/c2b99f19e9264c4d9ae9221b22f6f589/2021_3_QRC/en-US/f728966223894cc28be3ca2ee60ee784.html) using a `SAP Fiori` or `Full Stack Cloud Application`
 
 ## Setup and Run Locally
-- Open a terminal window and run `npm ci`
+- Open a terminal window and run `npm i`
 - Run `cds watch` to build and start your application
 - Select `Open in New Tab` when prompted, a new browser tab should open
 - Select your Fiori web application or select the `Books` service endpoint

@@ -9,13 +9,13 @@
         "@sap/cds": "^6",
         "@sap/xsenv": "^4.2.0",
         "@sap/xssec": "^3.6.0",
-        "express": "^0.6.0",
-        "passport": "^0.6.0",
+        "express": "^4.18.0",
+        "passport": "^0.7.0",
         "sqlite3": "^5.1.6"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.102.6",
-        "rimraf": "^3.0.2"
+        "@sap/ux-specification": "^1.120.3",
+        "rimraf": "^5.0.2"
     },
     "scripts": {
         "start": "cds run",
