@@ -3,10 +3,9 @@
 
 ## Prerequisites
 
-- You have an SAP BTP account
+- You have an SAP BTP account, for example a [trial account](https://account.hana.ondemand.com/)
 - You are subscribed to the SAP Build Work Zone, follow this [tutorial](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) for more information
-- You have deployed a CAP project with a Fiori UI using this [blog post](https://community.sap.com/t5/technology-blogs-by-sap/build-and-deploy-a-cap-project-node-js-api-with-a-sap-fiori-elements-ui-and/ba-p/13537906)
-
+- You have deployed a CAP project with a SAPUI5 Fiori UI using this [blog post](https://community.sap.com/t5/technology-blogs-by-sap/build-and-deploy-a-cap-project-node-js-api-with-a-sap-fiori-elements-ui-and/ba-p/13537906)
 
 ## Description
 
@@ -32,11 +31,11 @@ When you select any of the exposed services, for example;
 https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/catalog
 ```
 
-you will receive a `HTTP 401 unauthorized error` since you aren't passing the correct the appropiate headers to the application otherwise your application would be exposed to the internet with no security;
+you will receive a `HTTP 401 unauthorized error` since you aren't passing the appropriate headers to the application otherwise your application would be exposed to the internet with no security;
 
 ![Alt text](Step2c.png?raw=true "401 Error")
 
-Step3. Access your XSUAA credentials
+Step3. Access your Security XSUAA credentials
 
 Navigate back to the root of your subaccount and select `Instances and Subscriptions`, 
 
@@ -88,7 +87,6 @@ Save the destination and you should see the following;
 
 Sample export of the project;
 ```json
-#
 Description=CAP Project Destination
 Type=HTTP
 clientId=sb-managedappcapproject\!t299668
