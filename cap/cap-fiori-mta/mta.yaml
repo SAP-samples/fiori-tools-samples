@@ -9,6 +9,8 @@ modules:
   requires:
   - name: managedAppCAPProject-db
   - name: uaa_managedAppCAPProject
+# Uncomment to support on-premise systems
+# - name: managedAppCAPProject-connectivity
   parameters:
     buildpack: nodejs_buildpack
     host: ${appname}
@@ -126,6 +128,12 @@ resources:
     service: xsuaa
     service-name: managedAppCAPProject-xsuaa-service
     service-plan: application
+# Uncomment to support on-premise systems
+#- name:  managedAppCAPProject-connectivity
+#  type: org.cloudfoundry.managed-service
+#  parameters:
+#    service: connectivity
+#    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
