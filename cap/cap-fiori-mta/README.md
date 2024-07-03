@@ -47,13 +47,10 @@ No longer want your CAP project hosted on SAP BTP, run the following command;
 npm run undeploy
 ```
 
-## Known issues
-To support connectivity to on-premise systems, please uncomment the code in the `mta.yaml` enable the `managedAppCAPProject-connectivity` service.
-
 ## Get Support
 
 In case you've a question, find a bug, or otherwise need support, use the [SAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce) to get more visibility.
 
 ## License
 
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2024 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

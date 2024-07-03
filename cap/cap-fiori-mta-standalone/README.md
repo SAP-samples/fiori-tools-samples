@@ -49,7 +49,7 @@ npm run undeploy
 ```
 
 ## Known Issues
-To support connectivity to on-premise systems, please uncomment the code in the `mta.yaml` enable the `standaloneCAPProject-connectivity` service.
+To support connectivity to on-premise systems, please uncomment the code in the `mta.yaml` and enable the `standaloneCAPProject-connectivity` service. Remember, the SAP Connectivity service lets you establish connectivity between your cloud applications and on-premise systems running in isolated networks.
 
 ## Get Support
 
@@ -57,4 +57,4 @@ In case you've a question, find a bug, or otherwise need support, use the [SAP C
 
 ## License
 
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2024 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
