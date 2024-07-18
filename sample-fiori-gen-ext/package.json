@@ -1,6 +1,6 @@
 {
   "name": "@sample/fiori-gen-ext",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Sample Fiori generator extension sub-generator",
   "keywords": [
     "fiori-generator-extension"
@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "@sap-devx/yeoman-ui-types": "1.14.0",
-    "@sap/generator-fiori": "^1.12.1",
+    "@sap/generator-fiori": "^1.14.1",
+    "@sap-ux/ui5-application-inquirer": "0.5.6",
     "@types/yeoman-generator": "5.2.14",
     "esbuild": "0.17.19",
     "rimraf": "5.0.0",
@@ -34,7 +35,7 @@
     "yeoman-generator": "5.10.0"
   },
   "peerDependencies": {
-    "@sap/generator-fiori": "^1.12.1"
+    "@sap/generator-fiori": "^1.14.1"
   },
   "engines": {
     "node": ">=16 <17 || >=18 <19 || >=20"

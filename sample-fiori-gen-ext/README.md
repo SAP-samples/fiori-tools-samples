@@ -5,16 +5,16 @@ This module is an example of how to extend `@sap/generator-fiori`, adding additi
 ## Building and installing the sample Fiori generator extension
 
 1. Clone this repo locally.
-2. Run `npm install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `npm` is installed globally )
+2. Run `yarn install` in the `sample-fiori-gen-ext` directory ( pre-requisite: `yarn` is installed globally )
 
 ### For local testing
-1. Build the extension sample using `npm run build`
+1. Build the extension sample using `yarn bundle`
 2. Create the installable artefact by running `npm pack`
 3. Install the tgz globally using `npm i -g <path-to-generated-tgz>`
 
 ### For bundling to deploy to Business Application Studio
 To ensure dev space startup time is not negatively impacted by running installs it is recommended that the extension is bundled first. An example of bundling using `esbuild` is included (note: `shelljs` is included as a dependency as a workaround for a known `esbuild` issue):
-1. Bundle the extension sample using `npm run bundle`
+1. Bundle the extension sample using `yarn bundle`
 2. The bundle should be checked in to the repo for deployment using the WEX tool (ADD LINK!!!)
 3. To test locally create the installable artefact by running `npm pack`
 4. To test locally install the tgz globally using `npm i -g <path-to-generated-tgz>`
@@ -89,8 +89,7 @@ Currently a limited set of prompts can be customized by providing properties for
 - targetFolder : the absolute path where the application will be generated
 - ui5Version : the minimum ui5 version defined in the application manifest.json
 
-The complete set of extendable prompts is defined by the definition `FioriGeneratorPromptNames` exported by the node module `https://www.npmjs.com/package/@sap/generator-fiori`. 
-
+The complete set of extendable prompts is defined by the definition `promptNamea` exported by the node module `https://www.npmjs.com/package/@sap-ux/ui5-application-inquirer`. However `@sap-ux/ui5-application-inquirer` provides extensive customising using the export type `OdataServicePromptOptions`.
 An example of providing `_getExtensions` might be: 
 
 ```
