@@ -15,6 +15,7 @@ builder:
   - name: webide-extension-task-updateManifestJson
     afterTask: replaceVersion
     configuration:
+      ignoreCertError: true
       appFolder: webapp
       destDir: dist
   - name: ui5-task-zipper
