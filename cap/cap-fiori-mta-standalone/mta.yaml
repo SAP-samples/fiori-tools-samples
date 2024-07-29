@@ -20,6 +20,8 @@ modules:
   type: approuter.nodejs
   path: standalonecapproject-approuter
   requires:
+# Uncomment to support on-premise systems
+# - name: standaloneCAPProject-connectivity
   - name: standaloneCAPProject_html_repo_runtime
   - name: uaa_standaloneCAPProject
   - name: standaloneCAPProject-destination-service
@@ -100,6 +102,12 @@ resources:
     service: destination
     service-name: standaloneCAPProject-destination-service
     service-plan: lite
+# Uncomment to support on-premise systems
+#- name:  standaloneCAPProject-connectivity
+#  type: org.cloudfoundry.managed-service
+#  parameters:
+#    service: connectivity
+#    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
