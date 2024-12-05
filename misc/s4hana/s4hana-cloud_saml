@@ -1,0 +1,16 @@
+#clientKey=<< Existing password/certificate removed on export >>
+#
+tokenServiceURLType=Dedicated
+audience=https\://my1111111.s4hana.ondemand.com
+Description=SAML Assertion
+authnContextClassRef=urn\:oasis\:names\:tc\:SAML\:2.0\:ac\:classes\:PreviousSession
+WebIDEEnabled=true
+URL=https\:///my1111111-api.s4hana.ondemand.com
+Name=abap-05_SAML
+WebIDEUsage=odata_abap,dev_abap,abap_cloud
+Type=HTTP
+HTML5.DynamicDestination=true
+Authentication=SAMLAssertion
+nameIdFormat=urn\:oasis\:names\:tc\:SAML\:1.1\:nameid-format\:emailAddress
+HTML5.Timeout=60000
+ProxyType=Internet
