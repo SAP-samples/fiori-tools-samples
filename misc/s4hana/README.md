@@ -3,17 +3,21 @@
 
 
 # Prerequisites
-1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust
+1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems. 
+2. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
+3. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
 
-## Create the SAMLAssertion Destination
+## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
 1. Open `s4hana-cloud_saml` using a text editor
 2. Replace all instances of `my1111111` with your specific hostname
 3. Login to your SAP BTP subaccount, select the `Destinations` tab, select `Import Destination`
-4. You have now created a SAB BTP subaccount destination
+4. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
+5. Login to your SAP Business Application Studio to consume the new destination to validate your connectivity is working
 
 You can refer to this link to confirm your destination is configured correctly;
-
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
+
+__Note: In some cases you might want to create an `odata_gen` SAP BTP destination to consume a specific OData service, then refer to this [tutorial](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336) to create a Full or Paritial URL destination. This scenario is typical where a user does not have access to the Catalog but only individual services__
 
 ## How SAMLAssertion flow works
 
@@ -23,9 +27,11 @@ https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/3187
 4. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
 
 ### NameID Format in SAP BTP Destination
-In your SAP BTP destination, the nameIdFormat property affects the behavior of user ID mapping:
-* urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: User ID maps to the email address
-* urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified (or not set): User ID maps to the username
+In your SAP BTP destination, the `nameIdFormat` property affects the behavior of user ID mapping against your SAP S/4HANA Cloud instance
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
+
+Unless you have a specific technical reason, the default should be `emailAddress` properties as the `nameIdFormat`.
 
 ## Authorization Requirements
 Different authorizations are required for various operations in SAP S/4HANA Cloud, such as:
@@ -33,6 +39,8 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 * Accessing catalog services to browse available OData Services
 * Running previews and accessing OData Services
 * Deploying SAPUI5 applications in S/4HANA Cloud
+
+You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other user can be assigned the `OData Services` role;
 
 | Business Catalog | Key User Extensibility(client 100)  | Developer Extensibility (client 080) |
 | ------------- | ------------- | ------------- |
@@ -42,11 +50,32 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 
 To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
+### Steps for Developer Extensibility tenant
+
+To ensure your specific user has the appropriate `BR_DEVELOPER` role to consume and deploy SAPUI5 applications, edit your specific user;
+
+Search for app `Maintain Business Users`;
+![MaintainUsersPart1.png](MaintainUsersPart1.png)
+
+Select your specific user and select `Assigned Business Roles`;
+
+![MaintainUsersPart1.png](MaintainUsersPart2.png)
+
+If `BR_DEVELOPER` is missing, select `Add` and search for `BR_DEVELOPER` to append the Business Role to your specific user.
+
+Next, select the `BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4C_BC_DEV_UID_PC` are added;
+
+![MaintainUsersPart1.png](MaintainUsersPart3.png)
+
+The same steps can be used to append the business role `BR_EXTENSIBILITY_SPEC` for a `Key User Extensibility` tenant.
+
+
+
 ## Debugging Connectivity Issues
 
 ### Option 1. Authorisation Failures 
 
-You can also review the `Display Authorization Trace` as an S/4H Administrator on your instance;
+You can also review the `Display Authorization Trace` as an S/4HANA Administrator on your instance;
 
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/55a7cb346519450cb9e6d21c1ecd6ec1/ebb91d3758c441b18bf9ebd0798d424e.html
 
@@ -55,7 +84,7 @@ https://help.sap.com/docs/SAP_S4HANA_CLOUD/55a7cb346519450cb9e6d21c1ecd6ec1/ebb9
 
 ### Option 2. Connectivity Failures
 
-Using the search option on your S/4H instance, you can also review the failed requests using the `Display Connectivity Trace` as an S/4H Administrator;
+Using the search option on your S/4HANA instance, you can also review the failed requests using the `Display Connectivity Trace` as an S/4HANA Administrator;
 
 Filter by request path = `/sap/opu/odata/IWFND/CATALOGSERVICE` to see calls to V2 catalog service, request method is `GET`
 
@@ -64,6 +93,17 @@ Filter by request path = `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/` t
 Refer to this link for more information;
 
 https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/b89201fc39d041d790fdbb0bde873d17.html
+
+Search for app `Display Connectivity Trace`;
+
+![DisplayConnectivityPart1.png](DisplayConnectivityPart1.png)
+
+Define a new Trace using the `Request Method` of `GET` and the `Path Prefix` of `/sap/opu/odata/IWFND/CATALOGSERVICE`, click save;
+![DisplayConnectivityPart1.png](DisplayConnectivityPart2.png)
+
+The new trace will populate the table if new events are found;
+
+![DisplayConnectivityPart1.png](DisplayConnectivityPart3.png)
 
 ## Related Links
 Integrating SAP Business Application Studio - 
