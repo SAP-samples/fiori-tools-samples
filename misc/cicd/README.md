@@ -17,7 +17,7 @@ Update `ui5-deploy.yaml` with the `credentials` node;
 ```YAML
     configuration:
       yes: true
-      failfast: true
+      failFast: true
       target:
         url: https://XYZ.sap-system.corp:44311
         client: 200        
@@ -48,7 +48,7 @@ Or if using CLI params;
 
 Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above;
 - Add `yes: true` to by-pass the `Yes` confirmation prompt
-- Add `failfast: true` to immediately exist the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
+- Add `failFast: true` to immediately exist the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
 
 ## Create Transport Request (TR) on the fly
 
@@ -67,7 +67,7 @@ Using the TR `REPLACE_WITH_TRANSPORT` bookmark for undeployment works as well, f
 Generate CLI commands for your CI/CD pipeline;
 
 ```bash
-npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --password 'env:XYZ_PASSWORD' --noConfig --failfast --yes
+npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --password 'env:XYZ_PASSWORD' --noConfig --failFast --yes
 ```
 
 ## Generate ZIP archive
