@@ -46,7 +46,6 @@ Or if using CLI params;
 --username XYZ_USER --pasword XYZ_PASSWORD
 ```
 
-
 Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above;
 - Add `yes: true` to by-pass the `Yes` confirmation prompt
 - Add `failfast: true` to immediately exist the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
@@ -68,14 +67,20 @@ Using the TR `REPLACE_WITH_TRANSPORT` bookmark for undeployment works as well, f
 Generate CLI commands for your CI/CD pipeline;
 
 ```bash
-npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --pasword 'env:XYZ_PASSWORD' --noConfig --failfast --yes
+npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --password 'env:XYZ_PASSWORD' --noConfig --failfast --yes
 ```
 
-## Generate archive
+## Generate ZIP archive
 
-If you bypass the `ui5-deploy.yaml` process by specifing `--noConfig` then you need to add another task to generate this for you;
+You have two options;
 
-Update `package.json` with a new `devDependency`;
+### Option 1
+
+Remove `--archive-path 'archive.zip'` from the CLI params and allow the `dist` folder to be archived on the fly during deployment 
+
+### Option 2 
+
+Generate an `archive.zip` manually which will require some updates to your existing project; update `package.json` with a new `devDependency`;
 ```json
 "ui5-task-zipper": "latest"
 ```
@@ -91,9 +96,39 @@ builder:
         keepResources: true
 ```
 
-When `npm run build` is now executed, it will generate a new file called `arhive.zip` in the default `dist` folder.
+When `npm run build` is now executed, it will generate a new archive file `./dist/arhive.zip`.
 
-You can see the new custom task being executed;
+You can also create new configuration file called `build.yaml` to handle this specific task;
+
+```yaml
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: <your-project-name>
+type: application  
+builder:
+  customTasks:
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+      configuration:
+        archiveName: "archive"          
+        keepResources: true
+```
+Run the CLI command using the new `build.yaml` configuration;
+
+```bash
+npx ui5 build --config build.yaml
+```
+which will generate a new archive file `./dist/arhive.zip`.
+
+Optionally, update your `scripts` in `package.json` with the new command;
+
+```json
+"archive": "ui5 build --config build.yaml"
+```
+
+Using either flow, you can see the new custom task `ui5-task-zipper` being executed;
 ```bash
 info ProjectBuilder Preparing build for project project1
 info ProjectBuilder   Target directory: ./dist
