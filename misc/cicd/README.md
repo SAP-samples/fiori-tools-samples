@@ -48,7 +48,7 @@ Or if using CLI params;
 
 Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above;
 - Add `yes: true` to by-pass the `Yes` confirmation prompt
-- Add `failFast: true` to immediately exist the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
+- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
 
 ## Create Transport Request (TR) on the fly
 
