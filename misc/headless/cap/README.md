@@ -62,7 +62,7 @@ Amend the following configuration properties, this assumes the root folder is ca
         "deployTarget": "CF", // Cloud Foundry
         "destinationName": "fiori-default-srv-api", // Should be not be changed, reflects the destination instance exposing the CAP project
         "addToManagedAppRouter": true, // Toggle this value if a mananaged approuter already exists or if the using a standalone appprouter
-        "addMTADestination": true // Toggle this value if the existing mta.yaml already contains a destination service
+        "addMTADestination": true // Toggle this value if the existing mta.yaml already contains a destination service that you want to use
     }
 }
 ```
@@ -94,7 +94,8 @@ yo @sap/fiori:headless ./cap_app_config.json --logLevel debug --skipInstall
 
 # Gotchas
 
-1. If you want to generate a CAP project with a SAP Fiori UI application with no Cloud Foundry deployment configuration, then remove the `deployConfig` from the `cap_app_config.josn` configuration.
+1. If you want to generate a SAP Fiori UI application without any Cloud Foundry deployment configuration, then remove `deployConfig` from `cap_app_config.josn`.
+2. If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` should be removed or set to `false`.
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
