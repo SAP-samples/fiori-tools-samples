@@ -2,6 +2,11 @@
 
 Generate a SAP Fiori UI application with a managed approuter configuration.
 
+# Prerequisites
+
+- The OData XML metadata is required to generate the SAP Fiori UI application. In the example below, the metadata is available at https://services.odata.org/V2/Northwind/Northwind.svc/$metadata.
+- When appending the raw XML data, replace each `"` with `\"` so it can be added as a string to the JSON configuration.
+
 # Create a SAP Fiori UI and deployment configuration
 
 Generate a new configuration file called `cap_app_config.json` and update the properties to reflect your CAP project, the CAP Service properties and the specific SAP Fiori project attributes.
