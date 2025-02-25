@@ -17,11 +17,11 @@
 You can refer to this link to confirm your destination is configured correctly;
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
 
-__Note: In some cases, you might want to create an `odata_gen` SAP BTP destination to consume a specific OData service, then refer to this [tutorial](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336) to create a Full or Paritial URL destination. This scenario is typical where a user does not have access to the Catalog but only individual services__
+__Note: In some cases, you might want to create an `odata_gen` SAP BTP destination to consume a specific OData service, then refer to this [tutorial](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336) to create a Full or Partial URL destination. This scenario is typical where a user does not have access to the Catalog but only individual services__
 
 ## How SAMLAssertion flow works
 
-1. SAP BTP, typically configured with a local SAML IdP, sends a SAML Assertion (including the SAML Issuer and signature) to SAP S/4HANA Cloud, Public Edition (SAML SP).
+1. SAP BTP, typically configured with a local SAML Identity Providers (IdP), sends a SAML Assertion (including the SAML Issuer and signature) to SAP S/4HANA Cloud, Public Edition (SAML SP).
 2. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
 3. It then maps the user ID and ID format.
 4. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
@@ -31,7 +31,7 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behaviour o
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
 
-Unless you have a specific technical reason, the default should be `emailAddress` properties as the `nameIdFormat`.
+Unless you have a specific technical reason, the default should be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the `nameIdFormat`. The email address as defined in your IdP i.e OpenID Connect or IAS must match the S4HC email address configured with the appropriate roles. Please refer to the related links section below to understand more around adding other IdP's to your SAB BTP system.
 
 ## Authorization Requirements
 Different authorizations are required for various operations in SAP S/4HANA Cloud, such as:
@@ -43,14 +43,14 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role;
 
 | Business Catalog | Key User Extensibility/Customizing(client 100)  | Developer Extensibility (client 080) |
-| ------------- | ------------- | ------------- |
-| To access OData Services | SAP_CORE_BC_EXT_TST  | SAP_CORE_BC_EXT_TST |
-| To deploy application | SAP_CORE_BC_EXT_UI  | SAP_A4C_BC_DEV_UID_PC |
-| Business Role | BR_EXTENSIBILITY_SPEC  | BR_DEVELOPER |
+| ------------- | ------------- |--------------------------------------|
+| To access OData Services | SAP_CORE_BC_EXT_TST  | SAP_CORE_BC_EXT_TST                  |
+| To deploy application | SAP_CORE_BC_EXT_UI  | SAP_A4C_BC_DEV_UID_PC                |
+| Business Role | BR_EXTENSIBILITY_SPEC  | BR_DEVELOPER / Z_BR_DEVELOPER        |
 
 To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
-To better understand the different tenant types:
+Different tenant types:
 `Developer Extensibility (client 080)`
 **Purpose:** Facilitates developer extensibility within the SAP S/4HANA Cloud ABAP environment.
 **Features:**
@@ -73,7 +73,7 @@ To better understand the different tenant types:
 
 ### Steps for Developer Extensibility Tenant
 
-To ensure your specific user has the appropriate `BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user;
+To ensure your specific user has the appropriate `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user;
 
 Search for application `Maintain Business Users`;
 ![MaintainUsersPart1.png](MaintainUsersPart1.png)
@@ -89,7 +89,6 @@ Next, select the `BR_DEVELOPER` role that you just added, select `Business Catal
 ![MaintainUsersPart1.png](MaintainUsersPart3.png)
 
 The same steps can be used to append the business role `BR_EXTENSIBILITY_SPEC` for a `Key User Extensibility/` tenant.
-
 
 ## Debugging Connectivity Issues
 
@@ -164,7 +163,11 @@ Integrating SAP Business Application Studio -
 Develop a Custom UI for an SAP S/4HANA Cloud System - [https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html
 ](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html
 )
+
 Create a SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment - [https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 
-User Management in a Nutshell (IAS or IDP) - [https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
+Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry environment - [https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
+- Required when adding another trust configuration that is using a different identity provider, for example where you are adding an IAS provider to manage your user profiles
+- The trust protocol defined in your new IdP must be `SAML` to ensure the `SAMLAssertion` configuration in your SAP BTP destination works when connecting to your S4HC instance using `SAMLAssertion`
 
+User Management in a Nutshell (IAS or IDP) - [https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
