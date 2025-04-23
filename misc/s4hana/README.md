@@ -46,7 +46,12 @@ You will be required to add the specific `Business Role` to allow a specific use
 | ------------- | ------------- |--------------------------------------|
 | To access OData Services | SAP_CORE_BC_EXT_TST  | SAP_CORE_BC_EXT_TST                  |
 | To deploy application | SAP_CORE_BC_EXT_UI  | SAP_A4C_BC_DEV_UID_PC                |
-| Business Role | BR_EXTENSIBILITY_SPEC  | BR_DEVELOPER / Z_BR_DEVELOPER        |
+| Business Role | SAP_BR_EXTENSIBILITY_SPEC  | SAP_BR_DEVELOPER        |
+
+Business roles need to be created based on business role templates, the recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
+
+Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`.
+
 
 To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
@@ -73,7 +78,7 @@ Different tenant types:
 
 ### Steps for Developer Extensibility Tenant
 
-To ensure your specific user has the appropriate `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user;
+To ensure your specific user has the appropriate `SAP_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user;
 
 Search for application `Maintain Business Users`;
 ![MaintainUsersPart1.png](MaintainUsersPart1.png)
@@ -82,13 +87,13 @@ Select your specific user and select `Assigned Business Roles`;
 
 ![MaintainUsersPart1.png](MaintainUsersPart2.png)
 
-If `BR_DEVELOPER` is missing, select `Add` and search for `BR_DEVELOPER` to append the Business Role to your specific user.
+If `SAP_BR_DEVELOPER` is missing, select `Add` and search for `SAP_BR_DEVELOPER` to append the Business Role to your specific user.
 
-Next, select the `BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4C_BC_DEV_UID_PC` are added;
+Next, select the `SAP_BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4C_BC_DEV_UID_PC` are added;
 
 ![MaintainUsersPart1.png](MaintainUsersPart3.png)
 
-The same steps can be used to append the business role `BR_EXTENSIBILITY_SPEC` for a `Key User Extensibility/` tenant.
+The same steps can be used to append the business role `SAP_BR_EXTENSIBILITY_SPEC` for a `Key User Extensibility/` tenant.
 
 ## Debugging Connectivity Issues
 
@@ -111,7 +116,7 @@ Filter by request path = `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/` t
 
 Refer to this link for more information;
 
-[https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/b89201fc39d041d790fdbb0bde873d17.html](https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/b89201fc39d041d790fdbb0bde873d17.html)
+[https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html)
 
 Search for the application `Display Connectivity Trace`;
 
