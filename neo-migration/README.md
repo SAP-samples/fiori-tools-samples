@@ -201,4 +201,32 @@ If the issue persists, then try bumping the `"minUI5Version": "1.108.2"` in your
 
 ## Issue 4
 Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
-The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropriate permissions then add their ID to the role collection. In some instances you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropriate permissions, then add their ID to the role collection. In some instances, you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+
+## Issue 5
+
+During your CI/CD pipeline job, the static code analysis throws a linting issue `Quality issue: JS_PARSING_ERROR:Very High!` when processing `locate-reuse-libs.js`. 
+
+This assumes, your `pom.xml` contains the following plugin;
+```XML
+<groupId>com.sap.ca</groupId>
+<artifactId>analysis-plugin</artifactId>
+<version>${sap.analysis.version}</version>
+```
+
+Example of current configuration
+```XML
+<sap.analysis.version>1.54.8</sap.analysis.version>
+```
+
+Proposed Configuration
+
+```XML
+<sap.analysis.version>2.0.4</sap.analysis.version>
+```
+Version Update Rationale
+
+- Major version increment from 1.x to 2.x
+- Potential breaking changes in static analysis rules
+- Enhanced parsing capabilities
+- Improved error detection mechanisms
