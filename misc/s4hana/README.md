@@ -135,9 +135,9 @@ Another option is to create a dynamic destination URL;
 
 __You need to ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount__
 
-1. Obtain the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
+1. Get the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
 2. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
-3. Obtain the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
+3. Get the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
 
 Using the following template, replace the required parameters;
 
@@ -160,6 +160,32 @@ https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys
 ```
 
 For more information, please refer to this [site](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336:51208)
+
+## Debugging Deployment Issues
+
+### Issue 1. Deployment fails with `The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted`
+
+```bash
+error abap-deploy-task YY1_Some_Service The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted.
+```
+
+Refer to this [link](https://userapps.support.sap.com/sap/support/knowledge/en/3373955) for more information on how to resolve this issue.
+
+The issue is caused by the custom UI5 Application having the ABAP Language Version "ABAP for Cloud Development" and therefore cannot be deployed to a system with ABAP Language Version "ABAP for Key Users".
+
+### Issue 2. Deployment fails with HTTP 403
+
+```bash
+info abap-deploy-task YY1_Some_App Creating archive with UI5 build result.
+info abap-deploy-task YY1_Some_App Archive created.
+info abap-deploy-task YY1_Some_App Starting to deploy.
+info abap-deploy-task YY1_Some_App YY1_Some_Service found on target system: false
+error abap-deploy-task YY1_Some_App Request failed with status code 403
+```
+
+For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4HANA Administrator to see why the request is failing. In most cases its related two configuration issues;
+1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with SAMLAssertion. Deloyment is only supported using SAMLAssertion, a destination created with any other Autentication type will fail.
+2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4C_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
 
 ## Related Links
 Integrating SAP Business Application Studio - 
