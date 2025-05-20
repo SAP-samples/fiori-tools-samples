@@ -26,9 +26,9 @@ Update `ui5-deploy.yaml` with the `credentials` node;
         password: env:XYZ_PASSWORD
 ```
 
-When you run `npm run deploy` or `npm run undeploy`, it will pickup the environment variables.
+When you run `npm run deploy` or `npm run undeploy`, it will pick up the environment variables.
 
-Setting `env:` for the credentials is only required if you want to configure a `.env` file to load environment variales, otherwise you just export them as normal;
+Setting `env:` for the credentials is only required if you want to configure a `.env` file to load environment variables, otherwise you export them as normal;
 
 ```bash
 export XYZ_USER='~username'
@@ -47,8 +47,8 @@ Or if using CLI params;
 ```
 
 Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above;
-- Add `yes: true` to by-pass the `Yes` confirmation prompt
-- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
+- Add `yes: true` to bypass the `Yes` confirmation prompt
+- Add `failFast: true` to immediate exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
 
 ## Create Transport Request (TR) on the fly
 
@@ -98,7 +98,7 @@ builder:
 
 When `npm run build` is now executed, it will generate a new archive file `./dist/arhive.zip`.
 
-You can also create new configuration file called `build.yaml` to handle this specific task;
+You can also create a new configuration file called `build.yaml` to handle this specific task;
 
 ```yaml
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json

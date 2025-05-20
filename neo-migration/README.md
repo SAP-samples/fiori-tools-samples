@@ -201,4 +201,13 @@ If the issue persists, then try bumping the `"minUI5Version": "1.108.2"` in your
 
 ## Issue 4
 Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
-The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropriate permissions then add their ID to the role collection. In some instances you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+The root cause is an issue with the scope applied in your `xs-app.json`. If the logged-in user does not have the appropriate permissions, then add their ID to the role collection. In some instances you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+
+## Issue 5
+
+Application is deployed to Cloud Foundry, but the application is not loading; after reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned;
+
+Refer to this GA link for more information on how to resolve this issue;
+https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513
+
+The issue is related to an AJAX API call that is defined using an absolute path instead of a relative path. Each application deployed to Cloud Foundry is given a unique GUID, which is how multiple apps can be deployed to the same subaccount. The absolute path is not able to resolve the GUID and therefore the application fails to load.

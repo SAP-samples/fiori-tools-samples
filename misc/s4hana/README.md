@@ -1,6 +1,4 @@
-# Samples SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
-
-
+# SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
 
 # Prerequisites
 1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems. 
