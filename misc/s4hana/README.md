@@ -2,15 +2,15 @@
 
 # Prerequisites
 1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems. 
-2. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
-3. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
+1. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
+1. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
 
 ## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
 1. Open [s4hana-cloud_saml](s4hana-cloud_saml) file using any text editor or browser
-2. Replace all instances of `my1111111` with your specific hostname
-3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`
-4. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
-5. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
+1. Replace all instances of `my1111111` with your specific hostname
+1. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`
+1. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
+1. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
 
 You can refer to this link to confirm your destination is configured correctly;
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
@@ -20,9 +20,9 @@ __Note: In some cases, you might want to create an `odata_gen` SAP BTP destinati
 ## How SAMLAssertion flow works
 
 1. SAP BTP, typically configured with a local SAML Identity Providers (IdP), sends a SAML Assertion (including the SAML Issuer and signature) to SAP S/4HANA Cloud, Public Edition (SAML SP).
-2. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
-3. It then maps the user ID and ID format.
-4. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
+1. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
+1. It then maps the user ID and ID format.
+1. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
 
 ### NameID Format in SAP BTP Destination
 In your SAP BTP destination, the `nameIdFormat` property affects the behaviour of user ID mapping against your SAP S/4HANA Cloud instance
@@ -134,8 +134,8 @@ Another option is to create a dynamic destination URL;
 __You need to ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount__
 
 1. Obtain the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
-2. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
-3. Obtain the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
+1. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
+1. Obtain the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
 
 Using the following template, replace the required parameters;
 

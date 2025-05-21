@@ -34,12 +34,12 @@ Ignoring certificate errors might seem like a quick fix for development issues, 
 To get a better understanding of how CA certificates work, please refer to the [Node.js documentation](https://nodejs.org/api/cli.html#node_extra_ca_certsfile).
 
 1. Navigate to the website using Edge, Chrome, or Firefox
-2. Click on the padlock icon in the address bar
-3. View certificate details:
-4. In Chrome: Click "Connection is Not Secure" → "Certificate (Invalid)"
-5. In Edge: Click "Certificate (Invalid)"
-6. In Firefox: Click "Connection Not Secure" → "More Information" → "View Certificate"
-7. Export/Save the certificate:
+1. Click on the padlock icon in the address bar
+1. View certificate details:
+1. In Chrome: Click "Connection is Not Secure" → "Certificate (Invalid)"
+1. In Edge: Click "Certificate (Invalid)"
+1. In Firefox: Click "Connection Not Secure" → "More Information" → "View Certificate"
+1. Export/Save the certificate:
    1. In Chrome/Edge: Go to "Details" tab → "Copy to File" → Follow the Certificate Export Wizard -> save as .pem
    1. In Firefox: Go to "Details" → "Export" → Choose a location and save as .crt or .cer
 
@@ -48,13 +48,13 @@ To get a better understanding of how CA certificates work, please refer to the [
 ### Microsoft Windows
 
 1. Right-click the CA certificate file and select `Install Certificate`. 
-2. Follow the prompts to add the certificate to the trust store either for the current user only or for all users logging onto this computer.
+1. Follow the prompts to add the certificate to the trust store either for the current user only or for all users logging onto this computer.
 
 ### MacOS.
 
 1. Right-click the CA certificate file. 
-2. Select Open With and navigate to Keychain Access. 
-3. Select System as the keychain to import into.
+1. Select Open With and navigate to Keychain Access. 
+1. Select System as the keychain to import into.
 
 ### Install the Certificate to support Node.js
 
@@ -164,12 +164,12 @@ Typically, `ignoreCertError: false` is the default configuration when you create
 ### Manually
 
 1. Right-click on Start or This PC → Select Properties
-2. Click on Advanced system settings in the sidebar
-3. Click the Environment Variables button at the bottom 
-4. In the top section ("User variables for [username]"), click New 
-5. For "Variable name" enter: NODE_TLS_REJECT_UNAUTHORIZED 
-6. For "Variable value" enter: 0 
-7. Click OK
+1. Click on Advanced system settings in the sidebar
+1. Click the Environment Variables button at the bottom 
+1. In the top section ("User variables for [username]"), click New 
+1. For "Variable name" enter: NODE_TLS_REJECT_UNAUTHORIZED 
+1. For "Variable value" enter: 0 
+1. Click OK
 
 ### Windows powershell
 
