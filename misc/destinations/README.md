@@ -1,4 +1,4 @@
-# Understanding Destinations in SAP BTP Cockpit
+# Consuming and validating SAP BTP destinations to support OData XML Service
 
 # Overview
 SAP BTP destinations are used to connect to different services and systems in the cloud, onpremise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
@@ -55,7 +55,7 @@ To understand more around these properties, refer to this [SAP Fiori tools docum
 Quick Summary of the properties;
 - `WebIDEUsage` is configured with `odata_gen`, this means that the destination is used for OData generation since it's exposing an OData XML service, there are many different values for this property i.e. `odata_cloud` which are used for different purposes
 - `WebIDEEnabled` is set to true; this means that the destination is enabled for use in the SAP Business Application Studio
-- `HTML5.Timeout` is set to 60 seconds; this is the time the destination will wait for a response from the service before timing out
+- `HTML5.Timeout` is set to 60000 ms; this is the time the destination will wait for a response from the service before timing out
 - `HTML5.DynamicDestination` is set to true; this means that the destination will be dynamically created at runtime
 - `Authentication` is set to `NoAuthentication`, this means that the destination will not require any authentication
 - Other properties can be added; some of these will be discussed in the next section, for example `odata_abap`

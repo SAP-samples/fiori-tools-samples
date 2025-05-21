@@ -205,7 +205,7 @@ The root cause is an issue with the scope applied in your `xs-app.json`. If the 
 
 ## Issue 5
 
-Application is deployed to Cloud Foundry, but the application is not loading; after reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned;
+The HTML5 application is deployed to Cloud Foundry, but the application is not loading; after reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned;
 
 Refer to this GA link for more information on how to resolve this issue;
 https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513
