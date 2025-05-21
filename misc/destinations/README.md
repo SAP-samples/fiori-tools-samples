@@ -35,7 +35,7 @@ This is a sample SAP BTP destination configuration for the Northwind OData servi
 
 ![Alt text](northwind_destination.png?raw=true "Screenshot of SAP BTP destination")
 
-The file ![Alt text](northwind?raw=true "SAP BTP destination configuration")can be imported directly into your SAP BTP destinations list and it contains the following properties;
+The [SAP BTP destination configuration](northwind?raw=true) can be imported directly into your SAP BTP destinations list and it contains the following properties;
 
 ```
 #
