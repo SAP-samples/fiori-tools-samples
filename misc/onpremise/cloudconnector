@@ -1,0 +1,11 @@
+#
+Type=HTTP
+HTML5.DynamicDestination=true
+Description=SAP Cloud Connector
+Authentication=PrincipalPropagation
+CloudConnectorLocationId=scloud
+WebIDEEnabled=true
+ProxyType=OnPremise
+URL=http\://my-internal-host\:44330/
+Name=cloudconnector
+WebIDEUsage=odata_abap

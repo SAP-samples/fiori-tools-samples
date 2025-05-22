@@ -1,0 +1,11 @@
+#
+#Mon May 19 15:34:09 UTC 2025
+Type=HTTP
+HTML5.DynamicDestination=true
+Authentication=PrincipalPropagation
+HTML5.Timeout=60000
+WebIDEEnabled=true
+ProxyType=Internet
+URL=https\://services.odata.org
+Name=northwind
+WebIDEUsage=odata_gen
