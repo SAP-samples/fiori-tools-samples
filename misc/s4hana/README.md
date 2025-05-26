@@ -4,7 +4,8 @@
 1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems. 
 1. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
 1. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
-1. You have reviewed the FAQ on [SAP S/4HANA Cloud, Public Edition](https://me.sap.com/notes/3445942)
+1. You have reviewed the FAQ on [SAP S/4HANA Cloud, Public Edition](https://me.sap.com/notes/3445942) documentation
+1. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation 
 
 ## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
 1. Open [s4hana-cloud_saml](s4hana-cloud_saml) file using any text editor or browser
