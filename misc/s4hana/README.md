@@ -1,33 +1,33 @@
-# Samples SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
-
-
+# SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
 
 # Prerequisites
 1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems. 
-2. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
-3. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
+1. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
+1. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
+1. You have reviewed the FAQ on [SAP S/4HANA Cloud, Public Edition](https://me.sap.com/notes/3445942) documentation
+1. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation 
 
 ## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
 1. Open [s4hana-cloud_saml](s4hana-cloud_saml) file using any text editor or browser
-2. Replace all instances of `my1111111` with your specific hostname
-3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`
-4. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
-5. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
+1. Replace all instances of `my1111111` with your specific hostname
+1. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`
+1. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
+1. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
 
 You can refer to this link to confirm your destination is configured correctly;
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
 
 __Note: In some cases, you might want to create an `odata_gen` SAP BTP destination to consume a specific OData service, then refer to this [tutorial](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336) to create a Full or Partial URL destination. This scenario is typical where a user does not have access to the Catalog but only individual services__
 
-## How SAMLAssertion flow works
+## How SAMLAssertion Works
 
 1. SAP BTP, typically configured with a local SAML Identity Providers (IdP), sends a SAML Assertion (including the SAML Issuer and signature) to SAP S/4HANA Cloud, Public Edition (SAML SP).
-2. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
-3. It then maps the user ID and ID format.
-4. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
+1. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
+1. It then maps the user ID and ID format.
+1. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
 
 ### NameID Format in SAP BTP Destination
-In your SAP BTP destination, the `nameIdFormat` property affects the behaviour of user ID mapping against your SAP S/4HANA Cloud instance
+In your SAP BTP destination, the `nameIdFormat` property affects the behavior of user ID mapping against your SAP S/4HANA Cloud instance
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
 
@@ -55,8 +55,12 @@ Please note, in some instances, the name of the business role might defer or in 
 
 To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
-Different tenant types:
-`Developer Extensibility (client 080)`
+## Tenant Types
+
+__Developer Note__ 
+The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. As a consequence, there will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
+
+### Developer Extensibility (SAP Client 080)
 **Purpose:** Facilitates developer extensibility within the SAP S/4HANA Cloud ABAP environment.
 **Features:**
 - Provides full ABAP development tool access to released SAP S/4HANA Cloud business objects and extension points.
@@ -65,7 +69,9 @@ Different tenant types:
 - Build your custom developments based on lifecycle-stable SAP objects.
 - Only developer extensibility is supported.
 
-`Key User Extensibility/Customizing (client 100)`
+Steps to generate a [SAP BTP destination for your S/4HANA Cloud Developer Extensibility tenant](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/0af2819bbe064a3da455753c8518dd81.html?version=2502.500) 
+
+### Key User Extensibility/Customizing (SAP Client 100)
 **Purpose:** Serves as the primary environment for configuration and customization activities.
 **Features:**
 - Allows for the setup and adjustment of system settings to meet specific business requirements.
@@ -75,6 +81,8 @@ Different tenant types:
 - Create low-code custom developments in key user apps. 
 - In Customizing Tenant, only Key User Extensibility is supported. 
 - Form Templates are under the Key User Extensibility category, so you can only create a Form Template in customizing tenants.
+
+Steps to generate a [SAP BTP destination for your S/4HANA Cloud Key User Extensibility/Customizing tenant](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html?version=2502.500)
 
 ### Steps for Developer Extensibility Tenant
 
@@ -136,8 +144,8 @@ Another option is to create a dynamic destination URL;
 __You need to ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount__
 
 1. Get the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
-2. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
-3. Get the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
+1. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
+1. Get the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
 
 Using the following template, replace the required parameters;
 
@@ -187,6 +195,29 @@ For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4H
 1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with SAMLAssertion. Deloyment is only supported using SAMLAssertion, a destination created with any other Autentication type will fail.
 2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4C_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
 
+### Issue 3. Deployment fails with HTTP 400
+
+```bash
+error The app uses not permitted services for ABAP for Cloud Development
+error abap-deploy-task ZF_TEST_API Request failed with status code 400
+error abap-deploy-task ZF_TEST_API The use of Gateway OData V2 Service API_PROC_ORDER_CONFIRMATION_2_SRV 0001 is not permitted
+```
+
+Please refer to the [Tenant Types](./README.md#tenant-types), as each tenant type has a different set of OData services that are allowed to be used or consumed.
+
+Please refer to this [Q&A](https://userapps.support.sap.com/sap/support/knowledge/en/3445942) for more information on how to resolve this issue.
+
+### Issue 4. Calling OData V2 or V4 Catalogs fails to include specific OData services
+
+When calling the OData V2 or V4 Catalogs, you might encounter an issue where specific OData services are not included in the response. This can happen if the user does not have the required authorizations or if the service is not available in the catalog.
+
+```bash
+sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
+/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
+```
+
+List of standard OData services that are typically available in the [V2 and V4 catalogs](https://api.sap.com/), if your OData service is not listed, then your V2 and V4 catalogs are limited in scope to custom services only.
+
 ## Related Links
 Integrating SAP Business Application Studio - 
 [https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html)
@@ -198,7 +229,7 @@ Develop a Custom UI for an SAP S/4HANA Cloud System - [https://developers.sap.co
 Create a SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment - [https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 
 Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry environment - [https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
-- Required when adding another trust configuration that is using a different identity provider, for example where you are adding an IAS provider to manage your user profiles
+- Required when adding another trust configuration that is using a different identity provider, for example, where you are adding an IAS provider to manage your user profiles
 - The trust protocol defined in your new IdP must be `SAML` to ensure the `SAMLAssertion` configuration in your SAP BTP destination works when connecting to your S4HC instance using `SAMLAssertion`
 
 User Management in a Nutshell (IAS or IDP) - [https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)

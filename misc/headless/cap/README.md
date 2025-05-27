@@ -95,7 +95,7 @@ yo @sap/fiori:headless ./cap_app_config.json --logLevel debug --skipInstall
 # Gotchas
 
 1. If you want to generate a SAP Fiori UI application without any Cloud Foundry deployment configuration, then remove `deployConfig` from `cap_app_config.josn`.
-2. If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` should be removed or set to `false`.
+1. If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` should be removed or set to `false`.
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
