@@ -66,10 +66,12 @@ To support credentials in the proxy URL, you can set the `HTTPS_PROXY` environme
 export HTTPS_PROXY=http://user:password@proxy.domain.com:3128
 ```
 
-If your password contains special characters, for example, if your password is `p@s#w0rd`, you would append single quotes `'p@s#w0rd'`:
+If your password contains special characters, for example, if your password is configured as `p@s#w0rd`, then you will need to escape it `p%40s%23w0rd`:
 ```bash
-export HTTPS_PROXY=http://myusername:'p@s#w0rd'@proxy.domain.com:3128
+export HTTPS_PROXY=http://myusername:p%40s%23w0rd@proxy.domain.com:3128
 ```
+
+Refer to this link to translate special characters in URLs [URL Encode/Decode](https://www.url-encode-decode.com/).
 
 # Defining Proxy Settings
 
