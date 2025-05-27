@@ -28,7 +28,7 @@ Refer to [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling
 
 # Setting Up Proxy Environment Variables
 
-The typical `HTTP_PROXY` settings used for connecting to a proxy server include:
+The typical settings used for connecting to a proxy server include:
 
 ```bash
 export HTTP_PROXY=http://user:password@proxyserver:port
@@ -66,7 +66,54 @@ To support credentials in the proxy URL, you can set the `HTTPS_PROXY` environme
 export HTTPS_PROXY=http://user:password@proxy.domain.com:3128
 ```
 
-If your password contains special characters, ror example, if your password is `p@s#w0rd`, you would append single quotes `'p@s#w0rd'`:
+If your password contains special characters, for example, if your password is `p@s#w0rd`, you would append single quotes `'p@s#w0rd'`:
 ```bash
 export HTTPS_PROXY=http://myusername:'p@s#w0rd'@proxy.domain.com:3128
 ```
+
+# Defining Proxy Settings
+
+
+## Windows PowerShell Commands
+Here are the PowerShell commands to set those proxy environment variables:
+
+```powershell
+$env:HTTP_PROXY = "http://user:password@proxyserver:port"
+$env:HTTPS_PROXY = "http://user:password@proxyserver:port"
+$env:NO_PROXY = "localhost,127.0.0.1,internal.domain,.local"
+```
+If you want to set these permanently for your user account (so they persist across PowerShell sessions), use:
+```powershell
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "User")
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "User")
+[Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "User")
+```
+Or if you need them set system-wide for all users (requires administrator privileges):
+```powershell
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "Machine")
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "Machine")
+[Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "Machine")
+```
+
+## MacOS/Linux
+
+Here are the bash commands to set those proxy environment variables:
+```bash
+# Set for current session only
+export HTTP_PROXY=http://user:password@proxyserver:port
+export HTTPS_PROXY=http://user:password@proxyserver:port
+export NO_PROXY=localhost,127.0.0.1,internal.domain,.local
+```
+
+If you want to set these permanently so they persist across terminal sessions, add them to your shell profile file:
+```bash
+echo 'export HTTP_PROXY=http://user:password@proxyserver:port' >> ~/.bashrc
+echo 'export HTTPS_PROXY=http://user:password@proxyserver:port' >> ~/.bashrc
+echo 'export NO_PROXY=localhost,127.0.0.1,internal.domain,.local' >> ~/.bashrc
+```
+
+Then reload your profile:
+```bash
+source ~/.bashrc
+```
+

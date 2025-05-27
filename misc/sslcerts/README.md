@@ -71,7 +71,8 @@ $env:NODE_EXTRA_CA_CERTS = "C:\path\to\your\certificate.crt"
 $env:NODE_EXTRA_CA_CERTS
 ```
 
-#### MacOS/Linux;
+#### MacOS/Linux
+
 ```bash
 # Set for current session only
 export NODE_EXTRA_CA_CERTS=path/to/your/certificate.crt
