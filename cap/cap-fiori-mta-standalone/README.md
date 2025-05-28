@@ -1,4 +1,5 @@
-# Getting Started
+# Get Started with SAP Cloud Application Programming Model (CAP) using Fiori tools and Standalone Approuter
+
 Build and deploy a CAP Project API with a Fiori Elements UI and a standalone approuter configuration hosted on SAP Business Technology Platform (BTP) using an inmemory database.
 
 The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Standalone Approuter` configuration as the HTML5 application runtime. 

@@ -1,4 +1,5 @@
-# Getting Started
+# Get Started with SAP Cloud Application Programming Model (CAP) using Fiori tools and Managed Approuter with Hybrid Profile
+
 Build and deploy a CAP Project API with a Fiori Elements UI to Cloud Foundry (CF) using a managed approuter configuration hosted on SAP Business Technology Platform (BTP) using [SAP CAP hybrid profile](https://cap.cloud.sap/docs/advanced/hybrid-testing) for testing and development.
 
 The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime.
