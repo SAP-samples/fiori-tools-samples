@@ -9,7 +9,7 @@
         "undeploy": "cf undeploy managedapp --delete-services --delete-service-keys --delete-service-brokers"
     },
     "devDependencies": {
-        "mbt": "^1.2.18",
-        "rimraf": "^3.0.2"
+        "mbt": "^1.2.29",
+        "rimraf": "^5.0.5"
     }
 }

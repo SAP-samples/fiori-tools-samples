@@ -28,9 +28,8 @@
     "devDependencies": {
         "@ui5/cli": "^3.3.4",
         "@sap/ux-ui5-tooling": "1",
-        "rimraf": "3.0.2",
-        "@sap/ui5-builder-webide-extension": "^1.1.8",
-        "ui5-task-zipper": "^0.5.0",
-        "mbt": "^1.2.18"
+        "mbt": "^1.2.29",
+        "rimraf": "^5.0.5",
+        "ui5-task-zipper": "^0.5.0"
     }
 }

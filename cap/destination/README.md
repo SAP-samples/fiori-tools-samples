@@ -6,12 +6,13 @@
 - You have an SAP BTP account, for example a [trial account](https://account.hana.ondemand.com/)
 - You are subscribed to the SAP Build Work Zone, follow this [tutorial](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) for more information
 - You have deployed a CAP project with a SAPUI5 Fiori UI using this [blog post](https://community.sap.com/t5/technology-blogs-by-sap/build-and-deploy-a-cap-project-node-js-api-with-a-sap-fiori-elements-ui-and/ba-p/13537906)
+- You are exposing the SAP BTP destination from the same subaccount where the CAP project is deployed
 
 ## Description
 
 For more information around destinations, refer to this [blog post](https://community.sap.com/t5/technology-blogs-by-members/sap-btp-destinations-in-a-nutshell-part-3-oauth-2-0-client-credentials/ba-p/13577101).
 
-Step1. Access your `nodejs` service, selecting your dev space which will list all the running services on your space;
+Step1. Access your `nodejs` service, selecting your dev space, which will list all the running services on your space;
 
 ![Alt text](Step1.png?raw=true "CAP project service")
 
@@ -129,9 +130,9 @@ This will generate a file called `curl-cap-output.txt` with the output of the re
 
 Now that everything is working! You can use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
 
-Want to go cross subaccount and regions? 
+## Want to go cross subaccount and regions? 
 
-Follow this [blog post](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
+Follow this blog post - [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
 
 ### License
 Copyright (c) 2009-2023 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
