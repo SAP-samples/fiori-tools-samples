@@ -7,6 +7,7 @@ In some environments, you may need to configure proxy settings to allow SAP Fior
 # Prerequisites
 - Ensure you have the necessary permissions to modify environment variables on your system.
 - Confirm with your IT Admin if proxy settings are required for your network environment, for example, in some instances internal networks may not require proxy settings.
+- Unless specified by your IT Admin, do not use `https://` in the proxy URL, the default should be `http://` for the proxy URL.
 
 # Setting Up Proxy Environment Variables using UI5 YAML Configuration
 
@@ -16,7 +17,7 @@ The `ui5.yaml` file is used to configure the proxy settings for SAP Fiori tools.
 - name: fiori-tools-proxy
   afterMiddleware: compression
   configuration:
-    proxy: https://myproxy.com:8443
+    proxy: http://myproxy.com:8443
     backend:
     - path: /sap
       url: https://my.backend.com:1234
@@ -73,6 +74,14 @@ export HTTPS_PROXY=http://myusername:p%40s%23w0rd@proxy.domain.com:3128
 
 Refer to this link to translate special characters in URLs [URL Encode/Decode](https://www.url-encode-decode.com/).
 
+If using an earlier version of [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=versions), for example v1.17.6, you may need to enable the patch proxy feature by setting the `TOOLSUITE_FEATURES` environment variable:
+
+```bash
+export TOOLSUITE_FEATURES=sap.ux.enablePatchProxy
+```
+
+The feature `sap.ux.enablePatchProxy` is enabled by default in the latest versions of the SAP Fiori tools, so you may not need to set this variable.
+
 # Defining Proxy Settings
 
 
@@ -90,12 +99,22 @@ If you want to set these permanently for your user account (so they persist acro
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "User")
 [Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "User")
 ```
-Or if you need them set system-wide for all users (requires administrator privileges):
+Or if you need them, set system-wide for all users (requires administrator privileges):
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "Machine")
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "Machine")
 [Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "Machine")
 ```
+
+If you are unfamiliar with PowerShell, you can also set these variables through the Windows GUI:
+
+1. Right-click on "This PC" or "Computer" on the desktop or in File Explorer.
+2. Select "Properties".
+3. Click on "Advanced system settings" on the left sidebar.
+4. In the System Properties window, click on the "Environment Variables" button.
+5. In the Environment Variables window, you can add or edit the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` variables under either "User variables" or "System variables".
+6. Click "OK" to save your changes.
+7. Restart any open command prompts or applications to ensure they pick up the new environment variables.
 
 ## MacOS/Linux
 
