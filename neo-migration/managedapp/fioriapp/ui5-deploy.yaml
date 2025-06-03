@@ -12,15 +12,10 @@ builder:
       - "/test/**"
       - "/localService/**"
   customTasks:
-  - name: webide-extension-task-updateManifestJson
-    afterTask: replaceVersion
-    configuration:
-      ignoreCertError: true
-      appFolder: webapp
-      destDir: dist
   - name: ui5-task-zipper
     afterTask: generateCachebusterInfo
     configuration:
       archiveName: manageproductsneo2911c
+      relativePaths: true
       additionalFiles:
       - xs-app.json
