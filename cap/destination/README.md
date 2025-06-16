@@ -78,6 +78,8 @@ HTML5.Timeout: 60000
 WebIDEEnabled: true
 WebIDEUsage: odata_gen
 HTML5.DynamicDestination: true
+HTML5.Timeout: 60000
+Authentication: OAuth2ClientCredentials
 ```
 
 Please note, you need to append `/oauth/token` to the `Token Service URL` property.
@@ -86,23 +88,7 @@ Save the destination and you should see the following;
 
 ![Alt text](Step6.png?raw=true "New Destination")
 
-Sample export of the project;
-```json
-Description=CAP Project Destination
-Type=HTTP
-clientId=sb-managedappcapproject\!t299668
-HTML5.Timeout=600000
-HTML5.DynamicDestination=true
-Authentication=OAuth2ClientCredentials
-WebIDEUsage=odata_gen
-Name=capdestination
-WebIDEEnabled=true
-tokenServiceURL=https\://28bdb0fbtrial.authentication.us10.hana.ondemand.com/oauth/token
-URL=https\://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com/
-ProxyType=Internet
-tokenServiceURLType=Dedicated
-tokenServiceUser=sb-managedappcapproject\!t299668
-```
+Using a SAP BTP destination with `OAuth2ClientCredentials` is typically used to authenticate a service or application (Client Credentials Grant) rather than a user. To switch to using a Token Exchange Grant, change the `Authentication` type to `OAuth2UserTokenExchange` which is typically used to authenticate a user across systems (Token Exchange Grant) which will remove the requirement to have a `Token User` and `Token Service Password` in the destination configuration.
 
 Step 7. Let's confirm everything works!
 
@@ -130,7 +116,7 @@ This will generate a file called `curl-cap-output.txt` with the output of the re
 
 Now that everything is working! You can use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
 
-## Want to go cross subaccount and regions? 
+## Want to go cross-subaccount and regions? 
 
 Follow this blog post - [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
 
