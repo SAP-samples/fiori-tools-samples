@@ -17,7 +17,6 @@ An SAP BTP destination defined with Proxy type of `OnPremise` is a configuration
    2. Supports principal propagation for identity forwarding
    3. No need to expose internal systems directly to the internet
 
-
 # Prerequisites
 
 - You have SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount
@@ -26,6 +25,40 @@ An SAP BTP destination defined with Proxy type of `OnPremise` is a configuration
 - Only OData XML services are supported when creating SAP Fiori Elements applications when using SAP Fiori tools generator
 - Understanding [SAP BTP destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)
 - Creating [SAP BTP destinations in the SAP BTP cockpit](https://developers.sap.com/tutorials/cp-cf-create-destination..html)
+
+
+## Understanding SAP Cloud Connector and SAP BTP Destinations
+
+When you build applications on SAP BTP, especially those that need to connect to backend systems (like S/4HANA, other cloud services, or external APIs), you generally don't hardcode connection details. Instead, you define **Destinations** in your SAP BTP subaccount. These destinations centralize connection information (URL, authentication, proxy settings, etc.).
+
+Business Application Studio (BAS) is your development environment. When you develop an application in BAS that will run on BTP, you configure it to consume these destinations. At runtime, the BTP application looks up the destination by name, retrieves the necessary connection details from the SAP BTP Destination Service, and then establishes the connection to the backend system.
+
+## Flow Diagram
+
+The following Mermaid diagram illustrates this process, assuming the default IdP is used for authentication, which is the SAP BTP Identity Provider (IdP) configured in your subaccount. 
+
+```mermaid
+sequenceDiagram
+   participant Developer as Developer (BAS)
+   participant BTPApp as SAP BTP Application (Runtime)
+   participant DestinationService as SAP BTP Destination Service
+   participant ConnectivityService as SAP BTP Connectivity Service (Cloud Connector)
+   participant BackendSystem as Backend System (e.g., S/4HANA, External API)
+
+   Developer->>BTPApp: 1. Develops & Deploys App in BAS
+   BTPApp->>DestinationService: 2. App requests Destination 'MyBackend'
+   DestinationService->>BTPApp: 3. Provides Destination Configuration (URL, Auth, Proxy)
+
+   alt On-Premise Backend (via Cloud Connector)
+      BTPApp->>ConnectivityService: 4a. Connects via Secure Tunnel
+      ConnectivityService-->>BackendSystem: 5a. Routes request to On-Premise System
+   else Cloud/External Backend
+      BTPApp->>BackendSystem: 4b. Direct HTTP/API Call
+   end
+
+   BackendSystem-->>BTPApp: 6. Responds with Data
+   BTPApp-->>Developer: 7. Application processes and displays data
+```
 
 # Configuration Steps
 
