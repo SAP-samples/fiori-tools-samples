@@ -4,6 +4,19 @@ Please refer to the following guide for more info;
 
 https://www.npmjs.com/package/@sap/ux-ui5-tooling
 
+## Developers Note
+
+SAP Cloud Transport Management (CTMS) for deployment is a recommended solution for ABAP deployment. While manual deployments or the use of CLI tools are supported, the CI/CD process may run in non-SAP DevOps platforms, but deployment to SAP BTP should go through CTMS. 
+
+You can integrate external CI/CD pipelines, eg. Azure DevOps or CircleCI, to CTMS via APIs or using [GitHub Actions](https://github.com/marketplace/actions/deploy-to-sap-btp-with-ctms). 
+
+With CTMS, you have full control on the changes going through the landscape, and have a proper audit log to trace them if required.
+
+For more information, please refer to the following resources;
+
+https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510
+
+
 ## Using environment variables using .env file
 
 Create a .env file in the root of your SAPUI5 project and append the following content;
