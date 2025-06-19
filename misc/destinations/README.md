@@ -18,6 +18,28 @@ SAP BTP destinations are used to connect to different services and systems in th
 # Additional Resources
 - Understanding [SAP BTP destination authentication types](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/http-destinations)
 
+## Flow Diagram
+
+The following sequence diagram illustrates a typical flow of how a user accesses an SAP BTP application that consumes an external API endpoint using a destination configured with Basic Authentication.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser as Web Browser
+    participant BTPApp as SAP BTP Application
+    participant DestinationService as SAP BTP Destination Service
+    participant ExternalAPI as External Basic Auth API Endpoint
+
+    User->>Browser: 1. Accesses BTP App URL (e.g., Fiori Launchpad tile)
+    Browser->>BTPApp: 2. Requests data/action requiring external API call
+    BTPApp->>DestinationService: 3. Looks up Destination "MyBasicAuthEndpoint"
+    DestinationService->>BTPApp: 4. Provides Destination Configuration (URL, Basic Auth Username/Password)
+    BTPApp->>ExternalAPI: 5. Makes API Call (HTTP Request with "Authorization: Basic ..." Header)
+    ExternalAPI->>BTPApp: 6. Validates credentials & Responds with Data
+    BTPApp->>Browser: 7. Sends processed data/response
+    Browser->>User: 8. Displays data/confirms action
+```
+
 # Sample Microsoft OData XML service endpoints
 
 The endpoint `https://services.odata.org` exposes a number of OData service endpoints, as shown.
