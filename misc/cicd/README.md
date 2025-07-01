@@ -19,13 +19,13 @@ https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-pe
 
 ## Using environment variables using .env file
 
-Create a .env file in the root of your SAPUI5 project and append the following content;
+Create a `.env` file in the root of your SAPUI5 project and append the following content;
 ```
 XYZ_USER=myusername
 XYZ_PASSWORD=mypassword
 ```
 
-Update `ui5-deploy.yaml` with the `credentials` node;
+Update `ui5-deploy.yaml` with the `credentials`, ensuring it's aligned with the existing root nodes, for example `target`;
 
 ```YAML
     configuration:
@@ -39,7 +39,7 @@ Update `ui5-deploy.yaml` with the `credentials` node;
         password: env:XYZ_PASSWORD
 ```
 
-When you run `npm run deploy` or `npm run undeploy`, it will pick up the environment variables.
+When you run `npm run deploy` or `npm run undeploy`, it will pick up the respective environment variables.
 
 Setting `env:` for the credentials is only required if you want to configure a `.env` file to load environment variables, otherwise you export them as normal;
 
@@ -54,6 +54,7 @@ export XYZ_PASSWORD='~password''
         username: XYZ_USER
         password: XYZ_PASSWORD
 ```
+
 Or if using CLI params;
 ```bash
 --username XYZ_USER --pasword XYZ_PASSWORD
@@ -61,11 +62,11 @@ Or if using CLI params;
 
 Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above;
 - Add `yes: true` to bypass the `Yes` confirmation prompt
-- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
+- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail, and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
 
-## Create Transport Request (TR) on the fly
+## Create Transport Request (TR) Dynamically
 
-If you want to create TR on the fly during each deployment task, append the `REPLACE_WITH_TRANSPORT` bookmark to your `ui5-deploy.yaml` configuration;
+To create a TR dynamically during each deploy or undeploy task, append the `REPLACE_WITH_TRANSPORT` bookmark to your `ui5-deploy.yaml` configuration;
 ```YAML
       app:
         name: /TEST/SAMPLE_APP
@@ -162,6 +163,13 @@ Note: please update your scripts to reflect the new target folder to `./dist/arc
 ## Additional Notes
 
 1. For deployment purposes, appending additional headers is not supported via CLI or `ui5-deploy.yaml` configurations.
+2. If you want to enable debug mode, you can set the debug parameter as follows
+```bash
+# Using default npm scripts
+DEBUG=* npm run deloy
+# Or if you are using the CLI directly
+DEBUG=* npx fiori deploy ...
+```
 
 
 
