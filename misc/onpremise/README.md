@@ -143,7 +143,10 @@ Cloud Connector, explained in simple terms - https://community.sap.com/t5/techno
 
 Installation and Configuration of SAP Cloud Connector, https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector which provides a step-by-step guide to configuring SAP Cloud Connector.
 
-Principal Propagation - https://blogs.sap.com/2021/09/06/setting-up-principal-propagation
+Principal Propagation Configuration;
+1. Blog post https://blogs.sap.com/2021/09/06/setting-up-principal-propagation
+2. SAP Help Portal https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation
+3. Check Logs https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html?locale=en-US&state=PRODUCTION&version=1.0#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate
 
 # Support Ticket
 

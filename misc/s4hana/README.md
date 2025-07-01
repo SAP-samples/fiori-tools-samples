@@ -52,7 +52,6 @@ Business roles need to be created based on business role templates, the recommen
 
 Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`.
 
-
 To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
 ## Tenant Types
@@ -207,24 +206,38 @@ Please refer to the [Tenant Types](./README.md#tenant-types), as each tenant typ
 
 Please refer to this [Q&A](https://userapps.support.sap.com/sap/support/knowledge/en/3445942) for more information on how to resolve this issue.
 
-### Issue 4. Calling OData V2 or V4 Catalogs fails to include specific OData services
+### Issue 4. Calling OData V2 or V4 Catalogs does not include specific OData services
 
-When calling the OData V2 or V4 Catalogs, you might encounter an issue where specific OData services are not included in the response. This can happen if the user does not have the required authorizations or if the service is not available in the catalog.
+When calling either of the OData V2 or V4 Catalogs, you might encounter an issue where specific OData services are not included in the response. This can happen if the user does not have the required authorizations or if the service is not available in the catalog.
 
+Example of calling the OData V2 and V4 Catalogs;
 ```bash
-sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
+#V2 Catalog
+/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
+#V4 Catalog
 /sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
 ```
 
-List of standard OData services that are typically available in the [V2 and V4 catalogs](https://api.sap.com/), if your OData service is not listed, then your V2 and V4 catalogs are limited in scope to custom services only.
+A list of standard OData services, typically available in the [V2 and V4 catalogs](https://api.sap.com/). If your OData service is not listed, then your V2 and/or V4 catalogs are limited in scope to custom services only. Refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
+
+### Issue 5. Support Communication Users
+In some instances, you might need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
+However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned but you will also needd to change how the SAP BTP destination is configured. 
+
+For these purposes, its best you clone your existing SAP BTP destination, and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
+
+For more information on configuring a partial URL destination, refer to this [link](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:52803).
+
+### Issue 6. Standard OData services not showing in RecommendedServiceCollection
+
+Please refer to this guide [./RecommendServices.md](./RecommendServices.md) for more information on how to troubleshoot this issue.
 
 ## Related Links
 Integrating SAP Business Application Studio - 
 [https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html)
 
 Develop a Custom UI for an SAP S/4HANA Cloud System - [https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html
-](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html
-)
+](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html)
 
 Create a SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment - [https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 

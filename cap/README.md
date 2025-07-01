@@ -16,7 +16,11 @@ This repository provides sample CAP projects using different router configuratio
 
 4. [Create a SAP BTP Destination exposing CAP services](../cap/destination/README.md), also supports cross subaccount and regions
 
-All CAP projects were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropiate approuter configuration as the HTML5 application runtime.
+All CAP projects were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropriate router configuration as the HTML5 application runtime.
+
+## Additional Notes
+
+For more information on integrating CI/CD into your CAP deployment strategy, please refer to the [Continuous Integration and Delivery YouTube Tutorial](https://www.youtube.com/watch?v=gvWSHSZFPok).
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
