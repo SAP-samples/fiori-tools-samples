@@ -85,15 +85,15 @@ To expose the UI5 library from the on-premise system, you can duplicate the SAP 
         "Name": "MyDestination_ui5",
         "ProxyType": "OnPremise",
         "Type": "HTTP",
-        "URL": "http://my-internal-system.abc.internal:443/sap/public/bc/ui5_ui5/1/",
-        "WebIDEEnabled": "true",
-        "WebIDEUsage": "odata_abap",
+        "URL": "http://my-internal-system.abc.internal:443/sap/public/bc/ui5_ui5/1/",       
         "sap-client": "100"
     }
 }
 ```
 
 The SAP BTP destination `URL` is now configured with the following path: `/sap/public/bc/ui5_ui5/1/`. This is the path where the UI5 libraries are exposed from the on-premise system. This might different depending on your on-premise system configuration, so please check with your system administrator if this path is correct.
+
+Also, `WebIDEUsage` is not required for this destination as it's not exposing any OData services and is only used to serve the UI5 library.
 
 ## Validate Duplicated Destination
 
