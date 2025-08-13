@@ -6,7 +6,7 @@ This can be done by configuring the `ui5.yaml` file in your project to include t
 
 # Prerequisites
 - The SAP UI5 library must be accessible from the on-premise system.
-- The on-premise system must be reachable from the environment where the UI5 application is running, in this case using SAP Business Application Studio via the Cloud Connector.
+- The On-Premise system must be reachable from the environment where the SAPUI5 application is running. In this example, it is SAP Business Application Studio using the Cloud Connector.
 
 # Configuration Steps
 
