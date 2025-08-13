@@ -159,7 +159,7 @@ server:
 ```
 
 **Note the following:**
-- The UI5 `version` property is configured with an empty string, this will prevent a rewriting of the UI5 paths to include the version number, which is not needed in this case.
+- The SAPUI5 `version` property is configured with an empty string. This prevents rewriting the SAPUI5 paths to include the version number because this is not required.
 - The SAPUI5 paths `/test-resources` and `/resources` are configured to point to different locations.
 
 The reason the SAP BTP destination was duplicated was to allow you to control the path to the SAPUI5 library. This can point to any URI that exposes the SAPUI5 library.
