@@ -118,7 +118,7 @@ To allow the SAPUI5 library to be consumed from the On-Premise system, you need 
               url: https://ui5.sap.com    
 ```
 
-A working example of the `ui5.yaml` file would look like this:
+For an example of the entire `ui5.yaml` file, see the following code sample:
 
 ```yaml
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
