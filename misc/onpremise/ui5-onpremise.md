@@ -102,7 +102,7 @@ In Business Application Studio, you can validate the duplicated destination `MyD
  curl 'https://mydestination_ui5.dest/resources/sap-ui-core.js' -X GET -i -H 'X-Csrf-Token: fetch' > output-tsk1.txt
 ```
 
-You can review the generated `output-tsk1.txt` file to ensure the UI5 library is accessible from the on-premise system. The response should contain the UI5 library content.
+You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library is accessible from the On-Premise system. The response should contain the SAPUI5 library content.
 
 ## Modify the `ui5.yaml` file
 
