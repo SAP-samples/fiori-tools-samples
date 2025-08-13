@@ -96,7 +96,7 @@ The SAP BTP destination `URL` is configured with the following path: `/sap/publi
 
 ## Validate Duplicated Destination
 
-In Business Application Studio, you can validate the duplicated destination `MyDestination_ui5` by using the `curl` command to fetch the UI5 library from the on-premise system;
+In SAP Business Application Studio, you can validate the duplicated destination: `MyDestination_ui5` by using the `curl` command to fetch the SAPUI5 library from the On-Premise system:
 
 ```bash
  curl 'https://mydestination_ui5.dest/resources/sap-ui-core.js' -X GET -i -H 'X-Csrf-Token: fetch' > output-tsk1.txt
