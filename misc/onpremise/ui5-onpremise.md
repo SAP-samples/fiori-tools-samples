@@ -13,7 +13,7 @@ You can consume an SAPUI5 library from an On-Premise system by configuring the `
 
 To start, you already have a `ui5.yaml` file in your project which points to an existing SAP BTP destination.
 
-Let's assume, your SAP BTP destination is called `MyDestination` and the on-premise system is reachable via the Cloud Connector and is configured as follows;
+In this example, your SAP BTP destination is called `MyDestination` and the On-Premise system is reachable using the Cloud Connector and is configured as follows:
 
 ```JSON
 {
