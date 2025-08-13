@@ -158,7 +158,7 @@ server:
           theme: sap_fiori_3
 ```
 
-A couple of things to note:
+**Note the following:**
 - The UI5 `version` property is configured with an empty string, this will prevent a rewriting of the UI5 paths to include the version number, which is not needed in this case.
 - The UI5 paths `/test-resources` and `/resources` are configured to point to different locations.
 
