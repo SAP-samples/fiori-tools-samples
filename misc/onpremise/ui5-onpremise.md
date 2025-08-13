@@ -1,4 +1,4 @@
-# Exposing UI5 library from on-premise system
+# Exposing an SAPUI5 Library from an On-Premise System
 
 You want to consume a UI5 library from an on-premise system, for example, the specific UI5 version is no longer available on the UI5 CDN network. 
 
