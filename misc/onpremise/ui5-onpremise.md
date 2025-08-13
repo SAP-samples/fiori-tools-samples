@@ -90,7 +90,7 @@ To expose the SAPUI5 library from the On-Premise system, duplicate the SAP BTP d
 }
 ```
 
-The SAP BTP destination `URL` is now configured with the following path: `/sap/public/bc/ui5_ui5/1/`. This is the path where the UI5 libraries are exposed from the on-premise system. This might different depending on your on-premise system configuration, so please check with your system administrator if this path is correct.
+The SAP BTP destination `URL` is configured with the following path: `/sap/public/bc/ui5_ui5/1/`. This is the path where the SAPUI5 libraries are exposed from the On-Premise system. The path may differ depending on your On-Premise system configuration so check with your system administrator if this path is correct.
 
 **Note:** `WebIDEUsage` is not required for this destination because it is not exposing any OData services and is only used to serve the SAPUI5 library.
 
