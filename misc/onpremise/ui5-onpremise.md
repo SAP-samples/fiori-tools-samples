@@ -5,7 +5,7 @@ You want to consume a UI5 library from an on-premise system, for example, the sp
 This can be done by configuring the `ui5.yaml` file in your project to include the on-premise system to expose the UI5 library.
 
 # Prerequisites
-- The SAP UI5 library must be accessible from the on-premise system.
+- The SAPUI5 library must be accessible from the On-Premise system.
 - The On-Premise system must be reachable from the environment where the SAPUI5 application is running. In this example, it is SAP Business Application Studio using the Cloud Connector.
 
 # Configuration Steps
