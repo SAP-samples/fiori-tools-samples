@@ -70,7 +70,7 @@ server:
           theme: sap_fiori_3
 ```
 
-## Duplicate the SAP BTP destination
+## Duplicate the SAP BTP Destination
 
 To expose the SAPUI5 library from the On-Premise system, duplicate the SAP BTP destination configuration in your SAP BTP subaccount and change the URL.
 
