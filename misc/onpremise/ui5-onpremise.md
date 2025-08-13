@@ -106,7 +106,7 @@ You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library
 
 ## Modify the `ui5.yaml` file
 
-In order to allow the UI5 library to be consumed from the on-premise system, you need to modify the `ui5.yaml` file in your project to include the destination;
+To allow the SAPUI5 library to be consumed from the On-Premise system, you need to modify the `ui5.yaml` file in your project to include the destination:
 
 ```yaml
         ui5:
