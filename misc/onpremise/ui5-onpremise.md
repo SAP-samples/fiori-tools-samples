@@ -2,7 +2,6 @@
 
 You want to consume a UI5 library from an on-premise system, for example, the specific UI5 version is no longer available on the UI5 CDN network. 
 
-This can be done by configuring the `ui5.yaml` file in your project to include the on-premise system to expose the UI5 library.
 
 # Prerequisites
 - The SAPUI5 library must be accessible from the On-Premise system.
