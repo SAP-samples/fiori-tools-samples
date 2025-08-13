@@ -104,7 +104,7 @@ In SAP Business Application Studio, you can validate the duplicated destination:
 
 You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library is accessible from the On-Premise system. The response should contain the SAPUI5 library content.
 
-## Modify the `ui5.yaml` file
+## Modify the `ui5.yaml` File
 
 To allow the SAPUI5 library to be consumed from the On-Premise system, you need to modify the `ui5.yaml` file in your project to include the destination:
 
