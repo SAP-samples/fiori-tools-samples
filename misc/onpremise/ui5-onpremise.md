@@ -133,7 +133,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: false # If set to true, certificate errors will be ignored and self-signed certificates will be accepted.
         ui5:
           version: ''
           paths:
