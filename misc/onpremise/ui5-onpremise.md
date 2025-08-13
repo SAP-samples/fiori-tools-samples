@@ -72,7 +72,7 @@ server:
 
 ## Duplicate the SAP BTP destination
 
-To expose the UI5 library from the on-premise system, you can duplicate the SAP BTP destination configuration in your SAP BTP subaccount, the only change is, the URL, for example;
+To expose the SAPUI5 library from the On-Premise system, duplicate the SAP BTP destination configuration in your SAP BTP subaccount and change the URL.
 
 ```JSON
 {
