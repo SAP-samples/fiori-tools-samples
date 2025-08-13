@@ -9,7 +9,7 @@ You want to consume a UI5 library from an on-premise system, for example, the sp
 
 # Configuration Steps
 
-## Existing setup
+## Existing Setup
 
 In most cases, you will have an existing `ui5.yaml` file in your project, pointing to an existing SAP BTP destination.
 
