@@ -59,11 +59,11 @@ Amend the following configuration properties;
 Change into the directory where you want to create the new SAP Fiori UI application, for example `/Users/Documents/dev/`, run the headless generator with the SAP UI and deployment configuration;
 
 ```bash
-yo @sap/fiori-elements:headless <path-to-config-file> <optional-path-to-output-or-cwd> <options>
+yo @sap/fiori:headless <path-to-config-file> <optional-path-to-output-or-cwd> <options>
 ```
 
 Options:
---force : Overwrite the output files
+--force: Overwrite the output files
 --skipInstall: Skip the install phase
 --deleteFile: Delete the input app configuration file
 --logLevel debug | info
