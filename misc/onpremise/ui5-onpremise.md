@@ -6,6 +6,7 @@ You can consume an SAPUI5 library from an On-Premise system by configuring the `
 # Prerequisites
 - The SAPUI5 library must be accessible from the On-Premise system.
 - The On-Premise system must be reachable from the environment where the SAPUI5 application is running. In this example, it is SAP Business Application Studio using the Cloud Connector.
+- The UI5 version is not available on the SAPUI5 CDN network, for example https://ui5.sap.com/1.71.53 returns a HTTP 404 Not Found response.
 
 # Configuration Steps
 
@@ -108,6 +109,8 @@ You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library
 
 To allow the SAPUI5 library to be consumed from the On-Premise system, you need to modify the `ui5.yaml` file in your project to include the destination:
 
+It's important that the `/test-resources` is updated to point to the SAPUI5 CDN, while the `/resources` path is updated to point to the On-Premise system destination. This allows you to use the SAPUI5 library from the On-Premise system while still being able to access test resources from the SAPUI5 CDN.
+
 ```yaml
         ui5:
           version: ''
@@ -115,7 +118,7 @@ To allow the SAPUI5 library to be consumed from the On-Premise system, you need 
             - path: /resources
               url: https://mydestination_ui5.dest
             - path: /test-resources
-              url: https://ui5.sap.com    
+              url: https://ui5.sap.com/<valid-UI5-version>
 ```
 
 For an example of the entire `ui5.yaml` file, see the following code sample:
@@ -139,7 +142,7 @@ server:
             - path: /resources          
               url: https://mydestination_ui5.dest                    
             - path: /test-resources
-              url: https://ui5.sap.com                
+              url: https://ui5.sap.com/1.71.76                
         backend:
           - path: /sap
             url: http://my-internal-system.abc.internal:443
