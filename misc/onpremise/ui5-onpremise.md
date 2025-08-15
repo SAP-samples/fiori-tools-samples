@@ -6,7 +6,7 @@ You can consume an SAPUI5 library from an On-Premise system by configuring the `
 # Prerequisites
 - The SAPUI5 library must be accessible from the On-Premise system.
 - The On-Premise system must be reachable from the environment where the SAPUI5 application is running. In this example, it is SAP Business Application Studio using the Cloud Connector.
-- The UI5 version is not available on the SAPUI5 CDN network, for example https://ui5.sap.com/1.71.53 returns a HTTP 404 Not Found response. For a full list of available versions, see [SAPUI5 Versions](https://ui5.sap.com/versionoverview.html).
+- The SAPUI5 version is not available on the SAPUI5 CDN network. For example, https://ui5.sap.com/1.71.53 returns a HTTP 404 Not Found response. For a full list of available versions, see [SAPUI5 Versions](https://ui5.sap.com/versionoverview.html).
 
 # Configuration Steps
 
