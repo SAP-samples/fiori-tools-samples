@@ -109,7 +109,7 @@ You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library
 
 To allow the SAPUI5 library to be consumed from the On-Premise system, you need to modify the `ui5.yaml` file in your project to include the destination:
 
-It's important that the `/test-resources` is updated to point to the SAPUI5 CDN, while the `/resources` path is updated to point to the On-Premise system destination. This allows you to use the SAPUI5 library from the On-Premise system while still being able to access test resources from the SAPUI5 CDN. You should choose a version that is closer to the version you are using in your project.
+It's important that the `/test-resources` is updated to point to the SAPUI5 CDN, while the `/resources` path is updated to point to the On-Premise system destination. This allows you to use the SAPUI5 library from the On-Premise system while still being able to access test resources from the SAPUI5 CDN. You should choose the version that is the closest to the version you are using in your project.
 
 ```yaml
         ui5:
