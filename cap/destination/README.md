@@ -114,7 +114,7 @@ This will generate a file called `curl-cap-output.txt` with the output of the re
 {"@odata.context":"$metadata","@odata.metadataEtag":"W/\"kpKGEWiUkdl2tvln8+lIbb+WgNsbQRujr+H11i5pAUg=\"","value":[{"name":"Books","url":"Books"}]}
 ```
 
-Now that everything is working! You can use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
+You can now use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
 
 ## Want to go cross-subaccount and regions from outside SAP BTP?
 
