@@ -8,7 +8,7 @@ Follow this tutorial to [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP 
 
 ## Enable a BTP Destination for Usage Across Global Accounts or Between Different Regions Using SAMLAssertion
 
-Follow this YouTube video on [Configuring BTP Cross-Account and Cross-Region Destinations For Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA)
+Follow this YouTube video on [Configuring BTP Cross-Account and Cross-Region Destinations For Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA).
 
 Please note, some of the content is outdated, for example the legacy SAP BTP Destinations flow or where to find the trust (*.pem file) certificates. However, the video is still relevant for the cross-account and cross-region destination configuration.
 
