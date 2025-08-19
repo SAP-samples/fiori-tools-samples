@@ -4,7 +4,7 @@ Follow this blog post to [Demystifying: SAP BTP - ABAP Environment, Steampunk, A
 
 ## Creating a SAP Fiori App and Deploy it to SAP BTP, ABAP Cloud Environment
 
-Follow this tutorial to [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html)
+Follow this tutorial to [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html).
 
 ## Enable a BTP Destination for usage across Global Accounts or between different regions using SAMLAssertion
 
