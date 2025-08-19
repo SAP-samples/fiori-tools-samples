@@ -165,3 +165,8 @@ server:
 - The SAPUI5 paths `/test-resources` and `/resources` are configured to point to different locations.
 
 The reason the SAP BTP destination was duplicated was to allow you to control the path to the SAPUI5 library. This can point to any URI that exposes the SAPUI5 library.
+
+### License
+Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
+
+

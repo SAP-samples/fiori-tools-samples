@@ -204,9 +204,9 @@ Open a new browser tab using the generated link to review the response, this sho
 
 __Issue: Getting HTTP 4** Exceptions when calling the destination__
 
-The SAP BTP destination URL property, if hardcoded with additional properties, service paths or query parameters, will result in an HTTP 404 Not Found error. In somes instances, this can also result in a HTTP 401/403 exception since you are calling an invalid service path.
+The SAP BTP destination URL property, if hardcoded with additional properties, service paths or query parameters, will result in an HTTP 404 Not Found error. In some instances, this can also result in an HTTP 401/403 exception since you are calling an invalid service path.
 
-Take, for example, a SAP BTP destination URL populated with;
+Take, for example, a SAP BTP destination URL populated as follows;
 ```
 https://services.odata.org/odata/$format=JSON
 ```
@@ -240,6 +240,8 @@ __Solution__
 
 Ensure the SAP BTP destination URL only contains the base URL and not a hardcoded service path or query parameter.
 
+### License
+Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
 
 
 

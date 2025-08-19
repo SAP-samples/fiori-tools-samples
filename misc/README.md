@@ -14,3 +14,10 @@
 
 [ABAP CI/CD Pipeline Support with Environment Credentials](cicd/README.md)
 
+[ABAP Cloud Environment - Cross Subaccount and Regions](cicd/README.md)
+
+### License
+Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
+
+
+

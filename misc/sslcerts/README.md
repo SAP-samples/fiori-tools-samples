@@ -244,3 +244,7 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 node your-script.js
 # Or for any other command that uses Node.js
 NODE_TLS_REJECT_UNAUTHORIZED=0 npm start
 ```
+
+### License
+Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
+
