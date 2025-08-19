@@ -6,7 +6,7 @@ Follow this blog post to [Demystifying: SAP BTP - ABAP Environment, Steampunk, A
 
 Follow this tutorial to [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html).
 
-## Enable a BTP Destination for usage across Global Accounts or between different regions using SAMLAssertion
+## Enable a BTP Destination for Usage Across Global Accounts or Between Different Regions Using SAMLAssertion
 
 Follow this YouTube video on [Configuring BTP Cross-Account and Cross-Region Destinations For Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA)
 
