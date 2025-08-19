@@ -114,11 +114,12 @@ This will generate a file called `curl-cap-output.txt` with the output of the re
 {"@odata.context":"$metadata","@odata.metadataEtag":"W/\"kpKGEWiUkdl2tvln8+lIbb+WgNsbQRujr+H11i5pAUg=\"","value":[{"name":"Books","url":"Books"}]}
 ```
 
-Now that everything is working! You can use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
+You can now use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
 
-## Want to go cross-subaccount and regions? 
+## Want to go cross-subaccount and regions from outside SAP BTP?
 
-Follow this blog post - [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
+Follow this blog post, [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
 
 ### License
-Copyright (c) 2009-2023 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
+
