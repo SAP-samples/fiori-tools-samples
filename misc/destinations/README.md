@@ -202,7 +202,7 @@ Open a new browser tab using the generated link to review the response, this sho
 
 ## Issue One 
 
-__Issue: Getting HTTP 4** Exceptions when calling the destination__
+__Issue: Getting HTTP 4** Exceptions When Calling the Destination__
 
 The SAP BTP destination URL property, if hardcoded with additional properties, service paths or query parameters, will result in an HTTP 404 Not Found error. In some instances, this can also result in an HTTP 401/403 exception since you are calling an invalid service path.
 
