@@ -115,7 +115,7 @@ This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions
 
 Step 1. Enable logging in the SAP Cloud Connector (SCC) UI
 
-* Confirm the version of your SAP Cloud Connector (SCC)
+* Confirm the version of your SAP Cloud Connector (SCC).
 * Set Cloud Connector Loggers to ALL
 * Set Other Loggers to Information
 * Enable Payload Trace (ensure the correct subaccount is selected)
