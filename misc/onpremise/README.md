@@ -223,7 +223,7 @@ To make it a permanent change, in your HTML5 application, you can add `--verbose
 Re-run the deployment command `npm run deploy` and check the console output for any errors or issues. The trace logging will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
 
 ### Option 3: Execute a Connection Test Using Business Application Studio (BAS)
-- Open a BAS terminal window and run the following command to execute the connectivity test;
+- Open a BAS terminal window and run the following command to execute the connection test:
 Replace `<destination-name>` with the name of your SAP BTP destination.
 Replace `<bsp-name>` with the name of your BSP name.
 ```bash
