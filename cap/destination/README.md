@@ -16,7 +16,7 @@ Step 1: Access your `nodejs` service, selecting your dev space, which will list 
 
 ![Alt text](Step1.png?raw=true "CAP project service")
 
-Step 2:  Select the `nodejs` service which will expose the CAP endpoint;
+Step 2:  Select the `nodejs` service which will expose the CAP endpoint.
 
 ![Alt text](Step2.png?raw=true "CAP Project Endpoint")
 
