@@ -90,9 +90,9 @@ Quick Summary of the properties;
 - `WebIDEUsage` is configured with `odata_abap`, this means that the destination is used to expose OData service catalogs to the SAP Business Application Studio
 - `WebIDEEnabled` is set to true; this means that the destination is enabled for use in the SAP Business Application Studio
 - `HTML5.Timeout` is set to 60000 ms; this is the time the destination will wait for a response from the service before timing out
-- `HTML5.DynamicDestination` is set to true; this means that the destination will be dynamically created at runtime
-- `Authentication` is set to `PrincipalPropagation`, this means that the destination to support a productive landscape, to maintain the same user context and to avoid the need for a password
-- `CloudConnectorLocationId` is set to `scloud`, this is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit, SAP BTP subaccount can be configured with different Cloud Connectors
+- `HTML5.DynamicDestination` is set to true. This means that the destination will be dynamically created at runtime.
+- `Authentication` is set to `PrincipalPropagation`. This means that the destination to support a productive landscape, to maintain the same user context and to avoid the need for a password.
+- `CloudConnectorLocationId` is set to `scloud`. This is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit. The SAP BTP subaccount can be configured with different cloud connectors.
 - `URL` is set to `http://my-internal-host:44330/` which indicates the internal URL that is then mapped to your on-premise system within your local On-Premise network. Note, the URL will always default to `http://` soo only the port and address are configurable.
 
 # Validate Connectivity
@@ -131,11 +131,11 @@ Step 2: Run the scenario that is failing and check the logs for any errors. If t
 
 Step 3: Once you've gathered the logs, you can disable the trace settings.
 
-For more details on these logs, please refer to SAP Cloud Connector Troubleshooting https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting.
+For more details about these logs, see [SAP Cloud Connector Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
 
 Step 4: Review the logs for any errors or issues. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
 
-If you are not seeing any network traffic in the `traffic_trace_` logs, then the issues are most likely with the SCC configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system which is blocking traffic.
+If you do not see any network traffic in the `traffic_trace_` logs, then the issue is most likely with the SCC configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system which is blocking traffic.
 
 # Additional Resources
 
@@ -152,7 +152,7 @@ Principal Propagation Configuration;
 
 # Support Ticket
 
-If you are still experiencing issues, please raise a support ticket using the support component `BC-MID-SCC` and ensure you provide the following information;
+If you are still experiencing issues, please raise a support ticket using the support component `BC-MID-SCC` and ensure you provide the following information:
 
 ## Step 1: Screenshots Required
 
@@ -162,13 +162,13 @@ From your SAP Cloud Connector (SCC):
 * Subaccount Overview: SCC -> Subaccount Overview -> Click Subaccount.
 * Virtual Host Mapping: SCC -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in SAP BTP Destination.
 * Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
-* Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure Access Policy is set to Path and All Sub-Paths and URL Path is / (this might differ depending on security concerns)
+* Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure Access Policy is set to Path and All Sub-Paths and URL Path is /. Note this may differ depending on security concerns.
 * Check Availability: SCC -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
 
 ## Step 2: Trace SAP Cloud Connector Activity
 
-* Confirm the version of your SAP Cloud Connector
-* Set Cloud Connector Loggers to ALL
+* Confirm the version of your SAP Cloud Connector.
+* Set Cloud Connector Loggers to ALL.
 * Set Other Loggers to Information
 * Enable Payload Trace (ensure the correct subaccount is selected)
   Replicate the issue and provide us with the following logs, if generated:
@@ -186,17 +186,17 @@ Run the [Environment Check Report](../destinations/README.md#environment-check) 
 
 ## Step 4: Archive Files
 
-Please compress all the requested files into a single zip file and attach it to the support ticket for easier review.
+Compress all the requested files into a single zip file and attach it to the support ticket.
 
 # Deployment Issues
 
-If you are experiencing deployment issues, please refer to the [Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) guide for troubleshooting steps. 
+If you are experiencing deployment issues, see [Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for troubleshooting steps. 
 
 In most instances, the root cause of deployment issues relates to the prerequisites not being met.
 
-### Option 1. ABAP Transaction Log
+### Option 1: ABAP Transaction Log
 
-If connectivity to the ABAP system is working but API requests are failing, check the ABAP transaction logs:
+If the connection to the ABAP system is working but API requests are failing, check the ABAP transaction logs:
 
 Use `/IWFND/ERROR_LOG` to view OData service errors.
 
@@ -204,7 +204,7 @@ Use `/IWFND/GW_CLIENT` to test and analyze service calls.
 
 Refer [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
-### Option 2. Enable Trace Logging
+### Option 2: Enable Trace Logging
 
 Run the following deployment command with debug logging enabled to get more information about the API request and response. This will help identify any issues during the deployment process.
 
@@ -220,7 +220,7 @@ To make it a permanent change, in your HTML5 application, you can add `--verbose
 "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml --verbose && rimraf archive.zip"
 ```
 
-Re-run the deployment command `npm run deploy` and check the console output for any errors or issues. The trace logging will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
+Re-run the deployment command `npm run deploy` and check the console output for any errors or issues. The trace logging will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
 ### Option 3: Execute a Connection Test Using Business Application Studio (BAS)
 - Open a BAS terminal window and run the following command to execute the connection test:

@@ -10,7 +10,7 @@
 
 ## Description
 
-For more information around destinations, refer to this [blog post](https://community.sap.com/t5/technology-blogs-by-members/sap-btp-destinations-in-a-nutshell-part-3-oauth-2-0-client-credentials/ba-p/13577101).
+For more information about destinations, see this [blog post](https://community.sap.com/t5/technology-blogs-by-members/sap-btp-destinations-in-a-nutshell-part-3-oauth-2-0-client-credentials/ba-p/13577101).
 
 Step 1: Access your `nodejs` service, selecting your dev space, which will list all the running services on your space;
 
@@ -63,7 +63,7 @@ xGRgYPoAXbMv2gqRIDontThinkSooZ7uY=
 https://28bdb0fbtrial.authentication.us10.hana.ondemand.com
 ```
 
-Step 6: Create a new destination in your SAP BTP account, navigate to the `Connectivity` service and select `Destinations` and `Create destination` and change the `Authentication` type to `OAuth2ClientCredentials`;
+Step 6: Create a new destination in your SAP BTP account, navigate to the `Connectivity` service and select `Destinations` and `Create destination` and change the `Authentication` type to `OAuth2ClientCredentials`.
 
 ```json
 Name: capdestination
