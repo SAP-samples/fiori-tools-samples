@@ -46,7 +46,7 @@ Step 4: Select the `Authorization and Trust Management Service` service instance
 
 ![Alt text](Step4.png?raw=true "XSUAA Service Instance")
 
-Step 5: Select the `Service Keys` tab, if a key doesn't exist, create a new service key;
+Step 5: Select the `Service Keys` tab. If a key doesn't exist, create a new service key.
 
 ![Alt text](Step4.png?raw=true "XSUAA Service Key")
 
