@@ -213,7 +213,7 @@ Run the following deployment command with debug logging enabled to get more info
 DEBUG=* npm run deploy
 # Windows
 set DEBUG=* && npm run deploy
-````
+```
 To make it a permanent change, in your HTML5 application, you can add `--verbose` to enable trace logging to get more information about the API request and response.
 
 ```json
