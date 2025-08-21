@@ -38,7 +38,7 @@ you will receive a `HTTP 401 unauthorized error` since you aren't passing the ap
 
 Step 3: Access your Security XSUAA credentials
 
-Navigate back to the root of your subaccount and select `Instances and Subscriptions`, 
+Navigate back to the root of your subaccount and select `Instances and Subscriptions`.
 
 ![Alt text](Step3.png?raw=true "Instances and Subscriptions")
 
