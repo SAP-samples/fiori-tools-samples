@@ -231,7 +231,7 @@ curl -vs -i -H "X-CSRF-Token: Fetch" "https://dest.<destination-name>/sap/opu/od
 ```
 - Review the `curl-abap-srv-output.txt` file for any errors or issues. In some instances, the root cause of why the API request is failing can be found in the response body or headers.
 
-Please note, if you get an HTTP 404 error, this means that the BSP application is not yet deployed but indicates there is no connectivity issue to your OnPremise ABAP system.
+Note, if you get an HTTP 404 error, this means that the BSP application is not yet deployed but indicates there is no connectivity issue to your On-Premise ABAP system.
 
 
 
