@@ -1,4 +1,4 @@
-# SAP Cloud Connector (OnPremise) Destination
+# SAP Cloud Connector (On-Premise) Destination
 
 # Overview
 An SAP BTP destination defined with Proxy type of `OnPremise` is a configuration that enables secure connectivity between your SAP Business Technology Platform (BTP) applications and on-premises systems residing behind your corporate firewall.
@@ -93,7 +93,7 @@ Quick Summary of the properties;
 - `HTML5.DynamicDestination` is set to true; this means that the destination will be dynamically created at runtime
 - `Authentication` is set to `PrincipalPropagation`, this means that the destination to support a productive landscape, to maintain the same user context and to avoid the need for a password
 - `CloudConnectorLocationId` is set to `scloud`, this is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit, SAP BTP subaccount can be configured with different Cloud Connectors
-- `URL` is set to `http://my-internal-host:44330/` which indicates the internal URL that is then mapped to your on-premise system within your local onpremise network. Note, the URL will always default to `http://` soo only the port and address are configurable.
+- `URL` is set to `http://my-internal-host:44330/` which indicates the internal URL that is then mapped to your on-premise system within your local On-Premise network. Note, the URL will always default to `http://` soo only the port and address are configurable.
 
 # Validate Connectivity
 
@@ -113,7 +113,7 @@ This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions
 
 ### Enable Trace Logging
 
-Step 1. Enable logging in the SAP Cloud Connector (SCC) UI
+Step 1. Enable logging in the SAP Cloud Connector (SCC) UI.
 
 * Confirm the version of your SAP Cloud Connector (SCC).
 * Set Cloud Connector Loggers to ALL.
@@ -127,7 +127,7 @@ Step 1. Enable logging in the SAP Cloud Connector (SCC) UI
 
 __Note:__ As best practice, we recommend that you do not enable trace logging in production environments unless you are troubleshooting a specific issue.
 
-Step 2. Next, run the scenario that is failing and check the logs for any errors or else run Environment Check to call the V2 and V4 catalog API endpoints. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
+Step 2. Run the scenario that is failing and check the logs for any errors. If there are no errors, run the Environment Check to call the V2 and V4 catalog API endpoints. The logs will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
 Step 3. Once you've gathered the logs, you can disable the trace settings.
 

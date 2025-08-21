@@ -1,7 +1,7 @@
 # Consuming and validating SAP BTP destinations to support OData XML Service
 
 # Overview
-SAP BTP destinations are used to connect to different services and systems in the cloud, onpremise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
+SAP BTP destinations are used to connect to different services and systems in the cloud, On-Premise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
 
 - This guide is focused on consuming OData XML services via SAP BTP destinations, when using [SAP Fiori tools](https://help.sap.com/docs/SAP_FIORI_tools) generator and [Service Centre](https://help.sap.com/docs/bas/sap-business-application-studio/explore-services-using-service-center) in Business Application Studio (BAS).
 - Other destination types are supported, for example, OData SAP HANA XS type services, but this guide is focused on OData XML service only.
