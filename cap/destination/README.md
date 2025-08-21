@@ -12,11 +12,11 @@
 
 For more information around destinations, refer to this [blog post](https://community.sap.com/t5/technology-blogs-by-members/sap-btp-destinations-in-a-nutshell-part-3-oauth-2-0-client-credentials/ba-p/13577101).
 
-Step 1. Access your `nodejs` service, selecting your dev space, which will list all the running services on your space;
+Step 1: Access your `nodejs` service, selecting your dev space, which will list all the running services on your space;
 
 ![Alt text](Step1.png?raw=true "CAP project service")
 
-Step2. Select the `nodejs` service which will expose the CAP endpoint;
+Step 2:  Select the `nodejs` service which will expose the CAP endpoint;
 
 ![Alt text](Step2.png?raw=true "CAP Project Endpoint")
 
@@ -36,17 +36,17 @@ you will receive a `HTTP 401 unauthorized error` since you aren't passing the ap
 
 ![Alt text](Step2c.png?raw=true "401 Error")
 
-Step 3. Access your Security XSUAA credentials
+Step 3: Access your Security XSUAA credentials
 
 Navigate back to the root of your subaccount and select `Instances and Subscriptions`, 
 
 ![Alt text](Step3.png?raw=true "Instances and Subscriptions")
 
-Step 4. Select the `Authorization and Trust Management Service` service instance that was deployed with your CAP project, in this case, `managedAppCAPProject-xsuaa-service`;
+Step 4: Select the `Authorization and Trust Management Service` service instance that was deployed with your CAP project, in this case, `managedAppCAPProject-xsuaa-service`;
 
 ![Alt text](Step4.png?raw=true "XSUAA Service Instance")
 
-Step 5. Select the `Service Keys` tab, if a key doesn't exist, create a new service key;
+Step 5: Select the `Service Keys` tab, if a key doesn't exist, create a new service key;
 
 ![Alt text](Step4.png?raw=true "XSUAA Service Key")
 
@@ -63,7 +63,7 @@ xGRgYPoAXbMv2gqRIDontThinkSooZ7uY=
 https://28bdb0fbtrial.authentication.us10.hana.ondemand.com
 ```
 
-Step 6. Create a new destination in your SAP BTP account, navigate to the `Connectivity` service and select `Destinations` and `Create destination` and change the `Authentication` type to `OAuth2ClientCredentials`;
+Step 6: Create a new destination in your SAP BTP account, navigate to the `Connectivity` service and select `Destinations` and `Create destination` and change the `Authentication` type to `OAuth2ClientCredentials`;
 
 ```json
 Name: capdestination
@@ -90,7 +90,7 @@ Save the destination and you should see the following;
 
 Using a SAP BTP destination with `OAuth2ClientCredentials` is typically used to authenticate a service or application (Client Credentials Grant) rather than a user. To switch to using a Token Exchange Grant, change the `Authentication` type to `OAuth2UserTokenExchange` which is typically used to authenticate a user across systems (Token Exchange Grant) which will remove the requirement to have a `Token User` and `Token Service Password` in the destination configuration.
 
-Step 7. Let's confirm everything works!
+Step 7: Let's confirm everything works!
 
 Login into Business Application Studio and select `Service Centre` on the left navigation bar;
 

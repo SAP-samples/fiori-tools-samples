@@ -113,7 +113,7 @@ This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions
 
 ### Enable Trace Logging
 
-Step 1. Enable logging in the SAP Cloud Connector (SCC) UI.
+Step 1: Enable logging in the SAP Cloud Connector (SCC) UI.
 
 * Confirm the version of your SAP Cloud Connector (SCC).
 * Set Cloud Connector Loggers to ALL.
@@ -127,13 +127,13 @@ Step 1. Enable logging in the SAP Cloud Connector (SCC) UI.
 
 __Note:__ As best practice, we recommend that you do not enable trace logging in production environments unless you are troubleshooting a specific issue.
 
-Step 2. Run the scenario that is failing and check the logs for any errors. If there are no errors, run the Environment Check to call the V2 and V4 catalog API endpoints. The logs will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
+Step 2: Run the scenario that is failing and check the logs for any errors. If there are no errors, run the Environment Check to call the V2 and V4 catalog API endpoints. The logs will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
-Step 3. Once you've gathered the logs, you can disable the trace settings.
+Step 3: Once you've gathered the logs, you can disable the trace settings.
 
 For more details on these logs, please refer to SAP Cloud Connector Troubleshooting https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting.
 
-Step 4. Review the logs for any errors or issues. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
+Step 4: Review the logs for any errors or issues. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
 
 If you are not seeing any network traffic in the `traffic_trace_` logs, then the issues are most likely with the SCC configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system which is blocking traffic.
 
@@ -154,7 +154,7 @@ Principal Propagation Configuration;
 
 If you are still experiencing issues, please raise a support ticket using the support component `BC-MID-SCC` and ensure you provide the following information;
 
-## Step 1. Screenshots Required
+## Step 1: Screenshots Required
 
 Navigate to SAP BTP -> Subaccount -> Connectivity -> Destinations. Select the affected destination and ensure all properties are shown.
 
@@ -165,7 +165,7 @@ From your SAP Cloud Connector (SCC):
 * Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure Access Policy is set to Path and All Sub-Paths and URL Path is / (this might differ depending on security concerns)
 * Check Availability: SCC -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
 
-## Step 2. Trace SAP Cloud Connector Activity
+## Step 2: Trace SAP Cloud Connector Activity
 
 * Confirm the version of your SAP Cloud Connector
 * Set Cloud Connector Loggers to ALL
@@ -181,10 +181,10 @@ Also, specify the date and time of the request to help us narrow down the logs.
 
 Once you've gathered the logs, you can disable the trace settings.
 
-## Step 3. Environment Check Report
+## Step 3: Environment Check Report
 Run the [Environment Check Report](../destinations/README.md#environment-check) and attach the generated zip file.
 
-## Step 4. Archive Files
+## Step 4: Archive Files
 
 Please compress all the requested files into a single zip file and attach it to the support ticket for easier review.
 
