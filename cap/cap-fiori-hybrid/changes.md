@@ -4,12 +4,12 @@ The CAP project and Fiori UI application were generated using the steps outlined
 The [managed approuter](../cap-fiori-mta/README.md) project is the base project used in this approach.
 
 ## Prerequisites
-- HANA Cloud database is setup and running in your cloud space, refer to this [tutorial](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html)
-- The CAP project and Fiori UI application are deployed to Cloud Foundry
+- HANA Cloud database is setup and running in your cloud space. Refer to this [tutorial](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html).
+- The CAP project and SAP Fiori UI application are deployed to Cloud Foundry.
 
-## Step 1 - Changes to `mta.yaml`
+## Step 1: Changes to `mta.yaml`
 
-These changes required to reduce the amount of manual tasks and will hopefully be incorporated into a future edition of the SAP Fiori tools deployment generator.
+These changes are required to reduce the number of manual tasks. They will hopefully be incorporated into a future edition of the SAP Fiori tools deployment generator.
 
 Append the `properties` node to `managedAppCAPProject-db-deployer` so the local and deployed CAP projects both share the same HDI instance;
 
@@ -56,9 +56,9 @@ Update `managedAppCAPProject-db` to append the `service-key` parameter, when bin
       hdi-service-name: ${service-name}
 ```
 
-## Step 2 - Append Approuter
+## Step 2: Append Approuter
 
-Understanding approuter more, follow these links;
+To learn more about approuter, see the following links:
 
 - [@sap/approuter](https://www.npmjs.com/package/@sap/approuter#overview)
 - [Application-router on SAP BTP](https://help.sap.com/docs/btp/sap-business-technology-platform/application-router)
@@ -87,9 +87,9 @@ Modify `default-env.json` so that is spins up on port `5001`;
 }
 ```
 
-## Step 3 - Update xs-security.json
+## Step 3: Update xs-security.json
 
-Append support for the different OAuth endpoints, for local development with VSCode, Business Application Studio and SAP BTP Cloud Foundry;
+Append support for the different OAuth endpoints, for local development with Visual Studio Code, SAP Business Application Studio and SAP BTP Cloud Foundry:
 ```JSON
   "oauth2-configuration": {
     "redirect-uris": [
@@ -118,6 +118,6 @@ Apply new `scopes` and `role-templates` to lock down your Catalog service;
   ],
 ```
 
-## Step 4 - Apply security to Catalog Service
+## Step 4: Apply Security to Catalog Service
 
 Edit `srv` -> `cat-service.cds` and replace `@requires: 'authenticated-user'` with `@(requires: 'capuser')`. 
