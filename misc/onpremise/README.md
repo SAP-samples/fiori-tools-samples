@@ -154,7 +154,7 @@ Principal Propagation Configuration;
 
 If you are still experiencing issues, please raise a support ticket using the support component `BC-MID-SCC` and ensure you provide the following information:
 
-## Step 1: Screenshots Required
+## Step 1: Provide Screenshots
 
 Navigate to SAP BTP -> Subaccount -> Connectivity -> Destinations. Select the affected destination and ensure all properties are shown.
 
