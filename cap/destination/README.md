@@ -42,7 +42,7 @@ Navigate back to the root of your subaccount and select `Instances and Subscript
 
 ![Alt text](Step3.png?raw=true "Instances and Subscriptions")
 
-Step 4: Select the `Authorization and Trust Management Service` service instance that was deployed with your CAP project, in this case, `managedAppCAPProject-xsuaa-service`;
+Step 4: Select the `Authorization and Trust Management Service` service instance that was deployed with your CAP project. In this example: `managedAppCAPProject-xsuaa-service`.
 
 ![Alt text](Step4.png?raw=true "XSUAA Service Instance")
 
