@@ -42,22 +42,24 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 
 You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role;
 
-| Business Catalog | Key User Extensibility/Customizing(client 100)  | Developer Extensibility (client 080) |
-| ------------- | ------------- |--------------------------------------|
-| To access OData Services | SAP_CORE_BC_EXT_TST  | SAP_CORE_BC_EXT_TST                  |
-| To deploy application | SAP_CORE_BC_EXT_UI  | SAP_A4C_BC_DEV_UID_PC                |
-| Business Role | SAP_BR_EXTENSIBILITY_SPEC  | SAP_BR_DEVELOPER        |
+| Business Catalog            | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
+|-----------------------------|-------------------------------------------------|---------------------------------------|
+| To access OData Services    | SAP_CORE_BC_EXT_TST                             | SAP_CORE_BC_EXT_TST                   |
+| To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4C_BC_DEV_UID_PC                 |
+| Business Role               | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |            |
 
 Business roles need to be created based on business role templates, the recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
 
-Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`.
+Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`. OData APIs must be explicitly activated via Communication Arrangements, as to prevent unauthorized systems from enumerating API's.
 
-To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
+To better understand the roles and catalogs, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
 ## Tenant Types
 
 __Developer Note__
 The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. As a consequence, there will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
+
+There are key difference between an S4HC 2-System Landscape (Public Cloud 2SL) and a 3-System Landscape (Public Cloud 3SL), refer to this guide [System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html)
 
 ### Developer Extensibility (SAP Client 080)
 **Purpose:** Facilitates developer extensibility within the SAP S/4HANA Cloud ABAP environment.
@@ -231,6 +233,10 @@ For more information on configuring a partial URL destination, refer to this [li
 ### Issue 6. Standard OData services not showing in RecommendedServiceCollection
 
 Please refer to this guide [./RecommendServices.md](./RecommendServices.md) for more information on how to troubleshoot this issue.
+
+### Issue 7. There are no OData services available in the V2 Catalog
+
+Please refer to this guide [Exposing an oData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248)
 
 ## Related Links
 Integrating SAP Business Application Studio -
