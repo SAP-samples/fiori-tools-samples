@@ -75,12 +75,12 @@ WebIDEUsage=odata_gen
 To understand more around these properties, refer to this [SAP Fiori tools documentation](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336).
 
 Quick Summary of the properties;
-- `WebIDEUsage` is configured with `odata_gen`, this means that the destination is used for OData generation since it's exposing an OData XML service, there are many different values for this property i.e. `odata_cloud` which are used for different purposes
+- `WebIDEUsage` is configured with `odata_abap`, should be the default value, this means that the destination is used for OData generation since it's exposing an OData XML service, there are many different values for this property i.e. `odata_cloud` which are used for different purposes
 - `WebIDEEnabled` is set to true; this means that the destination is enabled for use in the SAP Business Application Studio
 - `HTML5.Timeout` is set to 60000 ms; this is the time the destination will wait for a response from the service before timing out
-- `HTML5.DynamicDestination` is set to true; this means that the destination will be dynamically created at runtime
+- `HTML5.DynamicDestination` is set to true; this means that the destination will be dynamically created at runtime, which means it can be consumed by HTML5 applications at runtime, even if the destination does not exist in the subaccount
 - `Authentication` is set to `NoAuthentication`, this means that the destination will not require any authentication
-- Other properties can be added; some of these will be discussed in the next section, for example `odata_abap`
+- Other properties can be added; some of these will be discussed in the next section, for example `odata_gen`
 
 # Understanding `WebIDEUsage`
 
@@ -88,29 +88,31 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 
 However, `odata_gen` and `odata_abap` are the most common values used for OData services and are mutually exclusive, please only specify the one that meets your requirement. For example, if you are using `odata_gen`, then `odata_abap` should be removed and vice versa. The following table shows the common values for the `WebIDEUsage` property:
 
-| Value        | Description                                                                                             |
-|--------------|---------------------------------------------------------------------------------------------------------|
-| `odata_gen`  | To consume a specific service of your choice, service endpoint is known to the user                     |
-| `odata_abap` | Consume the V2 and V4 OData service ABAP catalogs, allowing you to search and select a specific service |
+| Value        | Description                                                                                                   |
+|--------------|---------------------------------------------------------------------------------------------------------------|
+| `odata_gen`  | To consume a specific OData service of your choice, the service endpoint is known to the user                 |
+| `odata_abap` | Consume the V2 and V4 OData service ABAP catalogs, allowing you to search and select a specific OData service |
 
 
 # Sample curl commands for `odata_gen`
 
-Since `odata_gen` allows you to control which individual service you want to call, you can use the following curl commands to test the service:
+The `WebIDEUsage` property `odata_gen` allows you to control which __individual__ service you want to call, you can use the following curl commands to test connectivity to the individual service:
 
-In our `Sample Microsoft OData XML service endpoints` above, the `northwind` endpoint exposes different OData XML services. The following curl commands are used to test these specific service endpoints:
+In our `Sample Microsoft OData XML service endpoints` above, the `northwind` endpoint exposes different OData XML services. 
 
-Call a known service endpoint for V2
+The following curl commands are used to test these specific service endpoints:
+
+Call a known V2 OData ervice endpoint, the base path is `/v2/northwind` and the service exposed is `northwind.svc/`
 ```bash
 curl "https://dest.northwind/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
 ```
 
-Call a known service endpoint for V2 with metadata query parameter
+Call a known service endpoint for V2 with `$metadata` query parameter
 ```bash
-curl "https://dest.northwind/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-output.txt 2>&1
+curl "https://dest.northwind/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
 ```
 
-Note: since you are using curl, you need to escape the `$` sign with a backslash `\` in order to pass it as a query parameter. The above command will return the metadata of the specified OData service.
+Since you are using curl from a terminal window, you need to escape the `$` sign with a backslash `\` in order to pass it as a query parameter. The above command will return the metadata of the specified OData service.
 
 Note: `https://dest.<destination-name>/` is a placeholder that is appended with the name of your destination, it routes the HTTP request via the BAS proxy and sets up the connection to your API backend.
 
@@ -118,7 +120,7 @@ Note: `https://dest.` can also be replaced with `$H2O_URL/destinations/<destinat
 
 Under the hood, the `northwind` destination is configured with the following URL property `https://services.odata.org` so when the curl command is executed, it will simply append any path that we have specified, for example;
 
-The curl command contains the service path`/v2/northwind/northwind.svc/` which will be appended to the SAP BTP destination URL `https://services.odata.org` to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/`. The same applies to the metadata query parameter, it will be appended to the destination URL to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/$metadata`.
+The curl command contains the service path`/v2/northwind/northwind.svc/` which will be appended to the SAP BTP destination URL `https://services.odata.org` to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/`. The same applies to the metadata query parameter, it will be appended to the destination URL to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/$metadata`. You can validate external from SAP BTP, by opening a new browser tab and entering the complete URL to review the response.
 
 # Sample curl commands for `odata_abap`
 
@@ -177,13 +179,13 @@ This is a recommended flow to validate the destination configuration outside of 
     HTML5.DynamicDestination: true
     HTML5.Timeout: 60000
     WebIDEEnabled: true
-    WebIDEUsage=odata_abap (Or odata_gen if consuming a specific service)
+    WebIDEUsage=odata_abap (Or replace with odata_gen if consuming a specific service)
     ```
 1. Select `Save`, please ensure you have the client secret if required
 
 Here is a sample URL, replace the <attribute> values with your own values;
 ```
-https://<subdomain>.launchpad.cfapps.<region>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<service-path>
+https://<subdomain>.launchpad.cfapps.<region>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<service-path>/<service-name>
 ```
 
 Calling a known service path;
@@ -220,7 +222,7 @@ So the complete URL will look like this when executed;
 https://services.odata.org/odata/$format=JSON/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
 ```
 
-There are some instances where you want to support a destination that exposes a hardcoded path to a specific service or resource. To support this use case, append a property to `Additional Properties` called `WebIDEAdditionalData` with the value `full_url`, for example;
+There are some instances where you want to support a SAP BTP destination that exposes a hardcoded path to a specific OData service or resource. To support this use case, append a property to `Additional Properties` called `WebIDEAdditionalData` with the value `full_url`, for example;
 
 ```
 #
@@ -239,6 +241,17 @@ WebIDEUsage=odata_gen
 __Solution__
 
 Ensure the SAP BTP destination URL only contains the base URL and not a hardcoded service path or query parameter.
+
+You can validate this by executing the following curl commands;
+To retrieve the OData service;
+```bash
+curl "https://dest.northwind_fullurl/" -vs > curl-fullurl-output.txt 2>&1
+```
+To retrieve the OData service `$metadata`;
+```bash
+curl "https://dest.northwind_fullurl/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
+```
+
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
