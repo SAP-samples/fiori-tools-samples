@@ -50,7 +50,7 @@ You will be required to add the specific `Business Role` to allow a specific use
 
 Business roles need to be created based on business role templates, the recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
 
-Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`. OData APIs must be explicitly activated via Communication Arrangements, as to prevent unauthorized systems from enumerating API's.
+Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`. OData APIs must be explicitly activated via Communication Arrangements, as to prevent unauthorized systems from enumerating API's.
 
 To better understand the roles and catalogs, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
@@ -220,7 +220,11 @@ Example of calling the OData V2 and V4 Catalogs;
 /sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
 ```
 
-A list of standard OData services, typically available in the [V2 and V4 catalogs](https://api.sap.com/). If your OData service is not listed, then your V2 and/or V4 catalogs are limited in scope to custom services only. Refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
+A list of standard OData services, typically available in the [SAP Business Accelerator Hub](https://api.sap.com/). 
+
+If your OData service is not listed, then your V2 and/or V4 catalogs are limited in scope to custom services only. 
+
+In some instances, the issue is related to a missing authorisation, refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
 
 ### Issue 5. Support Communication Users
 In some instances, you might need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
