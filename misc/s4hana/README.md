@@ -40,7 +40,7 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 * Running previews and accessing OData Services
 * Deploying SAPUI5 applications in S/4HANA Cloud
 
-You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role;
+You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role.
 
 | Business Catalog            | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
 |-----------------------------|-------------------------------------------------|---------------------------------------|
