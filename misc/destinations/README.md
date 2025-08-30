@@ -84,7 +84,7 @@ For more information about these properties, see [The Destination Is Mis-Configu
 
 # Understanding `WebIDEUsage`
 
-The SAP BTP destination `WebIDEUsage` property is used to define the purpose of the destination. The following are some of the common values for this property: `dev_abap`, `ui5_execute_abap`, `bsp_execute_abap`, `odata_gen`, `odata_abap`. In the context of using it for generating SAP Fiori Elements applications using SAP Fiori tools, `odata_abap` or `odata_gen` are only required.
+The SAP BTP destination `WebIDEUsage` property is used to define the purpose of the destination. The following are some of the common values for this property: `dev_abap`, `ui5_execute_abap`, `bsp_execute_abap`, `odata_gen`, or `odata_abap`. For generating SAP Fiori elements applications using SAP Fiori tools, only `odata_abap` or `odata_gen` are required.
 
 `odata_gen` and `odata_abap` are the most common values used for OData services and are mutually exclusive. Only specify the one that meets your requirements. For example, if you are using `odata_gen`, then the `odata_abap` must be removed and the other way around. The following table shows the common values for the `WebIDEUsage` property:
 
