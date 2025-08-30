@@ -107,7 +107,7 @@ Call a known V2 OData ervice endpoint, the base path is `/v2/northwind` and the 
 curl "https://dest.northwind/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
 ```
 
-Call a known service endpoint for V2 with `$metadata` query parameter
+To call a known OData V2 service endpoint with a `$metadata` query parameter:
 ```bash
 curl "https://dest.northwind/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
 ```
