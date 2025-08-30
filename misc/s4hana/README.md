@@ -222,7 +222,7 @@ Example of calling the OData V2 and V4 Catalogs;
 
 A list of standard OData services, typically available in the [SAP Business Accelerator Hub](https://api.sap.com/). 
 
-If your OData service is not listed, then your V2 and/or V4 catalogs are limited in scope to custom services only. 
+If your OData service is not listed, then your OData V2 and OData V4 catalogs are limited to custom services. 
 
 In some instances, the issue is related to a missing authorisation, refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
 
