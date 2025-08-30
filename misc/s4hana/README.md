@@ -238,7 +238,7 @@ For more information on configuring a partial URL destination, refer to this [li
 
 For more information about how to troubleshoot this issue, see [Recommend Services](./RecommendServices.md).
 
-### Issue 7. There are no OData services available in the V2 Catalog
+### Issue 7: There Are No OData services Available in the OData V2 Catalog
 
 Please refer to this guide [Exposing an oData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248)
 
