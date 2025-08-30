@@ -94,7 +94,7 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 | `odata_abap` | Consume the OData V2 and OData V4 service ABAP catalogs, allowing you to search for and select a specific OData service. |
 
 
-# Sample curl commands for `odata_gen`
+# Sample `curl` Commands for `odata_gen`
 
 The `WebIDEUsage` property `odata_gen` allows you to control which __individual__ service you want to call. You can use the following `curl` commands to test your connection to the individual service:
 
