@@ -48,7 +48,7 @@ You will be required to add the specific `Business Role` to allow a specific use
 | To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4C_BC_DEV_UID_PC                 |
 | Business Role               | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |            |
 
-Business roles need to be created based on business role templates, the recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
+Business roles must be created based on business role templates. The recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
 
 Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`. OData APIs must be explicitly activated via Communication Arrangements, as to prevent unauthorized systems from enumerating API's.
 
