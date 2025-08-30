@@ -72,7 +72,7 @@ Name=northwind
 WebIDEUsage=odata_gen
 ```
 
-To understand more around these properties, refer to this [SAP Fiori tools documentation](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336).
+For more information about these properties, see [The Destination Is Mis-Configured](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:54336).
 
 Quick Summary of the properties;
 - `WebIDEUsage` is configured with `odata_abap`, should be the default value, this means that the destination is used for OData generation since it's exposing an OData XML service, there are many different values for this property i.e. `odata_cloud` which are used for different purposes
