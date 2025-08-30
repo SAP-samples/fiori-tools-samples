@@ -102,7 +102,7 @@ In our `Sample Microsoft OData XML service endpoints` above, the `northwind` end
 
 The following `curl` commands are used to test these specific service endpoints:
 
-Call a known V2 OData ervice endpoint, the base path is `/v2/northwind` and the service exposed is `northwind.svc/`
+To call a known OData V2 service endpoint with a base path of `/v2/northwind` and an exposed service of `northwind.svc/`:
 ```bash
 curl "https://dest.northwind/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
 ```
