@@ -114,7 +114,7 @@ curl "https://dest.northwind/v2/northwind/northwind.svc/\$metadata" -vs > curl-d
 
 Since you are using `curl` from a terminal window, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter. The above command will return the metadata of the specified OData service.
 
-Note: `https://dest.<destination-name>/` is a placeholder that is appended with the name of your destination, it routes the HTTP request via the BAS proxy and sets up the connection to your API backend.
+Note: `https://dest.<destination-name>/` is a placeholder that is appended with the name of your destination. It routes the HTTP request using the BAS proxy and sets up the connection to your API back end.
 
 Note: `https://dest.` can also be replaced with `$H2O_URL/destinations/<destination-name>/` for example.
 
