@@ -236,7 +236,7 @@ For more information on configuring a partial URL destination, refer to this [li
 
 ### Issue 6. Standard OData services not showing in RecommendedServiceCollection
 
-Please refer to this guide [./RecommendServices.md](./RecommendServices.md) for more information on how to troubleshoot this issue.
+For more information about how to troubleshoot this issue, see [Recommend Services](./RecommendServices.md).
 
 ### Issue 7. There are no OData services available in the V2 Catalog
 
