@@ -181,7 +181,7 @@ This is a recommended flow to validate the destination configuration outside of 
     HTML5.DynamicDestination: true
     HTML5.Timeout: 60000
     WebIDEEnabled: true
-    WebIDEUsage=odata_abap (Or replace with odata_gen if consuming a specific service)
+    WebIDEUsage=odata_abap (Replace with `odata_gen` if you are consuming a specific service)
     ```
 1. Click `Save`. Ensure you have the client secret, if required.
 
