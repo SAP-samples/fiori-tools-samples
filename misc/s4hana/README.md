@@ -227,7 +227,7 @@ If your OData service is not listed, then your V2 and/or V4 catalogs are limited
 In some instances, the issue is related to a missing authorisation, refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
 
 ### Issue 5. Support Communication Users
-In some instances, you might need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
+You may need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
 However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned but you will also needd to change how the SAP BTP destination is configured.
 
 For these purposes, its best you clone your existing SAP BTP destination, and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
