@@ -118,7 +118,7 @@ Note: `https://dest.<destination-name>/` is a placeholder that is appended with 
 
 Note: `https://dest.` can also be replaced with `$H2O_URL/destinations/<destination-name>/`, for example.
 
-Under the hood, the `northwind` destination is configured with the following URL property `https://services.odata.org` so when the curl command is executed, it will simply append any path that we have specified, for example;
+Under the hood, the `northwind` destination is configured with the following URL property: `https://services.odata.org` so when the `curl` command is executed, it will simply append any path that we have specified.
 
 The curl command contains the service path`/v2/northwind/northwind.svc/` which will be appended to the SAP BTP destination URL `https://services.odata.org` to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/`. The same applies to the metadata query parameter, it will be appended to the destination URL to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/$metadata`. You can validate external from SAP BTP, by opening a new browser tab and entering the complete URL to review the response.
 
