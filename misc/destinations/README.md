@@ -122,7 +122,7 @@ Under the hood, the `northwind` destination is configured with the following URL
 
 The curl command contains the service path`/v2/northwind/northwind.svc/` which will be appended to the SAP BTP destination URL `https://services.odata.org` to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/`. The same applies to the metadata query parameter, it will be appended to the destination URL to form the complete URL `https://services.odata.org/v2/northwind/northwind.svc/$metadata`. You can validate external from SAP BTP, by opening a new browser tab and entering the complete URL to review the response.
 
-# Sample curl commands for `odata_abap`
+# Sample `curl` Commands for `odata_abap`
 
 In most instances your SAP BTP destination will be configured with `odata_abap` to allow you to consume the OData V2 and V4 catalogs. You might only know the name of the service and not the specific service endpoint. The following curl commands are used to test the OData V2 and V4 catalogs:
 
