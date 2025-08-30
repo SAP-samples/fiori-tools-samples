@@ -100,7 +100,7 @@ The `WebIDEUsage` property `odata_gen` allows you to control which __individual_
 
 In our `Sample Microsoft OData XML service endpoints` above, the `northwind` endpoint exposes different OData XML services. 
 
-The following curl commands are used to test these specific service endpoints:
+The following `curl` commands are used to test these specific service endpoints:
 
 Call a known V2 OData ervice endpoint, the base path is `/v2/northwind` and the service exposed is `northwind.svc/`
 ```bash
