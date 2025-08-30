@@ -183,7 +183,7 @@ This is a recommended flow to validate the destination configuration outside of 
     WebIDEEnabled: true
     WebIDEUsage=odata_abap (Or replace with odata_gen if consuming a specific service)
     ```
-1. Select `Save`, please ensure you have the client secret if required
+1. Click `Save`. Ensure you have the client secret, if required.
 
 Here is a sample URL, replace the <attribute> values with your own values;
 ```
