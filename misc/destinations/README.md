@@ -190,7 +190,7 @@ Here is a sample URL. Replace the <attribute> values with your own values:
 https://<subdomain>.launchpad.cfapps.<region>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<service-path>/<service-name>
 ```
 
-Calling a known service path;
+To call a known service path:
 ```
 https://my-subdomain.launchpad.cfapps.eu10.hana.ondemand.com/dynamic_dest/MyDestination/sap/opu/odata/sap/MyBusinessService/$metadata
 ```
