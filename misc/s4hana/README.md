@@ -224,7 +224,7 @@ A list of standard OData services, typically available in the [SAP Business Acce
 
 If your OData service is not listed, then your OData V2 and OData V4 catalogs are limited to custom services. 
 
-In some instances, the issue is related to a missing authorisation, refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
+This issue can be related to a missing authorisation. For more information, see [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
 
 ### Issue 5: Support Communication Users
 You may need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
