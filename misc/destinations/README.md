@@ -245,7 +245,7 @@ __Solution__
 Ensure the SAP BTP destination URL only contains the base URL and not a hardcoded service path or query parameter.
 
 You can validate this by executing the `curl` commands below.
-To retrieve the OData service;
+To retrieve the OData service:
 ```bash
 curl "https://dest.northwind_fullurl/" -vs > curl-fullurl-output.txt 2>&1
 ```
