@@ -249,7 +249,7 @@ To retrieve the OData service;
 ```bash
 curl "https://dest.northwind_fullurl/" -vs > curl-fullurl-output.txt 2>&1
 ```
-To retrieve the OData service `$metadata`;
+To retrieve the OData service `$metadata`:
 ```bash
 curl "https://dest.northwind_fullurl/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
 ```
