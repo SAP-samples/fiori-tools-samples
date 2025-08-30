@@ -185,7 +185,7 @@ This is a recommended flow to validate the destination configuration outside of 
     ```
 1. Click `Save`. Ensure you have the client secret, if required.
 
-Here is a sample URL, replace the <attribute> values with your own values;
+Here is a sample URL. Replace the <attribute> values with your own values:
 ```
 https://<subdomain>.launchpad.cfapps.<region>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<service-path>/<service-name>
 ```
