@@ -224,7 +224,7 @@ So the complete URL will look like this when executed;
 https://services.odata.org/odata/$format=JSON/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
 ```
 
-There are some instances where you want to support a SAP BTP destination that exposes a hardcoded path to a specific OData service or resource. To support this use case, append a property to `Additional Properties` called `WebIDEAdditionalData` with the value `full_url`, for example;
+There are some instances where you want to support a SAP BTP destination that exposes a hardcoded path to a specific OData service or resource. To do so, append a property to `Additional Properties` called `WebIDEAdditionalData` with a value such as `full_url`.
 
 ```
 #
