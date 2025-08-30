@@ -74,7 +74,7 @@ WebIDEUsage=odata_gen
 
 For more information about these properties, see [The Destination Is Mis-Configured](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:54336).
 
-Quick Summary of the properties;
+# Summary of Properties;
 - `WebIDEUsage` is configured with `odata_abap`, should be the default value, this means that the destination is used for OData generation since it's exposing an OData XML service, there are many different values for this property i.e. `odata_cloud` which are used for different purposes
 - `WebIDEEnabled` is set to true; this means that the destination is enabled for use in the SAP Business Application Studio
 - `HTML5.Timeout` is set to 60000 ms; this is the time the destination will wait for a response from the service before timing out
