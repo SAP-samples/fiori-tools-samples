@@ -116,7 +116,7 @@ Since you are using `curl` from a terminal window, you need to escape the `$` si
 
 Note: `https://dest.<destination-name>/` is a placeholder that is appended with the name of your destination. It routes the HTTP request using the BAS proxy and sets up the connection to your API back end.
 
-Note: `https://dest.` can also be replaced with `$H2O_URL/destinations/<destination-name>/` for example.
+Note: `https://dest.` can also be replaced with `$H2O_URL/destinations/<destination-name>/`, for example.
 
 Under the hood, the `northwind` destination is configured with the following URL property `https://services.odata.org` so when the curl command is executed, it will simply append any path that we have specified, for example;
 
