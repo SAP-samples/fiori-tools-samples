@@ -59,7 +59,7 @@ For more information about roles and catalogs, see [Creating a Custom SAP Fiori 
 __Developer Note__
 The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. There will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
 
-There are key difference between an S4HC 2-System Landscape (Public Cloud 2SL) and a 3-System Landscape (Public Cloud 3SL), refer to this guide [System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html)
+There are key difference between an SAP S/4HANA Cloud 2-System Landscape and a 3-System Landscape. For more information, see System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html).
 
 ### Developer Extensibility (SAP Client 080)
 **Purpose:** Facilitates developer extensibility within the SAP S/4HANA Cloud ABAP environment.
