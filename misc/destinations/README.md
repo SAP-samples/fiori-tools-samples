@@ -98,7 +98,7 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 
 The `WebIDEUsage` property `odata_gen` allows you to control which __individual__ service you want to call. You can use the following `curl` commands to test your connection to the individual service:
 
-In our `Sample Microsoft OData XML service endpoints` above, the `northwind` endpoint exposes different OData XML services. 
+In our sample Microsoft OData XML service endpoints above, the `northwind` endpoint exposes different OData XML services. 
 
 The following `curl` commands are used to test these specific service endpoints:
 
