@@ -228,17 +228,17 @@ This issue can be related to a missing authorisation. For more information, see 
 
 ### Issue 5: Support Communication Users
 You may need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
-However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned but you will also needd to change how the SAP BTP destination is configured.
+However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned. You also need to change how the SAP BTP destination is configured.
 
-For these purposes, its best you clone your existing SAP BTP destination, and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
+The best method is to clone your existing SAP BTP destination and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
 
 For more information on configuring a partial URL destination, refer to this [link](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:52803).
 
-### Issue 6. Standard OData services not showing in RecommendedServiceCollection
+### Issue 6: Standard OData services Are Not Displayed in `RecommendedServiceCollection`
 
 For more information about how to troubleshoot this issue, see [Recommend Services](./RecommendServices.md).
 
-### Issue 7: There Are No OData services Available in the OData V2 Catalog
+### Issue 7: There Are No OData Services Available in the OData V2 Catalog
 
 For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248).
 
