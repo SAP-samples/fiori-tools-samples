@@ -40,24 +40,26 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 * Running previews and accessing OData Services
 * Deploying SAPUI5 applications in S/4HANA Cloud
 
-You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role;
+You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role.
 
-| Business Catalog | Key User Extensibility/Customizing(client 100)  | Developer Extensibility (client 080) |
-| ------------- | ------------- |--------------------------------------|
-| To access OData Services | SAP_CORE_BC_EXT_TST  | SAP_CORE_BC_EXT_TST                  |
-| To deploy application | SAP_CORE_BC_EXT_UI  | SAP_A4C_BC_DEV_UID_PC                |
-| Business Role | SAP_BR_EXTENSIBILITY_SPEC  | SAP_BR_DEVELOPER        |
+| Business Catalog            | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
+|-----------------------------|-------------------------------------------------|---------------------------------------|
+| To access OData Services    | SAP_CORE_BC_EXT_TST                             | SAP_CORE_BC_EXT_TST                   |
+| To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4C_BC_DEV_UID_PC                 |
+| Business Role               | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |            |
 
-Business roles need to be created based on business role templates, the recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
+Business roles must be created based on business role templates. The recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
 
-Please note, in some instances, the name of the business role might defer or in some cases the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC` for example  `BR_DEVELOPER` or in some instances `Z_BR_DEVELOPER`.
+In some instances, the name of the business role may differ or the specific business catalogs are added to an existing business role that is not `SAP_BR_DEVELOPER` or `SAP_BR_EXTENSIBILITY_SPEC`. For example, `BR_DEVELOPER` or `Z_BR_DEVELOPER`. OData APIs must be explicitly activated using Communication Arrangements to prevent unauthorized systems from enumerating API's.
 
-To better understand the roles, please refer to [link](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
+For more information about roles and catalogs, see [Creating a Custom SAP Fiori Application Using SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a71e8ffa917545c8af0a7c77992f8eba.html?q=SAP_CORE_BC_EXT_UI).
 
 ## Tenant Types
 
 __Developer Note__
-The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. As a consequence, there will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
+The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. There will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
+
+There are key difference between an SAP S/4HANA Cloud 2-System Landscape and a 3-System Landscape. For more information, see [System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html).
 
 ### Developer Extensibility (SAP Client 080)
 **Purpose:** Facilitates developer extensibility within the SAP S/4HANA Cloud ABAP environment.
@@ -218,19 +220,27 @@ Example of calling the OData V2 and V4 Catalogs;
 /sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
 ```
 
-A list of standard OData services, typically available in the [V2 and V4 catalogs](https://api.sap.com/). If your OData service is not listed, then your V2 and/or V4 catalogs are limited in scope to custom services only. Refer to [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
+A list of standard OData services, typically available in the [SAP Business Accelerator Hub](https://api.sap.com/). 
 
-### Issue 5. Support Communication Users
-In some instances, you might need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
-However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned but you will also needd to change how the SAP BTP destination is configured.
+If your OData service is not listed, then your OData V2 and OData V4 catalogs are limited to custom services. 
 
-For these purposes, its best you clone your existing SAP BTP destination, and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
+This issue can be related to a missing authorisation. For more information, see [Authorization Requirements](./README.md#authorization-requirements) to ensure your user has the required authorizations to access the standard OData services.
+
+### Issue 5: Support Communication Users
+You may need to create a support communication user to allow SAP Support to access your S/4HANA Cloud system. This is typically required for troubleshooting and debugging purposes.
+However, if you want the user to access the OData V2 or V4 catalogs, you need to ensure that the user has the required authorizations and roles assigned. You also need to change how the SAP BTP destination is configured.
+
+The best method is to clone your existing SAP BTP destination and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
 
 For more information on configuring a partial URL destination, refer to this [link](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:52803).
 
-### Issue 6. Standard OData services not showing in RecommendedServiceCollection
+### Issue 6: Standard OData services Are Not Displayed in `RecommendedServiceCollection`
 
-Please refer to this guide [./RecommendServices.md](./RecommendServices.md) for more information on how to troubleshoot this issue.
+For more information about how to troubleshoot this issue, see [Recommend Services](./RecommendServices.md).
+
+### Issue 7: There Are No OData Services Available in the OData V2 Catalog
+
+For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248).
 
 ## Related Links
 Integrating SAP Business Application Studio -
