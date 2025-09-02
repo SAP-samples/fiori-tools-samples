@@ -12,7 +12,7 @@ Option 1: Watch [Configuring BTP Cross-Account and Cross-Region Destinations For
 
 Please note some of the content is outdated. For example, the legacy SAP BTP Destinations flow or where to find the trust (*.pem file) certificates. However, the video is still relevant for the cross-account and cross-region destination configuration.
 
-Option 2: Follow this SAP help link, [Creating a Destination for Cross-Subaccount Communication](https://help.sap.com/docs/btp/sap-business-technology-platform/creating-destination-for-cross-subaccount-communication)
+Option 2: Read [Creating a Destination for Cross-Subaccount Communication](https://help.sap.com/docs/btp/sap-business-technology-platform/creating-destination-for-cross-subaccount-communication)
 
 # Troubleshooting
 
