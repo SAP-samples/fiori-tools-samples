@@ -20,7 +20,7 @@ One of the most common reasons why the connection fails when accessing the ABAP 
 
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
-If you are still blocked from accessing your ABAP Cloud instance, enable a connectivity trace in your ABAP Cloud system and analyze the error. Please refer to [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace)
+If you are still blocked from accessing your ABAP Cloud instance, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
