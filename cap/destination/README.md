@@ -118,7 +118,7 @@ You can now use the SAP Fiori tools generator to start generating HTML5 applicat
 
 ## Want to Go Cross-Subaccount and Regions?
 
-Follow this blog post, [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145)
+See [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blogs-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145).
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
