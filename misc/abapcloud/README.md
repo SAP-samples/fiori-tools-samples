@@ -18,7 +18,7 @@ Option 2: Read [Creating a Destination for Cross-Subaccount Communication](https
 
 One of the most common reasons why the connection fails when accessing the ABAP Cloud environment from an external application, such as Business Application Studio, is that the communication system is not set up correctly.
 
-Please refer to [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio)
+For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
 If you are still blocked from accessing your ABAP Cloud instance, enable a connectivity trace in your ABAP Cloud system and analyze the error. Please refer to [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace)
 
