@@ -16,7 +16,7 @@ Option 2: Read [Creating a Destination for Cross-Subaccount Communication](https
 
 # Troubleshooting
 
-One of the most common reasons why connectivity fails when accessing the ABAP Cloud environment from an external application, for example Business Application Studio, is the communication system is not set up correctly.
+One of the most common reasons why the connection fails when accessing the ABAP Cloud environment from an external application, such as Business Application Studio, is that the communication system is not set up correctly.
 
 Please refer to [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio)
 
