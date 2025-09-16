@@ -7,6 +7,7 @@
 ```
 WebIDEUsage: odata_abap,dev_abap,abap_cloud
 ```
+The `abap_cloud` property is used to determine which type of system is being connected to.
 
 ## Understanding ABAP Cloud Environment (Steampunk)
 
