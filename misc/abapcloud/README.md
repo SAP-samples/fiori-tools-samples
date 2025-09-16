@@ -1,5 +1,15 @@
 # ABAP Cloud Environment (Steampunk)
 
+
+# Prerequisites
+- The `Authentication` type can be configured with different options, including `OAuth2UserTokenExchange` or `SAMLAssertion`.
+- When exposing an ABAP Cloud system to the internet using a SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values, the `abap_cloud` property is used to determine which type of system is being connected to.
+```
+WebIDEUsage: odata_abap,dev_abap,abap_cloud
+```
+
+## Understanding ABAP Cloud Environment (Steampunk)
+
 Follow this blog post to [Demystifying: SAP BTP - ABAP Environment, Steampunk, ABAP on Cloud, Embedded Steampunk](https://community.sap.com/t5/technology-blog-posts-by-members/demystifying-sap-btp-abap-environment-steampunk-abap-on-cloud-embedded/ba-p/13567772).
 
 ## Creating a SAP Fiori App and Deploy it to SAP BTP, ABAP Cloud Environment
