@@ -3,7 +3,7 @@
 
 # Prerequisites
 - The `Authentication` type can be configured with different options which include `OAuth2UserTokenExchange` and `SAMLAssertion`.
-- When exposing an SAP BTP ABAP Environment (Steampunk) system to the internet using a SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values, the `abap_cloud` property is used to determine which type of system is being connected to.
+- When exposing an SAP BTP ABAP Environment (Steampunk) system to the internet using a SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values: 
 ```
 WebIDEUsage: odata_abap,dev_abap,abap_cloud
 ```
