@@ -1,7 +1,7 @@
 # SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
 
 # Prerequisites
-1. Steps 1, 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html are completed.
+1. Steps 1, 2, and Step 3 from https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html are completed.
 1. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
 1. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
 1. You have reviewed the FAQ on [SAP S/4HANA Cloud, Public Edition](https://me.sap.com/notes/3445942) documentation
