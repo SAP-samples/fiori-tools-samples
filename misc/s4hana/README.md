@@ -169,7 +169,7 @@ For more information, please refer to this [site](https://ga.support.sap.com/dtp
 
 ## Debugging Connectivity and Deployment Issues
 
-### Issue 1. Deployment fails with `The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted`
+### Issue 1: The Deployment Fails with `The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted.`
 
 ```bash
 error abap-deploy-task YY1_Some_Service The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted.
