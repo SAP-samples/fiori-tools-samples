@@ -11,7 +11,7 @@
 1. Open the [s4hana-cloud_saml](s4hana-cloud_saml) file using a text editor or browser.
 2. Replace all instances of `my1111111` with your specific hostname.
 3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`.
-1. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
+4. Log in to SAP Business Application Studio to consume the new destination to validate that the connection works.
 
 You can refer to this link to confirm your destination is configured correctly;
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
