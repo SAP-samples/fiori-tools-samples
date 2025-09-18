@@ -1,7 +1,7 @@
 # SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
 
 # Prerequisites
-1. You have completed Step 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html as this will create the System to System trust required to enable SAML between the respective systems.
+1. Steps 1, 2 and Step 3 https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html are completed.
 1. You have administrative access to your S/4HANA Cloud system to allow to configure and debug connectivity issues.
 1. You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
 1. You have reviewed the FAQ on [SAP S/4HANA Cloud, Public Edition](https://me.sap.com/notes/3445942) documentation
@@ -11,13 +11,10 @@
 1. Open [s4hana-cloud_saml](s4hana-cloud_saml) file using any text editor or browser
 1. Replace all instances of `my1111111` with your specific hostname
 1. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`
-1. You have now created a SAB BTP subaccount destination using `odata_abap` to reflect the type of destination created
 1. Login to your SAP Business Application Studio to consume the new destination to validate that your connectivity is working
 
 You can refer to this link to confirm your destination is configured correctly;
 https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html
-
-__Note: In some cases, you might want to create an `odata_gen` SAP BTP destination to consume a specific OData service, then refer to this [tutorial](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336) to create a Full or Partial URL destination. This scenario is typical where a user does not have access to the Catalog but only individual services__
 
 ## How SAMLAssertion Works
 
@@ -170,7 +167,7 @@ https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys
 
 For more information, please refer to this [site](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:54336:51208)
 
-## Debugging Deployment Issues
+## Debugging Connectivity and Deployment Issues
 
 ### Issue 1. Deployment fails with `The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted`
 
@@ -241,6 +238,13 @@ For more information about how to troubleshoot this issue, see [Recommend Servic
 ### Issue 7: There Are No OData Services Available in the OData V2 Catalog
 
 For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248).
+
+### Issue 8: All HTTP API Requests from SAP Business Application Studio to S/4HANA Cloud Fail
+
+The most common root cause of why HTTP request fail are due to;
+
+1. Communication System for SAP Business Application Studio not being active. For more information, see [Create a Communication System for SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/79ed4173a0e44a5085c2d236d14b5ab8.html)
+2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to consume OData services. The user must have the `SAP_BR_DEVELOPER` role assigned to allow the user to consume OData services. See [Authorization Requirements](./README.md#authorization-requirements) for more information.
 
 ## Related Links
 Integrating SAP Business Application Studio -
