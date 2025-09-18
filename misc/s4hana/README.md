@@ -239,7 +239,7 @@ For more information about how to troubleshoot this issue, see [Recommend Servic
 
 For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Public Edition to the SAP BTP](https://community.sap.com/t5/technology-blog-posts-by-sap/exposing-an-odata-service-from-sap-s-4hana-cloud-public-edition-to-the-sap/ba-p/13628248).
 
-### Issue 8: All HTTP API Requests from SAP Business Application Studio to S/4HANA Cloud Fail
+### Issue 8: All HTTP API Requests from SAP Business Application Studio to SAP S/4HANA Cloud Fail
 
 The most common root cause of why HTTP request fail are due to:
 
