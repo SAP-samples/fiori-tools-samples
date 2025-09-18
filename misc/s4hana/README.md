@@ -5,7 +5,7 @@
 2. You have administrative access to your SAP S/4HANA Cloud system so you can configure and debug connectivity issues.
 3. You are subscribed to SAP Business Application Studio. For more information, see [Subscribe to Business Application Studio](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
 4. You have reviewed [SAP S/4HANA Cloud, Public Edition FAQ](https://me.sap.com/notes/3445942).
-1. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation
+5. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation
 
 ## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
 1. Open the [s4hana-cloud_saml](s4hana-cloud_saml) file using a text editor or browser.
