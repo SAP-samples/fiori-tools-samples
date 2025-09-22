@@ -105,7 +105,7 @@ Enter the path to the service you want to access i.e. `/odata/v4/catalog` and cl
 Another way to test the destination is to use `curl` from a terminal window;
 
 ```bash
-curl -L "$H2O_URL/destinations/capdestination/odata/v4/catalog" -vs > curl-cap-output.txt 2>&1
+curl -L "https://capdestination.dest/odata/v4/catalog" -vs > curl-cap-output.txt 2>&1
 ```
 
 This will generate a file called `curl-cap-output.txt` with the output of the request; you should see the OData being returned;
