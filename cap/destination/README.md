@@ -24,7 +24,7 @@ In this case, the endpoint is;
 
 https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com
 
-[![Alt text](Step2b.png "Catalog of services")](Step2b.png)
+[![Alt text](Step2b.png "Catalog of Services")](Step2b.png)
 
 When you select any of the exposed services, for example; 
 
