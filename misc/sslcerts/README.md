@@ -10,6 +10,10 @@ The instructions below are applicable where the security certificate is valid, b
 
 You can optionally choose to ignore the error and continue generation with the invalid certificate (not recommended).
 
+# Prerequisites
+
+- Certificates are normally validated against a DNS hostname, if you connect via an IP address, the certificate must explicitly list that IP in the Subject Alternative Name (SAN) field. If the SAN does not include the IP, most clients (browsers, Node.js, Java, etc.) will reject the connection with a hostname mismatch error. Public Certificate Authorities generally do not issue certs for IPs, so this typically requires a self-signed or private CA.
+
 # Security Risk
 
 Ignoring certificate errors `ignoreCertError: true` is a significant security issue because it bypasses the TLS/SSL certificate validation process, which is a crucial security mechanism for secure communications. This is problematic because:
