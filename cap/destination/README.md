@@ -14,17 +14,17 @@ For more information about destinations, see this [blog post](https://community.
 
 Step 1: Access your `nodejs` service, selecting your dev space, which will list all the running services on your space;
 
-![Alt text](Step1.png?raw=true "CAP project service")
+[![Alt text](Step1.png "CAP project service")](Step1.png)
 
 Step 2:  Select the `nodejs` service which will expose the CAP endpoint.
 
-![Alt text](Step2.png?raw=true "CAP Project Endpoint")
+[![Alt text](Step2.png "CAP Project Endpoint")](Step2.png)
 
 In this case, the endpoint is;
 
 https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com
 
-![Alt text](Step2b.png?raw=true "Catalog of services")
+[![Alt text](Step2b.png "Catalog of Services")](Step2b.png)
 
 When you select any of the exposed services, for example; 
 
@@ -34,21 +34,21 @@ https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand
 
 you will receive a `HTTP 401 unauthorized error` since you aren't passing the appropriate headers to the application otherwise your application would be exposed to the internet with no security;
 
-![Alt text](Step2c.png?raw=true "401 Error")
+[![Alt text](Step2c.png "401 Error")](Step2c.png)
 
 Step 3: Access your Security XSUAA credentials
 
 Navigate back to the root of your subaccount and select `Instances and Subscriptions`.
 
-![Alt text](Step3.png?raw=true "Instances and Subscriptions")
+[![Alt text](Step3.png "Instances and Subscriptions")](Step3.png)
 
 Step 4: Select the `Authorization and Trust Management Service` service instance that was deployed with your CAP project. In this example: `managedAppCAPProject-xsuaa-service`.
 
-![Alt text](Step4.png?raw=true "XSUAA Service Instance")
+[![Alt text](Step4.png "XSUAA Service Instance")](Step4.png)
 
 Step 5: Select the `Service Keys` tab. If a key doesn't exist, create a new service key.
 
-![Alt text](Step4.png?raw=true "XSUAA Service Key")
+[![Alt text](Step5.png "XSUAA Service Key")](Step4.png)
 
 In the service key, you will need the following properties;
 
@@ -86,7 +86,7 @@ Please note, you need to append `/oauth/token` to the `Token Service URL` proper
 
 Save the destination and you should see the following;
 
-![Alt text](Step6.png?raw=true "New Destination")
+[![Alt text](Step6.png "New Destination")](Step6.png)
 
 Using a SAP BTP destination with `OAuth2ClientCredentials` is typically used to authenticate a service or application (Client Credentials Grant) rather than a user. To switch to using a Token Exchange Grant, change the `Authentication` type to `OAuth2UserTokenExchange` which is typically used to authenticate a user across systems (Token Exchange Grant) which will remove the requirement to have a `Token User` and `Token Service Password` in the destination configuration.
 
@@ -94,24 +94,34 @@ Step 7: Let's confirm everything works!
 
 Login into Business Application Studio and select `Service Centre` on the left navigation bar;
 
-![Alt text](Step7.png?raw=true "Service Centre")
+[![Alt text](Step7.png "Service Centre")](Step7.png)
 
 Select the destination you created `capdestination` and it will show the status as `Not Available` since you need to append the service path;
 
 Enter the path to the service you want to access i.e. `/odata/v4/catalog` and click `Connect`;
 
-![Alt text](Step7b.png?raw=true "Service Centre")
+[![Alt text](Step7b.png "Service Centre")](Step7b.png)
 
 Another way to test the destination is to use `curl` from a terminal window;
 
 ```bash
-curl -L "$H2O_URL/destinations/capdestination/odata/v4/catalog" -vs > curl-cap-output.txt 2>&1
+curl -L "https://capdestination.dest/odata/v4/catalog" -vs > curl-cap-output.txt 2>&1
 ```
 
-This will generate a file called `curl-cap-output.txt` with the output of the request; you should see the OData XML being returned;
+This will generate a file called `curl-cap-output.txt` with the output of the request; you should see the OData being returned;
 
-```xml
-{"@odata.context":"$metadata","@odata.metadataEtag":"W/\"kpKGEWiUkdl2tvln8+lIbb+WgNsbQRujr+H11i5pAUg=\"","value":[{"name":"Books","url":"Books"}]}
+```JSON
+{
+  "@odata.context": "$metadata",
+  "@odata.metadataEtag": "W/\"kpKGEWiUkdl2tvln8+lIbb+WgNsbQRujr+H11i5pAUg=\"",
+  "value": [
+    {
+      "name": "Books",
+      "url": "Books"
+    }
+  ]
+}
+
 ```
 
 You can now use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
