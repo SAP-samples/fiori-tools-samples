@@ -240,10 +240,16 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 
 ### Issue 8: All HTTP API Requests from SAP Business Application Studio to SAP S/4HANA Cloud Fail
 
-The most common root cause of why HTTP request fail are due to:
+#### Assumes S4HC Connectivity Is Established
 
-1. The communication system for SAP Business Application Studio is not active. For more information, see [Create a Communication System for SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/79ed4173a0e44a5085c2d236d14b5ab8.html).
-2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to consume OData services. The user must have the `SAP_BR_DEVELOPER` role assigned to allow the user to consume OData services. For more information, see [Authorization Requirements](./README.md#authorization-requirements).
+1. You have activated either the authorization or connectivity trace logging on your S4HC instance and confirmed the requests are hitting your S4HC instance.
+2. The communication system for SAP Business Application Studio is not active. For more information, see [Create a Communication System for SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/79ed4173a0e44a5085c2d236d14b5ab8.html).
+3. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to consume OData services. The user must have the `SAP_BR_DEVELOPER` role assigned to allow the user to consume OData services. For more information, see [Authorization Requirements](./README.md#authorization-requirements).
+
+#### Assumes There Is No Connectivity to Your S4HC Instance
+
+1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
+2. After running a `curl` command or the Environment Check report, all requests are failing with HTTP 500 but they are not hitting your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
 ## Related Links
 Integrating SAP Business Application Studio -
