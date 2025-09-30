@@ -248,7 +248,7 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 
 #### Assumes There Is No Connectivity to Your S4HC Instance
 
-1. You have activated either the authorization or connectivity trace logging on your S4HC instance and confirmed _no_ requests are hitting your S4HC instance.
+1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
 2. After running a `curl` command or the Environment Check report, all requests are failing with HTTP 500 but they are not hitting your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
 ## Related Links
