@@ -78,7 +78,7 @@ For more information about these properties, see [The Destination Is Mis-Configu
 - `WebIDEUsage` is set to `odata_abap`. This means the destination is used for OData generation since it's exposing an OData XML service. There are many different values for this property such as `odata_cloud` which are used for different purposes.
 -  When `WebIDEEnabled` is set to `true`, the destination is enabled for use in SAP Business Application Studio.
 - `HTML5.Timeout` is set to 60000 ms. This is the time the destination will wait for a response from the service before timing out.
-- `HTML5.DynamicDestination` is set to true. This means that the destination will be dynamically created at runtime, making it consumable by HTML5/ SAP Fiori applications at runtime, even if the destination does not exist in the subaccount.
+- `HTML5.DynamicDestination` is set to `true`. This means that the destination is dynamically created at runtime, making it consumable by HTML5 and SAP Fiori applications at runtime, even if the destination does not exist in the subaccount.
 - `Authentication` is set to `NoAuthentication`. This means that the destination does not require authentication.
 - Other properties can be added. We will list some of them further on.
 
