@@ -3,10 +3,11 @@
   "authenticationMethod": "route",
   "routes": [
     {
-        "authenticationType": "xsuaa",
-        "csrfProtection": false,
-        "source": "^/catalog/",
-        "destination": "cap-launchpad"
+      "source": "^/odata/(.*)$",
+      "target": "/odata/$1",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false,
+      "destination": "cap-launchpad"
     },
     {
       "source": "^/resources/(.*)$",
