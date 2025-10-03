@@ -12,8 +12,8 @@ modules:
   parameters:
     buildpack: nodejs_buildpack
     host: ${appname}
-    memory: 256M
-    disk-quota: 512M
+    memory: 256MB
+    disk-quota: 1GB
   build-parameters:
     builder: npm-ci
     ignore: [".env", "node_modules/"]
@@ -77,9 +77,12 @@ modules:
     build-result: dist
     builder: custom
     commands:
-    - npm install
+    - npm install --registry=https://registry.npmjs.org/
     - npm run build:cf
     supported-platforms: []
+    parameters:
+      memory: 256M
+      disk-quota: 1024M
 resources:
 - name: managedAppCAPProject-db
   type: com.sap.xs.hdi-container

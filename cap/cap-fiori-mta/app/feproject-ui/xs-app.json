@@ -3,9 +3,10 @@
   "authenticationMethod": "route",
   "routes": [
     {
+      "source": "^/odata/(.*)$",
+      "target": "/odata/$1",
       "authenticationType": "xsuaa",
       "csrfProtection": false,
-      "source": "^/catalog/",
       "destination": "cap-catalog-api"
     },
     {
