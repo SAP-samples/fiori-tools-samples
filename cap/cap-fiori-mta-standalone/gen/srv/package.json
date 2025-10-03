@@ -6,26 +6,28 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
-        "@sap/cds": "^6",
-        "@sap/xsenv": "^4.2.0",
-        "@sap/xssec": "^3.6.0",
+        "@sap/cds": "^9",
+        "@sap/xsenv": "^6",
+        "@sap/xssec": "^4",
         "express": "^4",
-        "passport": "^0.6.0",
-        "sqlite3": "^5.0.4"
+        "passport": "^0.7.0",
+        "sqlite3": "^5.1.7",
+        "@cap-js/sqlite": "^2",
+        "@sap/cds-dk": "^9"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.102.6",
+        "mbt": "^1.2.29",
         "rimraf": "^5.0.5"
     },
     "scripts": {
-        "start": "cds run",
+        "start": "cds watch",
         "watch-mystandalonecapproject": "cds watch --open mystandalonecapproject/webapp/index.html?sap-ui-xx-viewCache=false",
         "undeploy": "cf undeploy standaloneCAPProject --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
     },
     "engines": {
-        "node": "^16.15"
+        "node": ">=20.0.0"
     },
     "eslintConfig": {
         "extends": "eslint:recommended",
@@ -54,6 +56,9 @@
     },
     "cds": {
         "requires": {
+            "[production]": {
+                "auth": "xsuaa"
+            },
             "db": {
             "kind": "sqlite",
             "credentials": {
