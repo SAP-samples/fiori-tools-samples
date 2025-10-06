@@ -5,7 +5,7 @@
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.8.3|
 |**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>List Report Page V4|
+|**Template Used**<br>List Report Page OData V4|
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/incident/
 |**Module Name**<br>incidents|
@@ -19,24 +19,18 @@
 |**Main Entity**<br>Incidents|
 |**Navigation Entity**<br>None|
 
-## incidents
+## Starting the Generated App
 
-SAP Fiori Elements
-
-### Starting the generated app
-
--   This app has been generated using the SAP Fiori tools - Application Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply start your CAP project and navigate to the following location in your browser:
+-   This app has been generated using the SAP Fiori tools - Application Generator, as part of the SAP Fiori tools. To launch the generated app, simply start your CAP project and navigate to the following location in your browser:
 
 http://localhost:4004/incidents/webapp/index.html
 
-- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+- You can also run the application using mock data that reflects the OData Service URL supplied during application generation. Too run the application with mock data, type the following command from the generated app root folder in the terminal:
+
+```bash
+
+npm run start-mock
 
 ```
-    npm run start-mock
-```
-
-#### Pre-requisites:
-
-1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
 
 

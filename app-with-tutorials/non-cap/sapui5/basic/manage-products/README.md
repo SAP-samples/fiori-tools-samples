@@ -1,21 +1,18 @@
 ## Description 
 
-This is a sample app to manage products. This app is based on SAPUI5 Application template for freestyle programming 
+This is a sample app to manage products. This app is based on the SAPUI5 Application floorplan for freestyle programming.
 
-To learn how to build this app, check out [this](https://developers.sap.com/group.cp-frontend-ui5-1.html) tutorial.
+For more information how to develop this application, see [Create a Web Front End with SAPUI5](https://developers.sap.com/group.cp-frontend-ui5-1.html).
 
 ## Requirements
 
-This app is intended as a sample app that can be previwed using SAP Fiori tools in SAP Business Application or VSC. Refer to [documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html) for help on how to get started with SAP Fiori tools. 
-
-
+This app is intended as a sample app that can be previewed using SAP Fiori tools in SAP Business Application or Visual Studio Code. For more information, see [Getting Starting with SAP Fiori tools](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html).
 
 ## Download and Installation
 
-1. After cloning the repository, right click on the app folder (i.e. `myfioriapp`) to open a terminal
-2. At the prompt of the terminal, type `npm install` 
-3. Switch to "SAP Fiori" on the left activity bar
-4. Right click on the app name in `Application Modeler` view to open `Application Info` page
-5. Check and perfrom actions under `Application Status`
-6. Right click on the app name in `Appication Modeler` view and select `Preview Application` and choose `start` option for preview. 
-
+1. After cloning the repository, right-click on the app folder such as `myfioriapp` and click "Open Integrated Terminal".
+2. Type `npm install` in the terminal.
+3. CLick the "SAP Fiori" icon in the activity bar.
+4. Right-click on the app name in the "Application Modeler" view to open the "Application Info" page.
+5. Review and perform any actions under "Application Status".
+6. Right-click on the app name in the "Appication Modeler" view, click `Preview Application` and click `start` to preview your application.
