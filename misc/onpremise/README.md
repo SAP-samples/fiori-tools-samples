@@ -19,7 +19,7 @@ Use Cases include:
 
 # Prerequisites
 
-- You have SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount
+- You have a SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount
 - You have admin rights to the SAP BTP cockpit to modify destinations
 - You have admin rights to the local SAP Cloud Connector (SCC) UI
 - Only OData XML services are supported when creating SAP Fiori Elements applications when using SAP Fiori tools generator
