@@ -102,7 +102,7 @@ If there are any issues with accessing the V2 and V4 catalog endpoints, the `env
 
 # Connectivity Issues
 
-If you are experiencing connectivity issues, please check the following;
+If you are experiencing connectivity issues, please check the following:
 
 ### Common Issues
 
