@@ -221,7 +221,7 @@ For example;
 
 `SAP BTP destination URL` + `Service path` = `Complete URL`
 
-So the complete URL will look like this when executed where the service path is defined incorrectly;
+The service path is defined incorrectly when the complete URL looks like the above, when executed.
 ```
 https://services.odata.org/odata/$format=JSON/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
 ```
