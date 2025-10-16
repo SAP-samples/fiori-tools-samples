@@ -98,7 +98,7 @@ Properties Summary:
 
 To validate your SAP BTP destination connectivity, run the [Environment Check](../destinations/README.md#environment-check) and review the generated results.
 
-If there are any issues with accessing the V2 and V4 catalog endpoints, the `envcheck-results.md` report will provide details about the error.
+If there are any issues with accessing the OData V2 and OData V4 catalog endpoints, the `envcheck-results.md` report provides error details.
 
 # Connectivity Issues
 
