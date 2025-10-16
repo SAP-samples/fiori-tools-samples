@@ -209,7 +209,7 @@ If you are experiencing deployment issues related to Authentication (HTTP 401) o
 
 1. Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system
 2. You have the `S_DEVELOP` authorization in your back-end system for your user.
-3. For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`
+3. For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
 
 ### Step 1: ABAP Transaction Log
 
