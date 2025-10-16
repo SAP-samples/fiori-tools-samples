@@ -215,7 +215,7 @@ Take, for example, a SAP BTP destination URL populated as follows;
 https://services.odata.org/odata/$format=JSON
 ```
 
-When the Service Centre or SAP Fiori tools initiate an HTTP request, any service path appended to the request will fail since the URL already contains a hardcoded value;
+When the Service Centre or SAP Fiori tools initiate an HTTP request, any service path appended to the request fails since the URL already contains a hardcoded value.
 
 For example;
 
