@@ -237,7 +237,7 @@ To make it a permanent change, in your HTML5 application, you can add `--verbose
 "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml --verbose && rimraf archive.zip"
 ```
 
-Re-run the deployment command `npm run deploy` and check the console output for any errors or issues. The trace logging will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
+Re-run the deployment command `npm run deploy` and check the console output for any errors or issues. The trace logging provides detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
 ### Step 3: Execute a Connection Test Using Business Application Studio (BAS)
 
