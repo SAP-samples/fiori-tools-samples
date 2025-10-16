@@ -217,7 +217,7 @@ https://services.odata.org/odata/$format=JSON
 
 When the Service Centre or SAP Fiori tools initiate an HTTP request, any service path appended to the request fails since the URL already contains a hardcoded value.
 
-For example;
+For example:
 
 `SAP BTP destination URL` + `Service path` = `Complete URL`
 
