@@ -139,7 +139,7 @@ OData V4 Catalog
 curl "https://<destination_name>.dest/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" -vs > curl-v4catalog-output.txt 2>&1
 ```
 
-Note: since you are using curl, you need to escape the `$` sign with a backslash `\` in order to pass it as a query parameter.
+Note: Since you are using curl, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter.
 
 __Question__: Do you know why we can't use these V2 and V4 catalog endpoints against the `northwind` destination?
 
