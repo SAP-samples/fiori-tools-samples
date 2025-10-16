@@ -253,7 +253,7 @@ Note, if you get an HTTP 404 error, this means that the BSP application is not y
 
 ### Support Ticket
 
-If you are still experiencing deployment issues, please raise a support ticket using the support component `CA-UX-IDE` and ensure you provide all the logs from Steps 1-3 above, most importantly, that you have validated you have met the prerequisites.
+If you are still experiencing deployment issues, please raise a support ticket using the support component `CA-UX-IDE`. Ensure you provide all the logs from Steps 1-3 above and ensure you have met the prerequisites.
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
