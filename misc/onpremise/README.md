@@ -247,7 +247,7 @@ Replace the `<bsp-name>` with the name of your BSP name.
 ```bash
 curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled"  > curl-abap-srv-output.txt 2>&1
 ```
-- Review the `curl-abap-srv-output.txt` file for any errors or issues. In some instances, the root cause of why the API request is failing can be found in the response body or headers.
+- Review the `curl-abap-srv-output.txt` file for any errors or issues. The root cause of why your API request is failing can often be found in the response body or headers.
 
 Note, if you get an HTTP 404 error, this means that the BSP application is not yet deployed, this also indicates there is no connectivity issue to your On-Premise ABAP system.
 
