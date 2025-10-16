@@ -204,7 +204,7 @@ Compress all the requested files into a single zip file and attach it to the sup
 
 ### Prerequisites
 
-If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), please ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an On-Premise system.
+If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an On-Premise system.
  In most instances, the root cause of deployment issues relates to the prerequisites not being met.
 
 1. Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system
