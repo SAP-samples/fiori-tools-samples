@@ -7,7 +7,7 @@ Use cases include:
    1. Accessing On-Premises SAP systems such as SAP S/4HANA and ECC.
    2. Connecting to internal databases residing in corporate networks
    3. Consuming APIs from services that aren't internet-facing
-1. Authentication options include;
+Authentication options include:
    1. Basic Authentication
    2. OAuth2 Client Credentials
    3. OAuth2 User Credentials
