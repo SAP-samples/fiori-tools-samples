@@ -223,7 +223,7 @@ Refer [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
 ### Step 2: Enable Client Trace Logging
 
-Run the following deployment command with debug logging enabled to get more information about the API request and response. This will help identify any issues during the deployment process.
+Run the following deployment command with debug logging enabled to get more information about the API request and response. This helps identify any issues during the deployment process.
 
 ```bash
 # Mac or Linux
