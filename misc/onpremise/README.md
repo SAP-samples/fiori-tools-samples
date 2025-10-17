@@ -86,7 +86,7 @@ HTML5.Timeout=60000
 ```
 
 Properties Summary:
-- `WebIDEUsage` is configured with `odata_abap`, this means that the destination is used to expose OData service catalogs to the SAP Business Application Studio
+- `WebIDEUsage` is configured with `odata_abap`. This means that the destination is used to expose OData service catalogs to SAP Business Application Studio.
 - `WebIDEEnabled` is set to true; this means that the destination is enabled for use in the SAP Business Application Studio
 - `HTML5.Timeout` is set to 60000 ms; this is the time the destination will wait for a response from the service before timing out
 - `HTML5.DynamicDestination` is set to true. This means that the destination will be dynamically created at runtime.
