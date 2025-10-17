@@ -27,7 +27,11 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
 
-Unless you have a specific technical reason, the default should be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the `nameIdFormat`. The email address as defined in your IdP i.e OpenID Connect or IAS must match the S4HC email address configured with the appropriate roles. Please refer to the related links section below to understand more around adding other IdP's to your SAB BTP system.
+Notes;
+
+1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers. 
+2. Unless you have a specific technical reason, the default should be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the `nameIdFormat`. The email address as defined in your IdP i.e OpenID Connect or IAS must match the S4HC email address configured with the appropriate roles. Please refer to the related links section below to understand more around adding other IdP's to your SAB BTP system.
+3. The SAML `nameIdFormat` specification (both 1.1 and 2.0) does not mandate any case normalization for NameID values, it treats the NameID as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, including case sensitivity.
 
 ## Authorization Requirements
 Different authorizations are required for various operations in SAP S/4HANA Cloud, such as:
@@ -249,7 +253,8 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 #### Assumes There Is No Connectivity to Your S4HC Instance
 
 1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
-2. After running a `curl` command or the Environment Check report, all requests are failing with HTTP 500 but they are not hitting your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
+2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
+3. After running a `curl` command or the `Environment Check report`, all requests are failing with HTTP 500 but they are not hitting your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
 ## Related Links
 Integrating SAP Business Application Studio -
