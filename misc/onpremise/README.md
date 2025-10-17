@@ -3,7 +3,7 @@
 # Overview
 An SAP BTP destination defined with the proxy type: `OnPremise` is a configuration that enables secure connectivity between your SAP Business Technology Platform (BTP) applications and On-Premise systems residing behind your corporate firewall.
 
-Use Cases include:
+Use cases include:
    1. Accessing On-Premises SAP systems such as SAP S/4HANA and ECC.
    1. Connecting to internal databases residing in corporate networks
    1. Consuming APIs from services that aren't internet-facing
