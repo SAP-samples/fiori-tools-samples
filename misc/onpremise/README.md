@@ -154,7 +154,7 @@ Installation and Configuration of SAP Cloud Connector, https://blogs.sap.com/202
 
 ### Principal Propagation
 
-1. Blog post https://blogs.sap.com/2021/09/06/setting-up-principal-propagation
+1. [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 2. SAP Help Portal https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation
 3. Check Logs https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html?locale=en-US&state=PRODUCTION&version=1.0#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate
 
