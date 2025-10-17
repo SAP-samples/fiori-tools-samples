@@ -104,15 +104,15 @@ The following `curl` commands are used to test these specific service endpoints:
 
 To call a known OData V2 service endpoint with a base path of `/v2/northwind` and an exposed service of `northwind.svc/`:
 ```bash
-curl "https://dest.northwind/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
+curl "https://northwind.dest/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
 ```
 
 To call a known OData V2 service endpoint with a `$metadata` query parameter:
 ```bash
-curl "https://dest.northwind/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
+curl "https://northwind.dest/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
 ```
 
-Since you are using `curl` from a terminal window, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter. The above command will return the metadata of the specified OData service.
+Since you are using `curl` from a terminal window, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter. The above command returns the metadata of the specified OData service.
 
 Note: `https://dest.<destination-name>/` is a placeholder that is appended with the name of your destination. It routes the HTTP request using the BAS proxy and sets up the connection to your API back end.
 
@@ -131,15 +131,15 @@ In most instances your SAP BTP destination will be configured with `odata_abap` 
 OData V2 Catalog
 
 ```bash
-curl "https://dest.<destination-name>/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection" -vs > curl-v2catalog-output.txt 2>&1
+curl "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection" -vs > curl-v2catalog-output.txt 2>&1
 ```
 
 OData V4 Catalog
 ```bash
-curl "https://dest.<destination_name>/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" -vs > curl-v4catalog-output.txt 2>&1
+curl "https://<destination_name>.dest/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" -vs > curl-v4catalog-output.txt 2>&1
 ```
 
-Note: since you are using curl, you need to escape the `$` sign with a backslash `\` in order to pass it as a query parameter.
+Note: Since you are using curl, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter.
 
 __Question__: Do you know why we can't use these V2 and V4 catalog endpoints against the `northwind` destination?
 
@@ -215,11 +215,13 @@ Take, for example, a SAP BTP destination URL populated as follows;
 https://services.odata.org/odata/$format=JSON
 ```
 
-When the Service Centre or SAP Fiori tools initiate an HTTP request, any service path appended to the request will fail since the URL already contains a hardcoded value;
+When the Service Centre or SAP Fiori tools initiate an HTTP request, any service path appended to the request fails since the URL already contains a hardcoded value.
 
-SAP BTP destination URL + Service path = Complete URL
+For example:
 
-So the complete URL will look like this when executed;
+`SAP BTP destination URL` + `Service path` = `Complete URL`
+
+The service path is defined incorrectly when the complete URL looks like the above, when executed.
 ```
 https://services.odata.org/odata/$format=JSON/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
 ```
@@ -247,11 +249,11 @@ Ensure the SAP BTP destination URL only contains the base URL and not a hardcode
 You can validate this by executing the `curl` commands below.
 To retrieve the OData service:
 ```bash
-curl "https://dest.northwind_fullurl/" -vs > curl-fullurl-output.txt 2>&1
+curl "https://northwind_fullurl.dest/" -vs > curl-fullurl-output.txt 2>&1
 ```
 To retrieve the OData service `$metadata`:
 ```bash
-curl "https://dest.northwind_fullurl/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
+curl "https://northwind_fullurl.dest/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
 ```
 
 
