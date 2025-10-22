@@ -131,7 +131,7 @@ Step 3: Once you've gathered the following logs, you can disable the trace setti
 
 * `ljs_trace.log` (SAP Cloud Connector).
 * scc_core.log (if applicable, newer version).
-* traffic_trace_<subaccount>_on_<region>.trc.
+* `traffic_trace_<subaccount>_on_<region>.trc`
 * tunnel_traffic_trace_<subaccount>_on_<region>.trc (if applicable, newer version).
 
 For more details about these logs, see [SAP Cloud Connector Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
