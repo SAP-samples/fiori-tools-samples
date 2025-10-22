@@ -136,7 +136,7 @@ Step 3: Once you've gathered the following logs, you can disable the trace setti
 
 For more details about these logs, see [SAP Cloud Connector Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
 
-Step 4: Review the logs for any errors or issues. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
+Step 4: Review the logs for any errors or issues. The logs provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
 
 If you do not see any network traffic in the `traffic_trace_` logs, then the issue is most likely with the SCC configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system. In most cases, this is related to a local firewall or proxy, blocking requests, refer to this [guide](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) which will require support from your IT Admin team.
 
