@@ -174,7 +174,7 @@ From your SAP BTP Cockpit:
 * Navigate to your SAP BTP subaccount -> Connectivity -> Destinations. 
 * Select the affected destination and ensure all properties are visible in the screenshot.
 
-From your SAP Cloud Connector (SCC):
+From your SAP Cloud Connector:
 * Subaccount Overview: SCC -> Subaccount Overview -> Click Subaccount.
 * Virtual Host Mapping: SCC -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in SAP BTP Destination.
 * Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
