@@ -118,7 +118,7 @@ Step 1: Enable logging in the SAP Cloud Connector UI.
 
 * Log in to SAP Cloud Connector.
 * Confirm the version of your SAP Cloud Connector.
-* Select Log and Trace Files from the left-hand menu, select edit button on the top right.
+* In the menu on the left, click "Log and Trace Files" and click "Edit".
 * Set "Cloud Connector Loggers" to "ALL".
 * Set Other Loggers to Information
 * Enable Payload Trace (ensure the correct subaccount is selected)
