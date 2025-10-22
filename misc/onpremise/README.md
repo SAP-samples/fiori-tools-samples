@@ -129,7 +129,7 @@ Step 2: Run the scenario that is failing and check the logs for any errors. If t
 
 Step 3: Once you've gathered the following logs, you can disable the trace settings.
 
-* ljs_trace.log (Cloud Connector).
+* `ljs_trace.log` (SAP Cloud Connector).
 * scc_core.log (if applicable, newer version).
 * traffic_trace_<subaccount>_on_<region>.trc.
 * tunnel_traffic_trace_<subaccount>_on_<region>.trc (if applicable, newer version).
