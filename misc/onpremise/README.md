@@ -178,7 +178,7 @@ From your SAP Cloud Connector:
 * Subaccount Overview: SAP Cloud Connector -> Subaccount Overview -> Click Subaccount.
 * Virtual Host Mapping: SCC -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in SAP BTP Destination.
 * Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
-* Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure Access Policy is set to Path and All Sub-Paths and URL Path is /. Note this may differ depending on security concerns.
+* Access Control: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure "Access Policy" is set to "Path" and All Sub-Paths and URL Path is "/". Note this may differ depending on security concerns.
 * Check Availability: SCC -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
 
 ## Step 2: Enable Trace Logging
