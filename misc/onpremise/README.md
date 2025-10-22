@@ -183,7 +183,7 @@ From your SAP Cloud Connector:
 
 ## Step 2: Enable Trace Logging
 
-Refer to the section [Enable Trace Logging](#enable-trace-logging) and provide all the requested log files.
+Provide all the requested log files. For more information, see [Enable Trace Logging](#enable-trace-logging).
 
 ## Step 3: Environment Check Report
 Run the [Environment Check Report](../destinations/README.md#environment-check) and attach the generated zip file.
