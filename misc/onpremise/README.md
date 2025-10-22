@@ -114,7 +114,7 @@ This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions
 
 ### Enable Trace Logging
 
-Step 1: Enable logging in the SAP Cloud Connector UI.
+Step 1: Enable logging in SAP Cloud Connector
 
 * Log in to SAP Cloud Connector.
 * Confirm the version of your SAP Cloud Connector.
