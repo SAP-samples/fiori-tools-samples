@@ -114,29 +114,31 @@ This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions
 
 ### Enable Trace Logging
 
-Step 1: Enable logging in the SAP Cloud Connector (SCC) UI.
+Step 1: Enable logging in SAP Cloud Connector
 
-* Confirm the version of your SAP Cloud Connector (SCC).
-* Set Cloud Connector Loggers to ALL.
-* Set Other Loggers to Information
-* Enable Payload Trace (ensure the correct subaccount is selected)
-  Replicate the issue and provide us with the following logs, if generated:
-* ljs_trace.log (Cloud Connector).
-* scc_core.log (if applicable, newer version).
-* traffic_trace_<subaccount>_on_<region>.trc.
-* tunnel_traffic_trace_<subaccount>_on_<region>.trc (if applicable, newer version).
+* Log in to SAP Cloud Connector.
+* Confirm the version of your SAP Cloud Connector.
+* In the menu on the left, click "Log and Trace Files" and click "Edit".
+* Set "Cloud Connector Loggers" to "ALL".
+* Set "Other Loggers" to "Information".
+* Enable "Payload Trace". Ensure the correct subaccount is selected.
 
-__Note:__ As best practice, we recommend that you do not enable trace logging in production environments unless you are troubleshooting a specific issue.
+__Note:__ As best practice, we recommend that you do not enable trace logging in a productive environment unless you are troubleshooting a specific issue.
 
-Step 2: Run the scenario that is failing and check the logs for any errors. If there are no errors, run the Environment Check to call the V2 and V4 catalog API endpoints. The logs will provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
+Step 2: Run the scenario that is failing and check the logs for any errors. If there are no errors, run "Environment Check" to call the OData V2 and OData V4 catalog API endpoints. The logs provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
-Step 3: Once you've gathered the logs, you can disable the trace settings.
+Step 3: Once you've gathered the following logs, you can disable the trace settings:
+
+* `ljs_trace.log` (SAP Cloud Connector).
+* `scc_core.log` (if applicable).
+* `traffic_trace_<subaccount>_on_<region>.trc`
+* `tunnel_traffic_trace_<subaccount>_on_<region>.trc` (if applicable).
 
 For more details about these logs, see [SAP Cloud Connector Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
 
-Step 4: Review the logs for any errors or issues. The logs will provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
+Step 4: Review the logs for any errors or issues. The logs provide detailed information about the requests and responses between the SAP BTP and the on-premise system.
 
-If you do not see any network traffic in the `traffic_trace_` logs, then the issue is most likely with the SCC configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system which is blocking traffic.
+If you do not see any network traffic in the `traffic_trace_` logs, then the issue is most likely with the SAP Cloud Connector configuration where the SAP Cloud Connector is unable to establish a secure connection to the target ABAP system. In most cases, this is related to a local firewall or proxy, blocking requests. For more information, see [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526). This requires support from your IT Admin team.
 
 # Additional Resources
 
@@ -166,32 +168,22 @@ Installation and Configuration of SAP Cloud Connector, https://blogs.sap.com/202
 
 If you are still experiencing issues, please raise a support ticket using the support component `BC-MID-SCC` and ensure you provide the following information:
 
-## Step 1: Provide Screenshots
+## Step 1: Required Screenshots
 
-Navigate to SAP BTP -> Subaccount -> Connectivity -> Destinations. Select the affected destination and ensure all properties are shown.
+From your SAP BTP Cockpit:
+* Navigate to your SAP BTP subaccount -> Connectivity -> Destinations. 
+* Select the affected destination and ensure all properties are visible in the screenshot.
 
-From your SAP Cloud Connector (SCC):
-* Subaccount Overview: SCC -> Subaccount Overview -> Click Subaccount.
-* Virtual Host Mapping: SCC -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in SAP BTP Destination.
-* Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
-* Access Control: SCC -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure Access Policy is set to Path and All Sub-Paths and URL Path is /. Note this may differ depending on security concerns.
-* Check Availability: SCC -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
+From your SAP Cloud Connector:
+* Subaccount Overview: SAP Cloud Connector -> Subaccount Overview -> Click Subaccount.
+* Virtual Host Mapping: SAP Cloud Connector -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in the SAP BTP destination.
+* Access Control: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
+* Access Control: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure "Access Policy" is set to "Path" and All Sub-Paths and URL Path is "/". Note this may differ depending on security concerns.
+* Check Availability: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
 
-## Step 2: Trace SAP Cloud Connector Activity
+## Step 2: Enable Trace Logging
 
-* Confirm the version of your SAP Cloud Connector.
-* Set Cloud Connector Loggers to ALL.
-* Set Other Loggers to Information
-* Enable Payload Trace (ensure the correct subaccount is selected)
-  Replicate the issue and provide us with the following logs, if generated:
-* ljs_trace.log (Cloud Connector).
-* scc_core.log (if applicable, newer version).
-* traffic_trace_<subaccount>_on_<region>.trc.
-* tunnel_traffic_trace_<subaccount>_on_<region>.trc (if applicable, newer version).
-
-Also, specify the date and time of the request to help us narrow down the logs.
-
-Once you've gathered the logs, you can disable the trace settings.
+Provide all the requested log files. For more information, see [Enable Trace Logging](#enable-trace-logging).
 
 ## Step 3: Environment Check Report
 Run the [Environment Check Report](../destinations/README.md#environment-check) and attach the generated zip file.
