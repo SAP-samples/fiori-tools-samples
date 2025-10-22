@@ -127,7 +127,7 @@ __Note:__ As best practice, we recommend that you do not enable trace logging in
 
 Step 2: Run the scenario that is failing and check the logs for any errors. If there are no errors, run "Environment Check" to call the OData V2 and OData V4 catalog API endpoints. The logs provide detailed information about the requests and responses between the SAP BTP and the On-Premise system.
 
-Step 3: Once you've gathered the following logs, you can disable the trace settings.
+Step 3: Once you've gathered the following logs, you can disable the trace settings:
 
 * `ljs_trace.log` (SAP Cloud Connector).
 * scc_core.log (if applicable, newer version).
