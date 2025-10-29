@@ -27,7 +27,7 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
 
-Notes;
+**Notes:**
 
 1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers. 
 2. Unless you have a specific technical reason, the default should be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the `nameIdFormat`. The email address as defined in your IdP i.e OpenID Connect or IAS must match the S4HC email address configured with the appropriate roles. Please refer to the related links section below to understand more around adding other IdP's to your SAB BTP system.
