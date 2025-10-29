@@ -30,7 +30,7 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 **Notes:**
 
 1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers. 
-2. Unless you have a specific technical reason, the default should be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the `nameIdFormat`. The email address as defined in your IdP i.e OpenID Connect or IAS must match the S4HC email address configured with the appropriate roles. Please refer to the related links section below to understand more around adding other IdP's to your SAB BTP system.
+2. Unless you have a specific technical reason, the  `nameIdFormat` should be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdP's to your SAB BTP system, see Related Links.
 3. The SAML `nameIdFormat` specification (both 1.1 and 2.0) does not mandate any case normalization for NameID values, it treats the NameID as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, including case sensitivity.
 
 ## Authorization Requirements
