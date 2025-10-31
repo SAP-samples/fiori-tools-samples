@@ -19,7 +19,7 @@ Authentication options include:
 
 # Prerequisites
 
-- You have a SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount
+- You have a SAP Cloud Foundry (SCC) Runtime environment configured in your SAP BTP subaccount
 - You have admin rights to the SAP BTP cockpit to modify destinations
 - You have admin rights to the local SAP Cloud Connector (SCC) UI
 - Only OData XML services are supported when creating SAP Fiori elements applications with the SAP Fiori generator
@@ -61,7 +61,7 @@ sequenceDiagram
 
 ## SAP Cloud Connector Configuration
 
-This guide will not document the steps to configure an SAP Cloud Connector, the following blog post details [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
+This guide will not document the steps to configure an SAP Cloud Connector, refer to the following blog post instead [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
 ## SAP BTP Destination
 
@@ -79,7 +79,7 @@ CloudConnectorLocationId=scloud
 WebIDEEnabled=true
 ProxyType=OnPremise
 URL=http\://my-internal-host\:44330/
-Name=cloudconnector
+Name=MyOnPremiseDestination
 WebIDEUsage=odata_abap
 HTML5.DynamicDestination=true
 HTML5.Timeout=60000
@@ -92,7 +92,7 @@ Properties Summary:
 - `HTML5.DynamicDestination` is set to true. This means that the destination will be dynamically created at runtime.
 - `Authentication` is set to `PrincipalPropagation`. This means that the destination to support a productive landscape, to maintain the same user context and to avoid the need for a password.
 - `CloudConnectorLocationId` is set to `scloud`. This is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit. The SAP BTP subaccount can be configured with different cloud connectors.
-- `URL` is set to `http://my-internal-host:44330/` which indicates the internal URL that is then mapped to your on-premise system within your local On-Premise network. Note, the URL will always default to `http://` soo only the port and address are configurable.
+- `URL` is set to your SCC internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is then mapped to your On-Premise ABAP system within your local network. The URL will always default to `http://` soo only the port and address are configurable.
 
 # Validate Connectivity
 
@@ -102,15 +102,14 @@ If there are any issues with accessing the OData V2 and OData V4 catalog endpoin
 
 # Connectivity Issues
 
-If you are experiencing connectivity issues, please check the following:
+If you are experiencing connectivity issues from the SAP BTP platform, please check the following:
 
 ### Common Issues
 
 This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:48366:52526) covers some of the most common issues encountered when using SCC and SAP BTP destinations. If you make changes to your configuration, please re-run your existing steps to see if the issue is resolved.
 
-- Ensure that the SCC is running and that the connection to the On-Premise system is established. You can review the SCC logs for any errors. For more information, see Enable Tracing Logging.
-- Ensure there are no issues with firewalls or proxies blocking incoming connections from SAP BTP. You may need to whitelist the IP addresses of the SAP BTP data centers.
-- Ensure there are no issues with SSL certificates. You can review the SCC `core` or `ljs` logs for any errors. For more information, see Enable Trace Logging.
+- Ensure that the SCC is running and that the connection to the On-Premise system is established. You can review the SCC logs for any errors. For more information, see [Enable Tracing Logging](./README.md#enable-trace-logging).
+- Ensure there are no issues with firewalls or proxies blocking incoming connections from SAP BTP. You may need to whitelist the IP addresses of the SAP BTP data center. For more information see [2682913 - SAP Cloud Connector](https://me.sap.com/notes/0002682913)
 
 ### Enable Trace Logging
 
@@ -156,9 +155,15 @@ Installation and Configuration of SAP Cloud Connector, https://blogs.sap.com/202
 
 ### Principal Propagation
 
+In most On-Premise configurations, Principal Propagation is the recommended implementation to support end user identification. Principal Propagation is an authentication mechanism used primarily in SAP Cloud and hybrid system landscapes to securely forward (or propagate) a user’s identity from one system or layer to another without re-authenticating the user at each hop.
+
+For example:
+If a user logs into a SAP Fiori app on SAP BTP, and that app calls an On-Premise SAP S/4HANA system, Principal Propagation allows the user’s identity to be sent end-to-end, so S/4HANA knows exactly which user made the request, rather than seeing a generic `technical` user.
+
 1. [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 2. [Configuring Principal Propagation](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation)
-3. [Checking the Logs](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate)
+
+For all connectivity issues related to Principal Propagation configurations, refer to this guide to [check local logs](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate)
 
 ### SAPUI5 Libraries
 
@@ -186,24 +191,10 @@ From your SAP Cloud Connector:
 Provide all the requested log files. For more information, see [Enable Trace Logging](#enable-trace-logging).
 
 ## Step 3: Environment Check Report
+
 Run the [Environment Check Report](../destinations/README.md#environment-check) and attach the generated zip file.
 
-## Step 4: Archive Files
-
-Compress all the requested files into a single zip file and attach it to the support ticket.
-
-# Deployment Issues
-
-### Prerequisites
-
-If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an On-Premise system.
-The root cause of deployment issues often relates to the prerequisites not being met.
-
-1. Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
-2. You have the `S_DEVELOP` authorization in your back-end system for your user.
-3. For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
-
-### Step 1: ABAP Transaction Log
+## Step 4: ABAP Transaction Log
 
 If the connection to the ABAP system is working but API requests are failing, check the ABAP transaction logs:
 
@@ -213,7 +204,27 @@ Use `/IWFND/GW_CLIENT` to test and analyze service calls.
 
 Refer [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
-### Step 2: Enable Client Trace Logging
+## Step 5: Archive Files
+
+Compress all the requested files into a single zip file and attach it to the support ticket.
+
+# Deployment Issues
+
+### Prerequisites
+
+If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an On-Premise system.
+
+The root cause of deployment issues often relates to the prerequisites not being met.
+
+1. Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
+2. You have the `S_DEVELOP` authorization in your back-end system for your user.
+3. For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
+
+### Step 1: ABAP Transaction Log
+
+Review [ABAP transaction log](./README.md#step-4-abap-transaction-log) to understand why the API requests are failing. 
+
+### Step 2: Enable Client Side Trace Logging
 
 Run the following deployment command with debug logging enabled to get more information about the API request and response. This helps identify any issues during the deployment process.
 
@@ -241,7 +252,7 @@ curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/od
 ```
 - Review the `curl-abap-srv-output.txt` file for any errors or issues. The root cause of why your API request is failing can often be found in the response body or headers.
 
-Note, if you get an HTTP 404 error, this means that the BSP application is not yet deployed. This also indicates there is no connectivity issue to your On-Premise ABAP system.
+Note, if you get an HTTP 404 error, this means that the BSP application is not yet deployed and is a valid HTTP response code. This also indicates there is no connectivity issue to your On-Premise ABAP system.
 
 ### Support Ticket
 
