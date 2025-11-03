@@ -90,7 +90,7 @@ Properties Summary:
 - `WebIDEEnabled` is set to true. This means that the destination is enabled for use in SAP Business Application Studio.
 - `HTML5.Timeout` is set to 60000 ms. This is the time the destination waits for a response from the service before timing out.
 - `HTML5.DynamicDestination` is set to true. This means that the destination is dynamically created at runtime.
-- `Authentication` is set to `PrincipalPropagation`. This means that the destination to support a productive landscape, to maintain the same user context and to avoid the need for a password.
+- `Authentication` is set to `PrincipalPropagation`. This means that the destination supports a productive landscape,  maintains the same user context and avoids the need for a password.
 - `CloudConnectorLocationId` is set to `scloud`. This is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit. The SAP BTP subaccount can be configured with different cloud connectors.
 - `URL` is set to your SCC internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is then mapped to your On-Premise ABAP system within your local network. The URL will always default to `http://` soo only the port and address are configurable.
 
