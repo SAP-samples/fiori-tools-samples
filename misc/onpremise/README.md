@@ -196,7 +196,7 @@ Run the [Environment Check Report](../destinations/README.md#environment-check) 
 
 ## Step 4: ABAP Transaction Log
 
-If the connection to the ABAP system is working but API requests are failing, check the ABAP transaction logs:
+If the connection to the ABAP system works but API requests failed, check the ABAP transaction logs:
 
 Use `/IWFND/ERROR_LOG` to view OData service errors.
 
