@@ -202,7 +202,7 @@ Use `/IWFND/ERROR_LOG` to view OData service errors.
 
 Use `/IWFND/GW_CLIENT` to test and analyze service calls.
 
-Refer [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM)
+For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
 
 ## Step 5: Archive Files
 
