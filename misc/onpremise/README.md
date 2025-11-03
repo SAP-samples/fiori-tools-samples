@@ -61,7 +61,7 @@ sequenceDiagram
 
 ## Cloud Connector Configuration
 
-This guide will not document the steps to configure an SAP Cloud Connector, refer to the following blog post instead [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
+This guide does not document the steps to configure a Cloud Connector. For more information about how to configure a Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
 ## SAP BTP Destination
 
