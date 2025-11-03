@@ -222,7 +222,7 @@ The root cause of deployment issues often relates to the prerequisites not being
 
 ### Step 1: ABAP Transaction Log
 
-Review [ABAP transaction log](./README.md#step-4-abap-transaction-log) to understand why the API requests are failing. 
+Review the [ABAP transaction log](./README.md#step-4-abap-transaction-log) to understand why your API requests failed. 
 
 ### Step 2: Enable Client Side Trace Logging
 
