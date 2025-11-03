@@ -92,7 +92,7 @@ Properties Summary:
 - `HTML5.DynamicDestination` is set to true. This means that the destination is dynamically created at runtime.
 - `Authentication` is set to `PrincipalPropagation`. This means that the destination supports a productive landscape,  maintains the same user context and avoids the need for a password.
 - `CloudConnectorLocationId` is set to `scloud`. This is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit. The SAP BTP subaccount can be configured with different cloud connectors.
-- `URL` is set to your SCC internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is then mapped to your On-Premise ABAP system within your local network. The URL will always default to `http://` soo only the port and address are configurable.
+- `URL` is set to your Cloud Connector internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is mapped to your On-Premise ABAP system within your local network. The URL always defaults to `http://` so only the port and address are configurable.
 
 # Validate Connectivity
 
