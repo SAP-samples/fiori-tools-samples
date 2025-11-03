@@ -109,7 +109,7 @@ If you are experiencing connectivity issues from the SAP BTP platform, check the
 This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:48366:52526) covers some of the most common issues encountered when using Cloud Connector and SAP BTP destinations. If you make changes to your configuration, re-run the steps to see if the issue is resolved.
 
 - Ensure that the SCC is running and that the connection to the On-Premise system is established. You can review the SCC logs for any errors. For more information, see [Enable Tracing Logging](./README.md#enable-trace-logging).
-- Ensure there are no issues with firewalls or proxies blocking incoming connections from SAP BTP. You may need to whitelist the IP addresses of the SAP BTP data center. For more information see [2682913 - SAP Cloud Connector](https://me.sap.com/notes/0002682913)
+- Ensure there are no issues with firewalls or proxies blocking incoming connections from SAP BTP. You may need to whitelist the IP addresses of the SAP BTP data center. For more information, see [2682913 - Cloud Connector](https://me.sap.com/notes/0002682913).
 
 ### Enable Trace Logging
 
