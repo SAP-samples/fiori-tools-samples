@@ -92,7 +92,7 @@ Properties Summary:
 - `HTML5.DynamicDestination` is set to true. This means that the destination is dynamically created at runtime.
 - `Authentication` is set to `PrincipalPropagation`. This means that the destination supports a productive landscape,  maintains the same user context and avoids the need for a password.
 - `CloudConnectorLocationId` is set to `scloud`. This is the location ID of the SAP Cloud Connector that is configured in the SAP BTP cockpit. The SAP BTP subaccount can be configured with different cloud connectors.
-- `URL` is set to your Cloud Connector internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is mapped to your On-Premise ABAP system within your local network. The URL always defaults to `http://` so only the port and address are configurable.
+- `URL` is set to your Cloud Connector internal host, for example `http://my-internal-host:44330/`. This indicates the internal URL that is mapped to your on-premise ABAP system within your local network. The URL always defaults to `http://` so only the port and address are configurable.
 
 # Validate Connectivity
 
@@ -108,7 +108,7 @@ If you are experiencing connectivity issues from the SAP BTP platform, check the
 
 This [guide](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:48366:52526) covers some of the most common issues encountered when using SAP Cloud Connector and SAP BTP destinations. If you make changes to your configuration, re-run the steps to see if the issue is resolved.
 
-- Ensure that the SAP Cloud Connector is running and that the connection to the On-Premise system is established. You can review the Cloud Connector logs for errors. For more information, see [Enable Tracing Logging](./README.md#step-2-enable-trace-logging).
+- Ensure that the SAP Cloud Connector is running and that the connection to the on-premise system is established. You can review the SAP Cloud Connector logs for errors. For more information, see [Enable Tracing Logging](./README.md#step-2-enable-trace-logging).
 - Ensure there are no issues with firewalls or proxies blocking incoming connections from SAP BTP. You may need to whitelist the IP addresses of the SAP BTP data centers. For more information, see [2682913 - Cloud Connector](https://me.sap.com/notes/0002682913).
 
 ### Enable Trace Logging
@@ -130,7 +130,7 @@ Step 3: Once you've gathered the following logs, you can disable the trace setti
 
 * `ljs_trace.log` (SAP Cloud Connector).
 * `scc_core.log` (if applicable).
-* `traffic_trace_<subaccount>_on_<region>.trc`
+* `traffic_trace_<subaccount>_on_<region>.trc` (required)
 * `tunnel_traffic_trace_<subaccount>_on_<region>.trc` (if applicable).
 
 For more details about these logs, see [SAP Cloud Connector Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
