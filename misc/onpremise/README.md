@@ -22,7 +22,7 @@ Authentication options include:
 - You have a SAP BTP, Cloud Foundry runtime environment configured in your SAP BTP subaccount.
 - You have admin rights to the SAP BTP cockpit to modify destinations.
 - You have admin rights to the local Cloud Connector UI.
-- Only OData XML services are supported when creating SAP Fiori elements applications with the SAP Fiori generator
+- Only OData XML services are supported when creating SAP Fiori elements applications with the SAP Fiori generator.
 
 ## Understanding SAP Cloud Connector and SAP BTP Destinations
 
