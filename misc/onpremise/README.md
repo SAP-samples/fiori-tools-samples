@@ -19,7 +19,7 @@ Authentication options include:
 
 # Prerequisites
 
-- You have a SAP Cloud Foundry (SCC) Runtime environment configured in your SAP BTP subaccount
+- You have a SAP BTP, Cloud Foundry runtime environment configured in your SAP BTP subaccount.
 - You have admin rights to the SAP BTP cockpit to modify destinations
 - You have admin rights to the local SAP Cloud Connector (SCC) UI
 - Only OData XML services are supported when creating SAP Fiori elements applications with the SAP Fiori generator
