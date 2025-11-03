@@ -212,7 +212,7 @@ Compress all the requested files into a single zip file and attach it to the sup
 
 ### Prerequisites
 
-If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an On-Premise system.
+If you are experiencing deployment issues related to Authentication (HTTP 401) or Authorisation (HTTP 403), ensure you have met the [prerequisites](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000) for deploying to an on-premise system.
 
 The root cause of deployment issues often relates to the prerequisites not being met.
 
