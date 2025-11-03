@@ -158,7 +158,7 @@ Installation and Configuration of SAP Cloud Connector, https://blogs.sap.com/202
 In most on-premise configurations, Principal Propagation is the recommended implementation to support end-user identification. Principal Propagation is an authentication mechanism used primarily in SAP Cloud and hybrid system landscapes to securely forward (or propagate) a user’s identity from one system or layer to another without re-authenticating the user at each hop.
 
 For example:
-If a user logs into a SAP Fiori app on SAP BTP, and that app calls an On-Premise SAP S/4HANA system, Principal Propagation allows the user’s identity to be sent end-to-end, so S/4HANA knows exactly which user made the request, rather than seeing a generic `technical` user.
+If a user logs into a SAP Fiori app on SAP BTP, and that app calls an on-premise SAP S/4HANA system, Principal Propagation allows the user’s identity to be sent end-to-end, so S/4HANA knows exactly which user made the request, rather than seeing a generic `technical` user.
 
 1. [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 2. [Configuring Principal Propagation](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation)
