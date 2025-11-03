@@ -163,7 +163,7 @@ If a user logs into a SAP Fiori app on SAP BTP, and that app calls an On-Premise
 1. [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 2. [Configuring Principal Propagation](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation)
 
-For all connectivity issues related to Principal Propagation configurations, refer to this guide to [check local logs](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate)
+For more information about connectivity issues related to Principal Propagation configurations, see [How to troubleshoot Cloud Connector principal propagation over HTTPS](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate).
 
 ### SAPUI5 Libraries
 
