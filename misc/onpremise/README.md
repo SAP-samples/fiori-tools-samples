@@ -102,7 +102,7 @@ If there are any issues with accessing the OData V2 and OData V4 catalog endpoin
 
 # Connectivity Issues
 
-If you are experiencing connectivity issues from the SAP BTP platform, please check the following:
+If you are experiencing connectivity issues from the SAP BTP platform, check the following:
 
 ### Common Issues
 
