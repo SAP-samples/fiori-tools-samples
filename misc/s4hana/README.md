@@ -138,36 +138,6 @@ The new trace will populate the table if new events are found;
 
 ![DisplayConnectivityPart1.png](DisplayConnectivityPart3.png)
 
-### Option 3. Bypassing Business Application Studio
-
-Another option is to create a dynamic destination URL;
-
-__You need to ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount__
-
-1. Get the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
-1. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
-1. Get the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
-
-Using the following template, replace the required parameters;
-
-```
-https://<your-subaccount-subdomain>.launchpad.cfapps.<your-region-api-endpoint>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<path-to-your-OData-metadata-or-service-path>
-```
-For example, here is the base URL;
-```json
-https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/
-```
-
-Append V2 Catalog to base URL;
-```
-https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
-```
-
-Append V4 Catalog to base URL;
-```
-https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
-```
-
 For more information, see [Validate Destination Configuration](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:54336:51208).
 
 ## Debugging Connectivity and Deployment Issues
