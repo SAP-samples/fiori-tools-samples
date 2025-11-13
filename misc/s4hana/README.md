@@ -224,7 +224,7 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 
 1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
 2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
-3. After running a `curl` command or the `Environment Check report`, all requests are failing with HTTP 500 but they are not hitting your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
+3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests are failing with HTTP 500, but they are not reaching your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
 ## Related Links
 Integrating SAP Business Application Studio -
