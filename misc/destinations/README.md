@@ -12,7 +12,7 @@ SAP BTP destinations are used to connect to different services and systems in th
 - You have SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount
 - You have admin rights to the SAP BTP cockpit to modify destinations
 - Only OData XML services are supported when creating SAP Fiori Elements applications when using SAP Fiori tools generator
-- Understanding [SAP BTP destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)
+- Understanding [SAP BTP destinations](https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations)
 - Creating [SAP BTP destinations in the SAP BTP cockpit](https://developers.sap.com/tutorials/cp-cf-create-destination..html)
 
 # Additional Resources
@@ -256,6 +256,35 @@ To retrieve the OData service `$metadata`:
 curl "https://northwind_fullurl.dest/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
 ```
 
+## Issue Two
+
+In some instances, you want to bypass Business Application Studio to validate your SAP BTP destination properties and connectivity. It's possible to use `Dynamic Destinations` is also a way to validate your destination configuration outside of Business Application Studio. This flow will call the SAP BTP destination directly from the SAP Fiori Launchpad.
+
+__You need to ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount__
+
+1. Get the name of your SAP BTP subaccount destination configured using SAMLAssertion i.e. `mys4hc-destination`
+1. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`
+1. Get the name of your `Subdomain` and `API endpoint` by opening your SAP BTP subaccount `overview` page, i.e. subdomain is `mytrial-account-staging` and API endpoint is `https://api.cf.eu10.hana.ondemand.com`
+
+Using the following template, replace the required parameters;
+
+```
+https://<your-subaccount-subdomain>.launchpad.cfapps.<your-region-api-endpoint>.hana.ondemand.com/dynamic_dest/<your-destination-name>/<path-to-your-OData-metadata-or-service-path>
+```
+For example, here is the base URL;
+```json
+https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/
+```
+
+Append V2 Catalog to base URL;
+```
+https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
+```
+
+Append V4 Catalog to base URL;
+```
+https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys4hc-destination/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
+```
 
 ### License
 Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
