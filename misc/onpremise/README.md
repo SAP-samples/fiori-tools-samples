@@ -118,7 +118,7 @@ If connectivity fails, run these quick checks first:
 - Are firewalls or proxies blocking traffic between Cloud Connector and the backend? Typical when moving to production as originating IPs change.
 - Are you able to locally access the backend system directly from the Cloud Connector host (e.g., using `curl` or a web browser)?
 
-If problems persist, follow the Enable Trace Logging steps below to gather logs and re-run the environment check.
+If problems persist, follow the [trace logging](./README.md#enable-cloud-connector-trace-logging) steps below to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
 
 # Enable cloud connector trace logging
 Use trace logging only for troubleshooting (not recommended in production for long periods).
@@ -149,29 +149,32 @@ If you do not see network traffic in the `traffic_trace_` logs, the Cloud Connec
 If you need to raise a support ticket (component `BC-MID-SCC` for Cloud Connector or `CA-UX-IDE` for deployment issues), attach the following items:
 
 Required artifacts, compiled into a single zip file and attached to the support ticket:
-- Screenshot of the destination in the SAP BTP cockpit (show all properties)
-- From your SAP Cloud Connector:
+1. Screenshot of the destination in the SAP BTP cockpit (show all properties)
+2. [Environment Check report](../destinations/README.md#environment-check)
+3. From your SAP Cloud Connector:
   - Subaccount Overview: SAP Cloud Connector -> Subaccount Overview -> Click Subaccount. 
   - Virtual Host Mapping: SAP Cloud Connector -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in the SAP BTP destination. 
   - Access Control: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon). 
   - Access Control: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure "Access Policy" is set to "Path" and All Sub-Paths and URL Path is "/". Note this may differ depending on security concerns. 
   - Check Availability: SAP Cloud Connector -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
-- Collected logs from trace logging (see list above)
-- [Environment Check report (zip)](../destinations/README.md#environment-check)
-- Output from ABAP traces `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
+  - Collected logs from trace logging (see list above)
+4. Output from ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
 
 Optional but helpful:
 - `curl` output from a BAS terminal when executing the connection test (see example below)
 - Clear reproduction steps and expected vs actual behavior
 
-Example connection test (BAS or any terminal):
+Example connection test (BAS or any terminal window):
 
 ```bash
-# Replace <destination-name> and <bsp-name> and run from BAS
-curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
+# Replace <destination-name> before executing
+curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled" > curl-catalog-output.txt 2>&1
 ```
 
 # Deployment issues
+
+Before addressing any issues with deployment, ensure connectivity is working as per the [Validate connectivity](#validate-connectivity) section.
+
 Common causes for deployment errors (HTTP 401/403):
 - `/UI5/ABAP_REPOSITORY_SRV` not activated in the backend
 - Missing required backend authorizations (e.g. `S_DEVELOP`)
@@ -184,6 +187,13 @@ Quick steps to capture deployment debug info:
 DEBUG=* npm run deploy
 # Windows (powershell)
 set DEBUG=* && npm run deploy
+```
+
+Example connection test (BAS or any terminal window):
+
+```bash
+# Replace <destination-name> and <bsp-name> before executing
+curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
 
 # Principal Propagation
