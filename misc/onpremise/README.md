@@ -181,7 +181,7 @@ Common causes for deployment errors (HTTP 401/403):
 - `/UI5/ABAP_REPOSITORY_SRV` not activated in the backend
 - Missing required backend authorizations (e.g. `S_DEVELOP`)
 - `HTML5.Timeout` too low in the destination (use `60000` ms or higher)
-- Review ABAP traces `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable, will indicate missing authorizations or other issues.
+- Review ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable, will indicate missing authorizations or other issues.
 
 For more information on deployment issues, see the SAP Guided Answers article: [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
 
