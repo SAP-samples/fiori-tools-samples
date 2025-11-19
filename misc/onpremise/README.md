@@ -171,6 +171,8 @@ Example connection test (BAS or any terminal window):
 curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled" > curl-catalog-output.txt 2>&1
 ```
 
+You can review the generated `curl-catalog-output.txt` file to check for any errors or issues related to connectivity.
+
 # Deployment issues
 
 Before addressing any issues with deployment, ensure connectivity is working as per the [Validate connectivity](#validate-connectivity) section.
@@ -180,6 +182,8 @@ Common causes for deployment errors (HTTP 401/403):
 - Missing required backend authorizations (e.g. `S_DEVELOP`)
 - `HTML5.Timeout` too low in the destination (use `60000` ms or higher)
 - Review ABAP traces `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable, will indicate missing authorizations or other issues.
+
+For more information on deployment issues, see the SAP Guided Answers article: [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
 
 Quick steps to capture deployment debug info:
 ```bash
@@ -195,6 +199,7 @@ Example connection test (BAS or any terminal window):
 # Replace <destination-name> and <bsp-name> before executing
 curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
+You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
 # Principal Propagation
 
