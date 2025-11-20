@@ -168,7 +168,7 @@ Example connection test (BAS or any terminal window):
 
 ```bash
 # Replace <destination-name> before executing
-curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled" > curl-catalog-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled" > curl-catalog-output.txt 2>&1
 ```
 
 You can review the generated `curl-catalog-output.txt` file to check for any errors or issues related to connectivity.
@@ -197,7 +197,7 @@ Example connection test (BAS or any terminal window):
 
 ```bash
 # Replace <destination-name> and <bsp-name> before executing
-curl -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
