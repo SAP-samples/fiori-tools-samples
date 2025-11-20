@@ -100,7 +100,7 @@ The SAP BTP destination `URL` is configured with the following path: `/sap/publi
 In SAP Business Application Studio, you can validate the duplicated destination: `MyDestination_ui5` by using the `curl` command to fetch the SAPUI5 library from the On-Premise system:
 
 ```bash
- curl 'https://mydestination_ui5.dest/resources/sap-ui-core.js' -X GET -i -H 'X-Csrf-Token: fetch' > output-tsk1.txt
+ curl -L 'https://mydestination_ui5.dest/resources/sap-ui-core.js' -X GET -i -H 'X-Csrf-Token: fetch' > output-tsk1.txt
 ```
 
 You can review the generated `output-tsk1.txt` file to ensure the SAPUI5 library is accessible from the On-Premise system. The response should contain the SAPUI5 library content.
