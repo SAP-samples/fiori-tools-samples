@@ -16,15 +16,15 @@ Fpr more information on the local changes required to support a CDS hybrid testi
 ## Prerequisites
 - You have created an SAP Cloud Platform Trial Account. For more information, see [SAP Business Technology Platform](https://account.hana.ondemand.com/).
 - You are subscribed to the SAP Fiori Launchpad Service. For more information, see [Set Up SAP Build Work Zone, Standard Edition Using a Trial Account](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html).
-- Create an [SAP HANA Cloud Service instance](https://developers.sap.com/tutorials/btp-app-hana-cloud-setup.html#08480ec0-ac70-4d47-a759-dc5cb0eb1d58) and the service instance is running.
-- Create a [dev workspace](https://help.sap.com/viewer/c2b99f19e9264c4d9ae9221b22f6f589/2021_3_QRC/en-US/f728966223894cc28be3ca2ee60ee784.html) using a `Full Stack Cloud Application`.
+- You have created an SAP HANA Cloud Service instance and ensured the service instance is running. For more information, see [SAP HANA Cloud Service](https://developers.sap.com/tutorials/btp-app-hana-cloud-setup.html#08480ec0-ac70-4d47-a759-dc5cb0eb1d58)
+- You have created a "Full Stack Cloud Application" dev space. For more information, see [Set up a Development Space for Full-Stack Cloud Applications](https://help.sap.com/docs/hana-cloud-database/sap-hana-cloud-sap-hana-database-developer-guide-for-cloud-foundry-multitarget-applications-sap-business-app-studio/set-up-development-space-for-full-stack-cloud-applications?version=2025_3_QRC).
 
 ## Setup and Run Locally
 
-- Git clone the repository `git clone https://github.com/SAP-samples/fiori-tools-samples.git`
-- Change into the CAP hybrid project `cd fiori-tools-samples/cap/cap-fiori-hybrid`
-- Login to your CF environment, `View` -> `Command Palette` -> `CF: Login to Cloud Foundry`
-- Right-click your CAP project and select `Open in integrated terminal`
+- Clone the repository: `git clone https://github.com/SAP-samples/fiori-tools-samples.git`.
+- Navigate to the CAP hybrid project in the terminal: `cd fiori-tools-samples/cap/cap-fiori-hybrid`.
+- Log in to your CF environment: `View` -> `Command Palette` -> `CF: Login to Cloud Foundry`.
+- Right-click your CAP project and click `Open in Integrated Terminal`.
 - Install the required dependencies `npm run install:app`
 - Build the CAP and Fiori UI applications `npm run build`
 - Deploy the CAP and Fiori UI applications `npm run deploy`
