@@ -23,7 +23,7 @@ Table of contents
 An SAP BTP destination with `ProxyType=OnPremise` lets your cloud apps connect to on‑premise systems using the Cloud Connector as a secure tunnel.
 
 Use cases include:
-- Accessing on‑premise SAP systems such as SAP S/4HANA and ECC.
+- Accessing on‑premise SAP systems such as SAP S/4HANA and SAP ECC.
 - Connecting to internal databases or APIs behind a firewall.
 - Consuming APIs that are not internet‑facing.
 
