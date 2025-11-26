@@ -116,7 +116,7 @@ If connectivity fails, run these quick checks first:
 - Is the SAP Cloud Connector running and connected to the SAP BTP subaccount?
 - Is the Cloud Connector mapping (virtual host and port and back-end host and port) configured and active?
 - Is the destination in the subaccount pointing to the correct `CloudConnectorLocationId` and name? This is required if there are multiple Cloud Connectors.
-- Are the authentication settings in the destination and back-end system aligned (such as principal propagation, SSL and xerts)?
+- Are the authentication settings in the destination and back-end system aligned (such as principal propagation, SSL and certs)?
 - Are firewalls or proxies blocking traffic between Cloud Connector and the back end? This often occurs when moving to production because the originating IPs change.
 - Are you able to locally access the back-end system directly from the Cloud Connector host such as using `curl` or a web browser?
 
@@ -147,7 +147,7 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 - [Principal Propagation Overview and Setup Links](#principal-propagation)
 - [Consuming SAPUI5 libraries from On‑Premise](./ui5-onpremise.md)
 
-# Support ticket checklist
+# Checklist for Support Tickets
 If you need to raise a support ticket (component `BC-MID-SCC` for Cloud Connector or `CA-UX-IDE` for deployment issues), attach the following items:
 
 The required artifacts, which should be compiled into a single zip file and attached to the support ticket, are:
@@ -160,11 +160,11 @@ The required artifacts, which should be compiled into a single zip file and atta
   - Access Control: Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure "Access Policy" is set to "Path" and All Sub-Paths and URL Path is "/". Note this may differ depending on security concerns. 
   - Check Availability: Cloud Connector -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
   - Collected logs from trace logging (see list above)
-4. Output from ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
+- Output from ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
 
 Optional but helpful:
-- `curl` output from an SAP Business Application Studio terminal when executing the connection test (see example below)
-- Clear reproduction steps and expected versus actual behavior
+- `curl` output from an SAP Business Application Studio terminal when executing the connection test. See the example below.
+- Clear reproduction steps and expected versus actual behavior.
 
 Example Connection Test (SAP Business Application Studio or any terminal window):
 
@@ -177,9 +177,9 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 # Deployment Issues
 
-Before addressing any issues with deployment, ensure connectivity is working as per the [Validate connectivity](#validate-connectivity) section.
+Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
 
-Common causes for deployment errors (HTTP 401/403):
+Common Causes for Deployment Errors (HTTP 401/403):
 - `/UI5/ABAP_REPOSITORY_SRV` has not been activated in the back end.
 - Missing required back-end authorizations such as `S_DEVELOP`.
 - `HTML5.Timeout` is too low in the destination. Use `60000` or higher.
@@ -205,10 +205,10 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
 
 # Principal Propagation
 
-In most on-premise configurations, principal propagation is the recommended implementation to support end-user identification. Principal propagation is an authentication mechanism used primarily in SAP Cloud and hybrid system landscapes to securely forward (or propagate) a user’s identity from one system or layer to another without re-authenticating the user at each hop.
+In most on-premise configurations, principal propagation is the recommended implementation to support end-user identification. Principal propagation is an authentication mechanism used primarily in SAP Cloud and hybrid system landscapes to securely forward (or propagate) a user's identity from one system or layer to another without re-authenticating the user at each hop.
 
 For example:
-If a user logs into a SAP Fiori app on SAP BTP, and that app calls an on-premise SAP S/4HANA system, principal propagation allows the user’s identity to be sent end-to-end, so SAP S/4HANA knows exactly which user made the request, rather than seeing a generic `technical` user.
+If a user logs into a SAP Fiori app on SAP BTP, and that app calls an on-premise SAP S/4HANA system, principal propagation allows the user's identity to be sent end-to-end, so SAP S/4HANA knows exactly which user made the request, rather than seeing a generic `technical` user.
 
 - [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 - [Configuring Principal Propagation](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation)
