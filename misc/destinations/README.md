@@ -67,7 +67,7 @@ Authentication=NoAuthentication
 HTML5.Timeout=60000
 WebIDEEnabled=true
 ProxyType=Internet
-URL=https://services.odata.org
+URL=https\://services.odata.org
 Name=northwind
 WebIDEUsage=odata_gen
 ```
