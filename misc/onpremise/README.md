@@ -205,7 +205,7 @@ curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
 ### Additional Resources
-Deploying to ABAP On-Premise tutorial. see [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
+[Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
 
 # Principal Propagation
 
