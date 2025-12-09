@@ -188,7 +188,7 @@ Before addressing any issues with deployment, ensure connectivity is working as 
 - Review ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable. These logs indicate missing authorizations and other local issues.
 - For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
 
-Steps to capture deployment debug Information:
+Steps to capture deployment debug information:
 ```bash
 # Mac / Linux
 DEBUG=* npm run deploy
