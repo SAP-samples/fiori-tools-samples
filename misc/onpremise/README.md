@@ -179,15 +179,16 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
 
-Common Causes for Deployment Errors (HTTP 401/403):
-- `/UI5/ABAP_REPOSITORY_SRV` has not been activated in the back end.
-- Missing required back-end authorizations such as `S_DEVELOP`.
-- `HTML5.Timeout` is too low in the destination. Use `60000` or higher.
-- Review ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable. These logs indicate missing authorizations and other issues.
+### Deployment Prerequisites
+- `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
+- Missing required `S_DEVELOP` authorizations.
+- More Information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites can be found [here](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
+  
+### Debugging Deployment Errors (HTTP 401/403)
+- Review ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable. These logs indicate missing authorizations and other local issues.
+- For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
 
-For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
-
-Steps to Capture Deployment Debug Information:
+Steps to capture deployment debug Information:
 ```bash
 # Mac / Linux
 DEBUG=* npm run deploy
@@ -202,6 +203,9 @@ Example Connection Test (SAP Business Application Studio or any terminal window)
 curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
+
+### Additional Resources
+Deploying to ABAP On-Premise tutorial. see [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
 
 # Principal Propagation
 
