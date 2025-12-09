@@ -182,7 +182,7 @@ Before addressing any issues with deployment, ensure connectivity is working as 
 ### Deployment Prerequisites
 - `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
 - Missing required `S_DEVELOP` authorizations.
-- More Information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites can be found [here](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
+- For more information about `/UI5/ABAP_REPOSITORY_SRV` and fulfilling these prerequisites, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
   
 ### Debugging Deployment Errors (HTTP 401/403)
 - Review ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT` where applicable. These logs indicate missing authorizations and other local issues.
