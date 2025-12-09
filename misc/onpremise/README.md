@@ -180,7 +180,7 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
 
 ### Deployment Prerequisites
-- `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
+- Ensure that `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
 - Missing required `S_DEVELOP` authorizations.
 - For more information about `/UI5/ABAP_REPOSITORY_SRV` and fulfilling these prerequisites, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
   
