@@ -14,7 +14,8 @@ Table of contents
 - [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
 - [Additional Resources](#additional-resources)
-- [Support Ticket Checklist](#support-ticket-checklist)
+- [Known Issues](#known-issues)
+- [Checklist for Support Tickets](#checklist-for-support-tickets)
 - [Deployment Issues](#deployment-issues)
 - [Principal Propagation](#principal-propagation)
 - [License](#license)
@@ -205,7 +206,15 @@ curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
 ### Additional Resources
-[Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
+- [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
+
+# Known Issues
+- V4 catalog service is not available; typically HTTP 401/403/404 exceptions are returned; in some instances, the HTTP exception will contain the following string `'/IWFND/CONFIG' not published`;
+  - Tutorial on configuring [OData V4 Service Catalog](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
+  - Deep dive into [V4 Service Catalog](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
+  - [2954378 - The Gateway Error Log shows: No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
+  - [2928752 - How to activate ICF nodes in SAP Gateway?](https://launchpad.support.sap.com/#/notes/0002928752)<br>
+
 
 # Principal Propagation
 
