@@ -210,7 +210,7 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
 
 # Known Issues
 - The OData V4 catalog service is not available. This issue typically occurs when you receive HTTP 401, 403, and 404 exceptions. The HTTP exception may also contain the following string: `/IWFND/CONFIG not published`.
-  - Tutorial on configuring [OData V4 Service Catalog](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
+  - [OData V4 Service Catalog Tutorial](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
   - [OData V4 Service Catalog Documentation](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
   - [2954378 - The Gateway Error Log shows: No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
   - [2928752 - How to activate ICF nodes in SAP Gateway?](https://launchpad.support.sap.com/#/notes/0002928752)<br>
