@@ -209,7 +209,7 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
 - [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)   
 
 # Known Issues
-- V4 catalog service is not available; typically HTTP 401/403/404 exceptions are returned; in some instances, the HTTP exception will contain the following string `'/IWFND/CONFIG' not published`;
+- The OData V4 catalog service is not available. This issue typically occurs when you receive HTTP 401, 403, and 404 exceptions. The HTTP exception may also contain the following string: `/IWFND/CONFIG not published`.
   - Tutorial on configuring [OData V4 Service Catalog](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
   - Deep dive into [V4 Service Catalog](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
   - [2954378 - The Gateway Error Log shows: No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
