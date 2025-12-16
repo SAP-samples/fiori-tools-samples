@@ -213,7 +213,8 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
   - [OData V4 Service Catalog Tutorial](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
   - [OData V4 Service Catalog Documentation](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
   - [2954378 - The Gateway Error Log shows: No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
-  - [2928752 - How to activate ICF nodes in SAP Gateway?](https://launchpad.support.sap.com/#/notes/0002928752)<br>
+  - [2928752 - How to activate ICF nodes in SAP Gateway?](https://launchpad.support.sap.com/#/notes/0002928752)
+  - [2489898 - HTTP 404 Not Found for /IWFND/CATALOGSERVICE and Cannot load tile on SAP Fiori Launchpad](https://me.sap.com/notes/0002489898)
 
 
 # Principal Propagation
