@@ -245,6 +245,113 @@ https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:
 
 The issue is related to an AJAX API call that is defined using an absolute path instead of a relative path. Each application deployed to Cloud Foundry is given a unique GUID, which is how multiple apps can be deployed to the same subaccount. The absolute path is not able to resolve the GUID and therefore the application fails to load.
 
+## Issue 8
+
+The deployed Cloud Foundry HTML5 application is rendering as expected, but some features are not working as expected when running in SAP Business Application Studio in local preview mode.
+
+This assumes your application is using the `fiori-tools-proxy` middleware to proxy API calls to backend systems using SAP BTP destinations and you have started the application using `npm run start`.
+
+To determine the root cause of your issue, review the browsers network console, the connectivity issues can manifest itself as a HTTP 404 error, or in some cases a CORS error.
+
+#### Step1. Review the `xs-app.json` for your application, for example;
+
+```JSON
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+
+      "source": "^/scim/(.*)$",
+      "target": "$1",
+      "destination": "API_ENDPOINT",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/(.*)$",
+      "target": "/sap/$1",
+      "destination": "s4hc_onpremise",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },    
+    ...
+```
+
+The source path is `^/scim/(.*)$` which is a regular expression used to break up the URL path into string groups, any API call starting with `/scim` will be proxied to the destination `API_ENDPOINT` using the target path `$1`. In this instance, the target path `$1` reflects the URL sgement after `/scim/`. 
+
+For example, an API call intercepted on Cloud Foundry `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/scim/v2?sap-client=500` will be proxied to the SAP BTP destination `API_ENDPOINT` as `https://internal.resource/v2?sap-client=500` where `scim` is removed from the API call. 
+
+This approach is typically used where a HTML5 application needs to support different backend systems that might be using the same path structure.
+
+For the second route definition `^/sap/(.*)$`, an API call intercepted at `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` will be proxied to the SAP BTP destination `s4hc_onpremise` as `https://some.intneral.resource/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` where `sap` is retained.
+
+#### Review `ui5.yaml` configuration
+
+The following YAML file `ui5.yaml` is configured with two backend destinations, one for `API_ENDPOINT` and another for `s4hc_onpremise`.
+
+```yaml
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: my.fiori.app
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /scim
+            pathReplace: /
+            url: https://some.external.resource/scim/v2
+            destination: API_ENDPOINT
+          - path: /sap
+            url: http://s4hconpremise:44320
+            destination: s4hc_onpremise
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_horizon
+```
+
+Upon reviewing the `xs-app.json` the source path `/scim/(.*)` is mapped to the destination `API_ENDPOINT` and expects the `/scim` to be stripped out of the proxied URL.
+
+The root cause of the issue is, the local proxy, is now making the API call to `https://some.external.resource/scim/v2` which results in a HTTP 404 Not Found error since the backend system is expecting the call to be made to `https://some.external.resource/`.
+
+The solution is to update the `ui5.yaml` file to include the `pathReplace` property to strip out the `/scim` from the proxied URL;
+
+```yaml
+          - path: /scim
+            pathReplace: /
+            url: https://some.external.resource/scim/v2
+            destination: API_ENDPOINT
+```
+
+Now, any request to `https://localhost:8080/scim/v2` will now be correctly proxied to the SAP BTP destination as `https://API_ENDPOINT.dest/v2` with `scim` removed.
+
+Similarly, any request to `https://localhost:8080/sap` will now be correctly proxied to the SAP BTP destination as `https://s4hc_onpremise.dest/sap` with `sap` retained.
+
+#### Reporting Issues
+
+If you are still blocked, please open a support incident with SAP. When doing so, please provide a full network trace (.har file) with all requests in the scenario after it was reproduced when assigning issues to any of the support components.
+
+For how to extract the trace follow this note https://launchpad.support.sap.com/#/notes/1990706
+
 ### License
-Copyright (c) 2009-2025 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
 
