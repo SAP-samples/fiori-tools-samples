@@ -241,6 +241,15 @@ Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry envi
 
 User Management in a Nutshell (IAS or IDP) - [https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
 
+
+## Develop an SAP Fiori Application UI using Developer Extensibility Tenant (DEV/080)
+
+For more information about developing an SAP Fiori application UI using the Developer Extensibility tenant, see [Developing an SAP Fiori Application UI Using Developer Extensibility Tenant in SAP S/4HANA Cloud, Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/6aa39f1ac05441e5a23f484f31e477e7/2a4ae231df8843379df7a36fa3462d4c.html).
+
+This development approach uses the ABAP Development Tools (ADT) in Eclipse IDE connected to your SAP S/4HANA Cloud, Public Edition Developer Extensibility tenant and is not related to SAP Business Application Studio or SAP Fiori tools.
+
+Any related support issues should be raised against the support component `BC-SRV-APS-IAM`.
+
 ### License
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
 
