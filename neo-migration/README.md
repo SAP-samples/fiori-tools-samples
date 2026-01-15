@@ -278,7 +278,7 @@ To determine the root cause of your issue, review the Network tab in your browse
     ...
 ```
 
-The source path is `^/scim/(.*)$` which is a regular expression used to break up the URL path into string groups, any API call starting with `/scim` will be proxied to the destination `API_ENDPOINT` using the target path `$1`. In this instance, the target path `$1` reflects the URL sgement after `/scim/`. 
+The source path is `^/scim/(.*)$` which is a regular expression used to break up the URL path into string groups. Any API call starting with `/scim` are proxied to the `API_ENDPOINT` destination using the `$1` target path. In this instance, the `$1` target path reflects the URL segment after `/scim/`. 
 
 For example, an API call intercepted on Cloud Foundry `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/scim/v2?sap-client=500` will be proxied to the SAP BTP destination `API_ENDPOINT` as `https://internal.resource/v2?sap-client=500` where `scim` is removed from the API call. 
 
