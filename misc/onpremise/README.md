@@ -214,8 +214,8 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
   - [OData V4 Service Catalog Documentation](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
   - [2954378 - The Gateway Error Log shows: No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
   - [2928752 - How to activate ICF nodes in SAP Gateway?](https://launchpad.support.sap.com/#/notes/0002928752)
-  - [2489898 - HTTP 404 Not Found for /IWFND/CATALOGSERVICE and Cannot load tile on SAP Fiori Launchpad](https://me.sap.com/notes/0002489898)
-
+- [2489898 - HTTP 404 Not Found for /IWFND/CATALOGSERVICE and Cannot load tile on SAP Fiori Launchpad](https://me.sap.com/notes/0002489898)
+- [3378435 - Response headers too big in /UI5/UI5_REPOSITORY_LOAD](https://me.sap.com/notes/0003378435)
 
 # Principal Propagation
 
@@ -227,8 +227,8 @@ If a user logs into a SAP Fiori app on SAP BTP, and that app calls an on-premise
 - [Setting up Principal Propagation](https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-principal-propagation/ba-p/13510251)
 - [Configuring Principal Propagation](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/configuring-principal-propagation)
 
-For more information about connectivity issues related to principal propagation configurations, see [How to Troubleshoot Cloud Connector Principal Propagation over HTTPS](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate).
+For more information about connectivity issues related to principal propagation configurations and to trace connectivity issues, see [How to Troubleshoot Cloud Connector Principal Propagation over HTTPS](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate).
 
 # License
-Copyright (c) 2009-2025 SAP SE or an SAP affiliate company.
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company.
 This project is licensed under the Apache License 2.0. See [LICENSE](../../LICENSES/Apache-2.0.txt) for details.
