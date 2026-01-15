@@ -253,7 +253,7 @@ This assumes your application is using the `fiori-tools-proxy` middleware to pro
 
 To determine the root cause of your issue, review the browsers network console, the connectivity issues can manifest itself as a HTTP 404 error, or in some cases a CORS error.
 
-#### Step1. Review the `xs-app.json` for your application, for example;
+#### Step 1. Review the `xs-app.json` File
 
 ```JSON
 {
