@@ -288,7 +288,7 @@ For the second route definition, `^/sap/(.*)$`, an API call intercepted at `http
 
 #### Review the `ui5.yaml` Configuration
 
-The following YAML file `ui5.yaml` is configured with two backend destinations, one for `API_ENDPOINT` and another for `s4hc_onpremise`.
+The `ui5.yaml` file is configured with two back-end destinations, one for `API_ENDPOINT` and another for `s4hc_onpremise`.
 
 ```yaml
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
