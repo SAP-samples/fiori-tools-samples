@@ -249,7 +249,7 @@ The issue is related to an AJAX API call that is defined using an absolute path 
 
 The deployed Cloud Foundry HTML5 application renders as expected, but some features do not work as expected when running in SAP Business Application Studio in local preview mode.
 
-This assumes your application is using the `fiori-tools-proxy` middleware to proxy API calls to backend systems using SAP BTP destinations and you have started the application using `npm run start`.
+This assumes your application is using the `fiori-tools-proxy` middleware to proxy API calls to back-end systems using SAP BTP destinations and you have started the application using `npm run start`.
 
 To determine the root cause of your issue, review the browsers network console, the connectivity issues can manifest itself as a HTTP 404 error, or in some cases a CORS error.
 
