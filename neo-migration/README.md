@@ -286,7 +286,7 @@ This approach is typically used where a HTML5 application must support different
 
 For the second route definition, `^/sap/(.*)$`, an API call intercepted at `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` is proxied to the `s4hc_onpremise` SAP BTP destination as `https://some.intneral.resource/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` where `sap` is retained.
 
-#### Review `ui5.yaml` configuration
+#### Review the `ui5.yaml` Configuration
 
 The following YAML file `ui5.yaml` is configured with two backend destinations, one for `API_ENDPOINT` and another for `s4hc_onpremise`.
 
