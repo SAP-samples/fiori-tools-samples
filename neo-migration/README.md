@@ -329,7 +329,7 @@ server:
           theme: sap_horizon
 ```
 
-Upon reviewing the `xs-app.json` the source path `/scim/(.*)` is mapped to the destination `API_ENDPOINT` and expects the `/scim` to be stripped out of the proxied URL.
+After reviewing the `xs-app.json`, the `/scim/(.*)` source path is mapped to the `API_ENDPOINT` destination and expects the `/scim` to be stripped out of the proxied URL.
 
 The root cause of the issue is, the local proxy, is now making the API call to `https://some.external.resource/scim/v2` which results in a HTTP 404 Not Found error since the backend system is expecting the call to be made to `https://some.external.resource/`.
 
