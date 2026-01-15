@@ -251,7 +251,7 @@ The deployed Cloud Foundry HTML5 application renders as expected, but some featu
 
 This assumes your application is using the `fiori-tools-proxy` middleware to proxy API calls to back-end systems using SAP BTP destinations and you have started the application using `npm run start`.
 
-To determine the root cause of your issue, review the browsers network console, the connectivity issues can manifest itself as a HTTP 404 error, or in some cases a CORS error.
+To determine the root cause of your issue, review the Network tab in your browser's Developer Console. Connectivity issues can manifest as a HTTP 404 or CORS error.
 
 #### Step 1. Review the `xs-app.json` File
 
