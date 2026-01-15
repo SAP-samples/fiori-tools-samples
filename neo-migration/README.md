@@ -333,7 +333,7 @@ Upon reviewing the `xs-app.json` the source path `/scim/(.*)` is mapped to the d
 
 The root cause of the issue is, the local proxy, is now making the API call to `https://some.external.resource/scim/v2` which results in a HTTP 404 Not Found error since the backend system is expecting the call to be made to `https://some.external.resource/`.
 
-The solution is to update the `ui5.yaml` file to include the `pathReplace` property to strip out the `/scim` from the proxied URL;
+The solution is to update the `ui5.yaml` file to include the `pathReplace` property to strip out the `/scim` from the proxied URL.
 
 ```yaml
           - path: /scim
