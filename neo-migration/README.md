@@ -348,7 +348,7 @@ Similarly, any request to `https://localhost:8080/sap` is correctly proxied to t
 
 #### Reporting Issues
 
-If you are still blocked, please open a support incident with SAP. When doing so, please provide a full network trace (.har file) with all requests in the scenario after it was reproduced when assigning issues to any of the support components.
+If you still face issues, please open a support incident with SAP. When doing so, please provide a full network trace (`.har` file) with all the requests in the scenario after it was reproduced.
 
 For more information about how to extract the trace, see [How to capture an HTTP trace using Google Chrome or MS Edge (Chromium)](https://launchpad.support.sap.com/#/notes/1990706).
 
