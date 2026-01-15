@@ -344,7 +344,7 @@ The solution is to update the `ui5.yaml` file to include the `pathReplace` prope
 
 Now, any request to `https://localhost:8080/scim/v2` is correctly proxied to the SAP BTP destination as `https://API_ENDPOINT.dest/v2` with `scim` removed.
 
-Similarly, any request to `https://localhost:8080/sap` will now be correctly proxied to the SAP BTP destination as `https://s4hc_onpremise.dest/sap` with `sap` retained.
+Similarly, any request to `https://localhost:8080/sap` is correctly proxied to the SAP BTP destination as `https://s4hc_onpremise.dest/sap` with `sap` retained.
 
 #### Reporting Issues
 
