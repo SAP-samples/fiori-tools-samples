@@ -1,0 +1,36 @@
+{
+  "name": "docs-linter",
+  "version": "1.0.0",
+  "description": "KM Feedback Training System - Documentation linter that learns from Knowledge Management team feedback patterns",
+  "main": "src/cli.js",
+  "bin": {
+    "docs-linter": "./src/cli.js"
+  },
+  "scripts": {
+    "check": "node src/cli.js check",
+    "fix": "node src/cli.js fix",
+    "validate": "node src/cli.js validate",
+    "template": "node src/cli.js template"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^11.1.0",
+    "glob": "^10.3.10",
+    "js-yaml": "^4.1.0",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.4",
+    "unist-util-visit": "^5.0.0"
+  },
+  "keywords": [
+    "documentation",
+    "linting",
+    "markdown",
+    "km",
+    "feedback",
+    "training"
+  ],
+  "author": "KM Feedback Training System",
+  "license": "Apache-2.0"
+}
