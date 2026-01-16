@@ -98,4 +98,4 @@ yo @sap/fiori:headless ./cap_app_config.json --logLevel debug --skipInstall
 1. If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` should be removed or set to `false`.
 
 ### License
-Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../../LICENSES/Apache-2.0.txt) file.
