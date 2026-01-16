@@ -17,5 +17,7 @@ This app is intended as a sample app that can be previwed using SAP Fiori tools 
 3. Switch to "SAP Fiori" on the left activity bar
 4. Right click on the app name in `Application Modeler` view to open `Application Info` page
 5. Check and perfrom actions under `Application Status`
-6. Right click on the app name in `Appication Modeler` view and select `Preview Application` and choose `start` option for preview. 
+6. Right click on the app name in `Appication Modeler` view and select `Preview Application` and choose `start` option for preview.
 
+### License
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../../../../LICENSES/Apache-2.0.txt) file.

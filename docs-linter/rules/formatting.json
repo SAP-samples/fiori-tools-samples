@@ -1,0 +1,58 @@
+{
+  "headings": {
+    "titleCase": {
+      "applyTo": ["h1", "h2"],
+      "severity": "info",
+      "message": "Consider using title case for main headings"
+    },
+    "corrections": {
+      "Support ticket checklist": "Checklist for Support Tickets",
+      "Common causes for deployment errors": "Common Causes for Deployment Errors",
+      "Screenshots Required": "Provide Screenshots"
+    }
+  },
+  "lists": {
+    "preferredMarker": "-",
+    "consistency": {
+      "severity": "warning",
+      "message": "Use consistent bullet markers throughout the document"
+    }
+  },
+  "links": {
+    "contextImprovements": {
+      "For more information around": "For more information about",
+      "refer to this": "see this"
+    },
+    "preferHttps": true,
+    "descriptiveText": {
+      "severity": "info",
+      "message": "Consider using descriptive text instead of bare URLs"
+    }
+  },
+  "codeBlocks": {
+    "requireLanguage": {
+      "minLength": 20,
+      "severity": "info",
+      "message": "Consider specifying language for code blocks"
+    },
+    "fenceFormat": {
+      "correct": "```",
+      "incorrect": "````",
+      "severity": "warning"
+    },
+    "noPrompts": {
+      "severity": "info",
+      "message": "Remove $ prompt from commands for better copy-paste experience"
+    }
+  },
+  "spacing": {
+    "multipleSpaces": {
+      "severity": "info",
+      "message": "Use single spaces between words"
+    },
+    "trailingSpaces": {
+      "severity": "info",
+      "message": "Remove trailing spaces"
+    }
+  }
+}
