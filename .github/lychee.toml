@@ -42,6 +42,17 @@ exclude = [
     # Internal SAP registry (not publicly accessible)
     "https://int.repositories.cloud.sap",
 
+    # SAP demo/test systems (require authentication/VPN)
+    "https://sapes5.sapdevcenter.com",
+    "https://.*\\.sapdevcenter\\.com",
+
+    # Cloud Foundry trial/example URLs (user-specific, not meant to be validated)
+    "https://.*trial.*\\.cfapps\\..*\\.hana\\.ondemand\\.com",
+    "https://.*\\.cfapps\\..*\\.hana\\.ondemand\\.com/.*",
+
+    # BTP trial and user-specific URLs
+    "https://.*trial.*\\.hana\\.ondemand\\.com",
+
     # NPM registry URLs in package-lock.json
     "https://registry.npmjs.org/.*/.*\\.tgz"
 ]
