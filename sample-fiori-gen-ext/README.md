@@ -216,7 +216,7 @@ class extends Generator implements FioriGeneratorExtensionAPI {
 ```
 The above implementation will result in the UI:
 
-<img width="1242" alt="image" src="https://github.com/IainSAP/fiori-tools-samples/assets/46536134/a2c5a0e6-c4f2-46af-8c7f-5a884f04e108">
+<img width="1242" alt="Conditional Step Example" src="./images/conditional-step-example.png">
 
 Adding steps conditionally, perhaps based on the value of a previous answer, can be achieved using the slightly more complex approach as described here: https://github.com/SAP/yeoman-ui/tree/master/packages/generator-foodq.
 
