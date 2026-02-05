@@ -260,8 +260,12 @@ Please see the sample extension package:  https://github.com/SAP-samples/fiori-t
 
 Please refer to the documentation here: https://github.com/SAP-samples/fiori-tools-samples/sample-fiori-gen-ext/deploy_extension.md
 
-## More info 
+## More info
 
 For additional help please reach out using our Community Forum: [SAP Fiori tools Community](https://community.sap.com/t5/c-khhcw49343/SAP+Fiori+tools/pd-p/73555000100800002345) or via email <SAPFioriElements@sap.com>
+
+## License
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
 
 
