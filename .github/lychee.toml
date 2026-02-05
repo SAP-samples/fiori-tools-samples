@@ -57,7 +57,12 @@ exclude_path = [
     "**/*.yaml",
     "**/*.yml",
     "**/ui5*.yaml",
-    "**/ui5-deploy.yaml"
+    "**/ui5-deploy.yaml",
+    # Exclude UI5 application directories (contain project-specific URLs)
+    "./V4/apps",
+    "./app-with-tutorials",
+    "./thirdpartylibrary/ztravelapp",
+    "./cap/**/app"
 ]
 
 # Include only these patterns
