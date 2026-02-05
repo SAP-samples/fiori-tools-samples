@@ -26,10 +26,8 @@ jobs:
           args: |
             --verbose
             --no-progress
-            --exclude-path './node_modules'
-            --exclude-path './.git'
-            --exclude-path '**/*.yaml'
-            --exclude-path '**/*.yml'
+            --exclude-path 'node_modules'
+            --exclude-path '.git'
             --exclude 'localhost'
             --exclude 'example.com'
             --exclude '127.0.0.1'
@@ -43,8 +41,6 @@ jobs:
             --max-retries 3
             --retry-wait-time 5
             '**/*.md'
-            'README.md'
-            'docs/**/*.md'
           # Fail action on broken links
           fail: true
 
