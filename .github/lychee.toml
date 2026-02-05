@@ -48,29 +48,19 @@ exclude = [
 
 # Paths to exclude
 exclude_path = [
-    "./node_modules",
-    "./.git",
-    "./cap/**/node_modules",
-    "./**/node_modules",
-    "./package-lock.json",
-    "./docs-linter/package-lock.json",
-    "**/*.yaml",
-    "**/*.yml",
-    "**/ui5*.yaml",
-    "**/ui5-deploy.yaml",
+    "node_modules",
+    ".git",
+    "package-lock.json",
+    "docs-linter/package-lock.json",
     # Exclude UI5 application directories (contain project-specific URLs)
-    "./V4/apps",
-    "./app-with-tutorials",
-    "./thirdpartylibrary/ztravelapp",
-    "./cap/**/app"
+    "V4/apps",
+    "app-with-tutorials",
+    "thirdpartylibrary/ztravelapp"
 ]
 
-# Include only these patterns
+# Include only these patterns (will only check markdown files)
 include = [
-    "**/*.md",
-    "README.md",
-    "docs/**",
-    "training-data/**/*.json"
+    "**/*.md"
 ]
 
 # Exclude mail addresses
