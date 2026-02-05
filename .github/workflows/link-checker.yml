@@ -23,7 +23,8 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           # Use the lychee.toml config file for all settings
-          args: --config .github/lychee.toml --verbose --no-progress '**/*.md' 'README.md' 'docs/**/*.md'
+          # Just check current directory recursively - lychee finds markdown files automatically
+          args: --config .github/lychee.toml --verbose --no-progress .
           # Fail action on broken links
           fail: true
 

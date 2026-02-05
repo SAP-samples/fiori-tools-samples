@@ -58,10 +58,8 @@ exclude_path = [
     "thirdpartylibrary/ztravelapp"
 ]
 
-# Include only these patterns (will only check markdown files)
-include = [
-    "**/*.md"
-]
+# Check only markdown files (lychee will auto-detect .md files)
+# Note: No include patterns needed, lychee checks markdown by default
 
 # Exclude mail addresses
 exclude_mail = true
