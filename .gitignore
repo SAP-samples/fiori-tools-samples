@@ -2,6 +2,9 @@
 .vscode
 .idea
 
+# Claude Code
+.claude/
+
 # Dependency directories
 node_modules/
 
