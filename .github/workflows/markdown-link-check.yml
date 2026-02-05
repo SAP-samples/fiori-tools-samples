@@ -29,6 +29,7 @@ jobs:
           folder-path: '.'
           max-depth: -1
           check-modified-files-only: 'yes'
+          base-branch: 'main'
 
       - name: Create summary report
         if: always()
