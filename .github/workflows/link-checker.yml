@@ -22,25 +22,8 @@ jobs:
       - name: Check links in markdown files
         uses: lycheeverse/lychee-action@v2
         with:
-          # Check all markdown files, excluding node_modules
-          args: |
-            --verbose
-            --no-progress
-            --exclude-path 'node_modules'
-            --exclude-path '.git'
-            --exclude 'localhost'
-            --exclude 'example.com'
-            --exclude '127.0.0.1'
-            --exclude 'http://my-internal-host'
-            --exclude 'https://.*\.dest/'
-            --exclude '.*/schema/.*\.json'
-            --exclude '.*/schema/.*\.yaml'
-            --exclude '.*\$schema.*'
-            --accept 200,201,202,203,204,300,301,302,303,304,307,308,429
-            --timeout 30
-            --max-retries 3
-            --retry-wait-time 5
-            '**/*.md'
+          # Use the lychee.toml config file for all settings
+          args: --config .github/lychee.toml --verbose --no-progress '**/*.md' 'README.md' 'docs/**/*.md'
           # Fail action on broken links
           fail: true
 
