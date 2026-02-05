@@ -22,21 +22,6 @@
       "pattern": "^https://int.repositories.cloud.sap"
     },
     {
-      "pattern": "^https://sapes5.sapdevcenter.com"
-    },
-    {
-      "pattern": "^https://.*\\.sapdevcenter\\.com"
-    },
-    {
-      "pattern": "^https://.*trial.*\\.cfapps\\..*\\.hana\\.ondemand\\.com"
-    },
-    {
-      "pattern": "^https://.*\\.cfapps\\..*\\.hana\\.ondemand\\.com"
-    },
-    {
-      "pattern": "^https://.*trial.*\\.hana\\.ondemand\\.com"
-    },
-    {
       "pattern": "^https://registry.npmjs.org/.*/.*\\.tgz$"
     },
     {
