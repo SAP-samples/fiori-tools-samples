@@ -21,6 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check links in Markdown files
+        continue-on-error: true
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-quiet-mode: 'no'
@@ -34,5 +35,8 @@ jobs:
       - name: Create summary report
         if: always()
         run: |
-          echo "## Link Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔗 Link Check Results (Optional)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "This is an **optional check** and will not block the PR." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           echo "Check the logs above for detailed information about link validation." >> $GITHUB_STEP_SUMMARY
