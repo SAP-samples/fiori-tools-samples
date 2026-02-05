@@ -128,7 +128,7 @@ In the above example the generated app name prompt input will additionally valid
 
 The default value in the above example will be set to "superapp1".
 
-<img width="786" alt="image" src="https://github.com/IainSAP/fiori-tools-samples/assets/46536134/6f767e92-efbc-47ed-b2a1-9345307edb3c">
+<img width="786" alt="Fiori Generator Extension Steps" src="./images/fiori-generator-extension-steps.png">
 
 
 Note that default values are only dynamically applied where prompts have been defined with the gui option `applyDefaultWhenDirty` or an answer has not been provided by the user. The setting `applyDefaultWhenDirty` is not assignable by a customized prompt extension and the behaviour should be tested to determine if it is applied when other prompt answers are updated.
@@ -262,6 +262,6 @@ Please refer to the documentation here: https://github.com/SAP-samples/fiori-too
 
 ## More info 
 
-For additional help please reach out using our Community Forum: https://answers.sap.com/tags/73555000100800002345 or via email SAPFioriElements@sap.com
+For additional help please reach out using our Community Forum: [SAP Fiori tools Community](https://community.sap.com/t5/c-khhcw49343/SAP+Fiori+tools/pd-p/73555000100800002345) or via email <SAPFioriElements@sap.com>
 
 
