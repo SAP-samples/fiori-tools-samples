@@ -1,0 +1,50 @@
+name: Question
+description: Ask a question about the samples
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For general SAP Fiori tools questions, use [SAP Community](https://community.sap.com/) with the "SAP Fiori tools" tag.
+
+        For sample-specific questions, continue below.
+
+  - type: dropdown
+    id: sample
+    attributes:
+      label: Related Sample
+      description: Which sample is your question about?
+      options:
+        - V2 Sample
+        - V4 Sample
+        - CAP Sample
+        - Third-party Library Sample
+        - Fiori Generator Extension
+        - Neo Migration
+        - General Question
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to know?
+      placeholder: Ask your question clearly and concisely
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What have you tried? What are you trying to achieve?
+      placeholder: Provide relevant background information
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Any other details that might help

@@ -1,0 +1,95 @@
+name: Bug Report
+description: Report a problem with a sample project
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue. Please provide details to help us investigate.
+
+  - type: dropdown
+    id: sample
+    attributes:
+      label: Sample Project
+      description: Which sample is affected?
+      options:
+        - V2 Sample
+        - V4 Sample
+        - CAP Sample
+        - Third-party Library Sample
+        - Fiori Generator Extension
+        - Neo Migration
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: path
+    attributes:
+      label: Sample Path
+      description: Path to the affected sample (e.g., V2/apps/myfioriapp)
+      placeholder: V2/apps/myfioriapp
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect?
+      placeholder: Clear description of the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the issue
+      placeholder: |
+        1. Clone repository
+        2. Navigate to sample
+        3. Run npm install
+        4. Run npm start
+        5. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: Error Message
+      description: Copy/paste any error messages or logs
+      render: shell
+
+  - type: input
+    id: node
+    attributes:
+      label: Node.js Version
+      description: Output of `node --version`
+      placeholder: v18.17.0
+
+  - type: input
+    id: npm
+    attributes:
+      label: npm Version
+      description: Output of `npm --version`
+      placeholder: 9.6.7
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - SAP Business Application Studio
+        - Visual Studio Code
+        - Other IDE
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
