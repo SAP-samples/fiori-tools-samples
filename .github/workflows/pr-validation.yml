@@ -1,0 +1,153 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches:
+      - main
+      - master
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate branch naming
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          echo "Validating branch name: $BRANCH_NAME"
+
+          # Define allowed branch prefixes
+          ALLOWED_PREFIXES="^(feature|bugfix|fix|hotfix|chore|docs|refactor|test|enhancement|km-)"
+
+          if [[ ! $BRANCH_NAME =~ $ALLOWED_PREFIXES ]]; then
+            echo "::warning::Branch name '$BRANCH_NAME' doesn't follow naming conventions"
+            echo "Recommended prefixes: feature/, bugfix/, fix/, hotfix/, chore/, docs/, refactor/, test/, enhancement/, km-"
+            echo "Example: feature/add-new-feature or bugfix/fix-login-issue"
+            echo ""
+            echo "While this is not enforced, following naming conventions helps with:"
+            echo "- Better organization"
+            echo "- Easier tracking"
+            echo "- Automated workflows"
+          else
+            echo "✅ Branch name follows conventions"
+          fi
+
+      - name: Check PR title
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "PR Title: $PR_TITLE"
+
+          if [[ ${#PR_TITLE} -lt 10 ]]; then
+            echo "::error::PR title is too short (less than 10 characters). Please provide a descriptive title."
+            exit 1
+          fi
+
+          if [[ "$PR_TITLE" =~ ^(WIP|wip|Work in progress) ]]; then
+            echo "::warning::This PR is marked as Work In Progress (WIP)"
+            echo "Remove WIP prefix when ready for review"
+          fi
+
+          echo "✅ PR title validation passed"
+
+      - name: Check for merge conflicts
+        run: |
+          echo "Checking for merge conflicts..."
+
+          # Fetch the base branch
+          git fetch origin ${{ github.base_ref }}
+
+          # Attempt to merge and check for conflicts
+          git merge-tree $(git merge-base HEAD origin/${{ github.base_ref }}) HEAD origin/${{ github.base_ref }} > /tmp/merge-check
+
+          if grep -q "changed in both" /tmp/merge-check; then
+            echo "::error::Merge conflicts detected. Please resolve conflicts before merging."
+            exit 1
+          fi
+
+          echo "✅ No merge conflicts detected"
+
+      - name: Validate commit messages
+        run: |
+          echo "Checking commit messages..."
+
+          # Get commits in this PR
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          git log --format=%s $BASE_SHA..$HEAD_SHA | while read -r commit_msg; do
+            if [[ ${#commit_msg} -lt 10 ]]; then
+              echo "::warning::Commit message too short: '$commit_msg'"
+            fi
+
+            # Check for common bad patterns
+            if [[ "$commit_msg" =~ ^(fix|fixed|update|updated|change|changed)$ ]]; then
+              echo "::warning::Vague commit message: '$commit_msg'. Consider being more descriptive."
+            fi
+
+            # Check for WIP commits
+            if [[ "$commit_msg" =~ ^(WIP|wip) ]]; then
+              echo "::warning::WIP commit found: '$commit_msg'. Consider squashing before merge."
+            fi
+          done
+
+          echo "✅ Commit message validation complete"
+
+      - name: Check PR size
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+
+          # Get the number of changed files and lines
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | wc -l)
+          ADDITIONS=$(git diff --numstat origin/${{ github.base_ref }}...HEAD | awk '{sum+=$1} END {print sum}')
+          DELETIONS=$(git diff --numstat origin/${{ github.base_ref }}...HEAD | awk '{sum+=$2} END {print sum}')
+
+          echo "Changed files: $CHANGED_FILES"
+          echo "Lines added: $ADDITIONS"
+          echo "Lines deleted: $DELETIONS"
+
+          # Warn if PR is very large
+          if [[ $CHANGED_FILES -gt 50 ]]; then
+            echo "::warning::This PR changes $CHANGED_FILES files. Consider breaking it into smaller PRs for easier review."
+          fi
+
+          if [[ $ADDITIONS -gt 1000 ]]; then
+            echo "::warning::This PR adds $ADDITIONS lines. Large PRs are harder to review. Consider breaking it down."
+          fi
+
+          echo "✅ PR size check complete"
+
+      - name: Check for required labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: labels } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            if (labels.length === 0) {
+              core.warning('No labels on this PR. Consider adding labels like: bug, enhancement, documentation, etc.');
+            } else {
+              console.log('✅ PR has labels:', labels.map(l => l.name).join(', '));
+            }
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## PR Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All validation checks completed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Branch Information" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source Branch:** ${{ github.head_ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target Branch:** ${{ github.base_ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **PR Number:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the logs above for any warnings or recommendations." >> $GITHUB_STEP_SUMMARY

@@ -1,6 +1,6 @@
 # Handling Self-Signed SSL Certificates in SAP Fiori Tools
 
-For more information on SSL certificates, please refer to the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://community.sap.com/topics/fiori-tools).
+For more information on SSL certificates, please refer to the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://pages.community.sap.com/topics/fiori-tools).
 
 # Overview
 
