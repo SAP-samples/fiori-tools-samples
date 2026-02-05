@@ -1,0 +1,53 @@
+name: Branch Protection
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  prevent-direct-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if push is from a merged PR
+        run: |
+          echo "Checking if this push came from a merged pull request..."
+
+          # Check if this is a merge commit from a PR
+          if [[ "${{ github.event.head_commit.message }}" =~ ^Merge\ pull\ request\ #[0-9]+ ]] || \
+             [[ "${{ github.event.head_commit.message }}" =~ ^Merge\ branch ]]; then
+            echo "✅ This is a merge from a pull request. Allowed."
+            exit 0
+          fi
+
+          # Check if pusher is a bot (for automated merges)
+          if [[ "${{ github.actor }}" == *"[bot]"* ]] || \
+             [[ "${{ github.actor }}" == "dependabot"* ]] || \
+             [[ "${{ github.actor }}" == "github-actions"* ]]; then
+            echo "✅ This is an automated merge. Allowed."
+            exit 0
+          fi
+
+          # If we get here, this is likely a direct push
+          echo "❌ ERROR: Direct pushes to main/master branch are not allowed!"
+          echo ""
+          echo "Please follow the branching workflow:"
+          echo "1. Create a feature branch: git checkout -b feature/your-feature-name"
+          echo "2. Make your changes and commit them"
+          echo "3. Push your branch: git push origin feature/your-feature-name"
+          echo "4. Create a Pull Request on GitHub"
+          echo "5. Wait for reviews and checks to pass"
+          echo "6. Merge the PR into main"
+          echo ""
+          echo "To fix this situation:"
+          echo "1. Create a new branch from your current commit"
+          echo "2. Force push main back to the previous commit"
+          echo "3. Push your new branch and create a PR"
+          exit 1
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Direct push to main branch detected. Please use pull requests."

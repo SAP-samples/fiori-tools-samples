@@ -1,0 +1,62 @@
+name: Link Checker
+
+on:
+  pull_request:
+    branches:
+      - main
+      - km-updates
+    paths:
+      - '**.md'
+      - 'docs/**'
+      - 'training-data/**/*.json'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check links in markdown files
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Check all markdown files, excluding node_modules
+          args: |
+            --verbose
+            --no-progress
+            --exclude-path './node_modules'
+            --exclude-path './.git'
+            --exclude-path '**/*.yaml'
+            --exclude-path '**/*.yml'
+            --exclude 'localhost'
+            --exclude 'example.com'
+            --exclude '127.0.0.1'
+            --exclude 'http://my-internal-host'
+            --exclude 'https://.*\.dest/'
+            --exclude '.*/schema/.*\.json'
+            --exclude '.*/schema/.*\.yaml'
+            --exclude '.*\$schema.*'
+            --accept 200,201,202,203,204,300,301,302,303,304,307,308,429
+            --timeout 30
+            --max-retries 3
+            --retry-wait-time 5
+            '**/*.md'
+            'README.md'
+            'docs/**/*.md'
+          # Fail action on broken links
+          fail: true
+
+      - name: Create Issue or Comment on PR
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## ⚠️ Broken Links Detected
+
+            The link checker found broken or invalid links in this PR.
+            Please review the workflow logs and fix the broken links.
+
+            [View workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})

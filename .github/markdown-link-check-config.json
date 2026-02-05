@@ -1,0 +1,52 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://.*\\.dest/"
+    },
+    {
+      "pattern": "^http://my-internal-host"
+    },
+    {
+      "pattern": ".*/schema/.*\\.json"
+    },
+    {
+      "pattern": ".*/schema/.*\\.yaml"
+    },
+    {
+      "pattern": ".*\\$schema.*"
+    },
+    {
+      "pattern": "^https://int.repositories.cloud.sap"
+    },
+    {
+      "pattern": "^https://registry.npmjs.org/.*/.*\\.tgz$"
+    },
+    {
+      "pattern": "^https://github.com/.*/.*/(blob|tree)/"
+    }
+  ],
+  "replacementPatterns": [],
+  "httpHeaders": [
+    {
+      "urls": ["https://www.npmjs.com", "https://developers.sap.com"],
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml"
+      }
+    },
+    {
+      "urls": ["https://help.sap.com", "https://learning.sap.com", "https://community.sap.com"],
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    }
+  ],
+  "timeout": "30s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "5s",
+  "aliveStatusCodes": [200, 201, 202, 203, 204, 301, 302, 303, 307, 308, 429]
+}

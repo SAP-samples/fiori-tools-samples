@@ -1,0 +1,78 @@
+# Lychee link checker configuration
+
+# Maximum number of concurrent network requests
+max_concurrency = 10
+
+# Accept status codes
+accept = [200, 201, 204, 301, 302, 307, 308, 429]
+
+# Timeout per request (seconds)
+timeout = 30
+
+# Maximum number of retries per link
+max_retries = 3
+
+# Wait time between retries (seconds)
+retry_wait_time = 5
+
+# Headers to send with requests
+headers = [
+    "accept=*/*",
+    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+]
+
+# Exclude patterns (regex)
+exclude = [
+    # Local development URLs
+    "localhost",
+    "127.0.0.1",
+    "example.com",
+
+    # Placeholder URLs in docs
+    "http://my-internal-host",
+    "https://.*\\.dest/",
+    "https://mydestination",
+    "<destination-name>",
+
+    # Schema URLs (used for IDE validation, not meant to be accessed)
+    ".*/schema/.*\\.json",
+    ".*/schema/.*\\.yaml",
+    ".*\\$schema.*",
+
+    # Internal SAP registry (not publicly accessible)
+    "https://int.repositories.cloud.sap",
+
+    # NPM registry URLs in package-lock.json
+    "https://registry.npmjs.org/.*/.*\\.tgz"
+]
+
+# Paths to exclude
+exclude_path = [
+    "./node_modules",
+    "./.git",
+    "./cap/**/node_modules",
+    "./**/node_modules",
+    "./package-lock.json",
+    "./docs-linter/package-lock.json",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/ui5*.yaml",
+    "**/ui5-deploy.yaml"
+]
+
+# Include only these patterns
+include = [
+    "**/*.md",
+    "README.md",
+    "docs/**",
+    "training-data/**/*.json"
+]
+
+# Exclude mail addresses
+exclude_mail = true
+
+# Cache responses to avoid re-checking the same URL
+cache = true
+
+# Maximum cache age in seconds (24 hours)
+max_cache_age = "1d"
