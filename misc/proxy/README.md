@@ -5,6 +5,7 @@
 In some environments, you may need to configure proxy settings to allow SAP Fiori tools to connect to external services or resources. This is particularly relevant when working in corporate networks or environments with strict firewall rules.
 
 # Prerequisites
+
 - Ensure you have the necessary permissions to modify environment variables on your system.
 - Confirm with your IT Admin if proxy settings are required for your network environment, for example, in some instances internal networks may not require proxy settings.
 - Unless specified by your IT Admin, do not use `https://` in the proxy URL, the default should be `http://` for the proxy URL.
@@ -68,6 +69,7 @@ export HTTPS_PROXY=http://user:password@proxy.domain.com:3128
 ```
 
 If your password contains special characters, for example, if your password is configured as `p@s#w0rd`, then you will need to escape it `p%40s%23w0rd`:
+
 ```bash
 export HTTPS_PROXY=http://myusername:p%40s%23w0rd@proxy.domain.com:3128
 ```
@@ -84,8 +86,8 @@ The feature `sap.ux.enablePatchProxy` is enabled by default in the latest versio
 
 # Defining Proxy Settings
 
-
 ## Windows PowerShell Commands
+
 Here are the PowerShell commands to set those proxy environment variables:
 
 ```powershell
@@ -93,13 +95,17 @@ $env:HTTP_PROXY = "http://user:password@proxyserver:port"
 $env:HTTPS_PROXY = "http://user:password@proxyserver:port"
 $env:NO_PROXY = "localhost,127.0.0.1,internal.domain,.local"
 ```
+
 If you want to set these permanently for your user account (so they persist across PowerShell sessions), use:
+
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "User")
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "User")
 [Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "User")
 ```
+
 Or if you need them, set system-wide for all users (requires administrator privileges):
+
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "Machine")
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://user:password@proxyserver:port", "Machine")
@@ -119,6 +125,7 @@ If you are unfamiliar with PowerShell, you can also set these variables through 
 ## MacOS/Linux
 
 Here are the bash commands to set those proxy environment variables:
+
 ```bash
 # Set for current session only
 export HTTP_PROXY=http://user:password@proxyserver:port
@@ -127,6 +134,7 @@ export NO_PROXY=localhost,127.0.0.1,internal.domain,.local
 ```
 
 If you want to set these permanently so they persist across terminal sessions, add them to your shell profile file:
+
 ```bash
 echo 'export HTTP_PROXY=http://user:password@proxyserver:port' >> ~/.bashrc
 echo 'export HTTPS_PROXY=http://user:password@proxyserver:port' >> ~/.bashrc
@@ -134,12 +142,11 @@ echo 'export NO_PROXY=localhost,127.0.0.1,internal.domain,.local' >> ~/.bashrc
 ```
 
 Then reload your profile:
+
 ```bash
 source ~/.bashrc
 ```
 
 ### License
+
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
-
-
-
