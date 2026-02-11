@@ -17,7 +17,7 @@ This repository contains samples organized by technology and use case:
 | **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
-| **Utilities** | Proxy, destinations, CI/CD configurations | [misc/](misc/) |
+| **Utilities** | Proxy, destinations, npm management, CI/CD configurations | [misc/](misc/) |
 
 📑 **[View complete sample catalog](SAMPLES_INDEX.md)** for detailed descriptions and direct links.
 
@@ -30,7 +30,7 @@ Start with the [tutorial-based samples](app-with-tutorials/) that provide step-b
 Explore [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
 
 ### Advanced Use Cases
-Check [misc/](misc/) for proxy configuration, destinations, CI/CD, and on-premise connectivity.
+Check [misc/](misc/) for proxy configuration, destinations, CI/CD, npm dependency management, and on-premise connectivity.
 
 ## Requirements
 
@@ -105,6 +105,8 @@ Please refer to [SECURITY.md](.github/SECURITY.md) for reporting security vulner
 
 ## Recent Updates
 
+- ✅ Added comprehensive npm dependency management and audit guide
+- ✅ Fixed markdown formatting issues across all README files
 - ✅ Added governance files (Contributing, Code of Conduct, Security Policy)
 - ✅ Added issue and PR templates for better collaboration
 - ✅ Implemented automated link validation on PRs
