@@ -1,44 +1,44 @@
 # Managing npm Dependencies and Addressing Audit Issues in SAP Fiori Projects
 
-# Overview
+## Overview
 
 This guide provides practical approaches to managing npm dependency versions, addressing npm audit vulnerabilities, and applying temporary workarounds when working with SAP Fiori Tools and related SAP development packages. It focuses on understanding the distinction between runtime and development dependencies, tracking package updates, and safely applying interim solutions while waiting for upstream fixes.
 
 When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/cds-dk`, and `@ui5/cli`, you may encounter npm audit warnings related to transitive dependencies. This guide explains why these issues occur, how to track package updates, and when and how to apply temporary fixes.
 
-# Prerequisites
+## Prerequisites
 
-- Basic understanding of npm and package.json structure
-- Familiarity with SAP Fiori development tooling
-- Version control system (Git recommended) for tracking changes
-- Node.js and npm installed
+* Basic understanding of npm and package.json structure
+* Familiarity with SAP Fiori development tooling
+* Version control system (Git recommended) for tracking changes
+* Node.js and npm installed
 
-# Understanding Dependencies vs. DevDependencies
+## Understanding Dependencies vs. DevDependencies
 
-## What Are DevDependencies?
+### What Are DevDependencies?
 
 DevDependencies are packages required only during development and build time. They are not deployed as part of the application runtime. Examples include:
 
-- Build tools (`@ui5/cli`, `@sap/ux-ui5-tooling`)
-- Testing frameworks
-- Development servers
-- Linters and formatters
-- Build tooling like `mbt` (Multi-Target Application Archive Builder)
+* Build tools (`@ui5/cli`, `@sap/ux-ui5-tooling`)
+* Testing frameworks
+* Development servers
+* Linters and formatters
+* Build tooling like `mbt` (Multi-Target Application Archive Builder)
 
-## Runtime vs. Development Perspective
+### Runtime vs. Development Perspective
 
 From a deployment and runtime security perspective, vulnerabilities in devDependencies typically have minimal to no impact because:
 
-- DevDependencies are not included in production builds
-- They do not execute in the deployed application environment
-- They are only used during local development and CI/CD build processes
+* DevDependencies are not included in production builds
+* They do not execute in the deployed application environment
+* They are only used during local development and CI/CD build processes
 
 However, it is still good practice to keep devDependencies updated to benefit from:
 
-- Latest features and improvements
-- Bug fixes
-- Compatibility with newer Node.js versions
-- Security fixes (especially important in CI/CD environments)
+* Latest features and improvements
+* Bug fixes
+* Compatibility with newer Node.js versions
+* Security fixes (especially important in CI/CD environments)
 
 ## Package.json Structure
 
@@ -58,23 +58,23 @@ However, it is still good practice to keep devDependencies updated to benefit fr
 
 For more information, see the [npm documentation on specifying dependencies](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file).
 
-# Tracking Package Versions and Updates
+## Tracking Package Versions and Updates
 
-## Where to Find Version Information
+### Where to Find Version Information
 
 All npm packages publish their version history on npm's registry. You can track releases and changelogs using the following pattern:
 
-```
+```text
 https://www.npmjs.com/package/<package-name>?activeTab=versions
 ```
 
-### Common SAP Packages
+#### Common SAP Packages
 
-- [@sap/ux-ui5-tooling versions](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=versions)
-- [@sap/cds-dk versions](https://www.npmjs.com/package/@sap/cds-dk?activeTab=versions)
-- [@ui5/cli versions](https://www.npmjs.com/package/@ui5/cli?activeTab=versions)
+* [@sap/ux-ui5-tooling versions](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=versions)
+* [@sap/cds-dk versions](https://www.npmjs.com/package/@sap/cds-dk?activeTab=versions)
+* [@ui5/cli versions](https://www.npmjs.com/package/@ui5/cli?activeTab=versions)
 
-## Checking for Updates
+### Checking for Updates
 
 Use the following npm commands to check for available updates:
 
@@ -89,7 +89,7 @@ npm view @sap/ux-ui5-tooling version
 npm view @sap/ux-ui5-tooling versions
 ```
 
-## Upgrading Packages
+### Upgrading Packages
 
 When upgrading packages, follow these steps:
 
@@ -109,33 +109,33 @@ npm install
 
 For more information, see the [npm update documentation](https://docs.npmjs.com/cli/v9/commands/npm-update).
 
-# Understanding npm Audit Vulnerabilities
+## Understanding npm Audit Vulnerabilities
 
-## Why Audit Issues Occur
+### Why Audit Issues Occur
 
 npm audit vulnerabilities often originate from:
 
-### 1. Transitive Dependencies
+#### 1. Transitive Dependencies
 
 Your project depends on package A, which depends on package B, which depends on vulnerable package C. You cannot directly control package C's version without using overrides.
 
-```
+```text
 Your Project
 └── @sap/ux-ui5-tooling
     └── @sap-ux/preview-middleware
         └── qs (vulnerable version)
 ```
 
-### 2. Dependency Version Constraints
+#### 2. Dependency Version Constraints
 
 Package maintainers often pin or restrict dependency versions to ensure:
 
-- Compatibility across supported Node.js versions
-- Compatibility across different operating systems
-- Stable behavior in production environments
-- Avoiding regressions from untested dependency updates
+* Compatibility across supported Node.js versions
+* Compatibility across different operating systems
+* Stable behavior in production environments
+* Avoiding regressions from untested dependency updates
 
-### 3. Upstream Update Delays
+#### 3. Upstream Update Delays
 
 Even when a fix is available for a vulnerable package, it takes time for:
 
@@ -143,37 +143,37 @@ Even when a fix is available for a vulnerable package, it takes time for:
 2. Intermediate packages to update and test the new version
 3. Root packages (like `@sap/ux-ui5-tooling`) to consume and release the update
 
-## When to Be Concerned
+### When to Be Concerned
 
 Prioritize fixing vulnerabilities based on:
 
-- **Severity**: Critical and High vulnerabilities in production dependencies
-- **Exploitability**: Whether the vulnerability is actually exploitable in your use case
-- **Dependency Type**: Runtime dependencies vs. devDependencies
-- **Network Exposure**: Whether the vulnerable code path is exposed to user input
+* **Severity**: Critical and High vulnerabilities in production dependencies
+* **Exploitability**: Whether the vulnerability is actually exploitable in your use case
+* **Dependency Type**: Runtime dependencies vs. devDependencies
+* **Network Exposure**: Whether the vulnerable code path is exposed to user input
 
 DevDependencies with vulnerabilities are generally lower priority unless:
 
-- They are used in CI/CD pipelines that handle sensitive data
-- They process untrusted input during builds
-- Your organization's security policies require it
+* They are used in CI/CD pipelines that handle sensitive data
+* They process untrusted input during builds
+* Your organization's security policies require it
 
-# Using npm Overrides for Temporary Fixes
+## Using npm Overrides for Temporary Fixes
 
-## What Are Overrides?
+### What Are Overrides?
 
 npm overrides allow you to force a specific version of a transitive dependency, overriding what the parent package specifies. This is a temporary solution until the root package releases an update.
 
-## When to Use Overrides
+### When to Use Overrides
 
 Use overrides when:
 
-- A security vulnerability exists in a transitive dependency
-- The root package has not yet released an update
-- You need an immediate workaround
-- The override version is compatible with the parent package
+* A security vulnerability exists in a transitive dependency
+* The root package has not yet released an update
+* You need an immediate workaround
+* The override version is compatible with the parent package
 
-## Override Syntax
+### Override Syntax
 
 Add the `overrides` field to your package.json:
 
@@ -195,7 +195,7 @@ Add the `overrides` field to your package.json:
 
 This forces all instances of `qs` under `@sap/ux-ui5-tooling` to use version `6.14.1`.
 
-## Multiple Overrides
+### Multiple Overrides
 
 You can specify multiple overrides:
 
@@ -212,7 +212,7 @@ You can specify multiple overrides:
 }
 ```
 
-## Applying Overrides
+### Applying Overrides
 
 After adding overrides to package.json:
 
@@ -228,13 +228,13 @@ npm list qs
 npm list tar
 ```
 
-## Important Considerations
+### Important Considerations
 
-- **Temporary Solution**: Overrides are a workaround, not a permanent fix
-- **Remove When Possible**: Remove overrides once the root package updates
-- **Test Thoroughly**: Overriding versions may introduce compatibility issues
-- **Source Control**: Commit changes so team members are aware
-- **Document**: Add comments in package.json explaining why overrides are needed
+* **Temporary Solution**: Overrides are a workaround, not a permanent fix
+* **Remove When Possible**: Remove overrides once the root package updates
+* **Test Thoroughly**: Overriding versions may introduce compatibility issues
+* **Source Control**: Commit changes so team members are aware
+* **Document**: Add comments in package.json explaining why overrides are needed
 
 ```json
 {
@@ -249,18 +249,18 @@ npm list tar
 }
 ```
 
-# Removing npm Dependencies in Favor of Standalone Tools
+## Removing npm Dependencies in Favor of Standalone Tools
 
-## Why Remove npm Dependencies?
+### Why Remove npm Dependencies?
 
 Some tools are available as standalone binaries and do not need to be installed via npm. Removing them from package.json:
 
-- Reduces dependency tree complexity
-- Eliminates transitive dependency conflicts
-- Simplifies version management
-- Reduces node_modules size
+* Reduces dependency tree complexity
+* Eliminates transitive dependency conflicts
+* Simplifies version management
+* Reduces node_modules size
 
-## Example: MBT (Multi-Target Application Archive Builder)
+### Example: MBT (Multi-Target Application Archive Builder)
 
 Instead of installing `mbt` as a devDependency:
 
@@ -277,12 +277,12 @@ Instead of installing `mbt` as a devDependency:
 
 Install it as a standalone CLI tool:
 
-### Installation
+#### Installation
 
 Download and install from the official source:
 [MBT Download Page](https://sap.github.io/cloud-mta-build-tool/download/)
 
-### Verification
+#### Verification
 
 ```bash
 # Verify installation
@@ -292,7 +292,7 @@ mbt --version
 mbt build
 ```
 
-### Updated package.json
+#### Updated package.json
 
 ```json
 {
@@ -304,23 +304,23 @@ mbt build
 }
 ```
 
-## Other Candidates for Standalone Installation
+### Other Candidates for Standalone Installation
 
 Consider removing these from npm dependencies if available as standalone tools:
 
-- **Cloud Foundry CLI** (`cf`)
-- **SAP Cloud SDK CLI**
-- **Deployment tools** specific to your environment
+* **Cloud Foundry CLI** (`cf`)
+* **SAP Cloud SDK CLI**
+* **Deployment tools** specific to your environment
 
-# Best Practices and Recommendations
+## Best Practices and Recommendations
 
-## 1. Regular Maintenance
+### 1. Regular Maintenance
 
-- Review and update dependencies monthly or quarterly
-- Subscribe to security advisories for critical packages
-- Keep package.json and package-lock.json in source control
+* Review and update dependencies monthly or quarterly
+* Subscribe to security advisories for critical packages
+* Keep package.json and package-lock.json in source control
 
-## 2. Before Making Changes
+### 2. Before Making Changes
 
 Always ensure your project is under version control:
 
@@ -336,7 +336,7 @@ git add package.json package-lock.json
 git commit -m "Update dependencies and apply security fixes"
 ```
 
-## 3. Testing After Updates
+### 3. Testing After Updates
 
 After updating dependencies or applying overrides:
 
@@ -355,22 +355,22 @@ npm test
 npm start
 ```
 
-## 4. Document Changes
+### 4. Document Changes
 
 When applying overrides or making significant dependency changes:
 
-- Add comments in package.json
-- Update project README or CHANGELOG
-- Document in commit messages
-- Share with team members
+* Add comments in package.json
+* Update project README or CHANGELOG
+* Document in commit messages
+* Share with team members
 
-## 5. Monitor for Upstream Fixes
+### 5. Monitor for Upstream Fixes
 
 After applying temporary overrides:
 
-- Regularly check for updates to root packages
-- Subscribe to package release notifications
-- Test removing overrides when new versions are released
+* Regularly check for updates to root packages
+* Subscribe to package release notifications
+* Test removing overrides when new versions are released
 
 ```bash
 # Check if new version is available
@@ -383,16 +383,16 @@ npm view @sap/ux-ui5-tooling version
 # 4. Test application
 ```
 
-## 6. Understand Semver
+### 6. Understand Semver
 
 npm uses semantic versioning:
 
-- `^1.2.3` - Compatible with 1.2.3, allows minor and patch updates (1.x.x)
-- `~1.2.3` - Compatible with 1.2.3, allows only patch updates (1.2.x)
-- `1.2.3` - Exact version only
-- `latest` - Always use the latest version (not recommended for production)
+* `^1.2.3` - Compatible with 1.2.3, allows minor and patch updates (1.x.x)
+* `~1.2.3` - Compatible with 1.2.3, allows only patch updates (1.2.x)
+* `1.2.3` - Exact version only
+* `latest` - Always use the latest version (not recommended for production)
 
-## 7. Use npm ci in CI/CD
+### 7. Use npm ci in CI/CD
 
 In CI/CD pipelines, use `npm ci` instead of `npm install`:
 
@@ -404,15 +404,15 @@ In CI/CD pipelines, use `npm ci` instead of `npm install`:
 npm ci
 ```
 
-# Common Scenarios
+## Common Scenarios
 
-## Scenario 1: qs Vulnerability in @sap/ux-ui5-tooling
+### Scenario 1: qs Vulnerability in @sap/ux-ui5-tooling
 
-### Problem
+#### Problem
 
 npm audit shows a vulnerability in the `qs` package, introduced via `@sap-ux/preview-middleware`.
 
-### Solution
+#### Solution
 
 Apply an override until the root package is updated:
 
@@ -433,7 +433,7 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
-### Cleanup
+#### Monitoring and Cleanup
 
 Monitor for updates:
 
@@ -443,17 +443,17 @@ npm view @sap/ux-ui5-tooling version
 
 Remove override when fixed version is available.
 
-## Scenario 2: tar Vulnerability in mbt
+### Scenario 2: tar Vulnerability in mbt
 
-### Problem
+#### Problem
 
 npm audit shows a vulnerability in `tar`, introduced via `mbt`.
 
-### Solution Option 1: Remove mbt from npm
+#### Solution Option 1: Remove mbt from npm
 
 Install mbt as a standalone tool (see above) and remove from package.json.
 
-### Solution Option 2: Apply Override
+#### Solution Option 2: Apply Override
 
 ```json
 {
@@ -465,13 +465,13 @@ Install mbt as a standalone tool (see above) and remove from package.json.
 }
 ```
 
-## Scenario 3: axios Denial of Service
+### Scenario 3: axios Denial of Service
 
-### Problem
+#### Problem
 
 npm audit shows an axios vulnerability in a transitive dependency.
 
-### Solution
+#### Solution Steps
 
 1. Check if the vulnerability affects your use case
 2. Verify the package is in devDependencies
@@ -488,13 +488,13 @@ npm audit shows an axios vulnerability in a transitive dependency.
 }
 ```
 
-## Scenario 4: Multiple Outdated Packages
+### Scenario 4: Multiple Outdated Packages
 
-### Problem
+#### Problem
 
 Multiple packages show available updates.
 
-### Solution
+#### Solution Approach
 
 Update incrementally and test:
 
@@ -510,9 +510,9 @@ npm run build
 npm test
 ```
 
-# Troubleshooting
+## Troubleshooting
 
-## Override Not Applied
+### Override Not Applied
 
 If the override doesn't seem to work:
 
@@ -527,7 +527,7 @@ npm install
 npm list <package-name>
 ```
 
-## Compatibility Issues After Override
+### Compatibility Issues After Override
 
 If the overridden version causes issues:
 
@@ -541,7 +541,7 @@ git checkout package.json package-lock.json
 npm install
 ```
 
-## npm audit Still Shows Vulnerabilities
+### npm audit Still Shows Vulnerabilities
 
 After applying fixes, npm audit may still show issues:
 
@@ -560,7 +560,7 @@ npm install
 npm audit
 ```
 
-## CI/CD Pipeline Failures
+### CI/CD Pipeline Failures
 
 If CI/CD fails after dependency changes:
 
@@ -569,17 +569,17 @@ If CI/CD fails after dependency changes:
 3. Verify Node.js version matches local environment
 4. Check for environment-specific issues
 
-# Additional Resources
+## Additional Resources
 
-- [npm Documentation - Dependencies](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file)
-- [npm Documentation - Update Command](https://docs.npmjs.com/cli/v9/commands/npm-update)
-- [npm Documentation - Overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides)
-- [npm Audit Documentation](https://docs.npmjs.com/cli/v9/commands/npm-audit)
-- [Semantic Versioning](https://semver.org/)
-- [SAP Fiori Tools](https://help.sap.com/docs/SAP_FIORI_tools)
-- [MBT Download and Installation](https://sap.github.io/cloud-mta-build-tool/download/)
+* [npm Documentation - Dependencies](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file)
+* [npm Documentation - Update Command](https://docs.npmjs.com/cli/v9/commands/npm-update)
+* [npm Documentation - Overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides)
+* [npm Audit Documentation](https://docs.npmjs.com/cli/v9/commands/npm-audit)
+* [Semantic Versioning](https://semver.org/)
+* [SAP Fiori Tools](https://help.sap.com/docs/SAP_FIORI_tools)
+* [MBT Download and Installation](https://sap.github.io/cloud-mta-build-tool/download/)
 
-# Summary
+## Summary
 
 Managing npm dependencies in SAP Fiori projects requires a balanced approach:
 
@@ -592,5 +592,6 @@ Managing npm dependencies in SAP Fiori projects requires a balanced approach:
 
 Remember that devDependencies with vulnerabilities pose minimal runtime risk but should still be addressed through regular maintenance cycles. Always prioritize testing and stability over immediately applying every update.
 
-### License
+## License
+
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
