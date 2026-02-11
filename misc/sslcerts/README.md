@@ -249,6 +249,27 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 node your-script.js
 NODE_TLS_REJECT_UNAUTHORIZED=0 npm start
 ```
 
+## Validate TLS Connectivity (Node.js)
+
+To isolate TLS/certificate issues from IDEs or third-party tooling (for example VS Code, SAP Fiori tools, or corporate proxies), run the following command directly in a terminal. This validates whether the Node.js runtime can establish an HTTPS connection using the currently configured CA trust chain.
+
+```bash
+node -e "require('https').get('https://your-host', res => { console.log(res.statusCode); }).on('error', err => console.error(err))"
+```
+
+Replace `https://your-host` with a specific and reachable endpoint.
+
+How to interpret the result
+
+- HTTP status code is printed (e.g. 200, 401, 403)
+  → TLS handshake succeeded and the CA certificate is trusted by Node.js.
+- Error such as self signed certificate, unable to verify the first certificate, or similar
+  → Node.js does not trust the issuing CA. The root (or intermediate) CA must be added to the Node trust store (for example via NODE_EXTRA_CA_CERTS) or installed at OS level.
+- This command bypasses higher-level tools and confirms whether the issue is at the Node.js TLS layer, not application logic.
+- Ensure any required environment variables (for example NODE_EXTRA_CA_CERTS) are set before running the command.
+
+Note, this is not a software bug, if the endpoint is standards-compliant but the runtime does not trust the CA, the responsibility is on the consuming team, not the provider.
+
 ### License
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
 
