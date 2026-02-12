@@ -147,6 +147,107 @@ Then reload your profile:
 source ~/.bashrc
 ```
 
+# Validating Proxy Settings with curl
+
+Use `curl` to verify proxy connectivity after configuration. `curl` is included by default on Windows 10 (1803+), Windows 11, macOS, and most Linux distributions.
+
+## Basic Tests
+
+Test proxy connection (same syntax on all platforms):
+
+```bash
+# Without authentication
+curl -v --proxy http://proxyserver:port https://www.sap.com
+
+# With authentication
+curl -v --proxy http://user:password@proxyserver:port https://www.sap.com
+
+# Using environment variables (HTTP_PROXY/HTTPS_PROXY)
+curl -v https://www.sap.com
+
+# Bypass proxy (macOS/Linux use single quotes, Windows use double quotes)
+curl -v --noproxy "*" https://www.sap.com
+```
+
+Test backend connectivity:
+
+```bash
+curl -v --proxy http://proxyserver:port https://my.backend.com:1234/sap/opu/odata/
+```
+
+## Expected Results
+
+**Success indicators:**
+* HTTP 200 status or appropriate response code (401/403 for auth endpoints)
+* Response headers from target server
+* Verbose output shows proxy connection details
+
+**Failure indicators:**
+* Connection timeout or refused
+* 407 status (proxy authentication required)
+* SSL/TLS certificate errors
+* DNS resolution failures
+
+## Useful curl Options
+
+```bash
+curl -v --proxy http://proxyserver:port https://example.com          # Verbose output
+curl -i --proxy http://proxyserver:port https://example.com          # Include headers
+curl -k --proxy http://proxyserver:port https://example.com          # Skip SSL verification
+curl --connect-timeout 10 --proxy http://proxyserver:port https://example.com  # Set timeout
+```
+
+## Validation Workflow
+
+**macOS/Linux:**
+
+```bash
+export HTTP_PROXY=http://user:password@proxyserver:8080
+export HTTPS_PROXY=http://user:password@proxyserver:8080
+export NO_PROXY=localhost,127.0.0.1,.local
+
+curl -v https://www.google.com                 # Test connectivity
+curl -v https://my.backend.com/sap/opu/odata/  # Test backend
+curl -v http://localhost:3000                  # Verify NO_PROXY
+curl -v --noproxy '*' https://www.google.com   # Test without proxy
+```
+
+**Windows PowerShell:**
+
+```powershell
+$env:HTTP_PROXY = "http://user:password@proxyserver:8080"
+$env:HTTPS_PROXY = "http://user:password@proxyserver:8080"
+$env:NO_PROXY = "localhost,127.0.0.1,.local"
+
+curl -v https://www.google.com
+curl -v https://my.backend.com/sap/opu/odata/
+curl -v http://localhost:3000
+curl -v --noproxy "*" https://www.google.com
+```
+
+**Windows Command Prompt:**
+
+```cmd
+set HTTP_PROXY=http://user:password@proxyserver:8080
+set HTTPS_PROXY=http://user:password@proxyserver:8080
+set NO_PROXY=localhost,127.0.0.1,.local
+
+curl -v https://www.google.com
+curl -v https://my.backend.com/sap/opu/odata/
+curl -v http://localhost:3000
+curl -v --noproxy "*" https://www.google.com
+```
+
+## Troubleshooting
+
+If curl fails:
+
+1. Verify proxy address, port, and credentials (escape special characters in passwords)
+2. Test proxy reachability: `telnet proxyserver port` or `nc -zv proxyserver port`
+3. Check firewall rules for outbound connections to proxy
+4. Verify NO_PROXY excludes internal hosts correctly
+5. Review proxy server logs if accessible
+
 ### License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
