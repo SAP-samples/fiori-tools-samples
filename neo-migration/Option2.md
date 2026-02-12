@@ -1,45 +1,53 @@
 # Option 2. Configure MTA with multiple migrated Neo UI applications
 
 From `View -> Command Palette`, run `Open CF Application Router Generator`
-- Change router path i.e. `/home/user/projects`
-- select `Managed Approuter`
-- Enter a unique MTA ID that will not conflict with any other existing configurations i.e. `managedapp`
+
+* Change router path i.e. `/home/user/projects`
+* select `Managed Approuter`
+* Enter a unique MTA ID that will not conflict with any other existing configurations i.e. `managedapp`
 
 Change into new `managedapp` folder which will be root of your project structure;
-```
+
+```bash
 cd /home/user/projects/managedapp/
 ```
 
 Unzip your exported Neo mtar or zip file. The contents may require additional files to be unzipped. If this is not the case, please continue to the next step;
-```BASH
+
+```bash
 unzip /home/user/projects/neo/solution.mtar -d /home/user/projects/neo/
 ```
 
 Unzip the Neo application into a new sub folder;
-```
+
+```bash
 unzip /home/user/projects/neo/manageproductsneo.zip -d /home/user/projects/managedapp/fioriapp
 ```
 
 Run `Fiori: Migrate Project for use in Fiori tools`
-- Select your project and ensure SAPUI5 preview version is latest or appropriate to your project
-- Select `Start migration`
-- A migration results screen will show, giving you options if there is any issues that need to be addressed
-- An application information page will also load, showing details of your app and commands you can run against it
+
+* Select your project and ensure SAPUI5 preview version is latest or appropriate to your project
+* Select `Start migration`
+* A migration results screen will show, giving you options if there is any issues that need to be addressed
+* An application information page will also load, showing details of your app and commands you can run against it
 
 Run `Neo Migration: HTML 5 Application descriptor transformation`
-- Select your `neo-app.json`
-- New `xs-app.json` created in UI project with the routes populated from your old `neo-app.json`
-- If this is overwritten or deleted, please re-run this step again, it needs to be generated using the `neo-app.json` as the source
+
+* Select your `neo-app.json`
+* New `xs-app.json` created in UI project with the routes populated from your old `neo-app.json`
+* If this is overwritten or deleted, please re-run this step again, it needs to be generated using the `neo-app.json` as the source
 
 Change into the new Fiori UI application
-```
+
+```bash
 cd /home/user/projects/managedapp/fioriapp
 ```
 
 Run `npm run deploy-config cf`
-- Select destination `none`, not reqired as the `xs-app.json` is already created from a previous step
-- Overwrite xs-app.json - No, this was created in the previous step, if you select yes, then just re-run the previous step again
-- Review `ui5.yaml` and `ui5-deploy.yaml` to ensure parameters look good
+
+* Select destination `none`, not required as the `xs-app.json` is already created from a previous step
+* Overwrite xs-app.json - No, this was created in the previous step, if you select yes, then just re-run the previous step again
+* Review `ui5.yaml` and `ui5-deploy.yaml` to ensure parameters look good
 
 Run `npm run start` to ensure you can preview the UI locally on BAS
 
@@ -49,7 +57,7 @@ __SECURITY ALERT__
 
 The generated `xs-security.json` does not contain any scopes or roles, append the following scopes as these will provide security collections that can be managed at subaccount level;
 
-```JSON
+```json
   "scopes":[
     {
       "name": "$XSAPPNAME.migratedroleapp",
@@ -77,7 +85,8 @@ The generated `xs-security.json` does not contain any scopes or roles, append th
   ```
 
 In order to apply these scopes to your application, update the `xs-app.json` routes that you require specific roles;
-```JSON
+
+```json
     {
       "source": "^/northwind/(.*)$",
       "target": "$1",
