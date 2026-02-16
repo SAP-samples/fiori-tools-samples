@@ -117,7 +117,7 @@ Please note, this destination is creating destinations at `subaccount` level, al
 
 Security configuration is configured using a global role collection that can be consumed by apps using the mta ID and the scoped name i.e. `migrationcf.globalrole`. In this instance, its only for demo purposes and the respective applications will manage their own security concerns, creating their own roles/templates in the `xs-security.json` attached to the project.
 
-For more information around Security Administration refer to <https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html>
+For more information around Security Administration, refer to the [SAP BTP Security Administration Guide](<https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html>).
 
 Ensure you are logged into CF target system where the new settings need to be applied:
 
@@ -161,7 +161,7 @@ For information on supported features, refer to [Supported Migration Features](h
 ### Issue 1
 SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application specific code, for example `neo-app.json`, `pom.xml`, `.che`.  
 
-If you are also missing a `manifest.json` inside of your `webapp` folder, there is a help guide from the UI5 team to support this <https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html>.
+If you are also missing a `manifest.json` inside of your `webapp` folder, refer to the [UI5 documentation on creating a descriptor file](<https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html>).
 
 ### Issue 2
 
@@ -278,9 +278,7 @@ The root cause is an issue with the scope applied in your `xs-app.json`. If the 
 
 The HTML5 application is deployed to Cloud Foundry, but the application is not loading; after reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned;
 
-Refer to this GA link for more information on how to resolve this issue;
-
-<https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513>
+Refer to the [SAP Support Portal](<https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513>) for more information on how to resolve this issue.
 
 The issue is related to an AJAX API call that is defined using an absolute path instead of a relative path. Each application deployed to Cloud Foundry is given a unique GUID, which is how multiple apps can be deployed to the same subaccount. The absolute path is not able to resolve the GUID and therefore the application fails to load.
 
@@ -394,4 +392,3 @@ For more information about how to extract the trace, see [How to capture an HTTP
 ### License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
-
