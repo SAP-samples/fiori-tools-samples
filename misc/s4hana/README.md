@@ -119,9 +119,7 @@ The same steps can be used to append the business role `SAP_BR_EXTENSIBILITY_SPE
 
 ### Option 1. Authorisation Failures
 
-You can also review the `Display Authorization Trace` as an S/4HANA Administrator on your instance;
-
-<https://help.sap.com/docs/SAP_S4HANA_CLOUD/55a7cb346519450cb9e6d21c1ecd6ec1/ebb91d3758c441b18bf9ebd0798d424e.html>
+You can also review the [Display Authorization Trace](<https://help.sap.com/docs/SAP_S4HANA_CLOUD/55a7cb346519450cb9e6d21c1ecd6ec1/ebb91d3758c441b18bf9ebd0798d424e.html>) as an S/4HANA Administrator on your instance.
 
 * Typical criteria is Status: `Failed`
 * Typical criteria is `Users`, filtered by the required user details, you will need to select the user from the list
@@ -134,9 +132,7 @@ Filter by request path = `/sap/opu/odata/IWFND/CATALOGSERVICE` to see calls to V
 
 Filter by request path = `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/` to see calls for V4 catalog service, request method is `GET`
 
-Refer to this link for more information;
-
-[https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html)
+Refer to the [Display Connectivity Trace documentation](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html) for more information.
 
 Search for the application `Display Connectivity Trace`;
 
@@ -247,14 +243,14 @@ Integrating SAP Business Application Studio - [Documentation](https://help.sap.c
 
 Develop a Custom UI for an SAP S/4HANA Cloud System - [Tutorial](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html)
 
-Create a SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment - [https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
+Create a SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment - [Tutorial](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 
-Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry environment - [https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
+Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry environment - [Tutorial](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
 
 * Required when adding another trust configuration that is using a different identity provider. For example, where you are adding an IAS provider to manage your user profiles.
 * The trust protocol defined in your new IdP must be `SAML` to ensure the `SAMLAssertion` configuration in your SAP BTP destination works when connecting to your S4HC instance using `SAMLAssertion`.
 
-User Management in a Nutshell (IAS or IDP) - [https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
+User Management in a Nutshell (IAS or IDP) - [Blog Post](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
 
 ## Develop an SAP Fiori Application UI using Developer Extensibility Tenant (DEV/080)
 
