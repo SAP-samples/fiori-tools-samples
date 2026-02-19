@@ -6,7 +6,7 @@ This guide provides practical approaches to managing npm dependency versions, ad
 
 When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/cds-dk`, and `@ui5/cli`, you may encounter npm audit warnings related to transitive dependencies. This guide explains why these issues occur, how to track package updates, and when and how to apply temporary fixes.
 
-**Important**: You should work with your organization's compliance and security teams to establish acceptable CVSS (Common Vulnerability Scoring System) thresholds and ensure that any dependency management approach aligns with your security governance policies. Different organizations may have varying requirements for vulnerability severity levels, audit frequency, and remediation timelines. The strategies in this guide should be adapted to meet your specific organizational security standards and compliance requirements.
+**Important**: You should work with your organization's compliance and security teams to establish acceptable CVSS (Common Vulnerability Scoring System) thresholds and ensure that any dependency management approach aligns with your security governance policies. Different organizations may have varying requirements for vulnerability severity levels, audit frequency, and remediation timelines. The strategies in this guide should be adapted to meet your specific organizational security standards and compliance requirements. It is also important to recognize that security vulnerabilities are an inherent and ongoing aspect of consuming open-source software. The npm ecosystem evolves continuously, and new vulnerabilities may be disclosed at any time even after remediation of previous findings. As such, dependency risk management should be treated as a continuous process rather than a one-time activity.
 
 > **Note**: The strategies outlined in this guide are general npm approaches freely available on [npmjs.com](https://docs.npmjs.com/) and related documentation. These are not SAP-specific or SAP-supported workflows, but rather industry-standard approaches to npm dependency management that can be applied to SAP Fiori projects.
 
@@ -288,7 +288,7 @@ Install it as a standalone CLI tool:
 Download and install from the official source:
 [MBT Download Page](https://sap.github.io/cloud-mta-build-tool/download/)
 
-#### Verification
+#### Verify MBT Installation
 
 ```bash
 # Verify installation
@@ -514,7 +514,7 @@ COPY --from=builder /app/dist ./dist
 CMD ["npm", "start"]
 ```
 
-#### Verification
+#### Verify Production Installation
 
 After installation, verify the approach:
 
@@ -533,11 +533,11 @@ npm ci --dry-run
 
 ### Scenario 1: qs Vulnerability in @sap/ux-ui5-tooling
 
-#### Problem
+#### Identifying the qs Vulnerability
 
 npm audit shows a vulnerability in the `qs` package, introduced via `@sap-ux/preview-middleware`.
 
-#### Solution
+#### Solution Approach
 
 Apply an override until the root package is updated:
 
@@ -570,7 +570,7 @@ Remove override when fixed version is available.
 
 ### Scenario 2: tar Vulnerability in mbt
 
-#### Problem
+#### Identifying the tar Vulnerability
 
 npm audit shows a vulnerability in `tar`, introduced via `mbt`.
 
@@ -592,7 +592,7 @@ Install mbt as a standalone tool (see above) and remove from package.json.
 
 ### Scenario 3: axios Denial of Service
 
-#### Problem
+#### Identifying the axios Vulnerability
 
 npm audit shows an axios vulnerability in a transitive dependency.
 
@@ -615,11 +615,11 @@ npm audit shows an axios vulnerability in a transitive dependency.
 
 ### Scenario 4: Multiple Outdated Packages
 
-#### Problem
+#### Identifying Outdated Packages
 
 Multiple packages show available updates.
 
-#### Solution Approach
+#### Resolution Strategy
 
 Update incrementally and test:
 
