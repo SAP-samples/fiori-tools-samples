@@ -17,6 +17,14 @@ When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/c
 * Version control system (Git recommended) for tracking changes
 * Node.js and npm installed
 
+**Important Limitations**: Some npm packages enforce strict version requirements for their dependencies and may not work correctly with overrides. Package maintainers may use exact version pinning, peer dependency constraints, or other mechanisms to ensure compatibility. Whether an override will work successfully is a **case-by-case scenario** that depends on:
+
+* The specific package and its dependency requirements
+* Version compatibility between the overridden package and its parent
+* Runtime behavior and API changes between versions
+
+Always test thoroughly after applying overrides, as they may cause unexpected behavior or compatibility issues. If an override causes problems, the safest approach is to wait for the upstream package to release an update.
+
 ## Understanding Dependencies vs. DevDependencies
 
 ### What Are DevDependencies?
