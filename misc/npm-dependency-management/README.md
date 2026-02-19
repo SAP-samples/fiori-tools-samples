@@ -6,6 +6,8 @@ This guide provides practical approaches to managing npm dependency versions, ad
 
 When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/cds-dk`, and `@ui5/cli`, you may encounter npm audit warnings related to transitive dependencies. This guide explains why these issues occur, how to track package updates, and when and how to apply temporary fixes.
 
+**Important**: You should work with your organization's compliance and security teams to establish acceptable CVSS (Common Vulnerability Scoring System) thresholds and ensure that any dependency management approach aligns with your security governance policies. Different organizations may have varying requirements for vulnerability severity levels, audit frequency, and remediation timelines. The strategies in this guide should be adapted to meet your specific organizational security standards and compliance requirements.
+
 > **Note**: The strategies outlined in this guide are general npm approaches freely available on [npmjs.com](https://docs.npmjs.com/) and related documentation. These are not SAP-specific or SAP-supported workflows, but rather industry-standard approaches to npm dependency management that can be applied to SAP Fiori projects.
 
 ## Prerequisites
