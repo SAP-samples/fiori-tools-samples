@@ -6,6 +6,10 @@ This guide provides practical approaches to managing npm dependency versions, ad
 
 When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/cds-dk`, and `@ui5/cli`, you may encounter npm audit warnings related to transitive dependencies. This guide explains why these issues occur, how to track package updates, and when and how to apply temporary fixes.
 
+**Important**: You should work with your organization's compliance and security teams to establish acceptable CVSS (Common Vulnerability Scoring System) thresholds and ensure that any dependency management approach aligns with your security governance policies. Different organizations may have varying requirements for vulnerability severity levels, audit frequency, and remediation timelines. The strategies in this guide should be adapted to meet your specific organizational security standards and compliance requirements. It is also important to recognize that security vulnerabilities are an inherent and ongoing aspect of consuming open-source software. The npm ecosystem evolves continuously, and new vulnerabilities may be disclosed at any time even after remediation of previous findings. As such, dependency risk management should be treated as a continuous process rather than a one-time activity.
+
+> **Note**: The strategies outlined in this guide are general npm approaches freely available on [npmjs.com](https://docs.npmjs.com/) and related documentation. These are not SAP-specific or SAP-supported workflows, but rather industry-standard approaches to npm dependency management that can be applied to SAP Fiori projects.
+
 ## Prerequisites
 
 * Basic understanding of npm and package.json structure
@@ -39,6 +43,8 @@ However, it is still good practice to keep devDependencies updated to benefit fr
 * Bug fixes
 * Compatibility with newer Node.js versions
 * Security fixes (especially important in CI/CD environments)
+
+For production deployment strategies that exclude devDependencies, see [Production and CI/CD Installation Approaches](#7-production-and-cicd-installation-approaches).
 
 ## Package.json Structure
 
@@ -282,7 +288,7 @@ Install it as a standalone CLI tool:
 Download and install from the official source:
 [MBT Download Page](https://sap.github.io/cloud-mta-build-tool/download/)
 
-#### Verification
+#### Verify MBT Installation
 
 ```bash
 # Verify installation
@@ -312,7 +318,7 @@ Consider removing these from npm dependencies if available as standalone tools:
 * **SAP Cloud SDK CLI**
 * **Deployment tools** specific to your environment
 
-## Best Practices and Recommendations
+## Recommended Approaches
 
 ### 1. Regular Maintenance
 
@@ -392,27 +398,146 @@ npm uses semantic versioning:
 * `1.2.3` - Exact version only
 * `latest` - Always use the latest version (not recommended for production)
 
-### 7. Use npm ci in CI/CD
+### 7. Production and CI/CD Installation Approaches
 
-In CI/CD pipelines, use `npm ci` instead of `npm install`:
+#### Enterprise-Grade Approach
+
+In production pipelines and deployments, use `npm ci` with the `--omit=dev` flag:
 
 ```bash
-# npm ci provides:
-# - Faster, clean installs
-# - Uses package-lock.json exactly
-# - Fails if package.json and package-lock.json are out of sync
+npm ci --omit=dev
+```
+
+**Why this is the recommended approach:**
+
+* **Uses lockfile exactly**: Installs the exact dependency tree from package-lock.json
+* **Deterministic**: Produces identical installs across all environments
+* **Faster**: Optimized for clean installs, no diff calculations
+* **Security-focused**: Excludes devDependencies from production builds
+* **Fail-fast**: Errors if package.json and package-lock.json are out of sync
+
+#### Understanding Lockfile Behavior with DevDependencies
+
+**Important Clarification**: You cannot partially generate a lockfile that excludes devDependencies while keeping them in package.json. The package-lock.json file always reflects the **full dependency graph** of your project, including both dependencies and devDependencies.
+
+The `--omit=dev` flag affects **installation only**, not lockfile generation:
+
+* **Lockfile generation** (`npm install`): Always includes all dependencies
+* **Production installation** (`npm ci --omit=dev`): Skips installing devDependencies
+
+This design ensures:
+
+* Consistent lockfiles across development and production
+* Full dependency tracking in version control
+* Selective installation based on environment needs
+
+#### Decision Framework: Choosing the Right Approach
+
+Choose your npm strategy based on your security and deployment goals:
+
+**For Runtime Security** (Recommended for Production):
+
+```bash
+npm ci --omit=dev
+```
+
+* Excludes devDependencies from deployed artifacts
+* Reduces attack surface in production
+* Smaller deployment size
+* Use when: Deploying to production, building Docker images, creating release artifacts
+
+**For Clean Security Posture** (Development & CI):
+
+```bash
+# Remove vulnerable devDependencies from package.json
+# OR use overrides to force secure versions
 npm ci
+```
+
+* Addresses all npm audit findings
+* Maintains clean audit reports
+* Use when: Security compliance requires clean audits, CI quality gates check audit results
+
+**For Supply Chain Hardening** (All Environments):
+
+```bash
+# Pin exact versions in package.json (no ^ or ~)
+npm ci
+```
+
+* Eliminates version drift
+* Prevents supply chain attacks via version bumps
+* Maximum reproducibility
+* Use when: Regulated environments, high-security requirements, compliance mandates
+
+#### CI/CD Pipeline Examples
+
+**Development Build:**
+
+```bash
+# Install all dependencies including devDependencies
+npm ci
+
+# Run linting, tests, build
+npm run lint
+npm test
+npm run build
+```
+
+**Production Build:**
+
+```bash
+# Install only production dependencies
+npm ci --omit=dev
+
+# Build production artifacts
+npm run build:prod
+```
+
+**Docker Multi-Stage Build:**
+
+```dockerfile
+# Build stage - includes devDependencies
+FROM node:18 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Production stage - excludes devDependencies
+FROM node:18-slim
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/dist ./dist
+CMD ["npm", "start"]
+```
+
+#### Verify Production Installation
+
+After installation, verify the approach:
+
+```bash
+# Check installed packages (production)
+npm list --omit=dev --depth=0
+
+# Check for vulnerabilities in production dependencies only
+npm audit --omit=dev
+
+# Verify lockfile integrity
+npm ci --dry-run
 ```
 
 ## Common Scenarios
 
 ### Scenario 1: qs Vulnerability in @sap/ux-ui5-tooling
 
-#### Problem
+#### Identifying the qs Vulnerability
 
 npm audit shows a vulnerability in the `qs` package, introduced via `@sap-ux/preview-middleware`.
 
-#### Solution
+#### Solution Approach
 
 Apply an override until the root package is updated:
 
@@ -445,7 +570,7 @@ Remove override when fixed version is available.
 
 ### Scenario 2: tar Vulnerability in mbt
 
-#### Problem
+#### Identifying the tar Vulnerability
 
 npm audit shows a vulnerability in `tar`, introduced via `mbt`.
 
@@ -467,7 +592,7 @@ Install mbt as a standalone tool (see above) and remove from package.json.
 
 ### Scenario 3: axios Denial of Service
 
-#### Problem
+#### Identifying the axios Vulnerability
 
 npm audit shows an axios vulnerability in a transitive dependency.
 
@@ -490,11 +615,11 @@ npm audit shows an axios vulnerability in a transitive dependency.
 
 ### Scenario 4: Multiple Outdated Packages
 
-#### Problem
+#### Identifying Outdated Packages
 
 Multiple packages show available updates.
 
-#### Solution Approach
+#### Resolution Strategy
 
 Update incrementally and test:
 
@@ -589,6 +714,7 @@ Managing npm dependencies in SAP Fiori projects requires a balanced approach:
 4. **Test thoroughly**: Verify changes don't break functionality
 5. **Document decisions**: Help your team understand why changes were made
 6. **Plan for cleanup**: Remove temporary fixes once upstream packages are updated
+7. **Choose appropriate installation strategy**: Use `npm ci --omit=dev` for production deployments
 
 Remember that devDependencies with vulnerabilities pose minimal runtime risk but should still be addressed through regular maintenance cycles. Always prioritize testing and stability over immediately applying every update.
 
