@@ -6,7 +6,7 @@ This guide provides practical approaches to managing npm dependency versions, ad
 
 When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/cds-dk`, and `@ui5/cli`, you may encounter npm audit warnings related to transitive dependencies. This guide explains why these issues occur, how to track package updates, and when and how to apply temporary fixes.
 
-> **Note**: The strategies outlined in this guide are general npm best practices freely available on [npmjs.com](https://docs.npmjs.com/) and related documentation. These are not SAP-specific or SAP-supported workflows, but rather industry-standard approaches to npm dependency management that can be applied to SAP Fiori projects.
+> **Note**: The strategies outlined in this guide are general npm approaches freely available on [npmjs.com](https://docs.npmjs.com/) and related documentation. These are not SAP-specific or SAP-supported workflows, but rather industry-standard approaches to npm dependency management that can be applied to SAP Fiori projects.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ However, it is still good practice to keep devDependencies updated to benefit fr
 * Compatibility with newer Node.js versions
 * Security fixes (especially important in CI/CD environments)
 
-For production deployment strategies that exclude devDependencies, see [Production and CI/CD Installation Best Practices](#7-production-and-cicd-installation-best-practices).
+For production deployment strategies that exclude devDependencies, see [Production and CI/CD Installation Approaches](#7-production-and-cicd-installation-approaches).
 
 ## Package.json Structure
 
@@ -316,7 +316,7 @@ Consider removing these from npm dependencies if available as standalone tools:
 * **SAP Cloud SDK CLI**
 * **Deployment tools** specific to your environment
 
-## Best Practices and Recommendations
+## Recommended Approaches
 
 ### 1. Regular Maintenance
 
@@ -396,7 +396,7 @@ npm uses semantic versioning:
 * `1.2.3` - Exact version only
 * `latest` - Always use the latest version (not recommended for production)
 
-### 7. Production and CI/CD Installation Best Practices
+### 7. Production and CI/CD Installation Approaches
 
 #### Enterprise-Grade Approach
 
