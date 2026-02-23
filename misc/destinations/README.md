@@ -132,7 +132,7 @@ Use `WebIDEAdditionalData=full_url` when:
 
 1. **Direct Service Access**: You want to point directly to a specific OData service endpoint without any path manipulation by SAP tooling.
 2. **Fixed Service Paths**: The service URL includes non-standard paths or segments that must be preserved exactly as configured.
-3. **Single Service Destinations**: You're creating a destination for one specific service rather than a system that exposes multiple services.
+3. **Single Service Destinations**: You're creating a destination for one specific service rather than a system that exposes multiple services. For example, when a service is not listed in the OData V2 or V4 catalog, you can use `full_url` to point directly to the service endpoint.
 4. **Third-Party Services**: You're consuming external OData services that don't follow SAP's standard path conventions.
 
 ### Configuration Example
