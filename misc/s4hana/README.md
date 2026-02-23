@@ -47,11 +47,11 @@ Different authorizations are required for various operations in SAP S/4HANA Clou
 
 You will be required to add the specific `Business Role` to allow a specific user to `deploy` and `undeploy` SAPUI5 applications. All other users can be assigned the `OData Services` role.
 
-| Business Catalog            | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
-|-----------------------------|-------------------------------------------------|---------------------------------------|
-| To access OData Services    | SAP_CORE_BC_EXT_TST                             | SAP_CORE_BC_EXT_TST                   |
-| To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4_BC_DEV_UID_PC                 |
-| Business Role               | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |
+| Business Catalog                       | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
+|----------------------------------------|-------------------------------------------------|---------------------------------------|
+| To access OData Services (Preview Mode)| SAP_CORE_BC_EXT_TST                             | SAP_CORE_BC_EXT_TST                   |
+| To deploy application                  | SAP_CORE_BC_EXT_UI                              | SAP_A4_BC_DEV_UID_PC                  |
+| Business Role                          | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |
 
 Business roles must be created based on business role templates. The recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
 
