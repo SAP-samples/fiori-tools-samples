@@ -202,16 +202,6 @@ WebIDEAdditionalData=full_url
 WebIDEUsage=odata_gen
 ```
 
-#### Use Case 3: Cloud Service with Query Parameters
-
-Some cloud services require specific query parameters or format options in the base URL:
-
-```properties
-URL=https\://cloudservice.example.com/odata/v2/DataService.svc/?sap-client=100
-WebIDEAdditionalData=full_url
-WebIDEUsage=odata_gen
-```
-
 ### Important Notes
 
 - When using `full_url`, you cannot browse service catalogs because the URL points to a specific service endpoint, not a system's catalog API.
