@@ -202,16 +202,6 @@ WebIDEAdditionalData=full_url
 WebIDEUsage=odata_gen
 ```
 
-#### Use Case 3: Cloud Service with Query Parameters
-
-Some cloud services require specific query parameters or format options in the base URL:
-
-```properties
-URL=https\://cloudservice.example.com/odata/v2/DataService.svc/?sap-client=100
-WebIDEAdditionalData=full_url
-WebIDEUsage=odata_gen
-```
-
 ### Important Notes
 
 - When using `full_url`, you cannot browse service catalogs because the URL points to a specific service endpoint, not a system's catalog API.
@@ -236,6 +226,7 @@ curl -L "https://northwind.dest/v2/northwind/northwind.svc/" -vs > curl-datasrv-
 ```
 
 To call a known OData V2 service endpoint with a `$metadata` query parameter:
+
 ```bash
 curl -L "https://northwind.dest/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
 ```
@@ -289,6 +280,8 @@ Even if your destination is configured with `odata_gen`, it's still a valid tool
 1. A `Preview results.md` file opens. Review the `Destination Details` section for missing parameters.
 
 For more information, see [Environment Check](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/75390cf5d81e43aea5db231ef4225268.html).
+
+**Note**: The Environment Check tool ignores destination properties such as `WebIDEUsage=odata_gen` and always attempts to call both the OData V2 and V4 catalog endpoints, regardless of the destination configuration. This is expected behavior and is used to validate that the destination is properly configured to access catalog services. If your destination uses `odata_gen` or points to a non-ABAP system, catalog endpoint failures in the report are normal and do not indicate a problem with your destination.
 
 The file contains all the information required to troubleshoot the issue. You can read the file to gain a better understanding of how the destination is configured.
 
