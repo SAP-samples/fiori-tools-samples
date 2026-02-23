@@ -78,7 +78,7 @@ For more information about these properties, see [The Destination Is Mis-Configu
 
 ## Summary of Properties
 
-- `WebIDEUsage` is set to `odata_gen`. This means the destination is used for OData generation to consume a specific service endpoint. There are many different values for this property such as `odata_abap` (for browsing catalogs) or `odata_cloud` which are used for different purposes.
+- `WebIDEUsage` is set to `odata_gen`. This means the destination is used to consume OData services directly without calling catalog endpoints. The destination can be configured with either a complete service path (using `WebIDEAdditionalData=full_url`) or a partial service path. There are other values for this property such as `odata_abap` (for browsing service catalogs) or `odata_cloud` which are used for different purposes.
 - When `WebIDEEnabled` is set to `true`, the destination is enabled for use in SAP Business Application Studio.
 - `HTML5.Timeout` is set to 60000 ms. This is the length of time the destination waits for a response from the service before timing out.
 - `HTML5.DynamicDestination` is set to `true`. This means that the destination is dynamically created at runtime, making it consumable by HTML5 and SAP Fiori applications at runtime, even if the destination does not exist in the subaccount.
@@ -91,10 +91,10 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 
 `odata_gen` and `odata_abap` are the most common values used for OData services and are mutually exclusive. Only specify the one that meets your requirements. For example, if you are using `odata_gen`, then the `odata_abap` must be removed and the other way around. The following table shows the common values for the `WebIDEUsage` property:
 
-| Value        | Description                                                                                                                                                                                |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `odata_gen`  | To consume a specific OData service of your choice. Used when the service endpoint is known to the user and you don't want the respective V2 and V4 catalog API's called.                 |
-| `odata_abap` | Consume the OData V2 and OData V4 service ABAP catalogs, which allows you to search for and select a specific OData service.                                                              |
+| Value        | Description                                                                                                                                                                                                                                                                                                     |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `odata_gen`  | Used when you want to consume OData services directly without calling catalog endpoints. The destination URL can point to either a complete service path (with `WebIDEAdditionalData=full_url`) or a partial service path where SAP tooling will append the specific service endpoint you provide during consumption. |
+| `odata_abap` | Used to consume the OData V2 and OData V4 service ABAP catalogs, which allows you to browse, search for, and select a specific OData service from the available catalog.                                                                                                                                        |
 
 ### Understanding `WebIDEAdditionalData`
 
