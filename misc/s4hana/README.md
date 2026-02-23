@@ -50,7 +50,7 @@ You will be required to add the specific `Business Role` to allow a specific use
 | Business Catalog            | Key User Extensibility/Customizing (client 100) | Developer Extensibility (client 080)  |
 |-----------------------------|-------------------------------------------------|---------------------------------------|
 | To access OData Services    | SAP_CORE_BC_EXT_TST                             | SAP_CORE_BC_EXT_TST                   |
-| To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4C_BC_DEV_UID_PC                 |
+| To deploy application       | SAP_CORE_BC_EXT_UI                              | SAP_A4_BC_DEV_UID_PC                 |
 | Business Role               | SAP_BR_EXTENSIBILITY_SPEC                       | SAP_BR_DEVELOPER                      |
 
 Business roles must be created based on business role templates. The recommended business role templates are `SAP_BR_DEVELOPER` and `SAP_BR_EXTENSIBILITY_SPEC`.
@@ -109,7 +109,7 @@ Select your specific user and select `Assigned Business Roles`;
 
 If `SAP_BR_DEVELOPER` is missing, select `Add` and search for `SAP_BR_DEVELOPER` to append the Business Role to your specific user.
 
-Next, select the `SAP_BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4C_BC_DEV_UID_PC` are added;
+Next, select the `SAP_BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4_BC_DEV_UID_PC` are added;
 
 ![MaintainUsersPart1.png](MaintainUsersPart3.png)
 
@@ -172,7 +172,7 @@ error abap-deploy-task YY1_Some_App Request failed with status code 403
 For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4HANA Administrator to see why the request is failing. In most cases its related two configuration issues;
 
 1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with `SAMLAssertion`. Deloyment is only supported using SAMLAssertion, a destination created with any other autentication type will fail.
-2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4C_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
+2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
 3. SAP BTP trust certificate renewal can cause connectivity issues, the active SAP BTP trust certificate is renewed and published with a new `Validity` date range. When this occurs, the renewed certificate must be uploaded to the target S/4HANA Cloud (S4HC) system to restore trust and allow successful deployment or connectivity.
 4. Ensure that the email address in your Identity Provider (IdP) matches the SAP OCID (user ID) in your S/4HANA Cloud system exactly. The email addresses are case-sensitive and must match precisely, including uppercase and lowercase characters.
 
