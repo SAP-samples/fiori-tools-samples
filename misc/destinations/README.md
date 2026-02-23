@@ -96,25 +96,127 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 | `odata_abap` | Consume the OData V2 and OData V4 service ABAP catalogs, which allows you to search for and select a specific OData service. |
 
 ### Understanding `WebIDEAdditionalData`
-The `WebIDEAdditionalData` property (when set to `full_url`) is an optional configuration flag that instructs SAP tooling how to interpret the destination URL.
 
-Specifically, it defines whether the destination URL represents the complete, final service URL, so no additional OData service paths are appended by SAP tooling. Alternatively, the destination URL is only a base host, and SAP tooling automatically appends the required OData service paths (such as `/sap/opu/odata/...` or `/odata/v2/...`), depending on the back end.
+The `WebIDEAdditionalData` property is an optional configuration flag that instructs SAP tooling how to interpret the destination URL.
 
-Example without `WebIDEAdditionalData`
+When set to `full_url`, it tells SAP tooling that the destination URL represents the complete, final service URL, and no additional OData service paths should be appended. When this property is not set, SAP tooling treats the destination URL as a base host and automatically appends the required OData service paths (such as `/sap/opu/odata/...` or `/odata/v2/...`).
+
+**Example without `WebIDEAdditionalData`:**
 
 The destination is treated as a base host, so SAP tooling appends service paths automatically:
 
 ```
-<https://api.successfactors.eu/odata/v2>
+https://api.successfactors.eu/odata/v2
 ```
 
-Example with `WebIDEAdditionalData=full_url`
+**Example with `WebIDEAdditionalData=full_url`:**
 
 The destination is treated as a full URL, so SAP tooling does not append additional paths:
 
 ```
-<https://api.successfactors.eu/odata/v2/odata/v2/EmpJob>
+https://api.successfactors.eu/odata/v2/EmpJob
 ```
+
+For detailed information about configuring and using `full_url`, see [Using `WebIDEAdditionalData=full_url` for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls).
+
+## Using `WebIDEAdditionalData=full_url` for Complete Service URLs
+
+### Overview
+
+The `WebIDEAdditionalData=full_url` property is used when your destination URL contains the complete path to a specific OData service, including all path segments and service endpoints. When this property is set, SAP Fiori tools and Service Center will not append any additional paths to the URL.
+
+### When to Use `full_url`
+
+Use `WebIDEAdditionalData=full_url` when:
+
+1. **Direct Service Access**: You want to point directly to a specific OData service endpoint without any path manipulation by SAP tooling.
+2. **Fixed Service Paths**: The service URL includes non-standard paths or segments that must be preserved exactly as configured.
+3. **Single Service Destinations**: You're creating a destination for one specific service rather than a system that exposes multiple services.
+4. **Third-Party Services**: You're consuming external OData services that don't follow SAP's standard path conventions.
+
+### Configuration Example
+
+Here's a sample destination configuration using `full_url`:
+
+```properties
+#
+Type=HTTP
+HTML5.DynamicDestination=true
+Authentication=NoAuthentication
+HTML5.Timeout=60000
+WebIDEEnabled=true
+ProxyType=Internet
+WebIDEAdditionalData=full_url
+URL=https\://services.odata.org/v2/northwind/northwind.svc/
+Name=northwind_fullurl
+WebIDEUsage=odata_gen
+```
+
+### Key Differences
+
+| Property | Without `full_url` | With `full_url` |
+|----------|-------------------|-----------------|
+| **URL Configuration** | Base host only: `https://services.odata.org` | Complete service path: `https://services.odata.org/v2/northwind/northwind.svc/` |
+| **Path Handling** | SAP tooling appends service paths automatically | URL is used exactly as configured |
+| **Usage Scenario** | Multiple services or catalog browsing | Single, specific service access |
+| **Typical Use Case** | SAP ABAP systems with catalog endpoints | Third-party or fixed-endpoint services |
+
+### Testing with `curl`
+
+When using a destination with `full_url`, your `curl` commands become simpler because the service path is already included in the destination URL:
+
+To retrieve the OData service document:
+
+```bash
+curl -L "https://northwind_fullurl.dest/" -vs > curl-fullurl-output.txt 2>&1
+```
+
+To retrieve the OData service metadata:
+
+```bash
+curl -L "https://northwind_fullurl.dest/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
+```
+
+Notice that you don't need to specify the service path (`/v2/northwind/northwind.svc/`) in the `curl` command because it's already included in the destination URL.
+
+### Use Case Examples
+
+#### Use Case 1: Third-Party OData Service
+
+You're consuming a specific OData service from an external provider with a fixed endpoint:
+
+```properties
+URL=https\://api.partner.com/services/v1/ProductCatalog.svc/
+WebIDEAdditionalData=full_url
+WebIDEUsage=odata_gen
+```
+
+#### Use Case 2: Custom SAP Gateway Service
+
+You have a custom OData service deployed on SAP Gateway with a specific path that should not be modified:
+
+```properties
+URL=https\://gateway.example.com/sap/opu/odata/sap/ZCUSTOM_SRV/
+WebIDEAdditionalData=full_url
+WebIDEUsage=odata_gen
+```
+
+#### Use Case 3: Cloud Service with Query Parameters
+
+Some cloud services require specific query parameters or format options in the base URL:
+
+```properties
+URL=https\://cloudservice.example.com/odata/v2/DataService.svc/?sap-client=100
+WebIDEAdditionalData=full_url
+WebIDEUsage=odata_gen
+```
+
+### Important Notes
+
+- When using `full_url`, you cannot browse service catalogs because the URL points to a specific service endpoint, not a system's catalog API.
+- The URL must end with a trailing slash (`/`) if it points to the service root.
+- Always use `WebIDEUsage=odata_gen` with `full_url`, not `odata_abap`.
+- Environment Check will report that catalog endpoints are unavailable, which is expected behavior when using `full_url`.
 
 ## Sample `curl` Commands for `odata_gen`
 
@@ -227,35 +329,7 @@ This constructed URL is invalid because the destination already includes:
 
 As a result, all calls using this destination fail.
 
-If you want to support a SAP BTP destination that exposes a hardcoded path to a specific OData service or resource. To do so, append a property to `Additional Properties` called `WebIDEAdditionalData` with a value such as `full_url`.
-
-```Text
-#
-Type=HTTP
-HTML5.DynamicDestination=true
-Authentication=NoAuthentication
-HTML5.Timeout=60000
-WebIDEEnabled=true
-ProxyType=Internet
-WebIDEAdditionalData=full_url
-URL=https\://services.odata.org/v2/northwind/northwind.svc/
-Name=northwind_fullurl
-WebIDEUsage=odata_gen
-```
-
-With this configuration, the destination URL is treated as a full URL, and no additional paths or parameters are appended by SAP Fiori tools or the Service Center.
-
-To retrieve the OData service:
-
-```bash
-curl -L "https://northwind_fullurl.dest/" -vs > curl-fullurl-output.txt 2>&1
-```
-
-To retrieve the OData service `$metadata`:
-
-```bash
-curl -L "https://northwind_fullurl.dest/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
-```
+**Solution**: If you need to use a complete service URL with specific paths or parameters, configure the destination with `WebIDEAdditionalData=full_url`. This tells SAP tooling to use the URL exactly as configured without appending additional paths. For detailed configuration examples and use cases, see [Using `WebIDEAdditionalData=full_url` for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls).
 
 ### Issue Two
 
