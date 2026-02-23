@@ -174,6 +174,7 @@ For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4H
 1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with `SAMLAssertion`. Deloyment is only supported using SAMLAssertion, a destination created with any other autentication type will fail.
 2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4C_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
 3. SAP BTP trust certificate renewal can cause connectivity issues, the active SAP BTP trust certificate is renewed and published with a new `Validity` date range. When this occurs, the renewed certificate must be uploaded to the target S/4HANA Cloud (S4HC) system to restore trust and allow successful deployment or connectivity.
+4. Ensure that the email address in your Identity Provider (IdP) matches the SAP OCID (user ID) in your S/4HANA Cloud system exactly. The email addresses are case-sensitive and must match precisely, including uppercase and lowercase characters.
 
 ### Issue 3. Deployment fails with HTTP 400
 
