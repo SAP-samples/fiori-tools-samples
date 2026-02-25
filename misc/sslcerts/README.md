@@ -254,8 +254,18 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 npm start
 
 To isolate TLS/certificate issues from IDEs or third-party tooling (for example VS Code, SAP Fiori tools, or corporate proxies), run the following command directly in a terminal. This validates whether the Node.js runtime can establish an HTTPS connection using the currently configured CA trust chain.
 
+#### Option 1: Check Status Code Only
+
 ```bash
 node -e "require('https').get('https://your-host', res => { console.log(res.statusCode); }).on('error', err => console.error(err))"
+```
+
+Replace `https://your-host` with a specific and reachable endpoint.
+
+#### Option 2: Check Status Code and Response Body
+
+```bash
+node -e "require('https').get('https://your-host', res => { let data = ''; res.on('data', chunk => data += chunk); res.on('end', () => console.log('Status:', res.statusCode, '\nResponse:', data)); }).on('error', err => console.error(err))"
 ```
 
 Replace `https://your-host` with a specific and reachable endpoint.
