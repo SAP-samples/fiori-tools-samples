@@ -383,6 +383,73 @@ Now, any request to `https://localhost:8080/scim/v2` is correctly proxied to the
 
 Similarly, any request to `https://localhost:8080/sap` is correctly proxied to the SAP BTP destination as `https://s4hc_onpremise.dest/sap` with `sap` retained.
 
+### Issue 9
+
+When rendering a Fiori application after being deployed to Cloud Foundry, the application fails to load. Using Developer Tools network console, the API call is returning a HTTP 404 Not Found. Please note, in some instances it can return a HTTP 403 response as well.
+
+![Issue 9 - 404 Error](Issue9-404Error.png?raw=true "HTTP 404 Not Found error in deployed application")
+
+This issue is typically caused by custom code that makes AJAX calls using absolute URL paths (paths starting with `/`) instead of relative paths. Common scenarios include:
+
+* Custom controller extensions making direct AJAX calls to backend services
+* Custom fragments or dialogs that fetch data programmatically
+* JavaScript code using `jQuery.ajax()`, `fetch()`, or similar methods with hardcoded absolute paths
+* Extension points where developers have added custom API calls
+
+**Important**: This issue assumes the OData service call is not being referenced from the `dataSources` section in `manifest.json`. If your service is properly configured in `dataSources`, the framework handles URL resolution automatically. This problem only occurs when developers bypass the standard SAPUI5 data binding mechanisms and make direct HTTP calls in custom code.
+
+For detailed information, refer to the [SAP Support Portal](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
+
+#### Solution
+
+Based on the sample code above, change line 16 from `/sap/v2/product/MY_PRODUCT` to `sap/v2/product/MY_PRODUCT` where the leading slash is removed.
+
+This change assumes your `xs-app.json` is configured as follows:
+
+```json
+{
+  "source": "^/sap/(.*)$",
+  "target": "/sap/$1",
+  "destination": "MyDestination",
+  "csrfProtection": false,
+  "authenticationType": "none"
+}
+```
+
+#### Understanding the Issue
+
+The 404 requests are being sent using the absolute URL path, for example:
+
+```text
+https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
+```
+
+However, valid HTTP calls should be sent to `https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/` which is the actual base URL of your application.
+
+Removing the leading slash will now send the AJAX call to relative path of where the app is hosted, for example:
+
+```text
+https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
+```
+
+#### Additional Note
+
+If your `manifest.json` is configured with a datasource, for example:
+
+```json
+"dataSources": {
+  "mainService": {
+    "uri": "/sap/my_service/",
+    "type": "OData",
+    "settings": {
+      "odataVersion": "4.0"
+    }
+  }
+}
+```
+
+There are additional changes that will allow you to use the `manifest.json` to find the base URL for your application. Refer to [SAP Community](https://community.sap.com/t5/technology-q-a/calling-service-using-ajax-in-fiori-elements-extension-doesn-t-work-in/qaq-p/12398015) for a detailed summary of the required changes or to the [SAPUI5 Documentation](https://ui5.sap.com/#/api/sap.ui.core.Manifest).
+
 #### Reporting Issues
 
 If you still face issues, please open a support incident with SAP. When doing so, please provide a full network trace (`.har` file) with all the requests in the scenario after it was reproduced.
