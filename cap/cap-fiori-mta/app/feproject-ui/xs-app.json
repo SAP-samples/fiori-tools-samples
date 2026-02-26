@@ -7,7 +7,7 @@
       "target": "/odata/$1",
       "authenticationType": "xsuaa",
       "csrfProtection": false,
-      "destination": "cap-catalog-api"
+      "destination": "srv-api"
     },
     {
       "source": "^/resources/(.*)$",

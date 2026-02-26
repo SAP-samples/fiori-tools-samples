@@ -1,18 +1,17 @@
 # CAP managedAppCAPProject
 _out
 *.db
+*.sqlite
 connection.properties
 default-*.json
 .cdsrc-private.json
 gen/
 node_modules/
 target/
-.vscode
 
 # Web IDE, App Studio
 .che/
 .gen/
-.idea/
 
 # MTA
 *_mta_build_tmp
@@ -28,12 +27,8 @@ mta_archives/
 *.flattened-pom.xml
 
 # IDEs
-.vscode
-.idea
+# .vscode
+# .idea
 
-# auto generated wildcard
-managedAppCAPProject/db/.env
-
-dist/
-resources/
-target/
+# @cap-js/cds-typer
+@cds-models

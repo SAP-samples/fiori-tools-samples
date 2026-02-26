@@ -1,9 +1,12 @@
-sap.ui.define(["sap/fe/core/AppComponent"], function(AppComponent) {
-    'use strict';
+sap.ui.define(
+    ["sap/fe/core/AppComponent"],
+    function (Component) {
+        "use strict";
 
-    return AppComponent.extend("cap.tutorial.feprojectui.Component", {
-        metadata: {
-            manifest: "json"
-        }
-    });
-});
+        return Component.extend("feprojectui.Component", {
+            metadata: {
+                manifest: "json"
+            }
+        });
+    }
+);

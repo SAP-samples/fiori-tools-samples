@@ -1,81 +1,43 @@
 {
-    "name": "managedAppCAPProject",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^9",
-        "express": "^4",
-        "@sap/xsenv": "^6",
-        "@sap/xssec": "^4",
-        "hdb": "^2",
-        "passport": "^0.7.0",
-        "@sap/cds-dk": "^9"
-    },
-    "devDependencies": {
-        "rimraf": "^5.0.5"
-    },
-    "scripts": {
-        "start": "cds run",
-        "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys --delete-service-brokers",
-        "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar -f --retries 3"
-    },
-    "eslintConfig": {
-        "extends": "eslint:recommended",
-        "env": {
-            "es2020": true,
-            "node": true,
-            "jest": true,
-            "mocha": true
-        },
-        "globals": {
-            "SELECT": true,
-            "INSERT": true,
-            "UPDATE": true,
-            "DELETE": true,
-            "CREATE": true,
-            "DROP": true,
-            "CDL": true,
-            "CQL": true,
-            "CXL": true,
-            "cds": true
-        },
-        "rules": {
-            "no-console": "off",
-            "require-atomic-updates": "off"
-        }
-    },
-    "cds": {
-        "build": {
-            "tasks": [
-                {
-                    "for": "hana",
-                    "dest": "../db"
-                },
-                {
-                    "for": "node-cf"
-                }
-            ]
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
-        },
-        "requires": {
-            "db": {
-                "kind": "hana"
-            },
-            "uaa": {
-                "kind": "xsuaa"
-            },
-            "auth": { 
-                "kind": "jwt-auth" 
-            }
-        }
-    },
-    "sapux": [
-        "app/feproject-ui"
-      ]
+  "name": "managedAppCAPProject",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "express": "^4",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.13.0",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-feproject-ui": "cds watch --open feprojectui/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy managedAppCAPProject --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "connectivity": true,
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/feproject-ui"
+  ]
 }

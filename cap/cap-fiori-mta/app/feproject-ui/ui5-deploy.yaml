@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '2.4'
+specVersion: '4.0'
 metadata:
   name: cap.tutorial.feprojectui
 type: application
@@ -12,10 +12,10 @@ builder:
       - "/test/**"
       - "/localService/**"
   customTasks:
-  - name: ui5-task-zipper
-    afterTask: generateCachebusterInfo
-    configuration:
-      archiveName: captutorialfeprojectui
-      relativePaths: true
-      additionalFiles:
-      - xs-app.json
+    - name: ui5-task-zipper
+      afterTask: generateCachebusterInfo
+      configuration:
+        archiveName: captutorialfeprojectui
+        relativePaths: true
+        additionalFiles:
+          - xs-app.json

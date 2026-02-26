@@ -1,41 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{appTitle}}</title>
-
-        <script>
-            window['sap-ushell-config'] = {
-                defaultRenderer: 'fiori2',
-                applications: {
-                    'fe-lrop-v4': {
-                        title: 'App Title',
-                        description: 'A Fiori application.',
-                        additionalInformation: 'SAPUI5.Component=cap.tutorial.feprojectui',
-                        applicationType: 'URL',
-                        url: './',
-                        navigationMode: 'embedded'
-                    }
-                }
-            };
-        </script>
-
-        <script src="https://ui5.sap.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
-        <script
-            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-            data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
-            data-sap-ui-compatVersion="edge"
-            data-sap-ui-theme="sap_fiori_3"
-            data-sap-ui-frameOptions="allow"
-            data-sap-ui-bindingSyntax="complex"
-        ></script>
-        <script>
-            sap.ui.getCore().attachInit(function() {
-                sap.ushell.Container.createRenderer().placeAt('content');
-            });
-        </script>
-    </head>
-    <body class="sapUiBody" id="content"></body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>App Title</title>
+    <style>
+        html, body, body > div, #container, #container-uiarea {
+            height: 100%;
+        }
+    </style>
+    <script
+        id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/1.144.1/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resource-roots='{
+            "feprojectui": "./"
+        }'
+        data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-compat-version="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-frame-options="trusted"
+    ></script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="content">
+    <div
+        data-sap-ui-component
+        data-name="feprojectui"
+        data-id="container"
+        data-settings='{"id" : "feprojectui"}'
+        data-handle-validation="true"
+    ></div>
+</body>
 </html>
