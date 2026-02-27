@@ -226,7 +226,7 @@ function displayFixPreview(result) {
 }
 
 function displayValidationResults(result) {
-  const { file, score, feedback, recommendations } = result;
+  const { score, feedback, recommendations } = result;
 
   console.log(chalk.bold('\n📊 Quality Score:\n'));
   console.log(`  Overall: ${getScoreColor(score.overall)}${score.overall}/100${chalk.reset()}`);
