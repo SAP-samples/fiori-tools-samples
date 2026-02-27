@@ -117,7 +117,7 @@ Please note, this destination is creating destinations at `subaccount` level, al
 
 Security configuration is configured using a global role collection that can be consumed by apps using the mta ID and the scoped name i.e. `migrationcf.globalrole`. In this instance, its only for demo purposes and the respective applications will manage their own security concerns, creating their own roles/templates in the `xs-security.json` attached to the project.
 
-For more information around Security Administration, refer to the [SAP BTP Security Administration Guide](<https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html>).
+For more information about Security Administration, see the [SAP BTP Security Administration Guide](<https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html>).
 
 Ensure you are logged into CF target system where the new settings need to be applied:
 

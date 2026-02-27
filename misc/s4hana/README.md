@@ -185,9 +185,9 @@ error abap-deploy-task ZF_TEST_API Request failed with status code 400
 error abap-deploy-task ZF_TEST_API The use of Gateway OData V2 Service API_PROC_ORDER_CONFIRMATION_2_SRV 0001 is not permitted
 ```
 
-Please refer to the [Tenant Types](./README.md#tenant-types), as each tenant type has a different set of OData services that are allowed to be used or consumed.
+See the [Tenant Types](./README.md#tenant-types), as each tenant type has a different set of OData services that are allowed to be used or consumed.
 
-Please refer to this [Q&A documentation](https://userapps.support.sap.com/sap/support/knowledge/en/3445942) for more information on how to resolve this issue.
+See this [Q&A documentation](https://userapps.support.sap.com/sap/support/knowledge/en/3445942) for more information on how to resolve this issue.
 
 ### Issue 4. Calling OData V2 or V4 Catalogs does not include specific OData services
 
@@ -215,7 +215,7 @@ However, if you want the user to access the OData V2 or V4 catalogs, you need to
 
 The best method is to clone your existing SAP BTP destination and change the type to a partial URL destination. This allows you to specify the `Service URL` as the base URL for the OData V2 or V4 catalog, and then append the specific service path to the destination URL.
 
-For more information on configuring a partial URL destination, refer to this [documentation](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:52803).
+For more information on configuring a partial URL destination, see this [documentation](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:48363:53594:52803).
 
 ### Issue 6: Standard OData services Are Not Displayed in `RecommendedServiceCollection`
 

@@ -2,7 +2,7 @@
 
 This guide explains how to configure an SAP BTP destination with proxy type `OnPremise` so SAP BTP applications can securely reach on‑premise systems (such as SAP S/4HANA) using the Cloud Connector. It includes configuration examples, validation steps, troubleshooting tips, and a concise support-ticket checklist.
 
-Table of contents
+## Table of Contents
 
 * [Overview](#overview)
 * [Prerequisites](#prerequisites)
@@ -51,7 +51,7 @@ Security benefits include:
 * You have admin access to the Cloud Connector UI for mapping and trace logs.
 * Note: When generating SAP Fiori elements apps, ensure the OData services expose XML metadata (OData V2 or OData V4) as required by the generator.
 
-### How It Works
+## How It Works
 
 You create a destination in your SAP BTP subaccount that points to a Cloud Connector mapping. At runtime, your app requests the destination configuration from the destination service. If the destination uses the `OnPremise` proxy type, the request is routed through the Connectivity Service and the Cloud Connector to the on‑premise back-end.
 
