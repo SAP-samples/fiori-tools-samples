@@ -8,10 +8,21 @@ const { program } = require('commander');
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
-const DocsLinter = require('./linter');
 
-// Initialize linter
-const linter = new DocsLinter();
+// Try to initialize linter, handle gracefully if remark modules not compatible
+let linter;
+let linterAvailable = false;
+
+try {
+  const DocsLinter = require('./linter');
+  linter = new DocsLinter();
+  linterAvailable = true;
+} catch (error) {
+  // Linter initialization failed (likely ESM compatibility issue)
+  console.log(chalk.yellow('[docs-linter] Linter unavailable - ESM compatibility issue'));
+  console.log(chalk.gray('  Use /km-review skill for AI-powered review instead'));
+  linterAvailable = false;
+}
 
 // CLI Configuration
 program
@@ -26,6 +37,12 @@ program
   .option('--json', 'Output results as JSON')
   .option('--comprehensive', 'Run comprehensive checks (slower but more thorough)')
   .action(async (file, options) => {
+    if (!linterAvailable) {
+      console.error(chalk.yellow('Linter currently unavailable due to module compatibility issues.'));
+      console.log(chalk.blue('Use: /km-review <file> for AI-powered KM standards review'));
+      process.exit(0);
+    }
+
     try {
       const filePath = path.resolve(process.cwd(), file);
 
@@ -68,6 +85,12 @@ program
   .option('--dry-run', 'Show what would be fixed without applying changes')
   .option('--safe-only', 'Only apply fixes marked as safe')
   .action(async (file, options) => {
+    if (!linterAvailable) {
+      console.error(chalk.yellow('Linter currently unavailable due to module compatibility issues.'));
+      console.log(chalk.blue('Use: /km-review <file> for AI-powered KM standards review'));
+      process.exit(0);
+    }
+
     try {
       const filePath = path.resolve(process.cwd(), file);
 
@@ -104,6 +127,12 @@ program
   .description('Validate a file and provide quality score')
   .option('--json', 'Output results as JSON')
   .action(async (file, options) => {
+    if (!linterAvailable) {
+      console.error(chalk.yellow('Linter currently unavailable due to module compatibility issues.'));
+      console.log(chalk.blue('Use: /km-review <file> for AI-powered KM standards review'));
+      process.exit(0);
+    }
+
     try {
       const filePath = path.resolve(process.cwd(), file);
 
