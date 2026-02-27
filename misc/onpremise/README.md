@@ -6,7 +6,7 @@ Table of contents
 
 * [Overview](#overview)
 * [Prerequisites](#prerequisites)
-* [How It Works](#how-it-works-high-level)
+* [How It Works](#how-it-works)
 * [Flow Diagram](#flow-diagram)
 * [Configuration Steps](#configuration-steps)
   * [Cloud Connector](#cloud-connector-configuration)
@@ -52,6 +52,7 @@ Security benefits include:
 * Note: When generating SAP Fiori elements apps, ensure the OData services expose XML metadata (OData V2 or OData V4) as required by the generator.
 
 ### How It Works
+
 You create a destination in your SAP BTP subaccount that points to a Cloud Connector mapping. At runtime, your app requests the destination configuration from the destination service. If the destination uses the `OnPremise` proxy type, the request is routed through the Connectivity Service and the Cloud Connector to the on‑premise back-end.
 
 ## Flow Diagram
@@ -135,6 +136,7 @@ If connectivity fails, run these quick checks first:
 If problems persist, follow the [trace logging](./README.md#enable-cloud-connector-trace-logging) steps below to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
 
 ## Enable Cloud Connector Trace Logging
+
 Only use trace logging for troubleshooting. This is not recommended in production in the long term.
 
 1. In the Cloud Connector UI: Log in -> `Log and Trace Files` -> `Edit`.
@@ -161,6 +163,7 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 * [Consuming SAPUI5 libraries from On‑Premise](./ui5-onpremise.md)
 
 ## Checklist for Support Tickets
+
 If you need to raise a support ticket (component `BC-MID-SCC` for Cloud Connector or `CA-UX-IDE` for deployment issues), attach the following items:
 
 The required artifacts, which should be compiled into a single zip file and attached to the support ticket, are:
@@ -217,13 +220,57 @@ set DEBUG=* && npm run deploy
 Example Connection Test (SAP Business Application Studio or any terminal window):
 
 ```bash
-# Replace <destination-name> and <bsp-name> before executing
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
+# Replace <destination-name>
+# Replace bsp-name with a known BSP repository name
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
 
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
-### Additional Resources
+#### What This Test Validates
+
+This request performs several important technical checks in a single call:
+
+##### Destination Resolution
+
+`https://<destination-name>.dest` verifies that:
+
+* The SAP BTP destination exists
+* The destination is bound to your application (if applicable)
+* Connectivity via Cloud Connector (for On-Premise systems) is working
+
+##### Authentication Flow
+
+Confirms that the configured authentication method (BasicAuthentication, SAML Assertion, OAuth2, etc.) is functioning.
+
+If authentication fails, you will typically see:
+
+* `401 Unauthorized` → invalid credentials or trust not established
+* `403 Forbidden` → authenticated but missing backend authorization
+
+##### Backend Reachability
+
+`/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
+
+* SAP Gateway is active
+* The OData service is registered and active (`/IWFND/MAINT_SERVICE`)
+* The ICF node is active (`/sap/opu/odata`)
+
+##### CSRF Token Handling
+
+`-H "X-CSRF-Token: Fetch"` forces the backend to:
+
+* Authenticate the request
+* Issue a valid X-CSRF-Token
+* Return any required session cookies
+
+##### SAML Handling Control
+
+`?saml2=disabled` ensures the request does not trigger browser-based SAML redirects.
+
+This is useful when testing service-to-service flows where interactive SSO is not expected.
+
+### Deployment Additional Resources
 
 * [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
 
