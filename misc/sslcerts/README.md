@@ -1,6 +1,6 @@
 # Handling Self-Signed SSL Certificates in SAP Fiori Tools
 
-For more information on SSL certificates, please refer to the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://pages.community.sap.com/topics/fiori-tools).
+For more information on SSL certificates, see the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://pages.community.sap.com/topics/fiori-tools).
 
 ## Overview
 
@@ -35,7 +35,7 @@ Ignoring certificate errors might seem like a quick fix for development issues, 
 
 ### Export the Certificate
 
-To get a better understanding of how CA certificates work, please refer to the [Node.js documentation](https://nodejs.org/api/cli.html#node_extra_ca_certsfile).
+To get a better understanding of how CA certificates work, see the [Node.js documentation](https://nodejs.org/api/cli.html#node_extra_ca_certsfile).
 
 1. Navigate to the website using Edge, Chrome, or Firefox
 1. Click on the padlock icon in the address bar
@@ -87,7 +87,7 @@ export NODE_EXTRA_CA_CERTS=path/to/your/certificate.crt
 
 `NODE_TLS_REJECT_UNAUTHORIZED` is an environment variable in Node.js that controls SSL/TLS certificate validation behavior.
 
-Setting `NODE_TLS_REJECT_UNAUTHORIZED=0` has the same security risks to `ignoreCertError`, please refer to the `Security Risk` section above.
+Setting `NODE_TLS_REJECT_UNAUTHORIZED=0` has the same security risks as `ignoreCertError`. See the `Security Risk` section above.
 
 ```bash
 # WARNING: Only for development environments
