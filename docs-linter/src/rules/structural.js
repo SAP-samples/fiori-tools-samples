@@ -5,7 +5,7 @@
  * and required sections based on quality examples.
  */
 
-const { visit } = require('unist-util-visit');
+import { visit } from 'unist-util-visit';
 
 class StructuralRules {
   constructor() {
@@ -345,4 +345,4 @@ class StructuralRules {
   }
 }
 
-module.exports = StructuralRules;
+export default StructuralRules;
