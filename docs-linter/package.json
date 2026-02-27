@@ -1,10 +1,14 @@
 {
   "name": "docs-linter",
   "version": "1.0.0",
+  "type": "module",
   "description": "KM Feedback Training System - Documentation linter that learns from Knowledge Management team feedback patterns",
   "main": "src/cli.js",
   "bin": {
     "docs-linter": "./src/cli.js"
+  },
+  "engines": {
+    "node": ">=14.13.0"
   },
   "scripts": {
     "check": "node src/cli.js check",
