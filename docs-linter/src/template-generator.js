@@ -5,8 +5,14 @@
  * identified from the KM feedback analysis.
  */
 
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, existsSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// ESM equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 class TemplateGenerator {
   constructor() {
@@ -20,8 +26,8 @@ class TemplateGenerator {
     try {
       const trainingDataPath = path.resolve(__dirname, '../../training-data');
 
-      if (fs.existsSync(path.join(trainingDataPath, 'quality-examples.json'))) {
-        const examples = JSON.parse(fs.readFileSync(
+      if (existsSync(path.join(trainingDataPath, 'quality-examples.json'))) {
+        const examples = JSON.parse(readFileSync(
           path.join(trainingDataPath, 'quality-examples.json'),
           'utf8'
         ));
@@ -472,11 +478,11 @@ Collect the following information:
    * Analyze existing file to suggest template type
    */
   suggestTemplateType(filePath) {
-    if (!fs.existsSync(filePath)) {
+    if (!existsSync(filePath)) {
       return 'sample-app'; // Default
     }
 
-    const content = fs.readFileSync(filePath, 'utf8').toLowerCase();
+    const content = readFileSync(filePath, 'utf8').toLowerCase();
 
     if (content.includes('api') || content.includes('endpoint') || content.includes('rest')) {
       return 'api';
@@ -494,4 +500,4 @@ Collect the following information:
   }
 }
 
-module.exports = TemplateGenerator;
+export default TemplateGenerator;
