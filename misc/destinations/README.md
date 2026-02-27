@@ -169,13 +169,13 @@ When using a destination with `full_url`, your `curl` commands become simpler be
 To retrieve the OData service document:
 
 ```bash
-curl -L "https://northwind_fullurl.dest/" -vs > curl-fullurl-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind_fullurl.dest/" > curl-fullurl-output.txt 2>&1
 ```
 
 To retrieve the OData service metadata:
 
 ```bash
-curl -L "https://northwind_fullurl.dest/\$metadata" -vs > curl-fullurl-meta-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind_fullurl.dest/\$metadata" > curl-fullurl-meta-output.txt 2>&1
 ```
 
 Notice that you don't need to specify the service path (`/v2/northwind/northwind.svc/`) in the `curl` command because it's already included in the destination URL.
@@ -222,13 +222,13 @@ The following `curl` commands are used to test these specific service endpoints:
 To call a known OData V2 service endpoint with a base path of `/v2/northwind` and an exposed service of `northwind.svc/`:
 
 ```bash
-curl -L "https://northwind.dest/v2/northwind/northwind.svc/" -vs > curl-datasrv-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind.dest/v2/northwind/northwind.svc/" > curl-datasrv-output.txt 2>&1
 ```
 
 To call a known OData V2 service endpoint with a `$metadata` query parameter:
 
 ```bash
-curl -L "https://northwind.dest/v2/northwind/northwind.svc/\$metadata" -vs > curl-datasrv-meta-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind.dest/v2/northwind/northwind.svc/\$metadata" > curl-datasrv-meta-output.txt 2>&1
 ```
 
 Since you are using `curl` from a terminal window, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter. The above command returns the metadata of the specified OData service.
@@ -250,13 +250,13 @@ Usually, your SAP BTP destination is configured with `odata_abap` to allow you t
 OData V2 Catalog
 
 ```bash
-curl -L "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection" -vs > curl-v2catalog-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection" > curl-v2catalog-output.txt 2>&1
 ```
 
 OData V4 Catalog
 
 ```bash
-curl -L "https://<destination_name>.dest/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" -vs > curl-v4catalog-output.txt 2>&1
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination_name>.dest/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" > curl-v4catalog-output.txt 2>&1
 ```
 
 Note: Since you are using curl, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter.
