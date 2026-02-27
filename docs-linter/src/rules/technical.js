@@ -101,24 +101,37 @@ class TechnicalRules {
         }
 
         // Check for common SAP URL patterns
-        if (url.includes('help.sap.com') || url.includes('community.sap.com')) {
-          if (url.includes(' ') || url.includes('\n')) {
-            issues.push({
-              id: `malformed-sap-url-${line}`,
-              category: 'technical',
-              severity: 'error',
-              message: 'Malformed SAP URL with spaces',
-              line: line,
-              suggestion: 'Remove spaces from URL',
-              fixable: true,
-              safeFix: true,
-              fix: {
-                type: 'replace',
-                from: url,
-                to: url.replace(/\s+/g, '')
-              }
-            });
+        // Use proper hostname validation to prevent URL injection attacks
+        try {
+          const urlObj = new URL(url);
+          const hostname = urlObj.hostname.toLowerCase();
+
+          // Validate that hostname ends with .sap.com (or is exactly sap.com)
+          // This prevents evil.com/community.sap.com or community.sap.com.evil.com
+          const isSAPDomain = hostname === 'sap.com' ||
+                             hostname.endsWith('.sap.com');
+
+          if (isSAPDomain && (hostname.includes('help.') || hostname.includes('community.'))) {
+            if (url.includes(' ') || url.includes('\n')) {
+              issues.push({
+                id: `malformed-sap-url-${line}`,
+                category: 'technical',
+                severity: 'error',
+                message: 'Malformed SAP URL with spaces',
+                line: line,
+                suggestion: 'Remove spaces from URL',
+                fixable: true,
+                safeFix: true,
+                fix: {
+                  type: 'replace',
+                  from: url,
+                  to: url.replace(/\s+/g, '')
+                }
+              });
+            }
           }
+        } catch (error) {
+          // Invalid URL format - will be caught by other validators
         }
       }
     });
