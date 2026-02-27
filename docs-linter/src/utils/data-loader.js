@@ -4,8 +4,14 @@
  * Utilities for loading training data and configuration files
  */
 
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, existsSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// ESM equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * Load training data from extracted patterns
@@ -18,20 +24,20 @@ function loadTrainingData() {
 
     // Load patterns
     const patternsFile = path.join(trainingDataPath, 'km-feedback-patterns.json');
-    if (fs.existsSync(patternsFile)) {
-      data.patterns = JSON.parse(fs.readFileSync(patternsFile, 'utf8'));
+    if (existsSync(patternsFile)) {
+      data.patterns = JSON.parse(readFileSync(patternsFile, 'utf8'));
     }
 
     // Load corrections
     const correctionsFile = path.join(trainingDataPath, 'correction-dictionary.json');
-    if (fs.existsSync(correctionsFile)) {
-      data.corrections = JSON.parse(fs.readFileSync(correctionsFile, 'utf8'));
+    if (existsSync(correctionsFile)) {
+      data.corrections = JSON.parse(readFileSync(correctionsFile, 'utf8'));
     }
 
     // Load quality examples
     const examplesFile = path.join(trainingDataPath, 'quality-examples.json');
-    if (fs.existsSync(examplesFile)) {
-      data.qualityExamples = JSON.parse(fs.readFileSync(examplesFile, 'utf8'));
+    if (existsSync(examplesFile)) {
+      data.qualityExamples = JSON.parse(readFileSync(examplesFile, 'utf8'));
     }
 
     return data;
@@ -51,14 +57,14 @@ function loadRules() {
 
     // Load structural rules
     const structuralFile = path.join(rulesPath, 'structural.json');
-    if (fs.existsSync(structuralFile)) {
-      rules.structural = JSON.parse(fs.readFileSync(structuralFile, 'utf8'));
+    if (existsSync(structuralFile)) {
+      rules.structural = JSON.parse(readFileSync(structuralFile, 'utf8'));
     }
 
     // Load formatting rules
     const formattingFile = path.join(rulesPath, 'formatting.json');
-    if (fs.existsSync(formattingFile)) {
-      rules.formatting = JSON.parse(fs.readFileSync(formattingFile, 'utf8'));
+    if (existsSync(formattingFile)) {
+      rules.formatting = JSON.parse(readFileSync(formattingFile, 'utf8'));
     }
 
     return rules;
@@ -68,7 +74,7 @@ function loadRules() {
   }
 }
 
-module.exports = {
+export {
   loadTrainingData,
   loadRules
 };
