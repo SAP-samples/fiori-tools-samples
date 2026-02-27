@@ -44,10 +44,21 @@ class TechnicalRules {
       const url = node.url;
 
       if (url) {
+        // Validate URL format first
+        let urlObj;
+        try {
+          urlObj = new URL(url);
+        } catch (error) {
+          // Invalid URL format - will be caught by other validators
+          return;
+        }
+
         // Check for common URL corrections from KM patterns
         if (corrections && corrections.typos) {
           Object.entries(corrections.typos).forEach(([wrong, correct]) => {
-            if (url.includes(wrong)) {
+            // Only match whole domain components, not substrings
+            const hostname = urlObj.hostname.toLowerCase();
+            if (hostname.includes(wrong.toLowerCase()) || url.includes(wrong)) {
               issues.push({
                 id: `url-correction-${line}`,
                 category: 'technical',
@@ -106,12 +117,16 @@ class TechnicalRules {
           const urlObj = new URL(url);
           const hostname = urlObj.hostname.toLowerCase();
 
-          // Validate that hostname ends with .sap.com (or is exactly sap.com)
+          // Validate that hostname is exactly a SAP domain
           // This prevents evil.com/community.sap.com or community.sap.com.evil.com
           const isSAPDomain = hostname === 'sap.com' ||
                              hostname.endsWith('.sap.com');
 
-          if (isSAPDomain && (hostname.includes('help.') || hostname.includes('community.'))) {
+          // Check for valid SAP subdomain patterns (help.sap.com, community.sap.com, etc.)
+          const sapSubdomainPattern = /^[a-z0-9]+\.sap\.com$/;
+          const isSAPSubdomain = sapSubdomainPattern.test(hostname);
+
+          if (isSAPDomain && (isSAPSubdomain || hostname === 'sap.com')) {
             if (url.includes(' ') || url.includes('\n')) {
               issues.push({
                 id: `malformed-sap-url-${line}`,

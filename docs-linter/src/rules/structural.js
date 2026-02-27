@@ -134,7 +134,7 @@ class StructuralRules {
     let previousDepth = 0;
 
     headings.forEach((heading, index) => {
-      const { depth, line, text } = heading;
+      const { depth, line } = heading;
 
       // Check for skipped heading levels
       if (depth > previousDepth + 1) {
@@ -329,9 +329,10 @@ class StructuralRules {
 
     visit(ast, 'heading', (node) => {
       if (node.children && node.children[0] && node.children[0].type === 'text') {
+        const text = node.children[0].value;
         headings.push({
           depth: node.depth,
-          text: node.children[0].value,
+          text,
           line: node.position ? node.position.start.line : null
         });
       }
