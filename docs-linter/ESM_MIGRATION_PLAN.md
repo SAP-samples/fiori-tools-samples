@@ -1,8 +1,17 @@
 # ESM Migration Plan for docs-linter
 
-## Problem Statement
+> **✅ STATUS: COMPLETED (2026-02-27)**
+>
+> This migration has been successfully completed. All files converted to ESM.
+> See commits: eedab2a, 18df697
+>
+> This document is retained for historical reference.
 
-The docs-linter system depends on ESM-only packages (remark v15, unified v11, unist-util-visit v5) but is currently implemented using CommonJS (`require()`). This causes initialization failures when these packages are loaded.
+---
+
+## Problem Statement (Historical)
+
+The docs-linter system depended on ESM-only packages (remark v15, unified v11, unist-util-visit v5) but was implemented using CommonJS (`require()`). This caused initialization failures when these packages were loaded.
 
 ### Current Dependencies (ESM-only)
 - `remark@15.0.1` - ESM only as of v14
