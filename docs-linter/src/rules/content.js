@@ -5,8 +5,6 @@
  * based on improvements identified in KM feedback patterns.
  */
 
-import { visit } from 'unist-util-visit';
-
 class ContentRules {
   constructor() {
     this.ruleSet = [
@@ -48,7 +46,6 @@ class ContentRules {
       patterns.content.forEach(pattern => {
         if (pattern.before && pattern.after) {
           const beforeText = pattern.before.toLowerCase();
-          const afterText = pattern.after.toLowerCase();
 
           lines.forEach((line, index) => {
             const lowerLine = line.toLowerCase();
