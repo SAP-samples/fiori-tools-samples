@@ -1,0 +1,57 @@
+name: Link Checker
+
+on:
+  pull_request:
+    branches:
+      - main
+      - km-updates
+    paths:
+      - '**.md'
+      - 'docs/**'
+      - 'training-data/**/*.json'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check links in markdown files
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Use the lychee.toml config file for all settings
+          # Just check current directory recursively - lychee finds markdown files automatically
+          args: --config .github/lychee.toml --verbose --no-progress .
+          # Don't fail the PR - just report broken links (optional check)
+          fail: false
+
+      - name: Find existing comment
+        if: always()
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '🔗 Link Check Results'
+
+      - name: Create or Update Comment on PR
+        if: always()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ## 🔗 Link Check Results
+
+            The link checker has completed. This is an **optional check** and will not block the PR.
+
+            [View workflow run for details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            If broken links were found, please review them at your convenience.
+
+            ---
+            *Last updated: Run #${{ github.run_number }} at ${{ github.event.repository.updated_at }}*

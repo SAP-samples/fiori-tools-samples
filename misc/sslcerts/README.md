@@ -1,31 +1,31 @@
 # Handling Self-Signed SSL Certificates in SAP Fiori Tools
 
-For more information on SSL certificates, please refer to the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://community.sap.com/topics/fiori-tools).
+For more information on SSL certificates, please refer to the [SAP Help](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/4b318bede7eb4021a8be385c46c74045.html) and the [SAP Community](https://pages.community.sap.com/topics/fiori-tools).
 
-# Overview
+## Overview
 
-During application generation, invalid security certificate errors may occur when the system the user is connected to is using SSL to support secure HTTPS traffic. In some cases, the certificate is generated using a local certificate authority that is unknown to the user operating system. If this happens, the SAP Fiori application generator will by default reject the connection request and report an error. We recommend that you fix this error by installing the required certificates using the instructions below. 
+During application generation, invalid security certificate errors may occur when the system the user is connected to is using SSL to support secure HTTPS traffic. In some cases, the certificate is generated using a local certificate authority that is unknown to the user operating system. If this happens, the SAP Fiori application generator will by default reject the connection request and report an error. We recommend that you fix this error by installing the required certificates using the instructions below.
 
 The instructions below are applicable where the security certificate is valid, but using a local certificate authority that is unknown to the operating system. If the SSL cert is invalid, such as an expired cert, wrong host or unable to verify leaf signature, please contact your administrator. In these cases, they cannot be resolved by SAP Fiori tools.
 
 You can optionally choose to ignore the error and continue generation with the invalid certificate (not recommended).
 
-# Prerequisites
+## Prerequisites
 
-- Certificates are normally validated against a DNS hostname, if you connect via an IP address, the certificate must explicitly list that IP in the Subject Alternative Name (SAN) field. If the SAN does not include the IP, most clients (browsers, Node.js, Java, etc.) will reject the connection with a hostname mismatch error. Public Certificate Authorities generally do not issue certs for IPs, so this typically requires a self-signed or private CA.
+* Certificates are normally validated against a DNS hostname, if you connect via an IP address, the certificate must explicitly list that IP in the Subject Alternative Name (SAN) field. If the SAN does not include the IP, most clients (browsers, Node.js, Java, etc.) will reject the connection with a hostname mismatch error. Public Certificate Authorities generally do not issue certs for IPs, so this typically requires a self-signed or private CA.
 
-# Security Risk
+## Security Risk
 
 Ignoring certificate errors `ignoreCertError: true` is a significant security issue because it bypasses the TLS/SSL certificate validation process, which is a crucial security mechanism for secure communications. This is problematic because:
 
-- Man-in-the-Middle (MITM) Vulnerability
-- Malicious Site Access
-- Broken Chain of Trust
-- Security Policy Violations
+* Man-in-the-Middle (MITM) Vulnerability
+* Malicious Site Access
+* Broken Chain of Trust
+* Security Policy Violations
 
 Ignoring certificate errors might seem like a quick fix for development issues, but it's equivalent to disabling a critical security feature, leaving your application and users vulnerable to serious attacks.
 
-# Installing Certificates
+## Installing Certificates
 
 `NODE_EXTRA_CA_CERTS` is an environment variable that allows Node.js to recognize additional Certificate Authority (CA) certificates beyond the default trusted CAs. It's designed for:
 
@@ -33,31 +33,31 @@ Ignoring certificate errors might seem like a quick fix for development issues, 
 1. Using internal enterprise CAs not included in Node.js's default trust store
 1. Adding custom CAs without disabling the entire certificate validation system
 
-## Export the Certificate
+### Export the Certificate
 
 To get a better understanding of how CA certificates work, please refer to the [Node.js documentation](https://nodejs.org/api/cli.html#node_extra_ca_certsfile).
 
 1. Navigate to the website using Edge, Chrome, or Firefox
 1. Click on the padlock icon in the address bar
 1. View certificate details:
-1. In Chrome: Click "Connection is Not Secure" → "Certificate (Invalid)"
-1. In Edge: Click "Certificate (Invalid)"
-1. In Firefox: Click "Connection Not Secure" → "More Information" → "View Certificate"
+   * In Chrome: Click "Connection is Not Secure" → "Certificate (Invalid)"
+   * In Edge: Click "Certificate (Invalid)"
+   * In Firefox: Click "Connection Not Secure" → "More Information" → "View Certificate"
 1. Export/Save the certificate:
-   1. In Chrome/Edge: Go to "Details" tab → "Copy to File" → Follow the Certificate Export Wizard -> save as .pem
-   1. In Firefox: Go to "Details" → "Export" → Choose a location and save as .crt or .cer
+   * In Chrome/Edge: Go to "Details" tab → "Copy to File" → Follow the Certificate Export Wizard -> save as .pem
+   * In Firefox: Go to "Details" → "Export" → Choose a location and save as .crt or .cer
 
-## Install the Certificate to support VSCode
+### Install the Certificate to support VSCode
 
-### Microsoft Windows
+#### Microsoft Windows
 
-1. Right-click the CA certificate file and select `Install Certificate`. 
+1. Right-click the CA certificate file and select `Install Certificate`.
 1. Follow the prompts to add the certificate to the trust store either for the current user only or for all users logging onto this computer.
 
-### MacOS.
+#### MacOS
 
-1. Right-click the CA certificate file. 
-1. Select Open With and navigate to Keychain Access. 
+1. Right-click the CA certificate file.
+1. Select Open With and navigate to Keychain Access.
 1. Select System as the keychain to import into.
 
 ### Install the Certificate to support Node.js
@@ -67,6 +67,7 @@ Set the environment variable `NODE_EXTRA_CA_CERTS` to the path of the CA certifi
 Refer to `Configuring Environment Variables` below for instructions on how to set environment variables, quick sample;
 
 #### Windows
+
 ```powershell
 # Set for current session only
 $env:NODE_EXTRA_CA_CERTS = "C:\path\to\your\certificate.crt"
@@ -82,9 +83,9 @@ $env:NODE_EXTRA_CA_CERTS
 export NODE_EXTRA_CA_CERTS=path/to/your/certificate.crt
 ```
 
-# Globally Bypassing SSL Certificate Validation (Not Recommended)
+## Globally Bypassing SSL Certificate Validation (Not Recommended)
 
-`NODE_TLS_REJECT_UNAUTHORIZED` is an environment variable in Node.js that controls SSL/TLS certificate validation behavior. 
+`NODE_TLS_REJECT_UNAUTHORIZED` is an environment variable in Node.js that controls SSL/TLS certificate validation behavior.
 
 Setting `NODE_TLS_REJECT_UNAUTHORIZED=0` has the same security risks to `ignoreCertError`, please refer to the `Security Risk` section above.
 
@@ -98,7 +99,7 @@ When set to 0: Certificate validation is disabled, allowing connections to serve
 
 Please only use this as a temporary solution only during development.
 
-# Disable SSL Validation - Local Preview
+## Disable SSL Validation - Local Preview
 
 Sample `ui5.yaml` configuration;
 
@@ -127,7 +128,7 @@ server:
 
 Typically, `ignoreCertError: false` is the default configuration when you create a new project using the SAP Fiori tools. This means that the server will validate the SSL certificate of the backend system. If you are using a self-signed certificate, you may need to set `ignoreCertError: true` to bypass the validation.
 
-# Disable SSL Validation - Deploying to ABAP
+## Disable SSL Validation - Deploying to ABAP
 
 Sample `ui5-deploy.yaml` configuration;
 
@@ -162,21 +163,21 @@ builder:
 
 Typically, `ignoreCertError: false` is the default configuration when you create a new project using the SAP Fiori tools. This means that the server will validate the SSL certificate of the backend system. If you are using a self-signed certificate, you may need to set `ignoreCertError: true` to bypass the validation.
 
-# Configuring Environment Variables
+## Configuring Environment Variables
 
-## Windows
+### Windows
 
-### Manually
+#### Manually
 
 1. Right-click on Start or This PC → Select Properties
 1. Click on Advanced system settings in the sidebar
-1. Click the Environment Variables button at the bottom 
-1. In the top section ("User variables for [username]"), click New 
-1. For "Variable name" enter: NODE_TLS_REJECT_UNAUTHORIZED 
-1. For "Variable value" enter: 0 
+1. Click the Environment Variables button at the bottom
+1. In the top section ("User variables for [username]"), click New
+1. For "Variable name" enter: NODE_TLS_REJECT_UNAUTHORIZED
+1. For "Variable value" enter: 0
 1. Click OK
 
-### Windows powershell
+#### Windows powershell
 
 For all users;
 
@@ -209,7 +210,7 @@ $env:NODE_TLS_REJECT_UNAUTHORIZED
 $env:NODE_TLS_REJECT_UNAUTHORIZED = '0'; node your-script.js
 ```
 
-## MacOS/Linux
+### MacOS/Linux
 
 For all users;
 
@@ -249,6 +250,37 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 node your-script.js
 NODE_TLS_REJECT_UNAUTHORIZED=0 npm start
 ```
 
-### License
-Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
+### Validate TLS Connectivity (Node.js)
 
+To isolate TLS/certificate issues from IDEs or third-party tooling (for example VS Code, SAP Fiori tools, or corporate proxies), run the following command directly in a terminal. This validates whether the Node.js runtime can establish an HTTPS connection using the currently configured CA trust chain.
+
+#### Option 1: Check Status Code Only
+
+```bash
+node -e "require('https').get('https://your-host', res => { console.log(res.statusCode); }).on('error', err => console.error(err))"
+```
+
+Replace `https://your-host` with a specific and reachable endpoint.
+
+#### Option 2: Check Status Code and Response Body
+
+```bash
+node -e "require('https').get('https://your-host', res => { let data = ''; res.on('data', chunk => data += chunk); res.on('end', () => console.log('Status:', res.statusCode, '\nResponse:', data)); }).on('error', err => console.error(err))"
+```
+
+Replace `https://your-host` with a specific and reachable endpoint.
+
+How to interpret the result
+
+* HTTP status code is printed (e.g. 200, 401, 403)
+  → TLS handshake succeeded and the CA certificate is trusted by Node.js.
+* Error such as self signed certificate, unable to verify the first certificate, or similar
+  → Node.js does not trust the issuing CA. The root (or intermediate) CA must be added to the Node trust store (for example via NODE_EXTRA_CA_CERTS) or installed at OS level.
+* This command bypasses higher-level tools and confirms whether the issue is at the Node.js TLS layer, not application logic.
+* Ensure any required environment variables (for example NODE_EXTRA_CA_CERTS) are set before running the command.
+
+Note, this is not a software bug, if the endpoint is standards-compliant but the runtime does not trust the CA, the responsibility is on the consuming team, not the provider.
+
+## License
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.

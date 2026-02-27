@@ -1,0 +1,28 @@
+name: Bug Report
+description: Report a problem with a sample
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: sample
+    attributes:
+      label: Sample Path
+      description: Path to the affected sample
+      placeholder: e.g., V2/apps/myfioriapp
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong?
+      description: Describe the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: Error Message
+      description: Paste any error messages
+      render: shell

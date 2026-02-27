@@ -63,4 +63,8 @@ With these changes, you can now consume the library inside your code;
 # Additional Links
 
 * [External libraries in UI5 + CAP + SAP Build Work Zone, Standard Edition](https://blogs.sap.com/2023/11/08/external-libraries-in-ui5-cap-sap-build-work-zone-standard-edition/)
-* [Smart templates and SAP Fiori Apps – 57 Tips and Tricks](https://blogs.sap.com/2019/09/20/smart-templates-tips-and-tricks/)
+* [Smart templates and SAP Fiori Apps – 57 Tips and Tricks](https://community.sap.com/t5/-/-/m-p/13406652)
+
+## License
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.

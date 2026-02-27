@@ -1,0 +1,24 @@
+name: Question
+description: Ask about the samples
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For general SAP Fiori tools questions, use [SAP Community](https://community.sap.com/).
+
+  - type: input
+    id: sample
+    attributes:
+      label: Sample
+      description: Which sample?
+      placeholder: e.g., V2/apps/myfioriapp
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to know?
+    validations:
+      required: true

@@ -1,0 +1,42 @@
+name: Markdown Link Check (Backup)
+
+on:
+  pull_request:
+    branches:
+      - main
+      - km-updates
+    paths:
+      - '**.md'
+  workflow_dispatch:
+  schedule:
+    # Run weekly on Mondays at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check links in Markdown files
+        continue-on-error: true
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'no'
+          use-verbose-mode: 'yes'
+          config-file: '.github/markdown-link-check-config.json'
+          folder-path: '.'
+          max-depth: -1
+          check-modified-files-only: 'yes'
+          base-branch: 'main'
+
+      - name: Create summary report
+        if: always()
+        run: |
+          echo "## 🔗 Link Check Results (Optional)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "This is an **optional check** and will not block the PR." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the logs above for detailed information about link validation." >> $GITHUB_STEP_SUMMARY
