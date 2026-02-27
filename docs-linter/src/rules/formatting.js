@@ -5,7 +5,7 @@
  * focusing on consistency in headings, lists, links, and code blocks.
  */
 
-const { visit } = require('unist-util-visit');
+import { visit } from 'unist-util-visit';
 
 class FormattingRules {
   constructor() {
@@ -442,4 +442,4 @@ class FormattingRules {
   }
 }
 
-module.exports = FormattingRules;
+export default FormattingRules;

@@ -79,13 +79,11 @@ node src/cli.js validate <file> --json
 - Auto-fix capabilities with safety flags
 - Quality scoring system
 - JSON output support
-
-### ⚠️ In Progress
-- ESM module compatibility (remark packages)
-- Pre-commit hook integration
-- CI/CD pipeline integration
+- **Full ESM compatibility** ✨
 
 ### 🔮 Planned
+- Pre-commit hook integration
+- CI/CD pipeline integration
 - Watch mode for live feedback
 - VS Code extension
 - GitHub Action

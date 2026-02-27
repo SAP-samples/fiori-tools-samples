@@ -5,7 +5,7 @@
  * command syntax, and configuration examples.
  */
 
-const { visit } = require('unist-util-visit');
+import { visit } from 'unist-util-visit';
 
 class TechnicalRules {
   constructor() {
@@ -499,4 +499,4 @@ class TechnicalRules {
   }
 }
 
-module.exports = TechnicalRules;
+export default TechnicalRules;

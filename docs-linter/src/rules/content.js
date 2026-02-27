@@ -5,7 +5,7 @@
  * based on improvements identified in KM feedback patterns.
  */
 
-const { visit } = require('unist-util-visit');
+import { visit } from 'unist-util-visit';
 
 class ContentRules {
   constructor() {
@@ -455,4 +455,4 @@ class ContentRules {
   }
 }
 
-module.exports = ContentRules;
+export default ContentRules;

@@ -5,16 +5,22 @@
  * KM feedback patterns to improve documentation quality.
  */
 
-const fs = require('fs');
-const path = require('path');
-const { unified } = require('unified');
-const remarkParse = require('remark-parse');
-const { visit } = require('unist-util-visit');
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import { visit } from 'unist-util-visit';
 
-const StructuralRules = require('./rules/structural');
-const FormattingRules = require('./rules/formatting');
-const ContentRules = require('./rules/content');
-const TechnicalRules = require('./rules/technical');
+import StructuralRules from './rules/structural.js';
+import FormattingRules from './rules/formatting.js';
+import ContentRules from './rules/content.js';
+import TechnicalRules from './rules/technical.js';
+
+// ESM equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 class DocsLinter {
   constructor() {
@@ -38,24 +44,24 @@ class DocsLinter {
     try {
       const trainingDataPath = path.resolve(__dirname, '../../training-data');
 
-      if (fs.existsSync(path.join(trainingDataPath, 'km-feedback-patterns.json'))) {
-        const patterns = JSON.parse(fs.readFileSync(
+      if (existsSync(path.join(trainingDataPath, 'km-feedback-patterns.json'))) {
+        const patterns = JSON.parse(readFileSync(
           path.join(trainingDataPath, 'km-feedback-patterns.json'),
           'utf8'
         ));
         this.patterns = patterns;
       }
 
-      if (fs.existsSync(path.join(trainingDataPath, 'correction-dictionary.json'))) {
-        const corrections = JSON.parse(fs.readFileSync(
+      if (existsSync(path.join(trainingDataPath, 'correction-dictionary.json'))) {
+        const corrections = JSON.parse(readFileSync(
           path.join(trainingDataPath, 'correction-dictionary.json'),
           'utf8'
         ));
         this.corrections = corrections;
       }
 
-      if (fs.existsSync(path.join(trainingDataPath, 'quality-examples.json'))) {
-        const examples = JSON.parse(fs.readFileSync(
+      if (existsSync(path.join(trainingDataPath, 'quality-examples.json'))) {
+        const examples = JSON.parse(readFileSync(
           path.join(trainingDataPath, 'quality-examples.json'),
           'utf8'
         ));
@@ -71,7 +77,7 @@ class DocsLinter {
    * Check a file for issues based on KM feedback patterns
    */
   async checkFile(filePath, options = {}) {
-    const content = fs.readFileSync(filePath, 'utf8');
+    const content = readFileSync(filePath, 'utf8');
     const ast = this.processor.parse(content);
 
     const issues = [];
@@ -185,7 +191,7 @@ class DocsLinter {
    * Apply fixes to a file
    */
   async applyFixes(filePath, fixes) {
-    let content = fs.readFileSync(filePath, 'utf8');
+    let content = readFileSync(filePath, 'utf8');
 
     // Apply fixes in reverse order to maintain line numbers
     fixes.sort((a, b) => (b.fix.line || 0) - (a.fix.line || 0));
@@ -204,7 +210,7 @@ class DocsLinter {
       }
     }
 
-    fs.writeFileSync(filePath, content);
+    writeFileSync(filePath, content);
   }
 
   /**
@@ -318,4 +324,4 @@ class DocsLinter {
   }
 }
 
-module.exports = DocsLinter;
+export default DocsLinter;
