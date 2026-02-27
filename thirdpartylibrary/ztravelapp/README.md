@@ -14,7 +14,7 @@ From your SAP BTP cockpit, select Instances and Subscriptions, select SAP Busine
 
 # Generate a freestyle SAPUI5 application
 
-Please refer to the following link, [Developing Apps with SAP Fiori Tools](https://sapui5.hana.ondemand.com/sdk/#/topic/a460a7348a6c431a8bd967ab9fb8d918) for more information.
+For more information, see [Developing Apps with SAP Fiori Tools](https://sapui5.hana.ondemand.com/sdk/#/topic/a460a7348a6c431a8bd967ab9fb8d918).
 
 # Tasks
 
@@ -42,7 +42,7 @@ sap.ui.define(
   ["sap/ui/core/mvc/Controller", "xml-js"],
 ```
 
-Understanding the `sap.ui.defined` JavaScript namespace, please refer to this [link](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui%23methods/sap.ui.define) paying attention to the `Third Party Modules` section, as this provides guidance on how third party modules are imported and referenced.
+To understand the `sap.ui.defined` JavaScript namespace, see this [link](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui%23methods/sap.ui.define), paying attention to the `Third Party Modules` section, as this provides guidance on how third party modules are imported and referenced.
 
 Next, update the `function` to reference this library;
 ```JS
