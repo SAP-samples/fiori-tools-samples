@@ -2,24 +2,24 @@
 
 This guide explains how to configure an SAP BTP destination with proxy type `OnPremise` so SAP BTP applications can securely reach on‑premise systems (such as SAP S/4HANA) using the Cloud Connector. It includes configuration examples, validation steps, troubleshooting tips, and a concise support-ticket checklist.
 
-Table of contents
+Table of Contents
 
-* [Overview](#overview)
-* [Prerequisites](#prerequisites)
-* [How It Works](#how-it-works)
-* [Flow Diagram](#flow-diagram)
-* [Configuration Steps](#configuration-steps)
-  * [Cloud Connector](#cloud-connector-configuration)
-  * [SAP BTP Destination](#sap-btp-destination)
-* [Validate Connectivity](#validate-connectivity)
-* [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
-* [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
-* [Additional Resources](#additional-resources)
-* [Known Issues](#known-issues)
-* [Checklist for Support Tickets](#checklist-for-support-tickets)
-* [Deployment Issues](#deployment-issues)
-* [Principal Propagation](#principal-propagation)
-* [License](#license)
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [How It Works](#how-it-works)
+- [Flow Diagram](#flow-diagram)
+- [Configuration Steps](#configuration-steps)
+  - [Cloud Connector configuration](#cloud-connector-configuration)
+  - [SAP BTP destination](#sap-btp-destination)
+- [Validate Connectivity](#validate-connectivity)
+- [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
+- [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
+- [Additional Resources](#additional-resources)
+- [Known Issues](#known-issues)
+- [Checklist for Support Tickets](#checklist-for-support-tickets)
+- [Deployment Issues](#deployment-issues)
+- [Principal Propagation](#principal-propagation)
+- [License](#license)
 
 ## Overview
 
@@ -51,7 +51,7 @@ Security benefits include:
 * You have admin access to the Cloud Connector UI for mapping and trace logs.
 * Note: When generating SAP Fiori elements apps, ensure the OData services expose XML metadata (OData V2 or OData V4) as required by the generator.
 
-### How It Works
+## How It Works
 
 You create a destination in your SAP BTP subaccount that points to a Cloud Connector mapping. At runtime, your app requests the destination configuration from the destination service. If the destination uses the `OnPremise` proxy type, the request is routed through the Connectivity Service and the Cloud Connector to the on‑premise back-end.
 
@@ -83,11 +83,11 @@ sequenceDiagram
 
 ## Configuration Steps
 
-### Cloud Connector Configuration
+### Cloud Connector configuration
 
 For more information about how to install and configure Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
-### SAP BTP Destination
+### SAP BTP destination
 
 You can import the [Cloud Connector destination](./cloudconnector) example into the SAP BTP cockpit. Below is an example of destination properties that you can use the SAP BTP cockpit to create and update:
 
@@ -197,13 +197,13 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
 
-### Deployment Prerequisites
+### Deployment prerequisites
 
 * Ensure that `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
 * Ensure that you have the required `S_DEVELOP` authorizations.
 * For more information about `/UI5/ABAP_REPOSITORY_SRV` and fulfilling these prerequisites, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
-### Debugging Deployment Errors (HTTP 401/403)
+### Debugging deployment errors (HTTP 401/403)
 
 * Review the ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`, where applicable. These logs indicate missing authorizations and other local issues.
 * For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
@@ -227,11 +227,11 @@ curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu
 
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
-#### What This Test Validates
+#### What this test validates
 
 This request performs several important technical checks in a single call:
 
-##### Destination Resolution
+##### Destination resolution
 
 `https://<destination-name>.dest` verifies that:
 
@@ -239,7 +239,7 @@ This request performs several important technical checks in a single call:
 * The destination is bound to your application (if applicable)
 * Connectivity via Cloud Connector (for On-Premise systems) is working
 
-##### Authentication Flow
+##### Authentication flow
 
 Confirms that the configured authentication method (BasicAuthentication, SAML Assertion, OAuth2, etc.) is functioning.
 
@@ -248,7 +248,7 @@ If authentication fails, you will typically see:
 * `401 Unauthorized` → invalid credentials or trust not established
 * `403 Forbidden` → authenticated but missing backend authorization
 
-##### Backend Reachability
+##### Backend reachability
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
 
@@ -256,7 +256,7 @@ If authentication fails, you will typically see:
 * The OData service is registered and active (`/IWFND/MAINT_SERVICE`)
 * The ICF node is active (`/sap/opu/odata`)
 
-##### CSRF Token Handling
+##### CSRF token handling
 
 `-H "X-CSRF-Token: Fetch"` forces the backend to:
 
@@ -264,13 +264,13 @@ If authentication fails, you will typically see:
 * Issue a valid X-CSRF-Token
 * Return any required session cookies
 
-##### SAML Handling Control
+##### SAML handling control
 
 `?saml2=disabled` ensures the request does not trigger browser-based SAML redirects.
 
 This is useful when testing service-to-service flows where interactive SSO is not expected.
 
-### Deployment Additional Resources
+### Deployment additional resources
 
 * [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
 
