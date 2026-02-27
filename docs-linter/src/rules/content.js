@@ -127,7 +127,7 @@ class ContentRules {
    */
   checkCompleteness(context) {
     const issues = [];
-    const { content, file } = context;
+    const { content } = context;
 
     // Check for placeholder text
     const placeholderPatterns = [
