@@ -22,7 +22,29 @@ This directory contains automated workflows for the fiori-tools-samples reposito
 
 **Note:** This workflow complements but doesn't replace GitHub's branch protection rules. See [BRANCH_PROTECTION.md](../BRANCH_PROTECTION.md) for full setup instructions.
 
-### 2. PR Validation
+### 2. Cleanup Merged Branches
+**File:** `cleanup-merged-branches.yml`
+
+**Purpose:** Automatically deletes feature branches after pull requests are merged to keep the repository clean.
+
+**When it runs:**
+- After a pull request is merged to any branch
+
+**Features:**
+- Automatically deletes the source branch after successful merge
+- Protects main/master/develop branches from deletion
+- Protects release/ and hotfix/ branches
+- Only deletes branches from the same repository (not forks)
+- Provides detailed logging for transparency
+
+**Protected Patterns:**
+- `main`, `master`, `develop`
+- Branches starting with `release/`
+- Branches starting with `hotfix/`
+
+**Note:** This workflow helps maintain repository hygiene by automatically removing merged feature branches. Branches from forked repositories are never deleted.
+
+### 3. PR Validation
 **File:** `pr-validation.yml`
 
 **Purpose:** Validates pull requests to ensure quality and consistency.
@@ -39,7 +61,7 @@ This directory contains automated workflows for the fiori-tools-samples reposito
 - Warns about large PRs that should be split
 - Checks for PR labels
 
-### 3. Link Checker (Primary)
+### 4. Link Checker (Primary)
 **File:** `link-checker.yml`
 
 **Purpose:** Validates all external HTTP/HTTPS links in markdown and JSON files on pull requests.
@@ -58,7 +80,7 @@ This directory contains automated workflows for the fiori-tools-samples reposito
 
 **Configuration:** `.github/lychee.toml`
 
-### 4. Markdown Link Check (Backup)
+### 5. Markdown Link Check (Backup)
 **File:** `markdown-link-check.yml`
 
 **Purpose:** Alternative link checker focused specifically on markdown files.
@@ -75,6 +97,25 @@ This directory contains automated workflows for the fiori-tools-samples reposito
 - Custom retry logic for rate-limited endpoints
 
 **Configuration:** `.github/markdown-link-check-config.json`
+
+### 6. CodeQL Security Scan
+**File:** `codeql.yml`
+
+**Purpose:** Automated security scanning to detect vulnerabilities and code quality issues in JavaScript code.
+
+**When it runs:**
+- On push to `main` branch
+- On pull requests to `main` branch
+- Weekly on Mondays at 6:00 AM UTC (scheduled scan)
+
+**Features:**
+- Uses [GitHub CodeQL](https://codeql.github.com/) for static code analysis
+- Scans JavaScript code for security vulnerabilities
+- Runs security-and-quality query suite
+- Reports findings in GitHub Security tab
+- Automated weekly scans for continuous monitoring
+
+**Note:** Security findings are visible in the repository's Security → Code scanning alerts section.
 
 ## Configuration Files
 
