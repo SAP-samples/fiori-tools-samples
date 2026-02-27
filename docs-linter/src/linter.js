@@ -9,7 +9,6 @@ const fs = require('fs');
 const path = require('path');
 const { unified } = require('unified');
 const remarkParse = require('remark-parse');
-const remarkStringify = require('remark-stringify');
 const { visit } = require('unist-util-visit');
 
 const StructuralRules = require('./rules/structural');
@@ -26,9 +25,8 @@ class DocsLinter {
       technical: new TechnicalRules()
     };
 
-    this.processor = unified()
-      .use(remarkParse)
-      .use(remarkStringify);
+    // Initialize remark processor for markdown parsing
+    this.processor = unified().use(remarkParse);
 
     this.loadTrainingData();
   }

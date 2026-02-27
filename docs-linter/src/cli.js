@@ -1,309 +1,298 @@
 #!/usr/bin/env node
-
 /**
- * KM Feedback Training System - Documentation Linter CLI
- *
- * A standalone documentation linting system that learns from Knowledge Management
- * team feedback patterns to reduce PR review cycles and ensure consistent
- * documentation quality across the repository.
+ * KM Documentation Linter CLI
+ * Comprehensive markdown linting based on KM feedback patterns
  */
 
 const { program } = require('commander');
 const chalk = require('chalk');
-const fs = require('fs');
 const path = require('path');
-const { glob } = require('glob');
-
+const fs = require('fs');
 const DocsLinter = require('./linter');
-const TemplateGenerator = require('./template-generator');
-const { loadTrainingData, loadRules } = require('./utils/data-loader');
 
+// Initialize linter
+const linter = new DocsLinter();
+
+// CLI Configuration
 program
   .name('docs-linter')
-  .description('KM Feedback Training System - Documentation linter')
+  .description('KM Documentation Linter - Apply Knowledge Management standards to markdown files')
   .version('1.0.0');
 
-// Check command - analyze files for issues
+// Check command
 program
-  .command('check')
-  .description('Check documentation files for KM feedback patterns')
-  .argument('[files...]', 'Files to check (default: README.md files)')
-  .option('--auto-fix-safe', 'Automatically fix safe issues')
-  .option('--comprehensive', 'Run comprehensive analysis')
-  .option('--format <format>', 'Output format (json, table)', 'table')
-  .action(async (files, options) => {
-    try {
-      console.log(chalk.blue('🔍 KM Documentation Linter - Check Mode\n'));
-
-      const filesToCheck = files.length > 0 ? files : await findReadmeFiles();
-      const linter = new DocsLinter();
-
-      const results = [];
-      for (const file of filesToCheck) {
-        if (fs.existsSync(file)) {
-          console.log(chalk.gray(`Checking: ${file}`));
-          const result = await linter.checkFile(file, {
-            comprehensive: options.comprehensive,
-            autoFixSafe: options.autoFixSafe
-          });
-          results.push(result);
-        } else {
-          console.log(chalk.red(`File not found: ${file}`));
-        }
-      }
-
-      // Output results
-      if (options.format === 'json') {
-        console.log(JSON.stringify(results, null, 2));
-      } else {
-        displayResults(results);
-      }
-
-      // Exit with error code if issues found
-      const hasErrors = results.some(r => r.issues.some(i => i.severity === 'error'));
-      const hasWarnings = results.some(r => r.issues.some(i => i.severity === 'warning'));
-
-      if (hasErrors) {
-        process.exit(1);
-      } else if (hasWarnings) {
-        process.exit(0);
-      }
-
-    } catch (error) {
-      console.error(chalk.red(`❌ Error: ${error.message}`));
-      process.exit(1);
-    }
-  });
-
-// Fix command - automatically fix issues
-program
-  .command('fix')
-  .description('Fix documentation files based on KM feedback patterns')
-  .argument('<file>', 'File to fix')
-  .option('--safe-only', 'Only apply safe fixes')
-  .option('--dry-run', 'Show changes without applying them')
+  .command('check <file>')
+  .description('Check a file for KM standards violations')
+  .option('--json', 'Output results as JSON')
+  .option('--comprehensive', 'Run comprehensive checks (slower but more thorough)')
   .action(async (file, options) => {
     try {
-      console.log(chalk.blue(`🔧 KM Documentation Linter - Fix Mode\n`));
+      const filePath = path.resolve(process.cwd(), file);
 
-      if (!fs.existsSync(file)) {
-        console.error(chalk.red(`File not found: ${file}`));
+      if (!fs.existsSync(filePath)) {
+        console.error(chalk.red(`Error: File not found: ${filePath}`));
         process.exit(1);
       }
 
-      const linter = new DocsLinter();
-      const result = await linter.fixFile(file, {
-        safeOnly: options.safeOnly,
-        dryRun: options.dryRun
-      });
-
-      if (result.changes.length > 0) {
-        console.log(chalk.green(`✅ Applied ${result.changes.length} fixes to ${file}`));
-        result.changes.forEach(change => {
-          console.log(chalk.gray(`  - ${change.description}`));
-        });
-      } else {
-        console.log(chalk.blue(`ℹ️  No fixes applied to ${file}`));
+      if (!filePath.endsWith('.md')) {
+        console.error(chalk.red('Error: Only markdown files (.md) are supported'));
+        process.exit(1);
       }
 
+      console.log(chalk.blue(`Checking ${path.basename(filePath)}...`));
+
+      const result = await linter.checkFile(filePath, {
+        comprehensive: options.comprehensive || false
+      });
+
+      if (options.json) {
+        console.log(JSON.stringify(result, null, 2));
+      } else {
+        displayCheckResults(result);
+      }
+
+      // Exit with error code if critical issues found
+      const hasCritical = result.issues.some(i => i.severity === 'error');
+      process.exit(hasCritical ? 1 : 0);
+
     } catch (error) {
-      console.error(chalk.red(`❌ Error: ${error.message}`));
+      console.error(chalk.red(`Error: ${error.message}`));
       process.exit(1);
     }
   });
 
-// Validate command - validate against KM standards
+// Fix command
 program
-  .command('validate')
-  .description('Validate documentation against KM standards')
-  .argument('<file>', 'File to validate')
-  .option('--km-standards', 'Use KM team standards for validation')
+  .command('fix <file>')
+  .description('Fix issues in a file automatically')
+  .option('--dry-run', 'Show what would be fixed without applying changes')
+  .option('--safe-only', 'Only apply fixes marked as safe')
   .action(async (file, options) => {
     try {
-      console.log(chalk.blue('📊 KM Documentation Linter - Validate Mode\n'));
+      const filePath = path.resolve(process.cwd(), file);
 
-      if (!fs.existsSync(file)) {
-        console.error(chalk.red(`File not found: ${file}`));
+      if (!fs.existsSync(filePath)) {
+        console.error(chalk.red(`Error: File not found: ${filePath}`));
         process.exit(1);
       }
 
-      const linter = new DocsLinter();
-      const result = await linter.validateFile(file, {
-        useKMStandards: options.kmStandards
+      console.log(chalk.blue(`${options.dryRun ? 'Analyzing' : 'Fixing'} ${path.basename(filePath)}...`));
+
+      const result = await linter.fixFile(filePath, {
+        dryRun: options.dryRun || false,
+        safeOnly: options.safeOnly || false
       });
 
-      console.log(chalk.green(`📋 Validation Results for ${file}:`));
-      console.log(chalk.gray(`Score: ${result.score}/100`));
-
-      if (result.score >= 90) {
-        console.log(chalk.green('🏆 Excellent! This documentation meets KM quality standards.'));
-      } else if (result.score >= 75) {
-        console.log(chalk.yellow('⚠️  Good, but could be improved with KM feedback patterns.'));
+      if (options.dryRun) {
+        console.log(chalk.yellow('\nDry run - no changes applied\n'));
+        displayFixPreview(result);
       } else {
-        console.log(chalk.red('❌ Needs significant improvement to meet KM standards.'));
+        displayFixResults(result);
       }
 
-      result.feedback.forEach(item => {
-        const icon = item.type === 'error' ? '❌' : item.type === 'warning' ? '⚠️' : 'ℹ️';
-        console.log(`${icon} ${item.message}`);
-      });
+      process.exit(0);
 
     } catch (error) {
-      console.error(chalk.red(`❌ Error: ${error.message}`));
+      console.error(chalk.red(`Error: ${error.message}`));
       process.exit(1);
     }
   });
 
-// Template command - generate from template
+// Validate command
 program
-  .command('template')
-  .description('Generate documentation from KM-approved templates')
-  .option('--type <type>', 'Template type (sample-app, guide, api)', 'sample-app')
-  .option('--output <file>', 'Output file', 'README.md')
-  .action(async (options) => {
+  .command('validate <file>')
+  .description('Validate a file and provide quality score')
+  .option('--json', 'Output results as JSON')
+  .action(async (file, options) => {
     try {
-      console.log(chalk.blue('📝 KM Documentation Template Generator\n'));
+      const filePath = path.resolve(process.cwd(), file);
 
-      const generator = new TemplateGenerator();
-      const content = await generator.generate(options.type, {
-        outputFile: options.output
-      });
-
-      fs.writeFileSync(options.output, content);
-      console.log(chalk.green(`✅ Generated ${options.type} template: ${options.output}`));
-
-    } catch (error) {
-      console.error(chalk.red(`❌ Error: ${error.message}`));
-      process.exit(1);
-    }
-  });
-
-// Install hooks command
-program
-  .command('install-hooks')
-  .description('Install git hooks for automated validation')
-  .action(() => {
-    try {
-      console.log(chalk.blue('🔧 Installing Git Hooks...\n'));
-
-      const hookDir = '.git/hooks';
-      if (!fs.existsSync(hookDir)) {
-        console.error(chalk.red('❌ Not in a git repository'));
+      if (!fs.existsSync(filePath)) {
+        console.error(chalk.red(`Error: File not found: ${filePath}`));
         process.exit(1);
       }
 
-      // Pre-commit hook
-      const preCommitHook = `#!/bin/sh
-# KM Documentation Linter Pre-commit Hook
-echo "🔍 Running KM documentation checks..."
+      console.log(chalk.blue(`Validating ${path.basename(filePath)}...`));
 
-# Check README files for basic issues
-README_FILES=$(git diff --cached --name-only | grep README.md)
-if [ ! -z "$README_FILES" ]; then
-  for file in $README_FILES; do
-    if [ -f "$file" ]; then
-      echo "Checking: $file"
-      node docs-linter/src/cli.js check "$file" --auto-fix-safe
-    fi
-  done
-fi`;
+      const result = await linter.validateFile(filePath);
 
-      fs.writeFileSync(path.join(hookDir, 'pre-commit'), preCommitHook, { mode: 0o755 });
+      if (options.json) {
+        console.log(JSON.stringify(result, null, 2));
+      } else {
+        displayValidationResults(result);
+      }
 
-      // Pre-push hook
-      const prePushHook = `#!/bin/sh
-# KM Documentation Linter Pre-push Hook
-echo "📊 Running comprehensive KM documentation validation..."
-
-README_FILES=$(find . -name "README.md" -type f | head -10)
-for file in $README_FILES; do
-  if [ -f "$file" ]; then
-    node docs-linter/src/cli.js validate "$file" --km-standards
-  fi
-done`;
-
-      fs.writeFileSync(path.join(hookDir, 'pre-push'), prePushHook, { mode: 0o755 });
-
-      console.log(chalk.green('✅ Git hooks installed successfully!'));
-      console.log(chalk.gray('  - pre-commit: Basic KM checks with auto-fix'));
-      console.log(chalk.gray('  - pre-push: Comprehensive validation'));
+      process.exit(0);
 
     } catch (error) {
-      console.error(chalk.red(`❌ Error: ${error.message}`));
+      console.error(chalk.red(`Error: ${error.message}`));
       process.exit(1);
     }
   });
 
-// Utility functions
-async function findReadmeFiles() {
-  try {
-    const files = await glob('**/README.md', {
-      ignore: ['node_modules/**', '.git/**', 'docs-linter/**']
+// Display functions
+
+function displayCheckResults(result) {
+  const { file, issues, summary } = result;
+
+  console.log('\n' + chalk.bold('Results:'));
+  console.log(`  Total issues: ${summary.total}`);
+  console.log(`  ${chalk.red('Errors:')} ${summary.errors}`);
+  console.log(`  ${chalk.yellow('Warnings:')} ${summary.warnings}`);
+  console.log(`  ${chalk.blue('Info:')} ${summary.info}`);
+  console.log(`  ${chalk.green('Auto-fixable:')} ${summary.fixable}`);
+
+  if (summary.total === 0) {
+    console.log(chalk.green('\n✓ No issues found!'));
+    return;
+  }
+
+  // Group by category
+  const byCategory = {
+    structural: issues.filter(i => i.category === 'structural'),
+    formatting: issues.filter(i => i.category === 'formatting'),
+    content: issues.filter(i => i.category === 'content'),
+    technical: issues.filter(i => i.category === 'technical')
+  };
+
+  Object.entries(byCategory).forEach(([category, categoryIssues]) => {
+    if (categoryIssues.length === 0) return;
+
+    console.log(chalk.bold(`\n${category.toUpperCase()} (${categoryIssues.length}):`));
+
+    categoryIssues.slice(0, 10).forEach(issue => {
+      const icon = getSeverityIcon(issue.severity);
+      const line = issue.line ? chalk.gray(` (line ${issue.line})`) : '';
+      console.log(`  ${icon} ${issue.message}${line}`);
+      if (issue.suggestion) {
+        console.log(chalk.gray(`     → ${issue.suggestion}`));
+      }
     });
-    return files;
-  } catch (error) {
-    return ['README.md'];
-  }
-}
 
-function displayResults(results) {
-  let totalIssues = 0;
-  let totalErrors = 0;
-  let totalWarnings = 0;
-
-  results.forEach(result => {
-    const { file, issues } = result;
-
-    if (issues.length > 0) {
-      console.log(chalk.bold(`\n📄 ${file}:`));
-
-      issues.forEach(issue => {
-        const icon = issue.severity === 'error' ? chalk.red('❌') :
-                    issue.severity === 'warning' ? chalk.yellow('⚠️') :
-                    chalk.blue('ℹ️');
-
-        console.log(`  ${icon} ${issue.message}`);
-
-        if (issue.suggestion) {
-          console.log(chalk.gray(`     💡 Suggestion: ${issue.suggestion}`));
-        }
-
-        if (issue.line) {
-          console.log(chalk.gray(`     📍 Line ${issue.line}`));
-        }
-      });
-
-      totalIssues += issues.length;
-      totalErrors += issues.filter(i => i.severity === 'error').length;
-      totalWarnings += issues.filter(i => i.severity === 'warning').length;
+    if (categoryIssues.length > 10) {
+      console.log(chalk.gray(`     ... and ${categoryIssues.length - 10} more`));
     }
   });
 
-  // Summary
-  console.log(chalk.bold('\n📋 Summary:'));
-  console.log(`  Files checked: ${results.length}`);
-  console.log(`  Total issues: ${totalIssues}`);
-  if (totalErrors > 0) {
-    console.log(chalk.red(`  Errors: ${totalErrors}`));
-  }
-  if (totalWarnings > 0) {
-    console.log(chalk.yellow(`  Warnings: ${totalWarnings}`));
-  }
-
-  if (totalIssues === 0) {
-    console.log(chalk.green('🎉 All files passed KM documentation standards!'));
+  if (summary.fixable > 0) {
+    console.log(chalk.green(`\n${summary.fixable} issues can be fixed automatically with: docs-linter fix ${path.basename(file)}`));
   }
 }
 
-// Error handling
-process.on('unhandledRejection', (reason, promise) => {
-  console.error(chalk.red('Unhandled Rejection at:'), promise, chalk.red('reason:'), reason);
-  process.exit(1);
-});
+function displayFixResults(result) {
+  const { file, changes, applied } = result;
 
-// Run the program
-if (require.main === module) {
-  program.parse();
+  if (changes.length === 0) {
+    console.log(chalk.green('\n✓ No fixable issues found!'));
+    return;
+  }
+
+  console.log(chalk.bold(`\n${applied ? 'Applied' : 'Would apply'} ${changes.length} fixes:\n`));
+
+  const byType = {};
+  changes.forEach(change => {
+    byType[change.type] = (byType[change.type] || 0) + 1;
+  });
+
+  Object.entries(byType).forEach(([type, count]) => {
+    console.log(`  ${chalk.green('✓')} ${type}: ${count} fix${count > 1 ? 'es' : ''}`);
+  });
+
+  if (applied) {
+    console.log(chalk.green(`\n✓ Changes applied to ${path.basename(file)}`));
+    console.log(chalk.gray('  Review with: git diff ' + path.basename(file)));
+  }
 }
 
-module.exports = program;
+function displayFixPreview(result) {
+  const { changes } = result;
+
+  if (changes.length === 0) {
+    console.log(chalk.green('✓ No fixable issues found!'));
+    return;
+  }
+
+  console.log(chalk.bold(`Would fix ${changes.length} issues:\n`));
+
+  changes.slice(0, 15).forEach(change => {
+    console.log(`  ${chalk.yellow('~')} ${change.description}`);
+  });
+
+  if (changes.length > 15) {
+    console.log(chalk.gray(`     ... and ${changes.length - 15} more`));
+  }
+
+  console.log(chalk.gray('\nRun without --dry-run to apply these fixes'));
+}
+
+function displayValidationResults(result) {
+  const { file, score, feedback, recommendations } = result;
+
+  console.log(chalk.bold('\n📊 Quality Score:\n'));
+  console.log(`  Overall: ${getScoreColor(score.overall)}${score.overall}/100${chalk.reset()}`);
+
+  if (score.breakdown) {
+    Object.entries(score.breakdown).forEach(([key, value]) => {
+      const label = key.replace(/([A-Z])/g, ' $1').trim();
+      console.log(`  ${label}: ${value}/10`);
+    });
+  }
+
+  if (score.rationale) {
+    console.log(chalk.gray(`\n  ${score.rationale}`));
+  }
+
+  if (feedback && feedback.length > 0) {
+    console.log(chalk.bold('\nFeedback:\n'));
+    feedback.slice(0, 5).forEach(item => {
+      const icon = getSeverityIcon(item.type);
+      console.log(`  ${icon} ${item.message}`);
+    });
+
+    if (feedback.length > 5) {
+      console.log(chalk.gray(`     ... and ${feedback.length - 5} more items`));
+    }
+  }
+
+  if (recommendations && recommendations.length > 0) {
+    console.log(chalk.bold('\nRecommendations:\n'));
+    recommendations.forEach(rec => {
+      console.log(`  ${chalk.blue('•')} ${rec}`);
+    });
+  }
+
+  // Status message
+  if (score.overall >= 90) {
+    console.log(chalk.green('\n✓ Excellent - Meets KM standards'));
+  } else if (score.overall >= 75) {
+    console.log(chalk.yellow('\n⚠ Good - Minor improvements suggested'));
+  } else if (score.overall >= 60) {
+    console.log(chalk.yellow('\n⚠ Fair - Review recommendations'));
+  } else {
+    console.log(chalk.red('\n✗ Needs improvement - Significant issues found'));
+  }
+}
+
+function getSeverityIcon(severity) {
+  switch (severity) {
+    case 'error': return chalk.red('✗');
+    case 'warning': return chalk.yellow('⚠');
+    case 'info': return chalk.blue('ℹ');
+    default: return chalk.gray('·');
+  }
+}
+
+function getScoreColor(score) {
+  if (score >= 90) return chalk.green;
+  if (score >= 75) return chalk.yellow;
+  if (score >= 60) return chalk.yellow;
+  return chalk.red;
+}
+
+// Parse arguments
+program.parse(process.argv);
+
+// Show help if no command provided
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}
