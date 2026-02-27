@@ -2,7 +2,7 @@
 
 This guide explains how to configure an SAP BTP destination with proxy type `OnPremise` so SAP BTP applications can securely reach on‑premise systems (such as SAP S/4HANA) using the Cloud Connector. It includes configuration examples, validation steps, troubleshooting tips, and a concise support-ticket checklist.
 
-Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
