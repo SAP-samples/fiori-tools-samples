@@ -127,7 +127,7 @@ For more information, see the [npm update documentation](https://docs.npmjs.com/
 
 ### SAP Developer License and "As Is" Terms
 
-SAP packages such as `@sap/ux-ui5-tooling` are published under the [SAP Developer License Agreement](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=code). Under this license, the APIs and tools are:
+SAP packages such as `@sap/ux-ui5-tooling` are published under the SAP Developer License Agreement. You can view the full license text on npm: navigate to the [@sap/ux-ui5-tooling Code tab](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=code) and open the `LICENSE` file. Under this license, the APIs and tools are:
 
 * Provided free of charge
 * Licensed "as is"
