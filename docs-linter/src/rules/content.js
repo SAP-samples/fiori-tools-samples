@@ -5,6 +5,8 @@
  * based on improvements identified in KM feedback patterns.
  */
 
+import { visit } from 'unist-util-visit';
+
 class ContentRules {
   constructor() {
     this.ruleSet = [

@@ -14,7 +14,8 @@
     "check": "node src/cli.js check",
     "fix": "node src/cli.js fix",
     "validate": "node src/cli.js validate",
-    "template": "node src/cli.js template"
+    "template": "node src/cli.js template",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "chalk": "4.1.2",
