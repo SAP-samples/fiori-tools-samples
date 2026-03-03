@@ -329,10 +329,9 @@ class StructuralRules {
 
     visit(ast, 'heading', (node) => {
       if (node.children && node.children[0] && node.children[0].type === 'text') {
-        const text = node.children[0].value;
         headings.push({
           depth: node.depth,
-          text,
+          text: node.children[0].value,
           line: node.position ? node.position.start.line : null
         });
       }
