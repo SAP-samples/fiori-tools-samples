@@ -26,6 +26,6 @@ else
   echo "🔍 Linting markdown: $TARGET"
 fi
 
-markdownlint $TARGET --ignore-path .markdownlintignore $FIX_FLAG
+npx markdownlint-cli $TARGET $FIX_FLAG
 
 echo "✅ Markdown lint complete"
