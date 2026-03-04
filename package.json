@@ -2,7 +2,8 @@
   "name": "fiori-tools-samples",
   "private": true,
   "scripts": {
-    "lint:md": "markdownlint '**/*.md' --fix"
+    "lint:md": "markdownlint '**/*.md'",
+    "lint:md:fix": "npm run lint:md -- --fix"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.44.0"
