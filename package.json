@@ -1,0 +1,10 @@
+{
+  "name": "fiori-tools-samples",
+  "private": true,
+  "scripts": {
+    "lint:md": "markdownlint '**/*.md' --fix"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.44.0"
+  }
+}
