@@ -1,0 +1,25 @@
+{
+  "typos": {
+    "xerts)?": "certs)?",
+    "4.": "-",
+    "user’s": "user's",
+    "screenshots": "provide",
+    "`oauth2clientcredentials`;": "`oauth2clientcredentials`.",
+    "are": "do",
+    "information;": "information:",
+    "1.": "1:",
+    "2.": "2:",
+    "2009-2025": "2009-2026",
+    "enable": "[trace",
+    "ecc.": "ecc",
+    "btp,": "btp",
+    "provide": "required",
+    "````": "```",
+    "onpremise": "on-premise",
+    "(onpremise)": "(on-premise)",
+    "ui": "ui.",
+    "destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)": "destinations](https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations)"
+  },
+  "terminology": {},
+  "punctuation": {}
+}
