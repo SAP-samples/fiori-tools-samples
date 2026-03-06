@@ -1,0 +1,8 @@
+{
+  "name": "fiori-tools-samples",
+  "private": true,
+  "scripts": {
+    "lint:md": "npx markdownlint-cli '**/*.md'",
+    "lint:md:fix": "npm run lint:md -- --fix"
+  }
+}

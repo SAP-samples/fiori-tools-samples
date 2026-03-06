@@ -18,5 +18,8 @@
 
 [Managing npm Dependencies and Addressing Audit Issues](npm-dependency-management/README.md)
 
-### License
+[OAuth2SAMLBearerAssertion Destination Configured to Point to SAP SuccessFactors](successfactors/README.md)
+
+## License
+
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
