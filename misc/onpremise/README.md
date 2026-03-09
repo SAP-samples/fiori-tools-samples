@@ -254,7 +254,7 @@ If authentication fails, you typically see the following errors:
 
 * The SAP Gateway is active.
 * The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
-* The ICF node is active (`/sap/opu/odata`)
+* The ICF node is active (`/sap/opu/odata`).
 
 ##### CSRF Token Handling
 
