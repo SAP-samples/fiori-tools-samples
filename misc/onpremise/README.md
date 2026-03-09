@@ -231,7 +231,7 @@ You can review the generated `curl-abap-srv-output.txt` file to check for any er
 
 This request performs several important technical checks in a single call:
 
-##### Destination resolution
+##### Destination Resolution
 
 `https://<destination-name>.dest` verifies that:
 
