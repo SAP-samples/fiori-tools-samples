@@ -252,7 +252,7 @@ If authentication fails, you typically see the following errors:
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
 
-* SAP Gateway is active
+* The SAP Gateway is active.
 * The OData service is registered and active (`/IWFND/MAINT_SERVICE`)
 * The ICF node is active (`/sap/opu/odata`)
 
