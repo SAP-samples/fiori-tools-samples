@@ -247,6 +247,8 @@ For a step-by-step walkthrough, see the tutorial group [Develop an SAP Fiori App
 
 > Tutorial last checked for feasibility with SAP S/4HANA Cloud Release 2508.
 
+When using SAP Fiori tools, refer to step 8 [Configure SAP Fiori launchpad settings and generate](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html) of the tutorial.
+
 ## Related Links
 
 Integrating SAP Business Application Studio - [Documentation](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html)
