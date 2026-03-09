@@ -245,7 +245,7 @@ Confirms that the configured authentication method such as Basic Authentication,
 
 If authentication fails, you will typically see:
 
-* `401 Unauthorized` → invalid credentials or trust not established
+- 401 Unauthorized: Invalid credentials or trust not established
 * `403 Forbidden` → authenticated but missing backend authorization
 
 ##### Backend reachability
