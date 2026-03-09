@@ -6,9 +6,9 @@
       "message": "Consider using title case for main headings"
     },
     "sentenceCase": {
-      "applyTo": ["h3", "h4", "h5", "h6"],
+      "applyTo": ["h4", "h5", "h6"],
       "severity": "info",
-      "message": "Use sentence case for H3+ headings"
+      "message": "Use sentence case for H4+ headings"
     },
     "noTrailingQuestionMark": {
       "severity": "warning",
