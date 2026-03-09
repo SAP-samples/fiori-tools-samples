@@ -271,7 +271,7 @@ If authentication fails, you will typically see:
 
 This is useful when testing service-to-service flows where interactive SSO is not expected.
 
-### Deployment additional resources
+### Deployment Additional Resources
 
 - [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
 
