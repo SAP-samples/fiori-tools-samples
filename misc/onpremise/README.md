@@ -10,7 +10,7 @@ Table of Contents
 - [Flow Diagram](#flow-diagram)
 - [Configuration Steps](#configuration-steps)
   - [Cloud Connector Configuration](#cloud-connector-configuration)
-  - [SAP BTP destination](#sap-btp-destination)
+  - [SAP BTP Destination](#sap-btp-destination)
 - [Validate Connectivity](#validate-connectivity)
 - [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
