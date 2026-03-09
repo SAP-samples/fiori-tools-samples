@@ -133,6 +133,38 @@ The AppRouter handles token retrieval automatically when the destination is corr
 
 When raising a support ticket or sharing your configuration for review, attach a screenshot showing the code structure you used to consume the destination (either the `find destination` API call or the AppRouter configuration). This allows support teams to verify that the destination is being consumed correctly.
 
+## Troubleshooting: 401 Unauthorized
+
+A `401 Unauthorized` response can occur for different reasons. The error message in the response body identifies the root cause.
+
+### Login Failed — Invalid User
+
+**Error message**: `Unable to authenticate the client (Login failed - invalid user)`
+
+This error means the user performing the request does not have the required permissions in SuccessFactors. Check the following:
+
+1. Does your SuccessFactors instance and your SAP BTP subaccount share the same SAP Cloud Identity Services (IAS) tenant for authentication?
+2. Is the Subject Name Identifier (SNI) configured with the same value for both SuccessFactors and SAP BTP in IAS?
+3. Does the user executing the request have the permissions required to call the SuccessFactors API?
+
+### Invalid User UUID
+
+**Error message**: `Invalid useruuid`
+
+This error means the UUID in the JWT token does not match the UUID stored in the SuccessFactors system.
+
+To resolve this, add the following additional property to your destination:
+
+| Key | Value |
+| --- | --- |
+| `skipUserUuidInSAMLAttributes` | `true` |
+
+#### About `skipUserUuidInSAMLAttributes`
+
+When set to `true`, any SAML assertion attribute named `user_uuid` will not be included in the resulting SAML assertion XML, even if such a value was found in the JWT specifying the user's identity.
+
+For more information, see [SAML Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/saml-assertion-authentication) in the SAP BTP Connectivity documentation.
+
 ## Validating the Destination Using Postman
 
 Before integrating the destination into your application, you can use [Postman](https://www.postman.com/) to verify that the OAuth2 token exchange and the SuccessFactors API call work end-to-end. This is a useful intermediate step to isolate whether an issue lies in the destination configuration itself or in your application's consumption logic.
@@ -184,7 +216,7 @@ A successful `200 OK` response confirms that:
 | Response | Likely Cause |
 | --- | --- |
 | `200 OK` | Configuration is correct. The issue is in how the destination is consumed by your application. |
-| `401 Unauthorized` | The API Key or certificate is incorrect. Repeat [Step 2](#step-2-register-the-oauth-client-in-sap-successfactors) and [Step 3](#step-3-create-the-sap-btp-destination). |
+| `401 Unauthorized` | The API Key or certificate is incorrect, the user lacks permissions, or there is a UUID mismatch. Repeat [Step 2](#step-2-register-the-oauth-client-in-sap-successfactors) and [Step 3](#step-3-create-the-sap-btp-destination), and see [Troubleshooting: 401 Unauthorized](#troubleshooting-401-unauthorized) for specific error messages and fixes. |
 | `500 Internal Server Error` | SuccessFactors cannot process the request. Verify the `company_id`, `Audience`, `AuthnContextClassRef`, and `nameIdFormat` values in the destination. |
 
 ## Sample Destination Configuration
