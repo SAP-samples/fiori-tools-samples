@@ -264,7 +264,7 @@ If authentication fails, you will typically see:
 * Issue a valid X-CSRF-Token.
 * Return any required session cookies
 
-##### SAML handling control
+##### SAML Handling Control
 
 `?saml2=disabled` ensures the request does not trigger browser-based SAML redirects.
 
