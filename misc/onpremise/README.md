@@ -261,7 +261,7 @@ If authentication fails, you will typically see:
 `-H "X-CSRF-Token: Fetch"` forces the backend to:
 
 * Authenticate the request.
-* Issue a valid X-CSRF-Token
+* Issue a valid X-CSRF-Token.
 * Return any required session cookies
 
 ##### SAML handling control
