@@ -9,7 +9,7 @@ Table of Contents
 - [How It Works](#how-it-works)
 - [Flow Diagram](#flow-diagram)
 - [Configuration Steps](#configuration-steps)
-  - [Cloud Connector configuration](#cloud-connector-configuration)
+  - [Cloud Connector Configuration](#cloud-connector-configuration)
   - [SAP BTP destination](#sap-btp-destination)
 - [Validate Connectivity](#validate-connectivity)
 - [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
