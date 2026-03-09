@@ -256,7 +256,7 @@ If authentication fails, you typically see the following errors:
 * The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
 * The ICF node is active (`/sap/opu/odata`)
 
-##### CSRF token handling
+##### CSRF Token Handling
 
 `-H "X-CSRF-Token: Fetch"` forces the backend to:
 
