@@ -9,8 +9,8 @@ Table of Contents
 - [How It Works](#how-it-works)
 - [Flow Diagram](#flow-diagram)
 - [Configuration Steps](#configuration-steps)
-  - [Cloud Connector configuration](#cloud-connector-configuration)
-  - [SAP BTP destination](#sap-btp-destination)
+  - [Cloud Connector Configuration](#cloud-connector-configuration)
+  - [SAP BTP Destination](#sap-btp-destination)
 - [Validate Connectivity](#validate-connectivity)
 - [Connectivity Issues & Quick Checks](#connectivity-issues--quick-checks)
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
@@ -84,11 +84,11 @@ sequenceDiagram
 
 ## Configuration Steps
 
-### Cloud Connector configuration
+### Cloud Connector Configuration
 
 For more information about how to install and configure Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
-### SAP BTP destination
+### SAP BTP Destination
 
 You can import the [Cloud Connector destination](./cloudconnector) example into the SAP BTP cockpit. Below is an example of destination properties that you can use the SAP BTP cockpit to create and update:
 
