@@ -87,7 +87,7 @@ sequenceDiagram
 
 For more information about how to install and configure Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
-### SAP BTP destination
+### SAP BTP Destination
 
 You can import the [Cloud Connector destination](./cloudconnector) example into the SAP BTP cockpit. Below is an example of destination properties that you can use the SAP BTP cockpit to create and update:
 
