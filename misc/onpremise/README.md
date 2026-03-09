@@ -57,6 +57,7 @@ Security benefits include:
 You create a destination in your SAP BTP subaccount that points to a Cloud Connector mapping. At runtime, your app requests the destination configuration from the destination service. If the destination uses the `OnPremise` proxy type, the request is routed through the Connectivity Service and the Cloud Connector to the on‑premise back-end.
 
 ## Flow Diagram
+
 (If your renderer supports Mermaid, the code below renders a sequence diagram showing SAP Business Application Studio and SAP BTP -> Destination Service -> Connectivity Service -> Back End).
 
 ```mermaid
@@ -109,13 +110,13 @@ HTML5.Timeout=60000
 
 Properties:
 
-- `WebIDEUsage=odata_abap` — Exposes OData service catalogs to SAP Business Application Studio.
-- `WebIDEEnabled=true` — Enables the destination for SAP Business Application Studio.
-- `HTML5.Timeout` — The timeout duration in milliseconds. Example: 60000.
-- `HTML5.DynamicDestination=true` — Enables the destination to be dynamically created at runtime.
-- `Authentication=PrincipalPropagation` — Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
-- `CloudConnectorLocationId` — The Cloud Connector location configured in the subaccount.
-- `URL` — The internal host and port mapped through the Cloud Connector. Update this property to match your virtual host mapping.
+- `WebIDEUsage=odata_abap`: Exposes OData service catalogs to SAP Business Application Studio.
+- `WebIDEEnabled=true`: Enables the destination for SAP Business Application Studio.
+- `HTML5.Timeout`: The timeout duration in milliseconds. Example: 60000.
+- `HTML5.DynamicDestination=true`: Enables the destination to be dynamically created at runtime.
+- `Authentication=PrincipalPropagation`: Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
+- `CloudConnectorLocationId`: The Cloud Connector location configured in the subaccount.
+- `URL`: The internal host and port mapped through the Cloud Connector. Update this property to match your virtual host mapping.
 
 ## Validate Connectivity
 
@@ -169,15 +170,15 @@ If you need to raise a support ticket (component `BC-MID-SCC` for Cloud Connecto
 
 The required artifacts, which should be compiled into a single zip file and attached to the support ticket, are:
 
-- A screenshot of the destination in the SAP BTP cockpit (show all properties).
-- [Environment Check report](../destinations/README.md#environment-check).
+- A screenshot of the destination in the SAP BTP cockpit (show all properties)
+- [Environment Check report](../destinations/README.md#environment-check)
 - From your Cloud Connector:
   - Subaccount Overview: Cloud Connector -> Subaccount Overview -> Click Subaccount.
   - Virtual Host Mapping: Cloud Connector -> Cloud to On-Premise -> Select Virtual Host Mapping as defined in the SAP BTP destination.
   - Access Control: Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Actions -> Edit (pencil icon).
   - Access Control: Cloud Connector -> Cloud to On-Premise -> Access Control -> Select Mapping -> Ensure "Access Policy" is set to "Path" and All Sub-Paths and URL Path is "/". Note this may differ depending on security concerns.
   - Check Availability: Cloud Connector -> Cloud to On-Premise -> Access Control -> Actions -> Select Mapping -> Check Availability.
-  - Collected logs from trace logging (see list above).
+  - Collected logs from trace logging (see list above)
 - Output from ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
 
 Optional but helpful:
@@ -196,7 +197,7 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 ## Deployment Issues
 
-Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
+Before addressing any issues with deployment, ensure connectivity works as per the [Validate Connectivity](#validate-connectivity) section.
 
 ### Deployment prerequisites
 
@@ -236,24 +237,24 @@ This request performs several important technical checks in a single call:
 
 `https://<destination-name>.dest` verifies that:
 
-- The SAP BTP destination exists.
-- The destination is bound to your application (if applicable).
-- Connectivity using Cloud Connector (for On-Premise systems) is working.
+- The SAP BTP destination exists
+- The destination is bound to your application (if applicable)
+- Connectivity using Cloud Connector (for On-Premise systems) works
 
 ##### Authentication flow
 
-Confirms that the configured authentication method (BasicAuthentication, SAML Assertion, OAuth2, etc.) is functioning.
+Confirms that the configured authentication method such as Basic Authentication, SAML Assertion or OAuth2 works
 
-If authentication fails, you will typically see:
+If authentication fails, you typically see the following errors:
 
-- `401 Unauthorized` → invalid credentials or trust not established.
-- `403 Forbidden` → authenticated but missing back-end authorization.
+- 401 Unauthorized: Invalid credentials or trust not established
+- 403 Forbidden: Authenticated but missing back-end authorization
 
 ##### Back-end reachability
 
-`/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
+`/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates the following:
 
-- SAP Gateway is active.
+- The SAP Gateway is active.
 - The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
 - The ICF node is active (`/sap/opu/odata`).
 
@@ -271,7 +272,7 @@ If authentication fails, you will typically see:
 
 This is useful when testing service-to-service flows where interactive SSO is not expected.
 
-### Deployment additional resources
+### Additional resources for deployment
 
 - [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
 
