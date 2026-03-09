@@ -250,7 +250,7 @@ If authentication fails, you typically see the following errors:
 
 ##### Back-End Reachability
 
-`/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
+`/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates the following:
 
 * The SAP Gateway is active.
 * The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
