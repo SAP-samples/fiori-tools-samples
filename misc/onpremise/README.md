@@ -16,7 +16,7 @@ Table of Contents
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
 - [Checklist for Support Tickets](#checklist-for-support-tickets)
 - [Deployment Issues](#deployment-issues)
-  - [Unknown file type during upload](#unknown-file-type-during-upload)
+  - [Unknown File Type During Upload](#unknown-file-type-during-upload)
 - [Additional Resources](#additional-resources)
 - [Known Issues](#known-issues)
 - [Principal Propagation](#principal-propagation)
@@ -109,13 +109,13 @@ HTML5.Timeout=60000
 
 Properties:
 
-- `WebIDEUsage=odata_abap` — Exposes OData service catalogs to SAP Business Application Studio.
-- `WebIDEEnabled=true` — Enables the destination for SAP Business Application Studio.
-- `HTML5.Timeout` — The timeout duration in milliseconds. Example: 60000.
-- `HTML5.DynamicDestination=true` — Enables the destination to be dynamically created at runtime.
-- `Authentication=PrincipalPropagation` — Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
-- `CloudConnectorLocationId` — The Cloud Connector location configured in the subaccount.
-- `URL` — The internal host and port mapped through the Cloud Connector. Update this property to match your virtual host mapping.
+- `WebIDEUsage=odata_abap`: Exposes OData service catalogs to SAP Business Application Studio.
+- `WebIDEEnabled=true`: Enables the destination for SAP Business Application Studio.
+- `HTML5.Timeout`: The timeout duration in milliseconds. Example: 60000.
+- `HTML5.DynamicDestination=true`: Enables the destination to be dynamically created at runtime.
+- `Authentication=PrincipalPropagation`: Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
+- `CloudConnectorLocationId`: The Cloud Connector location configured in the subaccount.
+- `URL`: The internal host and port mapped through the Cloud Connector. Update this property to match your virtual host mapping.
 
 ## Validate Connectivity
 
@@ -246,8 +246,8 @@ Confirms that the configured authentication method (BasicAuthentication, SAML As
 
 If authentication fails, you will typically see:
 
-- `401 Unauthorized` → invalid credentials or trust not established.
-- `403 Forbidden` → authenticated but missing back-end authorization.
+- `401 Unauthorized: invalid credentials or trust not established.
+- `403 Forbidden: authenticated but missing back-end authorization.
 
 ##### Back-end reachability
 
@@ -275,7 +275,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
 
 - [Build and Deploy your SAPUI5 application using SAP Business Application Studio to ABAP repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
 
-### Unknown file type during upload
+### Unknown File Type During Upload
 
 **Error**: `Not uploaded as binary/text type is unknown: Adjust content of files.`
 
@@ -291,8 +291,8 @@ This is useful when testing service-to-service flows where interactive SSO is no
 
 2. Create the configuration files if they do not already exist:
 
-   - `.Ui5RepositoryTextFiles` — for text-based file types
-   - `.Ui5RepositoryBinaryFiles` — for binary asset types
+   - `.Ui5RepositoryTextFiles`: for text-based file types
+   - `.Ui5RepositoryBinaryFiles`: for binary asset types
 
 3. Add the file patterns for the unknown extensions. For example:
 
