@@ -239,6 +239,14 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
 3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests are failing with HTTP 500, but they are not reaching your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
+## SAP Fiori Launchpad
+
+Since application availability in the Fiori Launchpad and its authorization are controlled through Business Catalogs, you'll learn how to extend an existing catalog to include your newly created app.
+
+For a step-by-step walkthrough, see the tutorial group [Develop an SAP Fiori App for SAP S/4HANA Cloud with ABAP using SAP Business Application Studio](https://developers.sap.com/group.abap-custom-ui-s4hana-cloud.html).
+
+> Tutorial last checked for feasibility with SAP S/4HANA Cloud Release 2508.
+
 ## Related Links
 
 Integrating SAP Business Application Studio - [Documentation](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html)
