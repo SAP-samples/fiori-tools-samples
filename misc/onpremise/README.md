@@ -239,7 +239,7 @@ This request performs several important technical checks in a single call:
 * The destination is bound to your application (if applicable)
 * Connectivity using Cloud Connector (for On-Premise systems) works
 
-##### Authentication flow
+##### Authentication Flow
 
 Confirms that the configured authentication method such as Basic Authentication, SAML Assertion or OAuth2 works
 
