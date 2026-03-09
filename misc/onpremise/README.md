@@ -113,7 +113,7 @@ Properties:
 * `HTML5.Timeout`: The timeout duration in milliseconds. Example: 60000.
 * `HTML5.DynamicDestination=true`: Enables the destination to be dynamically created at runtime.
 * `Authentication=PrincipalPropagation`: Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
-* `CloudConnectorLocationId` — The Cloud Connector location configured in the subaccount.
+* `CloudConnectorLocationId`: The Cloud Connector location configured in the subaccount.
 * `URL` — The internal host and port mapped through the Cloud Connector. Update this property to match your virtual host mapping.
 
 ## Validate Connectivity
