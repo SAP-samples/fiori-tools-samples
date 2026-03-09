@@ -246,8 +246,8 @@ Confirms that the configured authentication method (BasicAuthentication, SAML As
 
 If authentication fails, you will typically see:
 
-- `401 Unauthorized: invalid credentials or trust not established.
-- `403 Forbidden: authenticated but missing back-end authorization.
+- 401 Unauthorized: Invalid credentials or trust not established
+- 403 Forbidden: Authenticated but missing back-end authorization
 
 ##### Back-end reachability
 
