@@ -38,6 +38,16 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 2. Unless you have a specific technical reason, the `nameIdFormat` should be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdP's to your SAB BTP system, see Related Links.
 3. The SAML `nameIdFormat` specification (both 1.1 and 2.0) does not mandate any case normalization for NameID values because it treats the NameID as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, including case sensitivity.
 
+## Basic Authentication
+
+When integrating with SAP S/4HANA Public Cloud, Basic Authentication is generally not recommended because the platform is designed to use secure identity federation and token-based authentication mechanisms.
+
+This approach provides several benefits:
+
+1. Avoids storing credentials in the destination configuration
+1. Aligns with the security model used by SAP S/4HANA Public Cloud
+1. Allows authentication to be managed through trust configuration and tokens
+
 ## Authorization Requirements
 
 Different authorizations are required for various operations in SAP S/4HANA Cloud, such as:
