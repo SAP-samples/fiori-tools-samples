@@ -258,7 +258,7 @@ If authentication fails, you typically see the following errors:
 
 ##### CSRF Token Handling
 
-`-H "X-CSRF-Token: Fetch"` forces the backend to:
+`-H "X-CSRF-Token: Fetch"` forces the back-end to:
 
 * Authenticate the request.
 * Issue a valid X-CSRF-Token.
