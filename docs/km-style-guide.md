@@ -42,6 +42,8 @@ Follow this standard order based on quality examples:
 - **Subsections (H3+)**: Use sentence case
   - ✅ "Common causes for deployment errors"
   - ❌ "Common Causes For Deployment Errors"
+- **Table of Contents label**: Use title case — "Table of Contents" not "Table of contents"
+- **Headings must not end with a question mark** — ✅ "What this test validates", ❌ "What This Test Validates?"
 
 ### Examples from KM Feedback
 | Before | After | Reason |
@@ -53,9 +55,10 @@ Follow this standard order based on quality examples:
 ## Formatting Standards
 
 ### Lists
-- **Consistency**: Use dashes (`-`) consistently throughout the document
+- **Consistency**: Use dashes (`-`) consistently throughout the document, including in the Table of Contents
 - **Spacing**: Single space after marker
 - **Parallel structure**: Keep list items grammatically consistent
+- **Punctuation**: Use periods after complete sentences in list items
 
 ### Links
 - **Context phrases**: Use "see" instead of "refer to"
@@ -96,6 +99,10 @@ Follow this standard order based on quality examples:
 | around (preposition) | about | "For more information about" |
 | 4. | - | Use dashes for list items, not numbers |
 | clear reproduction steps and expected versus actual behavior | Clear reproduction steps and expected versus actual behavior. | Proper sentence structure |
+| via | using | "Connectivity using Cloud Connector" not "via Cloud Connector" |
+| backend / back end | back-end | Always hyphenated when used as modifier |
+| HTTP 401/403 | HTTP 401 and HTTP 403 | Spell out "and" instead of using a slash for error code pairs |
+| Deployment Additional Resources | Additional Resources for Deployment | Noun-first headings are clearer — put the subject before the qualifier |
 
 ## Technical Accuracy Standards
 

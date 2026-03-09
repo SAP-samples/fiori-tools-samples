@@ -50,8 +50,12 @@ docs-linter validate README.md --km-standards
 - [ ] **Consistent terminology**:
   - [ ] "on-premise" (not "onpremise" or "on premise")
   - [ ] "SAP BTP" (consistent throughout)
-  - [ ] "Cloud Connector" (properly capitalized)
+  - [ ] "Cloud Connector" (properly capitalised)
   - [ ] "see" vs "refer to" (prefer "see")
+  - [ ] "about" vs "around" (prefer "about")
+  - [ ] "using" vs "via" (prefer "using", e.g. "using Cloud Connector")
+  - [ ] "back-end" (hyphenated, not "backend" or "back end")
+  - [ ] HTTP error code pairs use "and" not "/" (e.g. "HTTP 401 and HTTP 403")
 
 ### 🔧 Technical Accuracy
 
@@ -73,10 +77,13 @@ docs-linter validate README.md --km-standards
 - [ ] **Heading capitalization**:
   - [ ] Title case for H1, H2 (e.g., "Checklist for Support Tickets")
   - [ ] Sentence case for H3+ (e.g., "Common deployment issues")
+  - [ ] Table of Contents label uses title case: "Table of Contents"
+  - [ ] No headings end with a question mark
 - [ ] **List formatting**:
-  - [ ] Consistent bullet markers (prefer dashes `-`)
+  - [ ] Consistent bullet markers throughout, including the Table of Contents (prefer dashes `-`)
   - [ ] Proper spacing after markers
   - [ ] Parallel sentence structure
+  - [ ] Periods after complete sentences in list items
 - [ ] **Link formatting**:
   - [ ] Descriptive link text (not bare URLs)
   - [ ] Proper markdown syntax `[text](url)`

@@ -5,23 +5,40 @@
       "severity": "info",
       "message": "Consider using title case for main headings"
     },
+    "sentenceCase": {
+      "applyTo": ["h3", "h4", "h5", "h6"],
+      "severity": "info",
+      "message": "Use sentence case for H3+ headings"
+    },
+    "noTrailingQuestionMark": {
+      "severity": "warning",
+      "message": "Headings must not end with a question mark"
+    },
+    "tableOfContentsLabel": {
+      "correct": "Table of Contents",
+      "severity": "info",
+      "message": "Use 'Table of Contents' (title case) as the ToC label"
+    },
     "corrections": {
       "Support ticket checklist": "Checklist for Support Tickets",
       "Common causes for deployment errors": "Common Causes for Deployment Errors",
-      "Screenshots Required": "Provide Screenshots"
+      "Screenshots Required": "Provide Screenshots",
+      "Deployment Additional Resources": "Additional Resources for Deployment"
     }
   },
   "lists": {
     "preferredMarker": "-",
+    "applyToTableOfContents": true,
     "consistency": {
       "severity": "warning",
-      "message": "Use consistent bullet markers throughout the document"
+      "message": "Use consistent bullet markers throughout the document, including the Table of Contents"
     }
   },
   "links": {
     "contextImprovements": {
       "For more information around": "For more information about",
-      "refer to this": "see this"
+      "refer to this": "see this",
+      " via ": " using "
     },
     "preferHttps": true,
     "descriptiveText": {
@@ -43,6 +60,18 @@
     "noPrompts": {
       "severity": "info",
       "message": "Remove $ prompt from commands for better copy-paste experience"
+    }
+  },
+  "terminology": {
+    "replacements": {
+      "backend": "back-end",
+      "back end": "back-end",
+      "via Cloud Connector": "using Cloud Connector"
+    },
+    "errorCodePairs": {
+      "pattern": "HTTP \\d+/\\d+",
+      "severity": "info",
+      "message": "Spell out 'and' between HTTP error codes instead of using a slash (e.g. 'HTTP 401 and HTTP 403')"
     }
   },
   "spacing": {
