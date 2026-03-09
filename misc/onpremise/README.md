@@ -248,7 +248,7 @@ If authentication fails, you typically see the following errors:
 - 401 Unauthorized: Invalid credentials or trust not established
 * `403 Forbidden` → authenticated but missing backend authorization
 
-##### Backend reachability
+##### Back-End Reachability
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
 
