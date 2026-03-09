@@ -83,7 +83,7 @@ sequenceDiagram
 
 ## Configuration Steps
 
-### Cloud Connector configuration
+### Cloud Connector Configuration
 
 For more information about how to install and configure Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
