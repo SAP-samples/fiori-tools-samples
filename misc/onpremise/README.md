@@ -109,7 +109,7 @@ HTML5.Timeout=60000
 Properties:
 
 * `WebIDEUsage=odata_abap`: Exposes OData service catalogs to SAP Business Application Studio.
-* `WebIDEEnabled=true` — Enables the destination for SAP Business Application Studio.
+* `WebIDEEnabled=true`: Enables the destination for SAP Business Application Studio.
 * `HTML5.Timeout` — The timeout duration in milliseconds. Example: 60000.
 * `HTML5.DynamicDestination=true` — Enables the destination to be dynamically created at runtime.
 * `Authentication=PrincipalPropagation` — Forwards the end‑user identity to the back end. This is recommended for productive landscapes.
