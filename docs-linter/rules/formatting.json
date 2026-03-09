@@ -66,12 +66,26 @@
     "replacements": {
       "backend": "back-end",
       "back end": "back-end",
-      "via Cloud Connector": "using Cloud Connector"
+      "via Cloud Connector": "using Cloud Connector",
+      " is working": " works",
+      " is functioning": " works"
     },
     "errorCodePairs": {
       "pattern": "HTTP \\d+/\\d+",
       "severity": "info",
       "message": "Spell out 'and' between HTTP error codes instead of using a slash (e.g. 'HTTP 401 and HTTP 403')"
+    }
+  },
+  "listItems": {
+    "emDashSeparator": {
+      "pattern": "^[*-]\\s+`.+`\\s+[—–]\\s+",
+      "severity": "warning",
+      "message": "Use a colon instead of an em dash to separate a term from its description (e.g. '`key`: description')"
+    },
+    "arrowSeparator": {
+      "pattern": "^[*-]\\s+.+\\s+→\\s+",
+      "severity": "warning",
+      "message": "Use a colon instead of an arrow to separate a term from its description (e.g. '- term: description')"
     }
   },
   "spacing": {
