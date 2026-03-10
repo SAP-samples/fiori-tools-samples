@@ -204,7 +204,7 @@ Before addressing any issues with deployment, ensure connectivity works as per t
 - Ensure that you have the required `S_DEVELOP` authorizations.
 - For more information about `/UI5/ABAP_REPOSITORY_SRV` and fulfilling these prerequisites, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
-### Debugging deployment errors (HTTP 401 and HTTP 403)
+### Debugging Deployment Errors (HTTP 401 and HTTP 403)
 
 - Review the ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`, where applicable. These logs indicate missing authorizations and other local issues.
 - For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
