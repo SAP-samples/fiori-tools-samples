@@ -8,8 +8,36 @@ on:
       - master
 
 jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs-only: ${{ steps.filter.outputs.docs-only }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed file types
+        id: filter
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          NON_MD=$(echo "$CHANGED_FILES" | grep -v '\.md$' || true)
+
+          if [[ -z "$NON_MD" ]]; then
+            echo "docs-only=true" >> $GITHUB_OUTPUT
+            echo "ℹ️ Only markdown files changed — skipping code validation steps"
+          else
+            echo "docs-only=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ Non-markdown files detected — running full validation"
+          fi
+
   validate-pr:
     runs-on: ubuntu-latest
+    needs: detect-changes
 
     steps:
       - name: Checkout code
@@ -99,6 +127,7 @@ jobs:
           echo "✅ Commit message validation complete"
 
       - name: Check PR size
+        if: needs.detect-changes.outputs.docs-only == 'false'
         run: |
           PR_NUMBER="${{ github.event.pull_request.number }}"
 
@@ -149,5 +178,6 @@ jobs:
           echo "- **Source Branch:** ${{ github.head_ref }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Target Branch:** ${{ github.base_ref }}" >> $GITHUB_STEP_SUMMARY
           echo "- **PR Number:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Docs Only:** ${{ needs.detect-changes.outputs.docs-only }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Check the logs above for any warnings or recommendations." >> $GITHUB_STEP_SUMMARY
