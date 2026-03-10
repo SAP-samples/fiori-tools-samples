@@ -281,7 +281,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
 
 **Root cause**: The ABAP UI5 repository validates file extensions during upload. Files with extensions not listed in `.Ui5RepositoryTextFiles` or `.Ui5RepositoryBinaryFiles` are rejected with this error.
 
-**Solution**: Add the unknown file extensions to the appropriate repository configuration file in your project.
+**Solution**: Add the unknown file extensions to the appropriate configuration file for the repository in your project.
 
 1. Navigate to the `webapp` folder of your project:
 
