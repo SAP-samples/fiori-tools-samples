@@ -238,7 +238,7 @@ This request performs several important technical checks in a single call:
 
 - The SAP BTP destination exists.
 - The destination is bound to your application (if applicable).
-- Connectivity using Cloud Connector (for On-Premise systems) is working.
+- Connectivity using Cloud Connector (for On-Premise systems) works.
 
 ##### Authentication flow
 
