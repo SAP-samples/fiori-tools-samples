@@ -318,7 +318,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
    npm run deploy
    ```
 
-   The build packages both configuration files into `archive.zip`, allowing the ABAP back-end to classify the previously unknown file types. The deployment then completes without the "unknown file type" error.
+   The build packages both configuration files into an `archive.zip` file, which allows the ABAP back-end to classify the previously unknown file types. The deployment then proceeds without the "unknown file type" error.
 
 For more information, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
