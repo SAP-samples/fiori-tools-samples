@@ -242,7 +242,7 @@ This request performs several important technical checks in a single call:
 
 ##### Authentication flow
 
-Confirms that the configured authentication method (BasicAuthentication, SAML Assertion, OAuth2, etc.) is functioning.
+Confirms that the configured authentication method such as BasicAuthentication, SAML Assertion, or OAuth2 works
 
 If authentication fails, you typically see:
 
