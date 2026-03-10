@@ -279,7 +279,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
 
 **Error**: `Not uploaded as binary/text type is unknown: Adjust content of files.`
 
-**Root cause**: The ABAP UI5 repository validates file extensions during upload. Files with extensions not listed in `.Ui5RepositoryTextFiles` or `.Ui5RepositoryBinaryFiles` (for example, `.ts`, `.eot`, `.yaml`, `.map`) are rejected with this error.
+**Root cause**: The ABAP UI5 repository validates file extensions during upload. Files with extensions not listed in `.Ui5RepositoryTextFiles` or `.Ui5RepositoryBinaryFiles` are rejected with this error.
 
 **Solution**: Add the unknown file extensions to the appropriate repository configuration file in your project.
 
