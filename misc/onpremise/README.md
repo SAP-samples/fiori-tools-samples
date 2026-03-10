@@ -228,7 +228,7 @@ curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu
 
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
 
-#### What this test validates
+#### What This Test Validates
 
 This request performs several important technical checks in a single call:
 
