@@ -244,7 +244,7 @@ This request performs several important technical checks in a single call:
 
 Confirms that the configured authentication method (BasicAuthentication, SAML Assertion, OAuth2, etc.) is functioning.
 
-If authentication fails, you will typically see:
+If authentication fails, you typically see:
 
 - 401 Unauthorized: Invalid credentials or trust not established
 - 403 Forbidden: Authenticated but missing back-end authorization
