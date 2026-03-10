@@ -277,7 +277,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
 
 ### Unknown File Type During Upload
 
-**Error**: `Not uploaded as binary/text type is unknown: Adjust content of files.`
+**Error**: "Not uploaded as binary/text type is unknown: Adjust content of files."
 
 **Root cause**: The ABAP UI5 repository validates file extensions during upload. Files with extensions not listed in `.Ui5RepositoryTextFiles` or `.Ui5RepositoryBinaryFiles` are rejected with this error.
 
