@@ -12,6 +12,10 @@ on:
     # Run weekly on Mondays at 9:00 AM UTC
     - cron: '0 9 * * 1'
 
+concurrency:
+  group: markdown-link-check-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   markdown-link-check:
     runs-on: ubuntu-latest

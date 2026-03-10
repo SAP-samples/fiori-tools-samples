@@ -11,6 +11,10 @@ on:
       - 'training-data/**/*.json'
   workflow_dispatch:  # Allow manual triggering
 
+concurrency:
+  group: link-checker-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   link-check:
     runs-on: ubuntu-latest
