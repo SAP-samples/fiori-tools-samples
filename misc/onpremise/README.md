@@ -198,7 +198,7 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 Before addressing any issues with deployment, ensure connectivity works as per the [Validate Connectivity](#validate-connectivity) section.
 
-### Deployment prerequisites
+### Deployment Prerequisites
 
 - Ensure that `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
 - Ensure that you have the required `S_DEVELOP` authorizations.
