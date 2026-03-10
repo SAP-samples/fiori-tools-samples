@@ -196,7 +196,7 @@ You can review the generated `curl-catalog-output.txt` file to check for any err
 
 ## Deployment Issues
 
-Before addressing any issues with deployment, ensure connectivity is working as per the [Validate Connectivity](#validate-connectivity) section.
+Before addressing any issues with deployment, ensure connectivity works as per the [Validate Connectivity](#validate-connectivity) section.
 
 ### Deployment prerequisites
 
