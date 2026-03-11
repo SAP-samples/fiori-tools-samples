@@ -2,6 +2,8 @@
 
 ## Prerequisites
 
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system should be carried out with the authorization of your IT support team.
+
 1. Steps 1, 2, and Step 3 from <https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html> are completed.
 2. You have administrative access to your SAP S/4HANA Cloud system so you can configure and debug connectivity issues.
 3. You have established trust and federation between SAP Authorization and Trust Management Service and SAP Cloud Identity Services (for example, OpenID Connect). For more information, see [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).

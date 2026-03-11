@@ -12,6 +12,8 @@ When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/c
 
 ## Prerequisites
 
+> **Important**: Any scripts or commands in this guide that modify `package.json`, dependency configurations, or project files may change the behaviour of your application. Ensure all such changes are carried out with the authorization of your IT support team where applicable. Always ensure your HTML5 application source files, including `package.json` and lock files, are under source control before making changes.
+
 * Basic understanding of npm and package.json structure
 * Familiarity with SAP Fiori development tooling
 * Version control system (Git recommended) for tracking changes
