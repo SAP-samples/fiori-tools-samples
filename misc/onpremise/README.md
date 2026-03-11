@@ -2,7 +2,7 @@
 
 This guide explains how to configure an SAP BTP destination with proxy type `OnPremise` so SAP BTP applications can securely reach on‑premise systems (such as SAP S/4HANA) using the Cloud Connector. It includes configuration examples, validation steps, troubleshooting tips, and a concise support-ticket checklist.
 
-Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
@@ -24,10 +24,9 @@ Table of Contents
 
 ## Overview
 
-An SAP BTP destination with `ProxyType=OnPremise` lets your cloud apps connect to an on‑premise systems using the Cloud Connector as a secure tunnel.
+An SAP BTP destination with `ProxyType=OnPremise` lets your cloud apps connect to on‑premise systems using the Cloud Connector as a secure tunnel.
 
 Use cases include:
-
 - Accessing on‑premise SAP systems such as SAP S/4HANA and SAP ECC.
 - Connecting to internal databases or APIs behind a firewall.
 - Consuming APIs that are not internet‑facing.
@@ -84,7 +83,7 @@ sequenceDiagram
 
 ## Configuration Steps
 
-### Cloud Connector Configuration
+#### Cloud Connector Configuration
 
 For more information about how to install and configure Cloud Connector, see [Installation and Configuration of SAP Cloud Connector](https://blogs.sap.com/2021/09/05/installation-and-configuration-of-sap-cloud-connector).
 
@@ -181,7 +180,6 @@ The required artifacts, which must be compiled into a single zip file and attach
 - Output from ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. For more information, see [SAP ABAP guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
 
 Optional but helpful:
-
 - `curl` output from an SAP Business Application Studio terminal when executing the connection test. See the example below.
 - Clear reproduction steps and expected versus actual behavior.
 
@@ -203,14 +201,12 @@ Before addressing any issues with deployment, ensure connectivity works as per t
 - Ensure that `/UI5/ABAP_REPOSITORY_SRV` has been activated in the back end.
 - Ensure that you have the required `S_DEVELOP` authorizations.
 - For more information about `/UI5/ABAP_REPOSITORY_SRV` and fulfilling these prerequisites, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
-
 ### Debugging Deployment Errors (HTTP 401 and HTTP 403)
 
 - Review the ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`, where applicable. These logs indicate missing authorizations and other local issues.
 - For more information on deployment issues, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
 
 Steps to capture deployment debug information:
-
 ```bash
 # Mac / Linux
 DEBUG=* npm run deploy
@@ -221,9 +217,8 @@ set DEBUG=* && npm run deploy
 Example Connection Test (SAP Business Application Studio or any terminal window):
 
 ```bash
-# Replace <destination-name>
-# Replace bsp-name with a known BSP repository name
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
+# Replace <destination-name> and <bsp-name> before executing
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27<bsp-name>%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
 
 You can review the generated `curl-abap-srv-output.txt` file to check for any errors or issues related to the deployment process.
@@ -345,7 +340,7 @@ If a user logs into a SAP Fiori app on SAP BTP, and that app calls an on-premise
 
 For more information about connectivity issues related to principal propagation configurations and to trace connectivity issues, see [How to Troubleshoot Cloud Connector Principal Propagation over HTTPS](https://help.sap.com/docs/SUPPORT_CONTENT/appservices/3361376259.html#HowtotroubleshootCloudConnectorprincipalpropagationoverHTTPS-Checkingthelogs,followtheclientcertificate).
 
-## License
+### License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company.
 This project is licensed under the Apache License 2.0. See [LICENSE](../../LICENSES/Apache-2.0.txt) for details.

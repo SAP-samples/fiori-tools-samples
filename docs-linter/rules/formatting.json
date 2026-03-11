@@ -1,0 +1,122 @@
+{
+  "headings": {
+    "titleCase": {
+      "applyTo": ["h1", "h2", "h3"],
+      "style": "chicago",
+      "description": "Chicago title case: capitalize all major words; lowercase articles (a, an, the), short prepositions (in, of, on, for, to, at, by, up), and coordinating conjunctions (and, but, or, nor, yet, so) unless first or last word",
+      "severity": "info",
+      "message": "Use Chicago-style title case for H1, H2, and H3 headings"
+    },
+    "sentenceCase": {
+      "applyTo": ["h4", "h5", "h6"],
+      "severity": "info",
+      "message": "Use sentence case for H4+ headings"
+    },
+    "noTrailingQuestionMark": {
+      "severity": "warning",
+      "message": "Headings must not end with a question mark"
+    },
+    "tableOfContentsLabel": {
+      "correct": "Table of Contents",
+      "severity": "info",
+      "message": "Use 'Table of Contents' (title case) as the ToC label"
+    },
+    "corrections": {
+      "Support ticket checklist": "Checklist for Support Tickets",
+      "Common causes for deployment errors": "Common Causes for Deployment Errors",
+      "Screenshots Required": "Provide Screenshots",
+      "Deployment Additional Resources": "Additional Resources for Deployment"
+    }
+  },
+  "lists": {
+    "preferredMarker": "-",
+    "applyToTableOfContents": true,
+    "consistency": {
+      "severity": "warning",
+      "message": "Use consistent bullet markers throughout the document, including the Table of Contents"
+    }
+  },
+  "links": {
+    "contextImprovements": {
+      "For more information around": "For more information about",
+      "refer to this": "see this",
+      " via ": " using "
+    },
+    "preferHttps": true,
+    "descriptiveText": {
+      "severity": "info",
+      "message": "Consider using descriptive text instead of bare URLs"
+    }
+  },
+  "codeBlocks": {
+    "requireLanguage": {
+      "minLength": 20,
+      "severity": "info",
+      "message": "Consider specifying language for code blocks"
+    },
+    "fenceFormat": {
+      "correct": "```",
+      "incorrect": "````",
+      "severity": "warning"
+    },
+    "noPrompts": {
+      "severity": "info",
+      "message": "Remove $ prompt from commands for better copy-paste experience"
+    }
+  },
+  "terminology": {
+    "replacements": {
+      "backend": "back-end",
+      "back end": "back-end",
+      "via Cloud Connector": "using Cloud Connector",
+      " is working": " works",
+      " is functioning": " works"
+    },
+    "errorCodePairs": {
+      "pattern": "HTTP \\d+/\\d+",
+      "severity": "info",
+      "message": "Spell out 'and' between HTTP error codes instead of using a slash (e.g. 'HTTP 401 and HTTP 403')"
+    }
+  },
+  "listItems": {
+    "emDashSeparator": {
+      "pattern": "^[*-]\\s+`.+`\\s+[—–]\\s+",
+      "severity": "warning",
+      "message": "Use a colon instead of an em dash to separate a term from its description (e.g. '`key`: description')"
+    },
+    "arrowSeparator": {
+      "pattern": "^[*-]\\s+.+\\s+→\\s+",
+      "severity": "warning",
+      "message": "Use a colon instead of an arrow to separate a term from its description (e.g. '- term: description')"
+    }
+  },
+  "spacing": {
+    "multipleSpaces": {
+      "severity": "info",
+      "message": "Use single spaces between words"
+    },
+    "trailingSpaces": {
+      "severity": "info",
+      "message": "Remove trailing spaces"
+    }
+  },
+  "punctuation": {
+    "oxfordComma": {
+      "severity": "warning",
+      "message": "Use the Oxford comma in lists of three or more items (e.g. 'red, white, and blue')"
+    }
+  },
+  "numbers": {
+    "spellOut": {
+      "range": [1, 10],
+      "severity": "info",
+      "message": "Spell out numbers one through ten in prose (e.g. 'three steps', not '3 steps')"
+    },
+    "useNumerals": {
+      "threshold": 11,
+      "severity": "info",
+      "message": "Use numerals for numbers 11 and above (e.g. '12 files', not 'twelve files')"
+    },
+    "exceptions": ["version numbers", "code values", "measurements", "percentages", "ranges"]
+  }
+}

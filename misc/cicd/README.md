@@ -1,6 +1,6 @@
 # Sample Configurations to improve ABAP deployment task
 
-Please refer to the following guide for more info;
+For more information, see the following guide:
 
 https://www.npmjs.com/package/@sap/ux-ui5-tooling
 
@@ -12,7 +12,7 @@ You can integrate external CI/CD pipelines, eg. Azure DevOps or CircleCI, to CTM
 
 With CTMS, you have full control on the changes going through the landscape, and have a proper audit log to trace them if required.
 
-For more information, please refer to the following resources;
+For more information, see the following resources:
 
 https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510
 
@@ -170,6 +170,9 @@ DEBUG=* npm run deloy
 # Or if you are using the CLI directly
 DEBUG=* npx fiori deploy ...
 ```
+
+### License
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
 
 
 
