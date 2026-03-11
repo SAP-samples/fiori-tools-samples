@@ -130,7 +130,7 @@ If connectivity fails, run these quick checks first:
 - Is the SAP Cloud Connector running and connected to the SAP BTP subaccount?
 - Is the Cloud Connector mapping (virtual host and port and back-end host and port) configured and active?
 - Is the destination in the subaccount pointing to the correct `CloudConnectorLocationId` and name? This is required if there are multiple Cloud Connectors.
-- Are the authentication settings in the destination and back-end system aligned (such as principal propagation, SSL and certs)?
+- Are the authentication settings in the destination and back-end system aligned (such as principal propagation, SSL, and certs)?
 - Are firewalls or proxies blocking traffic between Cloud Connector and the back end? This often occurs when moving to production because the originating IPs change.
 - Are you able to locally access the back-end system directly from the Cloud Connector host such as using `curl` or a web browser?
 
@@ -167,7 +167,7 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 
 If you need to raise a support ticket (component `BC-MID-SCC` for Cloud Connector or `CA-UX-IDE` for deployment issues), attach the following items:
 
-The required artifacts, which should be compiled into a single zip file and attached to the support ticket, are:
+The required artifacts, which must be compiled into a single zip file and attached to the support ticket, are:
 
 - A screenshot of the destination in the SAP BTP cockpit (show all properties).
 - [Environment Check report](../destinations/README.md#environment-check).
@@ -240,7 +240,7 @@ This request performs several important technical checks in a single call:
 - The destination is bound to your application (if applicable).
 - Connectivity using Cloud Connector (for On-Premise systems) works.
 
-##### Authentication flow
+##### Authentication Flow
 
 Confirms that the configured authentication method such as BasicAuthentication, SAML Assertion, or OAuth2 works
 
@@ -249,7 +249,7 @@ If authentication fails, you typically see:
 - 401 Unauthorized: Invalid credentials or trust not established
 - 403 Forbidden: Authenticated but missing back-end authorization
 
-##### Back-end reachability
+##### Back-End Reachability
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates the following:
 
@@ -257,7 +257,7 @@ If authentication fails, you typically see:
 - The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
 - The ICF node is active (`/sap/opu/odata`).
 
-##### CSRF token Handling
+##### CSRF Token Handling
 
 `-H "X-CSRF-Token: Fetch"` forces the back-end to:
 
@@ -294,7 +294,7 @@ This is useful when testing service-to-service flows where interactive SSO is no
    - `.Ui5RepositoryTextFiles`: for text-based file types
    - `.Ui5RepositoryBinaryFiles`: for binary asset types
 
-3. Add the file patterns for the unknown extensions. For example:
+3. Add the file patterns for the unknown extensions, for example:
 
    `.Ui5RepositoryTextFiles`:
 
