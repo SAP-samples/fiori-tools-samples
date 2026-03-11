@@ -36,13 +36,33 @@ Follow this standard order based on quality examples:
 - Use descriptive, specific headings
 
 ### Capitalization
-- **Main sections (H1, H2)**: Use title case
-  - ✅ "Checklist for Support Tickets"
-  - ❌ "Support ticket checklist"
-- **Subsections (H3+)**: Use sentence case
+
+Headings follow **Chicago-style title case** for H1, H2, and H3. H4 and below use sentence case.
+
+#### Chicago title case rules (H1, H2, H3)
+
+- Capitalize the first and last word always.
+- Capitalize all major words: nouns, verbs, adjectives, and adverbs.
+- Lowercase articles: *a*, *an*, *the*.
+- Lowercase short prepositions (four letters or fewer): *in*, *of*, *on*, *for*, *to*, *at*, *by*, *up*.
+- Lowercase coordinating conjunctions: *and*, *but*, *or*, *nor*, *yet*, *so*.
+
+Examples:
+  - ✅ "Checklist for Support Tickets" (*for* is lowercase)
+  - ✅ "Additional Resources for Deployment" (*for* is lowercase)
+  - ✅ "How It Works" (*It* is capitalized as a pronoun)
+  - ❌ "Support ticket checklist" (not title case)
+  - ❌ "Additional Resources For Deployment" (*For* should be lowercase)
+
+#### Sentence case (H4+)
+
+- Capitalize the first word and proper nouns only.
   - ✅ "Common causes for deployment errors"
   - ❌ "Common Causes For Deployment Errors"
-- **Table of Contents label**: Use title case — "Table of Contents" not "Table of contents"
+
+#### Other rules
+
+- **Table of Contents label**: Use title case — "Table of Contents" not "Table of contents".
 - **Headings must not end with a question mark** — ✅ "What this test validates", ❌ "What This Test Validates?"
 
 ### Examples from KM Feedback
@@ -59,6 +79,19 @@ Follow this standard order based on quality examples:
 - **Spacing**: Single space after marker
 - **Parallel structure**: Keep list items grammatically consistent
 - **Punctuation**: Use periods after complete sentences in list items
+- **Oxford comma**: Always use the Oxford comma in lists of three or more items
+  - ✅ "Configure the URL, authentication, and proxy type"
+  - ❌ "Configure the URL, authentication and proxy type"
+
+### Numbers
+
+- **Spell out** numbers one through ten in prose text.
+  - ✅ "There are three configuration steps."
+  - ❌ "There are 3 configuration steps."
+- **Use numerals** for 11 and above.
+  - ✅ "The timeout is set to 60000 milliseconds."
+  - ✅ "There are 15 properties in this destination."
+- **Exceptions**: Always use numerals for version numbers, code values, measurements, percentages, and numeric ranges regardless of size.
 
 ### Links
 - **Context phrases**: Use "see" instead of "refer to"
@@ -229,4 +262,4 @@ For updates or suggestions, please refer to the latest KM feedback patterns and 
 
 ---
 *Based on analysis of 30+ KM feedback commits and 5 quality documentation examples*
-*Last updated: January 2026*
+*Last updated: March 2026*
