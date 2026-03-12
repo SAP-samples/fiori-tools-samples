@@ -1,7 +1,8 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/fiori-tools-samples)](https://api.reuse.software/info/github.com/SAP-samples/fiori-tools-samples)
-[![SAP Fiori Tools](https://img.shields.io/visual-studio-marketplace/v/SAPSE.sap-ux-fiori-tools-extension-pack)](https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack)
+[![CodeQL](https://github.com/SAP-samples/fiori-tools-samples/actions/workflows/codeql.yml/badge.svg)](https://github.com/SAP-samples/fiori-tools-samples/actions/workflows/codeql.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSES/Apache-2.0.txt)
 
-# SAP Fiori Tools Samples
+<table border="0"><tr><td><a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack"><img src="assets/fiori-tools-icon.png" alt="SAP Fiori Tools" width="80"/></a></td><td><h1>SAP Fiori Tools Samples</h1></td></tr></table>
 
 A collection of sample projects demonstrating SAP Fiori elements and SAP Fiori tools capabilities. These samples are referenced in tutorials, blogs, and documentation to help developers learn and implement SAP Fiori applications.
 
@@ -76,6 +77,7 @@ Please refer to [SECURITY.md](.github/SECURITY.md) for reporting security vulner
 ## Additional Resources
 
 - [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
+- [SAP Fiori Tools Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack)
 - [SAP Fiori Tools Community](https://pages.community.sap.com/topics/fiori-tools)
 - [SAP Developer Center](https://developers.sap.com/)
 - [SAP UI5 SDK](https://sapui5.hana.ondemand.com/)
