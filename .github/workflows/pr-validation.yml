@@ -29,7 +29,7 @@ jobs:
           echo "Changed files:"
           echo "$CHANGED_FILES"
 
-          NON_MD=$(echo "$CHANGED_FILES" | grep -v '\.md$' || true)
+          NON_MD=$(echo "$CHANGED_FILES" | grep -vE '\.(md|png|jpg|jpeg|gif|svg|webp)$' || true)
 
           if [[ -z "$NON_MD" ]]; then
             echo "docs-only=true" >> $GITHUB_OUTPUT

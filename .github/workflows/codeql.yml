@@ -7,6 +7,11 @@ on:
     branches: [ "main" ]
     paths-ignore:
       - '**.md'
+      - '**.png'
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.gif'
+      - '**.svg'
   schedule:
     - cron: '0 6 * * 1'  # Weekly on Mondays at 6 AM UTC
 
