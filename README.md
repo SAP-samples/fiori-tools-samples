@@ -2,7 +2,9 @@
 [![CodeQL](https://github.com/SAP-samples/fiori-tools-samples/actions/workflows/codeql.yml/badge.svg)](https://github.com/SAP-samples/fiori-tools-samples/actions/workflows/codeql.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSES/Apache-2.0.txt)
 
-<table border="0"><tr><td><a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack"><img src="assets/fiori-tools-icon.png" alt="SAP Fiori Tools" width="80"/></a></td><td><h1>SAP Fiori Tools Samples</h1></td></tr></table>
+<a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack"><img src="assets/fiori-tools-icon.png" alt="SAP Fiori Tools" width="80"/></a>
+
+# SAP Fiori Tools Samples
 
 A collection of sample projects demonstrating SAP Fiori elements and SAP Fiori tools capabilities. These samples are referenced in tutorials, blogs, and documentation to help developers learn and implement SAP Fiori applications.
 
