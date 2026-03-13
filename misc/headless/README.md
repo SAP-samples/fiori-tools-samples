@@ -2,6 +2,8 @@
 
 ## Overview
 
+> **Important**: The commands and scripts in this guide will generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system should be run with the authorization of your IT support team.
+
 Enables running a JSON configuration with predefined properties to support headless mode, allowing users to pass a complete payload to the generator with all mandatory values included.
 
 ## Options

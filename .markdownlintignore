@@ -1,0 +1,6 @@
+node_modules/
+docs-linter/node_modules/
+cap/cap-fiori-mta/node_modules/
+cap/cap-fiori-mta-standalone/node_modules/
+cap/cap-fiori-mta/gen/
+cap/cap-fiori-mta-standalone/gen/

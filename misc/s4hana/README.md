@@ -2,6 +2,8 @@
 
 ## Prerequisites
 
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system should be carried out with the authorization of your IT support team.
+
 1. Steps 1, 2, and Step 3 from <https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html> are completed.
 2. You have administrative access to your SAP S/4HANA Cloud system so you can configure and debug connectivity issues.
 3. You have established trust and federation between SAP Authorization and Trust Management Service and SAP Cloud Identity Services (for example, OpenID Connect). For more information, see [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
@@ -37,6 +39,16 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers.
 2. Unless you have a specific technical reason, the `nameIdFormat` should be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdP's to your SAB BTP system, see Related Links.
 3. The SAML `nameIdFormat` specification (both 1.1 and 2.0) does not mandate any case normalization for NameID values because it treats the NameID as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, including case sensitivity.
+
+## Basic Authentication
+
+When integrating with SAP S/4HANA Public Cloud, Basic Authentication is generally not recommended because the platform is designed to use secure identity federation and token-based authentication mechanisms.
+
+This approach provides several benefits:
+
+1. Avoids storing credentials in the destination configuration
+1. Aligns with the security model used by SAP S/4HANA Public Cloud
+1. Allows authentication to be managed through trust configuration and tokens
 
 ## Authorization Requirements
 
@@ -238,6 +250,16 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
 2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
 3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests are failing with HTTP 500, but they are not reaching your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
+
+## SAP Fiori Launchpad
+
+Since application availability in the Fiori Launchpad and its authorization are controlled through Business Catalogs, you'll learn how to extend an existing catalog to include your newly created app.
+
+For a step-by-step walkthrough, see the tutorial group [Develop an SAP Fiori App for SAP S/4HANA Cloud with ABAP using SAP Business Application Studio](https://developers.sap.com/group.abap-custom-ui-s4hana-cloud.html).
+
+> Tutorial last checked for feasibility with SAP S/4HANA Cloud Release 2508.
+
+When using SAP Fiori tools, refer to step 8 [Configure SAP Fiori launchpad settings and generate](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html) of the tutorial.
 
 ## Related Links
 

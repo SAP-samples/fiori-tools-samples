@@ -2,6 +2,9 @@
 
 
 # Prerequisites
+
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration scripts or commands that change the behaviour of your system or operating system should be carried out with the authorization of your IT support team.
+
 - The `Authentication` type can be configured with different options which include `OAuth2UserTokenExchange` and `SAMLAssertion`.
 - When exposing an SAP BTP ABAP Environment (Steampunk) system to the internet using a SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values: 
 ```

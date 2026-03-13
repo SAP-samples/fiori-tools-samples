@@ -12,6 +12,8 @@ When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/c
 
 ## Prerequisites
 
+> **Important**: Any scripts or commands in this guide that modify `package.json`, dependency configurations, or project files may change the behaviour of your application. Ensure all such changes are carried out with the authorization of your IT support team where applicable. Always ensure your HTML5 application source files, including `package.json` and lock files, are under source control before making changes.
+
 * Basic understanding of npm and package.json structure
 * Familiarity with SAP Fiori development tooling
 * Version control system (Git recommended) for tracking changes
@@ -122,6 +124,61 @@ npm install
 ```
 
 For more information, see the [npm update documentation](https://docs.npmjs.com/cli/v9/commands/npm-update).
+
+## Open Source Licensing and Maintenance Expectations
+
+### SAP Developer License and "As Is" Terms
+
+SAP packages such as `@sap/ux-ui5-tooling` are published under the SAP Developer License Agreement. You can view the full license text on npm: navigate to the [@sap/ux-ui5-tooling Code tab](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=code) and open the `LICENSE` file. Under this license, the APIs and tools are:
+
+* Provided free of charge
+* Licensed "as is"
+* Supplied without warranty, maintenance, service, or support obligations
+
+In particular:
+
+* **Section 5** states that the materials are licensed "AS IS", without warranty, maintenance, training, or service commitments.
+* **Section 9** clarifies that SAP does not offer support for the APIs or Tools beyond what is made available at SAP's discretion.
+
+This means there is no contractual obligation on SAP to continuously maintain, patch, or update the software under defined SLAs.
+
+### Broader Open Source Context
+
+This is standard practice across the open source ecosystem. Open source software and free developer tooling are:
+
+* Licensed for use, not sold with service guarantees
+* Maintained according to the maintainers' roadmap and prioritisation
+* Updated at the discretion of the maintainers
+
+There is no automatic obligation on the original developer to:
+
+* Fix vulnerabilities within a defined timeframe
+* Maintain backward compatibility indefinitely
+* Continue maintaining a project permanently
+
+### DevDependencies and Security Scanning
+
+With respect to devDependencies specifically:
+
+* devDependencies are used at development/build time and are **not deployed to production runtime environments**.
+* Security scanners typically evaluate the entire dependency tree, including dev-only and transitive modules.
+* As a result, findings may be reported even where there is no direct runtime exposure.
+
+Consumption of devDependencies remains subject to the same licensing model: they are provided "as is," and **responsibility for monitoring and risk assessment rests with the consuming team**.
+
+### SAP's Approach to Security Findings
+
+SAP reviews reported issues and works to address security findings in its tooling where feasible. Updates are delivered through normal release cycles. In some cases, remediation depends on upstream third-party maintainers releasing compatible fixes, which is outside SAP's direct control. Accordingly, fixes are incorporated based on impact, feasibility, and release planning — and not under a contractual SLA.
+
+### Consuming Team Responsibilities
+
+When a team includes open source devDependencies in `package.json`, they are:
+
+* Accepting the license terms
+* Accepting "as is" usage
+* Accepting responsibility for ongoing monitoring, risk assessment, compliance validation, and replacement strategy where necessary
+
+> **Important**: If an organisation's governance framework requires guaranteed SLAs, liability coverage, or mandatory remediation timelines, pure open source consumption may not fully align with those requirements. In such cases, additional internal mitigation controls or commercially supported alternatives may need to be considered.
 
 ## Understanding npm Audit Vulnerabilities
 
