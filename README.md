@@ -22,7 +22,7 @@ This repository contains samples organized by technology and use case:
 | **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
-| **Utilities** | Proxy, destinations, npm management, CI/CD | [misc/](misc/) |
+| **Utilities** | Proxy, destinations, npm management, CI/CD, and SuccessFactors connectivity | [misc/](misc/) |
 
 [View complete sample catalog](SAMPLES_INDEX.md) for detailed descriptions and direct links.
 
@@ -46,7 +46,7 @@ Check [misc/](misc/) for proxy configuration, destinations, CI/CD, npm dependenc
 - npm
 - SAP Business Application Studio or Visual Studio Code with SAP Fiori tools extension
 
-For detailed setup instructions, refer to the [SAP Fiori tools documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html).
+For detailed setup instructions, see the [SAP Fiori tools documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html).
 
 ## Contributing
 
@@ -75,7 +75,7 @@ Read our [Code of Conduct](.github/CODE_OF_CONDUCT.md) for community standards.
 
 ### Security Issues
 
-Please refer to [SECURITY.md](.github/SECURITY.md) for reporting security vulnerabilities.
+See [SECURITY.md](.github/SECURITY.md) for reporting security vulnerabilities.
 
 ## Additional Resources
 
