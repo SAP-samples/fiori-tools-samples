@@ -1,5 +1,7 @@
 # Sample Configurations to improve ABAP deployment task
 
+> **Important**: Any scripts or commands in this guide that modify deployment configurations, environment variables, or CI/CD pipeline settings may change the behaviour of your system. Ensure all such changes are carried out with the authorization of your IT support team. Additionally, ensure your HTML5 application source files are under source control before making any modifications.
+
 Please refer to the following guide for more info;
 
 https://www.npmjs.com/package/@sap/ux-ui5-tooling

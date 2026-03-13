@@ -1,5 +1,7 @@
 # Referenced Guides
 
+> **Important**: Before following any of these guides, ensure your HTML5 application source files are under source control. Any scripts or commands that change the behaviour of your system or operating system should only be executed with the authorization of your IT support team.
+
 [Consuming and validating SAP BTP destinations to support OData XML Service](destinations/README.md)
 
 [Running SAP Fiori Generator headless](headless/README.md)

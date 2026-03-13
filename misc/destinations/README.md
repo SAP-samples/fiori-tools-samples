@@ -10,6 +10,8 @@ SAP BTP destinations are used to connect to different services and systems in th
 
 ## Prerequisites
 
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter system behaviour should be carried out with the authorization of your IT support team.
+
 - You have the SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount.
 - You have admin rights to the SAP BTP cockpit to modify destinations.
 - Only OData XML services are supported when creating SAP Fiori elements applications when using SAP Fiori tools generator.

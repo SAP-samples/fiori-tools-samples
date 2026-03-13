@@ -24,7 +24,9 @@ Table of Contents
 
 ## Overview
 
-An SAP BTP destination with `ProxyType=OnPremise` lets your cloud apps connect to an on‑premise systems using the Cloud Connector as a secure tunnel.
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system should be carried out with the authorization of your IT support team.
+
+An SAP BTP destination with `ProxyType=OnPremise` lets your cloud apps connect to on‑premise systems using the Cloud Connector as a secure tunnel.
 
 Use cases include:
 

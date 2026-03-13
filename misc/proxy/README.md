@@ -6,6 +6,8 @@ In some environments, you may need to configure proxy settings to allow SAP Fior
 
 ## Prerequisites
 
+> **Important**: Any scripts or commands in this guide that modify environment variables or system settings may change the behaviour of your system or operating system. Ensure all such changes are carried out with the authorization of your IT support team. Additionally, ensure any HTML5 application source files you modify are under source control before making changes.
+
 * Ensure you have the necessary permissions to modify environment variables on your system.
 * Confirm with your IT Admin if proxy settings are required for your network environment, for example, in some instances internal networks may not require proxy settings.
 * Unless specified by your IT Admin, do not use `https://` in the proxy URL, the default should be `http://` for the proxy URL.
