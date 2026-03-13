@@ -6,9 +6,9 @@
 
 [Running SAP Fiori Generator headless](headless/README.md)
 
-[Consuming SAP Cloud Connector via SAP BTP destination](onpremise/README.md)
+[Consuming SAP Cloud Connector using SAP BTP destination](onpremise/README.md)
 
-[Consuming SAP S/4Hana public cloud via SAP BTP destination](s4hana/README.md)
+[Consuming SAP S/4Hana public cloud using SAP BTP destination](s4hana/README.md)
 
 [Proxy Configuration](proxy/README.md)
 
