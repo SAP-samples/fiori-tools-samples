@@ -21,7 +21,7 @@ A `500 Internal Server Error` can occur when:
 - The destination is sending information that SuccessFactors is not able to process or is not prepared to handle.
 - The call to consume the destination is incorrectly implemented.
 
-### Proposed solution
+### Proposed Solution
 
 #### Step 1: Simplify Additional Properties
 
@@ -39,13 +39,13 @@ Review whether you are correctly calling the destination. See steps **2** and **
 
 If the proposed solution does not resolve the issue, re-establish the complete trust between SAP SuccessFactors and SAP BTP from scratch. Follow each step and capture a screenshot at each stage to verify correctness.
 
-### Step 1: Download the destination certificate from SAP BTP
+### Step 1: Download the Destination Certificate from SAP BTP
 
 1. Open your SAP BTP subaccount.
 2. Navigate to **Connectivity** > **Destinations**.
 3. Click **Download Trust** to download the destination's certificate.
 
-### Step 2: Register the OAuth client in SAP SuccessFactors
+### Step 2: Register the OAuth Client in SAP SuccessFactors
 
 1. Open the SAP SuccessFactors **Admin Center**.
 2. Search for **OAuth** and select **Manage OAuth2 Client Applications**.
@@ -62,7 +62,7 @@ If the proposed solution does not resolve the issue, re-establish the complete t
 4. Click **Register**.
 5. Copy the generated **API Key** — you will need it in the next step.
 
-### Step 3: Create the SAP BTP destination
+### Step 3: Create the SAP BTP Destination
 
 1. Open your SAP BTP subaccount.
 2. Navigate to **Connectivity** > **Destinations** > **New Destination**.
@@ -113,7 +113,7 @@ The `nameIdFormat` property controls which user identifier is propagated in the 
 
 Use `unspecified` if you want the user ID to be propagated (the most common case).
 
-### Step 4: Consume the destination in your application
+### Step 4: Consume the Destination in Your Application
 
 Once the trusted connection is established between SuccessFactors and the SAP BTP destination, your application must consume it correctly. Use one of the following approaches:
 
@@ -137,7 +137,7 @@ When raising a support ticket or sharing your configuration for review, attach a
 
 A `401 Unauthorized` response can occur for different reasons. The error message in the response body identifies the root cause.
 
-### Login failed — invalid user
+### Login Failed — Invalid User
 
 **Error message**: `Unable to authenticate the client (Login failed - invalid user)`
 
@@ -147,7 +147,7 @@ This error means the user performing the request does not have the required perm
 2. Is the Subject Name Identifier (SNI) configured with the same value for both SuccessFactors and SAP BTP in IAS?
 3. Does the user executing the request have the permissions required to call the SuccessFactors API?
 
-### Invalid user UUID
+### Invalid User UUID
 
 **Error message**: `Invalid useruuid`
 
@@ -169,7 +169,7 @@ For more information, see [SAML Assertion Authentication](https://help.sap.com/d
 
 Before integrating the destination into your application, you can use [Postman](https://www.postman.com/) to verify that the OAuth2 token exchange and the SuccessFactors API call work end-to-end. This is a useful intermediate step to isolate whether an issue lies in the destination configuration itself or in your application's consumption logic.
 
-### Step 1: Obtain an OAuth2 token
+### Step 1: Obtain an OAuth2 Token
 
 Send a `POST` request to the SuccessFactors token endpoint to exchange a SAML assertion for a bearer token.
 
@@ -211,7 +211,7 @@ A successful `200 OK` response confirms that:
 2. The OAuth client API Key and certificate are valid.
 3. The SAML assertion is being accepted by SuccessFactors.
 
-### Interpreting results
+### Interpreting Results
 
 | Response | Likely Cause |
 | --- | --- |
@@ -254,7 +254,7 @@ The following is an example of a fully exported SAP BTP destination configuratio
 
 ## Common Misconceptions
 
-### SAP Cloud Connector is not required
+### SAP Cloud Connector Is Not Required
 
 SuccessFactors is a cloud solution. Connections from an SAP BTP subaccount to SuccessFactors do **not** involve the SAP Cloud Connector (SCC). The Cloud Connector is only required when exposing on-premise systems to SAP BTP. If you are encountering a `500 Internal Server Error` with `OAuth2SAMLBearerAssertion`, the cause lies in one of the following areas:
 
@@ -262,7 +262,7 @@ SuccessFactors is a cloud solution. Connections from an SAP BTP subaccount to Su
 - The destination configuration in SAP BTP.
 - The way the application consumes the destination at runtime.
 
-### Basic authentication is not a suitable workaround
+### Basic Authentication Is Not a Suitable Workaround
 
 While Basic Authentication may work as a temporary measure, it is not recommended for production use and is typically prohibited by security policies. The correct approach is `OAuth2SAMLBearerAssertion` as described in this guide.
 
@@ -270,7 +270,7 @@ While Basic Authentication may work as a temporary measure, it is not recommende
 
 When raising a support ticket for connectivity issues with a SuccessFactors destination, provide the following diagnostic artifacts. Collecting these upfront significantly reduces the time needed to diagnose the issue.
 
-### Required artifacts
+### Required Artifacts
 
 1. **Step-by-step screenshots** showing how to reproduce the issue, with the full browser URL visible at each step.
 
@@ -282,7 +282,7 @@ When raising a support ticket for connectivity issues with a SuccessFactors dest
 
 5. **Code structure screenshot**: Provide a screenshot showing the code used to consume the destination, whether using the `find destination` REST API or the AppRouter configuration.
 
-### Related SAP notes
+### Related SAP Notes
 
 - [SAP Note 3384252 - OAuth in an integration between SAP SuccessFactors and SAP Business Application Studio (BAS) Deploy UI5](https://launchpad.support.sap.com/#/notes/3384252)
 
