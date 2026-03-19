@@ -101,11 +101,22 @@
       "message": "Use the Oxford comma in lists of three or more items (e.g. 'red, white, and blue')"
     },
     "emDash": {
-      "severity": "info",
+      "severity": "warning",
       "usage": "parenthetical",
       "format": "—",
       "noSpaces": true,
-      "message": "Use an em dash (—) without surrounding spaces for parenthetical phrases (e.g. 'The service—when configured correctly—returns a token')"
+      "message": "Use an em dash (—) without surrounding spaces for parenthetical phrases (e.g. 'The service—when configured correctly—returns a token'). Do not use a hyphen (-) or spaced em dash ( — ) as a substitute."
+    },
+    "enDash": {
+      "severity": "info",
+      "usage": "ranges",
+      "format": "–",
+      "message": "Use an en dash (–) for ranges (e.g. 'pages 10–20', 'January–March'). Do not use a hyphen for ranges."
+    },
+    "spacedEmDash": {
+      "pattern": " — ",
+      "severity": "warning",
+      "message": "Remove spaces around em dashes. Chicago style uses unspaced em dashes (e.g. 'the service—not the destination—handles this')."
     }
   },
   "numbers": {
