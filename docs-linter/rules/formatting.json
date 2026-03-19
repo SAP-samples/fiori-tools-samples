@@ -1,16 +1,11 @@
 {
   "headings": {
     "titleCase": {
-      "applyTo": ["h1", "h2", "h3"],
+      "applyTo": ["h1", "h2", "h3", "h4", "h5", "h6"],
       "style": "chicago",
       "description": "Chicago title case: capitalize all major words; lowercase articles (a, an, the), short prepositions (in, of, on, for, to, at, by, up), and coordinating conjunctions (and, but, or, nor, yet, so) unless first or last word",
-      "severity": "info",
-      "message": "Use Chicago-style title case for H1, H2, and H3 headings"
-    },
-    "sentenceCase": {
-      "applyTo": ["h4", "h5", "h6"],
-      "severity": "info",
-      "message": "Use sentence case for H4+ headings"
+      "severity": "warning",
+      "message": "Use Chicago-style title case for all headings"
     },
     "noTrailingQuestionMark": {
       "severity": "warning",
@@ -104,6 +99,13 @@
     "oxfordComma": {
       "severity": "warning",
       "message": "Use the Oxford comma in lists of three or more items (e.g. 'red, white, and blue')"
+    },
+    "emDash": {
+      "severity": "info",
+      "usage": "parenthetical",
+      "format": "—",
+      "noSpaces": true,
+      "message": "Use an em dash (—) without surrounding spaces for parenthetical phrases (e.g. 'The service—when configured correctly—returns a token')"
     }
   },
   "numbers": {
