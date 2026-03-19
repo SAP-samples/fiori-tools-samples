@@ -4,6 +4,7 @@
 
 # Claude Code
 .claude/
+!.claude/skills/
 
 # Dependency directories
 node_modules/
