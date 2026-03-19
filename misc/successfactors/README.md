@@ -52,7 +52,7 @@ A `500 Internal Server Error` can occur when:
 
 ### Proposed Solution
 
-#### Step 1: Simplify additional properties
+#### Step 1: Simplify Additional Properties
 
 Maintain only the following additional property in the destination:
 
@@ -60,7 +60,7 @@ Maintain only the following additional property in the destination:
 
 Remove any other additional properties that are not required, as unexpected values can cause SuccessFactors to reject the request.
 
-#### Step 2: Verify destination consumption
+#### Step 2: Verify Destination Consumption
 
 Review whether you are correctly calling the destination. See steps **2** and **3** from [Create and Consume Destination for Cloud Foundry Application](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/create-and-consume-destination-for-cloud-foundry-application#consume-the-destination-and-execute-the-scenario).
 
@@ -131,7 +131,7 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | `HTML5.DynamicDestination` | `true` |
    | `product.name` | `SAP SuccessFactors` |
 
-#### NameID format
+#### NameID Format
 
 The `nameIdFormat` property controls which user identifier is propagated in the SAML assertion:
 
@@ -158,7 +158,7 @@ Alternatively, consume the destination using your application's AppRouter. See [
 
 The AppRouter handles token retrieval automatically when the destination is correctly configured. You will still need to leverage the `Find a Destination` response structure in your application code to extract the resolved URL and credentials.
 
-#### Providing evidence
+#### Providing Evidence
 
 When raising a support ticket or sharing your configuration for review, attach a screenshot showing the code structure you used to consume the destination (either the `find destination` API call or the AppRouter configuration). This allows support teams to verify that the destination is being consumed correctly.
 
