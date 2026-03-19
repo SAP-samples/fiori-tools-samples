@@ -105,7 +105,7 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | Authentication | `OAuth2SAMLBearerAssertion` |
    | Audience | `www.successfactors.com` |
    | AuthnContextClassRef | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | Client Key | The API Key copied from step 2.5 (the OAuth client created in SuccessFactors). |
+   | Client Key | The API Key copied from step 2, item 5 (the OAuth client created in SuccessFactors). |
    | Token Service URL | `https://api4.successfactors.com/oauth/token` |
    | Token Service URL Type | `Dedicated` |
    | Key Store Location | The `.p12` certificate file downloaded from SAP BTP (for example, `mysubaccount.p12`). |
@@ -117,10 +117,10 @@ If the proposed solution does not resolve the issue, re-establish the complete t
 
    | Key | Value |
    | --- | --- |
-   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `audience` | `www.successfactors.com` |
    | `authnContextClassRef` | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `companyId` | Your SuccessFactors company ID. |
    | `nameIdFormat` | See [NameID Format](#nameid-format) below. |
    | `tokenServiceURL` | `https://api4.successfactors.com/oauth/token` |
