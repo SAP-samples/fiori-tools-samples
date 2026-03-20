@@ -1,4 +1,4 @@
-# SAMLAssertion destination configured to point SAP S/4HANA Cloud Public tenant
+# SAMLAssertion Destination Configured to Point SAP S/4HANA Cloud Public Tenant
 
 ## Prerequisites
 
@@ -9,35 +9,29 @@
 3. You have established trust and federation between SAP Authorization and Trust Management Service and SAP Cloud Identity Services (for example, OpenID Connect). For more information, see [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 4. You are subscribed to SAP Business Application Studio. For more information, see [Subscribe to Business Application Studio](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
 5. You have reviewed [SAP S/4HANA Cloud, Public Edition FAQ](https://me.sap.com/notes/3445942).
-6. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation
+6. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation.
 
-## Create a SAP BTP SAMLAssertion Destination to consume V2 and V4 OData Catalogs
+## Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs
 
-1. Open the [s4hana-cloud_saml](s4hana-cloud_saml) file using a text editor or browser.
-2. Replace all instances of `my1111111` with your specific hostname.
-3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`.
-4. Log in to SAP Business Application Studio to consume the new destination to validate that the connection works.
-
-For more information, see [Create a Destination to Connect to SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/31876c06f99645f289d802f9c95fb62b.html).
+For step-by-step instructions with screenshots, see [Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs](SAMLAssertionDestination.md).
 
 ## How SAMLAssertion Works
 
-1. SAP BTP, typically configured with a local SAML Identity Providers (IdP), sends a SAML Assertion (including the SAML Issuer and signature) to SAP S/4HANA Cloud, Public Edition (SAML SP).
 1. The Communication System on SAP S/4HANA Cloud validates the SAML Issuer and signature.
 1. It then maps the user ID and ID format.
 1. The user with the same subject ID must exist in both the SAP S/4HANA Cloud and SAP BTP systems.
 
 ### NameID Format in SAP BTP Destination
 
-In your SAP BTP destination, the `nameIdFormat` property affects the behavior of user ID mapping against your SAP S/4HANA Cloud instance
+In your SAP BTP destination, the `nameIdFormat` property affects the behavior of user ID mapping against your SAP S/4HANA Cloud instance.
 
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - User ID maps to the email address
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` - User ID maps to the username
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: User ID maps to the email address
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: User ID maps to the username
 
 **Notes:**
 
 1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers.
-2. Unless you have a specific technical reason, the `nameIdFormat` should be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdP's to your SAB BTP system, see Related Links.
+2. Unless you have a specific technical reason, the `nameIdFormat` should be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdPs to your SAP BTP system, see Related Links.
 3. The SAML `nameIdFormat` specification (both 1.1 and 2.0) does not mandate any case normalization for NameID values because it treats the NameID as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, including case sensitivity.
 
 ## Basic Authentication
@@ -77,7 +71,7 @@ For more information about roles and catalogs, see [Creating a Custom SAP Fiori 
 **Developer Note**
 The following information is based on the SAP S/4HANA Cloud (3SL) version where the tenant type is defined as `Developer Extensibility` or `Key User Extensibility/Customizing` and requires a different SAP BTP destination to reflect the different host endpoints. There will be a new communication system along with the associated SSL Certificate exposed per host or tenant type.
 
-There are key difference between an SAP S/4HANA Cloud 2-System Landscape and a 3-System Landscape. For more information, see [System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html).
+There are key differences between an SAP S/4HANA Cloud 2-System Landscape and a 3-System Landscape. For more information, see [System Landscapes in SAP S/4HANA Cloud Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/a630d57fc5004c6383e7a81efee7a8bb/aa60b129af7b4ce8ae052618c8315d29.html).
 
 ### Developer Extensibility (SAP Client 080)
 
@@ -111,18 +105,18 @@ Steps to generate a [SAP BTP destination for your S/4HANA Cloud Key User Extensi
 
 ### Steps for Developer Extensibility Tenant
 
-To ensure your specific user has the appropriate `SAP_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user;
+To ensure your specific user has the appropriate `SAP_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user.
 
-Search for application `Maintain Business Users`;
+Search for application `Maintain Business Users`:
 ![MaintainUsersPart1.png](MaintainUsersPart1.png)
 
-Select your specific user and select `Assigned Business Roles`;
+Select your specific user and select `Assigned Business Roles`:
 
 ![MaintainUsersPart1.png](MaintainUsersPart2.png)
 
 If `SAP_BR_DEVELOPER` is missing, select `Add` and search for `SAP_BR_DEVELOPER` to append the Business Role to your specific user.
 
-Next, select the `SAP_BR_DEVELOPER` role that you just added, select `Business Catalogs`and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4_BC_DEV_UID_PC` are added;
+Next, select the `SAP_BR_DEVELOPER` role that you just added, select `Business Catalogs` and ensure `SAP_CORE_BC_EXT_TST` and `SAP_A4_BC_DEV_UID_PC` are added:
 
 ![MaintainUsersPart1.png](MaintainUsersPart3.png)
 
@@ -139,22 +133,22 @@ You can also review the [Display Authorization Trace](<https://help.sap.com/docs
 
 ### Option 2. Connectivity Failures
 
-Using the search option on your S/4HANA instance, you can also review the failed requests using the `Display Connectivity Trace` as an S/4HANA Administrator;
+Using the search option on your S/4HANA instance, you can also review the failed requests using the `Display Connectivity Trace` as an S/4HANA Administrator.
 
 Filter by request path = `/sap/opu/odata/IWFND/CATALOGSERVICE` to see calls to V2 catalog service, request method is `GET`
 
 Filter by request path = `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/` to see calls for V4 catalog service, request method is `GET`
 
-Refer to the [Display Connectivity Trace documentation](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html) for more information.
+For more information, see the [Display Connectivity Trace documentation](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/a4f6ccd072f147f299b1d856062c8dc8.html).
 
-Search for the application `Display Connectivity Trace`;
+Search for the application `Display Connectivity Trace`:
 
 ![DisplayConnectivityPart1.png](DisplayConnectivityPart1.png)
 
-Define a new Trace using the `Request Method` of `GET` and the `Path Prefix` of `/sap/opu/odata/IWFND/CATALOGSERVICE`, click save;
+Define a new Trace using the `Request Method` of `GET` and the `Path Prefix` of `/sap/opu/odata/IWFND/CATALOGSERVICE`, then click save:
 ![DisplayConnectivityPart1.png](DisplayConnectivityPart2.png)
 
-The new trace will populate the table if new events are found;
+The new trace will populate the table if new events are found:
 
 ![DisplayConnectivityPart1.png](DisplayConnectivityPart3.png)
 
@@ -168,7 +162,7 @@ For more information, see [Validate Destination Configuration](https://ga.suppor
 error abap-deploy-task YY1_Some_Service The use of Gateway OData V2 Service Z_MY_SERVICE 0001 is not permitted.
 ```
 
-Refer to this [link](https://userapps.support.sap.com/sap/support/knowledge/en/3373955) for more information on how to resolve this issue.
+For more information on how to resolve this issue, see [SAP Knowledge Base Article 3373955](https://userapps.support.sap.com/sap/support/knowledge/en/3373955).
 
 The issue is caused by the custom UI5 Application having the ABAP Language Version "ABAP for Cloud Development" and therefore cannot be deployed to a system with ABAP Language Version "ABAP for Key Users".
 
@@ -182,9 +176,9 @@ info abap-deploy-task YY1_Some_App YY1_Some_Service found on target system: fals
 error abap-deploy-task YY1_Some_App Request failed with status code 403
 ```
 
-For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4HANA Administrator to see why the request is failing. In most cases its related two configuration issues;
+For an HTTP 403 error, you can check the `Display Connectivity Trace` as an S/4HANA Administrator to see why the request is failing. In most cases, it's related to two configuration issues:
 
-1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with `SAMLAssertion`. Deloyment is only supported using SAMLAssertion, a destination created with any other autentication type will fail.
+1. Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with `SAMLAssertion`. Deployment is only supported using SAMLAssertion; a destination created with any other authentication type will fail.
 2. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
 3. SAP BTP trust certificate renewal can cause connectivity issues, the active SAP BTP trust certificate is renewed and published with a new `Validity` date range. When this occurs, the renewed certificate must be uploaded to the target S/4HANA Cloud (S4HC) system to restore trust and allow successful deployment or connectivity.
 4. Ensure that the email address in your Identity Provider (IdP) matches the SAP OCID (user ID) in your S/4HANA Cloud system exactly. The email addresses are case-sensitive and must match precisely, including uppercase and lowercase characters.
@@ -197,15 +191,15 @@ error abap-deploy-task ZF_TEST_API Request failed with status code 400
 error abap-deploy-task ZF_TEST_API The use of Gateway OData V2 Service API_PROC_ORDER_CONFIRMATION_2_SRV 0001 is not permitted
 ```
 
-Please refer to the [Tenant Types](./README.md#tenant-types), as each tenant type has a different set of OData services that are allowed to be used or consumed.
+For more information, see [Tenant Types](./README.md#tenant-types), as each tenant type has a different set of OData services that are allowed to be used or consumed.
 
-Please refer to this [Q&A documentation](https://userapps.support.sap.com/sap/support/knowledge/en/3445942) for more information on how to resolve this issue.
+For more information on how to resolve this issue, see this [Q&A documentation](https://userapps.support.sap.com/sap/support/knowledge/en/3445942).
 
 ### Issue 4. Calling OData V2 or V4 Catalogs does not include specific OData services
 
 When calling either of the OData V2 or V4 Catalogs, you might encounter an issue where specific OData services are not included in the response. This can happen if the user does not have the required authorizations or if the service is not available in the catalog.
 
-Example of calling the OData V2 and V4 Catalogs;
+Example of calling the OData V2 and V4 Catalogs:
 
 ```bash
 #V2 Catalog
@@ -276,7 +270,7 @@ Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry envi
 
 User Management in a Nutshell (IAS or IDP) - [Blog Post](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782)
 
-## Develop an SAP Fiori Application UI using Developer Extensibility Tenant (DEV/080)
+## Develop an SAP Fiori Application UI Using Developer Extensibility Tenant (DEV/080)
 
 For more information about developing an SAP Fiori application UI using the Developer Extensibility tenant, see [Developing an SAP Fiori Application UI Using Developer Extensibility Tenant in SAP S/4HANA Cloud, Public Edition](https://help.sap.com/docs/SAP_S4HANA_CLOUD/6aa39f1ac05441e5a23f484f31e477e7/2a4ae231df8843379df7a36fa3462d4c.html).
 
@@ -284,6 +278,6 @@ This development approach uses the ABAP Development Tools (ADT) in Eclipse IDE c
 
 Any related support issues should be raised against the support component `BC-SRV-APS-IAM`.
 
-### License
+## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
