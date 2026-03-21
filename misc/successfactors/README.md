@@ -6,7 +6,36 @@ This guide covers how to configure an SAP BTP destination using `OAuth2SAMLBeare
 
 For general guidance on SAP BTP destinations, including how to consume and validate them, see the [Destinations guide](../destinations/README.md).
 
-> **Note**: This guide is scoped to `OAuth2SAMLBearerAssertion` destination configuration only. It does not cover issues related to OpenID Connect (OIDC), SAP Cloud Identity Services (IAS), or any other third-party identity providers. If your issue involves trust configuration with an external IdP, see the relevant identity provider documentation.
+> **Note**: This guide is scoped to `OAuth2SAMLBearerAssertion` destination configuration only. Troubleshooting steps for trust configuration with external identity providers (OIDC, IAS, Microsoft Azure AD, or other third-party IdPs) are out of scope. If your issue involves IdP trust configuration beyond what is described here, see the relevant identity provider documentation.
+
+## How OAuth2SAMLBearerAssertion Works
+
+Understanding the authentication flow helps diagnose configuration errors and understand why each setup step is required.
+
+1. **User logs in to the Cloud Foundry application**: The login is handled by an Identity Provider (IdP). This can be the default SAP BTP Identity Provider, SAP Identity Authentication Service (IAS), or a third-party IdP such as Microsoft Azure AD. At this point, the user's identity is confirmed.
+
+2. **Application calls a SuccessFactors destination**: The application calls a destination configured with `OAuth2SAMLBearerAssertion` authentication.
+
+3. **User identity propagation**: The identity of the logged-in user is passed to the Destination service as a user exchange token (a JSON Web Token).
+
+4. **Destination service generates a SAML assertion**: The Destination service:
+   - Extracts the user identity from the JWT.
+   - Embeds it in a SAML assertion.
+   - Signs the assertion with the BTP subaccount's private key.
+
+   This signed assertion serves as a declaration of trust from the subaccount, certifying that the user is authenticated.
+
+5. **SuccessFactors access token request**: The signed SAML assertion is sent to the SuccessFactors OAuth token endpoint to authenticate the user and exchange the assertion for an API access token.
+
+6. **Trust validation**: SuccessFactors validates the assertion using the BTP subaccount's public X.509 certificate, which was uploaded when registering the OAuth client in SuccessFactors. This certificate enables SuccessFactors to verify the signature, confirming the assertion's origin and authenticity.
+
+7. **User validation**: SuccessFactors verifies that:
+   - The SAML assertion is valid and trusted.
+   - The user exists in the SuccessFactors user store. If the user is not found, access is rejected.
+
+8. **Token issued**: Upon successful validation, SuccessFactors accepts the assertion and issues an OAuth access token.
+
+9. **Response returned to the application**: The Destination service returns the destination configuration and the OAuth access token to the application.
 
 ## Prerequisites
 
@@ -76,7 +105,7 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | Authentication | `OAuth2SAMLBearerAssertion` |
    | Audience | `www.successfactors.com` |
    | AuthnContextClassRef | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | Client Key | The API Key copied from step 2.5 (the OAuth client created in SuccessFactors). |
+   | Client Key | The API Key copied from step 2, item 5 (the OAuth client created in SuccessFactors). |
    | Token Service URL | `https://api4.successfactors.com/oauth/token` |
    | Token Service URL Type | `Dedicated` |
    | Key Store Location | The `.p12` certificate file downloaded from SAP BTP (for example, `mysubaccount.p12`). |
@@ -88,10 +117,10 @@ If the proposed solution does not resolve the issue, re-establish the complete t
 
    | Key | Value |
    | --- | --- |
-   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `audience` | `www.successfactors.com` |
    | `authnContextClassRef` | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `companyId` | Your SuccessFactors company ID. |
    | `nameIdFormat` | See [NameID Format](#nameid-format) below. |
    | `tokenServiceURL` | `https://api4.successfactors.com/oauth/token` |
@@ -151,9 +180,9 @@ This error means the user performing the request does not have the required perm
 
 **Error message**: `Invalid useruuid`
 
-This error means the UUID in the JWT token does not match the UUID stored in the SuccessFactors system.
+This error occurs when the **Skip User UUID in SAML Attributes** option is not enabled in the destination configuration. As a result, the UUID in the JWT token is included in the SAML assertion but does not match the UUID stored in the SuccessFactors system.
 
-To resolve this, add the following additional property to your destination:
+To resolve this, enable the option by adding the following additional property to your destination:
 
 | Key | Value |
 | --- | --- |
@@ -164,6 +193,8 @@ To resolve this, add the following additional property to your destination:
 When set to `true`, any SAML assertion attribute named `user_uuid` will not be included in the resulting SAML assertion XML, even if such a value was found in the JWT specifying the user's identity.
 
 For more information, see [SAML Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/saml-assertion-authentication) in the SAP BTP Connectivity documentation.
+
+> **Note**: After applying `skipUserUuidInSAMLAttributes`, if the error changes to `Login failed - invalid user`, see [Login Failed — Invalid User](#login-failed--invalid-user) for next steps.
 
 ## Validating the Destination Using Postman
 
@@ -209,7 +240,7 @@ A successful `200 OK` response confirms that:
 
 1. The trust between SAP BTP and SuccessFactors is correctly established.
 2. The OAuth client API Key and certificate are valid.
-3. The SAML assertion is being accepted by SuccessFactors.
+3. The SAML assertion is accepted by SuccessFactors.
 
 ### Interpreting Results
 
@@ -268,7 +299,7 @@ While Basic Authentication may work as a temporary measure, it is not recommende
 
 ## Reporting Issues
 
-When raising a support ticket for connectivity issues with a SuccessFactors destination, provide the following diagnostic artifacts. Collecting these upfront significantly reduces the time needed to diagnose the issue.
+When raising a support ticket for connectivity issues with a SuccessFactors destination, provide the following diagnostic artifacts. Collecting these artifacts upfront significantly reduces the time needed to diagnose the issue.
 
 ### Required Artifacts
 
