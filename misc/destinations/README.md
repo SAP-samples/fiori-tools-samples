@@ -4,18 +4,20 @@
 
 SAP BTP destinations are used to connect to different services and systems in the cloud, on-premise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
 
-There are two ways to configure a destination URL for use with SAP Fiori tools:
+When using `WebIDEUsage=odata_gen`, there are two ways to configure the destination URL:
 
-- **Partial destination** — The destination URL contains only the base host (for example, `https://services.odata.org`). SAP tooling automatically appends the OData service path at runtime. Use this when your system exposes multiple services or a catalog that you browse during development.
+- **Partial destination** — The destination URL contains only the base host (for example, `https://services.odata.org`). SAP tooling automatically appends the OData service path at runtime. Use this when your back-end exposes multiple services and you want to specify the service path during consumption.
 - **Full destination** — The destination URL contains the complete path to a specific OData service (for example, `https://services.odata.org/v2/northwind/northwind.svc/`), indicated by setting `WebIDEAdditionalData=full_url`. SAP tooling uses the URL exactly as configured without appending any additional paths. Use this when you are targeting a single, fixed service endpoint.
+
+When using `WebIDEUsage=odata_abap`, the partial/full distinction does not apply. The destination URL must always be the base host only, and SAP tooling appends the ABAP catalog paths automatically.
 
 | | Partial Destination | Full Destination |
 |---|---|---|
+| **Applies to** | `odata_gen` only | `odata_gen` only |
 | **URL contains** | Base host only | Complete service path |
 | **`WebIDEAdditionalData`** | Not set | `full_url` |
 | **Path handling** | SAP tooling appends service paths | URL used as-is |
-| **Supports catalog browsing** | Yes (with `odata_abap`) | No |
-| **Typical use case** | SAP ABAP systems, multiple services | Third-party or single fixed-endpoint services |
+| **Typical use case** | Back-end with multiple services | Third-party or single fixed-endpoint services |
 
 - This guide is focused on consuming OData XML services using SAP BTP destinations, when using [SAP Fiori tools](https://help.sap.com/docs/SAP_FIORI_tools) generator and [Service Centre](https://help.sap.com/docs/bas/sap-business-application-studio/explore-services-using-service-center) in SAP Business Application Studio.
 - Other destination types are supported, for example, OData SAP HANA XS type services, but this guide is only focused on OData XML services.
@@ -113,7 +115,7 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 
 ### Understanding `WebIDEAdditionalData`
 
-The `WebIDEAdditionalData` property is an optional configuration flag that instructs SAP tooling how to interpret the destination URL.
+The `WebIDEAdditionalData` property is an optional configuration flag that instructs SAP tooling how to interpret the destination URL. It is only relevant when `WebIDEUsage=odata_gen` — it has no effect when using `odata_abap`, which always treats the destination URL as a base host.
 
 When set to `full_url`, it tells SAP tooling that the destination URL represents the complete, final service URL, and no additional OData service paths should be appended. When this property is not set, SAP tooling treats the destination URL as a base host and automatically appends the required OData service paths (such as `/sap/opu/odata/...` or `/odata/v2/...`).
 
