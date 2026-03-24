@@ -182,21 +182,7 @@ WebIDEUsage=odata_gen
 
 ### Testing with `curl`
 
-When using a destination with `full_url`, your `curl` commands become simpler because the service path is already included in the destination URL:
-
-To retrieve the OData service document:
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind_fullurl.dest/" > curl-fullurl-output.txt 2>&1
-```
-
-To retrieve the OData service metadata:
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind_fullurl.dest/\$metadata" > curl-fullurl-meta-output.txt 2>&1
-```
-
-Notice that you don't need to specify the service path (`/v2/northwind/northwind.svc/`) in the `curl` command because it's already included in the destination URL.
+When using a destination with `full_url`, the service path is already included in the destination URL so you do not need to append it in your `curl` commands. For full examples, see [Testing SAP BTP Destinations with curl](curl-commands.md#commands-for-odata_gen-destinations-full-url).
 
 ### Use Case Examples
 
@@ -229,59 +215,15 @@ WebIDEUsage=odata_gen
 
 ## Sample `curl` Commands for `odata_gen`
 
-The `WebIDEUsage` property `odata_gen` allows you to control which **individual** service you want to call. You can use the following `curl` commands to test your connection to the individual service:
+When using `odata_gen`, the destination URL is the base host and you append the service path in your `curl` command. The `northwind` destination URL (`https://services.odata.org`) combined with the path `/v2/northwind/northwind.svc/` forms the complete back-end URL `https://services.odata.org/v2/northwind/northwind.svc/`. You can validate this externally from SAP BTP by opening a new browser tab and entering the complete URL to review the response.
 
-In our sample Microsoft OData XML service endpoints above, the `northwind` endpoint exposes different OData XML services.
-
-The following `curl` commands are used to test these specific service endpoints:
-
-**Note: These commands generate output files (`curl-datasrv-output.txt` and `curl-datasrv-meta-output.txt`) that contain the verbose output of the `curl` command, including headers and the response body.**
-
-To call a known OData V2 service endpoint with a base path of `/v2/northwind` and an exposed service of `northwind.svc/`:
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind.dest/v2/northwind/northwind.svc/" > curl-datasrv-output.txt 2>&1
-```
-
-To call a known OData V2 service endpoint with a `$metadata` query parameter:
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://northwind.dest/v2/northwind/northwind.svc/\$metadata" > curl-datasrv-meta-output.txt 2>&1
-```
-
-Since you are using `curl` from a terminal window, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter. The above command returns the metadata of the specified OData service.
-
-Note: `https://<destination-name>.dest/` is a placeholder that is appended with the name of your destination. It routes the HTTP request using the SAP Business Application Studio proxy and sets up the connection to your API back end.
-
-The `northwind` destination is configured with the following URL property: `https://services.odata.org` so when the `curl` command is executed, it appends any path that is specified.
-
-The `curl` command contains the service path: `/v2/northwind/northwind.svc/` which is appended to the SAP BTP destination URL: `https://services.odata.org` to form the complete URL: `https://services.odata.org/v2/northwind/northwind.svc/`.
-
-This also applies to the metadata query parameter. It is appended to the destination URL to form the complete URL: `https://services.odata.org/v2/northwind/northwind.svc/$metadata`. You can validate this externally from SAP BTP by opening a new browser tab and entering the complete URL to review the response.
+For full `curl` examples including partial, full_url, and authentication variants, see [Testing SAP BTP Destinations with curl](curl-commands.md).
 
 ## Sample `curl` Commands for `odata_abap`
 
-Usually, your SAP BTP destination is configured with `odata_abap` to allow you to consume the OData V2 and V4 catalogs. You may only know the name of the service and not the specific service endpoint. The following `curl` commands are used to test the OData V2 and V4 catalogs:
+When using `odata_abap`, the destination URL is always the base host only — BAS appends the ABAP catalog paths automatically. Note that catalog endpoints are only available on ABAP systems. Calling them against a non-ABAP destination (such as the `northwind` destination) returns an HTTP 404 Not Found error, which is expected.
 
-**Note: These commands generate output files (`curl-v2catalog-output.txt` and `curl-v4catalog-output.txt`) that contain the verbose output of the `curl` command, including headers and response body.**
-
-OData V2 Catalog
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection" > curl-v2catalog-output.txt 2>&1
-```
-
-OData V4 Catalog
-
-```bash
-curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination_name>.dest/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?\$expand=DefaultSystem(\$expand=Services)" > curl-v4catalog-output.txt 2>&1
-```
-
-Note: Since you are using curl, you need to escape the `$` sign with a backslash `\` to pass it as a query parameter.
-
-**Question**: Do you know why we can't use these OData V2 and OData V4 catalog endpoints against the `northwind` destination?
-
-**Answer**: The `northwind` destination is not an ABAP system so the catalogs API endpoints are not available so it results in an HTTP 404 Not Found error.
+For full `curl` examples including V2/V4 catalog commands and authentication variants, see [Testing SAP BTP Destinations with curl](curl-commands.md).
 
 ## Environment Check
 
