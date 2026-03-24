@@ -36,6 +36,7 @@ When using `WebIDEUsage=odata_abap`, the partial/full distinction does not apply
 ## Additional Resources
 
 - [HTTP Destinations](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/http-destinations)
+- [Testing SAP BTP Destinations with curl](curl-commands.md)
 
 ## Flow Diagram
 
