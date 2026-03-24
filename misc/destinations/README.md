@@ -4,6 +4,19 @@
 
 SAP BTP destinations are used to connect to different services and systems in the cloud, on-premise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
 
+There are two ways to configure a destination URL for use with SAP Fiori tools:
+
+- **Partial destination** — The destination URL contains only the base host (for example, `https://services.odata.org`). SAP tooling automatically appends the OData service path at runtime. Use this when your system exposes multiple services or a catalog that you browse during development.
+- **Full destination** — The destination URL contains the complete path to a specific OData service (for example, `https://services.odata.org/v2/northwind/northwind.svc/`), indicated by setting `WebIDEAdditionalData=full_url`. SAP tooling uses the URL exactly as configured without appending any additional paths. Use this when you are targeting a single, fixed service endpoint.
+
+| | Partial Destination | Full Destination |
+|---|---|---|
+| **URL contains** | Base host only | Complete service path |
+| **`WebIDEAdditionalData`** | Not set | `full_url` |
+| **Path handling** | SAP tooling appends service paths | URL used as-is |
+| **Supports catalog browsing** | Yes (with `odata_abap`) | No |
+| **Typical use case** | SAP ABAP systems, multiple services | Third-party or single fixed-endpoint services |
+
 - This guide is focused on consuming OData XML services using SAP BTP destinations, when using [SAP Fiori tools](https://help.sap.com/docs/SAP_FIORI_tools) generator and [Service Centre](https://help.sap.com/docs/bas/sap-business-application-studio/explore-services-using-service-center) in SAP Business Application Studio.
 - Other destination types are supported, for example, OData SAP HANA XS type services, but this guide is only focused on OData XML services.
 - This guide uses a publicly available endpoint to demonstrate how to configure the SAP BTP destination and how to consume the OData XML service using the SAP Fiori tools generator with different configurations and tools.
@@ -301,7 +314,7 @@ If the URL is hardcoded with extra path segments, query parameters, or format op
 This typically leads to errors such as:
 
 - **HTTP 404 Not Found** (most common)
-- **HTTP 401/403** (when authentication is attempted against an invalid path)
+- **HTTP 401 and HTTP 403** (when authentication is attempted against an invalid path)
 
 #### Example of an Incorrect Destination URL
 
