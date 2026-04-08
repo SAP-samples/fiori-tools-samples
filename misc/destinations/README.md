@@ -213,6 +213,89 @@ WebIDEUsage=odata_gen
 - Always use `WebIDEUsage=odata_gen` with `full_url`, not `odata_abap`.
 - Environment Check will report that catalog endpoints are unavailable, which is expected behavior when using `full_url`.
 
+## Using `https://<destination-name>.dest/<service-path>` to Call a Service Directly
+
+### Overview
+
+When a destination is configured with `WebIDEUsage=odata_abap`, SAP tooling uses the ABAP service catalogs (OData V2 and OData V4) to discover available services. However, there are situations where a required service exists on the back-end system but is not listed in either catalog — for example, because it has not been registered in the catalog, has not been activated in `/IWFND/MAINT_SERVICE`, or requires a Communication Arrangement that has not been set up.
+
+In these cases, you can bypass catalog discovery entirely and call the service directly by entering the `<destination-name>.dest` URL pattern in the SAP Fiori tools generator or Service Centre:
+
+```text
+https://<destination-name>.dest/<service-path>
+```
+
+The `.dest` suffix is resolved at runtime by the SAP BTP application router and the Destination Service. The destination name is substituted with the configured destination URL, and the service path is appended to form the complete back-end request.
+
+### When to Use This Approach
+
+Use the `<destination-name>.dest` URL pattern when:
+
+- The destination uses `WebIDEUsage=odata_abap` but the required OData service is not visible in the V2 or V4 catalog.
+- You know the exact service path on the back-end system.
+- You want to avoid creating a separate `odata_gen` destination for a single service.
+- The service is reachable through the existing destination (authentication and proxy settings are already correct).
+
+This approach works with any destination proxy type — `Internet` or `OnPremise` — as long as the destination is reachable and the service path is accessible.
+
+### Example: Northwind Destination
+
+The following example demonstrates how to use this pattern with the `northwind` destination configured in the [Configuration](#configuration) section. The destination URL is `https://services.odata.org` and the required service path is `/V2/Northwind/Northwind.svc/`.
+
+In the SAP Fiori tools generator, select **Connect to an OData Service** as the data source, then enter the full `.dest` URL in the **OData service URL** field:
+
+```text
+https://northwind.dest/V2/Northwind/Northwind.svc/
+```
+
+The following screenshot shows the generator with the URL entered. The warning beneath the field — "No backend annotations associated with this service were retrieved and may result in an invalid application being created" — is expected for services that do not expose OData annotations and does not prevent the application from being generated.
+
+![SAP Fiori tools generator with Connect to an OData Service selected and https://northwind.dest/V2/Northwind/Northwind.svc/ entered in the OData service URL field](odata-service-url.png?raw=true "OData Service URL Field — .dest Pattern")
+
+At runtime, the application router resolves `northwind.dest` to the configured destination URL (`https://services.odata.org`) and appends the service path, making the effective back-end request:
+
+```text
+https://services.odata.org/V2/Northwind/Northwind.svc/
+```
+
+### How the `.dest` URL Is Resolved
+
+The following table summarizes how each part of the URL is handled:
+
+| URL Segment | Example | Resolved By |
+|---|---|---|
+| `<destination-name>.dest` | `northwind.dest` | SAP BTP application router looks up the named destination from the Destination Service |
+| `<service-path>` | `/V2/Northwind/Northwind.svc/` | Appended directly to the destination base URL at runtime |
+
+### Important Notes
+
+- The destination must have `HTML5.DynamicDestination=true` set so that the application router can resolve it at runtime.
+- The service path you enter must match the exact path the back-end system exposes — including case sensitivity.
+- If the service requires authentication, the destination's authentication configuration (for example, `BasicAuthentication`, `SAMLAssertion`, or `PrincipalPropagation`) is applied to the request automatically.
+- This approach does not change how the destination is configured in the SAP BTP cockpit. The existing `odata_abap` destination is reused; you are simply addressing the service directly rather than going through catalog discovery.
+
+### Cloning the Destination with `odata_gen`
+
+If you prefer a more permanent solution, you can clone your existing `odata_abap` destination in the SAP BTP cockpit and update `WebIDEUsage` to `odata_gen`. This creates a dedicated destination that bypasses catalog discovery for all services, without affecting your original `odata_abap` destination.
+
+1. In the SAP BTP cockpit, open your subaccount and navigate to **Connectivity** -> **Destinations**.
+2. Select your existing `odata_abap` destination and click **Clone**.
+3. Give the cloned destination a new name (for example, `mys4hc-destination-gen`).
+4. Change `WebIDEUsage` from `odata_abap` to `odata_gen`. Ensure `odata_abap` is fully removed — if both values are present, SAP Fiori tools defaults to `odata_abap` and catalog discovery is used instead.
+5. Save the destination.
+
+With `WebIDEUsage=odata_gen` and no `odata_abap` present, the SAP Fiori tools generator shows **Connect to a System** as the data source option. Selecting the destination exposes a **Service Path** field where you enter the service path directly. The following screenshot shows the `northwind` destination selected with an empty **Service Path** field ready for input:
+
+![SAP Fiori tools generator with Connect to a System selected, northwind chosen as the system, and an empty Service Path field](odata-system.png?raw=true "Connect to a System — Service Path Field")
+
+Enter the service path in the **Service Path** field, for example:
+
+```text
+/V2/Northwind/Northwind.svc/
+```
+
+This approach is useful when multiple developers or multiple projects need to access the same service directly, so each user does not need to manually type the `.dest` URL each time.
+
 ## Sample `curl` Commands for `odata_gen`
 
 When using `odata_gen`, the destination URL is the base host and you append the service path in your `curl` command. The `northwind` destination URL (`https://services.odata.org`) combined with the path `/v2/northwind/northwind.svc/` forms the complete back-end URL `https://services.odata.org/v2/northwind/northwind.svc/`. You can validate this externally from SAP BTP by opening a new browser tab and entering the complete URL to review the response.
