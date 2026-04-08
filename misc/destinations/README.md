@@ -242,13 +242,15 @@ This approach works with any destination proxy type — `Internet` or `OnPremise
 
 The following example demonstrates how to use this pattern with the `northwind` destination configured in the [Configuration](#configuration) section. The destination URL is `https://services.odata.org` and the required service path is `/V2/Northwind/Northwind.svc/`.
 
-In the SAP Fiori tools generator, select **Connect to an OData Service** as the data source and enter the following in the **OData service URL** field:
+In the SAP Fiori tools generator, select **Connect to an OData Service** as the data source, then enter the full `.dest` URL in the **OData service URL** field:
 
 ```text
 https://northwind.dest/V2/Northwind/Northwind.svc/
 ```
 
-![SAP Fiori tools generator showing the OData service URL field populated with https://northwind.dest/V2/Northwind/Northwind.svc/](odata-service-url.png?raw=true "SAP Fiori tools generator — OData service URL using .dest pattern")
+The following screenshot shows the generator with the URL entered. The warning beneath the field — "No backend annotations associated with this service were retrieved and may result in an invalid application being created" — is expected for services that do not expose OData annotations and does not prevent the application from being generated.
+
+![SAP Fiori tools generator with Connect to an OData Service selected and https://northwind.dest/V2/Northwind/Northwind.svc/ entered in the OData service URL field](odata-service-url.png?raw=true "OData Service URL Field — .dest Pattern")
 
 At runtime, the application router resolves `northwind.dest` to the configured destination URL (`https://services.odata.org`) and appends the service path, making the effective back-end request:
 
@@ -270,7 +272,6 @@ The following table summarizes how each part of the URL is handled:
 - The destination must have `HTML5.DynamicDestination=true` set so that the application router can resolve it at runtime.
 - The service path you enter must match the exact path the back-end system exposes — including case sensitivity.
 - If the service requires authentication, the destination's authentication configuration (for example, `BasicAuthentication`, `SAMLAssertion`, or `PrincipalPropagation`) is applied to the request automatically.
-- The warning "No backend annotations associated with this service were retrieved and may result in an invalid application being created" is expected when the service does not expose OData annotations. The generator can still create an application, but it may require manual annotation work.
 - This approach does not change how the destination is configured in the SAP BTP cockpit. The existing `odata_abap` destination is reused; you are simply addressing the service directly rather than going through catalog discovery.
 
 ### Cloning the Destination with `odata_gen`
@@ -283,9 +284,9 @@ If you prefer a more permanent solution, you can clone your existing `odata_abap
 4. Change `WebIDEUsage` from `odata_abap` to `odata_gen`. Ensure `odata_abap` is fully removed — if both values are present, SAP Fiori tools defaults to `odata_abap` and catalog discovery is used instead.
 5. Save the destination.
 
-With `WebIDEUsage=odata_gen` and no `odata_abap` present, the SAP Fiori tools generator shows **Connect to a System** as the data source option. Selecting the destination exposes a **Service Path** field where you enter the service path directly:
+With `WebIDEUsage=odata_gen` and no `odata_abap` present, the SAP Fiori tools generator shows **Connect to a System** as the data source option. Selecting the destination exposes a **Service Path** field where you enter the service path directly. The following screenshot shows the `northwind` destination selected with an empty **Service Path** field ready for input:
 
-![SAP Fiori tools generator showing Connect to a System with the northwind destination selected and a Service Path input field](odata-system.png?raw=true "SAP Fiori tools generator — Service Path field exposed when using odata_gen")
+![SAP Fiori tools generator with Connect to a System selected, northwind chosen as the system, and an empty Service Path field](odata-system.png?raw=true "Connect to a System — Service Path Field")
 
 Enter the service path in the **Service Path** field, for example:
 
