@@ -46,7 +46,7 @@ To validate which version of the generator was used to create an existing SAPUI5
 }
 ```
 
-The `id` field identifies the tool used to generate the application (for example, `@sap/generator-fiori` for a newly generated application, or `@sap/ux-app-migrator` for a migrated application). The `version` field records the version of that tool at the time of generation.
+The `id` field identifies both the tool and the template used to generate the application, in the format `<generator>:<template>`. For example, `@sap/generator-fiori:basic` indicates the `basic` template was used with the `@sap/generator-fiori` generator, while `@sap/ux-app-migrator:freestyle` indicates a freestyle application was migrated using `@sap/ux-app-migrator`. The `version` field records the version of that tool at the time of generation.
 
 ## License
 
