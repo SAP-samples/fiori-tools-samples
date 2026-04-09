@@ -36,7 +36,7 @@ When the SAP Fiori generator is open, hover over the info icon (&#9432;) next to
 
 ## Identifying the Generator Version Used to Create an Application
 
-To validate which version of the generator was used to create an existing SAPUI5 application, open the application's `manifest.json` file. It contains a `sourceTemplate` node that records the generator version at the time the project was scaffolded:
+To validate which version of the generator was used to create an existing SAPUI5 application, open the application's `manifest.json` file. It contains a `sourceTemplate` node that records the tool and version used at the time the project was scaffolded:
 
 ```json
 "sourceTemplate": {
@@ -46,7 +46,7 @@ To validate which version of the generator was used to create an existing SAPUI5
 }
 ```
 
-The `version` field identifies the `@sap/generator-fiori` version used to generate the application.
+The `id` field identifies the tool used to generate the application (for example, `@sap/generator-fiori` for a newly generated application, or `@sap/ux-app-migrator` for a migrated application). The `version` field records the version of that tool at the time of generation.
 
 ## License
 
