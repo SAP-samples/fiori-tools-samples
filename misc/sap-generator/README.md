@@ -6,6 +6,7 @@ The SAP Fiori tools generator (`@sap/generator-fiori`) is the core Yeoman-based 
 
 - [Tracking the Latest Version](#tracking-the-latest-version)
 - [Determining the Installed Version](#determining-the-installed-version)
+- [Identifying the Generator Version Used to Create an Application](#identifying-the-generator-version-used-to-create-an-application)
 
 ## Tracking the Latest Version
 
@@ -32,6 +33,20 @@ npm install -g @sap/generator-fiori
 When the SAP Fiori generator is open, hover over the info icon (&#9432;) next to the **SAP Fiori generator** heading. A tooltip displays the currently installed version, for example `@sap/generator-fiori@1.22.0`.
 
 ![Hovering over the info icon in the SAP Fiori generator shows the installed version](SAP-Generator-Version.png)
+
+## Identifying the Generator Version Used to Create an Application
+
+To validate which version of the generator was used to create an existing SAPUI5 application, open the application's `manifest.json` file. It contains a `sourceTemplate` node that records the generator version at the time the project was scaffolded:
+
+```json
+"sourceTemplate": {
+  "id": "@sap/generator-fiori:basic",
+  "version": "1.22.0",
+  "toolsId": "d3f73c8f-aa06-4e70-9153-ada99d6d2391"
+}
+```
+
+The `version` field identifies the `@sap/generator-fiori` version used to generate the application.
 
 ## License
 
