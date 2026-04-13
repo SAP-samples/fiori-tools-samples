@@ -108,7 +108,7 @@ If connectivity fails, run these checks first:
 - Is the virtual host mapping (virtual host/port and back-end host/port) configured and active?
 - Does the destination point to the correct `CloudConnectorLocationId`?
 - Are the authentication settings in the destination and the back-end system aligned (such as principal propagation, SSL, and certificates)?
-- Are firewalls or proxies blocking traffic between the Cloud Connector and the back-end? This often occurs when moving to production because the originating IPs change.
+- Are firewalls or proxies blocking traffic between the Cloud Connector and the back-end? This often occurs when moving to production because the originating IPs change. See [SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20) for the addresses to allowlist.
 - Can you access the back-end system directly from the Cloud Connector host using `curl` or a web browser?
 
 If problems persist, follow the [trace logging](#enable-cloud-connector-trace-logging) steps below to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
