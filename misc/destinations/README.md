@@ -2,12 +2,12 @@
 
 ## Overview
 
-SAP BTP destinations are used to connect to different services and systems in the cloud, on-premise or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
+SAP BTP destinations are used to connect to different services and systems in the cloud, on-premise, or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
 
 When using `WebIDEUsage=odata_gen`, there are two ways to configure the destination URL:
 
-- **Partial destination** — The destination URL contains only the base host (for example, `https://services.odata.org`). SAP tooling automatically appends the OData service path at runtime. Use this when your back-end exposes multiple services and you want to specify the service path during consumption.
-- **Full destination** — The destination URL contains the complete path to a specific OData service (for example, `https://services.odata.org/v2/northwind/northwind.svc/`), indicated by setting `WebIDEAdditionalData=full_url`. SAP tooling uses the URL exactly as configured without appending any additional paths. Use this when you are targeting a single, fixed service endpoint.
+- **Partial destination**: The destination URL contains only the base host (for example, `https://services.odata.org`). SAP tooling automatically appends the OData service path at runtime. Use this when your back-end exposes multiple services and you want to specify the service path during consumption.
+- **Full destination**: The destination URL contains the complete path to a specific OData service (for example, `https://services.odata.org/v2/northwind/northwind.svc/`), indicated by setting `WebIDEAdditionalData=full_url`. SAP tooling uses the URL exactly as configured without appending any additional paths. Use this when you are targeting a single, fixed service endpoint.
 
 When using `WebIDEUsage=odata_abap`, the partial/full distinction does not apply. The destination URL must always be the base host only, and SAP tooling appends the ABAP catalog paths automatically.
 
@@ -116,7 +116,7 @@ The SAP BTP destination `WebIDEUsage` property is used to define the purpose of 
 
 ### Understanding `WebIDEAdditionalData`
 
-The `WebIDEAdditionalData` property is an optional configuration flag that instructs SAP tooling how to interpret the destination URL. It is only relevant when `WebIDEUsage=odata_gen` — it has no effect when using `odata_abap`, which always treats the destination URL as a base host.
+The `WebIDEAdditionalData` property is an optional configuration flag that instructs SAP tooling how to interpret the destination URL. It is only relevant when `WebIDEUsage=odata_gen`—it has no effect when using `odata_abap`, which always treats the destination URL as a base host.
 
 When set to `full_url`, it tells SAP tooling that the destination URL represents the complete, final service URL, and no additional OData service paths should be appended. When this property is not set, SAP tooling treats the destination URL as a base host and automatically appends the required OData service paths (such as `/sap/opu/odata/...` or `/odata/v2/...`).
 
@@ -137,6 +137,67 @@ https://api.successfactors.eu/odata/v2/EmpJob
 ```
 
 For detailed information about configuring and using `full_url`, see [Using `WebIDEAdditionalData=full_url` for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls).
+
+## Authentication Types
+
+The `Authentication` property in an SAP BTP destination controls how the destination service authenticates requests to the back-end system. The value you choose determines what credentials, if any, SAP BTP sends on behalf of the caller.
+
+The most common authentication types for OData services are:
+
+| Authentication Type | What SAP BTP sends | Typical use case |
+|---|---|---|
+| `NoAuthentication` | Nothing—no credentials attached | Public or open endpoints that do not require caller identity |
+| `BasicAuthentication` | A fixed username and password | Systems that accept a shared technical user |
+| `PrincipalPropagation` | A short-lived certificate representing the logged-in user | On-premise systems where end-user identity must be forwarded |
+| `OAuth2ClientCredentials` | A client ID and secret exchanged for an access token | Cloud APIs using OAuth2 machine-to-machine flows |
+| `SAMLAssertion` | A SAML assertion representing the logged-in user | Cloud systems requiring federated identity |
+
+For a full list of supported authentication types, see [HTTP Destinations](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/http-destinations).
+
+### NoAuthentication
+
+`Authentication=NoAuthentication` tells the SAP BTP destination service to forward requests to the back-end system without attaching any credentials. SAP BTP does not add an `Authorization` header, does not exchange tokens, and does not present certificates.
+
+#### When to use NoAuthentication
+
+Use `NoAuthentication` only for endpoints that are intentionally open and do not require caller identity, for example:
+
+- Publicly available OData services (such as the Microsoft Northwind demo service).
+- Internal sandbox or mock servers that do not enforce access control.
+- Systems where access is controlled entirely at the network layer (for example, IP allowlisting, firewall rules, or VPN) rather than at the application layer.
+
+#### When not to use NoAuthentication
+
+Do not use `NoAuthentication` for:
+
+- Any endpoint that returns user-specific or sensitive data.
+- Systems where access should be restricted to authenticated users or specific technical accounts.
+- Productive back-end systems: even if the back-end currently accepts unauthenticated requests, using `NoAuthentication` in production removes the ability to audit which caller made a request and makes it trivially easy for any authorized BTP user to query the service without restriction.
+
+#### Security nuance
+
+`NoAuthentication` means **SAP BTP sends no credentials**—it does not mean the back-end system is unprotected. The back-end may still enforce its own access controls:
+
+- Network-level controls: IP allowlists, firewall rules, or Cloud Connector virtual host mappings that restrict which source IPs can reach the service.
+- Application-level controls: The back-end system itself may still return HTTP 401 or HTTP 403 if it enforces its own access policy independent of the SAP BTP destination configuration.
+
+If you are receiving unexpected HTTP 401 or HTTP 403 responses when using `NoAuthentication`, the back-end system is enforcing authentication independently of the destination configuration. Switch to the appropriate authentication type (`BasicAuthentication`, `OAuth2ClientCredentials`, or `PrincipalPropagation`) to supply credentials.
+
+#### Destination configuration example
+
+```ini
+Type=HTTP
+Authentication=NoAuthentication
+ProxyType=Internet
+URL=https://services.odata.org
+Name=northwind
+WebIDEEnabled=true
+WebIDEUsage=odata_gen
+HTML5.DynamicDestination=true
+HTML5.Timeout=60000
+```
+
+For on-premise destinations using `ProxyType=OnPremise`, see [Choosing an Authentication Type](../onpremise/connectivity.md#choosing-an-authentication-type) for guidance on when `NoAuthentication` is and is not appropriate through the Cloud Connector.
 
 ## Using WebIDEAdditionalData=full_url for Complete Service URLs
 
@@ -186,7 +247,7 @@ When using a destination with `full_url`, the service path is already included i
 
 ### Use Case Examples
 
-#### Use Case 1: Third-Party OData Service
+#### Use case 1: Third-party OData service
 
 You're consuming a specific OData service from an external provider with a fixed endpoint:
 
@@ -196,7 +257,7 @@ WebIDEAdditionalData=full_url
 WebIDEUsage=odata_gen
 ```
 
-#### Use Case 2: Custom SAP Gateway Service
+#### Use case 2: Custom SAP Gateway service
 
 You have a custom OData service deployed on SAP Gateway with a specific path that should not be modified:
 
@@ -217,7 +278,7 @@ WebIDEUsage=odata_gen
 
 ### Overview
 
-When a destination is configured with `WebIDEUsage=odata_abap`, SAP tooling uses the ABAP service catalogs (OData V2 and OData V4) to discover available services. However, there are situations where a required service exists on the back-end system but is not listed in either catalog — for example, because it has not been registered in the catalog, has not been activated in `/IWFND/MAINT_SERVICE`, or requires a Communication Arrangement that has not been set up.
+When a destination is configured with `WebIDEUsage=odata_abap`, SAP tooling uses the ABAP service catalogs (OData V2 and OData V4) to discover available services. However, there are situations where a required service exists on the back-end system but is not listed in either catalog—for example, because it has not been registered in the catalog, has not been activated in `/IWFND/MAINT_SERVICE`, or requires a Communication Arrangement that has not been set up.
 
 In these cases, you can bypass catalog discovery entirely and call the service directly by entering the `<destination-name>.dest` URL pattern in the SAP Fiori tools generator or Service Centre:
 
@@ -236,7 +297,7 @@ Use the `<destination-name>.dest` URL pattern when:
 - You want to avoid creating a separate `odata_gen` destination for a single service.
 - The service is reachable through the existing destination (authentication and proxy settings are already correct).
 
-This approach works with any destination proxy type — `Internet` or `OnPremise` — as long as the destination is reachable and the service path is accessible.
+This approach works with any destination proxy type—`Internet` or `OnPremise`—as long as the destination is reachable and the service path is accessible.
 
 ### Example: Northwind Destination
 
@@ -248,7 +309,7 @@ In the SAP Fiori tools generator, select **Connect to an OData Service** as the 
 https://northwind.dest/V2/Northwind/Northwind.svc/
 ```
 
-The following screenshot shows the generator with the URL entered. The warning beneath the field — "No backend annotations associated with this service were retrieved and may result in an invalid application being created" — is expected for services that do not expose OData annotations and does not prevent the application from being generated.
+The following screenshot shows the generator with the URL entered. The warning beneath the field—"No backend annotations associated with this service were retrieved and may result in an invalid application being created"—is expected for services that do not expose OData annotations and does not prevent the application from being generated.
 
 ![SAP Fiori tools generator with Connect to an OData Service selected and https://northwind.dest/V2/Northwind/Northwind.svc/ entered in the OData service URL field](odata-service-url.png?raw=true "OData Service URL Field — .dest Pattern")
 
@@ -270,7 +331,7 @@ The following table summarizes how each part of the URL is handled:
 ### Important Notes
 
 - The destination must have `HTML5.DynamicDestination=true` set so that the application router can resolve it at runtime.
-- The service path you enter must match the exact path the back-end system exposes — including case sensitivity.
+- The service path you enter must match the exact path the back-end system exposes, including case sensitivity.
 - If the service requires authentication, the destination's authentication configuration (for example, `BasicAuthentication`, `SAMLAssertion`, or `PrincipalPropagation`) is applied to the request automatically.
 - This approach does not change how the destination is configured in the SAP BTP cockpit. The existing `odata_abap` destination is reused; you are simply addressing the service directly rather than going through catalog discovery.
 
@@ -278,10 +339,10 @@ The following table summarizes how each part of the URL is handled:
 
 If you prefer a more permanent solution, you can clone your existing `odata_abap` destination in the SAP BTP cockpit and update `WebIDEUsage` to `odata_gen`. This creates a dedicated destination that bypasses catalog discovery for all services, without affecting your original `odata_abap` destination.
 
-1. In the SAP BTP cockpit, open your subaccount and navigate to **Connectivity** -> **Destinations**.
+1. In the SAP BTP cockpit, open your subaccount and navigate to **Connectivity** > **Destinations**.
 2. Select your existing `odata_abap` destination and click **Clone**.
 3. Give the cloned destination a new name (for example, `mys4hc-destination-gen`).
-4. Change `WebIDEUsage` from `odata_abap` to `odata_gen`. Ensure `odata_abap` is fully removed — if both values are present, SAP Fiori tools defaults to `odata_abap` and catalog discovery is used instead.
+4. Change `WebIDEUsage` from `odata_abap` to `odata_gen`. Ensure `odata_abap` is fully removed: if both values are present, SAP Fiori tools defaults to `odata_abap` and catalog discovery is used instead.
 5. Save the destination.
 
 With `WebIDEUsage=odata_gen` and no `odata_abap` present, the SAP Fiori tools generator shows **Connect to a System** as the data source option. Selecting the destination exposes a **Service Path** field where you enter the service path directly. The following screenshot shows the `northwind` destination selected with an empty **Service Path** field ready for input:
@@ -315,7 +376,7 @@ Environment check is a tool used to validate the destination configuration and e
 Even if your destination is configured with `odata_gen`, it's still a valid tool to ensure that the destination is reachable and all the required parameters are set correctly. However, if your target system is not an ABAP system, then the OData V2 and OData V4 catalog endpoints fail.
 
 1. Open SAP Business Application Studio.
-1. Open the Command Palette (View -> Find Command).
+1. Open the Command Palette (**View** > **Find Command**).
 1. Enter `Fiori: Open Environment Check`.
 1. Click `Check Destination` and choose your destination.
 1. Enter credentials, if prompted.
@@ -344,7 +405,7 @@ This typically leads to errors such as:
 - **HTTP 404 Not Found** (most common)
 - **HTTP 401 and HTTP 403** (when authentication is attempted against an invalid path)
 
-#### Example of an Incorrect Destination URL
+#### Example of an incorrect destination URL
 
 If the destination URL is configured as shown in the following URL then SAP Fiori tools or the Service Center automatically appends the required service path for the operation:
 
@@ -376,7 +437,7 @@ You can use `Dynamic Destinations` to validate your destination configuration ou
 
 **Ensure you are subscribed to [SAP Build Work Zone](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) to ensure the `dynamic_dest` path is exposed on your SAP BTP subaccount.**
 
-#### Steps to Use Dynamic Destinations
+#### Steps to use dynamic destinations
 
 1. Get the name of your SAP BTP subaccount destination configured using SAMLAssertion such as `mys4hc-destination`.
 2. Ensure the SAP BTP destination `Additional Properties` contains `HTML5.DynamicDestination: true` and `WebIDEEnabled: true`.
@@ -410,7 +471,7 @@ https://mytrial-account.launchpad.cfapps.us10.hana.ondemand.com/dynamic_dest/mys
 
 When reporting issues or opening support tickets, you must provide diagnostic information to help support teams understand and resolve the issue. The artifacts you need to include depend on the destination configuration:
 
-#### Option 1: Environment Check Report
+#### Option 1: Environment Check report
 
 Run the Environment Check tool (as described in the [Environment Check](#environment-check) section above) and **review the generated output carefully**. The Environment Check report can reveal misconfigurations or issues with calling the respective catalog requests (OData V2/V4 catalogs), which may help you identify and resolve the problem without needing to open a support ticket.
 
@@ -423,7 +484,7 @@ When opening a support ticket, attach the generated zip file. This file includes
 
 The entire zip file must be attached as it provides comprehensive information to diagnose connectivity and configuration issues.
 
-#### Option 2: Network Trace (HAR File)
+#### Option 2: Network trace (HAR file)
 
 Include a full network trace (`.har` file) with all requests in the scenario after it was reproduced. This is essential for support teams to understand the flow of API calls and identify the root cause of browser-based issues.
 
@@ -438,7 +499,7 @@ The `.har` file should be exported from your browser (Chrome, Edge, Firefox, or 
 
 This comprehensive trace allows support teams to analyze the complete flow of API calls, identify failed requests, and diagnose connectivity or configuration issues.
 
-#### Option 3: On-Premise Destinations (ProxyType=OnPremise)
+#### Option 3: On-premise destinations (ProxyType=OnPremise)
 
 If your destination uses `ProxyType=OnPremise` (Cloud Connector), additional artifacts are required beyond the Environment Check report and HAR file. The Cloud Connector adds another layer between SAP BTP and your back-end system, requiring specific configuration details and logs for proper troubleshooting.
 

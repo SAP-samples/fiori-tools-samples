@@ -1,9 +1,10 @@
 # Connectivity
 
-This page covers how to configure the SAP BTP destination and the Cloud Connector, validate that your on-premise back end is reachable, and resolve connectivity failures.
+This page covers how to configure the SAP BTP destination and the Cloud Connector, validate that your on-premise back-end is reachable, and resolve connectivity failures.
 
 Table of Contents
 
+- [Choosing an Authentication Type](#choosing-an-authentication-type)
 - [Cloud Connector Configuration](#cloud-connector-configuration)
 - [SAP BTP Destination](#sap-btp-destination)
 - [Validate Connectivity](#validate-connectivity)
@@ -11,6 +12,31 @@ Table of Contents
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
 - [Known Issues](#known-issues)
 - [Additional Resources](#additional-resources)
+
+---
+
+## Choosing an Authentication Type
+
+SAP BTP on-premise destinations support several authentication types. The right choice depends on your security requirements and landscape.
+
+| Authentication Type | What it does | Recommended for |
+|---|---|---|
+| `NoAuthentication` | SAP BTP sends no credentials. The Cloud Connector forwards the request as-is. | Development or sandbox environments where the back-end is open or access is controlled at the network layer only |
+| `BasicAuthentication` | A fixed technical username and password stored in the destination are sent with every request. | Non-productive landscapes where a shared technical user is acceptable |
+| `PrincipalPropagation` | The logged-in user's identity is forwarded as a short-lived certificate through the Cloud Connector to the back-end. | All productive landscapes |
+
+### Why Principal Propagation Is Recommended for Productive Landscapes
+
+`NoAuthentication` and `BasicAuthentication` are supported and work technically, but they carry significant risks in productive environments:
+
+- **No user-level audit trail.** With `NoAuthentication`, the back-end cannot identify which end user made a request: all requests arrive anonymously. With `BasicAuthentication`, all requests arrive under the same shared technical account. Neither approach gives you per-user authorization enforcement or a meaningful audit log.
+- **Shared credentials are a liability.** A `BasicAuthentication` password stored in the destination is shared across every user and application that uses it. Rotating it requires updating the destination configuration and redeploying any bound applications. A compromise affects everyone simultaneously.
+- **Least-privilege is impossible.** Back-end authorization roles (such as SAP S/4HANA object-level authorizations) are assigned to users. With a technical user, you either over-privilege (grant it everything) or under-privilege (break scenarios for some users). Principal propagation lets the back-end apply each user's own authorizations exactly.
+- **Compliance requirements.** Many enterprise security policies and audits (SOX, ISO 27001, SAP security baselines) require that actions in back-end systems are traceable to individual users. Anonymous or shared-user access fails this requirement.
+
+`PrincipalPropagation` solves all of these: the back-end sees the actual user, applies that user's roles, and can log the action against their identity—without storing any long-lived credentials in the destination configuration.
+
+> **Recommendation:** Use `PrincipalPropagation` for all productive on-premise destinations. Reserve `BasicAuthentication` for non-productive landscapes only, and avoid `NoAuthentication` for any system that holds business data. See [Principal Propagation](./principal-propagation.md) for setup instructions.
 
 ---
 
@@ -51,7 +77,7 @@ Properties:
 - `WebIDEEnabled=true`: Enables the destination for SAP Business Application Studio.
 - `HTML5.Timeout`: The timeout duration in milliseconds. Example: `60000`.
 - `HTML5.DynamicDestination=true`: Enables the destination to be dynamically resolved at runtime.
-- `Authentication=PrincipalPropagation`: Forwards the end-user identity to the back end. Recommended for productive landscapes. See [Principal Propagation](./principal-propagation.md).
+- `Authentication=PrincipalPropagation`: Forwards the end-user identity to the back-end. Recommended for productive landscapes. See [Principal Propagation](./principal-propagation.md).
 - `CloudConnectorLocationId`: The Cloud Connector location configured in the subaccount. Required when multiple Cloud Connectors are registered.
 - `URL`: The internal host and port mapped through the Cloud Connector. Update this to match your virtual host mapping.
 
@@ -82,7 +108,7 @@ If connectivity fails, run these checks first:
 - Is the virtual host mapping (virtual host/port and back-end host/port) configured and active?
 - Does the destination point to the correct `CloudConnectorLocationId`?
 - Are the authentication settings in the destination and the back-end system aligned (such as principal propagation, SSL, and certificates)?
-- Are firewalls or proxies blocking traffic between the Cloud Connector and the back end? This often occurs when moving to production because the originating IPs change.
+- Are firewalls or proxies blocking traffic between the Cloud Connector and the back-end? This often occurs when moving to production because the originating IPs change.
 - Can you access the back-end system directly from the Cloud Connector host using `curl` or a web browser?
 
 If problems persist, follow the [trace logging](#enable-cloud-connector-trace-logging) steps below to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
@@ -130,11 +156,11 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 
 ## Additional Resources
 
-- [Whitelisting SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20) — requires support from your IT admin team
+- [Whitelisting SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20): requires support from your IT admin team
 - [Understanding SAP BTP Destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)
 - [Create SAP BTP Destinations](https://developers.sap.com/tutorials/cp-cf-create-destination.html)
 - [Cloud Connector Explained](https://community.sap.com/t5/technology-blog-posts-by-sap/cloud-connector-explained-in-simple-terms/ba-p/13547036)
 
 ---
 
-**Next:** [Deployment](./deployment.md) — deploy your app to the ABAP on-premise repository.
+**Next:** [Deployment](./deployment.md)—deploy your app to the ABAP on-premise repository.
