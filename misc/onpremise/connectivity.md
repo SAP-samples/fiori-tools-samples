@@ -131,6 +131,11 @@ If problems persist, follow the [trace logging](#enable-cloud-connector-trace-lo
 
 For more information, see [Monitoring, Logging, and Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
 
+If HTTP traffic is reaching the ABAP system but errors persist, review the ABAP transaction logs for more detailed error information. This is useful when the request is not being blocked by the Cloud Connector, a local firewall, or a proxy:
+
+- Transaction codes: `/IWFND/ERROR_LOG` or `/IWFND/GW_CLIENT`
+- Video guide: [OData Error Log Analysis](https://www.youtube.com/watch?v=Tmb-O966GwM)
+
 If you do not see network traffic in the `traffic_trace_` logs, the most likely cause is that the Cloud Connector cannot establish a secure tunnel to the target system. This is often caused by a local firewall or proxy. For more information, see [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526).
 
 ---
