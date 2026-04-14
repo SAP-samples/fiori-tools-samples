@@ -306,6 +306,7 @@ npm list tar
 * **Test Thoroughly**: Overriding versions may introduce compatibility issues
 * **Source Control**: Commit changes so team members are aware
 * **Document**: Add comments in package.json explaining why overrides are needed
+* **Shrinkwrap Incompatibility**: Overrides do not work for packages that use `npm-shrinkwrap.json`. When a package ships a shrinkwrap file, npm treats its dependency tree as locked and ignores your `overrides` field entirely. `@sap/cds` is a known example of a package that uses shrinkwrap. For such packages you cannot apply overrides; the only options are to wait for the package maintainer to release an updated version, or to remove the package from your dependencies.
 
 ```json
 {
@@ -716,6 +717,8 @@ npm install
 # Verify override
 npm list <package-name>
 ```
+
+If the override still has no effect after a clean reinstall, the package may be using `npm-shrinkwrap.json`. Packages that ship a shrinkwrap file lock their entire dependency tree, and npm ignores `overrides` for those packages. `@sap/cds` is a known example. In this case, you cannot use overrides; you must wait for the package maintainer to release an updated version.
 
 ### Compatibility Issues After Override
 
