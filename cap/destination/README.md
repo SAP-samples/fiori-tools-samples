@@ -1,6 +1,5 @@
 # Expose a deployed CAP project as an SAP BTP destination
 
-
 ## Prerequisites
 
 - You have an SAP BTP account, for example a [trial account](https://account.hana.ondemand.com/)
@@ -22,13 +21,13 @@ Step 2:  Select the `nodejs` service which will expose the CAP endpoint.
 
 In this case, the endpoint is;
 
-https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com
+`https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com`
 
 [![Alt text](Step2b.png "Catalog of Services")](Step2b.png)
 
-When you select any of the exposed services, for example; 
+When you select any of the exposed services, for example;
 
-```
+```text
 https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/catalog
 ```
 
@@ -57,7 +56,8 @@ In the service key, you will need the following properties;
 - url
 
 For example;
-```
+
+```text
 sb-managedappcapproject!t299668
 xGRgYPoAXbMv2gqRIDontThinkSooZ7uY=
 https://28bdb0fbtrial.authentication.us10.hana.ondemand.com
@@ -126,10 +126,18 @@ This will generate a file called `curl-cap-output.txt` with the output of the re
 
 You can now use the SAP Fiori tools generator to start generating HTML5 applications that consume the OData services from your CAP project services.
 
-## Want to Go Cross-Subaccount and Regions?
+## Want to Go Cross-Subaccount and Regions
 
 See [SAP BTP: How to call protected app across regions with SAML and OAuth](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-how-to-call-protected-app-across-regions-with-saml-and-oauth-2/ba-p/13546145).
 
-### License
-Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
+Key points to remember:
 
+- **Trust must be configured on the back-end subaccount:** Download the IdP metadata from the frontend subaccount (using Connectivity > Destinations > Download IDP Metadata) and register it as a new trust configuration in the back-end subaccount (Security > Trust Configuration). Uncheck "Available for User Logon" — this trust is for app-to-app calls only.
+- **The destination is created in the frontend subaccount, not the back-end:** The `OAuth2SAMLBearerAssertion` destination lives next to the app that makes the call. It requires three values from the back-end's SAML metadata: the `entityID` (Audience), the `AssertionConsumerService` URI-binding URL (Token Service URL), and the `nameIDFormat` (added as an additional property).
+- **Token exchange is required to call the destination service:** You cannot use client credentials alone. The user JWT token must contain the `uaa.user` scope, which requires assigning the corresponding role collection to the user in the frontend subaccount. Token exchange passes this scope through to the destination service token.
+- **The frontend app must be user-centric with an approuter:** SAML is designed to carry user identity across systems, so a direct app-to-app call without a logged-in user is not supported by this flow. The approuter handles login and forwards the user JWT token to the back-end core service.
+- **The destination service handles the SAML-to-OAuth exchange automatically:** Once the destination is correctly configured and trust is in place, calling the destination service API returns both the target URL and a ready-to-use JWT token issued by the back-end XSUAA — no manual SAML assertion handling is needed in your code.
+
+### License
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
