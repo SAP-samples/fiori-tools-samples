@@ -128,19 +128,7 @@ For more information, see [Creating a Communication System for SAP Business Appl
 
 ### Validating connectivity using Environment Check
 
-The Environment Check tool in BAS is the recommended first step for validating your destination configuration and connectivity. It checks whether the destination is reachable and whether the OData V2 and V4 catalog endpoints are accessible.
-
-1. Open SAP Business Application Studio.
-2. Open the Command Palette (**View** > **Find Command**).
-3. Enter `Fiori: Open Environment Check`.
-4. Click **Check Destination** and select your destination.
-5. Enter credentials, if prompted.
-6. Click **Save and view results**.
-7. A `Preview results.md` file opens. Review the **Destination Details** section for missing parameters or catalog failures.
-
-For more information, see [Environment Check](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/75390cf5d81e43aea5db231ef4225268.html).
-
-The Environment Check report also generates a zip file containing destination configuration details, debug trace logs, and the list of services exposed by the destination. If you need to open a support ticket, attach the full zip file to help the support team diagnose the issue.
+Use the Environment Check tool in BAS to validate your destination properties and confirm connectivity. For more information, see the [Environment Check](../destinations/README.md#environment-check) section in the destinations guide.
 
 ### Enabling a connectivity trace
 
