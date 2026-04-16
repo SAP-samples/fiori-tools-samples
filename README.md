@@ -22,7 +22,7 @@ This repository contains samples organized by technology and use case:
 | **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
-| **Utilities** | Destinations, on-premise connectivity, ABAP Cloud, S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator | [misc/](misc/) |
+| **Utilities** | Destinations, on-premise connectivity, ABAP Cloud (Steampunk), S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator | [misc/](misc/) |
 
 [View complete sample catalog](SAMPLES_INDEX.md) for detailed descriptions and direct links.
 
