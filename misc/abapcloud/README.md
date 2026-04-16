@@ -103,8 +103,8 @@ The developer user must have the required business roles and catalogs assigned i
 
 BAS uses OData catalog services to discover back-end services. Both V2 and V4 catalog endpoints must be accessible:
 
-- V2: `/sap/opu/odata/IWFND/CATALOGSERVICE`
-- V4: `/sap/opu/odata4/.../catalog`
+- V2: `/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection`
+- V4: `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)`
 
 An empty catalog or connection failure typically indicates a destination misconfiguration, authentication failure, or missing service exposure in the ABAP communication scenario.
 
