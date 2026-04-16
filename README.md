@@ -38,7 +38,7 @@ Explore [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
 
 ### Advanced Use Cases
 
-Check [misc/](misc/) for destinations, on-premise connectivity, ABAP Cloud, S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator guidance.
+Check [misc/](misc/) for destinations, on-premise connectivity, ABAP Cloud (Steampunk), S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator guidance.
 
 ## Requirements
 
