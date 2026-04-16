@@ -33,13 +33,17 @@ Option 2: Read [Creating a Destination for Cross-Subaccount Communication](https
 
 #### Connectivity overview
 
-SAP Business Application Studio connects to ABAP systems using BTP destinations. The typical flow for ABAP Cloud is: BAS connects to a destination, which connects to the ABAP Environment using BTP. Destinations must be correctly configured with the authentication type, trust configuration, and correct service exposure.
+SAP Business Application Studio connects to ABAP Cloud systems using BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is: BAS connects to a destination, which connects to the ABAP Environment using BTP. With `odata_abap`, the destination URL must always be the base host only — BAS appends the ABAP catalog paths automatically.
+
+Before connecting, ensure BAS is logged in to Cloud Foundry and the correct organization and space are set. This is required for BAS to resolve destinations and deploy applications correctly.
 
 #### Destination configuration
 
-The destination must point to the ABAP system root URL, not a specific service path. Key required properties include:
+The destination must point to the ABAP system root URL with no service path appended. Key required properties include:
 
 - `WebIDEUsage`: `odata_abap,dev_abap,abap_cloud`
+- `WebIDEEnabled`: `true`
+- `HTML5.DynamicDestination`: `true`
 - Correct root URL with no service path appended
 - Proper authentication type based on the scenario:
   - Same subaccount: `OAuth2UserTokenExchange`
@@ -101,12 +105,12 @@ The developer user must have the required business roles and catalogs assigned i
 
 #### Service discovery
 
-BAS uses OData catalog services to discover back-end services. Both V2 and V4 catalog endpoints must be accessible:
+BAS uses OData catalog services to discover back-end services. With `odata_abap`, both V2 and V4 catalog endpoints must be accessible from the destination:
 
 - V2: `/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection`
 - V4: `/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)`
 
-An empty catalog or connection failure typically indicates a destination misconfiguration, authentication failure, or missing service exposure in the ABAP communication scenario.
+An empty catalog or connection failure typically indicates a destination misconfiguration, authentication failure, or a missing service exposure in the ABAP communication scenario.
 
 #### Common failure patterns
 
@@ -122,7 +126,25 @@ One of the most common reasons why the connection fails when accessing the ABAP 
 
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
-If you are still blocked from accessing your ABAP Cloud instance, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
+### Validating connectivity using Environment Check
+
+The Environment Check tool in BAS is the recommended first step for validating your destination configuration and connectivity. It checks whether the destination is reachable and whether the OData V2 and V4 catalog endpoints are accessible.
+
+1. Open SAP Business Application Studio.
+2. Open the Command Palette (**View** > **Find Command**).
+3. Enter `Fiori: Open Environment Check`.
+4. Click **Check Destination** and select your destination.
+5. Enter credentials, if prompted.
+6. Click **Save and view results**.
+7. A `Preview results.md` file opens. Review the **Destination Details** section for missing parameters or catalog failures.
+
+For more information, see [Environment Check](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/75390cf5d81e43aea5db231ef4225268.html).
+
+The Environment Check report also generates a zip file containing destination configuration details, debug trace logs, and the list of services exposed by the destination. If you need to open a support ticket, attach the full zip file to help the support team diagnose the issue.
+
+### Enabling a connectivity trace
+
+If you are still blocked after reviewing the Environment Check report, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
 ## License
 
