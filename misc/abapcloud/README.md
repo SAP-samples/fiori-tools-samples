@@ -126,11 +126,11 @@ One of the most common reasons why the connection fails when accessing the ABAP 
 
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
-### Validating connectivity using Environment Check
+### Validating Connectivity Using Environment Check
 
 Use the Environment Check tool in BAS to validate your destination properties and confirm connectivity. For more information, see the [Environment Check](../destinations/README.md#environment-check) section in the destinations guide.
 
-### Enabling a connectivity trace
+### Enabling a Connectivity Trace
 
 If you are still blocked after reviewing the Environment Check report, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
