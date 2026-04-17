@@ -71,6 +71,8 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 }
 ```
 
+> **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, preserving user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
+
 Alternatively, `SAMLAssertion` can also be used for same-subaccount scenarios. The following is an example:
 
 ```json
