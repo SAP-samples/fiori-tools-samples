@@ -71,7 +71,36 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 }
 ```
 
+> **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, preserving user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
+
+Alternatively, `SAMLAssertion` can also be used for same-subaccount scenarios. The following is an example:
+
+```json
+{
+    "Authentication": "SAMLAssertion",
+    "Description": "<destination-description>",
+    "HTML5.DynamicDestination": "true",
+    "HTML5.SetXForwardedHeaders": "false",
+    "HTML5.Timeout": "180000",
+    "Name": "<destination-name>",
+    "ProxyType": "Internet",
+    "Type": "HTTP",
+    "URL": "https://<abap-system-guid>.abap.<region>.ondemand.com",
+    "WebIDEEnabled": "true",
+    "WebIDEUsage": "odata_abap,dev_abap,abap_cloud",
+    "abap_enabled": "true",
+    "audience": "https://<abap-system-guid>.abap-web.<region>.ondemand.com",
+    "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession",
+    "nameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+    "includeSigningCertificateInSAMLAssertion": "false",
+    "skipUserAttributesPrefixInSAMLAttributes": "false",
+    "skipUserUuidInSAMLAttributes": "false"
+}
+```
+
 The following is an example of a `SAMLAssertion` destination for a cross-subaccount scenario:
+
+> **Note**: To support cross-subaccount communication, you must configure a system-to-system trust on the target ABAP system. This allows the target system to accept SAML assertions issued by the source subaccount. For more information, see the [Cross-subaccount requirements](#cross-subaccount-requirements) section below.
 
 ```json
 {
