@@ -100,6 +100,8 @@ Alternatively, `SAMLAssertion` can also be used for same-subaccount scenarios. T
 
 The following is an example of a `SAMLAssertion` destination for a cross-subaccount scenario:
 
+> **Note**: To support cross-subaccount communication, a system-to-system trust must be configured on the target ABAP system. This allows SAML assertions issued by the source subaccount to be accepted by the target system. For more information, see the [Cross-subaccount requirements](#cross-subaccount-requirements) section below.
+
 ```json
 {
     "Authentication": "SAMLAssertion",
