@@ -52,6 +52,22 @@ npm run deploy  # Deploy to Cloud Foundry (CAP apps)
 
 The `detect-changes` job in `pr-validation.yml` sets a `docs-only` flag when only `.md` and image files (`.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`, `.webp`) are changed, which skips code-specific checks.
 
+## Running KM Review
+
+Before raising a PR for any `.md` file change, validate the file against KM standards using the `/km-review` skill:
+
+```
+/km-review <file-path>
+```
+
+To automatically apply safe fixes:
+
+```
+/km-review <file-path> --fix
+```
+
+The skill runs markdown linting and an AI review against the KM rules defined in `prompts/km-doc-review.md` and `docs/km-style-guide.md`. Address all critical and major findings before opening a PR.
+
 ## Documentation Standards (KM Rules)
 
 Applied via the `/km-review` skill and `prompts/km-doc-review.md`:
