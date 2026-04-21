@@ -32,14 +32,13 @@ Follow this standard order based on quality examples:
 
 ### Hierarchy Rules
 - Use only one H1 (`#`) per document
-- Don't skip heading levels (H1 → H2 → H3, never H1 → H3)
-- Use descriptive, specific headings
+- Do not skip heading levels (H1 → H2 → H3, never H1 → H3)
 
 ### Capitalization
 
-Headings follow **Chicago-style title case** for H1, H2, and H3. H4 and below use sentence case.
+All headings (H1–H6) use **Chicago-style title case**.
 
-#### Chicago title case rules (H1, H2, H3)
+#### Chicago title case rules
 
 - Capitalize the first and last word always.
 - Capitalize all major words: nouns, verbs, adjectives, and adverbs.
@@ -51,14 +50,10 @@ Examples:
   - ✅ "Checklist for Support Tickets" (*for* is lowercase)
   - ✅ "Additional Resources for Deployment" (*for* is lowercase)
   - ✅ "How It Works" (*It* is capitalized as a pronoun)
+  - ✅ "When to Use It" (*to* is lowercase, *Use* and *It* are capitalized)
   - ❌ "Support ticket checklist" (not title case)
+  - ❌ "When to use it" (sentence case — incorrect for all heading levels)
   - ❌ "Additional Resources For Deployment" (*For* should be lowercase)
-
-#### Sentence case (H4+)
-
-- Capitalize the first word and proper nouns only.
-  - ✅ "Common causes for deployment errors"
-  - ❌ "Common Causes For Deployment Errors"
 
 #### Other rules
 
@@ -219,16 +214,18 @@ Based on analysis of high-scoring documentation files:
 5. **Completeness**: Ensure no placeholder content remains
 
 ### Automated Checks
-Use the docs-linter tool to automatically validate:
+
+The `docs-linter` tool is available on the `km-updates` branch only. Do not run these commands on `main`.
+
 ```bash
-# Check for issues
-docs-linter check README.md
+# Validate a file
+node docs-linter/src/cli.js validate <file>
 
-# Apply safe fixes
-docs-linter fix README.md --safe-only
+# Validate with JSON output
+node docs-linter/src/cli.js validate <file> --json
 
-# Validate against KM standards
-docs-linter validate README.md --km-standards
+# Auto-fix safe issues
+node docs-linter/src/cli.js check <file> --auto-fix-safe
 ```
 
 ## Quality Examples
