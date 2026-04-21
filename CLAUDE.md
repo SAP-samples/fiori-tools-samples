@@ -38,7 +38,7 @@ npm run deploy  # Deploy to Cloud Foundry (CAP apps)
 - **Branch naming prefixes:** `feature/`, `bugfix/`, `fix/`, `hotfix/`, `chore/`, `docs/`, `refactor/`, `test/`, `enhancement/`, `km-`
 - **Commit messages:** Conventional commits style (e.g., `docs:`, `chore:`, `ci:`, `fix:`)
 - **PR titles:** Minimum 10 characters; no WIP prefix when ready
-- **PR assignee:** Always assign the PR to the person who created it immediately after `gh pr create`, using the REST API: `gh api repos/SAP-samples/fiori-tools-samples/issues/<number>/assignees -X POST -f 'assignees[]=longieirl'`
+- **PR assignee:** Always assign the PR to the person who created it immediately after `gh pr create`, using the REST API: `gh api repos/SAP-samples/fiori-tools-samples/issues/<number>/assignees -X POST -f 'assignees[]=<github-username>'`
 
 ## CI/CD Workflows
 
