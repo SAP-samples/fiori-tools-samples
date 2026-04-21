@@ -9,38 +9,36 @@ A collection of SAP Fiori Tools sample applications organized by technology (ODa
 ## Common Commands
 
 ### Markdown Linting
+
 ```bash
 npm run lint:md              # Check all markdown files
 npm run lint:md:fix          # Auto-fix markdown issues
 ./scripts/lint-markdown.sh <file>  # Check a specific file
 ```
 
-### docs-linter (KM documentation standards)
-```bash
-node docs-linter/src/cli.js validate <file>            # Validate a file
-node docs-linter/src/cli.js validate <file> --json     # JSON output
-node docs-linter/src/cli.js check <file> --auto-fix-safe  # Auto-fix safe issues
-```
-
 ### Git Hooks Setup
+
 ```bash
 ./scripts/setup-git-hooks.sh  # Install pre-commit and pre-push hooks
 ```
 
 ### Per-Sample Commands
+
 Each sample has its own `package.json`. Common patterns:
+
 ```bash
-npm start    # Start with mock data (UI5 apps)
-npm run build  # Build/compile
+npm start       # Start with mock data (UI5 apps)
+npm run build   # Build/compile
 npm run deploy  # Deploy to Cloud Foundry (CAP apps)
 ```
 
-## Branch & PR Conventions
+## Branch and PR Conventions
 
 - **Protected branches:** `main`, `master` — no direct pushes
 - **Branch naming prefixes:** `feature/`, `bugfix/`, `fix/`, `hotfix/`, `chore/`, `docs/`, `refactor/`, `test/`, `enhancement/`, `km-`
 - **Commit messages:** Conventional commits style (e.g., `docs:`, `chore:`, `ci:`, `fix:`)
 - **PR titles:** Minimum 10 characters; no WIP prefix when ready
+- **PR assignee:** Always assign the PR to the person who created it immediately after `gh pr create`, using the REST API: `gh api repos/SAP-samples/fiori-tools-samples/issues/<number>/assignees -X POST -f 'assignees[]=longieirl'`
 
 ## CI/CD Workflows
 
@@ -55,10 +53,9 @@ The `detect-changes` job in `pr-validation.yml` sets a `docs-only` flag when onl
 
 ## Documentation Standards (KM Rules)
 
-Applied via the `/km-review` skill and `docs-linter`:
+Applied via the `/km-review` skill and `prompts/km-doc-review.md`:
 
-- **H1/H2/H3:** Title case (Chicago style)
-- **H4+:** Sentence case
+- **All headings (H1–H6):** Chicago title case — capitalize all major words; lowercase articles, prepositions of four or fewer letters, and coordinating conjunctions, unless first or last word
 - **List markers:** Dashes (`-`) preferred over asterisks
 - **Em dashes (`—`) or arrows (`→`) in list items:** Replace with colons
 - **Terminology:** `back-end` (not `backend`), `using Cloud Connector` (not `via`), `works` (not `is working`)
@@ -69,8 +66,9 @@ Applied via the `/km-review` skill and `docs-linter`:
 ## Architecture Notes
 
 - **No monorepo tooling** — each sample is independently runnable with its own `package.json`
-- **`docs-linter/`** is on the `km-updates` branch and not yet merged to `main` (only `src/cli.js` was accidentally committed to main and since removed)
+- **`docs-linter/`** is on the `km-updates` branch and not yet merged to `main` — do not reference or run `docs-linter` commands on `main`
 - **`.claude/skills/`** contains two custom skills: `km-review.md` (documentation QA) and `customer-tone.md`
+- **`prompts/km-doc-review.md`** contains the full KM review prompt used by the `km-review` skill
 - **CAP samples** use MTA format for deployment and include `xs-security.json`, `xs-app.json`, and `mta.yaml`
 - **`REUSE.toml`** manages SPDX license compliance across all files
 - **Copyright header:** `Copyright (c) 2009-2026 SAP SE or an SAP affiliate company`
