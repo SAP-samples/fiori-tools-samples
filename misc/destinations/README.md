@@ -205,7 +205,7 @@ For on-premise destinations using `ProxyType=OnPremise`, see [Choosing an Authen
 
 The `WebIDEAdditionalData=full_url` property is used when your destination URL contains the complete path to a specific OData service, including all path segments and service endpoints. When this property is set, SAP Fiori tools and Service Center will not append any additional paths to the URL.
 
-### When to Use `full_url`
+### When to use `full_url`
 
 Use `WebIDEAdditionalData=full_url` when:
 
@@ -214,7 +214,7 @@ Use `WebIDEAdditionalData=full_url` when:
 3. **Single Service Destinations**: You're creating a destination for one specific service rather than a system that exposes multiple services. For example, when a service is not listed in the OData V2 or V4 catalog, you can use `full_url` to point directly to the service endpoint.
 4. **Third-Party Services**: You're consuming external OData services that don't follow SAP's standard path conventions.
 
-### Configuration Example
+### Configuration example
 
 Here's a sample destination configuration using `full_url`:
 
@@ -232,7 +232,7 @@ Name=northwind_fullurl
 WebIDEUsage=odata_gen
 ```
 
-### Key Differences
+### Key differences
 
 | Property              | Without `full_url`                        | With `full_url`                                                                  |
 |-----------------------|-------------------------------------------|----------------------------------------------------------------------------------|
@@ -267,7 +267,7 @@ WebIDEAdditionalData=full_url
 WebIDEUsage=odata_gen
 ```
 
-### Important Notes
+### Important notes
 
 - When using `full_url`, you cannot browse service catalogs because the URL points to a specific service endpoint, not a system's catalog API.
 - The URL must end with a trailing slash (`/`) if it points to the service root.
@@ -299,7 +299,7 @@ Use the `<destination-name>.dest` URL pattern when:
 
 This approach works with any destination proxy type—`Internet` or `OnPremise`—as long as the destination is reachable and the service path is accessible.
 
-### Example: Northwind Destination
+### Example: Northwind destination
 
 The following example demonstrates how to use this pattern with the `northwind` destination configured in the [Configuration](#configuration) section. The destination URL is `https://services.odata.org` and the required service path is `/V2/Northwind/Northwind.svc/`.
 
@@ -319,7 +319,7 @@ At runtime, the application router resolves `northwind.dest` to the configured d
 https://services.odata.org/V2/Northwind/Northwind.svc/
 ```
 
-### How the `.dest` URL Is Resolved
+### How the `.dest` URL is resolved
 
 The following table summarizes how each part of the URL is handled:
 
@@ -328,14 +328,14 @@ The following table summarizes how each part of the URL is handled:
 | `<destination-name>.dest` | `northwind.dest` | SAP BTP application router looks up the named destination from the Destination Service |
 | `<service-path>` | `/V2/Northwind/Northwind.svc/` | Appended directly to the destination base URL at runtime |
 
-### Important Notes
+### Important notes
 
 - The destination must have `HTML5.DynamicDestination=true` set so that the application router can resolve it at runtime.
 - The service path you enter must match the exact path the back-end system exposes, including case sensitivity.
 - If the service requires authentication, the destination's authentication configuration (for example, `BasicAuthentication`, `SAMLAssertion`, or `PrincipalPropagation`) is applied to the request automatically.
 - This approach does not change how the destination is configured in the SAP BTP cockpit. The existing `odata_abap` destination is reused; you are simply addressing the service directly rather than going through catalog discovery.
 
-### Cloning the Destination with `odata_gen`
+### Cloning the destination with `odata_gen`
 
 If you prefer a more permanent solution, you can clone your existing `odata_abap` destination in the SAP BTP cockpit and update `WebIDEUsage` to `odata_gen`. This creates a dedicated destination that bypasses catalog discovery for all services, without affecting your original `odata_abap` destination.
 
@@ -397,7 +397,7 @@ The **Check Connection** button is available in the SAP BTP cockpit on the desti
 
 ![Check Connection result showing "Backend is reachable from the Cloud Connector."](CheckConnection-BTP.png?raw=true "Check Connection Result")
 
-### How the Result Is Determined
+### How the result is determined
 
 The success or failure of **Check Connection** is determined solely by the HTTP status code returned:
 
@@ -406,13 +406,13 @@ The success or failure of **Check Connection** is determined solely by the HTTP 
 
 This means a destination configured with incorrect credentials can still show a successful **Check Connection** result. For example, a back-end that returns HTTP 401 due to an invalid username or password is still reported as reachable, because HTTP 401 is below 500.
 
-### What It Does Not Validate
+### What it does not validate
 
 - **Authentication**: No credentials are verified. An HTTP 401 or HTTP 403 response from the back-end is treated as a successful check.
 - **API endpoints**: No OData service paths are called. A successful result does not mean your service is running or correctly configured.
 - **Destination properties**: The check does not validate `WebIDEUsage`, `WebIDEEnabled`, authentication type, or any other destination properties.
 
-### When to Use It
+### When to use it
 
 Use **Check Connection** only to confirm that the destination host is reachable from SAP BTP at the network level — for example, to rule out firewall or DNS issues. A successful result confirms only that a connection was established and the back-end did not return an HTTP 500 or above.
 
