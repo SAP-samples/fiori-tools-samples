@@ -391,6 +391,33 @@ The file contains all the information required to troubleshoot the issue. You ca
 
 If you have an ongoing support ticket, attach the generated zip file to the ticket for further investigation. The entire zip file needs to be attached because it includes debug trace logs which help to determine connectivity issues and also provides a list of the services exposed by the destination.
 
+## Check Connection
+
+The **Check Connection** button is available in the SAP BTP cockpit on the destination editor page, under **Connectivity** > **Destinations**. It applies to all destination types — internet-facing, on-premise, and private link. Clicking it attempts a connection from SAP BTP to the destination host.
+
+![Check Connection result showing "Backend is reachable from the Cloud Connector."](CheckConnection-BTP.png?raw=true "Check Connection Result")
+
+### How the Result Is Determined
+
+The success or failure of **Check Connection** is determined solely by the HTTP status code returned:
+
+- **Internet destinations**: Any HTTP response below 500 is treated as successful. HTTP 500 or above is treated as failed.
+- **On-premise destinations**: If the back-end is reached and returns any HTTP status code below 500, the check is treated as successful.
+
+This means a destination configured with incorrect credentials can still show a successful **Check Connection** result. For example, a back-end that returns HTTP 401 due to an invalid username or password is still reported as reachable, because HTTP 401 is below 500.
+
+### What It Does Not Validate
+
+- **Authentication**: No credentials are verified. An HTTP 401 or HTTP 403 response from the back-end is treated as a successful check.
+- **API endpoints**: No OData service paths are called. A successful result does not mean your service is running or correctly configured.
+- **Destination properties**: The check does not validate `WebIDEUsage`, `WebIDEEnabled`, authentication type, or any other destination properties.
+
+### When to Use It
+
+Use **Check Connection** only to confirm that the destination host is reachable from SAP BTP at the network level — for example, to rule out firewall or DNS issues. A successful result confirms only that a connection was established and the back-end did not return an HTTP 500 or above.
+
+Do not use **Check Connection** to validate that your destination is correctly configured or that authentication is working. To validate full connectivity including authentication, catalog access, and destination configuration, use the [Environment Check](#environment-check) tool in SAP Business Application Studio instead.
+
 ## Common Errors
 
 ### Issue One: Receiving HTTP 4xx Exceptions
