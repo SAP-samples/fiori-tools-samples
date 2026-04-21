@@ -34,7 +34,8 @@ npm run deploy  # Deploy to Cloud Foundry (CAP apps)
 
 ## Branch and PR Conventions
 
-- **Protected branches:** `main`, `master` — no direct pushes
+**`main` is a protected branch. Never push directly to `main`. Every change must go through a pull request — no exceptions.**
+
 - **Branch naming prefixes:** `feature/`, `bugfix/`, `fix/`, `hotfix/`, `chore/`, `docs/`, `refactor/`, `test/`, `enhancement/`, `km-`
 - **Commit messages:** Conventional commits style (e.g., `docs:`, `chore:`, `ci:`, `fix:`)
 - **PR titles:** Minimum 10 characters; no WIP prefix when ready
