@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration scripts or commands that change the behaviour of your system or operating system should be carried out with the authorization of your IT support team.
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration scripts or commands that change the behavior of your system or operating system should be carried out with the authorization of your IT support team.
 
 - The `Authentication` type can be configured with different options, including `OAuth2UserTokenExchange` and `SAMLAssertion`.
 - When exposing an SAP BTP ABAP Environment (Steampunk) system to the internet using an SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values:
@@ -21,9 +21,9 @@ Follow this blog post to [Demystifying: SAP BTP - ABAP Environment, Steampunk, A
 
 Follow this tutorial to [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html).
 
-## Enable a BTP Destination for Usage Across Global Accounts or Between Different Regions Using SAMLAssertion
+## Enable an SAP BTP Destination for Usage Across Global Accounts or Between Different Regions Using SAMLAssertion
 
-Option 1: Watch [Configuring BTP Cross-Account and Cross-Region Destinations For Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA).
+Option 1: Watch [Configuring BTP Cross-Account and Cross-Region Destinations for Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA).
 
 Note that some of the content is outdated. For example, the legacy SAP BTP Destinations flow or where to find the trust (*.pem file) certificates. However, the video is still relevant for the cross-account and cross-region destination configuration.
 
@@ -31,13 +31,13 @@ Option 2: Read [Creating a Destination for Cross-Subaccount Communication](https
 
 ### Key Notes from the Tutorial
 
-#### Connectivity overview
+#### Connectivity Overview
 
-SAP Business Application Studio connects to ABAP Cloud systems using BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is: BAS connects to a destination, which connects to the ABAP Environment using BTP. With `odata_abap`, the destination URL must always be the base host only — BAS appends the ABAP catalog paths automatically.
+SAP Business Application Studio connects to ABAP Cloud systems using SAP BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is: BAS connects to a destination, which connects to the ABAP Environment using SAP BTP. With `odata_abap`, the destination URL must always be the base host only — BAS appends the ABAP catalog paths automatically.
 
 Before connecting, ensure BAS is logged in to Cloud Foundry and the correct organization and space are set. This is required for BAS to resolve destinations and deploy applications correctly.
 
-#### Destination configuration
+#### Destination Configuration
 
 The destination must point to the ABAP system root URL with no service path appended. Key required properties include:
 
@@ -73,34 +73,7 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 
 > **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, preserving user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
 
-Alternatively, `SAMLAssertion` can also be used for same-subaccount scenarios. The following is an example:
-
-```json
-{
-    "Authentication": "SAMLAssertion",
-    "Description": "<destination-description>",
-    "HTML5.DynamicDestination": "true",
-    "HTML5.SetXForwardedHeaders": "false",
-    "HTML5.Timeout": "180000",
-    "Name": "<destination-name>",
-    "ProxyType": "Internet",
-    "Type": "HTTP",
-    "URL": "https://<abap-system-guid>.abap.<region>.ondemand.com",
-    "WebIDEEnabled": "true",
-    "WebIDEUsage": "odata_abap,dev_abap,abap_cloud",
-    "abap_enabled": "true",
-    "audience": "https://<abap-system-guid>.abap-web.<region>.ondemand.com",
-    "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession",
-    "nameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
-    "includeSigningCertificateInSAMLAssertion": "false",
-    "skipUserAttributesPrefixInSAMLAttributes": "false",
-    "skipUserUuidInSAMLAttributes": "false"
-}
-```
-
-The following is an example of a `SAMLAssertion` destination for a cross-subaccount scenario:
-
-> **Note**: To support cross-subaccount communication, you must configure a system-to-system trust on the target ABAP system. This allows the target system to accept SAML assertions issued by the source subaccount. For more information, see the [Cross-subaccount requirements](#cross-subaccount-requirements) section below.
+Alternatively, `SAMLAssertion` can be used for both same-subaccount and cross-subaccount scenarios. The following is an example:
 
 ```json
 {
@@ -111,16 +84,18 @@ The following is an example of a `SAMLAssertion` destination for a cross-subacco
     "Name": "<destination-name>",
     "ProxyType": "Internet",
     "Type": "HTTP",
-    "URL": "https://<system-id>-api.<region>.ondemand.com",
+    "URL": "https://<abap-system-guid>.abap.<region>.ondemand.com",
     "WebIDEEnabled": "true",
     "WebIDEUsage": "odata_abap,dev_abap,abap_cloud",
-    "audience": "https://<system-id>.<region>.ondemand.com",
+    "audience": "https://<abap-system-guid>.abap-web.<region>.ondemand.com",
     "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession",
     "nameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
 }
 ```
 
-#### Cross-subaccount requirements
+> **Note**: For the `URL` field, copy the Host Name from the Communication Systems app — for example, `https://<abap-system-guid>.abap.<region>.ondemand.com`. For the `audience` field, use the same host name with `-web` appended before the region — for example, `https://<abap-system-guid>.abap-web.<region>.ondemand.com`. To confirm the correct values, log in to your ABAP Cloud environment, open the Communication Systems app, and select your SAP Cloud System — you can identify it by the label **This is your own SAP Cloud System**. The `Host Name` field contains the correct value for the `URL` field, and the `OAuth 2.0 SAML2 Audience` field contains the exact value for the `audience` field. For cross-subaccount scenarios, you must also configure a system-to-system trust on the target ABAP system so that it accepts SAML assertions issued by the source subaccount. For more information, see the [Cross-Subaccount Requirements](#cross-subaccount-requirements) section below.
+
+#### Cross-Subaccount Requirements
 
 When BAS (Subaccount B) accesses an ABAP system (Subaccount A), both subaccounts must be under the same global account and trust must be established between them. The identity provider and trust configuration must be aligned so that tokens issued in Subaccount B are accepted by Subaccount A.
 
@@ -128,11 +103,11 @@ The SAML trust must be explicitly established between the two subaccounts. This 
 
 In the ABAP environment, this is configured using the Communication Systems application, where the certificate is uploaded and assigned to the relevant communication system. This ensures that SAML assertions issued by Subaccount B can be validated and trusted by Subaccount A during authentication.
 
-#### Roles and authorizations
+#### Roles and Authorizations
 
-The developer user must have the required business roles and catalogs assigned in the ABAP system. For example, the `SAP_A4C_BC_DEV_UID_PC` role is required for UI deployment. Missing roles typically result in HTTP 401 (authorization failure) or HTTP 500 (back-end configuration issue) errors.
+The developer user must have the required business roles and catalogs assigned in the ABAP system. For example, the `SAP_A4C_BC_DEV_UID_PC` role is required for UI deployment. Missing roles typically result in HTTP 401 (authorization failure) and HTTP 500 (back-end configuration issue) errors.
 
-#### Service discovery
+#### Service Discovery
 
 BAS uses OData catalog services to discover back-end services. With `odata_abap`, both V2 and V4 catalog endpoints must be accessible from the destination:
 
@@ -141,7 +116,7 @@ BAS uses OData catalog services to discover back-end services. With `odata_abap`
 
 An empty catalog or connection failure typically indicates a destination misconfiguration, authentication failure, or a missing service exposure in the ABAP communication scenario.
 
-#### Common failure patterns
+#### Common Failure Patterns
 
 | HTTP Status | Likely Cause |
 |---|---|
