@@ -44,12 +44,41 @@ set DEBUG=* && npm run deploy
 
 ## Connection Test
 
-Run this test from an SAP Business Application Studio terminal to confirm the deployment endpoint is reachable before running `npm run deploy`:
+Run this test to confirm the deployment endpoint is reachable before running `npm run deploy`.
+
+### Validating on SAP Business Application Studio
+
+Run the following from an SAP Business Application Studio terminal:
 
 ```bash
 # Replace <destination-name> and bsp-name before executing
+# If authentication is required, add: -u "username:password"
 curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
+
+### Validating on Your Local Network
+
+Run the following from a local terminal, replacing `<internal-host>`, `<internal-port>`, and `bsp-name` with your system values:
+
+```bash
+# Replace <internal-host>, <internal-port>, and bsp-name before executing
+# If authentication is required, add: -u "username:password"
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<internal-host>:<internal-port>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)" > curl-abap-srv-output.txt 2>&1
+```
+
+On Windows, use the following PowerShell command instead:
+
+```powershell
+# Replace <internal-host>, <internal-port>, and bsp-name before executing
+# If authentication is required, add: -Credential (Get-Credential) or -Headers @{ "Authorization" = "Basic <base64(username:password)>" }
+Invoke-WebRequest -Uri "https://<internal-host>:<internal-port>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories('%27bsp-name%27)" `
+  -Headers @{ "X-CSRF-Token" = "Fetch" } `
+  -MaximumRedirection 10 `
+  -OutFile curl-abap-srv-output.txt `
+  -Verbose *>&1 | Out-File curl-abap-srv-output.txt
+```
+
+> **Note:** The `?saml2=disabled` parameter is not required when accessing the system locally. Add it only when testing through an SAP BTP destination to prevent browser-based SAML redirects in service-to-service flows.
 
 Review `curl-abap-srv-output.txt` for authentication, authorization, or connectivity errors.
 
@@ -83,10 +112,6 @@ If authentication fails, you typically see:
 #### CSRF token handling
 
 `-H "X-CSRF-Token: Fetch"` forces the back end to authenticate the request, issue a valid CSRF token, and return any required session cookies.
-
-#### SAML handling control
-
-`?saml2=disabled` prevents browser-based SAML redirects, which is useful when testing service-to-service flows where interactive SSO is not expected.
 
 ---
 
