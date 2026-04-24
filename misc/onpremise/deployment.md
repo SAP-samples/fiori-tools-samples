@@ -88,7 +88,7 @@ Review `curl-abap-srv-output.txt` for authentication, authorization, or connecti
 
 ### What the Test Validates
 
-#### Destination resolution
+#### Destination Resolution
 
 `https://<destination-name>.dest` verifies that:
 
@@ -96,7 +96,7 @@ Review `curl-abap-srv-output.txt` for authentication, authorization, or connecti
 - The destination is bound to your application (if applicable).
 - Connectivity using the Cloud Connector (for on-premise systems) works.
 
-#### Authentication flow
+#### Authentication Flow
 
 Confirms that the configured authentication method (such as BasicAuthentication, SAML Assertion, or OAuth2) works.
 
@@ -105,7 +105,7 @@ If authentication fails, you typically see:
 - `401 Unauthorized`: Invalid credentials or trust not established.
 - `403 Forbidden`: Authenticated but missing back-end authorization.
 
-#### Back-end reachability
+#### Back-End Reachability
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
 
@@ -113,7 +113,7 @@ If authentication fails, you typically see:
 - The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
 - The ICF node is active (`/sap/opu/odata`).
 
-#### CSRF token handling
+#### CSRF Token Handling
 
 `-H "X-CSRF-Token: Fetch"` forces the back end to authenticate the request, issue a valid CSRF token, and return any required session cookies.
 
@@ -129,7 +129,7 @@ If authentication fails, you typically see:
 
 1. Navigate to the `webapp` folder of your project:
 
-   ```
+   ```text
    <projectRoot>/webapp/
    ```
 
@@ -142,7 +142,7 @@ If authentication fails, you typically see:
 
    `.Ui5RepositoryTextFiles`:
 
-   ```
+   ```text
    **/*.ts
    **/*.yaml
    **/*.jsonc
@@ -150,7 +150,7 @@ If authentication fails, you typically see:
 
    `.Ui5RepositoryBinaryFiles`:
 
-   ```
+   ```text
    **/*.eot
    **/*.woff
    **/*.ttf
@@ -177,7 +177,7 @@ For more information, see [Using an OData Service to Load Data to the SAPUI5 ABA
 ## Additional Resources
 
 - [Build and Deploy your SAPUI5 Application Using SAP Business Application Studio to ABAP Repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
-- [Support Checklist](./support-checklist.md) — what to attach when raising a support ticket
+- [Support Checklist](./support-checklist.md): what to attach when raising a support ticket
 
 ---
 

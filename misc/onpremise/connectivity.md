@@ -165,7 +165,7 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 
 ## Additional Resources
 
-- [Whitelisting SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20): requires support from your IT admin team
+- [Allowlisting SAP BTP IP Ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20): requires support from your IT admin team
 - [Understanding SAP BTP Destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)
 - [Create SAP BTP Destinations](https://developers.sap.com/tutorials/cp-cf-create-destination.html)
 - [Cloud Connector Explained](https://community.sap.com/t5/technology-blog-posts-by-sap/cloud-connector-explained-in-simple-terms/ba-p/13547036)
