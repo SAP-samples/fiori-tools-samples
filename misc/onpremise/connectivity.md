@@ -117,6 +117,8 @@ If problems persist, follow the [trace logging](#enable-cloud-connector-trace-lo
 
 ## Enable Cloud Connector Trace Logging
 
+### SAP Cloud Connector Trace Logs
+
 > Only use trace logging for troubleshooting. This is not recommended in production on a long-term basis.
 
 1. In the Cloud Connector UI: **Log In** > **Log and Trace Files** > **Edit**.
@@ -131,9 +133,11 @@ If problems persist, follow the [trace logging](#enable-cloud-connector-trace-lo
 
 For more information, see [Monitoring, Logging, and Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
 
+### ABAP Transaction Logs
+
 If HTTP traffic is reaching the ABAP system but errors persist, review the ABAP transaction logs for more detailed error information. This is useful when the request is not being blocked by the Cloud Connector, a local firewall, or a proxy:
 
-- Transaction codes: `/IWFND/ERROR_LOG` or `/IWFND/GW_CLIENT`
+- Transaction code: `/IWFND/ERROR_LOG`
 - Video guide: [OData Error Log Analysis](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
 If you do not see network traffic in the `traffic_trace_` logs, the most likely cause is that the Cloud Connector cannot establish a secure tunnel to the target system. This is often caused by a local firewall or proxy. For more information, see [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526).
@@ -161,7 +165,7 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 
 ## Additional Resources
 
-- [Whitelisting SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20): requires support from your IT admin team
+- [Allowlisting SAP BTP IP Ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20): requires support from your IT admin team
 - [Understanding SAP BTP Destinations](https://learning.sap.com/learning-journeys/administrating-sap-business-technology-platform/using-destinations)
 - [Create SAP BTP Destinations](https://developers.sap.com/tutorials/cp-cf-create-destination.html)
 - [Cloud Connector Explained](https://community.sap.com/t5/technology-blog-posts-by-sap/cloud-connector-explained-in-simple-terms/ba-p/13547036)

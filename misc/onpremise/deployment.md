@@ -44,18 +44,51 @@ set DEBUG=* && npm run deploy
 
 ## Connection Test
 
-Run this test from an SAP Business Application Studio terminal to confirm the deployment endpoint is reachable before running `npm run deploy`:
+Run this test to confirm the deployment endpoint is reachable before running `npm run deploy`. This is a connectivity check only — it issues a single HTTP GET request against `ABAP_REPOSITORY_SRV`.
+
+The `bsp-name` placeholder in the URL identifies the target BSP application. Its value does not affect connectivity validation — substitute a known application name if one is available, or leave it as `bsp-name`. An HTTP 404 response when using the placeholder is expected and confirms that the endpoint is reachable but no application named `bsp-name` is deployed on the target system. Any HTTP 2xx or 4xx response indicates a live connection; HTTP 5xx or no response indicates a connectivity or configuration issue.
+
+### Validating on SAP Business Application Studio
+
+Run the following from an SAP Business Application Studio terminal:
 
 ```bash
 # Replace <destination-name> and bsp-name before executing
+# If authentication is required, add: -u "username:password"
 curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)?saml2=disabled" > curl-abap-srv-output.txt 2>&1
 ```
+
+### Validating on Your Local Network
+
+Run the following from a local terminal, replacing `<internal-host>`, `<internal-port>`, and `bsp-name` with your system values:
+
+```bash
+# Replace <internal-host>, <internal-port>, and bsp-name before executing
+# If authentication is required, add: -u "username:password"
+curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<internal-host>:<internal-port>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories(%27bsp-name%27)" > curl-abap-srv-output.txt 2>&1
+```
+
+On Windows, use the following PowerShell command instead:
+
+```powershell
+# Replace <internal-host>, <internal-port>, and bsp-name before executing
+# If authentication is required, add: -Credential (Get-Credential) or -Headers @{ "Authorization" = "Basic <base64(username:password)>" }
+Invoke-WebRequest -Uri "https://<internal-host>:<internal-port>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV/Repositories('%27bsp-name%27)" `
+  -Headers @{ "X-CSRF-Token" = "Fetch" } `
+  -MaximumRedirection 10 `
+  -OutFile curl-abap-srv-output.txt `
+  -Verbose *>&1 | Out-File curl-abap-srv-output.txt
+```
+
+> **Note:** The `?saml2=disabled` parameter is not required when accessing the system locally. Add it only when testing through an SAP BTP destination to prevent browser-based SAML redirects in service-to-service flows.
+>
+> You can also paste the URL directly into a browser in private or incognito mode to perform a quick reachability check. However, the browser bypasses local proxy and firewall settings in some configurations, which may mask connectivity issues that `curl` or PowerShell would surface.
 
 Review `curl-abap-srv-output.txt` for authentication, authorization, or connectivity errors.
 
 ### What the Test Validates
 
-#### Destination resolution
+#### Destination Resolution
 
 `https://<destination-name>.dest` verifies that:
 
@@ -63,7 +96,7 @@ Review `curl-abap-srv-output.txt` for authentication, authorization, or connecti
 - The destination is bound to your application (if applicable).
 - Connectivity using the Cloud Connector (for on-premise systems) works.
 
-#### Authentication flow
+#### Authentication Flow
 
 Confirms that the configured authentication method (such as BasicAuthentication, SAML Assertion, or OAuth2) works.
 
@@ -72,7 +105,7 @@ If authentication fails, you typically see:
 - `401 Unauthorized`: Invalid credentials or trust not established.
 - `403 Forbidden`: Authenticated but missing back-end authorization.
 
-#### Back-end reachability
+#### Back-End Reachability
 
 `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` validates:
 
@@ -80,13 +113,9 @@ If authentication fails, you typically see:
 - The OData service is registered and active (`/IWFND/MAINT_SERVICE`).
 - The ICF node is active (`/sap/opu/odata`).
 
-#### CSRF token handling
+#### CSRF Token Handling
 
 `-H "X-CSRF-Token: Fetch"` forces the back end to authenticate the request, issue a valid CSRF token, and return any required session cookies.
-
-#### SAML handling control
-
-`?saml2=disabled` prevents browser-based SAML redirects, which is useful when testing service-to-service flows where interactive SSO is not expected.
 
 ---
 
@@ -100,7 +129,7 @@ If authentication fails, you typically see:
 
 1. Navigate to the `webapp` folder of your project:
 
-   ```
+   ```text
    <projectRoot>/webapp/
    ```
 
@@ -113,7 +142,7 @@ If authentication fails, you typically see:
 
    `.Ui5RepositoryTextFiles`:
 
-   ```
+   ```text
    **/*.ts
    **/*.yaml
    **/*.jsonc
@@ -121,7 +150,7 @@ If authentication fails, you typically see:
 
    `.Ui5RepositoryBinaryFiles`:
 
-   ```
+   ```text
    **/*.eot
    **/*.woff
    **/*.ttf
@@ -148,7 +177,7 @@ For more information, see [Using an OData Service to Load Data to the SAPUI5 ABA
 ## Additional Resources
 
 - [Build and Deploy your SAPUI5 Application Using SAP Business Application Studio to ABAP Repository (on-premise system)](https://community.sap.com/t5/technology-blog-posts-by-members/build-and-deploy-your-sapui5-application-using-sap-business-application/ba-p/13559538)
-- [Support Checklist](./support-checklist.md) — what to attach when raising a support ticket
+- [Support Checklist](./support-checklist.md): what to attach when raising a support ticket
 
 ---
 
