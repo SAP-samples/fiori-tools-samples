@@ -81,6 +81,8 @@ Invoke-WebRequest -Uri "https://<internal-host>:<internal-port>/sap/opu/odata/UI
 ```
 
 > **Note:** The `?saml2=disabled` parameter is not required when accessing the system locally. Add it only when testing through an SAP BTP destination to prevent browser-based SAML redirects in service-to-service flows.
+>
+> You can also paste the URL directly into a browser in private or incognito mode to perform a quick reachability check. However, the browser bypasses local proxy and firewall settings in some configurations, which may mask connectivity issues that `curl` or PowerShell would surface.
 
 Review `curl-abap-srv-output.txt` for authentication, authorization, or connectivity errors.
 
