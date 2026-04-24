@@ -44,7 +44,9 @@ set DEBUG=* && npm run deploy
 
 ## Connection Test
 
-Run this test to confirm the deployment endpoint is reachable before running `npm run deploy`.
+Run this test to confirm the deployment endpoint is reachable before running `npm run deploy`. This is a connectivity check only — it issues a single HTTP GET request against `ABAP_REPOSITORY_SRV`.
+
+The `bsp-name` placeholder in the URL identifies the target BSP application. Its value does not affect connectivity validation — substitute a known application name if one is available, or leave it as `bsp-name`. An HTTP 404 response when using the placeholder is expected and confirms that the endpoint is reachable but no application named `bsp-name` is deployed on the target system. Any HTTP 2xx or 4xx response indicates a live connection; HTTP 5xx or no response indicates a connectivity or configuration issue.
 
 ### Validating on SAP Business Application Studio
 
