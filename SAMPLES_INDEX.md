@@ -8,7 +8,7 @@ Samples demonstrating SAP Fiori elements with OData V2 services.
 
 | Sample | Description | Path |
 |--------|-------------|------|
-| List Report Object Page | Basic LROP template with mock data | `V2/apps/` |
+| Sales Order | List Report Object Page using the Northwind OData V2 service, TypeScript | `V2/apps/salesorder/` |
 
 ## V4 Samples (OData V4)
 
@@ -16,7 +16,8 @@ Samples demonstrating SAP Fiori elements with OData V4 services.
 
 | Sample | Description | Path |
 |--------|-------------|------|
-| List Report Object Page | OData V4 LROP templates | `V4/apps/` |
+| Travel App | List Report Object Page using the SAP UX mock travel service, TypeScript | `V4/apps/travel/` |
+| Photos | List Report Object Page using the Northwind TripPin OData V4 service, TypeScript | `V4/photos/` |
 
 ## CAP Samples
 
@@ -26,14 +27,6 @@ SAP Cloud Application Programming Model integration samples.
 |--------|-------------|------|
 | CAP Fiori Hybrid | Hybrid CAP application | `cap/cap-fiori-hybrid/` |
 | CAP Fiori MTA | Multi-target CAP application | `cap/cap-fiori-mta/` |
-
-## Tutorial Samples
-
-Samples referenced in SAP Developer tutorials.
-
-| Sample | Description | Path |
-|--------|-------------|------|
-| Incident Management | Fiori elements incident management app | `app-with-tutorials/cap/fiori-elements-incident-management/` |
 
 ## Advanced Samples
 
@@ -57,6 +50,7 @@ For detailed instructions, see each sample's README.md.
 - [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
 - [SAP Community - Fiori Tools](https://pages.community.sap.com/topics/fiori-tools)
 - [SAP Developer Tutorials](https://developers.sap.com/)
+- [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
 
 ## Support
 

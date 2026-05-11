@@ -18,8 +18,7 @@ This repository contains samples organized by technology and use case:
 | **V2 Samples** | SAP Fiori elements with OData V2 | [V2/](V2/) |
 | **V4 Samples** | SAP Fiori elements with OData V4 | [V4/](V4/) |
 | **CAP Integration** | Cloud Application Programming Model samples | [cap/](cap/) |
-| **Tutorial Samples** | Samples from SAP Developer tutorials | [app-with-tutorials/](app-with-tutorials/) |
-| **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
+| **Third-party Libraries** | Adding external libraries to SAP Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
 | **Utilities** | Destinations, on-premise connectivity, ABAP Cloud (Steampunk), S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator | [misc/](misc/) |
@@ -30,11 +29,11 @@ This repository contains samples organized by technology and use case:
 
 ### First-Time Users
 
-Start with the [tutorial-based samples](app-with-tutorials/) that provide step-by-step guidance.
+Start with the [V2 samples](V2/) or [V4 samples](V4/) and follow each sample's README for step-by-step guidance.
 
 ### Experienced Developers
 
-Explore [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
+Explore [V2 samples](V2/) for OData V2 and [V4 samples](V4/) for the latest OData V4 and SAP Fiori elements features.
 
 ### Advanced Use Cases
 
@@ -82,6 +81,7 @@ See [SECURITY.md](.github/SECURITY.md) for reporting security vulnerabilities.
 - [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
 - [SAP Fiori Tools Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack)
 - [SAP Fiori Tools Community](https://pages.community.sap.com/topics/fiori-tools)
+- [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
 - [SAP Developer Center](https://developers.sap.com/)
 - [SAP UI5 SDK](https://sapui5.hana.ondemand.com/)
 

@@ -1,0 +1,15 @@
+{
+  "exportTime": "2026-05-11 13:39:21.292493178",
+  "destination": {
+    "Type": "HTTP",
+    "HTML5.DynamicDestination": "true",
+    "Authentication": "NoAuthentication",
+    "HTML5.Timeout": "60000",
+    "WebIDEEnabled": "true",
+    "ProxyType": "Internet",
+    "URL": "https://services.odata.org",
+    "Name": "northwind",
+    "WebIDEUsage": "odata_gen",
+    "Description": "Northwind OData Host V2"
+  }
+}
