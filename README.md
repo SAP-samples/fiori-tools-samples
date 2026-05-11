@@ -82,6 +82,7 @@ See [SECURITY.md](.github/SECURITY.md) for reporting security vulnerabilities.
 - [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
 - [SAP Fiori Tools Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack)
 - [SAP Fiori Tools Community](https://pages.community.sap.com/topics/fiori-tools)
+- [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
 - [SAP Developer Center](https://developers.sap.com/)
 - [SAP UI5 SDK](https://sapui5.hana.ondemand.com/)
 

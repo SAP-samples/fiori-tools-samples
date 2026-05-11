@@ -58,6 +58,7 @@ For detailed instructions, see each sample's README.md.
 - [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
 - [SAP Community - Fiori Tools](https://pages.community.sap.com/topics/fiori-tools)
 - [SAP Developer Tutorials](https://developers.sap.com/)
+- [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
 
 ## Support
 
