@@ -1,0 +1,15 @@
+{
+  "exportTime": "2026-05-11 14:06:49.585259828",
+  "destination": {
+    "Name": "sap-ux-mock-services-v4",
+    "Type": "HTTP",
+    "URL": "https://sap-ux-mock-services-v4-lrop.cfapps.us10.hana.ondemand.com",
+    "Authentication": "NoAuthentication",
+    "ProxyType": "Internet",
+    "HTML5.DynamicDestination": "true",
+    "Description": "SAP public mock v4",
+    "WebIDEEnabled": "true",
+    "WebIDEUsage": "odata_gen",
+    "HTML5.Timeout": "60000"
+  }
+}
