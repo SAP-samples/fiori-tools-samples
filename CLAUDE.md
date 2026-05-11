@@ -80,6 +80,15 @@ Applied via the `/km-review` skill and `prompts/km-doc-review.md`:
 - **ToC label:** "Table of Contents"
 - **Oxford commas** and **number formatting** enforced
 
+## Keeping Docs in Sync
+
+Whenever a sample is added, removed, or moved in a subdirectory, update **both** of the following before raising a PR:
+
+- **`SAMPLES_INDEX.md`** — add, remove, or update the row for the affected sample (name, description, path)
+- **`README.md`** — update the Overview table or Quick Start section if the change affects a top-level category
+
+This applies to any change under `V2/`, `V4/`, `cap/`, `app-with-tutorials/`, `thirdpartylibrary/`, `sample-fiori-gen-ext/`, `neo-migration/`, or `misc/`.
+
 ## Architecture Notes
 
 - **No monorepo tooling** — each sample is independently runnable with its own `package.json`
