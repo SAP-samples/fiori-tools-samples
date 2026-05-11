@@ -92,7 +92,6 @@ This applies to any change under `V2/`, `V4/`, `cap/`, `thirdpartylibrary/`, `sa
 ## Architecture Notes
 
 - **No monorepo tooling** — each sample is independently runnable with its own `package.json`
-- **`docs-linter/`** is on the `km-updates` branch and not yet merged to `main` — do not reference or run `docs-linter` commands on `main`
 - **`.claude/skills/`** contains two custom skills: `km-review.md` (documentation QA) and `customer-tone.md`
 - **`prompts/km-doc-review.md`** contains the full KM review prompt used by the `km-review` skill
 - **CAP samples** use MTA format for deployment and include `xs-security.json`, `xs-app.json`, and `mta.yaml`
