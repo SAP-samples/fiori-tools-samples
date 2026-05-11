@@ -1,0 +1,31 @@
+# SAP Fiori Tools Samples
+
+> A collection of SAP Fiori elements sample applications built using SAP Fiori tools, organized by OData version and technology.
+
+## About
+
+This repository provides reference implementations for developers building SAP Fiori applications. Samples are used in SAP tutorials, blogs, and official documentation.
+
+## Samples
+
+- [V2 Samples](V2/README.md): SAP Fiori elements apps using OData V2 (Northwind service, TypeScript)
+- [V4 Samples](V4/README.md): SAP Fiori elements apps using OData V4 (SAP UX mock services, TypeScript)
+- [CAP Samples](cap/): Cloud Application Programming Model integration with SAP Fiori elements
+- [Third-party Libraries](thirdpartylibrary/): Adding external libraries to SAP Fiori apps
+- [Generator Extensions](sample-fiori-gen-ext/): Extending @sap/generator-fiori
+- [Neo Migration](neo-migration/): Migrating SAP Fiori apps from Neo to Cloud Foundry
+- [Utilities](misc/): Destinations, on-premise connectivity, ABAP Cloud, S/4HANA, SuccessFactors, CI/CD
+
+## Key Technologies
+
+- SAP Fiori elements (List Report Object Page, OData V2 and V4)
+- SAP Fiori tools (App Generator, Preview, Deployment)
+- TypeScript, SAPUI5, UI5 Tooling
+- SAP Cloud Application Programming Model (CAP)
+- SAP Business Technology Platform (SAP BTP), Cloud Foundry
+
+## Documentation
+
+- [SAP Fiori Tools Documentation](https://help.sap.com/docs/SAP_FIORI_tools)
+- [SAP Fiori Tools Samples Index](SAMPLES_INDEX.md)
+- [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
