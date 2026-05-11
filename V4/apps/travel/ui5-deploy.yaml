@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: travel
+type: application
+builder:
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://658bd07a-eda6-40bc-b17a-b9a8b79b646b.abap.canaryaws.hanavlab.ondemand.com
+          authenticationType: reentranceTicket # SAML support for vscode
+        app:
+          name: TRAVELAPP
+          description: Travel App
+          package: PKG11111
+          transport: TR11111
+        exclude:
+          - /test/
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
