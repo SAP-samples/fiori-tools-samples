@@ -8,7 +8,7 @@ Samples demonstrating SAP Fiori elements with OData V2 services.
 
 | Sample | Description | Path |
 |--------|-------------|------|
-| List Report Object Page | Basic LROP template with mock data | `V2/apps/` |
+| Sales Order | List Report Object Page using the Northwind OData V2 service, TypeScript | `V2/apps/salesorder/` |
 
 ## V4 Samples (OData V4)
 
@@ -16,7 +16,8 @@ Samples demonstrating SAP Fiori elements with OData V4 services.
 
 | Sample | Description | Path |
 |--------|-------------|------|
-| List Report Object Page | OData V4 LROP templates | `V4/apps/` |
+| Travel App | List Report Object Page using the SAP UX mock travel service, TypeScript | `V4/apps/travel/` |
+| Photos | List Report Object Page using the Northwind TripPin OData V4 service, TypeScript | `V4/photos/` |
 
 ## CAP Samples
 
