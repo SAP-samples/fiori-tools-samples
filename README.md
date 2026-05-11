@@ -34,7 +34,7 @@ Start with the [tutorial-based samples](app-with-tutorials/) that provide step-b
 
 ### Experienced Developers
 
-Explore [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
+Explore [V2 samples](V2/) for OData V2 and [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
 
 ### Advanced Use Cases
 
