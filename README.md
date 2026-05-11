@@ -18,7 +18,7 @@ This repository contains samples organized by technology and use case:
 | **V2 Samples** | SAP Fiori elements with OData V2 | [V2/](V2/) |
 | **V4 Samples** | SAP Fiori elements with OData V4 | [V4/](V4/) |
 | **CAP Integration** | Cloud Application Programming Model samples | [cap/](cap/) |
-| **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
+| **Third-party Libraries** | Adding external libraries to SAP Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
 | **Utilities** | Destinations, on-premise connectivity, ABAP Cloud (Steampunk), S/4HANA, SuccessFactors, headless generator, proxy, SSL certificates, CI/CD, npm dependency management, and SAP Fiori tools generator | [misc/](misc/) |
@@ -33,7 +33,7 @@ Start with the [V2 samples](V2/) or [V4 samples](V4/) and follow each sample's R
 
 ### Experienced Developers
 
-Explore [V2 samples](V2/) for OData V2 and [V4 samples](V4/) for the latest OData V4 and Fiori elements features.
+Explore [V2 samples](V2/) for OData V2 and [V4 samples](V4/) for the latest OData V4 and SAP Fiori elements features.
 
 ### Advanced Use Cases
 
