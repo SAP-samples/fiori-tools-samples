@@ -28,14 +28,6 @@ SAP Cloud Application Programming Model integration samples.
 | CAP Fiori Hybrid | Hybrid CAP application | `cap/cap-fiori-hybrid/` |
 | CAP Fiori MTA | Multi-target CAP application | `cap/cap-fiori-mta/` |
 
-## Tutorial Samples
-
-Samples referenced in SAP Developer tutorials.
-
-| Sample | Description | Path |
-|--------|-------------|------|
-| Incident Management | Fiori elements incident management app | `app-with-tutorials/cap/fiori-elements-incident-management/` |
-
 ## Advanced Samples
 
 | Sample | Description | Path |

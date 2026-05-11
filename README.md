@@ -18,7 +18,6 @@ This repository contains samples organized by technology and use case:
 | **V2 Samples** | SAP Fiori elements with OData V2 | [V2/](V2/) |
 | **V4 Samples** | SAP Fiori elements with OData V4 | [V4/](V4/) |
 | **CAP Integration** | Cloud Application Programming Model samples | [cap/](cap/) |
-| **Tutorial Samples** | Samples from SAP Developer tutorials | [app-with-tutorials/](app-with-tutorials/) |
 | **Third-party Libraries** | Adding external libraries to Fiori apps | [thirdpartylibrary/](thirdpartylibrary/) |
 | **Generator Extensions** | Extending @sap/generator-fiori | [sample-fiori-gen-ext/](sample-fiori-gen-ext/) |
 | **Migration** | Neo to Cloud Foundry migration | [neo-migration/](neo-migration/) |
@@ -30,7 +29,7 @@ This repository contains samples organized by technology and use case:
 
 ### First-Time Users
 
-Start with the [tutorial-based samples](app-with-tutorials/) that provide step-by-step guidance.
+Start with the [V2 samples](V2/) or [V4 samples](V4/) and follow each sample's README for step-by-step guidance.
 
 ### Experienced Developers
 
