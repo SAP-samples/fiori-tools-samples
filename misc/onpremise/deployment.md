@@ -10,6 +10,7 @@ Table of Contents
   - [What the Test Validates](#what-the-test-validates)
 - [Unknown File Type During Upload](#unknown-file-type-during-upload)
 - [Known Issues](#known-issues)
+  - [No Default Virus Profile Active or Found](#no-default-virus-profile-active-or-found)
 - [Additional Resources](#additional-resources)
 
 ---
@@ -171,8 +172,50 @@ For more information, see [Using an OData Service to Load Data to the SAPUI5 ABA
 ## Known Issues
 
 - [SAP Note 3378435 - Response headers too big in /UI5/UI5_REPOSITORY_LOAD](https://me.sap.com/notes/0003378435)
-- [No default virus profile active or found](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000:52461)
+- [No Default Virus Profile Active or Found](#no-default-virus-profile-active-or-found)
 - [Common Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
+
+### No Default Virus Profile Active or Found
+
+**Issue**
+
+Deploying a Fiori application to an ABAP target system fails with the following error:
+
+```
+Request failed with the status code 400
+
+No default virus profile active or found. Please check the official guide
+```
+
+**Root Cause**
+
+The virus scan provider in the back-end system is not configured correctly. In some cases, a broken or inconsistent virus scan profile (such as `UI5_INFRA_APP/REP_DI_PUT`) may be marked as active but contain configuration inconsistencies. This prevents the standard virus scan disabled settings from taking effect.
+
+**Solution**
+
+**Option 1: Install a Virus Scanner**
+
+Install a certified virus scanner. For a list of certified products, see [SAP Note 1494278](https://me.sap.com/notes/0001494278). For additional documentation, see the [SAP Help Portal](https://help.sap.com).
+
+**Option 2: Disable Virus Scan**
+
+If a broken or inconsistent profile is preventing the disable settings from taking effect, resolve the profile first:
+
+1. Open transaction `VSCANPROFILE`.
+2. Locate the problematic profile (for example, `UI5_INFRA_APP/REP_DI_PUT`).
+3. Edit the profile and deselect both **Active** and **Use Reference**.
+4. Resolve any consistency check errors, then save.
+
+Then disable virus scanning:
+
+1. Open transaction `VSCAN` and confirm no virus scan provider is maintained.
+2. Open transaction `VSCANGROUP` and confirm no virus scan group is maintained.
+3. Open transaction `VSCANPROFILE` and confirm no virus scan profile is active.
+4. Open transaction `/n/IWFND/VIRUS_SCAN`, select **Virus Scan Switched Off** and **Omit Exceptions for Virus Scan**, then save.
+
+> **Note:** Disabling the virus scanner should be a short-term solution only and should not be enabled permanently.
+
+For further information, see [SAP Note 3052386](https://me.sap.com/notes/0003052386) and [SAP Guided Answers](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000:52461).
 
 ---
 
