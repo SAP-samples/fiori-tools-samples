@@ -171,6 +171,8 @@ For more information, see [Using an OData Service to Load Data to the SAPUI5 ABA
 ## Known Issues
 
 - [SAP Note 3378435 - Response headers too big in /UI5/UI5_REPOSITORY_LOAD](https://me.sap.com/notes/0003378435)
+- [No default virus profile active or found](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000:52461)
+- [Common Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
 
 ---
 
