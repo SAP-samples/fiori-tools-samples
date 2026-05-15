@@ -12,6 +12,8 @@ When working with SAP-maintained packages such as `@sap/ux-ui5-tooling`, `@sap/c
 
 ## Prerequisites
 
+> **Important**: Any scripts or commands in this guide that modify `package.json`, dependency configurations, or project files may change the behaviour of your application. Ensure all such changes are carried out with the authorization of your IT support team where applicable. Always ensure your HTML5 application source files, including `package.json` and lock files, are under source control before making changes.
+
 * Basic understanding of npm and package.json structure
 * Familiarity with SAP Fiori development tooling
 * Version control system (Git recommended) for tracking changes
@@ -304,6 +306,7 @@ npm list tar
 * **Test Thoroughly**: Overriding versions may introduce compatibility issues
 * **Source Control**: Commit changes so team members are aware
 * **Document**: Add comments in package.json explaining why overrides are needed
+* **Shrinkwrap Incompatibility**: Overrides do not work for packages that use `npm-shrinkwrap.json`. When a package ships a shrinkwrap file, npm treats its dependency tree as locked and ignores your `overrides` field entirely. `@sap/cds` is a known example of a package that uses shrinkwrap. For such packages you cannot apply overrides; the only options are to wait for the package maintainer to release an updated version, or to remove the package from your dependencies.
 
 ```json
 {
@@ -714,6 +717,8 @@ npm install
 # Verify override
 npm list <package-name>
 ```
+
+If the override still has no effect after a clean reinstall, the package may be using `npm-shrinkwrap.json`. Packages that ship a shrinkwrap file lock their entire dependency tree, and npm ignores `overrides` for those packages. `@sap/cds` is a known example. In this case, you cannot use overrides; you must wait for the package maintainer to release an updated version.
 
 ### Compatibility Issues After Override
 

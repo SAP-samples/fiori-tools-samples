@@ -135,10 +135,18 @@ cf deploy
 
 Your subaccount is now configured with destinations at subaccount level.
 
+## Importing an Application without Source Control
+
+If you are a public cloud customer without access to a source code repository, you can download your application source artefacts using HTTP with SAP Fiori Tools. This is the recommended approach when your Neo application is deployed but its source code is not available in a version control system.
+
+For detailed instructions, see [Importing an Application without Source Control](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/ab4657ca9bd84cd6869a750a1d94b5bd.html) in the SAP Fiori Tools documentation.
+
+Once you have downloaded the application source artefacts, follow one of the migration options below.
+
 You have two options of migrating your Neo UI application as each produces a different folder structure:
 
-* Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md), this has been updated with v3 of `@ui5/cli`
-* Option 2. [Migrate Neo application supporting multiple Fiori UI applications](Option2.md), this is referencing v2 of `@ui5/cli`
+- Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md)
+- Option 2. [Migrate Neo application supporting multiple Fiori UI applications](Option2.md)
 
 In both cases, your application is deployed to Cloud Foundry using a managed approuter configuration.
 

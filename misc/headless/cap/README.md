@@ -1,5 +1,7 @@
 # Running CAP Headless
 
+> **Important**: The commands and scripts in this guide will generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system should be run with the authorization of your IT support team.
+
 Append a SAP UI application with a managed approuter configuration to an existing CAP project, using the headless generator.  
 
 # Prerequisites

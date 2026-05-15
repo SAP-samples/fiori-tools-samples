@@ -12,6 +12,8 @@ You can optionally choose to ignore the error and continue generation with the i
 
 ## Prerequisites
 
+> **Important**: Any scripts or commands in this guide that modify environment variables, system certificates, or operating system settings may change the behaviour of your system or operating system. Ensure all such changes are carried out with the authorization of your IT support team. Additionally, ensure any HTML5 application source files you modify are under source control before making changes.
+
 * Certificates are normally validated against a DNS hostname, if you connect via an IP address, the certificate must explicitly list that IP in the Subject Alternative Name (SAN) field. If the SAN does not include the IP, most clients (browsers, Node.js, Java, etc.) will reject the connection with a hostname mismatch error. Public Certificate Authorities generally do not issue certs for IPs, so this typically requires a self-signed or private CA.
 
 ## Security Risk

@@ -6,7 +6,36 @@ This guide covers how to configure an SAP BTP destination using `OAuth2SAMLBeare
 
 For general guidance on SAP BTP destinations, including how to consume and validate them, see the [Destinations guide](../destinations/README.md).
 
-> **Note**: This guide is scoped to `OAuth2SAMLBearerAssertion` destination configuration only. It does not cover issues related to OpenID Connect (OIDC), SAP Cloud Identity Services (IAS), or any other third-party identity providers. If your issue involves trust configuration with an external IdP, refer to the relevant identity provider documentation.
+> **Note**: This guide is scoped to `OAuth2SAMLBearerAssertion` destination configuration only. Troubleshooting steps for trust configuration with external identity providers (OIDC, IAS, Microsoft Azure AD, or other third-party IdPs) are out of scope. If your issue involves IdP trust configuration beyond what is described here, see the relevant identity provider documentation.
+
+## How OAuth2SAMLBearerAssertion Works
+
+Understanding the authentication flow helps diagnose configuration errors and understand why each setup step is required.
+
+1. **User logs in to the Cloud Foundry application**: The login is handled by an Identity Provider (IdP). This can be the default SAP BTP Identity Provider, SAP Identity Authentication Service (IAS), or a third-party IdP such as Microsoft Azure AD. At this point, the user's identity is confirmed.
+
+2. **Application calls a SuccessFactors destination**: The application calls a destination configured with `OAuth2SAMLBearerAssertion` authentication.
+
+3. **User identity propagation**: The identity of the logged-in user is passed to the Destination service as a user exchange token (a JSON Web Token).
+
+4. **Destination service generates a SAML assertion**: The Destination service:
+   - Extracts the user identity from the JWT.
+   - Embeds it in a SAML assertion.
+   - Signs the assertion with the BTP subaccount's private key.
+
+   This signed assertion serves as a declaration of trust from the subaccount, certifying that the user is authenticated.
+
+5. **SuccessFactors access token request**: The signed SAML assertion is sent to the SuccessFactors OAuth token endpoint to authenticate the user and exchange the assertion for an API access token.
+
+6. **Trust validation**: SuccessFactors validates the assertion using the BTP subaccount's public X.509 certificate, which was uploaded when registering the OAuth client in SuccessFactors. This certificate enables SuccessFactors to verify the signature, confirming the assertion's origin and authenticity.
+
+7. **User validation**: SuccessFactors verifies that:
+   - The SAML assertion is valid and trusted.
+   - The user exists in the SuccessFactors user store. If the user is not found, access is rejected.
+
+8. **Token issued**: Upon successful validation, SuccessFactors accepts the assertion and issues an OAuth access token.
+
+9. **Response returned to the application**: The Destination service returns the destination configuration and the OAuth access token to the application.
 
 ## Prerequisites
 
@@ -33,7 +62,7 @@ Remove any other additional properties that are not required, as unexpected valu
 
 #### Step 2: Verify Destination Consumption
 
-Review whether you are correctly calling the destination. Refer to steps **2** and **3** from [Create and Consume Destination for Cloud Foundry Application](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/create-and-consume-destination-for-cloud-foundry-application#consume-the-destination-and-execute-the-scenario).
+Review whether you are correctly calling the destination. See steps **2** and **3** from [Create and Consume Destination for Cloud Foundry Application](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/create-and-consume-destination-for-cloud-foundry-application#consume-the-destination-and-execute-the-scenario).
 
 ## Full Configuration from Scratch
 
@@ -57,7 +86,7 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | Application URL | The exact Cloud Foundry API Endpoint for your subaccount followed by the Subaccount ID. For example, if your API Endpoint is `us10-001`, the URL is: `https://api.cf.us10-001.hana.ondemand.com/2ad7b189-4d46-4104-a733-5c0b01ae066f` |
    | X.509 Certificate | Copy only the content between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` from the downloaded trust certificate. |
 
-   > **Note**: To find your API Endpoint and Subaccount ID, open the BTP Cockpit, navigate to the **Overview** tab of your subaccount, and check the **Cloud Foundry Environment** section.
+   > **Note**: To find your API Endpoint and Subaccount ID, open the SAP BTP Cockpit, navigate to the **Overview** tab of your subaccount, and check the **Cloud Foundry Environment** section.
 
 4. Click **Register**.
 5. Copy the generated **API Key** — you will need it in the next step.
@@ -76,10 +105,10 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | Authentication | `OAuth2SAMLBearerAssertion` |
    | Audience | `www.successfactors.com` |
    | AuthnContextClassRef | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | Client Key | The API Key copied from step 2.5 (the OAuth client created in SuccessFactors). |
+   | Client Key | The API Key copied from step 2, item 5 (the OAuth client created in SuccessFactors). |
    | Token Service URL | `https://api4.successfactors.com/oauth/token` |
    | Token Service URL Type | `Dedicated` |
-   | Key Store Location | The `.p12` certificate file downloaded from BTP (for example, `mysubaccount.p12`). |
+   | Key Store Location | The `.p12` certificate file downloaded from SAP BTP (for example, `mysubaccount.p12`). |
    | Key Store Password | The password for the `.p12` certificate file. |
 
    > **Note**: The SuccessFactors API hostname varies by data centre. For example, `api4.successfactors.com` is used for some regions while others use `api-in10.hr.cloud.sap` or similar. Check your SuccessFactors tenant URL to identify the correct hostname.
@@ -88,10 +117,10 @@ If the proposed solution does not resolve the issue, re-establish the complete t
 
    | Key | Value |
    | --- | --- |
-   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `apiKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `audience` | `www.successfactors.com` |
    | `authnContextClassRef` | `urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession` |
-   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2.5). |
+   | `clientKey` | The API Key of the OAuth client created in SuccessFactors (step 2, item 5). |
    | `companyId` | Your SuccessFactors company ID. |
    | `nameIdFormat` | See [NameID Format](#nameid-format) below. |
    | `tokenServiceURL` | `https://api4.successfactors.com/oauth/token` |
@@ -115,7 +144,7 @@ Use `unspecified` if you want the user ID to be propagated (the most common case
 
 ### Step 4: Consume the Destination in Your Application
 
-Once the trusted connection is established between SuccessFactors and the BTP destination, your application must consume it correctly. Use one of the following approaches:
+Once the trusted connection is established between SuccessFactors and the SAP BTP destination, your application must consume it correctly. Use one of the following approaches:
 
 #### Option 1: Destination Service REST API
 
@@ -125,13 +154,47 @@ Once the trusted connection is established between SuccessFactors and the BTP de
 
 #### Option 2: Application Router
 
-Alternatively, consume the destination via your application's AppRouter. See [Application Routes and Destinations](https://help.sap.com/docs/btp/sap-business-technology-platform/application-routes-and-destinations).
+Alternatively, consume the destination using your application's AppRouter. See [Application Routes and Destinations](https://help.sap.com/docs/btp/sap-business-technology-platform/application-routes-and-destinations).
 
 The AppRouter handles token retrieval automatically when the destination is correctly configured. You will still need to leverage the `Find a Destination` response structure in your application code to extract the resolved URL and credentials.
 
 #### Providing Evidence
 
 When raising a support ticket or sharing your configuration for review, attach a screenshot showing the code structure you used to consume the destination (either the `find destination` API call or the AppRouter configuration). This allows support teams to verify that the destination is being consumed correctly.
+
+## Troubleshooting: 401 Unauthorized
+
+A `401 Unauthorized` response can occur for different reasons. The error message in the response body identifies the root cause.
+
+### Login Failed — Invalid User
+
+**Error message**: `Unable to authenticate the client (Login failed - invalid user)`
+
+This error means the user performing the request does not have the required permissions in SuccessFactors. Check the following:
+
+1. Does your SuccessFactors instance and your SAP BTP subaccount share the same SAP Cloud Identity Services (IAS) tenant for authentication?
+2. Is the Subject Name Identifier (SNI) configured with the same value for both SuccessFactors and SAP BTP in IAS?
+3. Does the user executing the request have the permissions required to call the SuccessFactors API?
+
+### Invalid User UUID
+
+**Error message**: `Invalid useruuid`
+
+This error occurs when the **Skip User UUID in SAML Attributes** option is not enabled in the destination configuration. As a result, the UUID in the JWT token is included in the SAML assertion but does not match the UUID stored in the SuccessFactors system.
+
+To resolve this, enable the option by adding the following additional property to your destination:
+
+| Key | Value |
+| --- | --- |
+| `skipUserUuidInSAMLAttributes` | `true` |
+
+#### About `skipUserUuidInSAMLAttributes`
+
+When set to `true`, any SAML assertion attribute named `user_uuid` will not be included in the resulting SAML assertion XML, even if such a value was found in the JWT specifying the user's identity.
+
+For more information, see [SAML Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/saml-assertion-authentication) in the SAP BTP Connectivity documentation.
+
+> **Note**: After applying `skipUserUuidInSAMLAttributes`, if the error changes to `Login failed - invalid user`, see [Login Failed — Invalid User](#login-failed--invalid-user) for next steps.
 
 ## Validating the Destination Using Postman
 
@@ -177,14 +240,14 @@ A successful `200 OK` response confirms that:
 
 1. The trust between SAP BTP and SuccessFactors is correctly established.
 2. The OAuth client API Key and certificate are valid.
-3. The SAML assertion is being accepted by SuccessFactors.
+3. The SAML assertion is accepted by SuccessFactors.
 
 ### Interpreting Results
 
 | Response | Likely Cause |
 | --- | --- |
 | `200 OK` | Configuration is correct. The issue is in how the destination is consumed by your application. |
-| `401 Unauthorized` | The API Key or certificate is incorrect. Repeat [Step 2](#step-2-register-the-oauth-client-in-sap-successfactors) and [Step 3](#step-3-create-the-sap-btp-destination). |
+| `401 Unauthorized` | The API Key or certificate is incorrect, the user lacks permissions, or there is a UUID mismatch. Repeat [Step 2](#step-2-register-the-oauth-client-in-sap-successfactors) and [Step 3](#step-3-create-the-sap-btp-destination), and see [Troubleshooting: 401 Unauthorized](#troubleshooting-401-unauthorized) for specific error messages and fixes. |
 | `500 Internal Server Error` | SuccessFactors cannot process the request. Verify the `company_id`, `Audience`, `AuthnContextClassRef`, and `nameIdFormat` values in the destination. |
 
 ## Sample Destination Configuration
@@ -236,7 +299,7 @@ While Basic Authentication may work as a temporary measure, it is not recommende
 
 ## Reporting Issues
 
-When raising a support ticket for connectivity issues with a SuccessFactors destination, provide the following diagnostic artifacts. Collecting these upfront significantly reduces the time needed to diagnose the issue.
+When raising a support ticket for connectivity issues with a SuccessFactors destination, provide the following diagnostic artifacts. Collecting these artifacts upfront significantly reduces the time needed to diagnose the issue.
 
 ### Required Artifacts
 
@@ -248,7 +311,7 @@ When raising a support ticket for connectivity issues with a SuccessFactors dest
 
 4. **Exported destination configuration**: Export the destination from SAP BTP Cockpit as described in [SAP Note 3008889 - How to export destinations from the SAP BTP cockpit](https://launchpad.support.sap.com/#/notes/3008889). Confirm whether the connectivity test for the destination is successful.
 
-5. **Code structure screenshot**: Provide a screenshot showing the code used to consume the destination, whether via the `find destination` REST API or the AppRouter configuration.
+5. **Code structure screenshot**: Provide a screenshot showing the code used to consume the destination, whether using the `find destination` REST API or the AppRouter configuration.
 
 ### Related SAP Notes
 
