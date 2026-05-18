@@ -215,7 +215,7 @@ Based on analysis of high-scoring documentation files:
 
 ### Automated Checks
 
-The `docs-linter` tool is available on the `km-updates` branch only. Do not run these commands on `main`.
+Use the `docs-linter` tool to automatically validate:
 
 ```bash
 # Validate a file

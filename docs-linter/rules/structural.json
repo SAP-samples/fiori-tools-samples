@@ -1,0 +1,46 @@
+{
+  "requiredSections": {
+    "readme": [
+      {
+        "name": "overview",
+        "alternatives": ["introduction", "about"],
+        "severity": "error",
+        "message": "README files must include an overview or introduction section"
+      },
+      {
+        "name": "prerequisites",
+        "alternatives": ["requirements"],
+        "severity": "error",
+        "message": "README files must include a prerequisites or requirements section"
+      }
+    ],
+    "technicalGuide": [
+      {
+        "name": "troubleshooting",
+        "alternatives": ["known issues", "issues", "problems"],
+        "severity": "warning",
+        "message": "Technical guides should include troubleshooting or known issues section"
+      }
+    ]
+  },
+  "sectionOrder": [
+    "overview",
+    "prerequisites",
+    "getting started",
+    "configuration",
+    "usage",
+    "troubleshooting",
+    "additional resources",
+    "license"
+  ],
+  "headingHierarchy": {
+    "maxH1Count": 1,
+    "allowSkippedLevels": false,
+    "severity": "error"
+  },
+  "tableOfContents": {
+    "requireForLength": 10000,
+    "requireForHeadings": 8,
+    "severity": "info"
+  }
+}
