@@ -44,6 +44,7 @@ server:
         backend:
           - path: /V2
             url: https://services.odata.org
+            destination: northwind
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
