@@ -1,0 +1,13 @@
+{
+  "name": "deploy",
+  "dependencies": {
+    "hdb": "^2.0.0",
+    "@sap/hdi-deploy": "^5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/hdi-deploy/deploy.js --use-hdb --parameter com.sap.hana.di.table/try_fast_table_migration=true"
+  }
+}
