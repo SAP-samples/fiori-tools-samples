@@ -13,14 +13,7 @@ cds init cap-with-frontend-service && \
 cd cap-with-frontend-service && \
 cds add nodejs && \
 npm install && \
-cds add tiny-sample && \
-cds add hana && \
-cds add mta && \
-cds add xsuaa && \
-cds add connectivity && \
-cds add destination && \
-cds add app-frontend && \
-cds add html5-repo && \
+cds add tiny-sample,hana,mta,xsuaa,connectivity,destination,app-frontend,html5-repo && \
 cds build --for hana && \
 cp gen/db/package.json db && \
 npm update --package-lock-only
