@@ -4,6 +4,30 @@ Build and deploy a CAP project with a Fiori Elements UI hosted on SAP Business T
 
 This sample was generated using `cds init`, `cds add` plugins, and the Fiori tools generators. Application Frontend Service replaces the managed approuter as the HTML5 application runtime.
 
+## Project Generation
+
+The base CAP project was generated using the following commands:
+
+```shell
+cds init cap-with-frontend-service && \
+cd cap-with-frontend-service && \
+cds add nodejs && \
+npm install && \
+cds add tiny-sample && \
+cds add hana && \
+cds add mta && \
+cds add xsuaa && \
+cds add connectivity && \
+cds add destination && \
+cds add app-frontend && \
+cds add html5-repo && \
+cds build --for hana && \
+cp gen/db/package.json db && \
+npm update --package-lock-only
+```
+
+The Fiori Elements UI was then added using the SAP Fiori tools App Generator (List Report Page V4, Local CAP service).
+
 ## Resources
 
 - SAP Help Portal: [What Is Application Frontend Service](https://help.sap.com/docs/application-frontend-service/application-frontend-service/what-is-application-frontend-service?version=Cloud)
