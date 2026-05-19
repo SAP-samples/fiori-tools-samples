@@ -27,6 +27,7 @@ SAP Cloud Application Programming Model integration samples.
 |--------|-------------|------|
 | CAP Fiori Hybrid | Hybrid CAP application | `cap/cap-fiori-hybrid/` |
 | CAP Fiori MTA | Multi-target CAP application | `cap/cap-fiori-mta/` |
+| CAP with Application Frontend Service | CAP application with Fiori Elements UI hosted using Application Frontend Service | `cap/cap-with-frontend-service/` |
 
 ## Advanced Samples
 
