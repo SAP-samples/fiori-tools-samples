@@ -46,10 +46,12 @@ The destination must point to the ABAP system root URL with no service path appe
 - `HTML5.DynamicDestination`: `true`
 - Correct root URL with no service path appended
 - Proper authentication type based on the scenario:
-  - Same subaccount: `OAuth2UserTokenExchange`
-  - Cross-subaccount: `SAMLAssertion`
+  - Same subaccount: `OAuth2UserTokenExchange` or `SAMLAssertion`
+  - Cross-subaccount (requires trust between subaccounts): `SAMLAssertion`
 
 The following is an example of an `OAuth2UserTokenExchange` destination for an ABAP Cloud system (same-subaccount scenario):
+
+> **Note**: `OAuth2UserTokenExchange` is only applicable when the destination is configured in the same subaccount that hosts the ABAP Cloud instance. For cross-subaccount or cross-region scenarios, use `SAMLAssertion` instead. See [Enable an SAP BTP Destination for Usage Across Global Accounts or Between Different Regions Using SAMLAssertion](#enable-an-sap-btp-destination-for-usage-across-global-accounts-or-between-different-regions-using-samlassertion).
 
 ```json
 {
@@ -74,6 +76,8 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 > **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, preserving user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
 
 Alternatively, `SAMLAssertion` can be used for both same-subaccount and cross-subaccount scenarios. The following is an example:
+
+> **Note**: `SAMLAssertion` works on the same subaccount that hosts the ABAP Cloud instance without any additional trust configuration. When used across subaccounts, both subaccounts must be under the same global account and trust must be established between them — the signing certificate from the source subaccount must be imported into the target ABAP Cloud system. See [Cross-Subaccount Requirements](#cross-subaccount-requirements).
 
 ```json
 {
