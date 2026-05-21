@@ -1,13 +1,46 @@
 # Consuming and Validating SAP BTP Destinations to Support an OData XML Service
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Flow Diagram](#flow-diagram)
+- [Sample Microsoft OData XML Service Endpoints](#sample-microsoft-odata-xml-service-endpoints)
+- [Configuration](#configuration)
+- [Summary of Properties](#summary-of-properties)
+  - [Understanding `WebIDEUsage`](#understanding-webideusage)
+  - [Understanding `WebIDEAdditionalData`](#understanding-webideadditionaldata)
+- [Authentication Types](#authentication-types)
+  - [NoAuthentication](#noauthentication)
+- [Using WebIDEAdditionalData=full_url for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls)
+  - [When to Use `full_url`](#when-to-use-full_url)
+  - [Configuration Example](#configuration-example)
+  - [Key Differences](#key-differences)
+  - [Testing with `curl`](#testing-with-curl)
+  - [Use Case Examples](#use-case-examples)
+  - [Important Notes](#important-notes)
+- [Using `https://<destination-name>.dest/<service-path>` to Call a Service Directly](#using-httpsdestination-namedestservice-path-to-call-a-service-directly)
+  - [When to Use This Approach](#when-to-use-this-approach)
+  - [Example: Northwind Destination](#example-northwind-destination)
+  - [How the `.dest` URL Is Resolved](#how-the-dest-url-is-resolved)
+  - [Important Notes](#important-notes-1)
+  - [Cloning the Destination with `odata_gen`](#cloning-the-destination-with-odata_gen)
+- [Sample `curl` Commands for `odata_gen`](#sample-curl-commands-for-odata_gen)
+- [Sample `curl` Commands for `odata_abap`](#sample-curl-commands-for-odata_abap)
+- [Environment Check](#environment-check)
+- [Check Connection](#check-connection)
+- [Common Errors](#common-errors)
+- [Additional Resources](#additional-resources)
+- [License](#license)
+
 ## Overview
 
 SAP BTP destinations are used to connect to different services and systems in the cloud, on-premise, or any publicly available endpoints. They are used to define the connection parameters for the service you want to consume. The destination is a logical representation of the service and contains all the information required to connect to it.
 
 The `WebIDEUsage` property determines how SAP tooling interacts with the destination. The two values relevant to SAP Fiori tools are `odata_gen` and `odata_abap`:
 
-- **`odata_abap`**: SAP tooling calls the ABAP service catalog (OData V2 or V4) hosted on the destination to discover available services. The destination URL must be the base host only — SAP tooling appends the catalog paths automatically. Use this for SAP ABAP back-end systems where you want to browse and select a service from the catalog.
-- **`odata_gen`**: SAP tooling calls the OData service directly using the destination URL. You supply the service path — either embedded in the destination URL or entered manually during app generation. Use this for third-party services, services not registered in the ABAP catalog, or SAP Fiori freestyle apps targeting a single known endpoint.
+- **`odata_abap`**: SAP tooling calls the ABAP service catalog (OData V2 or V4) hosted on the destination to discover available services. The destination URL must be the base host only. SAP tooling appends the catalog paths automatically. Use this for SAP ABAP back-end systems where you want to browse and select a service from the catalog.
+- **`odata_gen`**: SAP tooling calls the OData service directly using the destination URL. You supply the service path, either embedded in the destination URL or entered manually during app generation. Use this for third-party services, services not registered in the ABAP catalog, or SAP Fiori freestyle apps targeting a single known endpoint.
 
 These values are mutually exclusive because they represent fundamentally different consumption models: `odata_gen` bypasses catalog discovery entirely and calls the service directly, while `odata_abap` relies on catalog discovery to resolve the service. If both values are present in the destination, SAP Fiori tools defaults to `odata_abap`.
 
@@ -33,18 +66,13 @@ When using `WebIDEUsage=odata_abap`, the partial/full distinction does not apply
 
 ## Prerequisites
 
-> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter system behaviour should be carried out with the authorization of your IT support team.
+> **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter system behavior should be carried out with the authorization of your IT support team.
 
 - You have the SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount.
 - You have admin rights to the SAP BTP cockpit to modify destinations.
 - Only OData XML services are supported when creating SAP Fiori elements applications when using SAP Fiori tools generator.
 - You have knowledge of [SAP BTP destinations](https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations).
 - You have knowledge of [SAP BTP destinations in the SAP BTP cockpit](https://developers.sap.com/tutorials/cp-cf-create-destination.html).
-
-## Additional Resources
-
-- [HTTP Destinations](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/http-destinations)
-- [Testing SAP BTP Destinations with curl](curl-commands.md)
 
 ## Flow Diagram
 
@@ -62,7 +90,7 @@ sequenceDiagram
     Browser->>BTPApp: 2. Requests data or an action requiring an external API call.
     BTPApp->>DestinationService: 3. Looks up the destination "MyBasicAuthEndpoint".
     DestinationService->>BTPApp: 4. Provides the destination configuration which includes the URL and basic auth username and password.
-    BTPApp->>ExternalAPI: 5. Makes an API call: a HTTP request with the "Authorization: Basic ..." header.
+    BTPApp->>ExternalAPI: 5. Makes an API call: an HTTP request with the "Authorization: Basic ..." header.
     ExternalAPI->>BTPApp: 6. Validates credentials and responds with data.
     BTPApp->>Browser: 7. Sends the processed data and the response.
     Browser->>User: 8. Displays the data and confirms the action.
@@ -70,7 +98,7 @@ sequenceDiagram
 
 ## Sample Microsoft OData XML Service Endpoints
 
-The endpoint `https://services.odata.org` exposes a number of OData service endpoints, as shown.
+The endpoint `https://services.odata.org` exposes several OData service endpoints, as shown.
 
 ```text
 #V2
@@ -221,13 +249,13 @@ Use `WebIDEAdditionalData=full_url` when:
 
 1. **Direct Service Access**: You want to point directly to a specific OData service endpoint without any path manipulation by SAP tooling.
 2. **Fixed Service Paths**: The service URL includes non-standard paths or segments that must be preserved exactly as configured.
-3. **Single Service Destinations**: You're creating a destination for one specific service rather than a system that exposes multiple services. For example, when a service is not listed in the OData V2 or V4 catalog, you can use `full_url` to point directly to the service endpoint.
-4. **Third-Party Services**: You're consuming external OData services that don't follow SAP's standard path conventions.
+3. **Single Service Destinations**: You are creating a destination for one specific service rather than a system that exposes multiple services. For example, when a service is not listed in the OData V2 or V4 catalog, you can use `full_url` to point directly to the service endpoint.
+4. **Third-Party Services**: You are consuming external OData services that do not follow SAP's standard path conventions.
 5. **SAP Fiori Freestyle Apps**: A typical flow is when building an SAP Fiori freestyle app that targets a single, known OData service. Because freestyle apps do not use the SAP Fiori tools generator's catalog browsing, pointing the destination directly at the service endpoint using `full_url` is a common pattern.
 
 ### Configuration Example
 
-Here's a sample destination configuration using `full_url`:
+The following is a sample destination configuration using `full_url`:
 
 ```properties
 #
@@ -261,7 +289,7 @@ When using a destination with `full_url`, the service path is already included i
 
 #### Use Case 1: Third-Party OData Service
 
-You're consuming a specific OData service from an external provider with a fixed endpoint:
+You are consuming a specific OData service from an external provider with a fixed endpoint:
 
 ```properties
 URL=https\://api.partner.com/services/v1/ProductCatalog.svc/
@@ -293,7 +321,7 @@ WebIDEUsage=odata_gen
 
 When a destination is configured with `WebIDEUsage=odata_abap`, SAP tooling uses the ABAP service catalogs (OData V2 and OData V4) to discover available services. However, there are situations where a required service exists on the back-end system but is not listed in either catalog—for example, because it has not been registered in the catalog, has not been activated in `/IWFND/MAINT_SERVICE`, or requires a Communication Arrangement that has not been set up.
 
-In these cases, you can bypass catalog discovery entirely and call the service directly by entering the `<destination-name>.dest` URL pattern in the SAP Fiori tools generator or Service Centre:
+In these cases, you can bypass catalog discovery entirely and call the service directly by entering the `<destination-name>.dest` URL pattern in the SAP Fiori tools generator or Service Center:
 
 ```text
 https://<destination-name>.dest/<service-path>
@@ -378,15 +406,15 @@ For full `curl` examples including partial, full_url, and authentication variant
 
 ## Sample `curl` Commands for `odata_abap`
 
-When using `odata_abap`, the destination URL is always the base host only — BAS appends the ABAP catalog paths automatically. Note that catalog endpoints are only available on ABAP systems. Calling them against a non-ABAP destination (such as the `northwind` destination) returns an HTTP 404 Not Found error, which is expected.
+When using `odata_abap`, the destination URL is always the base host only — SAP Business Application Studio (BAS) appends the ABAP catalog paths automatically. Note that catalog endpoints are only available on ABAP systems. Calling them against a non-ABAP destination (such as the `northwind` destination) returns an HTTP 404 Not Found error, which is expected.
 
-For full `curl` examples including V2/V4 catalog commands and authentication variants, see [Testing SAP BTP Destinations with curl](curl-commands.md).
+For full `curl` examples including V2 and V4 catalog commands and authentication variants, see [Testing SAP BTP Destinations with curl](curl-commands.md).
 
 ## Environment Check
 
-Environment Check is a tool used to validate the destination configuration and ensure that all the required parameters are set correctly to allow you to use both Service Centre and SAP Fiori tools. The environment check also checks if the destination is reachable and if the catalogs are available.
+Environment Check is a tool used to validate the destination configuration and ensure that all the required parameters are set correctly to allow you to use both Service Center and SAP Fiori tools. Environment Check also checks if the destination is reachable and if the catalogs are available.
 
-Even if your destination is configured with `odata_gen`, it's still a valid tool to ensure that the destination is reachable and all the required parameters are set correctly. However, if your target system is not an ABAP system, then the OData V2 and OData V4 catalog endpoints fail.
+Even if your destination is configured with `odata_gen`, it is still a valid tool to ensure that the destination is reachable and all the required parameters are set correctly. However, if your target system is not an ABAP system, then the OData V2 and OData V4 catalog endpoints fail.
 
 1. Open SAP Business Application Studio.
 1. Open the Command Palette (**View** > **Find Command**).
@@ -398,7 +426,7 @@ Even if your destination is configured with `odata_gen`, it's still a valid tool
 
 For more information, see [Environment Check](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/75390cf5d81e43aea5db231ef4225268.html).
 
-**Note**: The Environment Check tool ignores destination properties such as `WebIDEUsage=odata_gen` and always attempts to call both the OData V2 and V4 catalog endpoints, regardless of the destination configuration. This is expected behavior and is used to validate that the destination is properly configured to access catalog services. If your destination uses `odata_gen` or points to a non-ABAP system, catalog endpoint failures in the report are normal and do not indicate a problem with your destination.
+> **Note**: The Environment Check tool ignores destination properties such as `WebIDEUsage=odata_gen` and always attempts to call both the OData V2 and V4 catalog endpoints, regardless of the destination configuration. This is expected behavior and is used to validate that the destination is properly configured to access catalog services. If your destination uses `odata_gen` or points to a non-ABAP system, catalog endpoint failures in the report are normal and do not indicate a problem with your destination.
 
 The file contains all the information required to troubleshoot the issue. You can read the file to gain a better understanding of how the destination is configured.
 
@@ -429,7 +457,7 @@ This means a destination configured with incorrect credentials can still show a 
 
 Use **Check Connection** only to confirm that the destination host is reachable from SAP BTP at the network level — for example, to rule out firewall or DNS issues. A successful result confirms only that a connection was established and the back-end did not return an HTTP 500 or above.
 
-Do not use **Check Connection** to validate that your destination is correctly configured or that authentication is working. To validate full connectivity including authentication, catalog access, and destination configuration, use the [Environment Check](#environment-check) tool in SAP Business Application Studio instead.
+Do not use **Check Connection** to validate that your destination is correctly configured or that authentication works. To validate full connectivity including authentication, catalog access, and destination configuration, use the [Environment Check](#environment-check) tool in SAP Business Application Studio instead.
 
 ## Common Errors
 
@@ -437,7 +465,7 @@ Do not use **Check Connection** to validate that your destination is correctly c
 
 **Problem**: Receiving HTTP 4xx exceptions when calling the destination.
 
-The URL property of a SAP BTP destination must only contain the base host and root service path.
+The URL property of an SAP BTP destination must only contain the base host and root service path.
 If the URL is hardcoded with extra path segments, query parameters, or format options, the final request generated by SAP Fiori tools or the Service Center becomes invalid.
 
 This typically leads to errors such as:
@@ -513,7 +541,7 @@ When reporting issues or opening support tickets, you must provide diagnostic in
 
 #### Option 1: Environment Check Report
 
-Run the Environment Check tool (as described in the [Environment Check](#environment-check) section above) and **review the generated output carefully**. The Environment Check report can reveal misconfigurations or issues with calling the respective catalog requests (OData V2/V4 catalogs), which may help you identify and resolve the problem without needing to open a support ticket.
+Run the Environment Check tool (as described in the [Environment Check](#environment-check) section above) and **review the generated output carefully**. The Environment Check report can reveal misconfigurations or issues with calling the respective catalog requests (OData V2 and V4 catalogs), which may help you identify and resolve the problem without needing to open a support ticket.
 
 When opening a support ticket, attach the generated zip file. This file includes:
 
@@ -558,7 +586,12 @@ Review and follow the comprehensive [Checklist for Support Tickets](../onpremise
 
 Compile all artifacts into a single zip file and attach it to your support ticket (component `BC-MID-SCC` for Cloud Connector or `CA-UX-IDE` for deployment issues).
 
-**Note**: Always provide the Environment Check report. For internet-facing destinations, include the HAR file. For on-premise destinations, follow the complete [Cloud Connector checklist](../onpremise/README.md#checklist-for-support-tickets) to ensure all necessary diagnostic information is provided.
+> **Note**: Always provide the Environment Check report. For internet-facing destinations, include the HAR file. For on-premise destinations, follow the complete [Cloud Connector checklist](../onpremise/README.md#checklist-for-support-tickets) to ensure all necessary diagnostic information is provided.
+
+## Additional Resources
+
+- [HTTP Destinations](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/http-destinations)
+- [Testing SAP BTP Destinations with curl](curl-commands.md)
 
 ## License
 
