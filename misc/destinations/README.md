@@ -5,33 +5,17 @@
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Flow Diagram](#flow-diagram)
-- [Sample Microsoft OData XML Service Endpoints](#sample-microsoft-odata-xml-service-endpoints)
+- [Sample Endpoints](#sample-microsoft-odata-xml-service-endpoints)
 - [Configuration](#configuration)
 - [Summary of Properties](#summary-of-properties)
-  - [Understanding `WebIDEUsage`](#understanding-webideusage)
-  - [Understanding `WebIDEAdditionalData`](#understanding-webideadditionaldata)
 - [Authentication Types](#authentication-types)
-  - [NoAuthentication](#noauthentication)
-- [Using WebIDEAdditionalData=full_url for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls)
-  - [When to Use `full_url`](#when-to-use-full_url)
-  - [Configuration Example](#configuration-example)
-  - [Key Differences](#key-differences)
-  - [Testing with `curl`](#testing-with-curl)
-  - [Use Case Examples](#use-case-examples)
-  - [Important Notes](#important-notes)
-- [Using `https://<destination-name>.dest/<service-path>` to Call a Service Directly](#using-httpsdestination-namedestservice-path-to-call-a-service-directly)
-  - [When to Use This Approach](#when-to-use-this-approach)
-  - [Example: Northwind Destination](#example-northwind-destination)
-  - [How the `.dest` URL Is Resolved](#how-the-dest-url-is-resolved)
-  - [Important Notes](#important-notes-1)
-  - [Cloning the Destination with `odata_gen`](#cloning-the-destination-with-odata_gen)
-- [Sample `curl` Commands for `odata_gen`](#sample-curl-commands-for-odata_gen)
-- [Sample `curl` Commands for `odata_abap`](#sample-curl-commands-for-odata_abap)
+- [Using `full_url` for Complete Service URLs](#using-webideadditionaldatafull_url-for-complete-service-urls)
+- [Calling a Service Directly via `.dest`](#using-httpsdestination-namedestservice-path-to-call-a-service-directly)
+- [Sample `curl` Commands](#sample-curl-commands-for-odata_gen)
 - [Environment Check](#environment-check)
 - [Check Connection](#check-connection)
 - [Common Errors](#common-errors)
 - [Additional Resources](#additional-resources)
-- [License](#license)
 
 ## Overview
 
@@ -71,8 +55,7 @@ When using `WebIDEUsage=odata_abap`, the partial/full distinction does not apply
 - You have the SAP Cloud Foundry Runtime environment configured in your SAP BTP subaccount.
 - You have admin rights to the SAP BTP cockpit to modify destinations.
 - Only OData XML services are supported when creating SAP Fiori elements applications when using SAP Fiori tools generator.
-- You have knowledge of [SAP BTP destinations](https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations).
-- You have knowledge of [SAP BTP destinations in the SAP BTP cockpit](https://developers.sap.com/tutorials/cp-cf-create-destination.html).
+- You have knowledge of [SAP BTP destinations](https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations) and how to [configure them in the SAP BTP cockpit](https://developers.sap.com/tutorials/cp-cf-create-destination.html).
 
 ## Flow Diagram
 
