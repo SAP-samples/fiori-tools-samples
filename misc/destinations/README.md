@@ -103,8 +103,8 @@ The endpoint `https://services.odata.org` exposes several OData service endpoint
 ```text
 #V2
 https://services.odata.org/v2/northwind/northwind.svc/
-#V3
-https://services.odata.org/V3/Northwind/Northwind.svc/
+#V4
+https://services.odata.org/v4/northwind/northwind.svc/
 ```
 
 ## Configuration
