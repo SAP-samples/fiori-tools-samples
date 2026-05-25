@@ -130,6 +130,9 @@ If the proposed solution does not resolve the issue, re-establish the complete t
    | `WebIDEUsage` | `odata_gen` |
    | `HTML5.DynamicDestination` | `true` |
    | `product.name` | `SAP SuccessFactors` |
+   | `samlAssertionEncoding` | `base64` or `base64url` (optional — see note below) |
+
+   > **Note**: `samlAssertionEncoding` controls how the SAML assertion XML is encoded before being sent to the token service. Accepted values are `base64` (RFC 4648, section 4) and `base64url` (RFC 4648, section 5). If not set, the default is `base64` prior to the calendar week 24, 2026 Destination Service release (June 8 to 11, 2026) and `base64url` after. Set this property explicitly if your token service requires a specific encoding to avoid unexpected behavior when the default changes. For more information, see [OAuth SAML Bearer Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/oauth-saml-bearer-assertion-authentication).
 
 #### NameID Format
 
