@@ -35,6 +35,8 @@ The following screenshots show what the SAP BTP destination looks like once corr
 | `HTML5.DynamicDestination` | `true` |
 | `HTML5.Timeout` | `60000` |
 
+> **Note**: An additional optional property `samlAssertionEncoding` is available for `SAMLAssertion` destinations. It controls how the SAML assertion XML is encoded before being sent to the token service. Accepted values are `base64` (RFC 4648, section 4) and `base64url` (RFC 4648, section 5). If not set, the default is `base64` prior to the calendar week 24, 2026 Destination Service release (June 8 to 11, 2026) and `base64url` after. Set this property explicitly if your system requires a specific encoding to avoid unexpected behavior when the default changes. For more information, see [SAML Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/saml-assertion-authentication).
+
 ## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
