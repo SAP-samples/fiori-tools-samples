@@ -539,7 +539,10 @@ The entire zip file must be attached as it provides comprehensive information to
 
 Include a full network trace (`.har` file) with all requests in the scenario after it was reproduced. This is essential for support teams to understand the flow of API calls and identify the root cause of browser-based issues.
 
-For information about how to extract the network trace, see [How to capture an HTTP trace using Google Chrome or MS Edge (Chromium)](<https://launchpad.support.sap.com/#/notes/1990706>).
+For information about how to extract the network trace, see:
+
+- [How to capture an HTTP trace using Google Chrome or MS Edge (Chromium)](https://launchpad.support.sap.com/#/notes/1990706)
+- [Capture a browser trace for troubleshooting](https://docs.cloud.google.com/support/docs/capture-browser-trace) (Google Cloud)
 
 The `.har` file should be exported from your browser (Chrome, Edge, Firefox, or Safari) and must include:
 
@@ -549,6 +552,13 @@ The `.har` file should be exported from your browser (Chrome, Edge, Firefox, or 
 - Timing information
 
 This comprehensive trace allows support teams to analyze the complete flow of API calls, identify failed requests, and diagnose connectivity or configuration issues.
+
+Before attaching the `.har` file to your support ticket, verify it is valid and not corrupted using one of these methods:
+
+- **Google HAR Analyzer**: Open the [Google HAR Analyzer](https://toolbox.googleapps.com/apps/har_analyzer/) and drag in the file. If it loads and shows requests, the file is valid.
+- **Browser DevTools**: Open Chrome or Edge DevTools, go to the **Network** tab, right-click anywhere in the request list, and select **Import HAR file**. A corrupted file will fail to load or show no entries.
+
+A corrupted `.har` file (for example, due to an incomplete export or file truncation) cannot be analyzed and will delay the support process.
 
 #### Option 3: On-Premise Destinations (ProxyType=OnPremise)
 
