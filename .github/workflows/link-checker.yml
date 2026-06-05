@@ -15,6 +15,9 @@ concurrency:
   group: link-checker-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
+permissions:
+  pull-requests: write
+
 jobs:
   link-check:
     runs-on: ubuntu-latest
@@ -22,6 +25,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
       - name: Check links in markdown files
         uses: lycheeverse/lychee-action@v2
