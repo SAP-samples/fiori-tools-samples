@@ -15,6 +15,9 @@ concurrency:
   group: link-checker-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
+permissions:
+  pull-requests: write
+
 jobs:
   link-check:
     runs-on: ubuntu-latest
