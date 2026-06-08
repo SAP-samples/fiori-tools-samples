@@ -1,0 +1,22 @@
+<mvc:View controllerName="sap.btp.sapui5.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+  <Page id="detail" title="{i18n>DetailTitle}" showNavButton="true" navButtonPress="handleNavButtonPress" >
+		<ObjectHeader id="_IDGenObjectHeader1" title="{ProductName}" number="{= ((${UnitPrice} * 100) / 100).toFixed(2) }" 	numberUnit="{i18n>Currency}">
+        <statuses>
+            <ObjectStatus id="_IDGenObjectStatus1" text="{= ${Discontinued} ? ${i18n>Discontinued} : ${i18n>Available} }" state="{= ${Discontinued} ? 'Error' : 'Success' }"/>
+            <ObjectStatus id="_IDGenObjectStatus2" text="{= (${UnitsOnOrder} > 0) ?  ${i18n>Ordered} : ${i18n>NotOrdered} }" state="Success"/>
+        </statuses>
+        <attributes>
+            <ObjectAttribute id="_IDGenObjectAttribute1" text="Product #{ProductID}"/>
+            <ObjectAttribute id="_IDGenObjectAttribute2" text="Category #{CategoryID}"/>
+            <ObjectAttribute id="_IDGenObjectAttribute3" text="Supplier #{SupplierID}"/>
+        </attributes>
+		</ObjectHeader>
+    <footer>
+        <Bar id="_IDGenBar1">
+            <contentRight>
+                <Button id="_IDGenButton1" text="{i18n>OrderButtonText}" type="Accept" icon="sap-icon://accept" press="handleOrder"/>
+            </contentRight>
+        </Bar>
+    </footer>
+  </Page>
+</mvc:View>

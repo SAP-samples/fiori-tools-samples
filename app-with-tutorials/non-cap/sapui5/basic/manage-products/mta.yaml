@@ -1,0 +1,94 @@
+_schema-version: "3.2"
+ID: sap-btp-sapui5
+description: A Fiori application.
+version: 0.0.1
+modules:
+- name: sap-btp-sapui5-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: sap-btp-sapui5-destination-service
+    parameters:
+      content-target: true
+  - name: sap-btp-sapui5-repo-host
+    parameters:
+      service-key:
+        name: sap-btp-sapui5-repo-host-key
+  - name: sap-btp-sapui5-uaa
+    parameters:
+      service-key:
+        name: sap-btp-sapui5-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: sap-btp-sapui5_html_repo_host
+          ServiceInstanceName: sap-btp-sapui5-html5-srv
+          ServiceKeyName: sap-btp-sapui5-repo-host-key
+          sap.cloud.service: sap-btp-sapui5
+        - Authentication: OAuth2UserTokenExchange
+          Name: sap-btp-sapui5_uaa
+          ServiceInstanceName: sap-btp-sapui5-xsuaa-srv
+          ServiceKeyName: sap-btp-sapui5-uaa-key
+          sap.cloud.service: sap-btp-sapui5
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: sap-btp-sapui5-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: sap-btp-sapui5-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - sapbtpsapui5.zip
+      name: sapbtpsapui5
+      target-path: resources/
+- name: sapbtpsapui5
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: sap-btp-sapui5-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: sap-btp-sapui5-destination-service
+    service-plan: lite
+- name: sap-btp-sapui5-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: sap-btp-sapui5-xsuaa-srv
+    service-plan: application
+- name: sap-btp-sapui5-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: sap-btp-sapui5-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
