@@ -245,6 +245,57 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
 3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests are failing with HTTP 500, but they are not reaching your S4HC instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
+### Issue 9: Local VS Code Preview Returns HTML SAML Login Page Instead of an OData Response
+
+When running a local SAP Fiori preview in VS Code, the OData HTTP requests receive an HTML SAML login page instead of an OData response. The local preview proxy fails because it expects an OData response, not an interactive login form.
+
+**Cause:** The `backend.url` in your local preview configuration (for example, `ui5.yaml`) points to the standard tenant URL, which is intended for interactive browser access to the SAP Fiori Launchpad and triggers Identity Provider or SAML login flows. For example:
+
+```text
+https://my1111111.s4hana.ondemand.com
+```
+
+**Fix:** Use the SAP S/4HANA Cloud API endpoint, which uses the `-api` suffix, in your local preview configuration:
+
+```text
+https://my1111111-api.s4hana.ondemand.com
+```
+
+The `-api` endpoint is designed for direct inbound API and OData access. OData API scenarios must be explicitly exposed through Communication Systems and Communication Arrangements in your SAP S/4HANA Cloud system.
+
+Update your `ui5.yaml` to point to the `-api` host:
+
+```yaml
+backend:
+  - path: /sap
+    url: https://my1111111-api.s4hana.ondemand.com
+    authenticationType: reentranceTicket
+```
+
+The `reentranceTicket` authentication type is supported by SAP Fiori tools for local VS Code preview flows against SAP S/4HANA Cloud. The important correction is the host, not necessarily the authentication type.
+
+The same `-api` endpoint applies when deploying from VS Code. Update your `ui5-deploy.yaml` accordingly:
+
+```yaml
+- name: deploy-to-abap
+  afterTask: generateCachebusterInfo
+  configuration:
+    target:
+      url: https://my1111111-api.s4hana.ondemand.com
+      authenticationType: reentranceTicket
+      destination: my-btp-destination
+    app:
+      name: ZAPP_NAME
+      description: My App
+      package: ZMY_PACKAGE
+      transport: ZTRXXXXXXXX
+    exclude:
+      - /test/
+      - /localService/
+```
+
+For a full `ui5-deploy.yaml` sample, see [ui5-deploy.yaml](ui5-deploy.yaml). For a sample SAMLAssertion destination configuration that uses the same `-api` endpoint, see [s4hana-cloud_saml.json](s4hana-cloud_saml.json).
+
 ## SAP Fiori Launchpad
 
 Since application availability in the Fiori Launchpad and its authorization are controlled through Business Catalogs, you'll learn how to extend an existing catalog to include your newly created app.

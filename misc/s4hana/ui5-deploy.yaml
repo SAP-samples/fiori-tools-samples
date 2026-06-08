@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: travel
+type: application
+builder:
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://my1111111-api.s4hana.ondemand.com
+          authenticationType: reentranceTicket
+          destination: my-btp-destination
+        app:
+          name: TRAVELAPP
+          description: Travel App
+          package: PKG11111
+          transport: TR11111
+        exclude:
+          - /test/
+          - /localService/
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
