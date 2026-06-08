@@ -1,0 +1,1850 @@
+[
+	{
+		"Currency": "ADP",
+		"Currency_Text": "Andorran Peseta --> (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "ADP",
+		"AlternativeCurrencyKey": "020",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AED",
+		"Currency_Text": "United Arab Emirates Dirham",
+		"Decimals": 2,
+		"CurrencyISOCode": "AED",
+		"AlternativeCurrencyKey": "784",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AFA",
+		"Currency_Text": "Afghani (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "AFA",
+		"AlternativeCurrencyKey": "004",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AFN",
+		"Currency_Text": "Afghani",
+		"Decimals": 2,
+		"CurrencyISOCode": "AFN",
+		"AlternativeCurrencyKey": "971",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ALL",
+		"Currency_Text": "Albanian Lek",
+		"Decimals": 2,
+		"CurrencyISOCode": "ALL",
+		"AlternativeCurrencyKey": "008",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AMD",
+		"Currency_Text": "Armenian Dram",
+		"Decimals": 2,
+		"CurrencyISOCode": "AMD",
+		"AlternativeCurrencyKey": "051",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ANG",
+		"Currency_Text": "West Indian Guilder",
+		"Decimals": 2,
+		"CurrencyISOCode": "ANG",
+		"AlternativeCurrencyKey": "532",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AOA",
+		"Currency_Text": "Angolanische Kwanza",
+		"Decimals": 2,
+		"CurrencyISOCode": "AOA",
+		"AlternativeCurrencyKey": "973",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AOK",
+		"Currency_Text": "Angolan Kwanza",
+		"Decimals": 2,
+		"CurrencyISOCode": "AOK",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AON",
+		"Currency_Text": "Angolan New Kwanza (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "AON",
+		"AlternativeCurrencyKey": "024",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AOR",
+		"Currency_Text": "Angolan Kwanza Reajustado (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "AOR",
+		"AlternativeCurrencyKey": "982",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ARA",
+		"Currency_Text": "Argentinian Austral",
+		"Decimals": 2,
+		"CurrencyISOCode": "ARA",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ARS",
+		"Currency_Text": "Argentine Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "ARS",
+		"AlternativeCurrencyKey": "032",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ATS",
+		"Currency_Text": "Austrian Schilling (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ATS",
+		"AlternativeCurrencyKey": "040",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AUD",
+		"Currency_Text": "Australian Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "AUD",
+		"AlternativeCurrencyKey": "036",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AWG",
+		"Currency_Text": "Aruban Florin",
+		"Decimals": 2,
+		"CurrencyISOCode": "AWG",
+		"AlternativeCurrencyKey": "533",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AZM",
+		"Currency_Text": "Azerbaijani Manat (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "AZM",
+		"AlternativeCurrencyKey": "031",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "AZN",
+		"Currency_Text": "Azerbaijani Manat",
+		"Decimals": 2,
+		"CurrencyISOCode": "AZN",
+		"AlternativeCurrencyKey": "944",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BAD",
+		"Currency_Text": "Bosnia-Herzogovinian Dinar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BAD",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BAM",
+		"Currency_Text": "Bosnia and Herzegovina Convertible Mark",
+		"Decimals": 2,
+		"CurrencyISOCode": "BAM",
+		"AlternativeCurrencyKey": "977",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BBD",
+		"Currency_Text": "Barbados Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BBD",
+		"AlternativeCurrencyKey": "052",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BDT",
+		"Currency_Text": "Bangladesh Taka",
+		"Decimals": 2,
+		"CurrencyISOCode": "BDT",
+		"AlternativeCurrencyKey": "050",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BEF",
+		"Currency_Text": "Belgian Franc (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "BEF",
+		"AlternativeCurrencyKey": "056",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BGL",
+		"Currency_Text": "Bulgarian Lev",
+		"Decimals": 2,
+		"CurrencyISOCode": "BGL",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BGN",
+		"Currency_Text": "Bulgarian Lev",
+		"Decimals": 2,
+		"CurrencyISOCode": "BGN",
+		"AlternativeCurrencyKey": "975",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BHD",
+		"Currency_Text": "Bahraini Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "BHD",
+		"AlternativeCurrencyKey": "048",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BIF",
+		"Currency_Text": "Burundi Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "BIF",
+		"AlternativeCurrencyKey": "108",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BMD",
+		"Currency_Text": "Bermudan Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BMD",
+		"AlternativeCurrencyKey": "060",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BND",
+		"Currency_Text": "Brunei Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BND",
+		"AlternativeCurrencyKey": "096",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BOB",
+		"Currency_Text": "Boliviano",
+		"Decimals": 2,
+		"CurrencyISOCode": "BOB",
+		"AlternativeCurrencyKey": "068",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BRC",
+		"Currency_Text": "Brazilian Real",
+		"Decimals": 2,
+		"CurrencyISOCode": "BRC",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BRL",
+		"Currency_Text": "Brazilian Real",
+		"Decimals": 2,
+		"CurrencyISOCode": "BRL",
+		"AlternativeCurrencyKey": "986",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BSD",
+		"Currency_Text": "Bahaman Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BSD",
+		"AlternativeCurrencyKey": "044",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BTN",
+		"Currency_Text": "Bhutan Ngultrum",
+		"Decimals": 2,
+		"CurrencyISOCode": "BTN",
+		"AlternativeCurrencyKey": "064",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BWP",
+		"Currency_Text": "Botswana Pula",
+		"Decimals": 2,
+		"CurrencyISOCode": "BWP",
+		"AlternativeCurrencyKey": "072",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BYB",
+		"Currency_Text": "Belarusian Ruble (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "BYB",
+		"AlternativeCurrencyKey": "112",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BYR",
+		"Currency_Text": "Belarusian Ruble",
+		"Decimals": 0,
+		"CurrencyISOCode": "BYR",
+		"AlternativeCurrencyKey": "974",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "BZD",
+		"Currency_Text": "Belize Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "BZD",
+		"AlternativeCurrencyKey": "084",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CAD",
+		"Currency_Text": "Canadian Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "CAD",
+		"AlternativeCurrencyKey": "124",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CDF",
+		"Currency_Text": "Congolese Franc",
+		"Decimals": 2,
+		"CurrencyISOCode": "CDF",
+		"AlternativeCurrencyKey": "976",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XPF",
+		"Currency_Text": "French Franc (Pacific Islands)",
+		"Decimals": 2,
+		"CurrencyISOCode": "XPF",
+		"AlternativeCurrencyKey": "953",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CHF",
+		"Currency_Text": "Swiss Franc",
+		"Decimals": 2,
+		"CurrencyISOCode": "CHF",
+		"AlternativeCurrencyKey": "756",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CLP",
+		"Currency_Text": "Chilean Peso",
+		"Decimals": 0,
+		"CurrencyISOCode": "CLP",
+		"AlternativeCurrencyKey": "152",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CNY",
+		"Currency_Text": "Chinese Renminbi",
+		"Decimals": 2,
+		"CurrencyISOCode": "CNY",
+		"AlternativeCurrencyKey": "156",
+		"IsPrimaryCurrencyForISOCrcy": true
+	},
+	{
+		"Currency": "COP",
+		"Currency_Text": "Colombian Peso",
+		"Decimals": 0,
+		"CurrencyISOCode": "COP",
+		"AlternativeCurrencyKey": "170",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CRC",
+		"Currency_Text": "Costa Rica Colon",
+		"Decimals": 2,
+		"CurrencyISOCode": "CRC",
+		"AlternativeCurrencyKey": "188",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CSD",
+		"Currency_Text": "Serbian Dinar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "CSD",
+		"AlternativeCurrencyKey": "891",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CUC",
+		"Currency_Text": "Peso Convertible",
+		"Decimals": 2,
+		"CurrencyISOCode": "CUC",
+		"AlternativeCurrencyKey": "931",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CUP",
+		"Currency_Text": "Cuban Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "CUP",
+		"AlternativeCurrencyKey": "192",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CVE",
+		"Currency_Text": "Cape Verde Escudo",
+		"Decimals": 2,
+		"CurrencyISOCode": "CVE",
+		"AlternativeCurrencyKey": "132",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CYP",
+		"Currency_Text": "Cyprus Pound  (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "CYP",
+		"AlternativeCurrencyKey": "196",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CZK",
+		"Currency_Text": "Czech Krona",
+		"Decimals": 2,
+		"CurrencyISOCode": "CZK",
+		"AlternativeCurrencyKey": "203",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "DEM",
+		"Currency_Text": "German Mark    (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "DEM",
+		"AlternativeCurrencyKey": "280",
+		"IsPrimaryCurrencyForISOCrcy": true
+	},
+	{
+		"Currency": "EUR",
+		"Currency_Text": "European Euro",
+		"Decimals": 2,
+		"CurrencyISOCode": "EUR",
+		"AlternativeCurrencyKey": "978",
+		"IsPrimaryCurrencyForISOCrcy": true
+	},
+	{
+		"Currency": "DJF",
+		"Currency_Text": "Djibouti Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "DJF",
+		"AlternativeCurrencyKey": "262",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "DKK",
+		"Currency_Text": "Danish Krone",
+		"Decimals": 2,
+		"CurrencyISOCode": "DKK",
+		"AlternativeCurrencyKey": "208",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "DOP",
+		"Currency_Text": "Dominican Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "DOP",
+		"AlternativeCurrencyKey": "214",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "DZD",
+		"Currency_Text": "Algerian Dinar",
+		"Decimals": 2,
+		"CurrencyISOCode": "DZD",
+		"AlternativeCurrencyKey": "012",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ECS",
+		"Currency_Text": "Ecuadorian Sucre (Old --> USD)",
+		"Decimals": 0,
+		"CurrencyISOCode": "ECS",
+		"AlternativeCurrencyKey": "218",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "EUR",
+		"Currency_Text": "Euro (EMU currency as of 01/01/1999)",
+		"Decimals": 2,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "EEK",
+		"Currency_Text": "Estonian Krone (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "EEK",
+		"AlternativeCurrencyKey": "233",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "EGP",
+		"Currency_Text": "Egyptian Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "EGP",
+		"AlternativeCurrencyKey": "818",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ERN",
+		"Currency_Text": "Eritrean Nafka",
+		"Decimals": 2,
+		"CurrencyISOCode": "ERN",
+		"AlternativeCurrencyKey": "232",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ESP",
+		"Currency_Text": "Spanish Peseta (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "ESP",
+		"AlternativeCurrencyKey": "724",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ETB",
+		"Currency_Text": "Ethiopian Birr",
+		"Decimals": 2,
+		"CurrencyISOCode": "ETB",
+		"AlternativeCurrencyKey": "230",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "DEM",
+		"Currency_Text": "(Internal) German Mark (3 dec.places)",
+		"Decimals": 3,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "280",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "USD",
+		"Currency_Text": "(Internal) United States Dollar (5 Dec.)",
+		"Decimals": 5,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "840",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "FIM",
+		"Currency_Text": "Finnish Markka (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "FIM",
+		"AlternativeCurrencyKey": "246",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "FJD",
+		"Currency_Text": "Fiji Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "FJD",
+		"AlternativeCurrencyKey": "242",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "FKP",
+		"Currency_Text": "Falkland Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "FKP",
+		"AlternativeCurrencyKey": "238",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "FRF",
+		"Currency_Text": "French Franc (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "FRF",
+		"AlternativeCurrencyKey": "250",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GBP",
+		"Currency_Text": "British Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "GBP",
+		"AlternativeCurrencyKey": "826",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GEK",
+		"Currency_Text": "Georgian Kupon",
+		"Decimals": 2,
+		"CurrencyISOCode": "GEK",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GEL",
+		"Currency_Text": "Georgian Lari",
+		"Decimals": 2,
+		"CurrencyISOCode": "GEL",
+		"AlternativeCurrencyKey": "981",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GHC",
+		"Currency_Text": "Ghanaian Cedi (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "GHC",
+		"AlternativeCurrencyKey": "288",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GHS",
+		"Currency_Text": "Ghanian Cedi",
+		"Decimals": 2,
+		"CurrencyISOCode": "GHS",
+		"AlternativeCurrencyKey": "936",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GIP",
+		"Currency_Text": "Gibraltar Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "GIP",
+		"AlternativeCurrencyKey": "292",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GMD",
+		"Currency_Text": "Gambian Dalasi",
+		"Decimals": 2,
+		"CurrencyISOCode": "GMD",
+		"AlternativeCurrencyKey": "270",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GNF",
+		"Currency_Text": "Guinean Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "GNF",
+		"AlternativeCurrencyKey": "324",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GRD",
+		"Currency_Text": "Greek Drachma (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "GRD",
+		"AlternativeCurrencyKey": "300",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GTQ",
+		"Currency_Text": "Guatemalan Quetzal",
+		"Decimals": 2,
+		"CurrencyISOCode": "GTQ",
+		"AlternativeCurrencyKey": "320",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GWP",
+		"Currency_Text": "Guinea Peso (Old --> SHP)",
+		"Decimals": 2,
+		"CurrencyISOCode": "GWP",
+		"AlternativeCurrencyKey": "624",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "GYD",
+		"Currency_Text": "Guyana Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "GYD",
+		"AlternativeCurrencyKey": "328",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "HKD",
+		"Currency_Text": "Hong Kong Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "HKD",
+		"AlternativeCurrencyKey": "344",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "HNL",
+		"Currency_Text": "Honduran Lempira",
+		"Decimals": 2,
+		"CurrencyISOCode": "HNL",
+		"AlternativeCurrencyKey": "340",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "HRK",
+		"Currency_Text": "Croatian Kuna",
+		"Decimals": 2,
+		"CurrencyISOCode": "HRK",
+		"AlternativeCurrencyKey": "191",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "HTG",
+		"Currency_Text": "Haitian Gourde",
+		"Decimals": 2,
+		"CurrencyISOCode": "HTG",
+		"AlternativeCurrencyKey": "332",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "HUF",
+		"Currency_Text": "Hungarian Forint",
+		"Decimals": 0,
+		"CurrencyISOCode": "HUF",
+		"AlternativeCurrencyKey": "348",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "IDR",
+		"Currency_Text": "Indonesian Rupiah",
+		"Decimals": 0,
+		"CurrencyISOCode": "IDR",
+		"AlternativeCurrencyKey": "360",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "IEP",
+		"Currency_Text": "Irish Punt (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "IEP",
+		"AlternativeCurrencyKey": "372",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ILS",
+		"Currency_Text": "Israeli Scheckel",
+		"Decimals": 2,
+		"CurrencyISOCode": "ILS",
+		"AlternativeCurrencyKey": "376",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "INR",
+		"Currency_Text": "Indian Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "INR",
+		"AlternativeCurrencyKey": "356",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "IQD",
+		"Currency_Text": "Iraqui Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "IQD",
+		"AlternativeCurrencyKey": "368",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "IRR",
+		"Currency_Text": "Iranian Rial",
+		"Decimals": 2,
+		"CurrencyISOCode": "IRR",
+		"AlternativeCurrencyKey": "364",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ISK",
+		"Currency_Text": "Iceland Krona",
+		"Decimals": 2,
+		"CurrencyISOCode": "ISK",
+		"AlternativeCurrencyKey": "352",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ITL",
+		"Currency_Text": "Italian Lira (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "ITL",
+		"AlternativeCurrencyKey": "380",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "JMD",
+		"Currency_Text": "Jamaican Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "JMD",
+		"AlternativeCurrencyKey": "388",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "JOD",
+		"Currency_Text": "Jordanian Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "JOD",
+		"AlternativeCurrencyKey": "400",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "JPY",
+		"Currency_Text": "Japanese Yen",
+		"Decimals": 0,
+		"CurrencyISOCode": "JPY",
+		"AlternativeCurrencyKey": "392",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KES",
+		"Currency_Text": "Kenyan Shilling",
+		"Decimals": 2,
+		"CurrencyISOCode": "KES",
+		"AlternativeCurrencyKey": "404",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KGS",
+		"Currency_Text": "Kyrgyzstan Som",
+		"Decimals": 2,
+		"CurrencyISOCode": "KGS",
+		"AlternativeCurrencyKey": "417",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KHR",
+		"Currency_Text": "Cambodian Riel",
+		"Decimals": 2,
+		"CurrencyISOCode": "KHR",
+		"AlternativeCurrencyKey": "116",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KIS",
+		"Currency_Text": "Kirghizstan Som",
+		"Decimals": 2,
+		"CurrencyISOCode": "KIS",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KMF",
+		"Currency_Text": "Comoros Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "KMF",
+		"AlternativeCurrencyKey": "174",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KPW",
+		"Currency_Text": "North Korean Won",
+		"Decimals": 2,
+		"CurrencyISOCode": "KPW",
+		"AlternativeCurrencyKey": "408",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KRW",
+		"Currency_Text": "South Korean Won",
+		"Decimals": 0,
+		"CurrencyISOCode": "KRW",
+		"AlternativeCurrencyKey": "410",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KWD",
+		"Currency_Text": "Kuwaiti Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "KWD",
+		"AlternativeCurrencyKey": "414",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KYD",
+		"Currency_Text": "Cayman Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "KYD",
+		"AlternativeCurrencyKey": "136",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "KZT",
+		"Currency_Text": "Kazakstanian Tenge",
+		"Decimals": 2,
+		"CurrencyISOCode": "KZT",
+		"AlternativeCurrencyKey": "398",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LAK",
+		"Currency_Text": "Laotian Kip",
+		"Decimals": 0,
+		"CurrencyISOCode": "LAK",
+		"AlternativeCurrencyKey": "418",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LBP",
+		"Currency_Text": "Lebanese Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "LBP",
+		"AlternativeCurrencyKey": "422",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LKR",
+		"Currency_Text": "Sri Lankan Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "LKR",
+		"AlternativeCurrencyKey": "144",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LRD",
+		"Currency_Text": "Liberian Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "LRD",
+		"AlternativeCurrencyKey": "430",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LSL",
+		"Currency_Text": "Lesotho Loti",
+		"Decimals": 2,
+		"CurrencyISOCode": "LSL",
+		"AlternativeCurrencyKey": "426",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LTL",
+		"Currency_Text": "Lithuanian Lita",
+		"Decimals": 2,
+		"CurrencyISOCode": "LTL",
+		"AlternativeCurrencyKey": "440",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LUF",
+		"Currency_Text": "Luxembourg Franc (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "LUF",
+		"AlternativeCurrencyKey": "442",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LVL",
+		"Currency_Text": "Latvian Lat",
+		"Decimals": 2,
+		"CurrencyISOCode": "LVL",
+		"AlternativeCurrencyKey": "428",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "LYD",
+		"Currency_Text": "Libyan Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "LYD",
+		"AlternativeCurrencyKey": "434",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MAD",
+		"Currency_Text": "Moroccan Dirham",
+		"Decimals": 2,
+		"CurrencyISOCode": "MAD",
+		"AlternativeCurrencyKey": "504",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MDL",
+		"Currency_Text": "Moldavian Leu",
+		"Decimals": 2,
+		"CurrencyISOCode": "MDL",
+		"AlternativeCurrencyKey": "498",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MGA",
+		"Currency_Text": "Madagascan Ariary",
+		"Decimals": 2,
+		"CurrencyISOCode": "MGA",
+		"AlternativeCurrencyKey": "969",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MGF",
+		"Currency_Text": "Madagascan Franc (Old",
+		"Decimals": 0,
+		"CurrencyISOCode": "MGF",
+		"AlternativeCurrencyKey": "450",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MKD",
+		"Currency_Text": "Macedonian Denar",
+		"Decimals": 2,
+		"CurrencyISOCode": "MKD",
+		"AlternativeCurrencyKey": "807",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MMK",
+		"Currency_Text": "Myanmar Kyat",
+		"Decimals": 2,
+		"CurrencyISOCode": "MMK",
+		"AlternativeCurrencyKey": "104",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MNT",
+		"Currency_Text": "Mongolian Tugrik",
+		"Decimals": 2,
+		"CurrencyISOCode": "MNT",
+		"AlternativeCurrencyKey": "496",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MOP",
+		"Currency_Text": "Macao Pataca",
+		"Decimals": 2,
+		"CurrencyISOCode": "MOP",
+		"AlternativeCurrencyKey": "446",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MRO",
+		"Currency_Text": "Mauritanian Ouguiya",
+		"Decimals": 2,
+		"CurrencyISOCode": "MRO",
+		"AlternativeCurrencyKey": "478",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MTL",
+		"Currency_Text": "Maltese Lira (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "MTL",
+		"AlternativeCurrencyKey": "470",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MUR",
+		"Currency_Text": "Mauritian Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "MUR",
+		"AlternativeCurrencyKey": "480",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MVR",
+		"Currency_Text": "Maldive Rufiyaa",
+		"Decimals": 2,
+		"CurrencyISOCode": "MVR",
+		"AlternativeCurrencyKey": "462",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MWK",
+		"Currency_Text": "Malawi Kwacha",
+		"Decimals": 2,
+		"CurrencyISOCode": "MWK",
+		"AlternativeCurrencyKey": "454",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MXN",
+		"Currency_Text": "Mexican Pesos",
+		"Decimals": 2,
+		"CurrencyISOCode": "MXN",
+		"AlternativeCurrencyKey": "484",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MXP",
+		"Currency_Text": "Mexican Peso (old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "MXP",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MYR",
+		"Currency_Text": "Malaysian Ringgit",
+		"Decimals": 2,
+		"CurrencyISOCode": "MYR",
+		"AlternativeCurrencyKey": "458",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MZM",
+		"Currency_Text": "Mozambique Metical (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "MZM",
+		"AlternativeCurrencyKey": "508",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "MZN",
+		"Currency_Text": "Mozambique Metical",
+		"Decimals": 2,
+		"CurrencyISOCode": "MZN",
+		"AlternativeCurrencyKey": "943",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NAD",
+		"Currency_Text": "Namibian Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "NAD",
+		"AlternativeCurrencyKey": "516",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NGN",
+		"Currency_Text": "Nigerian Naira",
+		"Decimals": 2,
+		"CurrencyISOCode": "NGN",
+		"AlternativeCurrencyKey": "566",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NIC",
+		"Currency_Text": "Nicaraguan Cordoba",
+		"Decimals": 2,
+		"CurrencyISOCode": "NIC",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NIO",
+		"Currency_Text": "Nicaraguan Cordoba Oro",
+		"Decimals": 2,
+		"CurrencyISOCode": "NIO",
+		"AlternativeCurrencyKey": "558",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NLG",
+		"Currency_Text": "Dutch Guilder (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "NLG",
+		"AlternativeCurrencyKey": "528",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NOK",
+		"Currency_Text": "Norwegian Krone",
+		"Decimals": 2,
+		"CurrencyISOCode": "NOK",
+		"AlternativeCurrencyKey": "578",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NPR",
+		"Currency_Text": "Nepalese Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "NPR",
+		"AlternativeCurrencyKey": "524",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NUC",
+		"Currency_Text": "",
+		"Decimals": 2,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "NZD",
+		"Currency_Text": "New Zealand Dollars",
+		"Decimals": 2,
+		"CurrencyISOCode": "NZD",
+		"AlternativeCurrencyKey": "554",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "OMR",
+		"Currency_Text": "Omani Rial",
+		"Decimals": 3,
+		"CurrencyISOCode": "OMR",
+		"AlternativeCurrencyKey": "512",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PAB",
+		"Currency_Text": "Panamanian Balboa",
+		"Decimals": 2,
+		"CurrencyISOCode": "PAB",
+		"AlternativeCurrencyKey": "590",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PEI",
+		"Currency_Text": "Peruvian Inti",
+		"Decimals": 2,
+		"CurrencyISOCode": "PEI",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PEN",
+		"Currency_Text": "Peruvian New Sol",
+		"Decimals": 2,
+		"CurrencyISOCode": "PEN",
+		"AlternativeCurrencyKey": "604",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PGK",
+		"Currency_Text": "Papua New Guinea Kina",
+		"Decimals": 2,
+		"CurrencyISOCode": "PGK",
+		"AlternativeCurrencyKey": "598",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PHP",
+		"Currency_Text": "Philippine Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "PHP",
+		"AlternativeCurrencyKey": "608",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PKR",
+		"Currency_Text": "Pakistani Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "PKR",
+		"AlternativeCurrencyKey": "586",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PKT",
+		"Currency_Text": "",
+		"Decimals": 2,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PLN",
+		"Currency_Text": "Polish Zloty (new)",
+		"Decimals": 2,
+		"CurrencyISOCode": "PLN",
+		"AlternativeCurrencyKey": "985",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PLZ",
+		"Currency_Text": "Polish Zloty",
+		"Decimals": 2,
+		"CurrencyISOCode": "PLZ",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PTE",
+		"Currency_Text": "Portuguese Escudo (Old --> EUR)",
+		"Decimals": 0,
+		"CurrencyISOCode": "PTE",
+		"AlternativeCurrencyKey": "620",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "PYG",
+		"Currency_Text": "Paraguayan Guarani",
+		"Decimals": 0,
+		"CurrencyISOCode": "PYG",
+		"AlternativeCurrencyKey": "600",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "QAR",
+		"Currency_Text": "Qatar Rial",
+		"Decimals": 2,
+		"CurrencyISOCode": "QAR",
+		"AlternativeCurrencyKey": "634",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "CNY",
+		"Currency_Text": "Chinese Yuan Renminbi",
+		"Decimals": 2,
+		"CurrencyISOCode": "CNY",
+		"AlternativeCurrencyKey": "156",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ROL",
+		"Currency_Text": "Romanian Leu (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "ROL",
+		"AlternativeCurrencyKey": "642",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "RON",
+		"Currency_Text": "Romanian Leu",
+		"Decimals": 2,
+		"CurrencyISOCode": "RON",
+		"AlternativeCurrencyKey": "946",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "RSD",
+		"Currency_Text": "Serbian Dinar",
+		"Decimals": 2,
+		"CurrencyISOCode": "RSD",
+		"AlternativeCurrencyKey": "941",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "RUB",
+		"Currency_Text": "Russian Ruble",
+		"Decimals": 2,
+		"CurrencyISOCode": "RUB",
+		"AlternativeCurrencyKey": "643",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "RUR",
+		"Currency_Text": "Russian Rubel",
+		"Decimals": 2,
+		"CurrencyISOCode": "RUR",
+		"AlternativeCurrencyKey": "RUR",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "RWF",
+		"Currency_Text": "Rwandan Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "RWF",
+		"AlternativeCurrencyKey": "646",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SAR",
+		"Currency_Text": "Saudi Riyal",
+		"Decimals": 2,
+		"CurrencyISOCode": "SAR",
+		"AlternativeCurrencyKey": "682",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SBD",
+		"Currency_Text": "Solomon Islands Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "SBD",
+		"AlternativeCurrencyKey": "090",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SCR",
+		"Currency_Text": "Seychelles Rupee",
+		"Decimals": 2,
+		"CurrencyISOCode": "SCR",
+		"AlternativeCurrencyKey": "690",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SDD",
+		"Currency_Text": "Sudanese Dinar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SDD",
+		"AlternativeCurrencyKey": "736",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SDG",
+		"Currency_Text": "Sudanese Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "SDG",
+		"AlternativeCurrencyKey": "938",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SDP",
+		"Currency_Text": "Sudanese Pound (until 1992)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SDP",
+		"AlternativeCurrencyKey": "736",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SEK",
+		"Currency_Text": "Swedish Krona",
+		"Decimals": 2,
+		"CurrencyISOCode": "SEK",
+		"AlternativeCurrencyKey": "752",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SGD",
+		"Currency_Text": "Singapore Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "SGD",
+		"AlternativeCurrencyKey": "702",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SHP",
+		"Currency_Text": "St.Helena Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "SHP",
+		"AlternativeCurrencyKey": "654",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SIT",
+		"Currency_Text": "Slovenian Tolar (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SIT",
+		"AlternativeCurrencyKey": "705",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SKK",
+		"Currency_Text": "Slovakian Krona (Old --> EUR)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SKK",
+		"AlternativeCurrencyKey": "703",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SLL",
+		"Currency_Text": "Sierra Leone Leone",
+		"Decimals": 2,
+		"CurrencyISOCode": "SLL",
+		"AlternativeCurrencyKey": "694",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SOS",
+		"Currency_Text": "Somalian Shilling",
+		"Decimals": 2,
+		"CurrencyISOCode": "SOS",
+		"AlternativeCurrencyKey": "706",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SRD",
+		"Currency_Text": "Surinam Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "SRD",
+		"AlternativeCurrencyKey": "968",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SRG",
+		"Currency_Text": "Surinam Guilder (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SRG",
+		"AlternativeCurrencyKey": "740",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SSP",
+		"Currency_Text": "South Sudanese Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "SSP",
+		"AlternativeCurrencyKey": "728",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "STD",
+		"Currency_Text": "Sao Tome / Principe Dobra",
+		"Decimals": 2,
+		"CurrencyISOCode": "STD",
+		"AlternativeCurrencyKey": "678",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SUR",
+		"Currency_Text": "Russian Ruble (old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "SUR",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SVC",
+		"Currency_Text": "El Salvador Colon",
+		"Decimals": 2,
+		"CurrencyISOCode": "SVC",
+		"AlternativeCurrencyKey": "222",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SYP",
+		"Currency_Text": "Syrian Pound",
+		"Decimals": 2,
+		"CurrencyISOCode": "SYP",
+		"AlternativeCurrencyKey": "760",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "SZL",
+		"Currency_Text": "Swaziland Lilangeni",
+		"Decimals": 2,
+		"CurrencyISOCode": "SZL",
+		"AlternativeCurrencyKey": "748",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "THB",
+		"Currency_Text": "Thailand Baht",
+		"Decimals": 2,
+		"CurrencyISOCode": "THB",
+		"AlternativeCurrencyKey": "764",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TJR",
+		"Currency_Text": "Tajikistani Ruble (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "TJR",
+		"AlternativeCurrencyKey": "762",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TJS",
+		"Currency_Text": "Tajikistani Somoni",
+		"Decimals": 2,
+		"CurrencyISOCode": "TJS",
+		"AlternativeCurrencyKey": "972",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TMM",
+		"Currency_Text": "Turkmenistani Manat (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "TMM",
+		"AlternativeCurrencyKey": "795",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TMT",
+		"Currency_Text": "Turkmenistani Manat",
+		"Decimals": 2,
+		"CurrencyISOCode": "TMT",
+		"AlternativeCurrencyKey": "934",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TND",
+		"Currency_Text": "Tunisian Dinar",
+		"Decimals": 3,
+		"CurrencyISOCode": "TND",
+		"AlternativeCurrencyKey": "788",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TOP",
+		"Currency_Text": "Tongan Pa'anga",
+		"Decimals": 2,
+		"CurrencyISOCode": "TOP",
+		"AlternativeCurrencyKey": "776",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TPE",
+		"Currency_Text": "Timor Escudo --> USD",
+		"Decimals": 0,
+		"CurrencyISOCode": "TPE",
+		"AlternativeCurrencyKey": "626",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TRL",
+		"Currency_Text": "Turkish Lira (Old)",
+		"Decimals": 0,
+		"CurrencyISOCode": "TRL",
+		"AlternativeCurrencyKey": "792",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TRY",
+		"Currency_Text": "Turkish Lira",
+		"Decimals": 2,
+		"CurrencyISOCode": "TRY",
+		"AlternativeCurrencyKey": "949",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TTD",
+		"Currency_Text": "Trinidad and Tobago Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "TTD",
+		"AlternativeCurrencyKey": "780",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TWD",
+		"Currency_Text": "New Taiwan Dollar",
+		"Decimals": 0,
+		"CurrencyISOCode": "TWD",
+		"AlternativeCurrencyKey": "901",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "TZS",
+		"Currency_Text": "Tanzanian Shilling",
+		"Decimals": 2,
+		"CurrencyISOCode": "TZS",
+		"AlternativeCurrencyKey": "834",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UAH",
+		"Currency_Text": "Ukraine Hryvnia",
+		"Decimals": 2,
+		"CurrencyISOCode": "UAH",
+		"AlternativeCurrencyKey": "980",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UAK",
+		"Currency_Text": "Ukrainian Karbowanez",
+		"Decimals": 2,
+		"CurrencyISOCode": "UAK",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UGS",
+		"Currency_Text": "Ugandan Shilling",
+		"Decimals": 2,
+		"CurrencyISOCode": "UGS",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UGX",
+		"Currency_Text": "Ugandan Shilling",
+		"Decimals": 0,
+		"CurrencyISOCode": "UGX",
+		"AlternativeCurrencyKey": "800",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UNI",
+		"Currency_Text": "Universal Currency",
+		"Decimals": 2,
+		"CurrencyISOCode": "UNI",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "USD",
+		"Currency_Text": "United States Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "USD",
+		"AlternativeCurrencyKey": "840",
+		"IsPrimaryCurrencyForISOCrcy": true
+	},
+	{
+		"Currency": "ECU",
+		"Currency_Text": "European Currency Unit",
+		"Decimals": 2,
+		"CurrencyISOCode": "",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UYP",
+		"Currency_Text": "Uruguayan New Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "UYP",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UYU",
+		"Currency_Text": "Uruguayan Peso",
+		"Decimals": 2,
+		"CurrencyISOCode": "UYU",
+		"AlternativeCurrencyKey": "858",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "UZS",
+		"Currency_Text": "Uzbekistan Som",
+		"Decimals": 2,
+		"CurrencyISOCode": "UZS",
+		"AlternativeCurrencyKey": "860",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "VEB",
+		"Currency_Text": "Venezuelan Bolivar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "VEB",
+		"AlternativeCurrencyKey": "862",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "VEF",
+		"Currency_Text": "Venezuelan Bolivar",
+		"Decimals": 2,
+		"CurrencyISOCode": "VEF",
+		"AlternativeCurrencyKey": "937",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "VND",
+		"Currency_Text": "Vietnamese Dong",
+		"Decimals": 0,
+		"CurrencyISOCode": "VND",
+		"AlternativeCurrencyKey": "704",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "VUV",
+		"Currency_Text": "Vanuatu Vatu",
+		"Decimals": 0,
+		"CurrencyISOCode": "VUV",
+		"AlternativeCurrencyKey": "548",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "WST",
+		"Currency_Text": "Samoan Tala",
+		"Decimals": 2,
+		"CurrencyISOCode": "WST",
+		"AlternativeCurrencyKey": "882",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XAF",
+		"Currency_Text": "Gabon CFA Franc BEAC",
+		"Decimals": 0,
+		"CurrencyISOCode": "XAF",
+		"AlternativeCurrencyKey": "950",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XCD",
+		"Currency_Text": "East Carribean Dollar",
+		"Decimals": 2,
+		"CurrencyISOCode": "XCD",
+		"AlternativeCurrencyKey": "951",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XCU",
+		"Currency_Text": "European Currency Unit",
+		"Decimals": 2,
+		"CurrencyISOCode": "XCU",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XEU",
+		"Currency_Text": "European Currency Unit (E.C.U.)",
+		"Decimals": 2,
+		"CurrencyISOCode": "XEU",
+		"AlternativeCurrencyKey": "954",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XOF",
+		"Currency_Text": "Benin CFA Franc BCEAO",
+		"Decimals": 0,
+		"CurrencyISOCode": "XOF",
+		"AlternativeCurrencyKey": "952",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "XPF",
+		"Currency_Text": "CFP Franc",
+		"Decimals": 0,
+		"CurrencyISOCode": "XPF",
+		"AlternativeCurrencyKey": "953",
+		"IsPrimaryCurrencyForISOCrcy": true
+	},
+	{
+		"Currency": "YER",
+		"Currency_Text": "Yemeni Ryal",
+		"Decimals": 2,
+		"CurrencyISOCode": "YER",
+		"AlternativeCurrencyKey": "886",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "YUM",
+		"Currency_Text": "New Yugoslavian Dinar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "YUM",
+		"AlternativeCurrencyKey": "891",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZAR",
+		"Currency_Text": "South African Rand",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZAR",
+		"AlternativeCurrencyKey": "710",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZMK",
+		"Currency_Text": "Zambian Kwacha (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZMK",
+		"AlternativeCurrencyKey": "894",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZMW",
+		"Currency_Text": "Zambian Kwacha (New)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZMW",
+		"AlternativeCurrencyKey": "967",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZRN",
+		"Currency_Text": "Zaire (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZRN",
+		"AlternativeCurrencyKey": "180",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZRZ",
+		"Currency_Text": "Zaire",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZRZ",
+		"AlternativeCurrencyKey": "",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZWD",
+		"Currency_Text": "Zimbabwean Dollar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZWD",
+		"AlternativeCurrencyKey": "716",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZWL",
+		"Currency_Text": "Zimbabwean Dollar (New)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZWL",
+		"AlternativeCurrencyKey": "932",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZWN",
+		"Currency_Text": "Zimbabwean Dollar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZWN",
+		"AlternativeCurrencyKey": "942",
+		"IsPrimaryCurrencyForISOCrcy": false
+	},
+	{
+		"Currency": "ZWR",
+		"Currency_Text": "Zimbabwean Dollar (Old)",
+		"Decimals": 2,
+		"CurrencyISOCode": "ZWR",
+		"AlternativeCurrencyKey": "935",
+		"IsPrimaryCurrencyForISOCrcy": false
+	}
+]

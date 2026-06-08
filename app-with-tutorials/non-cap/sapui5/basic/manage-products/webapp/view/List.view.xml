@@ -1,0 +1,21 @@
+<mvc:View controllerName="sap.btp.sapui5.controller.List" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Page id="listPage" title="{i18n>ListTitle}" >
+		<subHeader>
+			<Bar id="_IDGenBar1">
+				<contentLeft>
+					<SearchField id="_IDGenSearchField1" search="handleSearch"/>
+				</contentLeft>
+			</Bar>
+		</subHeader>
+		<List id="list" items="{/Products}">
+			<ObjectListItem id="_IDGenObjectListItem1" type="Navigation" press="handleListItemPress" title="{ProductName}" number="{= ((${UnitPrice} * 100) / 100).toFixed(2) }" numberUnit="{i18n>Currency}">
+				<attributes>
+					<ObjectAttribute id="_IDGenObjectAttribute1" text="{QuantityPerUnit}"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus id="_IDGenObjectStatus1" text="{= ${Discontinued} ? ${i18n>Discontinued} : ${i18n>Available} }" state="{= ${Discontinued}? 'Error' : 'Success' }"/>
+				</firstStatus>
+			</ObjectListItem>
+		</List>
+  </Page>
+</mvc:View>
