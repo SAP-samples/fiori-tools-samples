@@ -247,7 +247,7 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 
 ### Issue 9: Local VS Code Preview Returns HTML SAML Login Page Instead of an OData Response
 
-When running a local SAP Fiori preview in VS Code, the OData `$batch` request receives an HTML SAML login page instead of an OData response. The local preview proxy fails because it expects an OData response, not an interactive login form.
+When running a local SAP Fiori preview in VS Code, the OData HTTP requests receive an HTML SAML login page instead of an OData response. The local preview proxy fails because it expects an OData response, not an interactive login form.
 
 **Cause:** The `backend.url` in your local preview configuration (for example, `ui5.yaml`) points to the standard tenant URL, which is intended for interactive browser access to the SAP Fiori Launchpad and triggers Identity Provider or SAML login flows. For example:
 
@@ -272,7 +272,7 @@ backend:
     authenticationType: reentranceTicket
 ```
 
-The `reentranceTicket` authentication type is supported by SAP Fiori tools for local VS Code preview flows against SAP S/4HANA Cloud. The important correction is the host — not necessarily the authentication type.
+The `reentranceTicket` authentication type is supported by SAP Fiori tools for local VS Code preview flows against SAP S/4HANA Cloud. The important correction is the host, not necessarily the authentication type.
 
 The same `-api` endpoint applies when deploying from VS Code. Update your `ui5-deploy.yaml` accordingly:
 
