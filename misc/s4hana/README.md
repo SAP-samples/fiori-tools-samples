@@ -11,6 +11,27 @@
 5. You have reviewed [SAP S/4HANA Cloud, Public Edition FAQ](https://me.sap.com/notes/3445942).
 6. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation.
 
+## Authentication Method by Development Tool
+
+The authentication method for connecting to SAP S/4HANA Cloud depends on the development tool you are using:
+
+| Development Tool | Authentication Type | Where to Configure |
+|---|---|---|
+| SAP Business Application Studio | `SAMLAssertion` | SAP BTP destination in your subaccount |
+| VS Code | `reentranceTicket` | `ui5.yaml` (preview) and `ui5-deploy.yaml` (deployment) |
+
+### SAP Business Application Studio
+
+SAP Business Application Studio connects to SAP S/4HANA Cloud through an SAP BTP destination configured with `SAMLAssertion` authentication. The destination is defined in your SAP BTP subaccount and uses federated identity to authenticate users without storing credentials.
+
+For configuration steps, see [Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs](SAMLAssertionDestination.md).
+
+### VS Code
+
+VS Code connects directly to SAP S/4HANA Cloud using `reentranceTicket` authentication. The backend URL must point to the `-api` endpoint — for example, `https://my1111111-api.s4hana.ondemand.com`. You configure this directly in `ui5.yaml` for local preview and in `ui5-deploy.yaml` for deployment. Using the standard tenant URL without `-api` causes SAML redirect responses instead of OData responses.
+
+For more information, see [Issue 9: Troubleshooting Local VS Code Preview](#issue-9-local-vs-code-preview-returns-html-saml-login-page-instead-of-an-odata-response).
+
 ## Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs
 
 For step-by-step instructions with screenshots, see [Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs](SAMLAssertionDestination.md).

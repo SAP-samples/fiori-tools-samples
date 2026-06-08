@@ -1,5 +1,7 @@
 # Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs
 
+> **Note**: This guide applies to **SAP Business Application Studio**. If you are using VS Code, configure `reentranceTicket` authentication directly in `ui5.yaml` and `ui5-deploy.yaml` using the `-api` endpoint. For more information, see [Authentication Method by Development Tool](README.md#authentication-method-by-development-tool).
+
 1. Open the [s4hana-cloud_saml.json](s4hana-cloud_saml.json) file using a text editor or browser.
 2. Replace all instances of `my1111111` with your specific hostname.
 3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`.
