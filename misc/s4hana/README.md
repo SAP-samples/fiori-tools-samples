@@ -274,7 +274,27 @@ backend:
 
 The `reentranceTicket` authentication type is supported by SAP Fiori tools for local VS Code preview flows against SAP S/4HANA Cloud. The important correction is the host — not necessarily the authentication type.
 
-For a sample SAMLAssertion configuration that uses the same `-api` endpoint, see [s4hana-cloud_saml](s4hana-cloud_saml).
+The same `-api` endpoint applies when deploying from VS Code. Update your `ui5-deploy.yaml` accordingly:
+
+```yaml
+- name: deploy-to-abap
+  afterTask: generateCachebusterInfo
+  configuration:
+    target:
+      url: https://my1111111-api.s4hana.ondemand.com
+      authenticationType: reentranceTicket
+      destination: my-btp-destination
+    app:
+      name: ZAPP_NAME
+      description: My App
+      package: ZMY_PACKAGE
+      transport: ZTRXXXXXXXX
+    exclude:
+      - /test/
+      - /localService/
+```
+
+For a full `ui5-deploy.yaml` sample, see [ui5-deploy.yaml](ui5-deploy.yaml). For a sample SAMLAssertion destination configuration that uses the same `-api` endpoint, see [s4hana-cloud_saml](s4hana-cloud_saml).
 
 ## SAP Fiori Launchpad
 
