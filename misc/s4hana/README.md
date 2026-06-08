@@ -251,14 +251,14 @@ When running a local SAP Fiori preview in VS Code, the OData HTTP requests recei
 
 **Cause:** The `backend.url` in your local preview configuration (for example, `ui5.yaml`) points to the standard tenant URL, which is intended for interactive browser access to the SAP Fiori Launchpad and triggers Identity Provider or SAML login flows. For example:
 
-```
-https://my1111111.s4hana.ondemand.com  ← triggers SAML redirect, not for API access
+```text
+https://my1111111.s4hana.ondemand.com
 ```
 
 **Fix:** Use the SAP S/4HANA Cloud API endpoint, which uses the `-api` suffix, in your local preview configuration:
 
-```
-https://my1111111-api.s4hana.ondemand.com  ← correct endpoint for OData API access
+```text
+https://my1111111-api.s4hana.ondemand.com
 ```
 
 The `-api` endpoint is designed for direct inbound API and OData access. OData API scenarios must be explicitly exposed through Communication Systems and Communication Arrangements in your SAP S/4HANA Cloud system.
