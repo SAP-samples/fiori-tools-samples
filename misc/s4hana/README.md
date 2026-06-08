@@ -294,7 +294,7 @@ The same `-api` endpoint applies when deploying from VS Code. Update your `ui5-d
       - /localService/
 ```
 
-For a full `ui5-deploy.yaml` sample, see [ui5-deploy.yaml](ui5-deploy.yaml). For a sample SAMLAssertion destination configuration that uses the same `-api` endpoint, see [s4hana-cloud_saml](s4hana-cloud_saml).
+For a full `ui5-deploy.yaml` sample, see [ui5-deploy.yaml](ui5-deploy.yaml). For a sample SAMLAssertion destination configuration that uses the same `-api` endpoint, see [s4hana-cloud_saml.json](s4hana-cloud_saml.json).
 
 ## SAP Fiori Launchpad
 

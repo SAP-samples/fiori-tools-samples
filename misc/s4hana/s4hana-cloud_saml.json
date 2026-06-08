@@ -1,0 +1,24 @@
+{
+    "destination": {
+        "Authentication": "SAMLAssertion",
+        "Description": "SAML Assertion",
+        "HTML5.DynamicDestination": "true",
+        "HTML5.SetXForwardedHeaders": "false",
+        "HTML5.Timeout": "60000",
+        "Name": "mys4hc-destination",
+        "ProxyType": "Internet",
+        "Type": "HTTP",
+        "URL": "https://my1111111-api.s4hana.ondemand.com/",
+        "WebIDEEnabled": "true",
+        "WebIDEUsage": "odata_abap,dev_abap,abap_cloud",
+        "abap_enabled": "true",
+        "audience": "https://my1111111.s4hana.ondemand.com",
+        "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession",
+        "clientKey": "<removed>",
+        "includeSigningCertificateInSAMLAssertion": "false",
+        "nameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+        "skipUserAttributesPrefixInSAMLAttributes": "false",
+        "skipUserUuidInSAMLAttributes": "false",
+        "tokenServiceURLType": "Dedicated"
+    }
+}

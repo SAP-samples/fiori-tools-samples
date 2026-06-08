@@ -1,6 +1,6 @@
 # Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs
 
-1. Open the [s4hana-cloud_saml](s4hana-cloud_saml) file using a text editor or browser.
+1. Open the [s4hana-cloud_saml.json](s4hana-cloud_saml.json) file using a text editor or browser.
 2. Replace all instances of `my1111111` with your specific hostname.
 3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`.
 4. Log in to SAP Business Application Studio to consume the new destination to validate that the connection works.
