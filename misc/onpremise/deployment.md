@@ -22,7 +22,7 @@ To use the OData service `/UI5/ABAP_REPOSITORY_SRV` to upload an SAPUI5 applicat
 - You have `S_DEVELOP` authorisation in your back-end system.
 - For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
 
-More information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites can be found [here](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
+For more information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites, see the [UI5 ABAP Repository Service documentation](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
 Any errors during deployment are reported in the HTTP status reports, either success or errors which may have occurred during the operation. The response header or the response body contains additional information, and below is a list of common issues when deploying to an ABAP target system.
 
@@ -35,17 +35,17 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 
 Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues.
 
-To debug on the client side, capture verbose deployment output by setting the `DEBUG` environment variable before running the deploy command:
+To debug on the client side, capture verbose deployment output by setting the `DEBUG` and `NODE_DEBUG` environment variables before running the deploy command. The output is also written to `deploy-debug.log` for easy sharing with support:
 
 ```bash
 # Mac / Linux
-DEBUG=* npm run deploy
+DEBUG=* NODE_DEBUG=http,https,net,tls npm run deploy 2>&1 | tee deploy-debug.log
 
 # Windows (PowerShell)
-set DEBUG=* && npm run deploy
+$env:DEBUG="*"; $env:NODE_DEBUG="http,https,net,tls"; npm run deploy 2>&1 | Tee-Object deploy-debug.log
 ```
 
-**Resources**
+### Resources
 
 - [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
 - Video guide: [Analyzing the `/IWFND/ERROR_LOG` OData Error Log](https://www.youtube.com/watch?v=Tmb-O966GwM)
