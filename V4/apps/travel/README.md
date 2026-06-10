@@ -5,7 +5,7 @@
 |**App Generator**<br>SAP Fiori Application Generator|
 |**App Generator Version**<br>1.24.0|
 |**Generation Platform**<br>Visual Studio Code|
-|**Template Used**<br>List Report Page V4|
+|**Template Used**<br>List Report Page for OData V4|
 |**Service Type**<br>OData URL|
 |**Service URL**<br>https://sap-ux-mock-services-v4-lrop.cfapps.us10.hana.ondemand.com/sap/opu/odata4/dmo/sb_travel_mdsk_o4/srvd/dmo/sd_travel_mdsk/0001/|
 |**Module Name**<br>travel|
@@ -14,30 +14,25 @@
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.147.2|
 |**Enable TypeScript**<br>True|
-|**Add Eslint configuration**<br>True, see https://www.npmjs.com/package/@sap-ux/eslint-plugin-fiori-tools#rules for the eslint rules.|
+|**Add Eslint configuration**<br>True. For more information, see [ESLint rules](https://www.npmjs.com/package/@sap-ux/eslint-plugin-fiori-tools#rules).|
 |**Main Entity**<br>Travel|
 |**Navigation Entity**<br>None|
 
-## travel
+## Prerequisites
 
-An SAP Fiori application.
+- You have an active Node.js long term support (LTS) version and associated supported `npm` version installed. For more information, see [Download Node.js](https://nodejs.org/en/download).
 
-### Starting the generated app
+## Starting the Generated App
 
--   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  To launch the generated application, run the following from the generated application root folder:
+- This app has been generated using the SAP Fiori tools - App Generator, as part of SAP Fiori tools. To launch the generated application, run the following command from the generated app's root folder:
 
-```
+```bash
     npm start
 ```
 
-- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+- You can also run your CAP project using mock data that reflects the OData Service URL supplied during application generation. To run the application with mock data, run the following command from the generated app's root folder:
 
-```
+```bash
     npm run start-mock
 ```
-
-#### Pre-requisites:
-
-1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
-
 

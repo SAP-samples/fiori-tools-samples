@@ -27,7 +27,6 @@ SAP Cloud Application Programming Model integration samples.
 |--------|-------------|------|
 | CAP Fiori Hybrid | Hybrid CAP application | `cap/cap-fiori-hybrid/` |
 | CAP Fiori MTA | Multi-target CAP application | `cap/cap-fiori-mta/` |
-| CAP with Application Frontend Service | CAP application with Fiori Elements UI hosted using Application Frontend Service | `cap/cap-with-frontend-service/` |
 
 ## Advanced Samples
 
@@ -44,7 +43,7 @@ SAP Cloud Application Programming Model integration samples.
 3. Run `npm install`
 4. Run `npm start`
 
-For detailed instructions, see each sample's README.md.
+For detailed instructions, see each sample's `README.md` file.
 
 ## Additional Resources
 

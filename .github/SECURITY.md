@@ -4,14 +4,14 @@
 
 **Do not report security vulnerabilities through public GitHub issues.**
 
-If you discover a security vulnerability, please report it to SAP:
+If you discover a security vulnerability, report it to SAP:
 
 - **Email:** secure@sap.com
 - **PGP Key:** Available at [SAP Security](https://www.sap.com/about/trust-center/security/incident-management.html)
 
 Include the following information:
 
-- Type of issue (e.g., XSS, SQL injection, code execution)
+- Type of issue (for example, XSS, SQL injection, code execution)
 - Full paths of affected source files
 - Location of the affected code (tag/branch/commit)
 - Step-by-step instructions to reproduce

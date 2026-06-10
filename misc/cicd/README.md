@@ -1,82 +1,78 @@
-# Sample Configurations to Improve ABAP Deployment Task
+# Sample Configurations to Improve ABAP Deployments
 
 > **Important**: Any scripts or commands in this guide that modify deployment configurations, environment variables, or CI/CD pipeline settings may change the behaviour of your system. Ensure all such changes are carried out with the authorization of your IT support team. Additionally, ensure your HTML5 application source files are under source control before making any modifications.
 
-For more information, see the [@sap/ux-ui5-tooling package on npm](https://www.npmjs.com/package/@sap/ux-ui5-tooling).
+For more information, see [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling).
 
 ## Developers Note
 
-SAP Cloud Transport Management (CTMS) for deployment is a recommended solution for ABAP deployment. While manual deployments or the use of CLI tools are supported, the CI/CD process may run in non-SAP DevOps platforms, but deployment to SAP BTP should go through CTMS.
+SAP Cloud Transport Management (CTMS) for deployment is a recommended solution for ABAP deployment. While manual deployments or the use of CLI tools are supported, the CI/CD process may run in non-SAP DevOps platforms, but deployment to SAP BTP must go through CTMS. 
 
-You can integrate external CI/CD pipelines, eg. Azure DevOps or CircleCI, to CTMS via APIs or using [GitHub Actions](https://github.com/marketplace/actions/deploy-to-sap-btp-with-ctms).
+You can integrate external CI/CD pipelines, for example, Azure DevOps or CircleCI, to CTMS using APIs or [GitHub Actions](https://github.com/marketplace/actions/deploy-to-sap-btp-with-ctms).
 
-With CTMS, you have full control on the changes going through the landscape, and have a proper audit log to trace them if required.
+With CTMS, you have full control on the changes going through the landscape, and have a proper audit log to trace them, if required.
 
-For more information, see [SAP BTP Runtimes — My Personal Considerations and Preferences on Cloud](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510).
+For more information, see [SAP BTP runtimes, my personal considerations and preferences on Cloud Foundry, Kyma, ABAP runtimes](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510)
 
-## Using Environment Variables with a .env File
+
+## Using Environment Variables
 
 Create a `.env` file in the root of your SAPUI5 project and append the following content:
-
-```
+```text
 XYZ_USER=myusername
 XYZ_PASSWORD=mypassword
 ```
 
-Update `ui5-deploy.yaml` with the `credentials`, ensuring it's aligned with the existing root nodes, for example `target`:
+Update the `ui5-deploy.yaml` file with the `credentials` and ensure it's aligned with the existing root nodes, for example, `target`:
 
-```yaml
+```YAML
     configuration:
       yes: true
       failFast: true
       target:
         url: https://XYZ.sap-system.corp:44311
-        client: 200
+        client: 200        
       credentials:
         username: env:XYZ_USER
         password: env:XYZ_PASSWORD
 ```
 
-When you run `npm run deploy` or `npm run undeploy`, it will pick up the respective environment variables.
+When you run `npm run deploy` or `npm run undeploy`, the environment variables are used.
 
-Setting `env:` for the credentials is only required if you want to configure a `.env` file to load environment variables, otherwise you export them as normal:
+Setting `env:` for the credentials is only required if you want to configure a `.env` file to load environment variables, otherwise you can export them as normal:
 
 ```bash
 export XYZ_USER='~username'
-export XYZ_PASSWORD='~password'
+export XYZ_PASSWORD='~password''
 ```
 
-`ui5-deploy.yaml` is then updated as:
-
-```yaml
+The `ui5-deploy.yaml` file is then updated as:
+```YAML
       credentials:
         username: XYZ_USER
         password: XYZ_PASSWORD
 ```
 
 Or if using CLI params:
-
 ```bash
---username XYZ_USER --password XYZ_PASSWORD
+--username XYZ_USER --pasword XYZ_PASSWORD
 ```
 
-Note: if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` as shown above:
+Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` file: 
+- Add `yes: true` to bypass the `Yes` confirmation prompt.
+- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail, and you want to disable the credentials prompts from being shown. This exits with a `1` exit code.
 
-- Add `yes: true` to bypass the `Yes` confirmation prompt
-- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail, and you want to disable the credentials prompts from being shown. This will exit with code of `1`.
-
-## Create Transport Request (TR) Dynamically
+## Create a Transport Request (TR) Dynamically
 
 To create a TR dynamically during each deploy or undeploy task, append the `REPLACE_WITH_TRANSPORT` bookmark to your `ui5-deploy.yaml` configuration:
-
-```yaml
+```YAML
       app:
         name: /TEST/SAMPLE_APP
         package: /TEST/UPLOAD
         transport: REPLACE_WITH_TRANSPORT
 ```
 
-Using the TR `REPLACE_WITH_TRANSPORT` bookmark for undeployment works as well, for example, when you run `npm run undeploy` it will also create a TR on the fly.
+You can also use the `REPLACE_WITH_TRANSPORT` TR bookmark for undeployment, for example, when you run `npm run undeploy` it creates a TR on the fly.
 
 ## CI/CD Pipeline
 
@@ -86,35 +82,31 @@ Generate CLI commands for your CI/CD pipeline:
 npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --password 'env:XYZ_PASSWORD' --noConfig --failFast --yes
 ```
 
-## Generate ZIP Archive
-
-You have two options:
+## Generate a ZIP Archive
 
 ### Option 1
 
 Remove `--archive-path 'archive.zip'` from the CLI params and allow the `dist` folder to be archived on the fly during deployment.
 
-### Option 2
+### Option 2 
 
-Generate an `archive.zip` manually which will require some updates to your existing project; update `package.json` with a new `devDependency`:
-
+Generate an `archive.zip` manually which requires some updates to your existing project. Update the `package.json` file with a new `devDependency`:
 ```json
 "ui5-task-zipper": "latest"
 ```
 
-Update `ui5.yaml` with a new `builder` task:
-
-```yaml
+Update the `ui5.yaml` file with a new `builder` task:
+```YAML
 builder:
   customTasks:
     - name: ui5-task-zipper
       afterTask: generateVersionInfo
       configuration:
-        archiveName: "archive"
+        archiveName: "archive"          
         keepResources: true
 ```
 
-When `npm run build` is now executed, it will generate a new archive file `./dist/archive.zip`.
+When `npm run build` is run, it generates a new archive file: `./dist/arhive.zip`.
 
 You can also create a new configuration file called `build.yaml` to handle this specific task:
 
@@ -124,32 +116,28 @@ You can also create a new configuration file called `build.yaml` to handle this 
 specVersion: "3.1"
 metadata:
   name: <your-project-name>
-type: application
+type: application  
 builder:
   customTasks:
     - name: ui5-task-zipper
       afterTask: generateVersionInfo
       configuration:
-        archiveName: "archive"
+        archiveName: "archive"          
         keepResources: true
 ```
-
-Run the CLI command using the new `build.yaml` configuration:
+Run the CLI command using the new `build.yaml` configuration to generate a new archive file: `./dist/arhive.zip`.
 
 ```bash
 npx ui5 build --config build.yaml
 ```
 
-This will generate a new archive file `./dist/archive.zip`.
-
-Optionally, update your `scripts` in `package.json` with the new command:
+Optionally, update your `scripts` in the `package.json` file with the new command:
 
 ```json
 "archive": "ui5 build --config build.yaml"
 ```
 
-Using either flow, you can see the new custom task `ui5-task-zipper` being executed:
-
+Using either flow, you can see the `ui5-task-zipper` new custom task run:
 ```bash
 info ProjectBuilder Preparing build for project project1
 info ProjectBuilder   Target directory: ./dist
@@ -165,16 +153,27 @@ info ProjectBuilder Build succeeded in 199 ms
 info ProjectBuilder Executing cleanup tasks...
 ```
 
-Note: update your scripts to reflect the new target folder to `./dist/archive.zip`.
+Note: Update your scripts to reflect the new target folder: `./dist/archive.zip`.
 
 ## Additional Notes
 
-1. For deployment purposes, appending additional headers is not supported via CLI or `ui5-deploy.yaml` configurations.
-2. If you want to enable debug mode, set the `DEBUG` and `NODE_DEBUG` environment variables before running the deploy command. The output is also written to `deploy-debug.log` for easy sharing with support:
-
+- For deployment purposes, appending additional headers is not supported using CLI or `ui5-deploy.yaml` configurations.
+- If you want to enable debug mode, you can set the debug parameter as follows:
 ```bash
 # Using default npm scripts
-DEBUG=* NODE_DEBUG=http,https,net,tls npm run deploy 2>&1 | tee deploy-debug.log
+DEBUG=* npm run deloy
 # Or if you are using the CLI directly
-DEBUG=* NODE_DEBUG=http,https,net,tls npx fiori deploy ... 2>&1 | tee deploy-debug.log
+DEBUG=* npx fiori deploy ...
 ```
+
+
+
+
+
+
+
+
+
+
+
+
