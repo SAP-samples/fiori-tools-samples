@@ -8,7 +8,7 @@ Table of Contents
 - [Existing Setup](#existing-setup)
 - [Duplicate the SAP BTP Destination](#duplicate-the-sap-btp-destination)
 - [Validate the Duplicated Destination](#validate-the-duplicated-destination)
-- [Modify the ui5.yaml File](#modify-the-ui5yaml-file)
+- [Modify the `ui5.yaml` File](#modify-the-ui5yaml-file)
 
 ---
 
@@ -119,7 +119,7 @@ Review `output-tsk1.txt` — a successful response contains the SAPUI5 library c
 
 ---
 
-## Modify the ui5.yaml File
+## Modify the `ui5.yaml` File
 
 Update `ui5.yaml` to serve `/resources` from the on-premise destination and `/test-resources` from the CDN:
 

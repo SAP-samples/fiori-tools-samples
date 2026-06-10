@@ -10,7 +10,7 @@ The SAP Fiori tools generator (`@sap/generator-fiori`) is the core Yeoman-based 
 
 ## Tracking the Latest Version
 
-The generator is published to npm under the package name `@sap/generator-fiori`. You can track available versions, including the latest stable release, on the npm registry:
+The generator is published to `npm` under the package name `@sap/generator-fiori`. You can track available versions, including the latest stable release, on the `npm` registry:
 
 - [npm: @sap/generator-fiori: Versions](https://www.npmjs.com/package/@sap/generator-fiori?activeTab=versions)
 
