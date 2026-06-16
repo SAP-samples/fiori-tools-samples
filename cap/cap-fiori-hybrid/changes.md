@@ -1,17 +1,17 @@
-## Enabling CDS Hybrid Mode in a CAP project with a Fiori UI frontend
+## Enabling CDS Hybrid Mode in a CAP Project with an SAP Fiori UI Front End
 
-The CAP project and Fiori UI application were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime.
+This CAP project and SAP Fiori application were generated using the steps outlined in the [Build and deploy a CAP Project Node.js API with an SAP Fiori Elements UI and a managed approuter configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) blog post using the `Managed Approuter` configuration as the HTML5 application runtime.
 The [managed approuter](../cap-fiori-mta/README.md) project is the base project used in this approach.
 
 ## Prerequisites
-- HANA Cloud database is setup and running in your cloud space. Refer to this [tutorial](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html).
-- The CAP project and SAP Fiori UI application are deployed to Cloud Foundry.
+- You have a HANA Cloud database set up and running in your cloud space. For more information, see [Create an SAP HANA Database Project](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html).
+- You have deployed the CAP project and SAP Fiori application to Cloud Foundry.
 
-## Step 1: Changes to `mta.yaml`
+## 1. Changes to the `mta.yaml` File
 
-These changes are required to reduce the number of manual tasks. They will hopefully be incorporated into a future edition of the SAP Fiori tools deployment generator.
+These changes are required to reduce the number of manual tasks.
 
-Append the `properties` node to `managedAppCAPProject-db-deployer` so the local and deployed CAP projects both share the same HDI instance;
+1. Append the `properties` node to `managedAppCAPProject-db-deployer` so the local and deployed CAP projects both share the same HDI instance:
 
 ```yaml
   - name: managedAppCAPProject-db-deployer
@@ -23,7 +23,7 @@ Append the `properties` node to `managedAppCAPProject-db-deployer` so the local 
           TARGET_CONTAINER: ~{hdi-service-name}
 ```
 
-Update `uaa_managedAppCAPProject` -> `service-key` parameter to `managedAppCAPProject-xsuaa-service-key`, when binding to the HANA service, the key and service name are aligned;
+2. Update the `uaa_managedAppCAPProject` -> `service-key` parameter to `managedAppCAPProject-xsuaa-service-key`, when binding to the HANA service:
 
 ```YAML
   - name: managedAppCAPProject-destination-content
@@ -42,7 +42,7 @@ Update `uaa_managedAppCAPProject` -> `service-key` parameter to `managedAppCAPPr
             name: managedAppCAPProject-xsuaa-service-key
 ```
 
-Update `managedAppCAPProject-db` to append the `service-key` parameter, when binding to the HANA service, the key and service name are aligned;
+3. Update `managedAppCAPProject-db` to append the `service-key` parameter, when binding to the HANA service:
 
 ```yaml
   - name: managedAppCAPProject-db
@@ -56,24 +56,22 @@ Update `managedAppCAPProject-db` to append the `service-key` parameter, when bin
       hdi-service-name: ${service-name}
 ```
 
-## Step 2: Append Approuter
+## 2. Append Approuter
 
-To learn more about approuter, see the following links:
+1. Append a local router to handle the XSUAA security locally:
 
-- [@sap/approuter](https://www.npmjs.com/package/@sap/approuter#overview)
-- [Application-router on SAP BTP](https://help.sap.com/docs/btp/sap-business-technology-platform/application-router)
-
-Append a local router to handle the XSUAA security locally;
 ```bash
 cds add approuter
 ```
-The command will drop a number of files into the `app` folder but we want to control these so we are going to move them!
+The command creates several files in the `app` folder. To customize these files, they must be moved to a separate folder:
+
 ```bash
 mkdir -p localrouter
 mv app/default-env.json app/package.json app/xs-app.json localrouter/
 ```
 
-Modify `default-env.json` so that is spins up on port `5001`;
+2. Modify the `default-env.json` file so it uses port `5001`:
+
 ```JSON
 {
   "destinations": [
@@ -87,9 +85,15 @@ Modify `default-env.json` so that is spins up on port `5001`;
 }
 ```
 
-## Step 3: Update xs-security.json
+To learn more about approuter, see the following links:
 
-Append support for the different OAuth endpoints, for local development with Visual Studio Code, SAP Business Application Studio and SAP BTP Cloud Foundry:
+- [@sap/approuter](https://www.npmjs.com/package/@sap/approuter#overview)
+- [Application-router on SAP BTP](https://help.sap.com/docs/btp/sap-business-technology-platform/application-router)
+
+## 3. Update the `xs-security.json` File
+
+1. Add support for the different OAuth endpoints, that is, for local development with Visual Studio Code, SAP Business Application Studio, and SAP BTP Cloud Foundry to the `xs-security.json` file:
+
 ```JSON
   "oauth2-configuration": {
     "redirect-uris": [
@@ -100,24 +104,25 @@ Append support for the different OAuth endpoints, for local development with Vis
   },
 ```
 
-Apply new `scopes` and `role-templates` to lock down your Catalog service;
+2. Apply new `scopes` and `role-templates` to lock down your catalog service:
+
 ```JSON
   "scopes": [
     {
       "name": "$XSAPPNAME.capuser",
-      "description": "CAP Project Generated role scope"
+      "description": "CAP project generated role scope"
     }
   ],
   "role-templates": [
     {
       "name": "capuser",
-      "description": "CAP Project Generated role template",
+      "description": "CAP project generated role template",
       "scope-references": ["$XSAPPNAME.capuser"],
       "attribute-references": []
     }
   ],
 ```
 
-## Step 4: Apply Security to Catalog Service
+## 4. Apply Security to Catalog Service
 
 Edit `srv` -> `cat-service.cds` and replace `@requires: 'authenticated-user'` with `@(requires: 'capuser')`. 

@@ -1,29 +1,27 @@
-# Get Started with SAP Cloud Application Programming Model (CAP) using Fiori tools
-
-For support, chat and samples, please refer to [https://cap.cloud.sap/docs/](https://cap.cloud.sap/docs/)
+# Get Started with SAP Cloud Application Programming Model (CAP) Using SAP Fiori Tools
 
 ## Description
 
-The SAP Cloud Application Programming Model (CAP) is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along a ‘golden path’ of proven best practices and a great wealth of out-of-the-box solutions to recurring tasks.
+The SAP Cloud Application Programming Model (CAP) is a framework of languages, libraries, and tools for building enterprise-grade services and applications. It guides developers along a golden path of proven best practices and an out-of-the-box solutions to recurring tasks.
 
-This repository provides sample CAP projects using different router configurations and the steps required to deploy to Cloud Foundry;
+This repository provides sample CAP projects using different router configurations and the steps required to deploy to Cloud Foundry:
 
-1. [Managed Approuter](../cap/cap-fiori-mta/README.md) with SAP Hana Cloud service
+- [Managed Approuter](../cap/cap-fiori-mta/README.md) with SAP HANA Cloud service
 
-2. [Standalone Approuter](../cap/cap-fiori-mta-standalone/README.md) with an in-memory database
+- [Standalone Approuter](../cap/cap-fiori-mta-standalone/README.md) with an in-memory database
 
-3. [Managed Approuter with CDS Hybrid Profile](../cap/cap-fiori-hybrid/README.md) supporting HANA and XSUAA services hosted on SAP BTP
+- [Managed Approuter with CDS Hybrid Profile](../cap/cap-fiori-hybrid/README.md) which supports HANA and XSUAA services hosted on SAP BTP
 
-4. [Application Frontend Service (AFS)](../cap/cap-with-frontend-service/README.md) with SAP HANA Cloud, XSUAA, Connectivity, and Destination services
+- [Create an SAP BTP Destination exposing CAP services](../cap/destination/README.md), which also supports cross subaccount and regions
 
-5. [Create a SAP BTP Destination exposing CAP services](../cap/destination/README.md), also supports cross subaccount and regions
-
-All CAP projects were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropriate router configuration as the HTML5 application runtime.
+All CAP projects were generated using the steps outlined in this [Build and deploy a CAP Project Node.js API with an SAP Fiori Elements UI and a managed approuter configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) blog post and selected the appropriate router configuration as the HTML5 application runtime.
 
 ## Additional Notes
 
-For more information on integrating CI/CD into your CAP deployment strategy, please refer to the [Continuous Integration and Delivery YouTube Tutorial](https://www.youtube.com/watch?v=gvWSHSZFPok).
+For more information about support, chat, and samples, see [SAP Cloud Application Programming Model](https://cap.cloud.sap/docs/).
 
-### License
+For more information about integrating CI/CD into your CAP deployment strategy, see [Continuous Integration and Delivery](https://www.youtube.com/watch?v=gvWSHSZFPok).
+
+## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.

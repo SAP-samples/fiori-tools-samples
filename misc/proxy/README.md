@@ -1,18 +1,18 @@
-## Defining Proxy Settings for SAP Fiori Tools
+# Defining Proxy Settings for SAP Fiori Tools
 
 ## Overview
 
-In some environments, you may need to configure proxy settings to allow SAP Fiori tools to connect to external services or resources. This is particularly relevant when working in corporate networks or environments with strict firewall rules.
+In some environments, you must configure proxy settings to allow SAP Fiori tools to connect to external services or resources. This is particularly relevant when working in corporate networks or environments with strict firewall rules.
 
 ## Prerequisites
 
 > **Important**: Any scripts or commands in this guide that modify environment variables or system settings may change the behaviour of your system or operating system. Ensure all such changes are carried out with the authorization of your IT support team. Additionally, ensure any HTML5 application source files you modify are under source control before making changes.
 
-* Ensure you have the necessary permissions to modify environment variables on your system.
-* Confirm with your IT Admin if proxy settings are required for your network environment, for example, in some instances internal networks may not require proxy settings.
-* Unless specified by your IT Admin, do not use `https://` in the proxy URL, the default should be `http://` for the proxy URL.
+- You have the necessary permissions to modify environment variables on your system.
+- You have confirmed with your IT Admin whether proxy settings are required for your network environment, for example, in some instances internal networks may not require proxy settings.
+- Unless specified by your IT Admin, you are using `http://` and not `https://` for the proxy URL.
 
-### Setting Up Proxy Environment Variables using UI5 YAML Configuration
+### Setting Up Proxy Environment Variables Using UI5 YAML Configuration
 
 The `ui5.yaml` file is used to configure the proxy settings for SAP Fiori tools. You can define the proxy settings in the `ui5.yaml` file as follows:
 
@@ -26,9 +26,9 @@ The `ui5.yaml` file is used to configure the proxy settings for SAP Fiori tools.
       url: https://my.backend.com:1234
 ```
 
-If you need to pass credentials, then the proxy URL should be in the format `http://user:password@proxyserver:port`.
+If you need to pass credentials, then the proxy URL must be in the format: `http://user:password@proxyserver:port`.
 
-Refer to [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling#providing-proxy-configuration) API guide for more information.
+For more information, see the [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling#providing-proxy-configuration) API guide.
 
 ## Setting Up Proxy Environment Variables
 
@@ -44,21 +44,21 @@ export NO_PROXY=localhost,127.0.0.1,internal.domain,.local
 
 `HTTP_PROXY`: For regular HTTP connections
 `HTTPS_PROXY`: For secure HTTPS connections
-`NO_PROXY`: Comma-separated list of hosts/domains that should bypass the proxy
+`NO_PROXY`: Comma-separated list of hosts and domains that bypass the proxy
 
 Common variations:
 
-Lowercase versions: http_proxy, https_proxy, no_proxy
-Protocol-specific format: https:// instead of http:// for the HTTPS_PROXY URL
-System-specific settings (Windows vs. Linux/macOS)
+Lowercase versions: `http_proxy`, `https_proxy`, `no_proxy`
+Protocol-specific format: `https://` instead of `http://` for the `HTTPS_PROXY` URL
+System-specific settings for Windows versus Linux and macOS
 
-These environment variables are recognized by most applications and command-line tools to route network traffic through the specified proxy server. Again, you will need to confirm this with your IT Admin.
+These environment variables are recognized by most applications and command-line tools to route network traffic through the specified proxy server. Confirm this with your IT Admin.
 
 ## Setting Up Proxy Environment Variables for Deployment
 
-Refer to the [SAP Axios Extension](https://github.com/SAP/open-ux-tools/tree/main/packages/axios-extension#proxy-support) for more information on setting up proxy environment variables for deployment.
+For more information about setting up proxy environment variables for deployment, see the [SAP Axios Extension](https://github.com/SAP/open-ux-tools/tree/main/packages/axios-extension#proxy-support).
 
-To enable support for TLS (Transport Layer Security), enable the `HTTPS_PROXY` environment variable, as shown;
+To enable support for TLS (Transport Layer Security), enable the `HTTPS_PROXY` environment variable, as shown:
 
 ```bash
 export HTTPS_PROXY=<YOUR-PROXY:PORT>
@@ -70,13 +70,13 @@ To support credentials in the proxy URL, you can set the `HTTPS_PROXY` environme
 export HTTPS_PROXY=http://user:password@proxy.domain.com:3128
 ```
 
-If your password contains special characters, for example, if your password is configured as `p@s#w0rd`, then you will need to escape it `p%40s%23w0rd`:
+If your password contains special characters, for example, if your password is configured as `p@s#w0rd`, escape it as `p%40s%23w0rd`:
 
 ```bash
 export HTTPS_PROXY=http://myusername:p%40s%23w0rd@proxy.domain.com:3128
 ```
 
-Refer to this link to translate special characters in URLs [URL Encode/Decode](https://www.url-encode-decode.com/).
+For more information about translating special characters in URLs, see [URL Encode/Decode](https://www.url-encode-decode.com/).
 
 If using an earlier version of [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling?activeTab=versions), for example v1.17.6, you may need to enable the patch proxy feature by setting the `TOOLSUITE_FEATURES` environment variable:
 
@@ -84,13 +84,11 @@ If using an earlier version of [@sap/ux-ui5-tooling](https://www.npmjs.com/packa
 export TOOLSUITE_FEATURES=sap.ux.enablePatchProxy
 ```
 
-The feature `sap.ux.enablePatchProxy` is enabled by default in the latest versions of the SAP Fiori tools, so you may not need to set this variable.
-
-## Defining Proxy Settings
+The feature `sap.ux.enablePatchProxy` is enabled by default in the latest versions of SAP Fiori tools, so you may not need to set this variable.
 
 ## Windows PowerShell Commands
 
-Here are the PowerShell commands to set those proxy environment variables:
+Here are the PowerShell commands to set the proxy environment variables:
 
 ```powershell
 $env:HTTP_PROXY = "http://user:password@proxyserver:port"
@@ -98,7 +96,7 @@ $env:HTTPS_PROXY = "http://user:password@proxyserver:port"
 $env:NO_PROXY = "localhost,127.0.0.1,internal.domain,.local"
 ```
 
-If you want to set these permanently for your user account (so they persist across PowerShell sessions), use:
+If you want to set these permanently for your user account, so they persist across PowerShell sessions, use:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "User")
@@ -106,7 +104,7 @@ If you want to set these permanently for your user account (so they persist acro
 [Environment]::SetEnvironmentVariable("NO_PROXY", "localhost,127.0.0.1,internal.domain,.local", "User")
 ```
 
-Or if you need them, set system-wide for all users (requires administrator privileges):
+To set system-wide variables for all users, which requires administrator privileges, use the following:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://user:password@proxyserver:port", "Machine")
@@ -124,7 +122,7 @@ If you are unfamiliar with PowerShell, you can also set these variables through 
 6. Click "OK" to save your changes.
 7. Restart any open command prompts or applications to ensure they pick up the new environment variables.
 
-## MacOS/Linux
+## macOS and Linux
 
 Here are the bash commands to set those proxy environment variables:
 
@@ -143,19 +141,19 @@ echo 'export HTTPS_PROXY=http://user:password@proxyserver:port' >> ~/.bashrc
 echo 'export NO_PROXY=localhost,127.0.0.1,internal.domain,.local' >> ~/.bashrc
 ```
 
-Then reload your profile:
+Then, reload your profile:
 
 ```bash
 source ~/.bashrc
 ```
 
-## Validating Proxy Settings with curl
+## Validating Proxy Settings with `curl`
 
 Use `curl` to verify proxy connectivity after configuration. `curl` is included by default on Windows 10 (1803+), Windows 11, macOS, and most Linux distributions.
 
 ## Basic Tests
 
-Test proxy connection (same syntax on all platforms):
+Test the proxy connection, which uses the same syntax on all platforms:
 
 ```bash
 # Without authentication
@@ -171,7 +169,7 @@ curl -v https://www.sap.com
 curl -v --noproxy "*" https://www.sap.com
 ```
 
-Test backend connectivity:
+Test back-end connectivity:
 
 ```bash
 curl -v --proxy http://proxyserver:port https://my.backend.com:1234/sap/opu/odata/
@@ -181,18 +179,18 @@ curl -v --proxy http://proxyserver:port https://my.backend.com:1234/sap/opu/odat
 
 **Success indicators:**
 
-* HTTP 200 status or appropriate response code (401/403 for auth endpoints)
-* Response headers from target server
-* Verbose output shows proxy connection details
+- HTTP 200 status or appropriate response code, such as HTTP 401 and HTTP 403 for auth endpoints
+- Response headers from target server
+- Verbose output shows proxy connection details.
 
 **Failure indicators:**
 
-* Connection timeout or refused
-* 407 status (proxy authentication required)
-* SSL/TLS certificate errors
-* DNS resolution failures
+- Connection timeout or refused
+- HTTP 407 status, which indicates proxy authentication is required
+- SSL and TLS certificate errors
+- DNS resolution failures
 
-## Useful curl Options
+## Useful `curl` Options
 
 ```bash
 curl -v --proxy http://proxyserver:port https://example.com          # Verbose output
@@ -203,7 +201,7 @@ curl --connect-timeout 10 --proxy http://proxyserver:port https://example.com  #
 
 ## Validation Workflow
 
-**macOS/Linux:**
+**macOS and Linux:**
 
 ```bash
 export HTTP_PROXY=http://user:password@proxyserver:8080
@@ -244,14 +242,14 @@ curl -v --noproxy "*" https://www.google.com
 
 ## Troubleshooting
 
-If curl fails:
+If `curl` fails:
 
-1. Verify proxy address, port, and credentials (escape special characters in passwords)
-2. Test proxy reachability: `telnet proxyserver port` or `nc -zv proxyserver port`
-3. Check firewall rules for outbound connections to proxy
-4. Verify NO_PROXY excludes internal hosts correctly
-5. Review proxy server logs if accessible
+1. Verify the proxy address, port, and credentials, which ensures special characters in passwords are escaped.
+2. Test proxy reachability: `telnet proxyserver port` or `nc -zv proxyserver port`.
+3. Check firewall rules for outbound connections to proxy.
+4. Verify `NO_PROXY` excludes internal hosts correctly.
+5. Review proxy server logs if accessible.
 
-### License
+## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.

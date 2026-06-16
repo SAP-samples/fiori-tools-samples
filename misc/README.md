@@ -18,7 +18,7 @@
 
 [SAP BTP ABAP Environment (Steampunk) - Cross Subaccount and Regions](abapcloud/README.md)
 
-[Managing npm Dependencies and Addressing Audit Issues](npm-dependency-management/README.md)
+[Managing `npm` Dependencies and Addressing Audit Issues](npm-dependency-management/README.md)
 
 [OAuth2SAMLBearerAssertion Destination Configured to Point to SAP SuccessFactors](successfactors/README.md)
 

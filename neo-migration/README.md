@@ -1,23 +1,23 @@
 # Migrating HTML5 Applications from the SAP BTP, Neo to Cloud Foundry
 
-Referenced guide: <https://help.sap.com/docs/HTML5_APPLICATIONS/b98f42a4d2cd40a9a3095e9f0492b465/b1763fd06421457b9970a3555020e750.html>
+For more information, see [Migrating HTML5 Applications from SAP BTP, Neo to Cloud Foundry](https://help.sap.com/docs/HTML5_APPLICATIONS/b98f42a4d2cd40a9a3095e9f0492b465/b1763fd06421457b9970a3555020e750.html).
 
 Learn how to migrate custom HTML5 applications on SAP BTP from the Neo to the Cloud Foundry environment.
 
 ## Prerequisites
 
-* You'll need an SAP Business Technology Platform (SAP BTP) account
-* You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/products/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
-* You are subscribed to the SAP Launchpad Service, follow this [tutorial](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html) for more information
-* If the referenced services are not available in Service Marketplace, please select Entitlements from the root of your subaccount, select Configure Entitlements, locate the required service, create it, save it and then return to the Service Marketplace to add the required service to your subaccount.
+- You have an SAP Business Technology Platform (SAP BTP) account.
+- You are subscribed to SAP Business Application Studio. For more information, see [Getting Started with SAP Business Application Studio](https://help.sap.com/products/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
+- You are subscribed to the SAP Fiori launchpad service. For more information, see [Set Up the SAP Launchpad Service](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html).
+- If the referenced services are not available in Service Marketplace, select Entitlements from the root of your subaccount, select Configure Entitlements, locate the required service, create it, save it, and then return to the Service Marketplace to add the required service to your subaccount.
 
-## Create SAP Fiori Dev Space
+## Create an SAP Fiori Dev Space
 
-From your SAP BTP cockpit, select Instances and Subscriptions, select SAP Business Application Studio which will open a new tab into your dev space manager. Generate a Full Stack Cloud Application dev space with SAP HANA Tools enabled.
+From your SAP BTP cockpit, select Instances and Subscriptions, select SAP Business Application Studio, and open your dev space manager in a new tab. Generate a Full Stack Cloud Application dev space with SAP HANA Tools enabled.
 
 ## Migrate Security and Destinations
 
-Generate new migration folder to contain all your existing Neo settings:
+Generate a new migration folder to contain all your existing Neo settings:
 
 ```bash
 mkdir -p /home/user/projects/neo/
@@ -33,7 +33,7 @@ touch xs-security.json mtad.yaml config.json
 
 Sample configurations for each respective file:
 
-mtad.yaml
+`mtad.yaml` File
 
 ```yaml
 _schema-version: "3.1"
@@ -54,7 +54,7 @@ resources:
     service: connectivity
 ```
 
-config.json
+`config.json` File
 
 ```json
 {
@@ -79,7 +79,7 @@ config.json
 }
 ```
 
-xs-security.json
+`xs-security.json` File
 
 ```json
 {
@@ -113,19 +113,19 @@ xs-security.json
 }
 ```
 
-Please note, this destination is creating destinations at `subaccount` level, all applications deployed to this subaccount will have access to these destinations. If however, you want to generate instance based destinations where the destinations are encapsulated as part of the deployed application then refer this [sample configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/).
+> **Note:** This destination creates destinations at `subaccount` level: all applications deployed to this subaccount have access to these destinations. For more information about how to generate instance-based destinations where the destinations are encapsulated as part of the deployed application, see the [Build and Deploy a CAP Project Node.js API with an SAP Fiori Elements UI and a Managed Approuter Configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) blog post.
 
-Security configuration is configured using a global role collection that can be consumed by apps using the mta ID and the scoped name i.e. `migrationcf.globalrole`. In this instance, its only for demo purposes and the respective applications will manage their own security concerns, creating their own roles/templates in the `xs-security.json` attached to the project.
+Security configuration uses a global role collection that can be consumed by apps using the MTA ID and the scoped name, that is, `migrationcf.globalrole`. In this instance, it's only for demo purposes and the respective applications manage their own security concerns by creating their own roles and templates in the `xs-security.json` attached to the project.
 
-For more information about Security Administration, see the [SAP BTP Security Administration Guide](<https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html>).
+For more information about Security Administration, see the [SAP BTP Security Administration](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/1ff47b2d980e43a6b2ce294352333708.html) guide.
 
-Ensure you are logged into CF target system where the new settings need to be applied:
+Ensure you are logged into Cloud Foundry target system where the new settings must be applied:
 
 ```bash
 cf login -a <api-endpoint -o <organisation> -s <space>
 ```
 
-or else from BAS, run `View -> Command Palette -> Login to Cloud Foundry`
+or else from SAP Business Application Studio, run `View -> Command Palette -> Login to Cloud Foundry`
 
 Deploy the new services to your new subaccount target system:
 
@@ -133,20 +133,19 @@ Deploy the new services to your new subaccount target system:
 cf deploy
 ```
 
-Your subaccount is now configured with destinations at subaccount level.
+Your subaccount is now configured with destinations at the subaccount level.
 
-## Importing an Application without Source Control
+## Importing an Application Without Source Control
 
-If you are a public cloud customer without access to a source code repository, you can download your application source artefacts using HTTP with SAP Fiori Tools. This is the recommended approach when your Neo application is deployed but its source code is not available in a version control system.
+If you are a Public Cloud customer without access to a source code repository, you can download your application source artefacts using HTTP with SAP Fiori Tools. This is the recommended approach when your Neo application is deployed but its source code is not available in a version control system.
 
-For detailed instructions, see [Importing an Application without Source Control](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/ab4657ca9bd84cd6869a750a1d94b5bd.html) in the SAP Fiori Tools documentation.
+For more information, see [Importing an Application without Source Control](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/ab4657ca9bd84cd6869a750a1d94b5bd.html).
 
-Once you have downloaded the application source artefacts, follow one of the migration options below.
+Once you have downloaded the application source artefacts, follow one of the following migration options.
 
-You have two options of migrating your Neo UI application as each produces a different folder structure:
 
-- Option 1. [Migrate Neo application for a single Fiori UI application](Option1.md)
-- Option 2. [Migrate Neo application supporting multiple Fiori UI applications](Option2.md)
+1. [Migrate Neo application for a single SAP Fiori UI application](Option1.md)
+2. [Migrate Neo application supporting multiple SAP Fiori UI applications](Option2.md)
 
 In both cases, your application is deployed to Cloud Foundry using a managed approuter configuration.
 
@@ -156,38 +155,38 @@ In both cases, your application is deployed to Cloud Foundry using a managed app
 
 ## Extension Projects
 
-Extension projects can be migrated using the Fiori tools migration tool.
+Extension projects can be migrated using SAP Fiori tools migration tool.
 
-See the [SAP Fiori Tools Migration Guide](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/70d41f3ee29d453a90efab3ce025d450.html?locale=en-US) for detailed instructions.
+For more information, see [SAP Fiori Tools Migration](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/70d41f3ee29d453a90efab3ce025d450.html?locale=en-US).
 
-You may need to choose "Add Project" from the migration tab if your extension project is not already listed in the table.
+You must choose "Add Project" from the migration tab if your extension project is not already listed in the table.
 
-For information on supported features, refer to [Supported Migration Features](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/f540ae1961914bf783cd266f3c0d8530.html?locale=en-US).
+For more information about supported features, see [Supported Migration Features](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/f540ae1961914bf783cd266f3c0d8530.html?locale=en-US).
 
-## Gotchas
+## Troubleshooting
 
-### Issue 1
-SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application specific code, for example `neo-app.json`, `pom.xml`, `.che`.  
+### SAP Fiori Migration Tool Does Not Detect Your Application
+SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application specific code, for example `neo-app.json`, `pom.xml`, and `.che`.  
 
-If you are also missing a `manifest.json` inside of your `webapp` folder, refer to the [UI5 documentation on creating a descriptor file](<https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html>).
+If you are also missing a `manifest.json` file inside of your `webapp` folder, see [UI5 Documentation on Creating a Descriptor File](https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html).
 
-### Issue 2
+### Application Fails to Load When Running `npm run start`
 
-When running `npm run start` or local preview, the app fails to load, throwing the following exception in the console.
+When running `npm run start` or local preview, the app fails to load, throwing the following exception in the console:
 
 ```text
 Title: ErrorMessage: App could not be opened because the SAP UI5 component of the application could not be loaded.Details: {  "info": "Failed to load UI5 component for navigation intent \"#app-tile\"", "technicalMessage": "Cannot read properties of undefined (reading 'getResourceBundle')\nTypeError: Cannot read properties of undefined (reading 'getResourceBundle')\n    at new constructor (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/Component-preload.js:11:276)\n    at f.init (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/Component-preload.js:5:337)\n    at https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:346:952\n    at f.constructor (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:346:1036)\n    at f.constructor (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:623:577)\n    at f.constructor (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap/ui/core/library-preload.js:1015:189)\n    at new f (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:573:558)\n    at A (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:658:472)\n    at https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:658:1279\n    at r (https://port8080-workspaces-ws-z5hjg.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:621:113)"}
 ```
 
-To resolve this issue, the manifest.json and the Component.js ID's need to be synced.
+To resolve this issue, the `manifest.json` file and the `Component.js` IDs must be synced.
 
-Open the Component.js and look for the following code
+Open the `Component.js` file and look for the following code:
 
 ```html
 t.extend("ns.manageproductsneo.Component",{metadata:{manifest:"json"}
 ```
 
-Open manifest.json and refer to the ID
+Open the `manifest.json` file and refer to the ID:
 
 ```json
     "_version": "1.12.0",
@@ -195,22 +194,22 @@ Open manifest.json and refer to the ID
         "id": "manageproductsneo",
 ```
 
-When running the start command, the app is being loaded with `test/flpSandbox.html`, the ID on lne 49 and 69 need to be updated to reflect the Component.js ID;
+When running the start command, the app loads with the `test/flpSandbox.html` file, the ID on line 49 and 69 must be updated to reflect the `Component.js` ID:
 
 ```text
 Line 49: additionalInformation: "SAPUI5.Component=ns.manageproductsneo",
 Line 69: data-sap-ui-resourceroots='{"ns.manageproductsneo": "../"}'
 ```
 
-### Issue 3
+### An Error Occurred in the `manifest.json` File When Starting the Application
 
-In this sample app, there was an issue with the manifest.json. When the application was started up using `npm run start`, it threw the following error;
+In this sample app, there was an issue with the `manifest.json` file. When the application was started up using `npm run start`, it threw the following error:
 
 ```text
 Title: ErrorMessage: App could not be opened because the SAP UI5 component of the application could not be loaded.Details: {    "info": "Failed to load UI5 component for navigation intent \"#app-tile\"", "technicalMessage": "invalid input\nTypeError: invalid input\n    at p.href (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:2096:17025)\n    at new U (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:2096:872)\n    at constructor._loadI18n (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:1147:113)\n    at constructor._processI18n (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:1146:339)\n    at new constructor (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:1145:694)\n    at e._applyManifest (https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:669:468)\n    at https://port8080-workspaces-ws-v6s28.cry10.int.applicationstudio.cloud.sap/resources/sap-ui-core.js:654:456"}
 ```
 
-To resolve this issue, the manifest i18n was changed from;
+To resolve this issue, the `i18n` section in the `manifest.json` file was changed from:
 
 ```json
 "i18n": {
@@ -222,13 +221,13 @@ To resolve this issue, the manifest i18n was changed from;
         },
 ```
 
-To the following;
+To the following:
 
 ```json
 "i18n": "i18n/i18n.properties",
 ```
 
-If the issue persists, then try bumping the `"minUI5Version": "1.108.2"` in your manifest.json to a later version, here is a list of supported [UI5 versions](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, where you want to only validate locally, then update `ui5.yaml` with a specific UI5 version, for example to specify `1.109.0`:
+If the issue persists, try bumping the `"minUI5Version": "1.108.2"` in your `manifest.json` file to a later version. For more information about supported SAPUI5 versions, see [SAPUI5 Versions Maintenance Status](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, when you want to only validate locally, is to update the `ui5.yaml` file with a specific SAPUI5 version, for example to specify `1.109.0`:
 
 ```yaml
         ui5:
@@ -239,17 +238,17 @@ If the issue persists, then try bumping the `"minUI5Version": "1.108.2"` in your
           version: 1.109.0
 ```
 
-### Issue 4
+### Application Fails to Load with HTTP 403 After Deployment
 
-Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
+The application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
 
-The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropriate permissions, then add their ID to the role collection. In some instances, you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+The root cause is an issue with the scope applied in your `xs-app.json` file. If the logged in user does not have the appropriate permissions, then add their ID to the role collection. In some instances, you must delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
 
-### Issue 5
+### Static Code Analysis Throws `JS_PARSING_ERROR` in CI/CD Pipeline
 
-During your CI/CD pipeline job, the static code analysis throws a linting issue `Quality issue: JS_PARSING_ERROR:Very High!` when processing `locate-reuse-libs.js`.
+During your CI/CD pipeline job, the static code analysis throws a linting issue `Quality issue: JS_PARSING_ERROR:Very High!` when processing the `locate-reuse-libs.js` file.
 
-This assumes, your `pom.xml` contains the following plugin;
+This assumes, your `pom.xml` file contains the following plugin:
 
 ```xml
 <groupId>com.sap.ca</groupId>
@@ -271,34 +270,34 @@ Proposed Configuration
 
 Version Update Rationale
 
-* Major version increment from 1.x to 2.x
-* Potential breaking changes in static analysis rules
-* Enhanced parsing capabilities
-* Improved error detection mechanisms
+- Major version increment from 1.x to 2.x
+- Potential breaking changes in static analysis rules
+- Enhanced parsing capabilities
+- Improved error detection mechanisms
 
-### Issue 6
+### HTTP 403 Error After Deployment Due to the Scope in the `xs-app.json` File
 
-Application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
+The application is unable to load due to network errors relating to HTTP 403 when deployed to Cloud Foundry. This can be confirmed by reviewing the logs for your deployed application in SAP BTP cockpit under HTML5 Applications and selecting the logs icon next to your application.
 
-The root cause is an issue with the scope applied in your `xs-app.json`. If the logged in user does not have the appropriate permissions, then add their ID to the role collection. In some instances, you may need to delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
+The root cause is an issue with the scope applied in your `xs-app.json` file. If the logged in user does not have the appropriate permissions, then add their ID to the role collection. In some instances, you must delete your session cookies or try using incognito mode to validate the new security roles are applied correctly.
 
-### Issue 7
+### HTTP 404 Error: Application Not Loading After Deployment
 
-The HTML5 application is deployed to Cloud Foundry, but the application is not loading; after reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned;
+The HTML5 application is deployed to Cloud Foundry, but the application is not loading. After reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned:
 
-Refer to the [SAP Support Portal](<https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513>) for more information on how to resolve this issue.
+For more information about how to resolve this issue, see [SAP Support Portal](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
 
-The issue is related to an AJAX API call that is defined using an absolute path instead of a relative path. Each application deployed to Cloud Foundry is given a unique GUID, which is how multiple apps can be deployed to the same subaccount. The absolute path is not able to resolve the GUID and therefore the application fails to load.
+The issue is related to an AJAX API call using an absolute path instead of a relative path. Each application deployed to Cloud Foundry is given a unique GUID, which is how multiple apps can be deployed to the same subaccount. The absolute path is not able to resolve the GUID and therefore the application fails to load.
 
-### Issue 8
+### Features Not Working in SAP Business Application Studio Local Preview
 
 The deployed Cloud Foundry HTML5 application renders as expected, but some features do not work as expected when running in SAP Business Application Studio in local preview mode.
 
-This assumes your application is using the `fiori-tools-proxy` middleware to proxy API calls to back-end systems using SAP BTP destinations and you have started the application using `npm run start`.
+This assumes your application uses the `fiori-tools-proxy` middleware to proxy API calls to back-end systems using SAP BTP destinations and you have started the application using `npm run start`.
 
-To determine the root cause of your issue, review the Network tab in your browser's Developer Console. Connectivity issues can manifest as a HTTP 404 or CORS error.
+To determine the root cause of your issue, review the Network tab in your browser's Developer Console. Connectivity issues can manifest as an HTTP 404 or CORS error.
 
-#### Step 1. Review the `xs-app.json` File
+#### Review the `xs-app.json` File
 
 ```json
 {
@@ -327,7 +326,7 @@ The source path is `^/scim/(.*)$` which is a regular expression used to break up
 
 For example, an API call intercepted on Cloud Foundry `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/scim/v2?sap-client=500` is proxied to the `API_ENDPOINT` SAP BTP destination as `https://internal.resource/v2?sap-client=500` where `scim` is removed from the API call.
 
-This approach is typically used where a HTML5 application must support different back-end systems that may use the same path structure.
+This approach is typically used where an HTML5 application must support different back-end systems that may use the same path structure.
 
 For the second route definition, `^/sap/(.*)$`, an API call intercepted at `https://mysubdomain.launchpad.cfapps.eu10.hana.ondemand.com/a69add83-6355-4ba5-97d8-ad6fc0c912b7.mycommonhtml5app-0.0.1/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` is proxied to the `s4hc_onpremise` SAP BTP destination as `https://some.intneral.resource/sap/opu/odata/sap/FIN_ACCOUNTING_IMPACT_SRV/?sap-client=500` where `sap` is retained.
 
@@ -374,9 +373,9 @@ server:
           theme: sap_horizon
 ```
 
-After reviewing the `xs-app.json`, the `/scim/(.*)` source path is mapped to the `API_ENDPOINT` destination and expects the `/scim` to be stripped out of the proxied URL.
+After reviewing the `xs-app.json` file, the `/scim/(.*)` source path is mapped to the `API_ENDPOINT` destination and expects the `/scim` to be stripped out of the proxied URL.
 
-The root cause of the issue is that the local proxy makes the API call to `https://some.external.resource/scim/v2` which results in a HTTP 404 Not Found error because the back-end system is expecting the call to be made to `https://some.external.resource/`.
+The root cause of the issue is that the local proxy makes the API call to `https://some.external.resource/scim/v2` which results in an HTTP 404 Not Found error because the back-end system is expecting the call to be made to `https://some.external.resource/`.
 
 The solution is to update the `ui5.yaml` file to include the `pathReplace` property to strip out the `/scim` from the proxied URL.
 
@@ -391,28 +390,30 @@ Now, any request to `https://localhost:8080/scim/v2` is correctly proxied to the
 
 Similarly, any request to `https://localhost:8080/sap` is correctly proxied to the SAP BTP destination as `https://s4hc_onpremise.dest/sap` with `sap` retained.
 
-### Issue 9
+### HTTP 404 Error When Rendering Deployed SAP Fiori Application
 
-When rendering a Fiori application after being deployed to Cloud Foundry, the application fails to load. Using Developer Tools network console, the API call is returning a HTTP 404 Not Found. Please note, in some instances it can return a HTTP 403 response as well.
+When rendering an SAP Fiori application after being deployed to Cloud Foundry, the application fails to load. Using Developer Tools network console, the API call returns an HTTP 404 Not Found.
+
+> **Note:** In some instances it can return an HTTP 403 response as well.
 
 ![Issue 9 - 404 Error](Issue9-404Error.png?raw=true "HTTP 404 Not Found error in deployed application")
 
 This issue is typically caused by custom code that makes AJAX calls using absolute URL paths (paths starting with `/`) instead of relative paths. Common scenarios include:
 
-* Custom controller extensions making direct AJAX calls to backend services
-* Custom fragments or dialogs that fetch data programmatically
-* JavaScript code using `jQuery.ajax()`, `fetch()`, or similar methods with hardcoded absolute paths
-* Extension points where developers have added custom API calls
+- Custom controller extensions making direct AJAX calls to back-end services
+- Custom fragments or dialogs that fetch data programmatically
+- JavaScript code using `jQuery.ajax()`, `fetch()`, or similar methods with hardcoded absolute paths
+- Extension points where developers have added custom API calls
 
-**Important**: This issue assumes the OData service call is not being referenced from the `dataSources` section in `manifest.json`. If your service is properly configured in `dataSources`, the framework handles URL resolution automatically. This problem only occurs when developers bypass the standard SAPUI5 data binding mechanisms and make direct HTTP calls in custom code.
+**Important**: This issue assumes the OData service call does not reference the `dataSources` section in the `manifest.json` file. If your service is properly configured in `dataSources`, the framework handles URL resolution automatically. This problem only occurs when developers bypass the standard SAPUI5 data binding mechanisms and make direct HTTP calls in custom code.
 
-For detailed information, refer to the [SAP Support Portal](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
+For more information, see [SAP Support Portal](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
 
 #### Solution
 
 Based on the sample code above, change line 16 from `/sap/v2/product/MY_PRODUCT` to `sap/v2/product/MY_PRODUCT` where the leading slash is removed.
 
-This change assumes your `xs-app.json` is configured as follows:
+This change assumes your `xs-app.json` file is configured as follows:
 
 ```json
 {
@@ -426,15 +427,15 @@ This change assumes your `xs-app.json` is configured as follows:
 
 #### Understanding the Issue
 
-The 404 requests are being sent using the absolute URL path, for example:
+The 404 requests use the absolute URL path, for example:
 
 ```text
 https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
 ```
 
-However, valid HTTP calls should be sent to `https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/` which is the actual base URL of your application.
+However, valid HTTP calls are sent to `https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/` which is the actual base URL of your application.
 
-Removing the leading slash will now send the AJAX call to relative path of where the app is hosted, for example:
+Removing the leading slash now sends the AJAX call to the relative path of where the app is hosted, for example:
 
 ```text
 https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
@@ -442,7 +443,7 @@ https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/
 
 #### Additional Note
 
-If your `manifest.json` is configured with a datasource, for example:
+If your `manifest.json` file is configured with a datasource, for example:
 
 ```json
 "dataSources": {
@@ -456,14 +457,14 @@ If your `manifest.json` is configured with a datasource, for example:
 }
 ```
 
-There are additional changes that will allow you to use the `manifest.json` to find the base URL for your application. Refer to [SAP Community](https://community.sap.com/t5/technology-q-a/calling-service-using-ajax-in-fiori-elements-extension-doesn-t-work-in/qaq-p/12398015) for a detailed summary of the required changes or to the [SAPUI5 Documentation](https://ui5.sap.com/#/api/sap.ui.core.Manifest).
+There are additional changes that allow you to use the `manifest.json` file to find the base URL for your application. For more information, see [SAP Community](https://community.sap.com/t5/technology-q-a/calling-service-using-ajax-in-fiori-elements-extension-doesn-t-work-in/qaq-p/12398015) for a detailed summary of the required changes or the [SAPUI5](https://ui5.sap.com/#/api/sap.ui.core.Manifest) documentation.
 
 #### Reporting Issues
 
-If you still face issues, please open a support incident with SAP. When doing so, please provide a full network trace (`.har` file) with all the requests in the scenario after it was reproduced.
+If you still face issues, open a support incident with SAP. When doing so, provide a full network trace (`.har` file) with all the requests in the scenario after it was reproduced.
 
 For more information about how to extract the trace, see [How to capture an HTTP trace using Google Chrome or MS Edge (Chromium)](https://launchpad.support.sap.com/#/notes/1990706).
 
-### License
+## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
