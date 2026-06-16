@@ -84,6 +84,7 @@ See [SECURITY.md](.github/SECURITY.md) for reporting security vulnerabilities.
 - [SAP Open UX Tools](https://github.com/SAP/open-ux-tools)
 - [SAP Developer Center](https://developers.sap.com/)
 - [SAP UI5 SDK](https://sapui5.hana.ondemand.com/)
+- [Create a SAPUI5/SAP Fiori Freestyle App](https://discovery-center.cloud.sap/card/3fdc5280-bf00-4764-97ab-fdc10bd1542b)
 
 ## License
 

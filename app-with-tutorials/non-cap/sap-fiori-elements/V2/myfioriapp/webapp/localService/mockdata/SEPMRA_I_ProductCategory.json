@@ -1,0 +1,106 @@
+[
+	{
+		"ProductCategory": "Notebooks",
+		"MainProductCategory": "Computer Systems"
+	},
+	{
+		"ProductCategory": "PDAs & Organizers",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Flat Screen Monitors",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Laser Printers",
+		"MainProductCategory": "Printers & Scanners"
+	},
+	{
+		"ProductCategory": "Ink Jet Printers",
+		"MainProductCategory": "Printers & Scanners"
+	},
+	{
+		"ProductCategory": "Multifunction Printers",
+		"MainProductCategory": "Printers & Scanners"
+	},
+	{
+		"ProductCategory": "Mice",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Keyboards",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Mousepads",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Computer System Accessories",
+		"MainProductCategory": "Computer Systems"
+	},
+	{
+		"ProductCategory": "Graphic Cards",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Scanners",
+		"MainProductCategory": "Printers & Scanners"
+	},
+	{
+		"ProductCategory": "Speakers",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "Software",
+		"MainProductCategory": "Software"
+	},
+	{
+		"ProductCategory": "Telecommunications",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "PCs",
+		"MainProductCategory": "Computer Systems"
+	},
+	{
+		"ProductCategory": "Servers",
+		"MainProductCategory": "Computer Systems"
+	},
+	{
+		"ProductCategory": "Flat Screen TVs",
+		"MainProductCategory": "TV, Video & HiFi"
+	},
+	{
+		"ProductCategory": "Headsets",
+		"MainProductCategory": "Computer Components"
+	},
+	{
+		"ProductCategory": "MP3 Players",
+		"MainProductCategory": "TV, Video & HiFi"
+	},
+	{
+		"ProductCategory": "Portable Players",
+		"MainProductCategory": "TV, Video & HiFi"
+	},
+	{
+		"ProductCategory": "Projectors",
+		"MainProductCategory": "TV, Video & HiFi"
+	},
+	{
+		"ProductCategory": "Tablets",
+		"MainProductCategory": "Smartphones & Tablets"
+	},
+	{
+		"ProductCategory": "Smartphones",
+		"MainProductCategory": "Smartphones & Tablets"
+	},
+	{
+		"ProductCategory": "Accessories",
+		"MainProductCategory": "Smartphones & Tablets"
+	},
+	{
+		"ProductCategory": "Camcorders",
+		"MainProductCategory": "TV, Video & HiFi"
+	}
+]

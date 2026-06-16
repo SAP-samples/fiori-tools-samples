@@ -18,6 +18,7 @@ builder:
         target:
           url: https://658bd07a-eda6-40bc-b17a-b9a8b79b646b.abap.canaryaws.hanavlab.ondemand.com
           authenticationType: reentranceTicket # SAML support for vscode
+          destination: sap-ux-mock-services-v4
         app:
           name: TRAVELAPP
           description: Travel App
@@ -25,6 +26,7 @@ builder:
           transport: TR11111
         exclude:
           - /test/
+          - /localService/
   resources:
     excludes:
       - /test/**

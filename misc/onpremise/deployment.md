@@ -16,29 +16,39 @@ Table of Contents
 
 ## Prerequisites
 
-Before deploying, confirm the following on your back-end system:
+To use the OData service `/UI5/ABAP_REPOSITORY_SRV` to upload an SAPUI5 application, component, or library to the SAPUI5 ABAP repository, ensure the following requirements are met:
 
-- `/UI5/ABAP_REPOSITORY_SRV` is activated.
-- You have the required `S_DEVELOP` authorizations.
+- Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
+- You have `S_DEVELOP` authorisation in your back-end system.
+- For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
 
-For more information, see [Using an OData Service to Load Data to the SAPUI5 ABAP Repository](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
+For more information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites, see the [UI5 ABAP Repository Service documentation](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
+
+Any errors during deployment are reported in the HTTP status reports, either success or errors which may have occurred during the operation. The response header or the response body contains additional information, and below is a list of common issues when deploying to an ABAP target system.
 
 ---
 
 ## Debugging Deployment Errors (HTTP 401 and HTTP 403)
 
-- Review the ABAP transaction logs `/IWFND/ERROR_LOG` and `/IWFND/GW_CLIENT`. These logs indicate missing authorizations and other local issues.
-- For more information, see [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000).
+- **HTTP 401 Unauthorized** — authentication failed. Check credentials, destination configuration, and trust setup.
+- **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user.
 
-To capture verbose deployment debug output:
+Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues.
+
+To debug on the client side, capture verbose deployment output by setting the `DEBUG` and `NODE_DEBUG` environment variables before running the deploy command. The output is also written to `deploy-debug.log` for easy sharing with support:
 
 ```bash
 # Mac / Linux
-DEBUG=* npm run deploy
+DEBUG=* NODE_DEBUG=http,https,net,tls npm run deploy 2>&1 | tee deploy-debug.log
 
 # Windows (PowerShell)
-set DEBUG=* && npm run deploy
+$env:DEBUG="*"; $env:NODE_DEBUG="http,https,net,tls"; npm run deploy 2>&1 | Tee-Object deploy-debug.log
 ```
+
+### Resources
+
+- [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
+- Video guide: [Analyzing the `/IWFND/ERROR_LOG` OData Error Log](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
 ---
 
@@ -171,6 +181,8 @@ For more information, see [Using an OData Service to Load Data to the SAPUI5 ABA
 ## Known Issues
 
 - [SAP Note 3378435 - Response headers too big in /UI5/UI5_REPOSITORY_LOAD](https://me.sap.com/notes/0003378435)
+- [No default virus profile active or found](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000:52461)
+- [Common Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
 
 ---
 

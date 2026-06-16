@@ -1,6 +1,8 @@
 # Create a SAP BTP SAMLAssertion Destination to Consume V2 and V4 OData Catalogs
 
-1. Open the [s4hana-cloud_saml](s4hana-cloud_saml) file using a text editor or browser.
+> **Note**: This guide applies to **SAP Business Application Studio**. If you are using VS Code, configure `reentranceTicket` authentication directly in `ui5.yaml` and `ui5-deploy.yaml` using the `-api` endpoint. For more information, see [Authentication Method by Development Tool](README.md#authentication-method-by-development-tool).
+
+1. Open the [s4hana-cloud_saml.json](s4hana-cloud_saml.json) file using a text editor or browser.
 2. Replace all instances of `my1111111` with your specific hostname.
 3. Log in to your SAP BTP subaccount, select the `Destinations` tab, and select `Import Destination`.
 4. Log in to SAP Business Application Studio to consume the new destination to validate that the connection works.
@@ -34,6 +36,8 @@ The following screenshots show what the SAP BTP destination looks like once corr
 | `WebIDEUsage` | `odata_abap,dev_abap` |
 | `HTML5.DynamicDestination` | `true` |
 | `HTML5.Timeout` | `60000` |
+
+> **Note**: An additional optional property `samlAssertionEncoding` is available for `SAMLAssertion` destinations. It controls how the SAML assertion XML is encoded before being sent to the token service. Accepted values are `base64` (RFC 4648, section 4) and `base64url` (RFC 4648, section 5). If not set, the default is `base64` prior to the calendar week 24, 2026 Destination Service release (June 8 to 11, 2026) and `base64url` after. Set this property explicitly if your system requires a specific encoding to avoid unexpected behavior when the default changes. For more information, see [SAML Assertion Authentication](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/saml-assertion-authentication).
 
 ## License
 

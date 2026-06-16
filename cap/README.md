@@ -14,7 +14,9 @@ This repository provides sample CAP projects using different router configuratio
 
 3. [Managed Approuter with CDS Hybrid Profile](../cap/cap-fiori-hybrid/README.md) supporting HANA and XSUAA services hosted on SAP BTP
 
-4. [Create a SAP BTP Destination exposing CAP services](../cap/destination/README.md), also supports cross subaccount and regions
+4. [Application Frontend Service (AFS)](../cap/cap-with-frontend-service/README.md) with SAP HANA Cloud, XSUAA, Connectivity, and Destination services
+
+5. [Create a SAP BTP Destination exposing CAP services](../cap/destination/README.md), also supports cross subaccount and regions
 
 All CAP projects were generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) selecting the appropriate router configuration as the HTML5 application runtime.
 
@@ -23,4 +25,5 @@ All CAP projects were generated using the steps outlined in this [blog post](htt
 For more information on integrating CI/CD into your CAP deployment strategy, please refer to the [Continuous Integration and Delivery YouTube Tutorial](https://www.youtube.com/watch?v=gvWSHSZFPok).
 
 ### License
+
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.

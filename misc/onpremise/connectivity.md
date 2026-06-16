@@ -50,6 +50,19 @@ The Cloud Connector must be:
 - Configured with a virtual host mapping that points to your on-premise back-end host and port.
 - Set up with access control entries that allow requests from SAP BTP to reach the mapped paths.
 
+### Access Control and URL Path Configuration
+
+Incorrect URL path or Access Policy configuration in the virtual host mapping blocks requests before they reach the back-end. Each URL path entry defines which paths the Cloud Connector exposes, and the Access Policy controls whether sub-paths under that path are included.
+
+![SCC virtual host mapping table showing URL path / with Access Policy "Path Only (Sub-Paths Are Excluded)" and URL path /sap/opu/odata/ with Access Policy "Path And All Sub-Paths"](scc-access-control-url-paths.png?raw=true "SCC Access Control — URL Path Configuration")
+
+In the example above:
+
+- **URL Path `/`** with Access Policy **Path Only (Sub-Paths Are Excluded)**: only the exact root path `/` is exposed. All sub-paths are blocked, for example `/sap/bc/bsp` and `/sap/bc` are inaccessible. To expose a specific path such as `/myservice`, add a dedicated URL path entry for that path with the appropriate Access Policy.
+- **URL Path `/sap/opu/odata/`** with Access Policy **Path And All Sub-Paths**: `/sap/opu/odata/` and all paths beneath it are exposed, for example `/sap/opu/odata/IWFND/CATALOGSERVICE`. Requests to paths outside this prefix, such as `/sap/bc/bsp`, are still blocked.
+
+If you receive unexpected HTTP 403 responses after the Cloud Connector tunnel is established, check that the URL path and Access Policy combination covers all paths your application calls.
+
 ---
 
 ## SAP BTP Destination

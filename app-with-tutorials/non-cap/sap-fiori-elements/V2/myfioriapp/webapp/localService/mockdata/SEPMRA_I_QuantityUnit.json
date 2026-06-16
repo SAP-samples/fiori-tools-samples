@@ -1,0 +1,162 @@
+[
+	{
+		"UnitOfMeasure": "BAG",
+		"UnitOfMeasure_Text": "Bag",
+		"UnitOfMeasureISOCode": "BG"
+	},
+	{
+		"UnitOfMeasure": "BT",
+		"UnitOfMeasure_Text": "Bt.",
+		"UnitOfMeasureISOCode": "BO"
+	},
+	{
+		"UnitOfMeasure": "BOX",
+		"UnitOfMeasure_Text": "Box",
+		"UnitOfMeasureISOCode": "BX"
+	},
+	{
+		"UnitOfMeasure": "003",
+		"UnitOfMeasure_Text": "Bottle",
+		"UnitOfMeasureISOCode": "BO"
+	},
+	{
+		"UnitOfMeasure": "CV",
+		"UnitOfMeasure_Text": "Case",
+		"UnitOfMeasureISOCode": "CS"
+	},
+	{
+		"UnitOfMeasure": "DEG",
+		"UnitOfMeasure_Text": "deg",
+		"UnitOfMeasureISOCode": "DD"
+	},
+	{
+		"UnitOfMeasure": "DR",
+		"UnitOfMeasure_Text": "Dr",
+		"UnitOfMeasureISOCode": "DR"
+	},
+	{
+		"UnitOfMeasure": "DZ",
+		"UnitOfMeasure_Text": "dz",
+		"UnitOfMeasureISOCode": "DZN"
+	},
+	{
+		"UnitOfMeasure": "EA",
+		"UnitOfMeasure_Text": "EA",
+		"UnitOfMeasureISOCode": "EA"
+	},
+	{
+		"UnitOfMeasure": "GRO",
+		"UnitOfMeasure_Text": "gro",
+		"UnitOfMeasureISOCode": "GRO"
+	},
+	{
+		"UnitOfMeasure": "CAN",
+		"UnitOfMeasure_Text": "Can",
+		"UnitOfMeasureISOCode": "CA"
+	},
+	{
+		"UnitOfMeasure": "CAR",
+		"UnitOfMeasure_Text": "Car",
+		"UnitOfMeasureISOCode": "CT"
+	},
+	{
+		"UnitOfMeasure": "CRT",
+		"UnitOfMeasure_Text": "Crate",
+		"UnitOfMeasureISOCode": "BX"
+	},
+	{
+		"UnitOfMeasure": "KIT",
+		"UnitOfMeasure_Text": "KIT",
+		"UnitOfMeasureISOCode": "CT"
+	},
+	{
+		"UnitOfMeasure": "AU",
+		"UnitOfMeasure_Text": "AU",
+		"UnitOfMeasureISOCode": "C62"
+	},
+	{
+		"UnitOfMeasure": "014",
+		"UnitOfMeasure_Text": "000014",
+		"UnitOfMeasureISOCode": "ZNS"
+	},
+	{
+		"UnitOfMeasure": "PAA",
+		"UnitOfMeasure_Text": "PAIR",
+		"UnitOfMeasureISOCode": "PR"
+	},
+	{
+		"UnitOfMeasure": "PAC",
+		"UnitOfMeasure_Text": "PAC",
+		"UnitOfMeasureISOCode": "PK"
+	},
+	{
+		"UnitOfMeasure": "PAL",
+		"UnitOfMeasure_Text": "PAL",
+		"UnitOfMeasureISOCode": "PF"
+	},
+	{
+		"UnitOfMeasure": "013",
+		"UnitOfMeasure_Text": "000011",
+		"UnitOfMeasureISOCode": "PCE"
+	},
+	{
+		"UnitOfMeasure": "PER",
+		"UnitOfMeasure_Text": "per",
+		"UnitOfMeasureISOCode": "PCE"
+	},
+	{
+		"UnitOfMeasure": "PNS",
+		"UnitOfMeasure_Text": "PNS",
+		"UnitOfMeasureISOCode": "ZNS"
+	},
+	{
+		"UnitOfMeasure": "PRS",
+		"UnitOfMeasure_Text": "PRS",
+		"UnitOfMeasureISOCode": "IE"
+	},
+	{
+		"UnitOfMeasure": "RL",
+		"UnitOfMeasure_Text": "RL",
+		"UnitOfMeasureISOCode": "RL"
+	},
+	{
+		"UnitOfMeasure": "ROL",
+		"UnitOfMeasure_Text": "ROL",
+		"UnitOfMeasureISOCode": "RO"
+	},
+	{
+		"UnitOfMeasure": "015",
+		"UnitOfMeasure_Text": "000013",
+		"UnitOfMeasureISOCode": "3H"
+	},
+	{
+		"UnitOfMeasure": "SCM",
+		"UnitOfMeasure_Text": "SCM",
+		"UnitOfMeasureISOCode": "SCM"
+	},
+	{
+		"UnitOfMeasure": "SET",
+		"UnitOfMeasure_Text": "SET",
+		"UnitOfMeasureISOCode": "SET"
+	},
+	{
+		"UnitOfMeasure": "SHT",
+		"UnitOfMeasure_Text": "SHT",
+		"UnitOfMeasureISOCode": "ST"
+	},
+	{
+		"UnitOfMeasure": "PC",
+		"UnitOfMeasure_Text": "PC",
+		"UnitOfMeasureISOCode": "PCE"
+	},
+	{
+		"UnitOfMeasure": "TS",
+		"UnitOfMeasure_Text": "thou",
+		"UnitOfMeasureISOCode": "MIL"
+	},
+	{
+		"UnitOfMeasure": "UK",
+		"UnitOfMeasure_Text": "UK",
+		"UnitOfMeasureISOCode": "PA"
+	}
+]

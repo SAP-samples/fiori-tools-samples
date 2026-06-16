@@ -98,6 +98,20 @@ Work through the sections in order. Each page links to the next.
 
 ---
 
+## Before Raising a Ticket
+
+Complete the following before opening a support ticket:
+
+1. **Environment check** — run the [Environment Check](../destinations/README.md#environment-check) report from SAP Business Application Studio and confirm there are no errors.
+2. **Deployment prerequisites** — confirm all [Prerequisites](./deployment.md#prerequisites) are met, including `S_DEVELOP` authorisation and `HTML5.Timeout` configuration.
+3. **Failing OData services** — enable trace logging to capture detailed error output:
+   - [Cloud Connector trace logs](./connectivity.md#enable-cloud-connector-trace-logging) for connectivity issues.
+   - [ABAP transaction logs](./connectivity.md#abap-transaction-logs) (`/IWFND/ERROR_LOG`) for back-end authorization and service errors.
+
+If the issue persists, see the [Support Checklist](./support-checklist.md) for artifacts to attach to the ticket.
+
+---
+
 ## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company.
