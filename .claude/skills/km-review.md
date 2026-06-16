@@ -325,7 +325,7 @@ For detailed findings, run: /km-review misc/sslcerts/README.md
 
 ## Related Files
 
-- `prompts/km-doc-review.md` - Full KM review prompt (v2.0)
+- `prompts/km-doc-review.md` - Full KM review prompt (v2.1.0)
 - `docs/km-style-guide.md` - Complete KM standards reference
 - `docs/km-pr-checklist.md` - PR review checklist
 - `training-data/km-feedback-patterns.json` - Feedback pattern analysis
