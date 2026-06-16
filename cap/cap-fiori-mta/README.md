@@ -1,57 +1,63 @@
-# Get Started with SAP Cloud Application Programming Model (CAP) using Fiori tools and Managed Approuter
+# Get Started with SAP Cloud Application Programming Model (CAP) Using SAP Fiori Tools and Managed Approuter
 
-Build and deploy a CAP Project API with a Fiori Elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP).
+Build and deploy a CAP project API with an SAP Fiori elements UI and a managed approuter configuration hosted on SAP Business Technology Platform (BTP).
 
-The CAP project was generated using the steps outlined in this [blog post](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) using the `Managed Approuter` configuration as the HTML5 application runtime. 
+This CAP project was generated using the steps outlined in the [Build and deploy a CAP Project Node.js API with an SAP Fiori Elements UI and a managed approuter configuration](https://blogs.sap.com/2022/02/10/build-and-deploy-a-cap-project-node.js-api-with-a-sap-fiori-elements-ui-and-a-managed-approuter-configuration/) blog post using the `Managed Approuter` configuration as the HTML5 application runtime. 
 
 ## Prerequisites
-These are only required if deploying to Cloud Foundry (CF)
-- You’ll need an SAP Cloud Platform trial [account](https://account.hana.ondemand.com/)
-- You are subscribed to the [Launchpad Service](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html)
-- Create an [SAP HANA Cloud Service instance](https://developers.sap.com/tutorials/btp-app-hana-cloud-setup.html#08480ec0-ac70-4d47-a759-dc5cb0eb1d58) or use an existing one
+The following prerequisites are only required if deploying to Cloud Foundry:
+- You have an SAP Cloud Platform trial account. For more information, see [SAP Business Technology Platform](https://account.hana.ondemand.com/).
+- You are subscribed to the SAP Fiori launchpad service. For more information, see [Set Up SAP Build Work Zone, standard edition Using a Trial Account](https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html).
+- You have created an SAP HANA Cloud Service instance or are using an existing one. For more information, see [SAP HANA Cloud Service Instance](https://developers.sap.com/tutorials/btp-app-hana-cloud-setup.html#08480ec0-ac70-4d47-a759-dc5cb0eb1d58) tutorial.
 
-### Running on SAP Business Application Studio (SBAS)
-- Create a [dev workspace](https://help.sap.com/viewer/c2b99f19e9264c4d9ae9221b22f6f589/2021_3_QRC/en-US/f728966223894cc28be3ca2ee60ee784.html) using a `Full Stack Cloud Application`
+## How to Use SAP Business Application Studio
+- Create a dev workspace using a `Full Stack Cloud Application`. For more information, see [Set up a Development Space for Full-Stack Cloud Applications](https://help.sap.com/docs/hana-cloud-database/sap-hana-cloud-sap-hana-database-developer-guide-for-cloud-foundry-multitarget-applications-sap-business-app-studio/set-up-development-space-for-full-stack-cloud-applications?version=2026_1_QRC).
 
-## Setup and Run Locally
-- Open a terminal window and run `npm ci`
-- Bind and publish to your [HANA Cloud Service instance](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html)
-- Run `cds watch` to build and start your application
-- Select `Open in New Tab` when prompted, a new browser tab should open
-- Select your Fiori web application or select the `Books` service endpoint
+## Run Locally
+1. Open a terminal window and run `npm ci`.
+2. Bind and publish to your HANA Cloud service instance. For more information, see [Create an SAP HANA Database Project](https://developers.sap.com/tutorials/hana-cloud-create-db-project.html).
+3. Run `cds watch` to build and start your application.
+4. Click `Open in New Tab` when prompted and a new browser tab opens.
+5. Select your SAP Fiori web application or select the `Books` service endpoint.
 
-## Build and Deploy to CF
-Option 1 - Using [Cloud MTA Build Tool](https://github.com/SAP/cloud-mta-build-tool)
-- If you've made any changes, right-click `mta.yaml` and select `Build MTA Project`
-- Right-click `mta_archives -> managedAppCAPProject_1.0.0.mtar` and select `Deploy MTA Archive`
-- This will prompt you for your CF details if you are not already logged in
-- Your CAP Project will be successfully deployed to CF
+## Build and Deploy to Cloud Foundry
 
-Option 2 - Using cli
-- Run the following command;
+### Using the [Cloud MTA Build Tool](https://github.com/SAP/cloud-mta-build-tool)
+1. Right-click the `mta.yaml` file and click `Build MTA Project`.
+2. Right-click `mta_archives -> managedAppCAPProject_1.0.0.mtar` and click `Deploy MTA Archive`.
+If you aren't logged in, you're prompted for your Cloud Foundry credentials. Then, your CAP project is deployed to Cloud Foundry.
+
+### Using the CLI
+- Run the following command:
 ```shell
 npm run build && npm run deploy
 ```
-- This will prompt you for your CF details if you are not already logged in
-- Your CAP Project will be successfully deployed to CF
+If you aren't logged in, you're prompted for your Cloud Foundry credentials. Then, your CAP project is deployed to Cloud Foundry.
 
 ## Verify Deployment
-- Option 1 - Open a new terminal window and run, selecting the URL generated;
+### Using the CLI
+1. Open a new terminal window and run:
 ```shell
 cf html5-list -u -di managedAppCAPProject-destination-service -u --runtime launchpad
 ```
-- Option 2 - Using SAP BTP Cockpit, login to your SAP BTP subaccount, select `HTML5 Applications` from the left navigation tab and select your new Fiori application
+2. Select the URL you generated.
+
+### Using SAP BTP
+
+1. Go to the SAP BTP Cockpit and login to your SAP BTP subaccount.
+
+2. Click `HTML5 Applications` from the navigation sidebar and select your new SAP Fiori application.
 
 ## Undeploy
-No longer want your CAP project hosted on SAP BTP, run the following command;
+To remove your Cloud Foundry project from SAP BTP, run the following command:
 ```shell
 npm run undeploy
 ```
 
 ## Get Support
 
-In case you've a question, find a bug, or otherwise need support, use the [SAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce) to get more visibility.
+If you need support, use the [SAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce).
 
-### License
+## License
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
 

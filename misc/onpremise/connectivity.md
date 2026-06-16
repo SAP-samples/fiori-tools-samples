@@ -31,8 +31,8 @@ SAP BTP on-premise destinations support several authentication types. The right 
 
 - **No user-level audit trail.** With `NoAuthentication`, the back-end cannot identify which end user made a request: all requests arrive anonymously. With `BasicAuthentication`, all requests arrive under the same shared technical account. Neither approach gives you per-user authorization enforcement or a meaningful audit log.
 - **Shared credentials are a liability.** A `BasicAuthentication` password stored in the destination is shared across every user and application that uses it. Rotating it requires updating the destination configuration and redeploying any bound applications. A compromise affects everyone simultaneously.
-- **Least-privilege is impossible.** Back-end authorization roles (such as SAP S/4HANA object-level authorizations) are assigned to users. With a technical user, you either over-privilege (grant it everything) or under-privilege (break scenarios for some users). Principal propagation lets the back-end apply each user's own authorizations exactly.
-- **Compliance requirements.** Many enterprise security policies and audits (SOX, ISO 27001, SAP security baselines) require that actions in back-end systems are traceable to individual users. Anonymous or shared-user access fails this requirement.
+- **Least-privilege is impossible.** Back-end authorization roles, such as SAP S/4HANA object-level authorizations, are assigned to users. With a technical user, you either over-privilege it by granting it everything, or under-privilege it and break scenarios for some users. Principal propagation lets the back-end apply each user's own authorizations exactly.
+- **Compliance requirements.** Many enterprise security policies and audits (SOX, ISO 27001, and SAP security baselines) require that actions in back-end systems are traceable to individual users. Anonymous or shared-user access fails this requirement.
 
 `PrincipalPropagation` solves all of these: the back-end sees the actual user, applies that user's roles, and can log the action against their identity—without storing any long-lived credentials in the destination configuration.
 
@@ -50,24 +50,11 @@ The Cloud Connector must be:
 - Configured with a virtual host mapping that points to your on-premise back-end host and port.
 - Set up with access control entries that allow requests from SAP BTP to reach the mapped paths.
 
-### Access Control and URL Path Configuration
-
-Incorrect URL path or Access Policy configuration in the virtual host mapping blocks requests before they reach the back-end. Each URL path entry defines which paths the Cloud Connector exposes, and the Access Policy controls whether sub-paths under that path are included.
-
-![SCC virtual host mapping table showing URL path / with Access Policy "Path Only (Sub-Paths Are Excluded)" and URL path /sap/opu/odata/ with Access Policy "Path And All Sub-Paths"](scc-access-control-url-paths.png?raw=true "SCC Access Control — URL Path Configuration")
-
-In the example above:
-
-- **URL Path `/`** with Access Policy **Path Only (Sub-Paths Are Excluded)**: only the exact root path `/` is exposed. All sub-paths are blocked, for example `/sap/bc/bsp` and `/sap/bc` are inaccessible. To expose a specific path such as `/myservice`, add a dedicated URL path entry for that path with the appropriate Access Policy.
-- **URL Path `/sap/opu/odata/`** with Access Policy **Path And All Sub-Paths**: `/sap/opu/odata/` and all paths beneath it are exposed, for example `/sap/opu/odata/IWFND/CATALOGSERVICE`. Requests to paths outside this prefix, such as `/sap/bc/bsp`, are still blocked.
-
-If you receive unexpected HTTP 403 responses after the Cloud Connector tunnel is established, check that the URL path and Access Policy combination covers all paths your application calls.
-
 ---
 
 ## SAP BTP Destination
 
-You can import the [Cloud Connector destination](./cloudconnector) example into the SAP BTP cockpit. Below is an example of destination properties:
+You can import the [Cloud Connector destination](./cloudconnector) example into the SAP BTP cockpit. The following is an example of destination properties:
 
 ```ini
 # SAP BTP Cloud Connector Destination Example
@@ -109,7 +96,7 @@ You can also run a manual connection test from an SAP Business Application Studi
 curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled" > curl-catalog-output.txt 2>&1
 ```
 
-Review `curl-catalog-output.txt` to check for connectivity or authentication errors.
+Review the `curl-catalog-output.txt` file to check for connectivity or authentication errors.
 
 ---
 
@@ -118,13 +105,13 @@ Review `curl-catalog-output.txt` to check for connectivity or authentication err
 If connectivity fails, run these checks first:
 
 - Is the Cloud Connector running and connected to the SAP BTP subaccount?
-- Is the virtual host mapping (virtual host/port and back-end host/port) configured and active?
+- Is the virtual host mapping, which includes the virtual host and port, and back-end host and port, configured and active?
 - Does the destination point to the correct `CloudConnectorLocationId`?
 - Are the authentication settings in the destination and the back-end system aligned (such as principal propagation, SSL, and certificates)?
 - Are firewalls or proxies blocking traffic between the Cloud Connector and the back-end? This often occurs when moving to production because the originating IPs change. See [SAP BTP IP ranges](https://help.sap.com/docs/bas/sap-business-application-studio/sap-business-application-studio-availability?locale=en-US#inbound-ip-address%20) for the addresses to allowlist.
 - Can you access the back-end system directly from the Cloud Connector host using `curl` or a web browser?
 
-If problems persist, follow the [trace logging](#enable-cloud-connector-trace-logging) steps below to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
+If problems persist, follow the [trace logging](#enable-cloud-connector-trace-logging) steps to gather logs and re-run the [Environment Check report](../destinations/README.md#environment-check).
 
 ---
 
@@ -132,16 +119,16 @@ If problems persist, follow the [trace logging](#enable-cloud-connector-trace-lo
 
 ### SAP Cloud Connector Trace Logs
 
-> Only use trace logging for troubleshooting. This is not recommended in production on a long-term basis.
+> Only use trace logging for troubleshooting. Do not use this in production on a long-term basis.
 
 1. In the Cloud Connector UI: **Log In** > **Log and Trace Files** > **Edit**.
 2. Set **Cloud Connector Loggers** to `ALL` and **Other Loggers** to `Information`.
 3. Enable **Payload Trace** and ensure the correct subaccount is selected.
 4. Reproduce the failing scenario and capture the following logs:
    - `ljs_trace.log` (Cloud Connector)
-   - `scc_core.log` (if present)
-   - `traffic_trace_<subaccount>_on_<region>.trc` (required)
-   - `tunnel_traffic_trace_<subaccount>_on_<region>.trc` (if applicable)
+   - `scc_core.log`, if present
+   - `traffic_trace_<subaccount>_on_<region>.trc`, required
+   - `tunnel_traffic_trace_<subaccount>_on_<region>.trc`, if applicable
 5. After capturing logs, revert logging levels to avoid excessive log generation.
 
 For more information, see [Monitoring, Logging, and Troubleshooting](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector-troubleshooting).
@@ -165,14 +152,14 @@ If you do not see network traffic in the `traffic_trace_` logs, the most likely 
 
 **Resources:**
 
-- [OData V4 Service Catalog Tutorial](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068)
-- [OData V4 Service Catalog Documentation](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html)
+- [OData V4 Service Catalog](https://community.sap.com/t5/technology-blog-posts-by-sap/odata-v4-service-catalog/ba-p/13477068) tutorial
+- [OData V4 Service Catalog](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/68bf513362174d54b58cddec28794093/326e64dbe120405e852046afa5de2235.html) documentation
 - [SAP Note 2954378 - No authorization to access service group '/IWNGW/NOTIFICATION'](https://launchpad.support.sap.com/#/notes/0002954378)
 - [SAP Note 2928752 - How to activate ICF nodes in SAP Gateway](https://launchpad.support.sap.com/#/notes/0002928752)
 
 ### OData V2 Catalog Returns HTTP 404
 
-- [SAP Note 2489898 - HTTP 404 Not Found for /IWFND/CATALOGSERVICE and Cannot load tile on SAP Fiori Launchpad](https://me.sap.com/notes/0002489898)
+- [SAP Note 2489898 - HTTP 404 Not Found for /IWFND/CATALOGSERVICE and Cannot load tile on SAP Fiori launchpad](https://me.sap.com/notes/0002489898)
 
 ---
 

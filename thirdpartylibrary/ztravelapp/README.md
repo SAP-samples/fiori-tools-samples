@@ -1,56 +1,56 @@
-# Adding External Library to your SAP Fiori UI application
+# Adding an External Library to Your SAP Fiori UI Application
 
-In this sample project, `xml-js` is going to be added as an external library.
+In this sample project, `xml-js` is added as an external library.
 
-# Prerequisites
+## Prerequisites
 
-- You’ll need an SAP Business Technology Platform (SAP BTP) account
-- You are subscribed to SAP Business Application Studio, follow this [tutorial](https://help.sap.com/products/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html) for more information
-- Sub-account destination `northwind` is available
+- You have an SAP Business Technology Platform (SAP BTP) account.
+- You are subscribed to SAP Business Application Studio. For more information, see [Getting Started with SAP Business Application Studio](https://help.sap.com/products/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
+- You have the `northwind` sub-account destination available.
 
-# Create SAP Fiori Dev Space
+## Create SAP Fiori Dev Space
 
-From your SAP BTP cockpit, select Instances and Subscriptions, select SAP Business Application Studio which will open a new tab into your dev space manager. Generate a SAP Fiori dev space.
+From your SAP BTP cockpit, select Instances and Subscriptions and select SAP Business Application Studio and open your dev space manager in a new tab. Create an SAP Fiori dev space.
 
-# Generate a freestyle SAPUI5 application
+## Generate a Freestyle SAPUI5 Application
 
-Please refer to the following link, [Developing Apps with SAP Fiori Tools](https://sapui5.hana.ondemand.com/sdk/#/topic/a460a7348a6c431a8bd967ab9fb8d918) for more information.
+For more information, see [Developing Apps with SAP Fiori Tools](https://sapui5.hana.ondemand.com/sdk/#/topic/a460a7348a6c431a8bd967ab9fb8d918).
 
-# Tasks
+## Tasks
 
-Append third party library to `package.json`;
+Add the third-party library to the `package.json` file:
 ```bash
 npm install xml-js --save-prod
 ```
 
-Append UI5 tooling extension to include a custom middleware and a custom task which allows use of NPM package names in your code;
+Add the UI5 tooling extension to include a custom middleware and a custom task which allows use of `npm` package names in your code:
 ```bash
 npm install ui5-tooling-modules --save-prod
 ```
 
-Open `ui5.yaml` and append a new task, ensuring the alignment is maintained;
-```YAML
+Open the `ui5.yaml` file and add a new task, which ensures the alignment is maintained:
+```yaml
     - name: ui5-tooling-modules-middleware
       afterMiddleware: compression
       configuration:
         addToNamespace: true
 ```
 
-Open `View1.controller.js` and append the `xml-js` library;
-```JS
+Open the `View1.controller.js` file and add the `xml-js` library:
+```javascript
 sap.ui.define(
   ["sap/ui/core/mvc/Controller", "xml-js"],
 ```
 
-Understanding the `sap.ui.defined` JavaScript namespace, please refer to this [link](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui%23methods/sap.ui.define) paying attention to the `Third Party Modules` section, as this provides guidance on how third party modules are imported and referenced.
+For more information about the `sap.ui.defined` JavaScript namespace, see [sap.ui.define API Reference](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui%23methods/sap.ui.define). Pay attention to the `Third Party Modules` section, which provides guidance on how third-party modules are imported and referenced.
 
-Next, update the `function` to reference this library;
-```JS
+Next, update the `function` to reference this library:
+```javascript
 function (Controller, xmljs) {
 ```
 
-With these changes, you can now consume the library inside your code;
-```JS
+With these changes, you can now consume the library inside your code:
+```javascript
  var xmlToJson = JSON.parse(
       xmljs.xml2json(xml, {
         compact: true,
@@ -60,10 +60,10 @@ With these changes, you can now consume the library inside your code;
     console.log(`>>>> xmlToJson ${JSON.stringify(xmlToJson)}`);
 ```
 
-# Additional Links
+## Additional Links
 
-* [External libraries in UI5 + CAP + SAP Build Work Zone, Standard Edition](https://blogs.sap.com/2023/11/08/external-libraries-in-ui5-cap-sap-build-work-zone-standard-edition/)
-* [Smart templates and SAP Fiori Apps – 57 Tips and Tricks](https://community.sap.com/t5/-/-/m-p/13406652)
+- [External libraries in UI5 + CAP + SAP Build Work Zone, Standard Edition](https://blogs.sap.com/2023/11/08/external-libraries-in-ui5-cap-sap-build-work-zone-standard-edition/)
+- [Smart templates and SAP Fiori Apps – 57 Tips and Tricks](https://community.sap.com/t5/-/-/m-p/13406652)
 
 ## License
 

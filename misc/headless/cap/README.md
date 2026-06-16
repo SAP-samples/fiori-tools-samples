@@ -1,30 +1,30 @@
 # Running CAP Headless
 
-> **Important**: The commands and scripts in this guide will generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system should be run with the authorization of your IT support team.
+> **Important**: The commands and scripts in this guide generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system must be run with the authorization of your IT support team.
 
-Append a SAP UI application with a managed approuter configuration to an existing CAP project, using the headless generator.  
+Append an SAP UI application with a managed approuter configuration to an existing CAP project, using the headless generator.  
 
-# Prerequisites
+## Prerequisites
 
-- `@sap/cds-dk` is installed globally, if not, run `npm i -g @sap/cds-dk` from a new terminal window
+- You have `@sap/cds-dk` installed globally. If not, run `npm i -g @sap/cds-dk` from a new terminal window.
 
-# Create a CAP project (Optional)
+## Create a CAP Project (Optional)
 
-Generate a CAP project with sample data and a HANA configuration;
+Generate a CAP project with sample data and a HANA configuration:
 
 ```bash
 cds init managedAppCAPProject && cd managedAppCAPProject && cds add tiny-sample && cds add hana && cds add mta && npm install && cds build --for hana && cp gen/db/package.json db && npm i
 ```
 
-# Create a SAP Fiori UI and deployment configuration
+## Create an SAP Fiori UI and Deployment Configuration
 
-Generate a new configuration file called `cap_app_config.json` and update the properties to reflect your CAP project, the CAP Service properties and the specific SAP Fiori project attributes.
+Generate a new configuration file called `cap_app_config.json` file and update the properties to reflect your CAP project, the CAP Service properties, and the specific SAP Fiori project attributes.
 
 ```bash
 touch cap_app_config.json
 ```
 
-Amend the following configuration properties, this assumes the root folder is called `managedAppCAPProject`, only the target folder will differ between Business Application Studio (BAS) and VSCode;
+Amend the following configuration properties, this assumes the root folder is called `managedAppCAPProject`, only the target folder differs between Business Application Studio (SAP Business Application Studio) and VS Code:
 
 ```JSON
 {
@@ -69,9 +69,9 @@ Amend the following configuration properties, this assumes the root folder is ca
 }
 ```
 
-# Run headless generator
+## Run Headless Generator
 
-Inside the root of the newly created CAP project, run the headless generator with the SAP UI and deployment configuration;
+Inside the root of the newly created CAP project, run the headless generator with the SAP UI and deployment configuration:
 
 ```bash
 yo @sap/fiori-elements:headless <path-to-config-file> <optional-path-to-output-or-cwd> <options>
@@ -83,21 +83,21 @@ Options:
 --deleteFile: Delete the input app configuration file
 --logLevel debug | info
 
-For example;
+For example:
 
 ```bash
 yo @sap/fiori:headless ./cap_app_config.json ./
 ```
 
-With `logLevel` and `skipInstall` enabled;
+With `logLevel` and `skipInstall` enabled:
 ```bash
 yo @sap/fiori:headless ./cap_app_config.json --logLevel debug --skipInstall
 ```
 
-# Gotchas
+## Troubleshooting
 
-1. If you want to generate a SAP Fiori UI application without any Cloud Foundry deployment configuration, then remove `deployConfig` from `cap_app_config.josn`.
-1. If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` should be removed or set to `false`.
+- If you want to generate an SAP Fiori UI application without any Cloud Foundry deployment configuration, then remove `deployConfig` from `cap_app_config.json`.
+- If you have created a CAP project using an existing `managed` or `standalone` approuter configuration, then `addToManagedAppRouter` must be removed or set to `false`.
 
-### License
+## License
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.

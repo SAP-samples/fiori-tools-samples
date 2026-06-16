@@ -1,10 +1,14 @@
-Deploy CAP Project using a Fiori UI and in-memory database with FLP support
+# Deploy CAP Project Using an SAP Fiori UI and In-Memory Database with SAP Fiori Launchpad Support
 
-- Dev space is created using SAP Fiori or Full Stack Development
-- Ensure CDS is installed by runnging `npm i -g @sap/cds-dk`
-- Determine a valid MTA id, for example `standaloneCAPProject`
+## Prerequisites
 
-1. Run the following commands;
+- You have a SAP Fiori or Full Stack Development dev space.
+- You have CDS installed. Verify by running: `npm i -g @sap/cds-dk`.
+- You have determined a valid MTA ID, for example `standaloneCAPProject`.
+
+## Prepare Application
+
+1. Run the following commands:
 ```bash
 cds init standaloneCAPProject
 cd  standaloneCAPProject/
@@ -12,21 +16,21 @@ cds add samples
 cds add mta
 ```
 
-2. The base of your CAP project is now configured
+You have created the base of your CAP project.
 
-3. Open `package.json` and make the following changes;
+2. Open the `package.json` file and make the following changes:
 
-a. move `"sqlite3": "^5.0.4"` from `devDependencies` to `dependencies`
+   1. Move `"sqlite3": "^5.0.4"` from `devDependencies` to `dependencies`.
 
-b. add the following to `dependencies`
-```JSON
+   2. Add the following to `dependencies`:
+```json
   "@sap/xsenv": "^4.2.0",
   "@sap/xssec": "^3.6.0", 
   "passport": "^0.6.0"
 ```
 
-c. Connecting CDS to the SQLite in-memory database, open `package.json` and include the following `cds` node;
-```JSON
+   3. Open the `package.json` file and include the following `cds` node:
+```json
     "cds": {
         "requires": {
             "db": {
@@ -41,9 +45,10 @@ c. Connecting CDS to the SQLite in-memory database, open `package.json` and incl
         }
     }    
 ```
+   You have connected CDS to the SQLite in-memory database.
 
-4. Open `mta.yaml` and make the following changes to `build-parameters`;
-```YAML
+3. Open the `mta.yaml` file and make the following changes to `build-parameters`:
+```yaml
 build-parameters:
   before-all:
    - builder: custom
@@ -53,8 +58,8 @@ build-parameters:
       - cp -r db/data gen/srv/srv/data
 ```
 
-5. Open `srv/cat-service.cds`, append the following UI annotations;
-```JSON
+4. Open the `srv/cat-service.cds` file and append the following UI annotations:
+```json
 	annotate CatalogService.Books with @(
     UI : { 
         SelectionFields  : [
@@ -73,36 +78,36 @@ build-parameters:
   };
 ```
 
-6. Run `npm install`
+5. Run `npm install`.
 
-7. Run `cds watch` to validate everything is working, follow the new tab to validate your catalog service is running
+6. Run `cds watch` and validate your catalog service is running in the new tab.
 
-8. Right click mta and select `Create MTA Module from Template`
-	- Select `Approuter Configuration`
-	- Select your HTML5 application runtime - select `Standalone Approuter`
-	- Do you want to add authentication? - `Yes`
-	- Do you plan to add a UI? - `Yes`
-	- Select Next
+7. Right-click **mta** and select **Create MTA Module from Template**.
+	- Select **Approuter Configuration**.
+	- Select your HTML5 application runtime and select **Standalone Approuter**
+	- Set **Do you want to add authentication?** to **Yes**.
+	Set **Do you plan to add a UI?** to **Yes**.
+	- Click **Next**.
 
-9. Right click mta and select `Create MTA Module from Template`
-	- Select `SAP Fiori Application`
-	- Select your application type and floor plan
-	- Select `Use a Local CAP Project` and point to your new CAP project
-	- Select OData Service
-	- Select Main entity
-	- Enter a unique project name i.e. `mystandalonecapproject`
-	- Select Add deployment configuration to MTA project - `Yes` (will have detected your mta.yaml already generated)
-  - Select Add FLP configuration - `Yes`
-  - Select Next
-	- Select Please choose the target - `Cloud Foundry`
-	- Select `None` for your destination
-  - Select Semantic Object? - `MyStandaloneCapProject`
-  - Select Action? - `display`
-  - Select Title? - `The Title of my Standalone App`
-  - Select Finish
+8. Right-click **mta** and click **Create MTA Module from Template**.
+	- Select `SAP Fiori Application`.
+	- Select your application type and floorplan.
+	- Select `Use a Local CAP Project` and point to your new CAP project.
+	- Select OData Service.
+	- Select Main entity.
+	- Enter a unique project name, such as `mystandalonecapproject`.
+	- Set **Add deployment configuration to MTA project** to `Yes` to use the `mta.yaml` file you have already generated.
+  - Set **Add FLP configuration** to **Yes**.
+  - Click **Next**.
+	- Set **Please choose the target** to `Cloud Foundry`.
+	- Set **Destination** to **None**.
+  - Set **Semantic Object?** to `MyStandaloneCapProject`.
+  - Set **Action** to **display**.
+  - Set **Title?** to **The Title of my Standalone App**.
+  - Click **Finish**.
 
-10. Open app/mystandalonecapproject/xs-app.json, add the following route as the first route in the list;
-```JSON	
+9. Open the `app/mystandalonecapproject/xs-app.json` file and add the following route as the first route in the list:
+```json	
     {
       "authenticationType": "none",
       "csrfProtection": false,
@@ -111,11 +116,11 @@ build-parameters:
     },	
 ```
 
-11. Open `mta.yaml` make the following changes
+19. Open the `mta.yaml` file and make the following changes:
 
-- Update the existing module standaloneCAPProject-srv to reflect the following attributes
+   - Update the existing `standaloneCAPProject-srv` module to reflect the following attributes:
 
-```YAML
+```yaml
 - name: standaloneCAPProject-srv
   type: nodejs
   path: gen/srv
@@ -131,9 +136,9 @@ build-parameters:
     builder: npm-ci
 ```   		
 	
-- add the following destination resource `standaloneCAPProject-destination-service`
+   - Add the following destination resource: `standaloneCAPProject-destination-service`
 
-```YAML
+```yaml
 - Authentication: NoAuthentication
   Name: cap-launchpad
   ProxyType: Internet
@@ -143,15 +148,15 @@ build-parameters:
   HTML5.ForwardAuthToken: true
 ```
 
-- also, add the following `requires` node
+- Add the following `requires` node:
 
-```YAML
+```yaml
 requires:
   - name: srv-api 
 ```
 
-Full example:
-```YAML
+Example:
+```yaml
 - name: standaloneCAPProject-destination-service
   type: org.cloudfoundry.managed-service
   requires:
@@ -181,21 +186,21 @@ Full example:
     service-plan: lite
 ```
 
-12. Your application is now ready for deployment or local development    
+20. Your application is now ready for local development and deployment.    
 
-To deploy the application to Cloud Foundry
+## Deploy Application to Cloud Foundry
 
-1. Open the <mta-id>-approuter folder and open `package.json`, change `"@sap/approuter": "10.5.1"` to `"@sap/approuter": "11.5.0"` and change `"node": "^10.0.0 || ^12.0.0"` to `"node": ">= 14.0.0"` this is to support node v16 on Cloud Foundry
+- Open the `<mta-id>-approuter` folder and open the `package.json` file. Change `"@sap/approuter": "10.5.1"` to `"@sap/approuter": "11.5.0"` and change `"node": "^10.0.0 || ^12.0.0"` to `"node": ">= 14.0.0"` to support Node.js v16 on Cloud Foundry.
 
-Using SAP Business Application Studio;
+### Using SAP Business Application Studio
 
-2. Right click the mta.yaml and select `Build MTA Project`, this will generate an mtar archive
+1. Right-click the `mta.yaml` file and click **Build MTA Project**. This generates an `mtar` archive.
 
-3. Right click the mtar in the `mta_archives` folder and select `Deploy MTA Archive`, if not logged into Cloud Foundry it will fail
+3. Right-click the `mtar` archive in the `mta_archives` folder and click `Deploy MTA Archive`. Ensure you are logged into Cloud Foundry.
 
-Using VSCode
+### Using VS Code
 
-1. Run the following command
-```BASH
+Run the following command:
+```bash
 npm run build && npm run deploy
 ```

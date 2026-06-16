@@ -1,25 +1,25 @@
 # Running SAP UI Headless
 
-> **Important**: The commands and scripts in this guide will generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system should be run with the authorization of your IT support team.
+> **Important**: The commands and scripts in this guide generate and modify HTML5 application files. Ensure all existing application source files are under source control before running the headless generator. Any scripts that change the behaviour of your system must be run with the authorization of your IT support team.
 
-Generate a SAP Fiori UI application with a managed approuter configuration.
+Generate an SAP Fiori UI application with a managed approuter configuration.
 
-# Prerequisites
+## Prerequisites
 
-- The OData XML metadata is required to generate the SAP Fiori UI application. In the example below, the metadata is available at https://services.odata.org/V2/Northwind/Northwind.svc/$metadata.
-- When appending the raw XML data, replace each `"` with `\"` so it can be added as a string to the JSON configuration.
+- You have the OData XML metadata required to generate the SAP Fiori UI application. In the following example, the metadata is available at https://services.odata.org/V2/Northwind/Northwind.svc/$metadata.
+- You have replaced each `"` with `\"` in the raw XML data so it can be added as a string to the JSON configuration.
 
-# Create a SAP Fiori UI and deployment configuration
+## Create an SAP Fiori UI and Deployment Configuration
 
-Generate a new configuration file called `cap_app_config.json` and update the properties to reflect your CAP project, the CAP Service properties and the specific SAP Fiori project attributes.
+Generate a new configuration file called `cap_app_config.json` and update the properties to reflect your CAP project, the CAP Service properties, and the specific SAP Fiori project attributes.
 
 ```bash
 touch app_config.json
 ```
 
-Amend the following configuration properties;
+Amend the following configuration properties:
 
-```JSON
+```json
 {
   "version": "0.2",
   "floorplan": "FE_LROP",
@@ -56,9 +56,9 @@ Amend the following configuration properties;
 }
 ```
 
-# Run headless generator
+## Run Headless Generator
 
-Change into the directory where you want to create the new SAP Fiori UI application, for example `/Users/Documents/dev/`, run the headless generator with the SAP UI and deployment configuration;
+Change into the directory where you want to create the new SAP Fiori UI application, for example `/Users/Documents/dev/`, run the headless generator with the SAP UI and deployment configuration:
 
 ```bash
 yo @sap/fiori:headless <path-to-config-file> <optional-path-to-output-or-cwd> <options>
@@ -70,21 +70,21 @@ Options:
 --deleteFile: Delete the input app configuration file
 --logLevel debug | info
 
-For example;
+For example:
 
 ```bash
 yo @sap/fiori:headless ./app_config.json
 ```
 
-With `logLevel` and `skipInstall` enabled;
+With `logLevel` and `skipInstall` enabled:
 ```bash
 yo @sap/fiori:headless ./app_config.json --logLevel debug --skipInstall
 ```
 
-# Gotchas
+## Troubleshooting
 
-1. If you want to generate a SAP Fiori UI application without Build Workzone (FLP) configuration, then remove `flpConfig` from `app_config.josn`. Same applies to `deployConfig`, remove this node if you don't want to append Cloud Foundry deployment configuration.
+- If you want to generate an SAP Fiori UI application without Build Workzone (FLP) configuration, then remove `flpConfig` from `app_config.josn`. Same applies to `deployConfig`, remove this node if you don't want to append Cloud Foundry deployment configuration.
 
 
-### License
+## License
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
