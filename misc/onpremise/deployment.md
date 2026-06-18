@@ -34,7 +34,12 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 - **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user as described in [Prerequisites](#prerequisites).
 - **HTTP 502 Bad Gateway** — the gateway received an invalid response from the upstream ABAP back-end system. Common causes:
   - The back-end system or a reverse proxy in front of it (such as SAP Web Dispatcher) is not running or returning an unexpected response.
-  - The destination `URL` includes a service path. The `URL` must contain only the host — the deployment tool appends the service path automatically. For example, use `https://<hostname>` and not `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
+  - The destination `URL` includes a service path. Set the `URL` to the host address only — do not include a path after the hostname. The deployment tool adds the correct path automatically.
+
+    | | Example |
+    |---|---|
+    | **Correct** | `https://<hostname>` |
+    | **Incorrect** | `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` |
 
   Run `DEBUG=* npm run deploy` to expose the full request path in the output. Verify the URL and path match the expected back-end endpoint.
 - **HTTP 503 Service Unavailable** — two common causes:
