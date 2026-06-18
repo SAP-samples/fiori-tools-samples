@@ -1,5 +1,4 @@
 node_modules/
-package-lock.json
 dist/
 .scp/
 .env
@@ -9,3 +8,4 @@ mta-*
 resources
 archive.zip
 .*_mta_build_tmp
+.DS_Store
