@@ -31,7 +31,7 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 ## Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, and HTTP 503)
 
 - **HTTP 401 Unauthorized** — authentication failed. Check credentials, destination configuration, and trust setup.
-- **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user.
+- **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user as described in [Prerequisites](#prerequisites).
 - **HTTP 502 Bad Gateway** — the gateway received an invalid response from the upstream ABAP back-end system. Common causes:
   - The back-end system or a reverse proxy in front of it (such as SAP Web Dispatcher) is not running or returning an unexpected response.
   - The destination `URL` includes a service path. The `URL` must contain only the host — the deployment tool appends the service path automatically. For example, use `https://<hostname>` and not `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.

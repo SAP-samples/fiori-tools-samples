@@ -37,7 +37,7 @@ Collected trace logs (see [Enable Cloud Connector Trace Logging](./connectivity.
 
 ### ABAP Transaction Logs
 
-- Output from `/IWFND/ERROR_LOG`. For more information, see the [ODATA Error Log Analysis video guide](https://www.youtube.com/watch?v=Tmb-O966GwM).
+- Output from the ABAP transaction log `/IWFND/ERROR_LOG`. For instructions on accessing this log, see [ABAP Transaction Logs](./connectivity.md#abap-transaction-logs).
 
 ---
 
