@@ -45,10 +45,10 @@ DEBUG=* NODE_DEBUG=http,https,net,tls npm run deploy 2>&1 | tee deploy-debug.log
 $env:DEBUG="*"; $env:NODE_DEBUG="http,https,net,tls"; npm run deploy 2>&1 | Tee-Object deploy-debug.log
 ```
 
-### Resources
+### Further Reading
 
-- [Deployment to ABAP On-Premise System](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
-- Video guide: [Analyzing the `/IWFND/ERROR_LOG` OData Error Log](https://www.youtube.com/watch?v=Tmb-O966GwM)
+- [Common Deployment Issues](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:45996:50742:46000)
+- [Analyzing the ABAP Transaction log `/IWFND/ERROR_LOG`](https://www.youtube.com/watch?v=Tmb-O966GwM)
 
 ---
 
