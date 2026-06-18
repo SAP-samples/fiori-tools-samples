@@ -35,6 +35,8 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 - **HTTP 502 Bad Gateway** — the gateway received an invalid response from the upstream ABAP back-end system. Common causes:
   - The back-end system or a reverse proxy in front of it (such as SAP Web Dispatcher) is not running or returning an unexpected response.
   - The destination `URL` property points to an incorrect host or port, causing the request to reach the wrong service.
+
+  Run `DEBUG=* npm run deploy` to expose the full request path in the output. Verify the URL and path match the expected back-end endpoint.
 - **HTTP 503 Service Unavailable** — two common causes:
   - The Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
   - The `HTML5.Timeout` destination property is too low and the request times out before the upload completes. Set it to a minimum of `60000`.
