@@ -39,9 +39,9 @@ Any errors during deployment are reported in the HTTP status reports, either suc
     | | Example |
     |---|---|
     | **Correct** | `https://<hostname>` |
-    | **Incorrect** | `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` |
+    | **Incorrect** | `https://<hostname>/sap/opu/odata/My/OdataService` |
 
-  Run `DEBUG=* npm run deploy` to expose the full request path in the output. Verify the URL and path match the expected back-end endpoint.
+  Run `DEBUG=* npm run deploy` to expose the full request path in the output. The path must match `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
 - **HTTP 503 Service Unavailable** — two common causes:
   - The Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
   - The `HTML5.Timeout` destination property is too low and the request times out before the upload completes. Set it to a minimum of `60000`.
