@@ -21,6 +21,12 @@ To use the OData service `/UI5/ABAP_REPOSITORY_SRV` to upload an SAPUI5 applicat
 - Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
 - You have `S_DEVELOP` authorisation in your back-end system.
 - For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
+- For SAP BTP destinations, ensure the destination `URL` contains only the hostname — remove any service path or sub-path. The deployment tool appends the correct path automatically.
+
+  | | Example |
+  |---|---|
+  | **Correct** | `https://<hostname>` |
+  | **Incorrect** | `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` |
 
 For more information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites, see the [UI5 ABAP Repository Service documentation](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
