@@ -5,7 +5,7 @@ This page covers how to deploy your SAP Fiori app to an on-premise ABAP reposito
 Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, and HTTP 503)](#debugging-deployment-errors-http-401-http-403-http-502-and-http-503)
+- [Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, HTTP 503, and HTTP 504)](#debugging-deployment-errors-http-401-http-403-http-502-http-503-and-http-504)
 - [Connection Test](#connection-test)
   - [What the Test Validates](#what-the-test-validates)
 - [Unknown File Type During Upload](#unknown-file-type-during-upload)
@@ -28,7 +28,7 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 
 ---
 
-## Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, and HTTP 503)
+## Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, HTTP 503, and HTTP 504)
 
 - **HTTP 401 Unauthorized** — authentication failed. Check credentials, destination configuration, and trust setup.
 - **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user as described in [Prerequisites](#prerequisites).
@@ -41,10 +41,9 @@ Any errors during deployment are reported in the HTTP status reports, either suc
     | **Correct** | `https://<hostname>` |
     | **Incorrect** | `https://<hostname>/sap/opu/odata/My/OdataService` |
 
-  Run `DEBUG=* npm run deploy` to expose the full request path in the output. The path must match `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
-- **HTTP 503 Service Unavailable** — two common causes:
-  - The Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
-  - The `HTML5.Timeout` destination property is too low and the request times out before the upload completes. Set it to a minimum of `60000`.
+  Run `DEBUG=* npm run deploy` to expose the full request path in the output. The path must match `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
+- **HTTP 503 Service Unavailable** — the Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
+- **HTTP 504 Gateway Timeout** — the gateway did not receive a response from the back-end system in time. Increase the `HTML5.Timeout` destination property to a minimum of `60000` (milliseconds) as described in [Prerequisites](#prerequisites).
 
 Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues. See [ABAP Transaction Logs](./connectivity.md#abap-transaction-logs) for more information.
 
