@@ -5,7 +5,7 @@ This page covers how to deploy your SAP Fiori app to an on-premise ABAP reposito
 Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Debugging Deployment Errors (HTTP 401 and HTTP 403)](#debugging-deployment-errors-http-401-and-http-403)
+- [Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, HTTP 503, and HTTP 504)](#debugging-deployment-errors-http-401-http-403-http-502-http-503-and-http-504)
 - [Connection Test](#connection-test)
   - [What the Test Validates](#what-the-test-validates)
 - [Unknown File Type During Upload](#unknown-file-type-during-upload)
@@ -18,22 +18,41 @@ Table of Contents
 
 To use the OData service `/UI5/ABAP_REPOSITORY_SRV` to upload an SAPUI5 application, component, or library to the SAPUI5 ABAP repository, ensure the following requirements are met:
 
-- Activate the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
+- You have activated the `/UI5/ABAP_REPOSITORY_SRV` service in your back-end system.
 - You have `S_DEVELOP` authorisation in your back-end system.
-- For SAP BTP destinations, ensure the `HTML5.Timeout` property is configured with a minimum value of `60000`.
+- You have set the `HTML5.Timeout` property to a minimum value of `60000` in your SAP BTP destination.
+- You have configured the SAP BTP destination `URL` to contain only the hostname, without a service path. The deployment tool appends the correct path automatically.
+
+  | | Example |
+  |---|---|
+  | **Correct** | `https://<hostname>` |
+  | **Incorrect** | `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV` |
 
 For more information about `/UI5/ABAP_REPOSITORY_SRV` and completing these prerequisites, see the [UI5 ABAP Repository Service documentation](https://ui5.sap.com/#/topic/a883327a82ef4cc792f3c1e7b7a48de8).
 
-Any errors during deployment are reported in the HTTP status reports, either success or errors which may have occurred during the operation. The response header or the response body contains additional information, and below is a list of common issues when deploying to an ABAP target system.
+Any errors during deployment are reported in the HTTP status reports, either success or errors which may have occurred during the operation. The response header or the response body contains additional information. The following are common issues when deploying to an ABAP target system.
 
 ---
 
-## Debugging Deployment Errors (HTTP 401 and HTTP 403)
+## Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, HTTP 503, and HTTP 504)
 
-- **HTTP 401 Unauthorized** — authentication failed. Check credentials, destination configuration, and trust setup.
-- **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user.
+- **HTTP 401 Unauthorized**: authentication failed. Check credentials, destination configuration, and trust setup.
+- **HTTP 403 Forbidden**: authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user as described in [Prerequisites](#prerequisites).
+- **HTTP 502 Bad Gateway**: the gateway received an invalid response from the upstream ABAP back-end system. Common causes:
+  - The back-end system or a reverse proxy in front of it, such as SAP Web Dispatcher, is not running or returning an unexpected response.
+  - The destination `URL` includes a service path. Set the `URL` to the host address only. Do not include a path after the hostname. The deployment tool adds the correct path automatically.
 
-Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues.
+    | | Example |
+    |---|---|
+    | **Correct** | `https://<hostname>` |
+    | **Incorrect** | `https://<hostname>/sap/opu/odata/My/OdataService` |
+
+  Run `DEBUG=* npm run deploy` to expose the full request path in the output. The path must match `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
+- **HTTP 503 Service Unavailable**: the most common deployment error. The Cloud Connector cannot establish a secure tunnel to the back-end system. Common causes:
+  - A local firewall or proxy is blocking the connection. Confirm [connectivity](./connectivity.md) before retrying. See also [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526).
+- **HTTP 504 Gateway Timeout**: the gateway did not receive a response from the back-end system in time. Increase the `HTML5.Timeout` destination property to a minimum of `60000` milliseconds, as described in [Prerequisites](#prerequisites).
+
+Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues. See [ABAP Transaction Logs](./connectivity.md#abap-transaction-logs) for more information.
 
 To debug on the client side, capture verbose deployment output by setting the `DEBUG` and `NODE_DEBUG` environment variables before running the deploy command. The output is also written to `deploy-debug.log` for easy sharing with support:
 
