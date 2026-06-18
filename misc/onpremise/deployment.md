@@ -34,7 +34,6 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 - **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user.
 - **HTTP 502 Bad Gateway** — the gateway received an invalid response from the upstream ABAP back-end system. Common causes:
   - The back-end system or a reverse proxy in front of it (such as SAP Web Dispatcher) is not running or returning an unexpected response.
-  - The destination `URL` property points to an incorrect host or port, causing the request to reach the wrong service.
   - The destination `URL` includes a service path. The `URL` must contain only the host — the deployment tool appends the service path automatically. For example, use `https://<hostname>` and not `https://<hostname>/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
 
   Run `DEBUG=* npm run deploy` to expose the full request path in the output. Verify the URL and path match the expected back-end endpoint.
@@ -42,7 +41,7 @@ Any errors during deployment are reported in the HTTP status reports, either suc
   - The Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
   - The `HTML5.Timeout` destination property is too low and the request times out before the upload completes. Set it to a minimum of `60000`.
 
-Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues.
+Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues. See [ABAP Transaction Logs](./connectivity.md#abap-transaction-logs) for more information.
 
 To debug on the client side, capture verbose deployment output by setting the `DEBUG` and `NODE_DEBUG` environment variables before running the deploy command. The output is also written to `deploy-debug.log` for easy sharing with support:
 
