@@ -5,7 +5,7 @@ This page covers how to deploy your SAP Fiori app to an on-premise ABAP reposito
 Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Debugging Deployment Errors (HTTP 401, HTTP 403, and HTTP 503)](#debugging-deployment-errors-http-401-http-403-and-http-503)
+- [Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, and HTTP 503)](#debugging-deployment-errors-http-401-http-403-http-502-and-http-503)
 - [Connection Test](#connection-test)
   - [What the Test Validates](#what-the-test-validates)
 - [Unknown File Type During Upload](#unknown-file-type-during-upload)
@@ -28,10 +28,14 @@ Any errors during deployment are reported in the HTTP status reports, either suc
 
 ---
 
-## Debugging Deployment Errors (HTTP 401, HTTP 403, and HTTP 503)
+## Debugging Deployment Errors (HTTP 401, HTTP 403, HTTP 502, and HTTP 503)
 
 - **HTTP 401 Unauthorized** — authentication failed. Check credentials, destination configuration, and trust setup.
 - **HTTP 403 Forbidden** — authenticated but missing back-end authorization. Verify `S_DEVELOP` authorisation for your user.
+- **HTTP 502 Bad Gateway** — the SAP BTP destination received an invalid response from the back-end system or Cloud Connector. Common causes:
+  - The destination `URL` property points to an incorrect host or port.
+  - The Cloud Connector virtual host mapping is incorrect — verify the mapping in the Cloud Connector administration UI.
+  - The back-end system is unreachable or not running.
 - **HTTP 503 Service Unavailable** — two common causes:
   - The Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
   - The `HTML5.Timeout` destination property is too low and the request times out before the upload completes. Set it to a minimum of `60000`.
