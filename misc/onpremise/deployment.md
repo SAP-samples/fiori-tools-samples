@@ -48,7 +48,9 @@ Any errors during deployment are reported in the HTTP status reports, either suc
     | **Incorrect** | `https://<hostname>/sap/opu/odata/My/OdataService` |
 
   Run `DEBUG=* npm run deploy` to expose the full request path in the output. The path must match `/sap/opu/odata/UI5/ABAP_REPOSITORY_SRV`.
-- **HTTP 503 Service Unavailable** — the Cloud Connector cannot establish a secure tunnel to the back-end system, often caused by a local firewall or proxy. See [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526) and confirm [connectivity](./connectivity.md) before retrying.
+- **HTTP 503 Service Unavailable** — the most common deployment error. The Cloud Connector cannot establish a secure tunnel to the back-end system. Common causes:
+  - A local firewall or proxy is blocking the connection. Confirm [connectivity](./connectivity.md) before retrying. See also [Invalid proxy response status: 503 Service Unavailable](https://ga.support.sap.com/index.html#/tree/3046/actions/45995:48363:53594:63697:48366:52526).
+  - The destination `URL` uses the wrong protocol. Verify the protocol matches what the back-end system expects — use `https://` unless the system is explicitly configured for `http://`.
 - **HTTP 504 Gateway Timeout** — the gateway did not receive a response from the back-end system in time. Increase the `HTML5.Timeout` destination property to a minimum of `60000` (milliseconds) as described in [Prerequisites](#prerequisites).
 
 Review the ABAP transaction log `/IWFND/ERROR_LOG` for missing authorization details and other back-end issues. See [ABAP Transaction Logs](./connectivity.md#abap-transaction-logs) for more information.
