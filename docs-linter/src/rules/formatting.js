@@ -65,10 +65,9 @@ class FormattingRules {
           });
         });
 
-        // Check for proper title case in main headings (h1, h2)
-        if (node.depth <= 2) {
-          const titleCase = this.toTitleCase(text);
-          if (text !== titleCase && this.shouldUseTitleCase(text)) {
+        // Check for proper title case — applies to all heading levels per KM style guide
+        const titleCase = this.toTitleCase(text);
+        if (text !== titleCase && this.shouldUseTitleCase(text)) {
             issues.push({
               id: `heading-title-case-${line}`,
               category: 'formatting',
@@ -85,7 +84,6 @@ class FormattingRules {
               }
             });
           }
-        }
       }
     });
 
@@ -421,24 +419,29 @@ class FormattingRules {
   }
 
   toTitleCase(str) {
-    return str.replace(/\w\S*/g, (txt) => {
-      // Don't capitalize small words unless they're at the beginning
-      const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'up'];
-      const word = txt.toLowerCase();
+    // Chicago title case per KM style guide
+    // Lowercase: articles, coordinating conjunctions, short prepositions (4 letters or fewer)
+    const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'with', 'yet'];
+    const words = str.split(' ');
 
-      if (smallWords.includes(word)) {
-        return word;
+    return words.map((word, index) => {
+      const lower = word.toLowerCase();
+      // Always capitalize first and last word
+      if (index === 0 || index === words.length - 1) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
       }
-
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
+      // Keep small words lowercase
+      if (smallWords.includes(lower)) {
+        return lower;
+      }
+      // Capitalize everything else (including participles like "Using", "Running")
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
   }
 
   shouldUseTitleCase(text) {
-    // Only suggest title case for clearly title-like headings
-    const titleIndicators = ['overview', 'introduction', 'getting started', 'prerequisites', 'conclusion'];
-    const lowerText = text.toLowerCase();
-    return titleIndicators.some(indicator => lowerText.includes(indicator));
+    // Apply title case check to all headings — not just a subset
+    return text.length > 2;
   }
 }
 

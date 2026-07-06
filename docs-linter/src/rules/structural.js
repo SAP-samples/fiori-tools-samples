@@ -14,7 +14,10 @@ class StructuralRules {
       this.checkHeadingHierarchy,
       this.checkTableOfContents,
       this.checkSectionOrder,
-      this.checkDocumentLength
+      this.checkDocumentLength,
+      this.checkPrerequisitesBulletStyle,
+      this.checkLicenseHeadingLevel,
+      this.checkHeadingNames
     ];
   }
 
@@ -288,7 +291,6 @@ class StructuralRules {
     const lines = content.split('\n');
     const nonEmptyLines = lines.filter(line => line.trim().length > 0);
 
-    // Very short README files might be incomplete
     if (file.endsWith('README.md') && nonEmptyLines.length < 20) {
       issues.push({
         id: 'short-readme',
@@ -301,12 +303,11 @@ class StructuralRules {
       });
     }
 
-    // Very long files without proper structure
     if (nonEmptyLines.length > 500) {
       const headings = this.extractHeadings(context.ast);
       const headingRatio = headings.length / nonEmptyLines.length;
 
-      if (headingRatio < 0.02) { // Less than 2% headings
+      if (headingRatio < 0.02) {
         issues.push({
           id: 'long-unstructured',
           category: 'structural',
@@ -318,6 +319,171 @@ class StructuralRules {
         });
       }
     }
+
+    return issues;
+  }
+
+  /**
+   * Check that Prerequisites bullet points start with "You have" or "You are"
+   */
+  checkPrerequisitesBulletStyle(context) {
+    const issues = [];
+    const { ast, content } = context;
+
+    const headings = this.extractHeadings(ast);
+    const lines = content.split('\n');
+
+    headings.forEach(heading => {
+      if (heading.text.toLowerCase().includes('prerequisite') || heading.text.toLowerCase().includes('requirement')) {
+        // Find all list items under this heading until next heading
+        let inSection = false;
+        lines.forEach((line, index) => {
+          const lineNum = index + 1;
+          if (lineNum === heading.line) {
+            inSection = true;
+            return;
+          }
+          if (inSection && line.match(/^#{1,6}\s/)) {
+            inSection = false;
+            return;
+          }
+          if (inSection && line.match(/^[-*]\s+/)) {
+            const itemText = line.replace(/^[-*]\s+/, '').trim();
+            if (itemText && !itemText.match(/^You (have|are)\b/i)) {
+              issues.push({
+                id: `prereq-bullet-style-${lineNum}`,
+                category: 'structural',
+                severity: 'warning',
+                message: `Prerequisites bullet should start with "You have" or "You are": "${itemText.substring(0, 50)}"`,
+                line: lineNum,
+                suggestion: 'Start each prerequisite with "You have" or "You are"',
+                fixable: false,
+                safeFix: false
+              });
+            }
+          }
+        });
+      }
+    });
+
+    return issues;
+  }
+
+  /**
+   * Check that the License heading is H2
+   */
+  checkLicenseHeadingLevel(context) {
+    const issues = [];
+    const { ast } = context;
+
+    const headings = this.extractHeadings(ast);
+    headings.forEach(heading => {
+      if (heading.text.toLowerCase() === 'license' && heading.depth !== 2) {
+        issues.push({
+          id: `license-heading-level-${heading.line}`,
+          category: 'structural',
+          severity: 'warning',
+          message: `License heading should be H2, found H${heading.depth}`,
+          line: heading.line,
+          suggestion: 'Use ## License',
+          fixable: true,
+          safeFix: true,
+          fix: {
+            type: 'replace',
+            from: '#'.repeat(heading.depth) + ' License',
+            to: '## License'
+          }
+        });
+      }
+    });
+
+    return issues;
+  }
+
+  /**
+   * Check standard heading names per KM style guide
+   */
+  checkHeadingNames(context) {
+    const issues = [];
+    const { ast } = context;
+
+    // Headings must not end with colon or question mark
+    const headings = this.extractHeadings(ast);
+    headings.forEach(heading => {
+      const text = heading.text;
+
+      if (text.endsWith(':') || text.endsWith('?')) {
+        issues.push({
+          id: `heading-end-punctuation-${heading.line}`,
+          category: 'structural',
+          severity: 'warning',
+          message: `Heading must not end with "${text.slice(-1)}": "${text}"`,
+          line: heading.line,
+          suggestion: 'Remove trailing colon or question mark from heading',
+          fixable: true,
+          safeFix: true,
+          fix: {
+            type: 'replace',
+            from: text,
+            to: text.replace(/[:?]+$/, '')
+          }
+        });
+      }
+
+      // Step X: prefix banned
+      if (text.match(/^Step\s+\d+[:.]/i)) {
+        issues.push({
+          id: `heading-step-prefix-${heading.line}`,
+          category: 'structural',
+          severity: 'warning',
+          message: `Do not use "Step N:" as heading prefix: "${text}"`,
+          line: heading.line,
+          suggestion: 'Use a descriptive heading; number the steps in the Table of Contents instead',
+          fixable: false,
+          safeFix: false
+        });
+      }
+
+      // Issue N: prefix banned
+      if (text.match(/^Issue\s+\d+[:.]/i)) {
+        issues.push({
+          id: `heading-issue-prefix-${heading.line}`,
+          category: 'structural',
+          severity: 'warning',
+          message: `Do not use "Issue N:" as heading prefix: "${text}"`,
+          line: heading.line,
+          suggestion: 'Use a descriptive heading that summarises the problem',
+          fixable: false,
+          safeFix: false
+        });
+      }
+
+      // Discouraged heading names
+      const discouragedNames = {
+        'get support': 'Help and Support',
+        'get help': 'Help and Support',
+        'setup and run locally': 'Run Locally',
+        'gotchas': 'Troubleshooting'
+      };
+      const lowerText = text.toLowerCase();
+      if (discouragedNames[lowerText]) {
+        issues.push({
+          id: `heading-name-${heading.line}`,
+          category: 'structural',
+          severity: 'info',
+          message: `Prefer "${discouragedNames[lowerText]}" over "${text}"`,
+          line: heading.line,
+          suggestion: `Use "${discouragedNames[lowerText]}"`,
+          fixable: true,
+          safeFix: false,
+          fix: {
+            type: 'replace',
+            from: text,
+            to: discouragedNames[lowerText]
+          }
+        });
+      }
+    });
 
     return issues;
   }

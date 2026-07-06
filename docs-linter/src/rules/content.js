@@ -14,27 +14,22 @@ class ContentRules {
       this.checkCompleteness,
       this.checkConsistency,
       this.checkWritingStyle,
-      this.checkExamples
+      this.checkExamples,
+      this.checkSemicolonUsage,
+      this.checkSingleItemOrderedLists,
+      this.checkListCountInProse
     ];
   }
 
-  /**
-   * Check all content rules against the document
-   */
   async check(context) {
     const issues = [];
-
     for (const rule of this.ruleSet) {
       const ruleIssues = await rule.call(this, context);
       issues.push(...ruleIssues);
     }
-
     return issues;
   }
 
-  /**
-   * Check for content clarity improvements based on KM patterns
-   */
   checkContentClarity(context) {
     const issues = [];
     const { content, patterns } = context;
@@ -43,17 +38,12 @@ class ContentRules {
 
     const lines = content.split('\n');
 
-    // Check for clarity improvements from KM patterns
     if (patterns.content) {
       patterns.content.forEach(pattern => {
         if (pattern.before && pattern.after) {
           const beforeText = pattern.before.toLowerCase();
-
           lines.forEach((line, index) => {
-            const lowerLine = line.toLowerCase();
-
-            // Check for vague language that was improved
-            if (lowerLine.includes(beforeText)) {
+            if (line.toLowerCase().includes(beforeText)) {
               issues.push({
                 id: `clarity-improvement-${index + 1}`,
                 category: 'content',
@@ -63,11 +53,7 @@ class ContentRules {
                 suggestion: `Consider: "${pattern.after}"`,
                 fixable: true,
                 safeFix: false,
-                fix: {
-                  type: 'replace',
-                  from: pattern.before,
-                  to: pattern.after
-                }
+                fix: { type: 'replace', from: pattern.before, to: pattern.after }
               });
             }
           });
@@ -75,11 +61,9 @@ class ContentRules {
       });
     }
 
-    // Check for common clarity issues
     lines.forEach((line, index) => {
       const lowerLine = line.toLowerCase().trim();
 
-      // Vague language
       const vaguePatterns = [
         { pattern: 'it is recommended', suggestion: 'Use specific recommendation' },
         { pattern: 'you can', suggestion: 'Be more specific about actions' },
@@ -103,7 +87,6 @@ class ContentRules {
         }
       });
 
-      // Passive voice checks
       if (this.isPassiveVoice(line)) {
         issues.push({
           id: `passive-voice-${index + 1}`,
@@ -121,24 +104,13 @@ class ContentRules {
     return issues;
   }
 
-  /**
-   * Check content completeness based on context
-   */
   checkCompleteness(context) {
     const issues = [];
     const { content } = context;
 
-    // Check for placeholder text
-    const placeholderPatterns = [
-      '[TODO]',
-      '[TBD]',
-      '[Add content here]',
-      '[Description]',
-      '[Insert]',
-      'Lorem ipsum'
-    ];
-
+    const placeholderPatterns = ['[TODO]', '[TBD]', '[Add content here]', '[Description]', '[Insert]', 'Lorem ipsum'];
     const lines = content.split('\n');
+
     lines.forEach((line, index) => {
       placeholderPatterns.forEach(placeholder => {
         if (line.includes(placeholder)) {
@@ -156,14 +128,7 @@ class ContentRules {
       });
     });
 
-    // Check for incomplete lists
-    const unfinishedSentences = [
-      'such as:',
-      'including:',
-      'for example:',
-      'like:'
-    ];
-
+    const unfinishedSentences = ['such as:', 'including:', 'for example:', 'like:'];
     lines.forEach((line, index) => {
       unfinishedSentences.forEach(pattern => {
         if (line.toLowerCase().endsWith(pattern)) {
@@ -184,10 +149,8 @@ class ContentRules {
       });
     });
 
-    // Check for broken internal references
     const internalLinks = content.match(/\[.*?\]\(#.*?\)/g) || [];
     const headings = this.extractAnchorTargets(content);
-
     internalLinks.forEach(link => {
       const match = link.match(/\[.*?\]\(#(.*?)\)/);
       if (match) {
@@ -209,14 +172,10 @@ class ContentRules {
     return issues;
   }
 
-  /**
-   * Check for terminology and style consistency
-   */
   checkConsistency(context) {
     const issues = [];
     const { content } = context;
 
-    // Common terminology inconsistencies based on KM patterns
     const terminologyChecks = [
       {
         variations: ['onpremise', 'on premise', 'on-premise'],
@@ -237,18 +196,13 @@ class ContentRules {
 
     terminologyChecks.forEach(check => {
       const foundVariations = new Set();
-      const lines = content.split('\n');
-
-      lines.forEach((line, index) => {
+      content.split('\n').forEach(line => {
         check.variations.forEach(variation => {
-          if (line.includes(variation)) {
-            foundVariations.add(variation);
-          }
+          if (line.includes(variation)) foundVariations.add(variation);
         });
       });
 
       if (foundVariations.size > 1) {
-        const variations = Array.from(foundVariations);
         issues.push({
           id: `terminology-inconsistency-${check.preferred.replace(/\s/g, '-')}`,
           category: 'content',
@@ -257,11 +211,7 @@ class ContentRules {
           suggestion: `Use "${check.preferred}" consistently throughout the document`,
           fixable: true,
           safeFix: false,
-          fix: {
-            type: 'standardize-terminology',
-            variations: variations,
-            preferred: check.preferred
-          }
+          fix: { type: 'standardize-terminology', variations: Array.from(foundVariations), preferred: check.preferred }
         });
       }
     });
@@ -269,36 +219,18 @@ class ContentRules {
     return issues;
   }
 
-  /**
-   * Check writing style based on KM improvements
-   */
   checkWritingStyle(context) {
     const issues = [];
     const { content } = context;
 
-    const lines = content.split('\n');
+    const styleImprovements = [
+      { pattern: 'for more information around', improvement: 'for more information about', message: 'Use "about" instead of "around"' },
+      { pattern: 'refer to this', improvement: 'see this', message: 'Use "see" instead of "refer to" for more natural language' },
+      { pattern: 'for these purposes', improvement: 'for this purpose', message: 'Use singular form for clarity' }
+    ];
 
-    lines.forEach((line, index) => {
+    content.split('\n').forEach((line, index) => {
       const lowerLine = line.toLowerCase();
-
-      // Check for improved phrasing from KM patterns
-      const styleImprovements = [
-        {
-          pattern: 'for more information around',
-          improvement: 'for more information about',
-          message: 'Use "about" instead of "around"'
-        },
-        {
-          pattern: 'refer to this',
-          improvement: 'see this',
-          message: 'Use "see" instead of "refer to" for more natural language'
-        },
-        {
-          pattern: 'for these purposes',
-          improvement: 'for this purpose',
-          message: 'Use singular form for clarity'
-        }
-      ];
 
       styleImprovements.forEach(style => {
         if (lowerLine.includes(style.pattern)) {
@@ -311,18 +243,12 @@ class ContentRules {
             suggestion: `Use: "${style.improvement}"`,
             fixable: true,
             safeFix: true,
-            fix: {
-              type: 'replace',
-              from: style.pattern,
-              to: style.improvement
-            }
+            fix: { type: 'replace', from: style.pattern, to: style.improvement }
           });
         }
       });
 
-      // Check for proper sentence structure
       if (line.trim().length > 0 && !line.trim().startsWith('#') && !line.trim().startsWith('-') && !line.trim().startsWith('*')) {
-        // Very long sentences (over 150 characters) might be hard to read
         if (line.length > 150 && line.includes(',') && !line.includes('```')) {
           issues.push({
             id: `long-sentence-${index + 1}`,
@@ -341,47 +267,32 @@ class ContentRules {
     return issues;
   }
 
-  /**
-   * Check for appropriate examples and code snippets
-   */
   checkExamples(context) {
     const issues = [];
     const { content, ast } = context;
 
-    // Check that code blocks have explanations
     visit(ast, 'code', (node) => {
       const line = this.getLineNumber(node);
-      const code = node.value;
-
-      if (code.length > 50) { // Substantial code blocks
-        // Look for explanation before or after the code block
-        const hasExplanation = this.hasNearbyExplanation(node, context.content);
-
-        if (!hasExplanation) {
-          issues.push({
-            id: `code-needs-explanation-${line}`,
-            category: 'content',
-            severity: 'info',
-            message: 'Code block should have explanation',
-            line: line,
-            suggestion: 'Add explanation before or after the code block',
-            fixable: false,
-            safeFix: false
-          });
-        }
+      if (node.value.length > 50 && !this.hasNearbyExplanation(node, content)) {
+        issues.push({
+          id: `code-needs-explanation-${line}`,
+          category: 'content',
+          severity: 'info',
+          message: 'Code block should have explanation',
+          line: line,
+          suggestion: 'Add explanation before or after the code block',
+          fixable: false,
+          safeFix: false
+        });
       }
     });
 
-    // Check for outdated year references
     const currentYear = new Date().getFullYear();
-    const lines = content.split('\n');
-
-    lines.forEach((line, index) => {
+    content.split('\n').forEach((line, index) => {
       const yearMatch = line.match(/20\d{2}/g);
       if (yearMatch) {
         yearMatch.forEach(year => {
-          const yearNum = parseInt(year);
-          if (yearNum < currentYear - 1 && !line.includes('©') && !line.includes('since')) {
+          if (parseInt(year) < currentYear - 1 && !line.includes('©') && !line.includes('since')) {
             issues.push({
               id: `outdated-year-${index + 1}`,
               category: 'content',
@@ -391,13 +302,80 @@ class ContentRules {
               suggestion: `Consider updating to ${currentYear}`,
               fixable: true,
               safeFix: false,
-              fix: {
-                type: 'replace',
-                from: year,
-                to: currentYear.toString()
-              }
+              fix: { type: 'replace', from: year, to: currentYear.toString() }
             });
           }
+        });
+      }
+    });
+
+    return issues;
+  }
+
+  checkSemicolonUsage(context) {
+    const issues = [];
+    const { content } = context;
+    let inCodeBlock = false;
+
+    content.split('\n').forEach((line, index) => {
+      if (line.trim().startsWith('```')) { inCodeBlock = !inCodeBlock; return; }
+      if (inCodeBlock || line.trim().startsWith('#')) return;
+
+      const stripped = line.replace(/`[^`]*`/g, '');
+      if (stripped.includes(';')) {
+        issues.push({
+          id: `semicolon-in-prose-${index + 1}`,
+          category: 'content',
+          severity: 'warning',
+          message: 'Semicolon in prose — replace with colon or period',
+          line: index + 1,
+          suggestion: 'Use a colon when the second clause expands the first; use a period for independent clauses',
+          fixable: false,
+          safeFix: false
+        });
+      }
+    });
+
+    return issues;
+  }
+
+  checkSingleItemOrderedLists(context) {
+    const issues = [];
+    const { ast } = context;
+
+    visit(ast, 'list', (node) => {
+      if (node.ordered && node.children.length === 1) {
+        issues.push({
+          id: `single-item-ordered-list-${this.getLineNumber(node)}`,
+          category: 'content',
+          severity: 'warning',
+          message: 'Ordered list with only one item — convert to a bullet or prose sentence',
+          line: this.getLineNumber(node),
+          suggestion: 'Use an unordered list item (-) or a prose sentence instead',
+          fixable: false,
+          safeFix: false
+        });
+      }
+    });
+
+    return issues;
+  }
+
+  checkListCountInProse(context) {
+    const issues = [];
+    const { content } = context;
+
+    content.split('\n').forEach((line, index) => {
+      if (line.match(/\b(there are|the following)\s+\d+\b/i)) {
+        issues.push({
+          id: `list-count-in-prose-${index + 1}`,
+          category: 'content',
+          severity: 'info',
+          message: 'Do not state the number of list items in prose — use "the following" without a count',
+          line: index + 1,
+          suggestion: 'Remove the number and use "the following" instead',
+          fixable: false,
+          safeFix: false
         });
       }
     });
@@ -408,45 +386,28 @@ class ContentRules {
   // Utility methods
 
   isPassiveVoice(sentence) {
-    // Simple passive voice detection
     const passiveIndicators = [
       'is being', 'are being', 'was being', 'were being',
       'is done', 'are done', 'was done', 'were done',
       'is created', 'are created', 'was created', 'were created'
     ];
-
-    const lowerSentence = sentence.toLowerCase();
-    return passiveIndicators.some(indicator => lowerSentence.includes(indicator));
+    return passiveIndicators.some(indicator => sentence.toLowerCase().includes(indicator));
   }
 
   extractAnchorTargets(content) {
-    // Extract heading anchors from markdown
     const headings = content.match(/^#+\s+(.+)$/gm) || [];
-    return headings.map(heading => {
-      const text = heading.replace(/^#+\s+/, '');
-      return text.toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-');
-    });
+    return headings.map(heading =>
+      heading.replace(/^#+\s+/, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
+    );
   }
 
   hasNearbyExplanation(codeNode, content) {
-    // Simplified check - would need more sophisticated logic
     const line = this.getLineNumber(codeNode);
     if (!line) return false;
-
     const lines = content.split('\n');
     const beforeLine = lines[line - 2] || '';
     const afterLine = lines[line + 1] || '';
-
-    // Check if there's explanatory text nearby
-    return (
-      beforeLine.length > 20 ||
-      afterLine.length > 20 ||
-      beforeLine.includes(':') ||
-      afterLine.includes('This') ||
-      afterLine.includes('The above')
-    );
+    return beforeLine.length > 20 || afterLine.length > 20 || beforeLine.includes(':') || afterLine.includes('This') || afterLine.includes('The above');
   }
 
   getLineNumber(node) {
