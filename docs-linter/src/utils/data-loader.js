@@ -18,7 +18,7 @@ const __dirname = dirname(__filename);
  */
 function loadTrainingData() {
   try {
-    const trainingDataPath = path.resolve(__dirname, '../../../training-data');
+    const trainingDataPath = path.resolve(__dirname, '../../training-data');
 
     const data = {};
 

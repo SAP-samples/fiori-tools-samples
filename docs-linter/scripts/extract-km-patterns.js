@@ -340,7 +340,7 @@ class KMPatternExtractor {
     saveTrainingData() {
         console.log('💾 Saving training data...');
 
-        const trainingDir = path.join(process.cwd(), 'training-data');
+        const trainingDir = path.join(__dirname, '../training-data');
 
         // Save pattern data
         fs.writeFileSync(
