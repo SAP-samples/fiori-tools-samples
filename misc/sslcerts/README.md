@@ -1,4 +1,4 @@
-# Handling Self-Signed SSL Certificates in SAP Fiori Tools
+# Handling Self-Signed SSL Certificates in SAP Fiori tools
 
 ## Overview
 
@@ -18,7 +18,7 @@ For more information about SSL certificates, see the [SAP Help Portal](https://h
 
 ## Security Risk
 
-Ignoring certificate errors `ignoreCertError: true` is a significant security issue because it bypasses the TLS/SSL certificate validation process, which is a crucial security mechanism for secure communications. This is problematic because:
+Ignoring certificate errors `ignoreCertErrors: true` is a significant security issue because it bypasses the TLS/SSL certificate validation process, which is a crucial security mechanism for secure communications. This is problematic because:
 
 - Man-in-the-middle (MITM) vulnerability
 - Malicious site access
@@ -47,7 +47,7 @@ Ignoring certificate errors may seem like a quick fix for development issues, bu
    - In Chrome or Edge: Go to "Details" tab: "Copy to File": Follow the Certificate Export Wizard: save as `.pem`
    - In Firefox: Go to "Details": "Export": Choose a location and save as `.crt` or `.cer`
 
-For more information about CA certificates, see the [Node.js documentation](https://nodejs.org/api/cli.html#node_extra_ca_certsfile).
+For more information about CA certificates, see the [Node.js](https://nodejs.org/api/cli.html#node_extra_ca_certsfile) documentation.
 
 ### Install the Certificate to Support VS Code
 
@@ -89,7 +89,7 @@ export NODE_EXTRA_CA_CERTS=path/to/your/certificate.crt
 
 `NODE_TLS_REJECT_UNAUTHORIZED` is an environment variable in Node.js that controls SSL/TLS certificate validation behavior.
 
-Setting `NODE_TLS_REJECT_UNAUTHORIZED=0` has the same security risks as `ignoreCertError`. For more information, see [Security Risk](#security-risk).
+Setting `NODE_TLS_REJECT_UNAUTHORIZED=0` has the same security risks as `ignoreCertErrors`. For more information, see [Security Risk](#security-risk).
 
 ```bash
 # WARNING: Only for development environments
@@ -117,7 +117,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         ui5:
           path:
             - /resources
@@ -128,7 +128,7 @@ server:
             url: http://localhost
 ```
 
-Typically, `ignoreCertError: false` is the default configuration when you create a new project using SAP Fiori tools. This means that the server validates the SSL certificate of the back-end system. If you use a self-signed certificate, you must set `ignoreCertError: true` to bypass the validation.
+Typically, `ignoreCertErrors: false` is the default configuration when you create a new project using SAP Fiori tools. This means that the server validates the SSL certificate of the back-end system. If you use a self-signed certificate, you must set `ignoreCertErrors: true` to bypass the validation.
 
 ## Disable SSL Validation - Deploying to ABAP
 
@@ -146,7 +146,7 @@ builder:
     - name: deploy-to-abap
       afterTask: generateCachebusterInfo
       configuration:
-        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         target:
           url: https://myhost:44380
           client: '110'
@@ -163,7 +163,7 @@ builder:
       - /localService/**
 ```
 
-Typically, `ignoreCertError: false` is the default configuration when you create a new project using SAP Fiori tools. This means that the server validates the SSL certificate of the back-end system. If you are using a self-signed certificate, you must set `ignoreCertError: true` to bypass the validation.
+Typically, `ignoreCertErrors: false` is the default configuration when you create a new project using SAP Fiori tools. This means that the server validates the SSL certificate of the back-end system. If you are using a self-signed certificate, you must set `ignoreCertErrors: true` to bypass the validation.
 
 ## Configuring Environment Variables
 

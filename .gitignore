@@ -2,9 +2,10 @@
 .vscode
 .idea
 
-# Claude Code
-.claude/
-!.claude/skills/
+# Claude Code — ignore personal state, track project config
+.claude/settings.local.json
+.claude/todos/
+.claude/projects/
 
 # Dependency directories
 node_modules/

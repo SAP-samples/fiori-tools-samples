@@ -14,17 +14,14 @@
         id="sap-ui-bootstrap"
         src="resources/sap-ui-core.js"
         data-sap-ui-theme="sap_horizon"
-        data-sap-ui-resourceroots='{
+        data-sap-ui-resource-roots='{
             "sap.btp.sapui5": "./"
         }'
-        data-sap-ui-compatVersion="edge"
+        data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-compat-version="edge"
         data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
+        data-sap-ui-frame-options="trusted"
     ></script>
-    <script id="locate-reuse-libs" src="./utils/locate-reuse-libs.js"
-        data-sap-ui-manifest-uri="./manifest.json"
-        data-sap-ui-componentName="sap.btp.sapui5">
-    </script> 
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div

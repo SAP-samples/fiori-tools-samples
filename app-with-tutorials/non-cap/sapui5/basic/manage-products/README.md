@@ -6,7 +6,7 @@ To learn how to build this app, check out [this](https://developers.sap.com/grou
 
 ## Requirements
 
-This app is intended as a sample app that can be previwed using SAP Fiori tools in SAP Business Application or VSC. Refer to [documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html) for help on how to get started with SAP Fiori tools. 
+This app is intended as a sample app that can be previewed using SAP Fiori tools in SAP Business Application Studio or VS Code. Refer to [documentation](https://help.sap.com/docs/SAP_FIORI_tools/17d50220bcd848aa854c9c182d65b699/2d8b1cb11f6541e5ab16f05461c64201.html) for help on how to get started with SAP Fiori tools. 
 
 
 
@@ -16,6 +16,6 @@ This app is intended as a sample app that can be previwed using SAP Fiori tools 
 2. At the prompt of the terminal, type `npm install` 
 3. Switch to "SAP Fiori" on the left activity bar
 4. Right click on the app name in `Application Modeler` view to open `Application Info` page
-5. Check and perfrom actions under `Application Status`
-6. Right click on the app name in `Appication Modeler` view and select `Preview Application` and choose `start` option for preview. 
+5. Check and perform actions under `Application Status`
+6. Right click on the app name in `Application Modeler` view and select `Preview Application` and choose `start` option for preview. 
 

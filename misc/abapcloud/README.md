@@ -63,6 +63,8 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 }
 ```
 
+> **Note**: The `clientId`, `clientSecret`, and `tokenServiceURL` values are obtained from the service key of your ABAP Environment instance. To generate a service key, open the SAP BTP cockpit, navigate to your ABAP Environment service instance, and create a new service key. The `clientId` and `clientSecret` are available in the service key JSON under the `uaa` object. The `tokenServiceURL` is the `uaa.url` value with `/oauth/token` appended.
+
 > **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, which preserve the user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
 
 Alternatively, `SAMLAssertion` can be used for both same-subaccount and cross-subaccount scenarios. See the following example:

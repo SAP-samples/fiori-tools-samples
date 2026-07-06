@@ -1,1 +1,0 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("sap.btp.sapui5.controller.App",{onInit(){}})});
