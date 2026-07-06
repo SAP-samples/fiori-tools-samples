@@ -24,7 +24,7 @@ class TemplateGenerator {
    */
   loadTemplateData() {
     try {
-      const trainingDataPath = path.resolve(__dirname, '../../training-data');
+      const trainingDataPath = path.resolve(__dirname, '../training-data');
 
       if (existsSync(path.join(trainingDataPath, 'quality-examples.json'))) {
         const examples = JSON.parse(readFileSync(

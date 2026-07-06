@@ -42,7 +42,7 @@ class DocsLinter {
    */
   loadTrainingData() {
     try {
-      const trainingDataPath = path.resolve(__dirname, '../../training-data');
+      const trainingDataPath = path.resolve(__dirname, '../training-data');
 
       if (existsSync(path.join(trainingDataPath, 'km-feedback-patterns.json'))) {
         const patterns = JSON.parse(readFileSync(
@@ -167,7 +167,7 @@ class DocsLinter {
       .filter(issue => issue.fixable && issue.safeFix)
       .map(issue => ({
         issueId: issue.id,
-        type: issue.type,
+        type: issue.category,
         description: issue.message,
         fix: issue.fix
       }));
@@ -181,7 +181,7 @@ class DocsLinter {
       .filter(issue => issue.fixable)
       .map(issue => ({
         issueId: issue.id,
-        type: issue.type,
+        type: issue.category,
         description: issue.message,
         fix: issue.fix
       }));
@@ -198,7 +198,7 @@ class DocsLinter {
 
     for (const fix of fixes) {
       if (fix.fix.type === 'replace') {
-        content = content.replace(fix.fix.from, fix.fix.to);
+        content = content.replaceAll(fix.fix.from, fix.fix.to);
       } else if (fix.fix.type === 'insertAfter') {
         const lines = content.split('\n');
         lines.splice(fix.fix.line, 0, fix.fix.content);

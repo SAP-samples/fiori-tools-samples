@@ -78,6 +78,16 @@ To automatically apply safe fixes:
 
 The skill runs markdown linting and an AI review against the KM rules defined in `prompts/km-doc-review.md` and `docs/km-style-guide.md`. Address all critical and major findings before opening a PR.
 
+For automated rule-based checks outside Claude Code, the `docs-linter/` tool can be run directly:
+
+```bash
+node docs-linter/src/cli.js check <file>      # check a file
+node docs-linter/src/cli.js fix <file> --safe-only  # apply safe auto-fixes
+node docs-linter/src/cli.js validate <file>   # quality score and recommendations
+```
+
+See `docs-linter/README.md` for full usage.
+
 ## Documentation Standards (KM Rules)
 
 Applied using the `/km-review` skill and `prompts/km-doc-review.md`:

@@ -41,9 +41,9 @@ The KM Documentation Linter is a Node.js-based tool that automatically checks an
 ### Training Data
 
 The linter learns from extracted KM feedback patterns stored in:
-- `../training-data/km-feedback-patterns.json` - Analyzed patterns from commit feedback
-- `../training-data/correction-dictionary.json` - Common corrections and typos
-- `../training-data/quality-examples.json` - High-quality documentation examples
+- `training-data/km-feedback-patterns.json` - Analyzed patterns from commit feedback
+- `training-data/correction-dictionary.json` - Common corrections and typos
+- `training-data/quality-examples.json` - High-quality documentation examples
 
 ## Commands
 
@@ -116,9 +116,9 @@ docs-linter check $STAGED_MD_FILES
 
 ### Manual Review
 ```bash
-# Check all README files
+# Run from repo root — check all README files
 find . -name "README.md" -not -path "*/node_modules/*" | \
-  xargs -I {} node src/cli.js validate {}
+  xargs -I {} node docs-linter/src/cli.js validate {}
 ```
 
 ## Output Examples
@@ -200,10 +200,10 @@ checkRuleName(context) {
 
 ## Related Files
 
-- `.claude/skills/km-review.md` - AI-powered review skill
+- `.claude/skills/km-review/SKILL.md` - AI-powered review skill
 - `../docs/km-style-guide.md` - KM standards reference
 - `../prompts/km-doc-review.md` - Comprehensive review prompt
-- `../training-data/` - Extracted feedback patterns
+- `training-data/` - Extracted feedback patterns
 
 ## License
 
