@@ -2,9 +2,9 @@
 
 ## SAP Fiori Migration Tool Does Not Detect Your Application
 
-If SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application specific code, for example `neo-app.json`, `pom.xml`, and `.che`.  
+If SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application-specific code, for example `neo-app.json`, `pom.xml`, and `.che`.  
 
-If you are also missing a `manifest.json` file inside of your `webapp` folder, For more information, see [Creating a Descriptor File](https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html) in the UI5 documentation.
+If you are also missing a `manifest.json` file inside your `webapp` folder, for more information, see [Creating a Descriptor File](https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html) in the UI5 documentation.
 
 ## Application Fails to Load When Running `npm run start`
 
@@ -30,7 +30,7 @@ Open the `manifest.json` file and refer to the ID:
         "id": "manageproductsneo",
 ```
 
-When running the start command, the app loads with the `test/flpSandbox.html` file, the ID on line 49 and 69 must be updated to reflect the `Component.js` ID:
+When running the start command, the app loads with the `test/flpSandbox.html` file. Update the ID on lines 49 and 69 to reflect the `Component.js` ID:
 
 ```text
 Line 49: additionalInformation: "SAPUI5.Component=ns.manageproductsneo",
@@ -63,7 +63,7 @@ To the following:
 "i18n": "i18n/i18n.properties",
 ```
 
-If the issue persists, try bumping the `"minUI5Version": "1.108.2"` in your `manifest.json` file to a later version. For more information about supported SAPUI5 versions, see [SAPUI5 Versions Maintenance Status](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, when you want to only validate locally, is to update the `ui5.yaml` file with a specific SAPUI5 version, for example to specify `1.109.0`:
+If the issue persists, increase the `"minUI5Version": "1.108.2"` in your `manifest.json` file to a later version. For more information about supported SAPUI5 versions, see [SAPUI5 Versions Maintenance Status](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, when you want to only validate locally, is to update the `ui5.yaml` file with a specific SAPUI5 version, for example to specify `1.109.0`:
 
 ```yaml
         ui5:
@@ -113,7 +113,7 @@ This assumes your `pom.xml` file contains the following plugin:
 
 ## HTTP 404 Error: Application Not Loading After Deployment
 
-The HTML5 application is deployed to Cloud Foundry, but the application is not loading. After reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned:
+The HTML5 application is deployed to Cloud Foundry, but the application does not load. After reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned:
 
 For more information about how to resolve this issue, see [SAP Support Portal](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
 
@@ -265,7 +265,7 @@ https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/
 
 However, valid HTTP calls are sent to `https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/` which is the actual base URL of your application.
 
-Removing the leading slash now sends the AJAX call to the relative path of where the app is hosted, for example:
+The leading slash removal sends the AJAX call to the relative path of where the app is hosted, for example:
 
 ```text
 https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
