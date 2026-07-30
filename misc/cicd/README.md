@@ -4,34 +4,46 @@
 
 For more information, see [@sap/ux-ui5-tooling](https://www.npmjs.com/package/@sap/ux-ui5-tooling).
 
-## Developers Note
+## Developer Note
 
-SAP Cloud Transport Management (CTMS) for deployment is a recommended solution for ABAP deployment. While manual deployments or the use of CLI tools are supported, the CI/CD process may run in non-SAP DevOps platforms, but deployment to SAP BTP must go through CTMS. 
+SAP Cloud Transport Management (CTMS) for deployment is a recommended solution for ABAP deployment. While manual deployments or the use of CLI tools are supported, the CI/CD process may run in non-SAP DevOps platforms, but deployment to SAP BTP must go through CTMS.
 
 You can integrate external CI/CD pipelines, for example, Azure DevOps or CircleCI, to CTMS using APIs or [GitHub Actions](https://github.com/marketplace/actions/deploy-to-sap-btp-with-ctms).
 
 With CTMS, you have full control on the changes going through the landscape, and have a proper audit log to trace them, if required.
 
-For more information, see [SAP BTP runtimes, my personal considerations and preferences on Cloud Foundry, Kyma, ABAP runtimes](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510)
-
+For more information, see [SAP BTP runtimes, my personal considerations and preferences on Cloud Foundry, Kyma, ABAP runtimes](https://community.sap.com/t5/technology-blog-posts-by-sap/sap-btp-runtimes-my-personal-considerations-and-preferences-on-cloud/ba-p/14129510).
 
 ## Using Environment Variables
 
 Create a `.env` file in the root of your SAPUI5 project and append the following content:
+
 ```text
 XYZ_USER=myusername
 XYZ_PASSWORD=mypassword
 ```
 
+> **Note:** If your username or password contains special characters (for example, `!`, `@`, `#`, `$`, `%`, `^`, `&`), wrap the value in single quotes in CLI commands to prevent the shell from interpreting them:
+>
+> ```bash
+> npx fiori deploy --password 'P@$$w0rd!&123'
+> ```
+>
+> Single quotes treat all content literally. Use double quotes only when variable expansion is required:
+>
+> ```bash
+> npx fiori deploy --username "$XYZ_USER" --password "$XYZ_PASSWORD"
+> ```
+
 Update the `ui5-deploy.yaml` file with the `credentials` and ensure it's aligned with the existing root nodes, for example, `target`:
 
-```YAML
+```yaml
     configuration:
       yes: true
       failFast: true
       target:
         url: https://XYZ.sap-system.corp:44311
-        client: 200        
+        client: 200
       credentials:
         username: env:XYZ_USER
         password: env:XYZ_PASSWORD
@@ -43,29 +55,33 @@ Setting `env:` for the credentials is only required if you want to configure a `
 
 ```bash
 export XYZ_USER='~username'
-export XYZ_PASSWORD='~password''
+export XYZ_PASSWORD='~password'
 ```
 
 The `ui5-deploy.yaml` file is then updated as:
-```YAML
+
+```yaml
       credentials:
         username: XYZ_USER
         password: XYZ_PASSWORD
 ```
 
 Or if using CLI params:
+
 ```bash
---username XYZ_USER --pasword XYZ_PASSWORD
+--username XYZ_USER --password XYZ_PASSWORD
 ```
 
-Additional note, if you are using a CI/CD pipeline, then you can make further updates to your `ui5-deploy.yaml` file: 
+If you are using a CI/CD pipeline, you can make further updates to your `ui5-deploy.yaml` file:
+
 - Add `yes: true` to bypass the `Yes` confirmation prompt.
-- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication might fail, and you want to disable the credentials prompts from being shown. This exits with a `1` exit code.
+- Add `failFast: true` to immediately exit the process if any exception is thrown, for example, a typical scenario is where authentication may fail, and you want to disable the credentials prompts from being shown. This exits with a `1` exit code.
 
 ## Create a Transport Request (TR) Dynamically
 
 To create a TR dynamically during each deploy or undeploy task, append the `REPLACE_WITH_TRANSPORT` bookmark to your `ui5-deploy.yaml` configuration:
-```YAML
+
+```yaml
       app:
         name: /TEST/SAMPLE_APP
         package: /TEST/UPLOAD
@@ -88,25 +104,27 @@ npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --
 
 Remove `--archive-path 'archive.zip'` from the CLI params and allow the `dist` folder to be archived on the fly during deployment.
 
-### Option 2 
+### Option 2
 
 Generate an `archive.zip` manually which requires some updates to your existing project. Update the `package.json` file with a new `devDependency`:
+
 ```json
 "ui5-task-zipper": "latest"
 ```
 
 Update the `ui5.yaml` file with a new `builder` task:
-```YAML
+
+```yaml
 builder:
   customTasks:
     - name: ui5-task-zipper
       afterTask: generateVersionInfo
       configuration:
-        archiveName: "archive"          
+        archiveName: "archive"
         keepResources: true
 ```
 
-When `npm run build` is run, it generates a new archive file: `./dist/arhive.zip`.
+When `npm run build` is run, it generates a new archive file: `./dist/archive.zip`.
 
 You can also create a new configuration file called `build.yaml` to handle this specific task:
 
@@ -116,16 +134,17 @@ You can also create a new configuration file called `build.yaml` to handle this 
 specVersion: "3.1"
 metadata:
   name: <your-project-name>
-type: application  
+type: application
 builder:
   customTasks:
     - name: ui5-task-zipper
       afterTask: generateVersionInfo
       configuration:
-        archiveName: "archive"          
+        archiveName: "archive"
         keepResources: true
 ```
-Run the CLI command using the new `build.yaml` configuration to generate a new archive file: `./dist/arhive.zip`.
+
+Run the CLI command using the new `build.yaml` configuration to generate a new archive file: `./dist/archive.zip`.
 
 ```bash
 npx ui5 build --config build.yaml
@@ -138,6 +157,7 @@ Optionally, update your `scripts` in the `package.json` file with the new comman
 ```
 
 Using either flow, you can see the `ui5-task-zipper` new custom task run:
+
 ```bash
 info ProjectBuilder Preparing build for project project1
 info ProjectBuilder   Target directory: ./dist
@@ -153,27 +173,16 @@ info ProjectBuilder Build succeeded in 199 ms
 info ProjectBuilder Executing cleanup tasks...
 ```
 
-Note: Update your scripts to reflect the new target folder: `./dist/archive.zip`.
+> **Note:** Update your scripts to reflect the new target folder: `./dist/archive.zip`.
 
 ## Additional Notes
 
 - For deployment purposes, appending additional headers is not supported using CLI or `ui5-deploy.yaml` configurations.
-- If you want to enable debug mode, you can set the debug parameter as follows:
+- To enable debug mode, set the debug parameter as follows:
+
 ```bash
 # Using default npm scripts
-DEBUG=* npm run deloy
+DEBUG=* npm run deploy
 # Or if you are using the CLI directly
 DEBUG=* npx fiori deploy ...
 ```
-
-
-
-
-
-
-
-
-
-
-
-
