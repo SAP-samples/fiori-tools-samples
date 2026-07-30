@@ -329,7 +329,7 @@ If the SAP Build Work Zone version is lower than `"minUI5Version"`, the applicat
 
 ### Solution
 
-Update `"minUI5Version"` in your `manifest.json` file to a version equal to or lower than the version running in SAP Build Work Zone. You must also align the `_version` property at the root of the `manifest.json` file to the manifest schema version that corresponds to your target SAPUI5 version.
+Update `"minUI5Version"` in your `manifest.json` file to match the SAPUI5 version running in SAP Build Work Zone. You must also align the `_version` property at the root of the `manifest.json` file to the manifest schema version that corresponds to your target SAPUI5 version — these two values must be consistent with each other.
 
 To identify supported and maintained SAPUI5 versions and their corresponding manifest schema versions, see the following resources:
 
