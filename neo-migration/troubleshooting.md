@@ -302,7 +302,7 @@ When generating an SAP Fiori application, you select a target SAPUI5 version, fo
 Two failure modes result from this mismatch:
 
 - **`minUI5Version` too high**: SAP Build Work Zone runs a version lower than `minUI5Version`, so the framework rejects the component and the application does not load.
-- **Version behavior differs**: The app was generated targeting a newer version (for example `1.136.1`) but SAP Build Work Zone serves an older one (for example `1.120.12`), causing unexpected behavior or missing features.
+- **Version behavior differs**: SAP Build Work Zone typically serves the latest SAPUI5 version. If your app was generated locally targeting an older version (for example `1.120.12`), but SAP Build Work Zone serves a newer one (for example `1.136.1`), you may experience unexpected behavior or missing features.
 
 ### Check the SAPUI5 Version Running in SAP Build Work Zone
 
