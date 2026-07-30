@@ -2,9 +2,9 @@
 
 ## SAP Fiori Migration Tool Does Not Detect Your Application
 
-If SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application specific code, for example `neo-app.json`, `pom.xml`, and `.che`.  
+If SAP Fiori Migration tool does not detect your application, ensure your exported project contains a `webapp` folder. If this folder is missing, generate a `webapp` folder inside the root of your project, move all your UI code but exclude application-specific code, for example `neo-app.json`, `pom.xml`, and `.che`.  
 
-If you are also missing a `manifest.json` file inside of your `webapp` folder, For more information, see [Creating a Descriptor File](https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html) in the UI5 documentation.
+If you are also missing a `manifest.json` file inside your `webapp` folder, for more information, see [Creating a Descriptor File](https://sapui5.hana.ondemand.com/sdk/#/topic/3a9babace121497abea8f0ea66e156d9.html) in the UI5 documentation.
 
 ## Application Fails to Load When Running `npm run start`
 
@@ -30,7 +30,7 @@ Open the `manifest.json` file and refer to the ID:
         "id": "manageproductsneo",
 ```
 
-When running the start command, the app loads with the `test/flpSandbox.html` file, the ID on line 49 and 69 must be updated to reflect the `Component.js` ID:
+When running the start command, the app loads with the `test/flpSandbox.html` file. Update the ID on lines 49 and 69 to reflect the `Component.js` ID:
 
 ```text
 Line 49: additionalInformation: "SAPUI5.Component=ns.manageproductsneo",
@@ -63,7 +63,7 @@ To the following:
 "i18n": "i18n/i18n.properties",
 ```
 
-If the issue persists, try bumping the `"minUI5Version": "1.108.2"` in your `manifest.json` file to a later version. For more information about supported SAPUI5 versions, see [SAPUI5 Versions Maintenance Status](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, when you want to only validate locally, is to update the `ui5.yaml` file with a specific SAPUI5 version, for example to specify `1.109.0`:
+If the issue persists, increase the `"minUI5Version": "1.108.2"` in your `manifest.json` file to a later version. For more information about supported SAPUI5 versions, see [SAPUI5 Versions Maintenance Status](https://sapui5.hana.ondemand.com/versionoverview.html). Another option, when you want to only validate locally, is to update the `ui5.yaml` file with a specific SAPUI5 version, for example to specify `1.109.0`:
 
 ```yaml
         ui5:
@@ -113,7 +113,7 @@ This assumes your `pom.xml` file contains the following plugin:
 
 ## HTTP 404 Error: Application Not Loading After Deployment
 
-The HTML5 application is deployed to Cloud Foundry, but the application is not loading. After reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned:
+The HTML5 application is deployed to Cloud Foundry, but the application does not load. After reviewing the network console logs in your browser, an HTTP 404 Not Found error is returned:
 
 For more information about how to resolve this issue, see [SAP Support Portal](https://ga.support.sap.com/dtp/viewer/index.html#/tree/3046/actions/45995:45996:50742:51205:51192:51196:52513).
 
@@ -265,7 +265,7 @@ https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/
 
 However, valid HTTP calls are sent to `https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/` which is the actual base URL of your application.
 
-Removing the leading slash now sends the AJAX call to the relative path of where the app is hosted, for example:
+The leading slash removal sends the AJAX call to the relative path of where the app is hosted, for example:
 
 ```text
 https://my-subaccount.launchpad.cfapps.eu10.hana.ondemand.com/my_fioriapp-1.0.0/~230421170029+0000~/sap/v2/product/MY_PRODUCT/$metadata?sap-value-list=none&sap-language=DE
@@ -295,23 +295,16 @@ If you still face issues, open a support incident with SAP. When doing so, provi
 
 For more information about how to extract the trace, see [How to capture an HTTP trace using Google Chrome or MS Edge (Chromium)](https://launchpad.support.sap.com/#/notes/1990706).
 
-## Application Fails to Load in SAP Build Work Zone Due to Outdated `minUI5Version`
+## SAPUI5 Version Mismatch When Deploying to SAP Build Work Zone
 
-After migrating your application, the `manifest.json` file contains an outdated `"minUI5Version"` value, for example:
+When generating an SAP Fiori application, you select a target SAPUI5 version, for example `1.136.1`. This version is set as `"minUI5Version"` in your `manifest.json` file and used during local preview. However, SAP Build Work Zone serves its own SAPUI5 version independently — this may differ from the version your app was generated with or targets.
 
-```json
-"sap.ui5": {
-    "dependencies": {
-        "minUI5Version": "1.84.7"
-    }
-}
-```
+Two failure modes result from this mismatch:
 
-The application runs correctly in local preview but fails to load when deployed to SAP Build Work Zone (formerly SAP Fiori Launchpad). This is because your local preview fetches the SAPUI5 version configured in your `ui5.yaml` file, whereas SAP Build Work Zone runs its own SAPUI5 version. When the version running in SAP Build Work Zone is lower than the `minUI5Version` declared in your `manifest.json` file, the framework rejects the component and the application fails to load.
+- **`minUI5Version` too high**: SAP Build Work Zone runs a version lower than `minUI5Version`, so the framework rejects the component and the application does not load.
+- **Version behavior differs**: SAP Build Work Zone typically serves the latest SAPUI5 version. If your app was generated locally targeting an older version (for example `1.120.12`), but SAP Build Work Zone serves a newer one (for example `1.136.1`), you may experience unexpected behavior or missing features.
 
-### Replicating the Issue Locally
-
-To identify the SAPUI5 version your SAP Build Work Zone instance is running:
+### Check the SAPUI5 Version Running in SAP Build Work Zone
 
 1. Open your deployed application in Google Chrome.
 2. Open Developer Tools by pressing `F12`.
@@ -322,11 +315,21 @@ To identify the SAPUI5 version your SAP Build Work Zone instance is running:
 sap.ui.version
 ```
 
-The version returned is the SAPUI5 version running in SAP Build Work Zone. Compare this against the `"minUI5Version"` declared in your `manifest.json` file. If the SAP Build Work Zone version is lower, the application does not load.
+The console returns the SAPUI5 version that SAP Build Work Zone is serving, for example `1.120.12`. Compare this against `"minUI5Version"` in your `manifest.json` file:
+
+```json
+"sap.ui5": {
+    "dependencies": {
+        "minUI5Version": "1.136.1"
+    }
+}
+```
+
+If the SAP Build Work Zone version is lower than `"minUI5Version"`, the application does not load. For more information about checking the SAPUI5 version in your environment, see [How to Check the UI5 Version You Have Installed](https://community.sap.com/t5/technology-blog-posts-by-sap/how-to-check-the-ui5-version-you-have-installed/ba-p/13402995) on SAP Community.
 
 ### Solution
 
-Update the `"minUI5Version"` in your `manifest.json` file to a version that is equal to or lower than the SAPUI5 version running in SAP Build Work Zone. You must also align the `_version` property at the root of the `manifest.json` file to the manifest schema version that corresponds to your target SAPUI5 version.
+Update `"minUI5Version"` in your `manifest.json` file to match the SAPUI5 version running in SAP Build Work Zone. You must also align the `_version` property at the root of the `manifest.json` file to the manifest schema version that corresponds to your target SAPUI5 version — these two values must be consistent with each other.
 
 To identify supported and maintained SAPUI5 versions and their corresponding manifest schema versions, see the following resources:
 
