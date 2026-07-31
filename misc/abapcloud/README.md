@@ -140,7 +140,7 @@ If you are still facing issues after reviewing the Environment Check report, ena
 
 ## VS Code Deployment Using Connection Manager
 
-When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to connect directly to your ABAP Cloud system. This extension is specific to VS Code and is independent of SAP BTP destinations, which are used for SAP Business Application Studio connectivity.
+When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to connect directly to your ABAP Cloud system. This extension is specific to VS Code and is independent of SAP BTP destinations, which are used for SAP Business Application Studio connectivity. Authentication uses reentrance tickets, which the extension handles automatically.
 
 Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools deploy command or the guided deployment wizard in VS Code.
 
