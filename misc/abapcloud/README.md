@@ -152,9 +152,32 @@ npx fiori deploy \
   --uaa-password '<password>' \
   --uaa-clientid '<uaa-client-id>' \
   --uaa-clientsecret '<uaa-client-secret>' \
-  --noConfig
+  --noConfig \
+  --yes \
+  --verbose \
+  --failfast
 ```
 
+To undeploy an application, use the same approach with `npx fiori undeploy`. The `--package` and `--archive-path` parameters are not required for undeployment:
+
+```bash
+npx fiori undeploy \
+  --url 'https://<abap-system-guid>.abap.<region>.ondemand.com' \
+  --name '<app-name>' \
+  --transport '<transport-request>' \
+  --uaa-url 'https://<subdomain>.authentication.<region>.hana.ondemand.com' \
+  --uaa-username '<username>' \
+  --uaa-password '<password>' \
+  --uaa-clientid '<uaa-client-id>' \
+  --uaa-clientsecret '<uaa-client-secret>' \
+  --noConfig \
+  --yes \
+  --verbose \
+  --failfast
+```
+
+> **Note**: If a `ui5-deploy.yaml` configuration file is present, you can omit `--noConfig` and the `--name`, `--package`, and `--transport` parameters. The command reads those values from the configuration file automatically.
+>
 > **Note**: Values that contain special characters such as `!`, `/`, `+`, or `=`, which are common in UAA client IDs and secrets, must be quoted. In bash, use single quotes (`'value'`) to prevent the shell from interpreting these characters.
 
 For more information about CI/CD deployment configuration, which includes common errors such as MFA enforcement, see the [CI/CD README](../cicd/README.md).
