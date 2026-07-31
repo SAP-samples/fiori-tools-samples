@@ -199,6 +199,21 @@ npx fiori undeploy \
 
 For more information about CI/CD deployment configuration, which includes common errors such as MFA enforcement, see the [CI/CD README](../cicd/README.md).
 
+### Validating Credentials with a Third-Party Tool
+
+To test the OAuth2 password grant type independently of SAP Fiori tools, use a third-party tool such as Postman. This lets you confirm that the UAA credentials and ABAP system URL are correct before running a deployment.
+
+Send a `POST` request to the UAA token endpoint with the following parameters:
+
+- **URL**: `https://<subdomain>.authentication.<region>.hana.ondemand.com/oauth/token`
+- **Grant type**: `password`
+- **Client ID**: `uaa.clientid` from your service key
+- **Client secret**: `uaa.clientsecret` from your service key
+- **Username**: your SAP BTP user
+- **Password**: your SAP BTP password
+
+A successful response returns an access token, which confirms that authentication is working independently of SAP Fiori tools.
+
 ## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
