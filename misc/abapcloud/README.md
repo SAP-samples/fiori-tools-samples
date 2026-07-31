@@ -175,7 +175,7 @@ builder:
 
 Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools deploy command or the guided deployment wizard in VS Code.
 
-You can also deploy and undeploy directly from the terminal:
+You can also deploy and undeploy directly from the terminal. The SAP Fiori tools CLI uses the SAP Connection Manager to authenticate and connect to your ABAP Cloud system:
 
 ```bash
 npm run deploy
