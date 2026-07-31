@@ -142,6 +142,37 @@ If you are still facing issues after reviewing the Environment Check report, ena
 
 When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to connect directly to your ABAP Cloud system. This extension is specific to VS Code and is independent of SAP BTP destinations, which are used for SAP Business Application Studio connectivity. Authentication uses reentrance tickets, which the extension handles automatically.
 
+To use reentrance ticket authentication, set `authenticationType: reentranceTicket` in the `target` section of your `ui5-deploy.yaml` file:
+
+```yaml
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: <app-name>
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        verbose: true
+        target:
+          url: https://<abap-system-guid>.abap.<region>.ondemand.com
+          authenticationType: reentranceTicket
+        app:
+          name: <BSP_APP_NAME>
+          package: <ABAP_PACKAGE>
+          transport: <TRANSPORT_REQUEST>
+        exclude:
+          - /test/
+          - /localService/
+```
+
 Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools deploy command or the guided deployment wizard in VS Code.
 
 You can also deploy and undeploy directly from the terminal:
