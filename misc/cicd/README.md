@@ -98,6 +98,19 @@ Generate CLI commands for your CI/CD pipeline:
 npx fiori deploy --url https://your-env.hana.ondemand.com --name 'SAMPLE_APP' --package 'MY_PACKAGE' --transport 'REPLACE_WITH_TRANSPORT' --archive-path 'archive.zip' --username 'env:XYZ_USER' --password 'env:XYZ_PASSWORD' --noConfig --failFast --yes
 ```
 
+### MFA Error
+
+If the deployment fails with the following error, MFA is enforced on the UAA user and the password grant flow cannot satisfy the MFA requirement:
+
+```json
+{
+    "error": "invalid_client",
+    "error_description": "{\"error\":\"invalid_grant\",\"error_description\":\"User authentication failed: INVALID_OTP_CODE\"}"
+}
+```
+
+Many identity providers do not support `grant_type=password` when MFA is required. To resolve this, an administrator must disable MFA for the user or exclude them from the MFA policy in the identity provider being used. MFA is controlled by the identity provider, such as SAP IAS, Microsoft Entra ID, or Keycloak, and not by ABAP Cloud itself. For more information about disabling MFA in SAP IAS, see [SAP Note 3715393](https://me.sap.com/notes/0003715393).
+
 ## Generate a ZIP Archive
 
 ### Option 1

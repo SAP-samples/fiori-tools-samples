@@ -136,6 +136,52 @@ Use the Environment Check tool in SAP Business Application Studio to validate yo
 
 If you are still facing issues after reviewing the Environment Check report, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
+## CI/CD Deployment
+
+To deploy from a CI/CD pipeline without a `ui5-deploy.yaml` configuration file, use the `--noConfig` flag and pass all required parameters directly on the command line:
+
+```bash
+npx fiori deploy \
+  --url 'https://<abap-system-guid>.abap.<region>.ondemand.com' \
+  --name '<app-name>' \
+  --package '<abap-package>' \
+  --transport '<transport-request>' \
+  --archive-path 'archive.zip' \
+  --uaa-url 'https://<subdomain>.authentication.<region>.hana.ondemand.com' \
+  --uaa-username '<username>' \
+  --uaa-password '<password>' \
+  --uaa-clientid '<uaa-client-id>' \
+  --uaa-clientsecret '<uaa-client-secret>' \
+  --noConfig \
+  --yes \
+  --verbose \
+  --failfast
+```
+
+To undeploy an application, use the same approach with `npx fiori undeploy`. The `--package` and `--archive-path` parameters are not required for undeployment:
+
+```bash
+npx fiori undeploy \
+  --url 'https://<abap-system-guid>.abap.<region>.ondemand.com' \
+  --name '<app-name>' \
+  --transport '<transport-request>' \
+  --uaa-url 'https://<subdomain>.authentication.<region>.hana.ondemand.com' \
+  --uaa-username '<username>' \
+  --uaa-password '<password>' \
+  --uaa-clientid '<uaa-client-id>' \
+  --uaa-clientsecret '<uaa-client-secret>' \
+  --noConfig \
+  --yes \
+  --verbose \
+  --failfast
+```
+
+> **Note**: If a `ui5-deploy.yaml` configuration file is present, you can omit `--noConfig` and the `--name`, `--package`, and `--transport` parameters. The command reads those values from the configuration file automatically.
+>
+> **Note**: Values that contain special characters such as `!`, `/`, `+`, or `=`, which are common in UAA client IDs and secrets, must be quoted. In bash, use single quotes (`'value'`) to prevent the shell from interpreting these characters.
+
+For more information about CI/CD deployment configuration, which includes common errors such as MFA enforcement, see the [CI/CD README](../cicd/README.md).
+
 ## License
 
 Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../../LICENSES/Apache-2.0.txt) file.
