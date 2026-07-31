@@ -144,6 +144,13 @@ When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https:
 
 Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools deploy command or the guided deployment wizard in VS Code.
 
+You can also deploy and undeploy directly from the terminal:
+
+```bash
+npm run deploy
+npm run undeploy
+```
+
 ## CI/CD Deployment
 
 Before running a CI/CD deployment, create a service key on your ABAP Environment service instance in the SAP BTP cockpit. The `uaa.clientid`, `uaa.clientsecret`, and `uaa.url` values from the service key JSON map to the `--uaa-clientid`, `--uaa-clientsecret`, and `--uaa-url` parameters respectively.
