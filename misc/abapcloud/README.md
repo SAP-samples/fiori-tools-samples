@@ -25,7 +25,7 @@ Note that some of the content from Configuring BTP Cross-Account and Cross-Regio
 
 ## Connectivity Overview
 
-SAP Business Application Studio connects to ABAP Cloud systems using SAP BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is SAP Business Application Studio connects to a destination, which connects to the ABAP Environment using SAP BTP. With `odata_abap`, the destination URL must always be the base host. SAP Business Application Studios appends the ABAP catalog paths automatically.
+SAP Business Application Studio connects to ABAP Cloud systems using SAP BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is SAP Business Application Studio connects to a destination, which connects to the ABAP Environment using SAP BTP. With `odata_abap`, the destination URL must always be the base host. SAP Business Application Studio appends the ABAP catalog paths automatically.
 
 Before connecting, ensure you are logged in to Cloud Foundry and the correct organization and space are set. This is required for SAP Business Application Studio to resolve destinations and deploy applications correctly.
 
@@ -64,8 +64,8 @@ The following is an example of an `OAuth2UserTokenExchange` destination for an A
 ```
 
 > **Note**: The `clientId`, `clientSecret`, and `tokenServiceURL` values are obtained from the service key of your ABAP Environment instance. To generate a service key, open the SAP BTP cockpit, navigate to your ABAP Environment service instance, and create a new service key. The `clientId` and `clientSecret` are available in the service key JSON under the `uaa` object. The `tokenServiceURL` is the `uaa.url` value with `/oauth/token` appended.
-
-> **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, which preserve the user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
+>
+> **Note**: `OAuth2UserTokenExchange` exchanges an existing user access token for a new token scoped to a target service, which preserves the user context within OAuth flows. `SAMLAssertion` uses a signed XML assertion from an identity provider to authenticate the user and establish trust, typically in cross-system or federated SSO scenarios. Both types can be used within the same subaccount.
 
 Alternatively, `SAMLAssertion` can be used for both same-subaccount and cross-subaccount scenarios. See the following example:
 
@@ -126,6 +126,8 @@ An empty catalog or connection failure typically indicates a destination misconf
 
 One of the most common reasons why the connection fails when accessing the ABAP Cloud environment from an external application, such as SAP Business Application Studio, is that the communication system is not set up correctly.
 
+When creating the Communication Arrangement, use the Communication Scenario `SAP_COM_0510` (UI Development Tools for ABAP). This scenario exposes the BSP and SICF APIs required for SAP Fiori application deployment.
+
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
 ## Validating Connectivity Using Environment Check
@@ -136,7 +138,15 @@ Use the Environment Check tool in SAP Business Application Studio to validate yo
 
 If you are still facing issues after reviewing the Environment Check report, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
+## VS Code Deployment Using Connection Manager
+
+When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) instead of configuring an SAP BTP destination manually. The extension manages the connection to your ABAP Cloud system directly from VS Code and handles authentication, so no BTP destination setup is required for local development.
+
+Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools deploy command or the guided deployment wizard in VS Code.
+
 ## CI/CD Deployment
+
+Before running a CI/CD deployment, create a service key on your ABAP Environment service instance in the SAP BTP cockpit. The `uaa.clientid`, `uaa.clientsecret`, and `uaa.url` values from the service key JSON map to the `--uaa-clientid`, `--uaa-clientsecret`, and `--uaa-url` parameters respectively.
 
 To deploy from a CI/CD pipeline without a `ui5-deploy.yaml` configuration file, use the `--noConfig` flag and pass all required parameters directly on the command line:
 
