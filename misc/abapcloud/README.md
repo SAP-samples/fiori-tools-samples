@@ -138,6 +138,48 @@ When creating the Communication Arrangement, use the Communication Scenario `SAP
 
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
+### Confirming an ABAP Cloud System Is Provisioned
+
+If no ABAP Cloud (Steampunk) system appears when browsing destinations or connecting from SAP Business Application Studio, confirm that a system is provisioned in your Cloud Foundry environment before investigating destination or authentication issues.
+
+Run the following commands from a terminal in SAP Business Application Studio.
+
+1. Log in to your Cloud Foundry environment if you are not already authenticated:
+
+   ```bash
+   cf login
+   ```
+
+   If your landscape uses Single Sign-On (SSO), use:
+
+   ```bash
+   cf login --sso
+   ```
+
+2. Confirm that you are targeting the expected Cloud Foundry organization and space:
+
+   ```bash
+   cf target
+   ```
+
+3. List the provisioned services and filter for ABAP-related service instances:
+
+   ```bash
+   cf services | grep -Ei "abap|steampunk|sap_abap"
+   ```
+
+   If an ABAP Cloud environment has been provisioned in the current space, it appears in the output.
+
+4. If no service instances are returned, check whether the ABAP Environment service is available in the marketplace:
+
+   ```bash
+   cf marketplace | grep -Ei "abap|steampunk|sap_abap"
+   ```
+
+   This confirms whether the service is available to be provisioned in the current Cloud Foundry environment.
+
+> **Note**: If `cf services` returns no ABAP-related instances and `cf marketplace` does not list the ABAP Environment service, the system may not be provisioned in your current organization and space, or you may not have the required entitlements. Contact your SAP BTP administrator to confirm entitlements and provision the service if needed.
+
 ### Validating Connectivity Using Environment Check
 
 Use the Environment Check tool in SAP Business Application Studio to validate your destination properties and confirm connectivity. For more information, see the [Environment Check](../destinations/README.md#environment-check) section in the destinations guide.
@@ -255,6 +297,7 @@ A successful response returns an access token, which confirms that authenticatio
 
 ## Additional Resources
 
+- [Getting Started with a Customer Account in the ABAP Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-started-with-customer-account-in-abap-environment)
 - [Demystifying: SAP BTP - ABAP Environment, Steampunk, ABAP on Cloud, Embedded Steampunk](https://community.sap.com/t5/technology-blog-posts-by-members/demystifying-sap-btp-abap-environment-steampunk-abap-on-cloud-embedded/ba-p/13567772)
 - [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html)
 - [Configuring BTP Cross-Account and Cross-Region Destinations for Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA)
