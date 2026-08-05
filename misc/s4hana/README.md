@@ -10,6 +10,7 @@
 4. You are subscribed to SAP Business Application Studio. For more information, see [Subscribe to Business Application Studio](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
 5. You have reviewed [SAP S/4HANA Cloud, Public Edition FAQ](https://me.sap.com/notes/3445942).
 6. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation.
+7. You have verified that the SAP BTP destination certificates are valid and have not expired. For more information, see [Use Destination Certificates](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/use-destination-certificates).
 
 ## Create an SAP BTP `SAMLAssertion` Destination to Consume OData V2 and OData V4 Catalogs
 
@@ -182,8 +183,10 @@ For an HTTP 403 error, you can check the `Display Connectivity Trace` as an SAP 
 
 - Your SAP BTP destination, defined in your `SAP BTP subaccount`, is not configured with `SAMLAssertion`. Deployment is only supported using `SAMLAssertion`. A destination created with any other authentication type fails.
 - The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to deploy the application. The user must have the `SAP_CORE_BC_EXT_UI` or `SAP_A4_BC_DEV_UID_PC` role assigned to allow the user to deploy the application.
-- SAP BTP trust certificate renewal can cause connectivity issues. The active SAP BTP trust certificate is renewed and published with a new `Validity` date range. When this occurs, the renewed certificate must be uploaded to the target SAP S/4HANA Cloud system to restore trust and allow successful deployment or connectivity.
+- SAP BTP trust certificate renewal can cause connectivity issues. The active SAP BTP trust certificate is renewed and published with a new `Validity` date range. When this occurs, the renewed certificate must be uploaded to the target SAP S/4HANA Cloud system to restore trust and allow successful deployment or connectivity. For information about how to check certificate expiry and upload renewed certificates, see [Checking and Renewing SAP BTP Destination Certificates](#checking-and-renewing-sap-btp-destination-certificates).
 - Ensure that the email address in your Identity Provider (IdP) matches the SAP OCID (user ID) in your SAP S/4HANA Cloud system exactly. The email addresses are case-sensitive and must match precisely.
+
+For more information about troubleshooting SAMLAssertion configuration, see [Troubleshooting SAML Assertion in Destination Configuration with S/4HANA Cloud System](https://me.sap.com/notes/3679283/E).
 
 ### Deployment Fails with HTTP 400
 
@@ -247,6 +250,58 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
 3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests fail with HTTP 500 and do not reach your SAP S/4HANA Cloud instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
+## Checking and Renewing SAP BTP Destination Certificates
+
+SAP BTP periodically renews the trust certificate it uses to establish federation with SAP S/4HANA Cloud. When the certificate is renewed, the new certificate must be uploaded to the SAP S/4HANA Cloud Communication System before the old one expires. Failure to do so results in HTTP 403 errors during deployment or service catalog calls.
+
+For background information, see [Use Destination Certificates](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/use-destination-certificates) in the SAP BTP Connectivity documentation.
+
+### Check the Current Certificate Validity
+
+1. Open the SAP BTP cockpit and navigate to your subaccount.
+2. Go to **Connectivity** > **Destinations**.
+3. Select the destination used to connect to your SAP S/4HANA Cloud system.
+4. In the destination editor, scroll to the **Certificates** section. The listed certificate shows its **Validity** date range. If the certificate is expired or close to expiry, it must be replaced.
+
+### Download the Renewed Certificate from SAP BTP
+
+1. In the SAP BTP cockpit, go to **Security** > **Trust Configuration**.
+2. Under **Local Service Provider**, select your trust configuration.
+3. Click **Get Metadata** or export the signing certificate in `.cer` or `.pem` format.
+4. Note the **Valid Until** date shown for the certificate.
+
+### Upload the Renewed Certificate to SAP S/4HANA Cloud
+
+1. Log on to your SAP S/4HANA Cloud system as an administrator.
+2. Search for the **Communication Systems** application.
+3. Open the Communication System configured for SAP Business Application Studio or your SAP BTP subaccount.
+4. In the **Inbound Only** section, locate the existing SSL certificate.
+5. Delete the expired certificate entry.
+6. Click **Add** and upload the renewed `.cer` or `.pem` file downloaded from SAP BTP.
+7. Save the Communication System.
+
+After the certificate is uploaded, re-test connectivity using the [Environment Check](../destinations/README.md#environment-check) tool or by running a `curl` command against the OData catalog endpoint. For example:
+
+```bash
+# OData V2 catalog
+/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection
+
+# OData V4 catalog
+/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0002/ServiceGroups?$expand=DefaultSystem($expand=Services)
+```
+
+### SAP Cloud Connector: System Certificate
+
+If your setup uses the SAP Cloud Connector (on-premise proxy), the Cloud Connector system certificate is separate from the SAP BTP trust certificate and must be renewed independently.
+
+1. Open the SAP Cloud Connector Administration UI.
+2. Go to **Configuration** > **ON PREMISE** > **System Certificate**.
+3. Review the **Valid Until** date.
+4. If expired or close to expiry, click **Renew** and follow the prompts to generate a new certificate signing request (CSR) or self-signed certificate.
+5. After renewing, re-exchange the certificate with your SAP BTP subaccount. Go to your SAP BTP cockpit, navigate to **Connectivity** > **Cloud Connectors**, and confirm the new certificate fingerprint matches.
+
+For more information, see [Use Destination Certificates](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/use-destination-certificates) and [Renew a Certificate](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/renew-certificate) in the SAP BTP Connectivity documentation.
+
 ## SAP Fiori Launchpad
 
 Since application availability in the SAP Fiori launchpad and its authorization are controlled through Business Catalogs, extend an existing catalog to include your newly created app.
@@ -260,6 +315,7 @@ When using SAP Fiori tools, see step 8 of the [Configure SAP Fiori launchpad set
 ## Related Links
 
 - [Integrating SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/22bc724fd51a4aa4a4d1c5854db7e026.html)
+- [Troubleshooting SAML Assertion in Destination Configuration with S/4HANA Cloud System](https://me.sap.com/notes/3679283/E)
 - [Develop a Custom UI for an SAP S/4HANA Cloud System](https://developers.sap.com/tutorials/abap-custom-ui-bas-develop-s4hc.html)
 - [Create an SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 - [Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry Environment](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
