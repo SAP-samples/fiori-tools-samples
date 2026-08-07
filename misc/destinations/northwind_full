@@ -1,0 +1,12 @@
+#
+#Mon May 19 15:34:09 UTC 2025
+Type=HTTP
+HTML5.DynamicDestination=true
+Authentication=NoAuthentication
+HTML5.Timeout=60000
+WebIDEEnabled=true
+ProxyType=Internet
+WebIDEAdditionalData=full_url
+URL=https\://services.odata.org/V2/Northwind/Northwind.svc/
+Name=northwind_full
+WebIDEUsage=odata_gen
