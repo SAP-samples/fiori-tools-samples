@@ -278,7 +278,37 @@ npx fiori undeploy \
 >
 > **Note**: Values that contain special characters such as `!`, `/`, `+`, or `=`, which are common in UAA client IDs and secrets, must be quoted. In bash, use single quotes (`'value'`) to prevent the shell from interpreting these characters.
 
-For more information about CI/CD deployment configuration, which includes common errors such as MFA enforcement, see the [CI/CD README](../cicd/README.md).
+For more information about CI/CD deployment configuration, see the [CI/CD README](../cicd/README.md).
+
+### CI/CD Authentication Failures
+
+If a deployment returns HTTP 401 or the following error appears in the logs, MFA is enforced on the UAA account:
+
+```json
+{
+    "error": "invalid_client",
+    "error_description": "{\"error\":\"invalid_grant\",\"error_description\":\"User authentication failed: INVALID_OTP_CODE\"}"
+}
+```
+
+The `grant_type=password` flow used by CI/CD pipelines does not support MFA. OTP passcodes are only usable for local, interactive testing — they cannot be used in automated pipelines because they expire within seconds and require manual generation.
+
+To resolve this in a CI/CD context, a dedicated technical user with MFA disabled must be used. An administrator must either create a technical user excluded from the MFA policy, or disable MFA for the CI/CD user in the identity provider. For more information, see [SAP Note 3715393](https://me.sap.com/notes/0003715393).
+
+#### Local Testing Only
+
+When testing the deployment command locally and interactively, you can work around MFA temporarily by appending the OTP passcode directly to the `--uaa-password` value with no separator:
+
+```bash
+npx fiori deploy \
+  ...
+  --uaa-password '<password><passcode>' \
+  ...
+```
+
+For example, if the password is `MyP@ss` and the current OTP is `123456`, pass `--uaa-password 'MyP@ss123456'`.
+
+> **Note**: This approach is not suitable for CI/CD pipelines. The OTP passcode expires within seconds of generation and requires manual input, which makes automated deployments impossible when MFA is active.
 
 ### Validating Credentials with a Third-Party Tool
 
