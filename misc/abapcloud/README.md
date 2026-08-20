@@ -328,12 +328,28 @@ A successful response returns an access token, which confirms that authenticatio
 ## Additional Resources
 
 - [Getting Started with a Customer Account in the ABAP Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-started-with-customer-account-in-abap-environment)
+- [SAP BTP, ABAP Environment – SAP Discovery Center](https://discovery-center.cloud.sap/serviceCatalog/abap-environment?region=all)
+- [SAP BTP, ABAP Environment – Concepts](https://developers.sap.com/concepts/sap-btp-abap-environment/)
+- [Set Up the SAP BTP ABAP Environment Trial](https://developers.sap.com/tutorials/abap-environment-trial-onboarding/)
 - [Demystifying: SAP BTP - ABAP Environment, Steampunk, ABAP on Cloud, Embedded Steampunk](https://community.sap.com/t5/technology-blog-posts-by-members/demystifying-sap-btp-abap-environment-steampunk-abap-on-cloud-embedded/ba-p/13567772)
 - [Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html)
 - [Configuring BTP Cross-Account and Cross-Region Destinations for Use in UI Tooling](https://www.youtube.com/watch?v=8ePyQJsmWYA)
 - [Creating a Destination for Cross-Subaccount Communication](https://help.sap.com/docs/btp/sap-business-technology-platform/creating-destination-for-cross-subaccount-communication)
 
 > **Note**: Some content from the Configuring BTP Cross-Account and Cross-Region Destinations video is outdated, for example, the legacy SAP BTP Destinations flow and where to find the trust (`*.pem` file) certificates. However, the video is still relevant for the cross-account and cross-region destination configuration.
+
+## Support
+
+SAP BTP Trial and SAP BTP Free Tier have different support models.
+
+| | Trial | Free Tier |
+|---|---|---|
+| Account type | Dedicated trial account | Enterprise account (Pay-As-You-Go / BTPEA / CPEA) |
+| Purpose | Learning and evaluation | Production-capable with service limitations |
+| SLA | None | None |
+| Support | Dedicated trial support for account access issues only | Community support only |
+
+> **Note**: SAP BTP Free Tier service plans are provided with community support only and are not subject to Service Level Agreements (SLAs). Questions regarding service capabilities, licensing, and entitlements are best handled by the responsible product team or through the [SAP Community](https://community.sap.com) and product documentation.
 
 ## License
 
