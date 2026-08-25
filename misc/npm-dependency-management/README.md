@@ -56,6 +56,23 @@ However, it is still good practice to keep `devDependencies` updated to benefit 
 
 For production deployment strategies that exclude `devDependencies`, see [Production and CI/CD Installation Approaches](#7-production-and-cicd-installation-approaches).
 
+### How Packages Are Shared
+
+The same package can appear through both dependency types:
+
+```text
+Your application
+├── dependency
+│   └── package-x
+│       └── shared-package
+│
+└── devDependency
+    └── package-y
+        └── shared-package
+```
+
+Inspecting `package.json` alone is insufficient. Use `npm ls <package-name>` to trace the full dependency path and determine which dependency type introduced a given package.
+
 ## `package.json` Structure
 
 ```json
@@ -179,6 +196,67 @@ When a team includes open source `devDependencies` in `package.json`, they are:
 - Accepting responsibility for ongoing monitoring, risk assessment, compliance validation, and replacement strategy where necessary
 
 > **Important**: If an organisation's governance framework requires guaranteed SLAs, liability coverage, or mandatory remediation timelines, pure open source consumption may not fully align with those requirements. In such cases, additional internal mitigation controls or commercially supported alternatives may need to be considered.
+
+## CVE Exposure Assessment
+
+Finding a CVE in `npm audit` does not mean the application is exploitable. Assess each finding using this chain:
+
+1. Is the vulnerable package installed?
+2. Is it included in the production artifact?
+3. Is the vulnerable functionality reachable in production?
+4. Can an attacker trigger the vulnerable code path?
+5. Is a fix or mitigation available?
+
+A high-severity CVE in a dev-only, unreachable build tool may carry lower practical risk than a medium-severity CVE exposed through a public API. Severity score alone should not drive remediation priority.
+
+Classification should distinguish between:
+
+- **Production runtime exposure** — package deployed and reachable in the running application
+- **Build or CI/CD exposure** — package present only in build infrastructure
+- **Development environment exposure** — local developer machines only
+- **No practical exposure** — vulnerable code path is not used
+
+### Step-by-Step CVE Handling
+
+**Step 1: Run `npm audit`**
+
+```bash
+npm audit
+```
+
+Do not run `npm audit fix --force` without reviewing the changes — it can introduce breaking major-version upgrades.
+
+**Step 2: Trace the dependency path**
+
+```bash
+npm ls <vulnerable-package>
+```
+
+Determines: which package introduced it, whether it is direct or transitive, and whether it sits under `dependencies` or `devDependencies`.
+
+**Step 3: Determine production reach**
+
+Review `package.json`, `package-lock.json`, build configuration, and the deployed artifact. The key question: is the vulnerable package or its code path present and executable in production?
+
+**Step 4: Review CVE details**
+
+Check affected versions, fixed versions, CVSS score, attack vector, and exploit prerequisites. Confirm whether the vulnerable functionality is actually used by the application.
+
+**Step 5: Update the owning package**
+
+Prefer upgrading the package that owns the vulnerable dependency rather than the transitive package directly. Avoid editing `package-lock.json` manually.
+
+```bash
+npm install <parent-package>@latest --save-dev
+```
+
+**Step 6: Use overrides if the parent cannot yet be upgraded**
+
+See [Using `npm` Overrides for Temporary Fixes](#using-npm-overrides-for-temporary-fixes).
+
+**Step 7: Document accepted risk when no fix exists**
+
+Record: CVE identifier, affected package and path, whether production is affected, exploitability assessment, compensating controls, and a planned review date. Do not suppress findings without a written rationale.
 
 ## Understanding `npm` Audit Vulnerabilities
 
