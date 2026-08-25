@@ -63,14 +63,13 @@ Description: CAP Project Destination
 URL: from step 2 i.e. https://28bdb0fbtrial-dev-managedappcapproject-srv.cfapps.us10-001.hana.ondemand.com
 Client ID: from step 5 i.e. sb-managedappcapproject!t299668
 Client Secret: from step 5 i.e. xGRgYPoAXbMv2gqRIDontThinkSooZ7uY=
-Token Service URL: from step 5 i.e. https://28bdb0fbtrial.authentication.us10.hana.ondemand.com appended with /oauth/token
+Token Service URL: from step 5 i.e. https://28bdb0fbtrial.authentication.us10.hana.ondemand.com/oauth/token
 Token Service user: same as client ID
 Token Service password: same as client secret
 HTML5.Timeout: 60000
 WebIDEEnabled: true
 WebIDEUsage: odata_gen
 HTML5.DynamicDestination: true
-HTML5.Timeout: 60000
 Authentication: OAuth2ClientCredentials
 ```
 
