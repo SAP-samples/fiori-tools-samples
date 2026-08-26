@@ -10,7 +10,7 @@ This guide covers how to connect to and deploy SAP Fiori applications to an SAP 
 2. [Connectivity Overview](#connectivity-overview)
 3. [Destination Configuration](#destination-configuration)
 4. [Troubleshooting](#troubleshooting)
-5. [VS Code Deployment Using Connection Manager](#vs-code-deployment-using-connection-manager)
+5. [VS Code Connectivity and Deployment Using Connection Manager](#vs-code-connectivity-and-deployment-using-connection-manager)
 6. [CI/CD Deployment](#cicd-deployment)
 7. [Additional Resources](#additional-resources)
 
@@ -188,7 +188,7 @@ Use the Environment Check tool in SAP Business Application Studio to validate yo
 
 If you are still facing issues after reviewing the Environment Check report, enable a connectivity trace in your ABAP Cloud system and analyze the error. For more information, see [Enable a Connectivity Trace](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/display-connectivity-trace).
 
-## VS Code Deployment Using Connection Manager
+## VS Code Connectivity and Deployment Using Connection Manager
 
 When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to connect directly to your ABAP Cloud system. This extension is specific to VS Code and is independent of SAP BTP destinations, which are used for SAP Business Application Studio connectivity. Authentication uses reentrance tickets, which the extension handles automatically.
 
