@@ -125,7 +125,7 @@ Open the following URLs in a browser:
 Check the browser response for:
 
 - **XML or JSON response body**: Catalog is reachable and the user has sufficient authorizations.
-- **HTTP 401 or HTTP 403**: Authentication failed or the user lacks the required roles. Check that the ICF node is active and that the user has the `SAP_BC_FNDTN_ICF` role or equivalent.
+- **HTTP 401 or HTTP 403**: Authentication failed or the user lacks the required roles. Check that the ICF node is active and that the user has the required authorizations.
 - **HTTP 404**: The catalog service is not activated. See [OData V4 Catalog Service Not Available](#odata-v4-catalog-service-not-available) or [OData V2 Catalog Returns HTTP 404](#odata-v2-catalog-returns-http-404).
 - **Browser error (site can't be reached)**: The ICM port is not reachable. Confirm the host, port, and any local firewall rules.
 
