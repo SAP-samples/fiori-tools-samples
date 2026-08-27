@@ -8,6 +8,8 @@ Table of Contents
 - [Cloud Connector Configuration](#cloud-connector-configuration)
 - [SAP BTP Destination](#sap-btp-destination)
 - [Validate Connectivity](#validate-connectivity)
+  - [From SAP Business Application Studio](#from-sap-business-application-studio)
+  - [From Your Local Network](#from-your-local-network)
 - [Quick Checks](#quick-checks)
 - [Enable Cloud Connector Trace Logging](#enable-cloud-connector-trace-logging)
 - [Known Issues](#known-issues)
@@ -85,6 +87,8 @@ Properties:
 
 ## Validate Connectivity
 
+### From SAP Business Application Studio
+
 Run the [Environment Check](../destinations/README.md#environment-check) in SAP Business Application Studio to validate the OData V2 and OData V4 catalog endpoints. The check produces an `envcheck-results.md` file with details on any failures.
 
 Address any issues in the report before proceeding to [Deployment](./deployment.md).
@@ -97,6 +101,33 @@ curl -L -vs -i -H "X-CSRF-Token: Fetch" "https://<destination-name>.dest/sap/opu
 ```
 
 Review the `curl-catalog-output.txt` file to check for connectivity or authentication errors.
+
+### From Your Local Network
+
+If you have direct network access to the ABAP system, such as when connected to the corporate VPN or on-premises network, you can validate that the API catalog endpoints are exposed before configuring the Cloud Connector or SAP BTP destination.
+
+Use the hostname or IP address, port, and protocol from the **Mapping Virtual to Internal System** entry in your Cloud Connector configuration. Sign in with your ABAP user credentials when prompted.
+
+Open the following URLs in a browser:
+
+**OData V2 Catalog:**
+
+```text
+<protocol>://<host>:<port>/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled
+```
+
+**OData V4 Catalog:**
+
+```text
+<protocol>://<host>:<port>/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0001/
+```
+
+Check the browser response for:
+
+- **XML or JSON response body**: Catalog is reachable and the user has sufficient authorizations.
+- **HTTP 401 or HTTP 403**: Authentication failed or the user lacks the required roles. Check that the ICF node is active and that the user has the `SAP_BC_FNDTN_ICF` role or equivalent.
+- **HTTP 404**: The catalog service is not activated. See [OData V4 Catalog Service Not Available](#odata-v4-catalog-service-not-available) or [OData V2 Catalog Returns HTTP 404](#odata-v2-catalog-returns-http-404).
+- **Browser error (site can't be reached)**: The ICM port is not reachable. Confirm the host, port, and any local firewall rules.
 
 ---
 
