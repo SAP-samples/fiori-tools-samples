@@ -116,11 +116,15 @@ Open the following URLs in a browser:
 <protocol>://<host>:<port>/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled
 ```
 
+For example: `https://192.168.1.6:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2?saml2=disabled`
+
 **OData V4 Catalog:**
 
 ```text
 <protocol>://<host>:<port>/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0001/
 ```
+
+For example: `https://192.168.1.6:44300/sap/opu/odata4/iwfnd/config/default/iwfnd/catalog/0001/`
 
 Check the browser response for:
 
