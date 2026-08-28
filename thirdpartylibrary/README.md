@@ -7,4 +7,9 @@
 - You have the `northwind` sub-account destination available. For more information, see the attached `northwind` configuration.
 
 ## Sample Project
-For more information, see [ztravelapp](./ztravelapp/README.md).
+
+The [freestyle SAPUI5 application](./ztravelapp/README.md) demonstrates how to add an external third party library `xml-js` to the project.
+
+## License
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.

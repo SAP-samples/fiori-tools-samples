@@ -23,4 +23,5 @@ For more information about support, chat, and samples, see [SAP Cloud Applicatio
 For more information about integrating CI/CD into your CAP deployment strategy, see [Continuous Integration and Delivery](https://www.youtube.com/watch?v=gvWSHSZFPok).
 
 ## License
-Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSES/Apache-2.0.txt) file.
+
+Copyright (c) 2009-2026 SAP SE or an SAP affiliate company. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](../LICENSES/Apache-2.0.txt) file.
