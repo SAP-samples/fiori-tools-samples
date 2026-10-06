@@ -27,6 +27,7 @@ The Fiori Elements UI was then added using the SAP Fiori tools App Generator (Li
 - Blog Post: [Introducing Application Frontend Service](https://community.sap.com/t5/technology-blog-posts-by-sap/introducing-application-frontend-service/ba-p/14091408)
 - Blog Post: [Simple UI Applications with Application Frontend Service](https://community.sap.com/t5/technology-blog-posts-by-sap/simple-ui-applications-with-application-frontend-service/ba-p/14096009)
 - Blog Post: [Exploring Application Frontend Service: Deploying the UI of an MTA App](https://community.sap.com/t5/technology-blog-posts-by-members/exploring-application-frontend-service-deploying-the-ui-of-an-mta-app/ba-p/14149899)
+- Tutorial: [Deploy the SAPUI5 App with Application Frontend Service](https://developers.sap.com/tutorials/sapui5-appfrontend-deploy/)
 
 ## Prerequisites
 
