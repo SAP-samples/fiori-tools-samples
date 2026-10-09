@@ -188,6 +188,52 @@ For an HTTP 403 error, you can check the `Display Connectivity Trace` as an SAP 
 
 For more information about troubleshooting SAMLAssertion configuration, see [Troubleshooting SAML Assertion in Destination Configuration with S/4HANA Cloud System](https://me.sap.com/notes/3679283/E).
 
+### Browser Login Succeeds but the Terminal Falls Back to Basic Authentication
+
+**Symptom**
+
+Running the deployment opens a browser window, and the browser single sign-on (SSO) login succeeds. However, the terminal reports that authentication was denied and falls back to prompting for a username and password, so the deployment cannot proceed:
+
+```bash
+info abap-deploy-task TRAVELAPP Starting to deploy.
+error abap-deploy-task TRAVELAPP Authentication failed.
+? Username:
+```
+
+This affects deployments that use `authenticationType: reentranceTicket` in `ui5-deploy.yaml`, where the browser-based SSO (reentrance ticket) flow is expected to complete authentication without prompting for credentials.
+
+**Cause**
+
+Two conditions trigger this behavior:
+
+- An outdated version of `@sap/ux-ui5-tooling`: the reentrance ticket authentication flow requires a tooling version that supports it. Older tooling cannot exchange the browser SSO reentrance ticket, so it falls back to basic authentication.
+- The deployment target `url` is missing the `-api` host: SAP S/4HANA Cloud exposes the deployment API on the `-api` host variant, for example `https://my11111-api.s4hana.ondemand.com`. If the `url` points to the standard host without `-api`, the reentrance ticket cannot be validated and authentication is denied.
+
+**Resolution**
+
+1. Update `@sap/ux-ui5-tooling` to the latest version:
+
+```bash
+npm install --save-dev @sap/ux-ui5-tooling@latest
+```
+
+2. Ensure the deployment target `url` in `ui5-deploy.yaml` points to the `-api` host variant:
+
+```yaml
+builder:
+  customTasks:
+    - name: deploy-to-abap
+      configuration:
+        target:
+          url: https://my11111-api.s4hana.ondemand.com
+          authenticationType: reentranceTicket
+          destination: my-btp-destination
+```
+
+3. Confirm your SAP S/4HANA Cloud Public Edition system is release 2408 or higher, as earlier releases do not support reentrance ticket authentication.
+
+After updating the tooling and correcting the host, re-run the deployment. The browser SSO login completes authentication and the terminal no longer prompts for a username and password.
+
 ### Deployment Fails with HTTP 400
 
 ```bash
