@@ -421,7 +421,7 @@ Wrap in backticks when the token is being used as code. Do not wrap product name
 
 ### Automated Checks
 
-The `docs-linter` tool is available on the `km-updates` branch only. Do not run these commands on `main`.
+Use the `docs-linter` tool to automatically validate:
 
 ```bash
 # Validate a file

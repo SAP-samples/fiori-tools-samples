@@ -78,17 +78,33 @@ To automatically apply safe fixes:
 
 The skill runs markdown linting and an AI review against the KM rules defined in `prompts/km-doc-review.md` and `docs/km-style-guide.md`. Address all critical and major findings before opening a PR.
 
+For automated rule-based checks outside Claude Code, the `docs-linter/` tool can be run directly:
+
+```bash
+node docs-linter/src/cli.js check <file>      # check a file
+node docs-linter/src/cli.js fix <file> --safe-only  # apply safe auto-fixes
+node docs-linter/src/cli.js validate <file>   # quality score and recommendations
+```
+
+See `docs-linter/README.md` for full usage.
+
 ## Documentation Standards (KM Rules)
 
-Applied using the `/km-review` skill and `prompts/km-doc-review.md`:
+Applied using the `/km-review` skill and `prompts/km-doc-review.md`. Full rules in `docs/km-style-guide.md`. Key rules:
 
-- **All headings (H1–H6):** Chicago title case — capitalize all major words; lowercase articles, prepositions of four or fewer letters, and coordinating conjunctions, unless first or last word
-- **List markers:** Dashes (`-`) preferred over asterisks
+- **All headings (H1–H6):** Chicago title case — capitalize all major words including participles ("Using", "Running"); lowercase articles, prepositions of four or fewer letters (including "with"), and coordinating conjunctions, unless first or last word
+- **Headings must not end** with a colon or question mark
+- **License heading:** Always `## License` (H2), never H3 or lower
+- **Prerequisites bullets:** Each must start with "You have" or "You are"
+- **Step/Issue prefixes:** Do not use "Step N:" or "Issue N:" as heading prefixes — use descriptive headings
+- **List markers:** Dashes (`-`) over asterisks; single-item ordered lists must be bullets or prose
 - **Em dashes (`—`) or arrows (`→`) in list items:** Replace with colons
-- **Terminology:** `back-end` (not `backend`), `using Cloud Connector` (not `via`), `works` (not `is working`)
+- **No semicolons in prose** — use colon or period instead
+- **Do not state list item count in prose** — use "the following" without a number
+- **Terminology:** `on-premise` (not `onpremise`), `Cloud Connector` (consistent caps), `SAP BTP` (not just `BTP`)
 - **HTTP error pairs:** `HTTP 401 and HTTP 403` (not `HTTP 401/403`)
 - **ToC label:** "Table of Contents"
-- **Oxford commas** and **number formatting** enforced
+- **Oxford commas** and **number formatting** enforced (spell out one–ten in prose)
 
 ## Keeping Docs in Sync
 
