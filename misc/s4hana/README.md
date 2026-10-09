@@ -217,6 +217,13 @@ Two conditions trigger this behavior:
 npm install --save-dev @sap/ux-ui5-tooling@latest
 ```
 
+> **Important**: Ensure your project is under source control before making any modifications.
+
+You have a couple of options to handle updating your project dependencies:
+
+- Delete the `package-lock.json` file and run the command `npm install`.
+- Change the version of `@sap/ux-ui5-tooling` in the package file to `"^1"` and run the command `npm install`. Using this option gives you the ability to run `npm update` or `npm update @sap/ux-ui5-tooling` in the future.
+
 2. Ensure the deployment target `url` in `ui5-deploy.yaml` points to the `-api` host variant:
 
 ```yaml
