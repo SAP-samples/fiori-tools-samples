@@ -1,0 +1,37 @@
+[
+  {
+    "file": "./misc/headless/fioriui/README.md",
+    "totalCommits": 5,
+    "recentCommits": 1,
+    "size": 36941,
+    "score": 55.941
+  },
+  {
+    "file": "./sample-fiori-gen-ext/README.md",
+    "totalCommits": 16,
+    "recentCommits": 0,
+    "size": 13389,
+    "score": 55.388999999999996
+  },
+  {
+    "file": "./misc/cicd/README.md",
+    "totalCommits": 8,
+    "recentCommits": 0,
+    "size": 6227,
+    "score": 32.227000000000004
+  },
+  {
+    "file": "./cap/cap-fiori-hybrid/README.md",
+    "totalCommits": 7,
+    "recentCommits": 2,
+    "size": 5145,
+    "score": 27.145
+  },
+  {
+    "file": "./misc/proxy/README.md",
+    "totalCommits": 6,
+    "recentCommits": 2,
+    "size": 6533,
+    "score": 26.533
+  }
+]
