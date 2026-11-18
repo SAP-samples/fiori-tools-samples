@@ -1,0 +1,40 @@
+name: Docs Linter
+
+on:
+  pull_request:
+    paths:
+      - 'docs-linter/**'
+  push:
+    paths:
+      - 'docs-linter/**'
+
+concurrency:
+  group: docs-linter-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['18', '20']
+
+    defaults:
+      run:
+        working-directory: docs-linter
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
