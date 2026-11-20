@@ -4,6 +4,23 @@ For more information, see [Migrating HTML5 Applications from SAP BTP, Neo to Clo
 
 Learn how to migrate custom HTML5 applications on SAP BTP from the Neo to the Cloud Foundry environment.
 
+## Migrate Automatically with SAP Fiori Tools
+
+From SAP Fiori tools 1.34, you can migrate a Neo application automatically with the `@sap-ux/create` command instead of following the manual steps in this guide.
+
+Run the command with `npx`:
+
+```bash
+npx -y @sap-ux/create@latest
+```
+
+For the migrate command and its options, see [@sap-ux/create on npm](https://www.npmjs.com/package/@sap-ux/create#migrate).
+
+You can also run the migration from an AI assistant:
+
+- Claude Code and GitHub Copilot: install the SAP Fiori tools plugin. For more information, see [SAP UX Fiori Tools on Awesome Copilot](https://awesome-copilot.github.com/plugin/sap-ux-fiori-tools/).
+- skills.sh: for more information, see [SAP Fiori Create CLI](https://www.skills.sh/sap/open-ux-tools/sap-fiori-create-cli).
+
 ## Prerequisites
 
 - You have an SAP Business Technology Platform (SAP BTP) account.
