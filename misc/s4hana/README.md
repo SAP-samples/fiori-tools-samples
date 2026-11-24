@@ -4,7 +4,10 @@
 
 > **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system must be carried out with the authorization of your IT support team.
 
-1. You have completed steps 1, 2, and 3 from the [ABAP Custom UI SAP Business Application Studio Connect SAP S/4HANA Cloud](https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html) tutorial.
+1. You have completed steps 1 to 3 from the [Connect SAP Business Application Studio and SAP S/4HANA Cloud System](https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html) tutorial. Step 1 creates the SAP BTP destination, step 2 downloads the SAP BTP trust certificate, and step 3 creates the communication system in the SAP S/4HANA Cloud system. That tutorial has the following prerequisites:
+   - You have an SAP S/4HANA Cloud system and a business user with Communication Management authorizations. This requires a business role with unrestricted write access that contains the business catalog `SAP_CORE_BC_COM`.
+   - You have an SAP Business Technology Platform trial or customer account with an SAP Business Application Studio subscription.
+   - You have set up mutual trust between the SAP BTP subaccount and the identity provider. For more information, see [Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry Environment](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html).
 2. You have administrative access to your SAP S/4HANA Cloud system so you can configure and debug connectivity issues.
 3. You have established trust and federation between SAP Authorization and Trust Management Service and SAP Cloud Identity Services, such as OpenID Connect. For more information, see [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 4. You are subscribed to SAP Business Application Studio. For more information, see [Subscribe to Business Application Studio](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
