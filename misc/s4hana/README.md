@@ -1,8 +1,14 @@
 # `SAMLAssertion` Destination Configured to Point to an SAP S/4HANA Cloud Public Edition Tenant
 
+You can connect to and deploy SAP Fiori applications on an SAP S/4HANA Cloud Public Edition tenant from **both SAP Business Application Studio and VS Code**. The connectivity and authentication method differs by tool, but the SAP S/4HANA Cloud side configuration (communication system, business roles and catalogs, and OData service activation) is the same for both. For a side-by-side comparison, see [Authentication Method by Development Tool](#authentication-method-by-development-tool).
+
+This guide is organized around the SAP Business Application Studio flow, which uses an SAP BTP `SAMLAssertion` destination. VS Code does not require an SAP BTP destination. Sections that describe destination creation and destination certificates apply to SAP Business Application Studio only; all other sections (authorization requirements, tenant types, OData catalog activation, and connectivity debugging) apply to both tools.
+
 ## Prerequisites
 
 > **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system must be carried out with the authorization of your IT support team.
+>
+> **Tool applicability**: The SAP BTP destination (item 1) and SAP Business Application Studio subscription (item 4) apply to **SAP Business Application Studio only**. For **VS Code**, the SAP BTP destination and its trust certificate are not required. All other prerequisites, including the SAP S/4HANA Cloud business user with Communication Management authorizations, the business roles and catalogs, trust and federation with SAP Cloud Identity Services, and OData service activation, apply to both tools. See [Authentication Method by Development Tool](#authentication-method-by-development-tool).
 
 1. You have completed steps 1 to 3 from the [Connect SAP Business Application Studio and SAP S/4HANA Cloud System](https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html) tutorial. Step 1 creates the SAP BTP destination, step 2 downloads the SAP BTP trust certificate, and step 3 creates the communication system in the SAP S/4HANA Cloud system. That tutorial has the following prerequisites:
    - You have an SAP S/4HANA Cloud system and a business user with Communication Management authorizations. This requires a business role with unrestricted write access that contains the business catalog `SAP_CORE_BC_COM`.
@@ -14,6 +20,40 @@
 5. You have reviewed [SAP S/4HANA Cloud, Public Edition FAQ](https://me.sap.com/notes/3445942).
 6. You have reviewed the [SAP Business Application Studio Integration with SAP S/4HANA Cloud](https://me.sap.com/notes/3297481) documentation.
 7. You have verified that the SAP BTP destination certificates are valid and have not expired. For more information, see [Use Destination Certificates](https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/use-destination-certificates).
+
+## Authentication Method by Development Tool
+
+Both SAP Business Application Studio and VS Code are supported for consuming OData services from, and deploying SAP Fiori applications to, an SAP S/4HANA Cloud Public Edition tenant. The difference is how each tool connects and authenticates.
+
+| | SAP Business Application Studio | VS Code |
+|---|---|---|
+| Connection | SAP BTP `SAMLAssertion` destination | Direct connection to the `-api` host |
+| Authentication | `SAMLAssertion` through the SAP BTP destination | `reentranceTicket` (browser SSO) |
+| SAP BTP destination | Required | Not required |
+| SAP BTP trust certificate upload | Required | Not required |
+| Communication system | Required | Required |
+| Business roles and catalogs | Required | Required |
+| OData service activation | Required | Required |
+
+### SAP Business Application Studio
+
+SAP Business Application Studio connects through an SAP BTP `SAMLAssertion` destination. Create the destination as described in [Create an SAP BTP `SAMLAssertion` Destination to Consume OData V2 and OData V4 Catalogs](#create-an-sap-btp-samlassertion-destination-to-consume-odata-v2-and-odata-v4-catalogs).
+
+### VS Code
+
+VS Code connects directly to the SAP S/4HANA Cloud Public Edition `-api` host using reentrance ticket (browser SSO) authentication. No SAP BTP destination is required. Use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to add the system, then set `authenticationType: reentranceTicket` and the `-api` host `url` in `ui5.yaml` and `ui5-deploy.yaml`:
+
+```yaml
+builder:
+  customTasks:
+    - name: deploy-to-abap
+      configuration:
+        target:
+          url: https://my11111-api.s4hana.ondemand.com
+          authenticationType: reentranceTicket
+```
+
+Although the SAP BTP destination is not required for VS Code, the SAP S/4HANA Cloud side configuration is identical to the SAP Business Application Studio flow. The business user still needs the correct business roles and catalogs (see [Authorization Requirements](#authorization-requirements)), the relevant OData services must be activated and exposed, and the system must be release 2408 or higher for reentrance ticket support. For details on the reentrance ticket flow and common failures, see [Browser Login Succeeds but the Terminal Falls Back to Basic Authentication](#browser-login-succeeds-but-the-terminal-falls-back-to-basic-authentication).
 
 ## Create an SAP BTP `SAMLAssertion` Destination to Consume OData V2 and OData V4 Catalogs
 
