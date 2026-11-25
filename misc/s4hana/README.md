@@ -1,10 +1,13 @@
-# `SAMLAssertion` Destination Configured to Point to an SAP S/4HANA Cloud Public Tenant
+# `SAMLAssertion` Destination Configured to Point to an SAP S/4HANA Cloud Public Edition Tenant
 
 ## Prerequisites
 
 > **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration changes or scripts that alter the behaviour of your system or operating system must be carried out with the authorization of your IT support team.
 
-1. You have completed steps 1, 2, and 3 from the [ABAP Custom UI SAP Business Application Studio Connect S4HC](https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html) tutorial.
+1. You have completed steps 1 to 3 from the [Connect SAP Business Application Studio and SAP S/4HANA Cloud System](https://developers.sap.com/tutorials/abap-custom-ui-bas-connect-s4hc.html) tutorial. Step 1 creates the SAP BTP destination, step 2 downloads the SAP BTP trust certificate, and step 3 creates the communication system in the SAP S/4HANA Cloud system. That tutorial has the following prerequisites:
+   - You have an SAP S/4HANA Cloud system and a business user with Communication Management authorizations. This requires a business role with unrestricted write access that contains the business catalog `SAP_CORE_BC_COM`.
+   - You have an SAP Business Technology Platform trial or customer account with an SAP Business Application Studio subscription.
+   - You have set up mutual trust between the SAP BTP subaccount and the identity provider. For more information, see [Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry Environment](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html).
 2. You have administrative access to your SAP S/4HANA Cloud system so you can configure and debug connectivity issues.
 3. You have established trust and federation between SAP Authorization and Trust Management Service and SAP Cloud Identity Services, such as OpenID Connect. For more information, see [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 4. You are subscribed to SAP Business Application Studio. For more information, see [Subscribe to Business Application Studio](https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/6331319fd9ea4f0ea5331e21df329539.html).
@@ -32,8 +35,8 @@ In your SAP BTP destination, the `nameIdFormat` property affects the behavior of
 **Notes:**
 
 1. Ensure the version `1.1` is not changed to a later version, unless specified by the relevant service providers.
-2. Unless you have a specific technical reason, the `nameIdFormat` must be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the S4HC email address configured with the appropriate roles. For more information about adding other IdPs to your SAP BTP system, see [Related Links](#related-links).
-3. The SAML `nameIdFormat` specification, versions 1.1 and 2.0, does not mandate any case normalization for `NameID` values because it treats the `NameID` as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in S4HC exactly, with case sensitivity observed.
+2. Unless you have a specific technical reason, the `nameIdFormat` must be set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, by default. The email address as defined in your IdP, such as OpenID Connect or IAS, must match the SAP S/4HANA Cloud email address configured with the appropriate roles. For more information about adding other IdPs to your SAP BTP system, see [Related Links](#related-links).
+3. The SAML `nameIdFormat` specification, versions 1.1 and 2.0, does not mandate any case normalization for `NameID` values because it treats the `NameID` as an opaque identifier. However, the meaning and comparison are left up to the service providers. For best practice, ensure the email address in the IdP matches the email address in SAP S/4HANA Cloud exactly, with case sensitivity observed.
 
 ## Basic Authentication
 
@@ -106,7 +109,7 @@ Steps to generate an [SAP BTP destination for your SAP S/4HANA Cloud Key User Ex
 
 ### Steps for Developer Extensibility Tenant
 
-To ensure your specific user has the appropriate `SAP_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific S4HC user.
+To ensure your specific user has the appropriate `SAP_BR_DEVELOPER` role to consume OData XML services, and deploy SAPUI5 applications, edit your specific SAP S/4HANA Cloud user.
 
 Search for the "Maintain Business Users" application:
 ![MaintainUsersPart1.png](MaintainUsersPart1.png)
@@ -291,16 +294,16 @@ For more information, see [Exposing an OData Service from SAP S/4HANA Cloud Publ
 
 ### All HTTP API Requests from SAP Business Application Studio to SAP S/4HANA Cloud Fail
 
-#### Assumes S4HC Connectivity Is Established
+#### Assumes SAP S/4HANA Cloud Connectivity Is Established
 
-1. You have activated either the authorization or connectivity trace logging on your S4HC instance and confirmed the requests are hitting your S4HC instance.
+1. You have activated either the authorization or connectivity trace logging on your SAP S/4HANA Cloud instance and confirmed the requests are hitting your SAP S/4HANA Cloud instance.
 2. The communication system for SAP Business Application Studio is not active. For more information, see [Create a Communication System for SAP Business Application Studio](https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/79ed4173a0e44a5085c2d236d14b5ab8.html).
 3. The user logged into SAP Business Application Studio does not have the required `Business Role` assigned to allow the user to consume OData services. The user must have the `SAP_BR_DEVELOPER` role assigned to allow the user to consume OData services. For more information, see [Authorization Requirements](./README.md#authorization-requirements).
 
-#### Assumes There Is No Connectivity to Your S4HC Instance
+#### Assumes There Is No Connectivity to Your SAP S/4HANA Cloud Instance
 
-1. You have either activated the authorization or connectivity trace logging on your S4HC instance and confirmed that _no_ requests are hitting your S4HC instance.
-2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your S4HC instance.
+1. You have either activated the authorization or connectivity trace logging on your SAP S/4HANA Cloud instance and confirmed that _no_ requests are hitting your SAP S/4HANA Cloud instance.
+2. If the `nameIdFormat` in your SAP BTP destination is set to `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, ensure the email address in your Identity Provider (IdP) matches the email address configured for your user in your SAP S/4HANA Cloud instance.
 3. After running a `curl` command or [Environment Check](../destinations/README.md#environment-check), all requests fail with HTTP 500 and do not reach your SAP S/4HANA Cloud instance. Your SAP BTP destination may be corrupted. Clone the existing destination and use the new destination in your SAP Business Application Studio instance.
 
 ## Checking and Renewing SAP BTP Destination Certificates
@@ -373,7 +376,7 @@ When using SAP Fiori tools, see step 8 of the [Configure SAP Fiori launchpad set
 - [Create an SAP Fiori App and Deploy it to SAP S/4HANA Cloud, ABAP Environment](https://developers.sap.com/tutorials/abap-s4hanacloud-procurement-purchasereq-shop-ui.html)
 - [Set Up Trust Between SAP Cloud Identity Services and SAP BTP, Cloud Foundry Environment](https://developers.sap.com/tutorials/abap-custom-ui-trust-cf.html)
 - Required when adding another trust configuration that uses a different identity provider. For example, where you are adding an IAS provider to manage your user profiles.
-- The trust protocol defined in your new IdP must be `SAML` to ensure the `SAMLAssertion` configuration in your SAP BTP destination works when connecting to your S4HC instance using `SAMLAssertion`.
+- The trust protocol defined in your new IdP must be `SAML` to ensure the `SAMLAssertion` configuration in your SAP BTP destination works when connecting to your SAP S/4HANA Cloud instance using `SAMLAssertion`.
 
 - [User Management in a Nutshell](https://community.sap.com/t5/enterprise-resource-planning-blogs-by-sap/user-management-in-a-nutshell-for-the-sap-s-4hana-cloud-public-edition/ba-p/13556782) blog post
 

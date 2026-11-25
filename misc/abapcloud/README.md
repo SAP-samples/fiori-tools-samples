@@ -1,8 +1,8 @@
-# SAP BTP ABAP Environment (Steampunk)
+# SAP Business AI Platform, ABAP environment
 
 ## Overview
 
-This guide covers how to connect to and deploy SAP Fiori applications to an SAP BTP ABAP Environment (Steampunk) system. It covers destination configuration for SAP Business Application Studio, VS Code deployment using the SAP Connection Manager, CI/CD deployment, and troubleshooting connectivity issues.
+This guide covers how to connect to and deploy SAP Fiori applications to an SAP Business AI Platform, ABAP environment system. It covers destination configuration for SAP Business Application Studio, VS Code deployment using the SAP Connection Manager, CI/CD deployment, and troubleshooting connectivity issues.
 
 ## Table of Contents
 
@@ -18,14 +18,14 @@ This guide covers how to connect to and deploy SAP Fiori applications to an SAP 
 
 > **Important**: Ensure any HTML5 application source files you modify are under source control before making changes. Any configuration scripts or commands that change the behavior of your system or operating system must be carried out with the authorization of your IT support team.
 
-- You have an SAP BTP ABAP Environment (Steampunk) instance provisioned.
+- You have an SAP Business AI Platform, ABAP environment instance provisioned.
 - You have the required business roles assigned in the ABAP system, such as `SAP_A4C_BC_DEV_UID_PC` for UI deployment.
 - You have access to the SAP BTP cockpit with permission to create service keys.
 - You are familiar with SAP Fiori application development and deployment concepts.
 
 ## Connectivity Overview
 
-SAP Business Application Studio connects to ABAP Cloud systems using SAP BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is SAP Business Application Studio connects to a destination, which connects to the ABAP Environment using SAP BTP. With `odata_abap`, the destination URL must always be the base host. SAP Business Application Studio appends the ABAP catalog paths automatically.
+SAP Business Application Studio connects to ABAP environment systems using SAP BTP destinations configured with `WebIDEUsage=odata_abap`. The typical flow is SAP Business Application Studio connects to a destination, which connects to the ABAP Environment using SAP BTP. With `odata_abap`, the destination URL must always be the base host. SAP Business Application Studio appends the ABAP catalog paths automatically.
 
 Before connecting, ensure you are logged in to Cloud Foundry and the correct organization and space are set. This is required for SAP Business Application Studio to resolve destinations and deploy applications correctly.
 
@@ -40,7 +40,7 @@ The destination must point to the ABAP system root URL with no service path appe
   - Same subaccount: `OAuth2UserTokenExchange`
   - Cross-subaccount: `SAMLAssertion`
 
-When exposing an SAP BTP ABAP Environment (Steampunk) system to the internet using an SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values:
+When exposing an SAP Business AI Platform, ABAP environment system to the internet using an SAP BTP destination, ensure the destination `WebIDEUsage` field contains the following values:
 
 ```text
 WebIDEUsage: odata_abap,dev_abap,abap_cloud
@@ -48,7 +48,7 @@ WebIDEUsage: odata_abap,dev_abap,abap_cloud
 
 The `abap_cloud` property is used to determine which type of system is connected.
 
-The following is an example of an `OAuth2UserTokenExchange` destination for an ABAP Cloud system in a same-subaccount scenario:
+The following is an example of an `OAuth2UserTokenExchange` destination for an ABAP environment system in a same-subaccount scenario:
 
 ```json
 {
@@ -99,7 +99,7 @@ Use the following values for the `URL` and `audience` fields:
 - For the `URL` field, copy the `Host Name` from the Communication Systems app, for example, `https://<abap-system-guid>.abap.<region>.ondemand.com`.
 - For the `audience` field, use the same host name with `-web` appended before the region, for example, `https://<abap-system-guid>.abap-web.<region>.ondemand.com`.
 
-To confirm the correct values, log in to your ABAP Cloud environment, open the **Communication Systems** app, and select your SAP Cloud System. You can identify it by the **This is your own SAP Cloud System** label. The `Host Name` field contains the correct value for the `URL` field, and the `OAuth 2.0 SAML2 Audience` field contains the exact value for the `audience` field. For cross-subaccount scenarios, you must also configure a system-to-system trust on the target ABAP system so that it accepts SAML assertions issued by the source subaccount. For more information, see [Cross-Subaccount Requirements](#cross-subaccount-requirements).
+To confirm the correct values, log in to your ABAP environment system, open the **Communication Systems** app, and select your SAP Cloud System. You can identify it by the **This is your own SAP Cloud System** label. The `Host Name` field contains the correct value for the `URL` field, and the `OAuth 2.0 SAML2 Audience` field contains the exact value for the `audience` field. For cross-subaccount scenarios, you must also configure a system-to-system trust on the target ABAP system so that it accepts SAML assertions issued by the source subaccount. For more information, see [Cross-Subaccount Requirements](#cross-subaccount-requirements).
 
 ### Cross-Subaccount Requirements
 
@@ -132,15 +132,15 @@ An empty catalog or connection failure typically indicates a destination misconf
 
 ## Troubleshooting
 
-One of the most common reasons why the connection fails when accessing the ABAP Cloud environment from an external application, such as SAP Business Application Studio, is that the communication system is not set up correctly.
+One of the most common reasons why the connection fails when accessing the ABAP environment system from an external application, such as SAP Business Application Studio, is that the communication system is not set up correctly.
 
-When creating the Communication Arrangement, use the Communication Scenario `SAP_COM_0510` (UI Development Tools for ABAP). This scenario exposes the BSP and SICF APIs required for SAP Fiori application deployment.
+Set up the communication system using the **Communication Systems** app with the **SAML Bearer Assertion Provider** enabled, and upload your SAP BTP subaccount trust certificate. SAP Fiori application deployment does not require a communication arrangement. The BSP and SICF deployment APIs are reached through the authenticated developer session, which is authorized by the `SAP_A4C_BC_DEV_UID_PC` business role.
 
 For more information, see [Creating a Communication System for SAP Business Application Studio](https://help.sap.com/docs/sap-btp-abap-environment/abap-environment/creating-communication-system-for-sap-business-application-studio).
 
-### Confirming an ABAP Cloud System Is Provisioned
+### Confirming an ABAP Environment System Is Provisioned
 
-If no ABAP Cloud (Steampunk) system appears when browsing destinations or connecting from SAP Business Application Studio, confirm that a system is provisioned in your Cloud Foundry environment before investigating destination or authentication issues.
+If no ABAP environment system appears when browsing destinations or connecting from SAP Business Application Studio, confirm that a system is provisioned in your Cloud Foundry environment before investigating destination or authentication issues.
 
 Run the following commands from a terminal in SAP Business Application Studio.
 
@@ -168,7 +168,7 @@ Run the following commands from a terminal in SAP Business Application Studio.
    cf services | grep -Ei "abap|steampunk|sap_abap"
    ```
 
-   If an ABAP Cloud environment has been provisioned in the current space, it appears in the output.
+   If an ABAP environment system has been provisioned in the current space, it appears in the output.
 
 4. If no service instances are returned, check whether the ABAP Environment service is available in the marketplace:
 
@@ -192,7 +192,7 @@ If you are still facing issues after reviewing the Environment Check report, ena
 
 When deploying from VS Code, you can use the [SAP UX Tools - SAP Systems](https://marketplace.visualstudio.com/items?itemName=SAPOSS.sap-ux-sap-systems-ext) extension (SAP Connection Manager) to connect directly to your ABAP Cloud system. This extension is specific to VS Code and is independent of SAP BTP destinations, which are used for SAP Business Application Studio connectivity. Authentication uses reentrance tickets, which the extension handles automatically.
 
-Install the extension from the VS Code Marketplace, then add your ABAP Cloud system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools `deploy` command or the guided deployment wizard in VS Code.
+Install the extension from the VS Code Marketplace, then add your ABAP environment system using the system URL and your credentials. Once added, the system is available for deployment using the SAP Fiori tools `deploy` command or the guided deployment wizard in VS Code.
 
 To use reentrance ticket authentication, set `authenticationType: reentranceTicket` in the `target` section of your `ui5-deploy.yaml` file:
 
